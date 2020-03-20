@@ -113,7 +113,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
 }
 
 .mpp-card--badge {
