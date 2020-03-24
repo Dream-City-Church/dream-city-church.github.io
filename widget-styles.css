@@ -4,13 +4,13 @@
 /* Lists                                    */
 /*--------------------------------------------*/
 
-.ul {
+ul {
   list-style-type: circle;
   list-style-position: outside;
-  margin-left: 55px;
+  indent: 55px;
 }
 
-#mpp-rss-reader .p {
+mpp-rss-reader {
   line-height:12pt;
 }
 
