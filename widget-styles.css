@@ -5,7 +5,7 @@
 /*--------------------------------------------*/
 
 .p {
-  text-size:12pt;
+  font-size:12pt;
   line-height:14pt;
 }
 
@@ -45,7 +45,7 @@
     }
 
     .mppw-btn:active {
-        background: ##ffa400;
+        background: #ffa400;
         color: #fff;
     }
 
