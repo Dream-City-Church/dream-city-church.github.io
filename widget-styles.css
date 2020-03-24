@@ -735,7 +735,7 @@
 /*--------------------------------------------*/
 /* Details Pages                              */
 /*--------------------------------------------*/
-#detailsContainer .mpp-innerpage--image {
+#detailsContainer .mpp-innerpage .mpp-innerpage--image {
     float:right;
     width:33%;
     margin-top:0.5em;
