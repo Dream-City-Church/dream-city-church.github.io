@@ -15,7 +15,7 @@
 .ul {
   list-style-type: circle;
   list-style-position: outside;
-  indent: 55px;
+  padding-left: 55px;
   line-height:14pt;
 }
 
