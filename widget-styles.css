@@ -4,7 +4,7 @@
 /* General                                    */
 /*--------------------------------------------*/
 
-p {
+.p {
   line-height:35px;
 }
 
@@ -12,7 +12,7 @@ p {
 /* Lists                                      */
 /*--------------------------------------------*/
 
-ul {
+.ul {
   list-style-type: circle;
   list-style-position: outside;
   indent: 55px;
