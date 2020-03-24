@@ -742,6 +742,10 @@
     border-radius:0.25em;
 }
 
+/*--------------------------------------------*/
+/* Mobile Styling                             */
+/*--------------------------------------------*/
+
 /* TABLET */
 @media only screen and (max-width: 768px) {
     #detailsContainer .mpp-innerpage--image {
