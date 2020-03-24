@@ -14,8 +14,8 @@
 
 .ul {
   list-style-type: circle;
-  list-style-position: outside;
-  padding-left: 55px;
+  list-style-position: inside;
+  margin-left: 55px;
   line-height:14pt;
 }
 
