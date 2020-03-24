@@ -4,13 +4,13 @@
 /* Lists                                    */
 /*--------------------------------------------*/
 
-ul {
+.ul {
   list-style-type: circle;
   list-style-position: outside;
   margin-left: 55px;
 }
 
-p {
+.p {
   line-height:12pt;
 }
 
