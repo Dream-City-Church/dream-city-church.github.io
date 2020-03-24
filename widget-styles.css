@@ -712,8 +712,24 @@
         color: #4273aa;
     }
 
+/*--------------------------------------------*/
+/* Details Pages                              */
+/*--------------------------------------------*/
+#detailsContainer .mpp-innerpage--image {
+    float:right;
+    width:33%;
+    margin-top:0.5em;
+    border-radius:0.25em;
+}
+
 /* TABLET */
 @media only screen and (max-width: 768px) {
+    #detailsContainer .mpp-innerpage--image {
+        float:inherit;
+        width:inherit;
+        margin-top:inherit;
+        border-radius:0.25em;
+    }
 }
 
 /* MOBILE */
