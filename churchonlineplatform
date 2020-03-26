@@ -1,0 +1,865 @@
+@font-face {
+  font-family: "Gotham";
+  src: url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamLight/Gotham-Light.eot");
+  src: url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamLight/Gotham-Light.eot?#iefix") format("embedded-opentype"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamLight/Gotham-Light.woff") format("woff"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamLight/Gotham-Light.ttf") format("truetype"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamLight/Gotham-Light.svg#Gotham") format("svg");
+  font-style: normal;
+  font-weight: 100; }
+
+@font-face {
+  font-family: "Gotham";
+  src: url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBook/Gotham-Book.eot");
+  src: url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBook/Gotham-Book.eot?#iefix") format("embedded-opentype"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBook/Gotham-Book.woff") format("woff"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBook/Gotham-Book.ttf") format("truetype"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBook/Gotham-Book.svg#Gotham") format("svg");
+  font-style: normal;
+  font-weight: 300; }
+
+@font-face {
+  font-family: "Gotham";
+  src: url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamMedium/Gotham-Medium.eot");
+  src: url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamMedium/Gotham-Medium.eot?#iefix") format("embedded-opentype"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamMedium/Gotham-Medium.woff") format("woff"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamMedium/Gotham-Medium.ttf") format("truetype"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamMedium/Gotham-Medium.svg#Gotham") format("svg");
+  font-style: normal;
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Gotham";
+  src: url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBold/Gotham-Bold.eot");
+  src: url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBold/Gotham-Bold.eot?#iefix") format("embedded-opentype"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBold/Gotham-Bold.woff") format("woff"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBold/Gotham-Bold.ttf") format("truetype"), url("https://www.seacoast.org/wp-content/themes/seacoast-church/fonts/GothamBold/Gotham-Bold.svg#Gotham") format("svg");
+  font-style: normal;
+  font-weight: 700; }
+
+
+
+
+html,body,h1,h2,h3,h4,h5,h6,button,.button {
+    font-family: "Gotham";
+}
+
+.column, .columns {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+.nav-margin {
+    margin: 0 !important;
+}
+.nav-bar {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 1em 0;
+}
+.site-logo img {
+    width: 12em;
+}
+.main-nav .co-sign-in-button,
+.main-nav .co-account {
+    display: none;
+}
+.main-nav {
+}
+.nav-trigger {
+    display: none;
+    position: relative;
+    z-index: 9999;
+    height: 1em;
+    padding-right: 2em;
+    color: #075A77;
+    line-height: 1em;
+    cursor: pointer;
+    transition: all .25s linear;
+    font-size: 135%;
+    text-transform: uppercase;
+    color: #777;
+    font-weight: 100;
+}
+.nav-trigger:before,
+.nav-trigger:after {
+    content: "";
+    display: block;
+    height: .5em;
+    width: 1.25em;
+    position: absolute;
+    right: 0%;
+    z-index: 10000;
+    transform-origin: 40%;
+    transition: all .3s linear;
+}
+.nav-trigger:before {
+    top: 1px;
+    border-top: 1px solid #777;
+    border-bottom: 1px solid #777;
+}
+.nav-trigger:after {
+    bottom: 0;
+    border-bottom: 1px solid #777;
+}
+
+.menu-open .nav-trigger:before {
+    transform: rotate(-45deg);
+    border-bottom-color: transparent;
+    top: 50%;
+}
+.menu-open .nav-trigger:after {
+    transform: rotate(45deg);
+    bottom: 50%;
+}
+
+.menu-mask {
+    display: none !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    background: rgba(0,0,0,.85);
+    opacity: 0;
+    transition: opacity .2s linear;
+    z-index: -1;    
+}
+.menu-open .menu-mask {
+    z-index: 1;
+    opacity: 1;
+}
+
+
+ul#main-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 100%;
+    transition: all .3s ease;
+}
+ul#main-menu li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+}
+ul#main-menu li a {
+    color: #737373;
+    padding: .5em;
+    line-height: 1em;
+    font-weight: 300;
+}
+ul#main-menu li.cta-button a {
+    padding: .5em 2em;
+    color: #fff;
+    font-weight: 700;
+    margin: 0 1em;
+    background: #58BABB;
+}
+ul#main-menu li.social {
+    margin: 0 .5em;
+}
+.co-event-times tr td a.co-event-invite-button,
+li.social a {
+    display: block !important;
+    text-indent: -9999px;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    position: relative;
+    font-size: 180%;
+    z-index: 0;
+    opacity: .5;
+    padding: 0 !important;
+    text-align: left;
+}
+.co-event-times tr td a.co-event-invite-button:before,
+li.social a:before {
+    font-family: "FontAwesome";
+    display: block;
+    float: right;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    line-height: 1em;
+    font-size: 100%;
+    text-indent: 0;
+    display: inline-block;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;    
+}
+li.social.facebook a:before {
+    content: "\f09a";
+}
+li.social.twitter a:before {
+    content: "\f099";
+}
+
+
+.content-area {
+    background: #f1f1f1;
+}
+
+.user-profile {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: right;
+}
+.user-profile .co-account {
+    font-size: 95%;
+}
+.user-profile .co-account .co-avatar {
+    float: right;
+    width: 2.25em;
+    height: 2.25em;
+}
+.user-profile .co-account > span {
+    display: inline-block;
+    line-height: 2.25em;
+    margin-right: 1em;
+    font-weight: 300;
+    font-size: 100%;
+}
+.user-profile .co-account > span:before {
+    content: "Welcome, ";
+}
+.user-profile .co-account-dropdown {
+    right: 1.5em;
+    top: 100%;
+    text-align: left;
+}
+.main-nav .co-sign-in-button,
+.user-profile .co-sign-up-button {
+    padding: .5em 1.5em;
+    border-radius: 2em;
+    margin: 0 0 0 1em;
+    line-height: 1em;
+    height: auto;
+    background: #14334D;
+    color: #fff;
+}
+.user-profile .co-sign-in-button {
+    color: #14334D;
+}
+.user-profile .co-sign-up-button,
+.user-profile .co-sign-in-button {
+    font-size: 85%;
+    line-height: 1.5em;
+}
+
+
+.service-utilities {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.co-reminder-header {
+    background: none !important;
+    color: #777 !important;
+    display: inline-block;
+}
+#countdown-header {
+    padding: 0;
+}
+.co-reminder-header button {
+    border: none !important;
+    border-radius: 2em;
+    font-size: 75% !important;
+    padding: .5em 1.5em !important;
+    color: #fff;
+    background: #14334D !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+    line-height: 1em !important;
+}
+.co-reminder-header button i {
+    display: none;
+}
+.co-header-countdown-time div {
+    border: none !important;
+    padding: 0 .25em;
+}
+.co-countdown-digit {
+    font-weight: bold;
+    font-size: 200% !important;
+}
+.co-countdown-digit-label {
+    font-size: 75% !important;
+    color: inherit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.co-header-countdown-time {
+    vertical-align: middle !important;
+    font-size: 60%;
+}
+.co-reminder-header-title {
+    line-height: 1em !important;
+    vertical-align: middle !important;
+}
+
+.co-reminder-header-title,
+.utility-bar h6 {
+    font-size: 90% !important;
+    font-weight: 500 !important;
+    color: #777 !important;
+}
+.share h6 {
+    margin: 0 !important;
+}
+.utility-bar .share .co-share .co-share-button {
+    line-height: 1em;
+    font-size: 200%;
+}
+
+.utility-bar .co-live-prayer {
+    color: #999;
+    border-color: #999;
+    margin: 0;
+    border-radius: 2em;
+    font-size: 100%;
+    padding: .5em 1em;
+}
+
+#lang-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  vertical-align: middle;
+    font-size: 80%;
+}
+#lang-menu li {
+  display: inline-block;
+  margin: .25em;
+}
+#lang-menu li a {
+  display: block;
+  padding: .5em 1em;
+  border-radius: 3px;
+  line-height: 1em;
+  color: #888;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  font-size: 85%;
+}
+#lang-menu li.current a {
+  cursor: default;
+    border-color: #888;
+}
+
+.share {
+    margin: 0 !important;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.co-slides {
+    z-index: 2;
+    
+}
+
+.co-slides + .co-widgets {
+    margin-top: -16%;
+    padding-top: 16%;
+}
+.co-slides:empty + .co-widgets {
+    margin-top: 0;
+    padding-top: 0;
+}
+dd.co-schedule-content {
+    position: relative;
+    padding: 1.5em;
+}
+div.co-schedule {
+    height: calc(100% - 4em);
+}
+.co-schedule-content h4 {
+    font-weight: bold;
+    margin-bottom: 0em;
+    font-size: 150%;
+}
+.co-schedule-content .co-schedule {
+    padding: 0;
+    position: static;
+}
+.co-schedule-content .co-schedule-header {
+    position: relative;
+    top: initial;
+    left: initial;
+    width: 100%;
+    font-size: 85%;
+    border: none !important;
+    padding: 0;
+    margin-bottom: 1em;
+}
+.co-schedule-content .co-popover-link {
+}
+.co-schedule-content .co-popover-content li {
+    font-size: 75%;
+    line-height: 1.2em;
+    font-weight: 300;
+}
+.co-schedule-content .co-scrollable,
+div.co-schedule-content {
+    padding: 0 !important;
+}
+.co-schedule-content .co-event-day-header {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #333 !important;
+    margin-bottom: .5em;
+}
+.co-schedule-content .co-event-day-header h3 {
+    font-size: 100%;
+    display: inline;
+    color: inherit;
+    margin-right: .25em;
+    float: none !important;
+    font-weight: 300;
+}
+.co-event-times {
+    display: block;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1.5em;
+    font-weight: 300;
+}
+.co-event-times tr {
+    display: inline-block;
+    margin-right: .75em;
+    margin-bottom: .75em;
+    border-radius: 2em;
+    background: #eee !important;
+    font-size: 75%;
+    color: inherit;
+    padding: .5em 1.5em;
+    line-height: 1em;
+}
+.co-event-times tr td {
+    font-size: 100%;
+    padding: 0;
+}
+.co-event-times tr .co-event-title {
+    display: none;
+}
+.co-event-times tr td a {
+    margin-left: .75em;
+    font-size: 120% !important;
+    display: inline-block !important;
+    vertical-align: middle;
+}
+.co-event-times tr td a.co-event-invite-button {
+    display: inline-block !important;
+}
+.co-event-times tr td a.co-event-invite-button:before {
+    content: "\f064";
+}
+
+.content-area .co-tabs-content {
+    padding-bottom: 6em;
+    font-size: 100%;
+}
+
+.content-area .co-widget-tabs {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    font-size: 100%;
+}
+.content-area .co-widget-tabs li {
+    padding: 1.5em;
+    font-size: 75%;
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    color: #555;
+    width: 25%;
+    height: auto;
+    text-align: center;
+    font-weight: 600;
+}
+.content-area .co-widget-tabs li:before {
+    content: "";
+    display: block;
+    height: 3em;
+    width: auto;
+    margin-bottom: .5em;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+}
+.content-area .co-widget-tabs li.co-notes-tab:before {
+    background-image: url(https://chop-v3-media.s3.amazonaws.com/medias/images/000/103/955/thumb/icon-notes.png);
+}
+.content-area .co-widget-tabs li.co-schedule-default-tab:before {
+    background-image: url(https://chop-v3-media.s3.amazonaws.com/medias/images/000/103/954/thumb/icon-times.png);
+}
+.content-area .co-widget-tabs li.co-bible-tab:before {
+    background-image: url(https://chop-v3-media.s3.amazonaws.com/medias/images/000/103/957/thumb/icon-bible.png);
+}
+.content-area .co-widget-tabs li.co-chat-tab:before {
+    background-image: url(https://chop-v3-media.s3.amazonaws.com/medias/images/000/103/951/thumb/icon-chat.png);
+}
+
+#videoplayer .summary {
+    padding: 1.5em;
+    background: #293e55;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+#videoplayer .summary h3 {
+    line-height: 1.5em;
+    font-size: 120%;
+    color: #fff;
+    margin: 0;
+    font-weight: 700;
+}
+#videoplayer .summary h4 {
+    line-height: 1.5em;
+    font-size: 100%;
+    color: #fff;
+    margin: 0;
+    font-weight: 300;
+}
+#videoplayer .summary .button {
+    border-radius: 2em;
+    background: none;
+    font-size: 85%;
+    color: #fff;
+    border: 1px solid #fff;
+    margin: 0;
+    line-height: 1em;
+    padding: 1em 2em;
+}
+
+.message-overlay p {
+    margin: 0;
+}
+
+.response-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 1.5em;
+}
+.response-actions .cta-item {
+    font-size: 75%;
+    color: #57585A;
+    padding: 1.5em;
+    line-height: 1.5em;
+    width: 30%;
+}
+.response-actions .cta-item .cta-icon {
+    width: 4.5em;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 1em;
+}
+.response-actions .cta-item .cta-message {
+    width: calc(100% - 6em);
+    display: inline-block;
+    vertical-align: top;
+}
+.response-actions h5 {
+    font-weight: bold;
+    font-size: 175%;
+    margin: 0 0 .25em 0;
+    line-height: 1em;
+}
+.response-actions p {
+    font-size: 100%;
+    margin: 0;
+    font-weight: 300;
+    line-height: 1.5em !important;
+}
+.response-actions .cta-item.prayer p {
+    display: inline;
+}
+.response-actions a {
+    font-weight: bold;
+}
+.response-actions #prayer-button {
+    display: inline;
+    padding: 0;
+    border: none;
+    color: #58babb;
+    font-size: 100%;
+    background: none;
+    margin: 0;
+    font-weight: bold;
+}
+.response-actions #prayer-button:after {
+    content: " ›";
+}
+.response-actions #prayer-button i {
+    display: none;
+}
+
+footer {
+    padding: 1.5em 0 !important;
+}
+.footer-brand img {
+    width: 10em;
+}
+.footer-legal {
+    text-align: center;
+    font-size: 75%;
+}
+.footer-legal .footer-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 100%;
+}
+.footer-legal .footer-menu li {
+    padding: 0;
+    margin: 0;
+    display: inline;
+    border-left: 1px solid #fff;
+}
+.footer-legal .footer-menu li:first-child {
+    border: none;
+}
+.footer-legal .footer-menu li a {
+    padding: 0 .5em;
+    line-height: 1em;
+    margin: 0;
+}
+.footer-credit img {
+    width: 15em;
+    opacity: .5;
+    margin-top: .5em;
+}
+footer ul li a, footer p {
+    font-size: 100% !important;
+    margin: 0;
+}
+
+
+
+@media only screen and (max-width: 1199px) {
+    body {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    
+    .nav-trigger {
+        display: inline-block;
+    }
+    ul#main-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 320px;
+        background: #454546;
+        z-index: 10;
+        box-shadow: 0 0 1em rgba(0,0,0,.25);
+        padding: 1.5em;
+        text-align: right;
+        padding-top: 5em;
+        font-size: 125%;
+        height: 100vh;
+        overflow: auto;
+        transform: translateX(100%);
+    }
+    ul#main-menu li {
+        display: block;
+    }
+    ul#main-menu li a {
+        color: #fff;
+    }
+    ul#main-menu li.cta-button {
+        margin: 1.5em 0;
+    }
+    ul#main-menu li.cta-button a {
+        margin: 0;
+    }
+    ul#main-menu li.social {
+        display: inline-block;
+    }
+    .menu-open ul#main-menu {
+        transform: translateX(0);
+    }
+    
+    .content-area .co-widget-tabs {
+        font-size: 75%;
+    }
+    .response-actions .cta-item {
+        text-align: center;        
+    }
+    .response-actions .cta-item .cta-icon {
+        margin: 0 0 1em 0;
+    }
+    .response-actions .cta-item .cta-message {
+        width: 100%;
+    }
+    .response-actions h5 {
+        font-size: 150%;
+    }
+    
+    #videoplayer #lang-menu {
+        float: none;
+        text-align: left;
+        margin-top: .5em;
+    }
+    #videoplayer #lang-menu li {
+        margin: 0 .5em 0 0;
+    }
+    #videoplayer #lang-menu li a {
+        padding: .25em 0;
+        border: none;
+        color: #fff;
+        text-transform: none;
+        opacity: .75;
+    }
+    #videoplayer #lang-menu li.current a {
+        background: none;
+        border-bottom: 1px solid #fff;
+        opacity: 1;
+    }
+    
+    
+    
+    #videoplayer,
+    #interaction {
+        width: 100%;
+        padding: 0;
+    }
+    
+    #interaction {
+        height: 50vh;
+        position: relative;
+        padding: 0;
+    }
+    #interaction > .co-widgets {
+        height: 100%;
+        overflow: auto;
+        padding-top: 6em;
+        position: relative;
+        margin-top: 0;
+    }
+    #interaction > .co-widgets .co-tabs-content {
+        padding: 0;
+        position: relative;
+        z-index: 1;
+    }
+    #interaction > .co-widgets .co-widget-tabs {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background: #333;
+        text-align: center;
+        font-size: 100%;
+    }
+    #interaction > .co-widgets .co-widget-tabs li {
+        display: block;
+        width: 100%;
+        height: 8em;
+        color: #aaa;
+    }
+    #interaction > .co-widgets .co-widget-tabs li.co-active {
+        background: rgba(0,0,0,.75);
+        color: #fff;
+    }
+    
+    
+}
+
+@media only screen and (max-width: 767px) {
+    
+    .nav-trigger {
+        text-indent: -9999px;
+    }
+    
+    .response-actions {
+        flex-direction: column;
+    }
+    .response-actions .cta-item {
+        width: 100%;
+    }
+    
+    .co-reminder-header button,
+    .co-header-countdown-time,
+    .co-reminder-header-title {
+        display: inline-block !important;
+        margin: 0 !important;
+    }
+    
+    .service-utilities {
+        padding: .5em 1.5em !important;
+        background: #333334;
+        width: 100%;
+    }
+    .main-nav .co-account span,
+    .user-profile {
+        display: none;
+    }
+    
+    .main-nav .co-sign-in-button,
+    .main-nav .co-account {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .share .co-share .co-share-button,
+    .co-countdown-unit {
+        color: #aaa;
+    }
+    .co-countdown-digit-label {
+        color: inherit;
+    }
+    .co-reminder-header button {
+        background: #aaa !important;
+        color: #555 !important;
+        vertical-align: top !important;
+    }
+    .dropdown:before, .co-account-dropdown:before,
+    #videoplayer .summary .button,
+    .co-reminder-header-title,
+    .utility-bar h6 {
+        display: none !important;
+    }
+    .co-account-dropdown {
+        top: 100%;
+    }
+    
+    footer .columns {
+        width: 100%;
+        text-align: center !important;
+        float: none !important;
+    }
+    .footer-legal {
+        padding: 1em 0 3em 0;
+    }
+    footer .columns .powered-by,
+    .footer-legal .footer-menu {
+        text-align: center !important;
+        float: none !important;
+    }
+    
+    #lang-menu + .co-reminder-header {
+        display: none;
+    }
+    #interaction {
+        height: 70vh;
+    }
+    .co-slides {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+    }
+
+}
