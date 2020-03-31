@@ -139,6 +139,7 @@
 .mpp-card--badge {
     background: #ffa400;
     border-top-left-radius: var(--card-borderRadius);
+    border-bottom-right-radius: 0.25em;
     box-shadow: 0em 0.2em 0.3em 0.2em rgba(0,0,0,0.15);
     font-size: 10px;
     line-height: 1;
@@ -769,5 +770,13 @@
         position: static;
         width: 100%;
         text-align: left;
+    }
+
+    .mpp-card {
+        margin-bottom: 2em;
+    }
+
+    .mpp-card--image {
+        height: 140px;
     }
 }
