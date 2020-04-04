@@ -741,6 +741,8 @@
     float:right;
     width:33%;
     margin-top:0.5em;
+    margin-left:2em;
+    margin-bottom:1em;
     border-radius:0.25em;
 }
 
@@ -753,7 +755,7 @@
     .mpp-innerpage--image {
         float:inherit;
         width:inherit;
-        margin-top:inherit;
+        margin:inherit;
         border-radius:0.25em;
     }
 }
