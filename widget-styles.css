@@ -775,7 +775,7 @@
 /* Details Pages                              */
 /*--------------------------------------------*/
 .mpp-innerpage--image {
-    box-shadow: 0.1em 0.1em 0.25em 0 rgba(0,0,0,0.1)
+    box-shadow: 0.1em 0.1em 0.25em 0 rgba(0,0,0,0.1);
     float: right;
     width: 33%;
     margin-top: 0.5em;
