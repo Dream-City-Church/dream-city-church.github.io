@@ -584,8 +584,8 @@
 
 .mpp-form--tabs label:active,
 .mpp-form--tabs label.active {
-    border-bottom: 3px solid var(--innerPage-linkColor);
-    color: var(--innerPage-primaryColor);
+    border-bottom: 3px solid #ffa400;
+    color: #ffa400;
 }
 
 .mpp-form--tabs input {
