@@ -547,6 +547,10 @@
     font-size: 0.8rem;
 }
 
+.mppw-form-field__control:focus {
+    box-shadow: 0 0 0 2px #ffa400;
+}
+
 .mpp-form--tabs {
     margin-bottom: 16px;
 }
