@@ -303,11 +303,12 @@
     --innerPage-progressBarRemainingColor: #efefef;
     --innerPage-progressBarCompleteColor: #77be43;
     --innerPage-labelBgColor: #efefef;
-    --innerPage-linkColor: #4684ca;
+    --innerPage-linkColor: #ffa400;
     --innerPage-linkHoverColor: #4684ca;
     --innerPage-linkActiveColor: #4273aa;
     --innerPage-imageBgColor: #657783;
     --innerPage-mapBgColor: #efefef;
+    --form-field-bgcolor--active: #fafafa;
 }
 
 .mpp-innerpage {
@@ -542,25 +543,9 @@
 }
 
 .mppw-form-field__label {
-    color: #c7c9c8;
     background-color:initial;
     font-weight: bold;
     font-size: 0.8rem;
-}
-
-.mppw-form-field__control {
-    font-size:1.25em;
-    color:#333;
-    font-weight:bold;
-}
-
-.mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
-    color:#c7c9c8;
-}
-
-.mppw-form-field__control:focus {
-    box-shadow: 0 0 0 2px #ffa400;
-    background-color:#fafafa;
 }
 
 .mpp-form--tabs {
@@ -584,8 +569,8 @@
 
 .mpp-form--tabs label:active,
 .mpp-form--tabs label.active {
-    border-bottom: 3px solid #ffa400;
-    color: #ffa400;
+    border-bottom: 3px solid var(--innerPage-linkColor);
+    color: var(--innerPage-primaryColor);
 }
 
 .mpp-form--tabs input {
