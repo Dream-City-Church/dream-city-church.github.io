@@ -309,6 +309,7 @@
     --innerPage-imageBgColor: #657783;
     --innerPage-mapBgColor: #efefef;
     --form-field-bgcolor--active: #fafafa;
+    --form-field-border--active: #ffa400;
 }
 
 .mpp-innerpage {
