@@ -310,6 +310,7 @@
     --innerPage-mapBgColor: #efefef;
     --form-field-bgcolor--active: #fafafa;
     --form-field-border--active: #ffa400;
+    --form-field-boxshadow--active: #ffa400;
 }
 
 .mpp-innerpage {
