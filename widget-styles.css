@@ -547,8 +547,14 @@
     font-size: 0.8rem;
 }
 
+.mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
+    color:#c7c9c8;
+    background-color:#fafafa;
+}
+
 .mppw-form-field__control:focus {
     box-shadow: 0 0 0 2px #ffa400;
+    background-color:#fafafa;
 }
 
 .mpp-form--tabs {
