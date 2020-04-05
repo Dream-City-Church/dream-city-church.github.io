@@ -541,6 +541,12 @@
     margin-bottom: 0;
 }
 
+.mppw-form-field__label {
+    color: #c7c9c8;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
 .mpp-form--tabs {
     margin-bottom: 16px;
 }
