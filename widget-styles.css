@@ -281,7 +281,7 @@
     --innerPage-textColor: #384249;
     --innerPage-fontSize: 18px;
     --innerPage-lineHeight: 34px;
-    --innerPage-primaryColor: #4a95ec;
+    --innerPage-primaryColor: #ffa400;
     --innerPage-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
     --innerPage-borderRadius: 4px;
     /* headers */
@@ -296,16 +296,16 @@
     --innerPage-h4lineHeight: 24px;
     --innerPage-dateTimeFontSize: 28px;
     --innerPage-buttonBgColor: var(--innerPage-primaryColor);
-    --innerPage-buttonHoverBgColor: #4684ca;
-    --innerPage-buttonActiveBgColor: #4273aa;
-    --innerPage-progressBarColor: #1b88b0;
-    --innerPage-progressBarActiveColor: linear-gradient(90deg, #1b88b0 0%, #1fb5ac 100%);
+    --innerPage-buttonHoverBgColor: #f26822;
+    --innerPage-buttonActiveBgColor: #f26822;
+    --innerPage-progressBarColor: #ffa400;
+    --innerPage-progressBarActiveColor: linear-gradient(90deg, #f26822 0%, #ffa400 100%);
     --innerPage-progressBarRemainingColor: #efefef;
     --innerPage-progressBarCompleteColor: #77be43;
     --innerPage-labelBgColor: #efefef;
     --innerPage-linkColor: #ffa400;
-    --innerPage-linkHoverColor: #4684ca;
-    --innerPage-linkActiveColor: #4273aa;
+    --innerPage-linkHoverColor: #f26822;
+    --innerPage-linkActiveColor: #f26822;
     --innerPage-imageBgColor: #657783;
     --innerPage-mapBgColor: #efefef;
     --form-field-bgcolor--active: #fafafa;
@@ -540,6 +540,10 @@
 .mpp-innerpage--contacts-wrapper h3,
 .mpp-innerpage .progress--container h3 {
     margin-bottom: 0;
+}
+
+.mppw-form-field__control {
+    font-weight:bold;
 }
 
 .mppw-form-field__label {
