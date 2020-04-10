@@ -304,22 +304,22 @@
 :host {
     --innerPage-bgColor: #657783;
     --innerPage-textColor: #384249;
-    --innerPage-fontSize: 18px;
-    --innerPage-lineHeight: 34px;
+    --innerPage-fontSize: 1.2rem;
+    --innerPage-lineHeight: 1.8rem;
     --innerPage-primaryColor: #ffa400;
     --innerPage-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
-    --innerPage-borderRadius: 4px;
+    --innerPage-borderRadius: 0.25rem;
     /* headers */
-    --innerPage-h1fontSize: 45px;
-    --innerPage-h1lineHeight: 60px;
-    --innerPage-h2fontSize: 24px;
-    --innerPage-h2lineHeight: 34px;
-    --innerPage-h3fontSize: 20px;
-    --innerPage-h3lineHeight: 28px;
+    --innerPage-h1fontSize: 1.75rem;
+    --innerPage-h1lineHeight: 3em;
+    --innerPage-h2fontSize: 1.5rem;
+    --innerPage-h2lineHeight: 2.5rem;
+    --innerPage-h3fontSize: 1.35rem;
+    --innerPage-h3lineHeight: 2.2rem;
     --innerPage-h3color: #657783;
-    --innerPage-h4fontSize: 18px;
-    --innerPage-h4lineHeight: 24px;
-    --innerPage-dateTimeFontSize: 28px;
+    --innerPage-h4fontSize: 1.25rem;
+    --innerPage-h4lineHeight: 1.9rem;
+    --innerPage-dateTimeFontSize: 1.5rem;
     --innerPage-buttonBgColor: var(--innerPage-primaryColor);
     --innerPage-buttonHoverBgColor: #f26822;
     --innerPage-buttonActiveBgColor: #f26822;
