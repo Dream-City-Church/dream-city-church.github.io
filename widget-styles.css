@@ -784,6 +784,10 @@
     border-radius: 0.25em;
 }
 
+.mpp-innerpage--placeholder {
+    display:none;
+}
+
 /*--------------------------------------------*/
 /* Mobile Styling                             */
 /*--------------------------------------------*/
