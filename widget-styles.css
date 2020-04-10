@@ -310,14 +310,14 @@
     --innerPage-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
     --innerPage-borderRadius: 0.25rem;
     /* headers */
-    --innerPage-h1fontSize: 1.75rem;
-    --innerPage-h1lineHeight: 3em;
-    --innerPage-h2fontSize: 1.5rem;
+    --innerPage-h1fontSize: 2.5rem;
+    --innerPage-h1lineHeight: 5em;
+    --innerPage-h2fontSize: 1.75rem;
     --innerPage-h2lineHeight: 2.5rem;
-    --innerPage-h3fontSize: 1.35rem;
+    --innerPage-h3fontSize: 1.5rem;
     --innerPage-h3lineHeight: 2.2rem;
     --innerPage-h3color: #657783;
-    --innerPage-h4fontSize: 1.25rem;
+    --innerPage-h4fontSize: 1.3rem;
     --innerPage-h4lineHeight: 1.9rem;
     --innerPage-dateTimeFontSize: 1.5rem;
     --innerPage-buttonBgColor: var(--innerPage-primaryColor);
