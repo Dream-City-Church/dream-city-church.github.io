@@ -153,7 +153,7 @@
 /* Header */
 .mpp-card--header {
     background: var(--card-headerBgColor);
-    height: 300px;
+    height: 275px;
     color: #fff;
     position: relative;
     display: flex;
@@ -206,7 +206,7 @@
     }
 
 .mpp-card--image {
-    height: 300px;
+    height: 275px;
     object-fit: cover;
     width: 100%;
 }
