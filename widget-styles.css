@@ -206,7 +206,7 @@
     }
 
 .mpp-card--image {
-    height: 200px;
+    height: 250px;
     object-fit: cover;
     width: 100%;
 }
