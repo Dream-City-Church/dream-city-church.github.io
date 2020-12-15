@@ -93,7 +93,7 @@
 :host {
     --card-textColor: #384249;
     --card-borderRadius: 4px;
-    --card-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+    --card-boxShadow: none;
     --card-primaryColor: #4a95ec;
     --card-badgeBgColor: var(--card-textColor);
     --card-headerBgColor: #666;
