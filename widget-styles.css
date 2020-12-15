@@ -141,8 +141,8 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background-color: #fff;
-    border-radius: 4px;
+    background-color: #f3f4f4;
+    border-radius: 0px;
     box-shadow: var(--card-boxShadow);
     color: var(--card-text-color);
     font-size: var(--card-fontSize);
