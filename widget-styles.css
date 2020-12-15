@@ -143,7 +143,6 @@
     flex-direction: column;
     background-color: #f3f4f4;
     border-radius: 0px;
-    box-shadow: var(--card-boxShadow);
     color: var(--card-text-color);
     font-size: var(--card-fontSize);
     line-height: var(--card-lineHeight);
