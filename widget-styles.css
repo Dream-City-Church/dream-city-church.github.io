@@ -93,7 +93,7 @@
 :host {
     --card-textColor: #384249;
     --card-borderRadius: 4px;
-    --card-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+    --card-boxShadow: none;
     --card-primaryColor: #4a95ec;
     --card-badgeBgColor: var(--card-textColor);
     --card-headerBgColor: #666;
@@ -141,9 +141,8 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: var(--card-boxShadow);
+    background-color: #f3f4f4;
+    border-radius: 0px;
     color: var(--card-text-color);
     font-size: var(--card-fontSize);
     line-height: var(--card-lineHeight);
@@ -163,9 +162,7 @@
 
 .mpp-card--badge {
     background: #ffa400;
-    border-top-left-radius: var(--card-borderRadius);
-    border-bottom-right-radius: 0.25em;
-    box-shadow: 0em 0.2em 0.3em 0.2em rgba(0,0,0,0.15);
+    box-shadow: none;
     font-size: 10px;
     line-height: 1;
     text-transform: uppercase;
@@ -177,7 +174,6 @@
 }
 
 .mpp-card--badge::before {
-    border-radius: 50%;
     display: inline-block;
     margin-right: 10px;
     height: 10px;
