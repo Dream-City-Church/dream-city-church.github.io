@@ -831,7 +831,13 @@
         margin-bottom: 2em;
     }
 
-    .mpp-card--image {
-        height: 140px;
+    .mpp-card--header {
+        height: 175px;
     }
+
+    .mpp-card--image {
+        height: 175px;
+        width: 100%;
+    }
+    
 }
