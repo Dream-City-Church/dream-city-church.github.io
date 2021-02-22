@@ -158,6 +158,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 35%)
 }
 
 .mpp-card--badge {
@@ -805,8 +807,12 @@
 }
 
 /* CAMPAIGN WIDGET */
-.toggle--btn:hover, .toggle--btn.selected {
+.toggle--btn {
     background: #001f4e;
+}
+
+.toggle--btn:hover, .toggle--btn.selected {
+    background: #ffa400;
 }
 
 /* MOBILE */
