@@ -842,5 +842,9 @@
         height: 175px;
         width: 100%;
     }
+
+    .mpp-pledge-campaign .mpp-pledge-campaign--photo {
+        width: initial;
+    }
     
 }
