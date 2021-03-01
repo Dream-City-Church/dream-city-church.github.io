@@ -563,6 +563,14 @@
     margin-bottom: 40px;
 }
 
+.mpp-innerpage h2 {
+    display: none;
+}
+
+.mpp-innerpage .progress--container {
+    display: none;
+}
+
 .mpp-innerpage--contacts-wrapper h3,
 .mpp-innerpage .progress--container h3 {
     margin-bottom: 0;
