@@ -824,6 +824,17 @@
     background: #ffa400;
 }
 
+.mpp-pledge-campaign--photo {
+    min-height: 225px;
+}
+
+mpp-my-pledges::after {
+    content: "Note: Please allow 24 hours for donations to be attributed to your commitment";
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 0.9em;
+    font-style: italic;
+
 /* MOBILE */
 @media only screen and (max-width: 415px) {
     .mppw-login--container,
