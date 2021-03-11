@@ -834,6 +834,7 @@ mpp-my-pledges::after {
     margin-left: auto;
     font-size: 0.9em;
     font-style: italic;
+}
 
 /* MOBILE */
 @media only screen and (max-width: 415px) {
