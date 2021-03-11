@@ -828,7 +828,7 @@
     min-height: 225px;
 }
 
-mpp-my-pledges::after {
+#myPledgesWrapper::after {
     content: "Note: Please allow 24 hours for donations to be attributed to your commitment" !important;
     margin-right: auto;
     margin-left: auto;
