@@ -829,7 +829,7 @@
 }
 
 mpp-my-pledges::after {
-    content: "Note: Please allow 24 hours for donations to be attributed to your commitment";
+    content: "Note: Please allow 24 hours for donations to be attributed to your commitment" !important;
     margin-right: auto;
     margin-left: auto;
     font-size: 0.9em;
