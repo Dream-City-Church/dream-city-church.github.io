@@ -94,7 +94,7 @@
     --card-textColor: #384249;
     --card-borderRadius: 4px;
     --card-boxShadow: none;
-    --card-primaryColor: #4a95ec;
+    --card-primaryColor: #ffa400;
     --card-badgeBgColor: var(--card-textColor);
     --card-headerBgColor: #666;
     --card-badgeStatusActiveColor: var(--card-primaryColor);
@@ -296,6 +296,22 @@
         margin-bottom: 16px;
     }
 }
+
+/*--------------------------------------------*/
+/* Subscriptions                              */
+/*--------------------------------------------*/
+.mpp-subscriptions .mpp-card-multiselect {
+    border: 1px solid #efefef;
+    padding: 12px;
+    box-shadow: 0.1em 0.1em 0.3em rgb(0 0 0 / 10%);
+}
+
+.mpp-subscriptions .mpp-card-multiselect--image {
+    border: 1px solid #efefef;
+    padding: 12px;
+    box-shadow: 0.1em 0.1em 0.3em rgb(0 0 0 / 10%);
+}
+
 
 /*--------------------------------------------*/
 /* Inner Page Details                         */
