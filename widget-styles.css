@@ -307,9 +307,9 @@
 }
 
 .mpp-subscriptions .mpp-card-multiselect--image {
-    border: 1px solid #efefef;
-    padding: 12px;
-    box-shadow: 0.1em 0.1em 0.3em rgb(0 0 0 / 10%);
+    height: 75px;
+    width: 75px;
+    min-width: 75px;
 }
 
 
