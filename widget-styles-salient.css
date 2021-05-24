@@ -9,6 +9,37 @@
     --form-btn-primary-hover: #203f6e;
     --form-field-border--active: #ffa400;
     --form-field-border: #ddd;
+    --innerPage-bgColor: #657783;
+    --innerPage-textColor: #384249;
+    --innerPage-fontSize: 18px;
+    --innerPage-lineHeight: 34px;
+    --innerPage-primaryColor: #4a95ec;
+    --innerPage-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+    --innerPage-borderRadius: 4px;
+    --innerPage-h1fontSize: 45px;
+    --innerPage-h1fontWeight: 600;
+    --innerPage-h1lineHeight: 60px;
+    --innerPage-h2fontSize: 24px;
+    --innerPage-h2lineHeight: 34px;
+    --innerPage-h3fontSize: 20px;
+    --innerPage-h3lineHeight: 28px;
+    --innerPage-h3color: #657783;
+    --innerPage-h4fontSize: 18px;
+    --innerPage-h4lineHeight: 24px;
+    --innerPage-dateTimeFontSize: 28px;
+    --innerPage-buttonBgColor: var(--innerPage-primaryColor);
+    --innerPage-buttonHoverBgColor: #4684ca;
+    --innerPage-buttonActiveBgColor: #4273aa;
+    --innerPage-progressBarColor: #1b88b0;
+    --innerPage-progressBarActiveColor: linear-gradient(90deg, #1b88b0 0%, #1fb5ac 100%);
+    --innerPage-progressBarRemainingColor: #efefef;
+    --innerPage-progressBarCompleteColor: #77be43;
+    --innerPage-labelBgColor: #efefef;
+    --innerPage-linkColor: #4684ca;
+    --innerPage-linkHoverColor: #4684ca;
+    --innerPage-linkActiveColor: #4273aa;
+    --innerPage-imageBgColor: #657783;
+    --innerPage-mapBgColor: #efefef;
 }
 
 @font-face{
@@ -21,9 +52,9 @@
 h1 {
     font-family: DM Serif Display;
     letter-spacing: 0px;
-    font-size: 32px;
-    line-height: 32px;
-    font-weight: 400;
+    font-size: var(--innerPage-h1fontSize);
+    line-height: var(--innerPage-h1lineHeight);
+    font-weight: var(--innerPage-h1fontWeight);
 }
 
 /* Form field settings */
