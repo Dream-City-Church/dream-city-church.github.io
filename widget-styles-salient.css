@@ -60,6 +60,10 @@ h1 {
     font-weight: var(--innerPage-h1fontWeight);
 }
 
+.p{
+    --line-height: 12px;
+}
+
 /* Form field settings */
 .mppw-form-field--is-valid .mppw-form-field__label, .mppw-form-field--is-invalid .mppw-form-field__label, .mppw-form-field__static-container .mppw-form-field__label, .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
     padding: 0.75em 1em 0em 1em;
@@ -72,9 +76,75 @@ h1 {
 
 /* Card Styles */
 .mp-card {
+<<<<<<< HEAD
     border-radius: var(--card-borderRadius) !important;
 }
 
 
 
 
+=======
+    border-radius: var(--card-borderRadius);
+}
+
+/* Header */
+.mpp-card--header {
+    background: var(--card-headerBgColor);
+    height: 225px;
+    color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 35%)
+}
+
+.mpp-card--badge {
+    background: #ffa400;
+    box-shadow: none;
+    font-size: 10px;
+    line-height: 1;
+    text-transform: uppercase;
+    opacity: 0.9;
+    padding: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 0;
+}
+
+.mpp-card--badge::before {
+    display: inline-block;
+    margin-right: 10px;
+    height: 10px;
+    width: 10px;
+}
+
+    .mpp-card--badge.isFull::before
+     .mpp-card--badge.active::before {
+        background: var(--card-badgeStatusActiveColor);
+        content: '';
+    }
+
+    .mpp-card--badge.pending::before {
+        background: var(--card-badgeStatusPendingColor);
+        content: '';
+    }
+
+    .mpp-card--badge.discontinued::before {
+        background: var(--card-badgeStatusDiscontinuedColor);
+        content: '';
+    }
+
+    .mpp-card--badge.complete::before {
+        background: var(--card-badgeStatusCompleteColor);
+        content: '';
+    }
+
+.mpp-card--image {
+    height: 225px;
+    object-fit: cover;
+    width: 100%;
+}
+>>>>>>> f8b090da463c6249b6b4da9eead77391add0647e
