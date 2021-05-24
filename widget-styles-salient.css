@@ -11,6 +11,21 @@
     --form-field-border: #ddd;
 }
 
+@font-face{
+    font-family:'Open Sans';
+    src:url('http://dreamcitychurch.org/wp-content/themes/salient/css/fonts/OpenSans-Regular.woff') format('woff');
+    font-weight:400;
+    font-style:normal
+}
+
+h1 {
+    font-family: DM Serif Display;
+    letter-spacing: 0px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 400;
+}
+
 /* Form field settings */
 .mppw-form-field--is-valid .mppw-form-field__label, .mppw-form-field--is-invalid .mppw-form-field__label, .mppw-form-field__static-container .mppw-form-field__label, .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
     padding: 0.75em 1em 0em 1em;
@@ -25,3 +40,7 @@
 .mp-card {
     border-radius: var(--card-borderRadius);
 }
+
+
+
+
