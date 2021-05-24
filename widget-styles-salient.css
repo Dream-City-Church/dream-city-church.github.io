@@ -76,15 +76,7 @@ h1 {
 
 /* Card Styles */
 .mp-card {
-<<<<<<< HEAD
     border-radius: var(--card-borderRadius) !important;
-}
-
-
-
-
-=======
-    border-radius: var(--card-borderRadius);
 }
 
 /* Header */
@@ -147,4 +139,3 @@ h1 {
     object-fit: cover;
     width: 100%;
 }
->>>>>>> f8b090da463c6249b6b4da9eead77391add0647e
