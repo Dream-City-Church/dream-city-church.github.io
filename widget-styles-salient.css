@@ -72,7 +72,7 @@ h1 {
 
 /* Card Styles */
 .mp-card {
-    border-radius: var(--card-borderRadius);
+    border-radius: var(--card-borderRadius) !important;
 }
 
 
