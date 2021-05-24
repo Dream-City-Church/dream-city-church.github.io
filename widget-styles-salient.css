@@ -11,8 +11,9 @@
     --form-field-border: #ddd;
     --innerPage-bgColor: #657783;
     --innerPage-textColor: #384249;
-    --innerPage-fontSize: 18px;
-    --innerPage-lineHeight: 34px;
+    --innerPage-fontSize: 16px;
+    --innerPage-lineHeight: 22px;
+    --innerPage-fontWeight: 300;
     --innerPage-primaryColor: #4a95ec;
     --innerPage-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
     --innerPage-borderRadius: 4px;
@@ -42,11 +43,13 @@
     --innerPage-mapBgColor: #efefef;
 }
 
-@font-face{
-    font-family:'Open Sans';
-    src:url('http://dreamcitychurch.org/wp-content/themes/salient/css/fonts/OpenSans-Regular.woff') format('woff');
-    font-weight:400;
-    font-style:normal
+.mpp-innerpage p {
+    font-family: Poppins;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-size: var(--innerPage-fontSize);
+    line-height: var(--innerPage-lineHeight);
+    font-weight: var(--innerPage-fontWeight);
 }
 
 h1 {
