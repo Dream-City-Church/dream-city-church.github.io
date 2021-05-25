@@ -99,14 +99,12 @@
     box-shadow: 0 0 1em rgb(125 80 0 / 25%);
     opacity: 1;
     padding: 0.25em 0.5em;
-    margin-top: 1px;
     color: rgba(255,255,255,0.85);
 }
 
 .mpp-card--image {
     box-shadow: var(--card-boxShadow);
     height: 200px;
-    border-top: 1px solid #fafafa;
 }
 
 .mpp-card--body {
