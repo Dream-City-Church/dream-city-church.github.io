@@ -105,7 +105,7 @@
 
 .mpp-card--image {
     box-shadow: var(--card-boxShadow);
-    height: 200px;
+    height: 220px;
     border-top: 1px solid #fafafa;
 }
 
@@ -169,6 +169,11 @@
 }
 
 /* Login Widget */
+
+.mppw-icon-unlock:before {
+    content: "\f2bd";
+    font-family: 'FontAwesome';
+}
 
 .mppw-loggedout--username {
     color: #fff;
