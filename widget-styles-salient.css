@@ -82,6 +82,10 @@ h1 {
     color: rgba(255,255,255,0.85);
 }
 
+.mpp-card-0image {
+    box-shadow: var(--card-boxShadow);
+}
+
 .mpp-card--body {
     padding-bottom: 0;
 }
@@ -89,6 +93,22 @@ h1 {
 .mpp-card--description {
     -webkit-line-clamp: 3;
 }
+
+.mpp-card--subtitle:nth-child(2):before {
+    position: absolute;
+    font-family: 'FontAwesome';
+    top: 0;
+    left: 10px;
+    content: "\f017";
+}
+
+.mpp-card--subtitle:nth-child(3):before {
+    position: absolute;
+    font-family: 'FontAwesome';
+    top: 0;
+    left: 10px;
+    content: "\f3c5";
+}f3c5
 
 /* Buttons */
 .mppw-btn {
