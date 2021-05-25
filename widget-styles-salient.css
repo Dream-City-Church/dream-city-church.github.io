@@ -173,11 +173,26 @@
 .mppw-icon-unlock:before {
     content: "\f2bd";
     font-family: 'FontAwesome';
+    font-size: 1.4em;
+}
+
+.mppw-icon-unlock:before:hover {
+    text-decoration: none;
+}
+
+.mppw-icon-unlock {
+    background: none;
 }
 
 .mppw-loggedout--username {
     color: #fff;
     font-weight: 600;
+    text-decoration: none;
+}
+
+.mppw-loggedout--username:hover, .mppw-loggedout--username:focus {
+    color: #ffedcb;
+    text-decoration: underline;
 }
 
 .mppw-login--container {
