@@ -1,13 +1,18 @@
 /* Global Styles */
 :host{
     --card-borderRadius: 0;
-    --card-box-shadow: 0em 0.25em 0.5em 0em rgb(0 0 0 / 10%);
+    --card-boxShadow: 0em 0.25em 0.5em 0em rgb(0 0 0 / 5%);
     --card-fontSize: 0.85em;
     --card-lineHeight: 1.75em;
     --card-text-color: #777;
     --form-btn-primary-bgcolor: #001f4e;
     --form-btn-primary-hover: #203f6e;
+    --form-btn-secondary-text: #999;
+    --form-btn-secondary-bgcolor: #fff;
+    --form-btn-secondary-hover: #FAFAFA;
+    --form-btn-secondary-active: #ededed;
     --form-field-border--active: #ffa400;
+    --form-field-borderradius: 0;
     --form-field-border: #ddd;
     --innerPage-bgColor: #657783;
     --innerPage-textColor: #384249;
@@ -62,5 +67,21 @@ h1 {
 
 /* Card Styles */
 .mp-card {
-    border-radius: var(--card-borderRadius) !important;
+    border-radius: 0;
+}
+
+.mpp-card--badge {
+    background: linear-gradient(160deg, rgba(255, 164, 0, 0.8) 0%, rgba(255, 164, 0, 0.4) 100%);
+    border-top-left-radius: var(--card-borderRadius);
+    font-size: 0.7em;
+    line-height: 2em;
+    box-shadow: 0 0 1em rgb(125 80 0 / 25%);
+    opacity: 1;
+    padding: 0.25em 0.5em;
+    color: rgba(255,255,255,0.85);
+}
+
+/* Buttons */
+.mppw-btn {
+    border-radius: 0;
 }
