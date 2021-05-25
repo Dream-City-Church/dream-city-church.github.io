@@ -51,7 +51,7 @@
 }
 
 .mpp-innerpage p {
-    font-family: 'Poppins';
+    font-family: 'Open Sans';
     text-transform: none;
     letter-spacing: 0px;
     font-size: var(--innerPage-fontSize);
@@ -127,7 +127,13 @@
 .mpp-card--description {
     -webkit-line-clamp: 3;
     clear: both;
+    font-weight: 600;
 }
+
+.mpp-card--subtitle {
+    font-weight: 800;
+}
+
 /*
 .mpp-card--subtitle:nth-of-type(1):before {
     font-family: 'FontAwesome';
