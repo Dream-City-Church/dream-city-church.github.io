@@ -82,8 +82,9 @@ h1 {
     color: rgba(255,255,255,0.85);
 }
 
-.mpp-card-0image {
+.mpp-card--image {
     box-shadow: var(--card-boxShadow);
+    height: 200px;
 }
 
 .mpp-card--body {
