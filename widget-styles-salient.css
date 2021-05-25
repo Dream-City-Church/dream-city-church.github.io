@@ -83,14 +83,18 @@
 
 /* Card Styles */
 .mpp-card {
-    border-radius: var(--card-borderRadius);
+    border-bottom-left-radius: var(--card-borderRadius);
+    border-bottom-right-radius: var(--card-borderRadius);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     border-bottom: 1px solid #ddd;
+
 }
 
 .mpp-card--badge {
     background: linear-gradient(160deg, rgba(255, 164, 0, 0.8) 0%, rgba(255, 164, 0, 0.4) 100%);
     border-top-left-radius: var(--card-borderRadius);
-    font-size: 0.7em;
+    font-size: 0.8em;
     line-height: 2em;
     box-shadow: 0 0 1em rgb(125 80 0 / 25%);
     opacity: 1;
