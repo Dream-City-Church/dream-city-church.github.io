@@ -93,18 +93,20 @@
 
 .mpp-card--badge {
     background: linear-gradient(160deg, rgba(255, 164, 0, 0.8) 0%, rgba(255, 164, 0, 0.4) 100%);
-    border-top-left-radius: var(--card-borderRadius);
+    border-top-left-radius: 0;
     font-size: 0.8em;
     line-height: 2em;
     box-shadow: 0 0 1em rgb(125 80 0 / 25%);
     opacity: 1;
     padding: 0.25em 0.5em;
+    margin-top: 1px;
     color: rgba(255,255,255,0.85);
 }
 
 .mpp-card--image {
     box-shadow: var(--card-boxShadow);
     height: 200px;
+    border-top: 1px solid #fafafa;
 }
 
 .mpp-card--body {
