@@ -115,6 +115,7 @@ h1 {
 
 .mpp-card--subtitle:nth-of-type(2):before {
     font-family: 'FontAwesome';
+    padding-right: 7px;
     content: "\f017";
 }
 
