@@ -199,6 +199,7 @@
     color: #fff;
     text-decoration: none;
     justify-content: normal;
+    font-weight: 600;
 }
 
 .mppw-login--container:hover, .mppw-login--container:focus {
