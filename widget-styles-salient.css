@@ -214,6 +214,10 @@
     margin-left: 0.75em;
 }
 
+.mppw-login--dropdown {
+    z-index: 100000;
+}
+
 .mppw-login--list-item a:hover, .mppw-login--list-item a:focus {
     color: var(--innerPage-linkColor);
 }
