@@ -389,6 +389,11 @@ div.mpp-card--household {
     background-color: #fafafa;
 }
 
+.mpp-household .mppw-form .mpp-household--form-body {
+    padding: 1em 3em;
+    background: #fafafa;
+}
+
 /* My Subscriptions */
 .mpp-subscriptions--header {
     padding-top: 3em;
