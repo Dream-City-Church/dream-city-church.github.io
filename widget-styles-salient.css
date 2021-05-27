@@ -244,6 +244,17 @@ li.mppw-login--list-item a:before {
     padding-right: 0.5em;
 }
 
+li.mppw-login--list-item i:before {
+    /* Logout */
+    font-family: 'FontAwesome';
+    font-style: normal;
+    display: inline-block;
+    width: 2em;
+    text-align: center;
+    margin-left: -0.5em;
+    padding-right: 0.5em;
+}
+
 li.mppw-login--list-item a#logoutButton:before {
     /* Logout */
     content: "\f2f5";
@@ -252,54 +263,38 @@ li.mppw-login--list-item a#logoutButton:before {
 li.mppw-login--list-item a#userAccountLink:before {
     /* My Profile */
     content: "\f2bd";
+    font-weight: bolder;
 }
 
 li.mppw-login--list-item a i.fas.fa-home:before {
     /* My Household */
     content: "\f015";
-    font-family: 'FontAwesome';
-    font-style: normal;
-    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.fas.fa-envelope-open-text:before {
     /* My Subscriptions */
     content: "\f658";
-    font-family: 'FontAwesome';
-    font-style: normal;
-    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.far.fa-calendar-check:before {
     /* My Commitments */
     content: "\f274";
-    font-family: 'FontAwesome';
-    font-style: normal;
-    padding-right: 0.75em;
+    font-weight: bolder;
 }
 
 li.mppw-login--list-item a i.fas.fa-plane:before {
     /* My Trips */
     content: "\f072";
-    font-family: 'FontAwesome';
-    font-style: normal;
-    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.fas.fa-money-bill-alt:before {
     /* My Giving */
     content: "\f3d1";
-    font-family: 'FontAwesome';
-    font-style: normal;
-    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.fas.fa-users:before {
     /* My Groups */
     content: "\f0c0";
-    font-family: 'FontAwesome';
-    font-style: normal;
-    padding-right: 0.75em;
 }
 
 /* Pledge Campaigns */
