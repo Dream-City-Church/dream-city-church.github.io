@@ -334,6 +334,10 @@ h2#householdName:after {
     color: #ffa400;
 }
 
+.mpp-household .mpp-household--header-wrapper:hover, .mpp-household .mpp-household--header-wrapper:focus {
+    color: #da8e06;
+}
+
 a#editHouseholdName:before {
     font-family: 'FontAwesome';
     content: "\f044";
