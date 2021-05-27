@@ -347,7 +347,7 @@ h2#householdName:after {
 
 #householdDetails .mpp-innerpage--label {
     font-weight: bolder;
-    font-size: 1.5em;
+    font-size: 1em;
     padding: 0.3em;
     height: auto;
 }
@@ -355,6 +355,7 @@ h2#householdName:after {
 li.mpp-innerpage--label:before {
     content: "\f51d";
     font-family: 'FontAwesome';
+    padding-right: 0.75em;
 }
 
 .mpp-household .mpp-household--header-wrapper {
@@ -368,7 +369,7 @@ li.mpp-innerpage--label:before {
 a#editHouseholdName:before {
     font-family: 'FontAwesome';
     content: "\f044";
-    padding-right: 1em;
+    padding-right: 0.75em;
 }
 
 img.mpp-icon--household {
