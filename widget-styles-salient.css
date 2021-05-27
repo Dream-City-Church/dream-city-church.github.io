@@ -212,6 +212,20 @@
     width: 2em;
 }
 
+.mppw-login--container::after {
+    border-top: .5em solid;
+    border-right: .5em solid transparent;
+    border-left: .5em solid transparent;
+    margin-left: 0.75em;
+}
+
+i.fas.fa-home:before {
+    content: "\f015";
+    font-family: 'FontAwesome';
+    width: 2em;
+    text-align: center;
+}
+
 /* Pledge Campaigns */
 .mpp-pledge-campaign h2 {
     display: none;
