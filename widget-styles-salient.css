@@ -238,7 +238,7 @@ li.mppw-login--list-item a#logoutButton:before {
     content: "\f2f5";
     font-family: 'FontAwesome';
     font-style: normal;
-    float: right;
+    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a#userAccountLink:before {
@@ -246,7 +246,7 @@ li.mppw-login--list-item a#userAccountLink:before {
     content: "\f2bd";
     font-family: 'FontAwesome';
     font-style: normal;
-    float: right;
+    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.fas.fa-home:before {
@@ -254,7 +254,7 @@ li.mppw-login--list-item a i.fas.fa-home:before {
     content: "\f015";
     font-family: 'FontAwesome';
     font-style: normal;
-    float: right;
+    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.fas.fa-envelope-open-text:before {
@@ -262,7 +262,7 @@ li.mppw-login--list-item a i.fas.fa-envelope-open-text:before {
     content: "\f658";
     font-family: 'FontAwesome';
     font-style: normal;
-    float: right;
+    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.far.fa-calendar-check:before {
@@ -270,7 +270,7 @@ li.mppw-login--list-item a i.far.fa-calendar-check:before {
     content: "\f274";
     font-family: 'FontAwesome';
     font-style: normal;
-    float: right;
+    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.fas.fa-plane:before {
@@ -278,7 +278,7 @@ li.mppw-login--list-item a i.fas.fa-plane:before {
     content: "\f072";
     font-family: 'FontAwesome';
     font-style: normal;
-    float: right;
+    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.fas.fa-money-bill-alt:before {
@@ -286,7 +286,7 @@ li.mppw-login--list-item a i.fas.fa-money-bill-alt:before {
     content: "\f3d1";
     font-family: 'FontAwesome';
     font-style: normal;
-    float: right;
+    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.fas.fa-users:before {
@@ -294,7 +294,7 @@ li.mppw-login--list-item a i.fas.fa-users:before {
     content: "\f0c0";
     font-family: 'FontAwesome';
     font-style: normal;
-    float: right;
+    padding-right: 0.75em;
 }
 
 /* Pledge Campaigns */
