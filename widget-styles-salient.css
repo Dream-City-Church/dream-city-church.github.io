@@ -213,13 +213,21 @@
     margin-left: 0.75em;
 }
 
-.mppw-icon-unlock:before {
-    /* Login */
+.mppw-component-container.mppw-login:before {
     content: "\f2f6";
     font-family: 'FontAwesome';
     font-size: 1.3em;
     text-decoration: none !important;
 }
+/*
+.mppw-icon-unlock:before {
+    /* Login *//*
+    content: "\f2f6";
+    font-family: 'FontAwesome';
+    font-size: 1.3em;
+    text-decoration: none !important;
+}
+*/
 
 li.mppw-login--list-item a#logoutButton {
     /* Logout */
