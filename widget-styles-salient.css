@@ -233,20 +233,25 @@
     vertical-align: top;
 }
 
+li.mppw-login--list-item a:before {
+    /* Logout */
+    font-family: 'FontAwesome';
+    font-style: normal;
+    display: inline-block;
+    width: 2em;
+    text-align: center;
+    margin-left: -0.5em;
+    padding-right: 0.5em;
+}
+
 li.mppw-login--list-item a#logoutButton:before {
     /* Logout */
     content: "\f2f5";
-    font-family: 'FontAwesome';
-    font-style: normal;
-    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a#userAccountLink:before {
     /* My Profile */
     content: "\f2bd";
-    font-family: 'FontAwesome';
-    font-style: normal;
-    padding-right: 0.75em;
 }
 
 li.mppw-login--list-item a i.fas.fa-home:before {
