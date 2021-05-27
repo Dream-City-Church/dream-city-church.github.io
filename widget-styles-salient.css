@@ -4,6 +4,7 @@
     --card-boxShadow: 0em 0.25em 0.25em 0em rgb(0 0 0 / 5%);
     --card-fontSize: 0.85em;
     --card-lineHeight: 1.75em;
+    --card-primaryColor: #001f4e;
     --card-text-color: #777;
     --form-btn-primary-bgcolor: #001f4e;
     --form-btn-primary-hover: #203f6e;
@@ -39,7 +40,7 @@
     --innerPage-buttonHoverBgColor: #4684ca;
     --innerPage-buttonActiveBgColor: #4273aa;
     --innerPage-progressBarColor: #1b88b0;
-    --innerPage-progressBarActiveColor: linear-gradient(90deg, #1b88b0 0%, #1fb5ac 100%);
+    --innerPage-progressBarActiveColor: linear-gradient(90deg, #001f4e 0%, #ffa400 100%);
     --innerPage-progressBarRemainingColor: #efefef;
     --innerPage-progressBarCompleteColor: #77be43;
     --innerPage-labelBgColor: #efefef;
@@ -88,7 +89,10 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom: 1px solid #ddd;
+}
 
+.mpp-card--header {
+    height: 220px;
 }
 
 .mpp-card--badge {
@@ -360,4 +364,58 @@ img.mpp-icon--household {
 
 div.mpp-card--household {
     background-color: #fafafa;
+}
+
+/* My Subscriptions */
+.mpp-subscriptions--header {
+    padding-top: 3em;
+}
+
+.mpp-subscriptions--header h1 {
+    display: none;
+}
+
+div#subscriptionsBody {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-gap: 1em;
+}
+
+@media only screen and (max-width: 1000px) {
+    div#subscriptionsBody {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 1em;
+        }
+    }
+
+#subscriptionsBody .mpp-card-multiselect {
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    background-color: #fafafa;
+    box-shadow: var(--card-boxShadow);
+    margin-bottom: 0;
+    padding: 1em;
+}
+
+#subscriptionsBody .mpp-card-multiselect--image {
+    height: 4em;
+    width: 4em;
+    min-width: 4em;
+    margin-right: 2em;
+}
+
+/* My Commitments */
+#myPledgesWrapper {
+    display: none;
+}
+
+/* My Trips */
+#myMissionTripsWrapper {
+    display: none;
+}
+
+/* My Groups */
+#myGroupsWrapper {
+    display: none;
 }
