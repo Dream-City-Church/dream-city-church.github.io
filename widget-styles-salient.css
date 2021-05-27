@@ -190,6 +190,20 @@
     text-decoration: underline;
 }
 
+.mppw-component-container.mppw-login {
+    background: linear-gradient(
+160deg
+, rgb(255 164 0 / 0%) 0%, rgb(255 166 0 / 0%) 100%);
+    -webkit-transition: background 0.2s ease;
+}
+
+.mppw-component-container.mppw-login:hover {
+    background: linear-gradient(
+160deg
+, rgb(255 164 0 / 0%) 0%, rgb(255 166 0) 100%);
+    -webkit-transition: background 0.2s ease;
+}
+
 .mppw-login--container {
     color: #fff;
     text-decoration: none;
