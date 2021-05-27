@@ -219,11 +219,46 @@
     margin-left: 0.75em;
 }
 
-i.fas.fa-home:before {
+li.mppw-login--list-item a i.fas.fa-home:before {
+    /* My Household */
     content: "\f015";
     font-family: 'FontAwesome';
-    width: 2em;
-    text-align: center;
+    font-style: normal;
+}
+
+li.mppw-login--list-item a i.fas.fa-envelope-open-text:before {
+    /* My Subscriptions */
+    content: "\f658";
+    font-family: 'FontAwesome';
+    font-style: normal;
+}
+
+li.mppw-login--list-item a i.fas.fa-calendar-check:before {
+    /* My Commitments */
+    content: "\f274";
+    font-family: 'FontAwesome';
+    font-style: normal;
+}
+
+li.mppw-login--list-item a i.fas.fa-plane:before {
+    /* My Trips */
+    content: "\f072";
+    font-family: 'FontAwesome';
+    font-style: normal;
+}
+
+li.mppw-login--list-item a i.fas.fa-money-bill-alt:before {
+    /* My Giving */
+    content: "\f3d1";
+    font-family: 'FontAwesome';
+    font-style: normal;
+}
+
+li.mppw-login--list-item a i.fas.fa-users:before {
+    /* My Groups */
+    content: "\f0c0";
+    font-family: 'FontAwesome';
+    font-style: normal;
 }
 
 /* Pledge Campaigns */
