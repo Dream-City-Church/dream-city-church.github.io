@@ -12,10 +12,12 @@
     --form-btn-secondary-bgcolor: #fff;
     --form-btn-secondary-hover: #FAFAFA;
     --form-btn-secondary-active: #ededed;
+    --form-field-bgcolor--active: #fff;
     --form-field-border--active: #ffa400;
     --form-field-borderradius: 0;
     --form-field-border: #ddd;
-    --form-field-color: #22324a;
+    --form-field-boxshadow--active: 0 0 0 0.2rem rgb(255 164 0 / 10%);
+    --form-field-color: #333;
     --innerPage-bgColor: #657783;
     --innerPage-textColor: #384249;
     --innerPage-fontSize: 16px;
@@ -154,12 +156,21 @@
 
 /* Forms */
 
+.mppw-form-field__label {
+    font-weight: 550;
+}
+
 .mppw-form-field__control {
     font-weight: 600;
 }
 
 .mpp-form--tabs label:active, .mpp-form--tabs label.active {
     color: var(--innerPage-linkColor);
+}
+
+.mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
+    color: #999;
+    font-weight: 550;
 }
 
 /* Buttons */
@@ -332,6 +343,18 @@ li.mppw-login--list-item a i.fas.fa-users:before {
 
 h2#householdName:after {
     content: " Household";
+}
+
+#householdDetails .mpp-innerpage--label {
+    font-weight: bolder;
+    font-size: 1.5em;
+    padding: 0.3em;
+    height: auto;
+}
+
+li.mpp-innerpage--label:before {
+    content: "\f51d";
+    font-family: 'FontAwesome';
 }
 
 .mpp-household .mpp-household--header-wrapper {
