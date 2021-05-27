@@ -214,7 +214,13 @@
     margin-left: 0.75em;
 }
 
-.mppw-component-container.mppw-login:before {
+.mppw-login--list-item a:hover, .mppw-login--list-item a:focus {
+    color: var(--innerPage-linkColor);
+}
+
+/* Login Icons */
+.mppw-icon-unlock:before {
+    /* Login */
     content: "\f2f6";
     font-family: 'FontAwesome';
     color: #fff;
@@ -222,24 +228,15 @@
     padding-right: 0.5em;
     vertical-align: top;
 }
-/*
-.mppw-icon-unlock:before {
-    /* Login *//*
-    content: "\f2f6";
-    font-family: 'FontAwesome';
-    font-size: 1.3em;
-    text-decoration: none !important;
-}
-*/
 
-li.mppw-login--list-item a#logoutButton {
+li.mppw-login--list-item a#logoutButton:before {
     /* Logout */
     content: "\f2f5";
     font-family: 'FontAwesome';
     font-style: normal;
 }
 
-li.mppw-login--list-item a#userAccountLink {
+li.mppw-login--list-item a#userAccountLink:before {
     /* My Profile */
     content: "\f2bd";
     font-family: 'FontAwesome';
