@@ -216,10 +216,25 @@
 
 .mppw-login--dropdown {
     z-index: 100000;
+    border: 1px solid #efefef;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.25);
+    width: 50%;
 }
 
 .mppw-login--list-item a:hover, .mppw-login--list-item a:focus {
     color: var(--innerPage-linkColor);
+}
+
+@media only screen and (max-width: 415px) {
+.mppw-login--dropdown {
+    width: 110%;
+    margin-left: -5%;
+    margin-bottom: 2em;
+    font-size: 0.9em;
+    white-space: nowrap;
+    }
 }
 
 /* Login Icons */
