@@ -320,3 +320,40 @@ li.mppw-login--list-item a i.fas.fa-users:before {
 .mpp-innerpage .progress--container {
     display: none;
 }
+
+/* My Household */
+.mpp-household h1 {
+    display: none;
+}
+
+h2#householdName:after {
+    content: " Household";
+}
+
+.mpp-household .mpp-household--header-wrapper {
+    color: #ffa400;
+}
+
+a#editHouseholdName:before {
+    font-family: 'FontAwesome';
+    content: "\f044";
+    padding-right: 1em;
+}
+
+img.mpp-icon--household {
+    display: none;
+}
+
+a#addNewMember:before {
+    font-family: 'FontAwesome';
+    content: "\f234";
+    padding-right: 1em;
+}
+
+img.mpp-icon--household {
+    display: none;
+}
+
+div.mpp-card--household {
+    background-color: #fafafa;
+}
