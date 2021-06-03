@@ -27,11 +27,13 @@
     --innerPage-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
     --innerPage-borderRadius: 4px;
     --innerPage-h1fontFamily: 'DM SERIF DISPLAY';
-    --innerPage-h1fontSize: 45px;
+    --innerPage-h1fontSize: 2.5em;
     --innerPage-h1fontWeight: 600;
     --innerPage-h1lineHeight: 1.25em;
-    --innerPage-h2fontSize: 24px;
-    --innerPage-h2lineHeight: 34px;
+    --innerPage-h2fontFamily: 'Open Sans';
+    --innerPage-h2fontSize: 1.5em;
+    --innerPage-h2lineHeight: 1.25em;
+    --innerPage-h2fontWeight: 550;
     --innerPage-h3fontSize: 20px;
     --innerPage-h3lineHeight: 28px;
     --innerPage-h3color: #152743;
@@ -68,6 +70,13 @@
     font-size: var(--innerPage-h1fontSize);
     line-height: var(--innerPage-h1lineHeight);
     font-weight: var(--innerPage-h1fontWeight);
+}
+
+.mpp-innerpage h2 {
+    font-family: var(--innerPage-h2fontFamily);
+    font-size: var(--innerPage-h2fontSize);
+    line-height: var(--innerPage-h2lineHeight);
+    font-weight: var(--innerPage-h2fontWeight);
 }
 
 .mpp-innerpage h3 {
@@ -345,14 +354,14 @@ h2#householdName:after {
     content: " Household";
 }
 
-#householdDetails .mpp-innerpage--label {
+.mpp-innerpage--label {
     font-weight: bolder;
     font-size: 1em;
-    padding: 0.3em;
     height: auto;
+    border-radius: 4px;
 }
 
-li.mpp-innerpage--label:before {
+#householdDetails li.mpp-innerpage--label:before {
     content: "\f51d";
     font-family: 'FontAwesome';
     padding-right: 0.75em;
