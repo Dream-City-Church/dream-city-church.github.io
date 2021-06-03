@@ -405,6 +405,10 @@ div.mpp-card--household {
 }
 
 /* My Subscriptions */
+.mpp-subscriptions {
+    padding-bottom: 3em;
+}
+
 .mpp-subscriptions--header {
     padding-top: 3em;
 }
@@ -417,6 +421,7 @@ div#subscriptionsBody {
     display: grid;
     grid-template-columns: 48% 48%;
     grid-gap: 1em;
+    margin-bottom: 2em;
 }
 
 @media only screen and (max-width: 1000px) {
