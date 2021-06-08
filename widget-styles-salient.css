@@ -350,12 +350,12 @@ li.mppw-login--list-item a i.fas.fa-users:before {
 }
 
 /* My Household */
-.mpp-household h1 {
-    display: none;
+.mpp-household {
+    font-family: 'Open Sans';
 }
 
-.mpp-household p {
-    font-family: 'Open Sans';
+.mpp-household h1 {
+    display: none;
 }
 
 h2#householdName:after {
@@ -419,6 +419,18 @@ div.mpp-card--household {
 .mpp-card--edit-household-btn a:before {
     font-family: 'FontAwesome';
     content: "\f044";
+}
+
+.mpp-household--form-row.w-50 {
+    display: inline-block;
+}
+
+.mpp-household--form-row.w-50:nth-child(odd) {
+    padding-right:5px;
+}
+
+.mpp-household--form-row.w-50:nth-child(even) {
+    padding-left:5px;
 }
 
 /* My Subscriptions */
