@@ -354,6 +354,10 @@ li.mppw-login--list-item a i.fas.fa-users:before {
     display: none;
 }
 
+.mpp-household p {
+    font-family: 'Open Sans';
+}
+
 h2#householdName:after {
     content: " Household";
 }
