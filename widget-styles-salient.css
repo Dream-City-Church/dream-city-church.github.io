@@ -337,6 +337,10 @@ li.mppw-login--list-item a i.fas.fa-users:before {
 }
 
 /* Pledge Campaigns */
+#pledgeCampaignDetails .mpp-card--header {
+    display: none;
+}
+
 .mpp-pledge-campaign h2 {
     display: none;
 }
@@ -402,6 +406,15 @@ div.mpp-card--household {
 .mpp-household .mppw-form .mpp-household--form-body {
     padding: 1em 3em;
     background: #fafafa;
+}
+
+.mpp-card--household-title p {
+    font-size: 1.25em;
+}
+
+.mpp-card--edit-household-btn a:before {
+    font-family: 'FontAwesome';
+    content: "\f044";
 }
 
 /* My Subscriptions */
