@@ -354,6 +354,11 @@ li.mppw-login--list-item a i.fas.fa-users:before {
     font-family: 'Open Sans';
 }
 
+.mpp-card--household-text-wrapper p {
+    font-size: 1.25em;
+    font-family: 'Open Sans';
+}
+
 .mpp-household h1 {
     display: none;
 }
@@ -419,6 +424,7 @@ div.mpp-card--household {
 a.mpp-card--edit-household-btn:before {
     font-family: 'FontAwesome';
     content: "\f044";
+    padding-right: 1em;
 }
 
 /* My Subscriptions */
