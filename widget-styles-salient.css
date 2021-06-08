@@ -416,21 +416,9 @@ div.mpp-card--household {
     font-size: 1.25em;
 }
 
-.mpp-card--edit-household-btn a:before {
+a.mpp-card--edit-household-btn:before {
     font-family: 'FontAwesome';
     content: "\f044";
-}
-
-.mpp-household--form-row.w-50 {
-    display: inline-block;
-}
-
-.mpp-household--form-row.w-50:nth-child(odd) {
-    padding-right:5px;
-}
-
-.mpp-household--form-row.w-50:nth-child(even) {
-    padding-left:5px;
 }
 
 /* My Subscriptions */
