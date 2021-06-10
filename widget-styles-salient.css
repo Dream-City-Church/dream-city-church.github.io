@@ -15,7 +15,7 @@
     --form-field-bgcolor--active: #fff;
     --form-field-border--active: #ffa400;
     --form-field-borderradius: 0;
-    --form-field-border: #ddd;
+    --form-field-border: #e0e0e0;
     --form-field-boxshadow--active: 0 0 0 0.2rem rgb(255 164 0 / 10%);
     --form-field-color: #333;
     --innerPage-bgColor: #657783;
@@ -169,8 +169,21 @@
     font-weight: 550;
 }
 
+.mppw-form-field__label:focus {
+    background-color: none;
+}
+
 .mppw-form-field__control {
     font-weight: 600;
+    border: none;
+    border-bottom: 2px solid var(--form-field-border);
+    background-color: rgba(0,0,0,0.035);
+}
+
+.mppw-form-field__control:focus {
+    background: rgba(0,0,0,0.035);
+    box-shadow: none;
+    outline: 0;
 }
 
 .mpp-form--tabs label:active, .mpp-form--tabs label.active {
