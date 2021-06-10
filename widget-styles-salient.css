@@ -200,7 +200,8 @@
 
 .mppw-icon-unlock {
     background: none;
-    display: none;
+    height: initial;
+    width: initial;
 }
 
 .mppw-loggedout--username {
