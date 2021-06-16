@@ -18,7 +18,7 @@
     --form-field-border: #e0e0e0;
     --form-field-boxshadow--active: 0 0 0 0.2rem rgb(255 164 0 / 10%);
     --form-field-color: #333;
-    --form-field-margin: 1em;
+    --form-field-margin: 2em;
     --innerPage-bgColor: #657783;
     --innerPage-textColor: #384249;
     --innerPage-fontSize: 16px;
@@ -177,10 +177,13 @@
 .mppw-form-field__label {
     font-weight: 550;
     padding: 0.25em 1em;
+
 }
 
 .mppw-form-field__control:not([value=""]) + .mppw-form-field__label {
     padding: 0.25em 1em;
+    left: 0;
+    top: -1.5em;
 }
 
 .mppw-form-field__control:focus + .mppw-form-field__label {
