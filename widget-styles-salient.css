@@ -211,7 +211,7 @@
 .mppw-form-field__control:not([value=""]) + .mppw-form-field__label {
     padding: 0.25em 1em;
     left: 0;
-    top: -1.5em;
+    top: -20px;
 }
 
 .mppw-form-field__static-container .mppw-form-field__label {
