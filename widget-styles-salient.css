@@ -1,5 +1,10 @@
 /* Global Styles */
 :host{
+    --root-text-color: #333333;
+    --root-font-size: 1.1em;
+    --root-line-height: 1.5em;
+    --primary: #ffa400;
+    --secondary: #001f4e;
     --card-borderRadius: 4px;
     --card-boxShadow: 0em 0.25em 0.25em 0em rgb(0 0 0 / 5%);
     --card-fontSize: 0.85em;
@@ -171,11 +176,7 @@
 
 /* Forms */
 
-#customForm h1, #customForm h3 {
-    font-family: 'DM Serif Display';
-}
-
-.mppw-component-container h1 {
+.mppw-component-container h1, #responseFormTitle h2, #customForm h1, #customForm h3 {
     font-family: 'DM Serif Display';
 }
 
