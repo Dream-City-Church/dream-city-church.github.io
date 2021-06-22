@@ -214,6 +214,10 @@
     top: -20px;
 }
 
+.mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
+    background: transparent;
+}
+
 .mppw-form-field__static-container .mppw-form-field__label {
     top: -20px;
 }
