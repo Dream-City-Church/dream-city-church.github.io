@@ -1,5 +1,10 @@
 /* Global Styles */
 :host{
+    --root-text-color: #333333;
+    --root-font-size: 1.1em;
+    --root-line-height: 1.5em;
+    --primary: #ffa400;
+    --secondary: #001f4e;
     --card-borderRadius: 4px;
     --card-boxShadow: 0em 0.25em 0.25em 0em rgb(0 0 0 / 5%);
     --card-fontSize: 0.85em;
@@ -16,7 +21,7 @@
     --form-field-border--active: #ffa400;
     --form-field-borderradius: 0;
     --form-field-border: #e0e0e0;
-    --form-field-boxshadow--active: 0 0 0 0.2rem rgb(255 164 0 / 10%);
+    --form-field-boxshadow--active: 0 0.5em 0.5em 0 rgb(0 0 0 / 5%);
     --form-field-color: #333;
     --form-field-margin: 2em;
     --innerPage-bgColor: #657783;
@@ -100,6 +105,10 @@
     width: 100%;
 }
 
+.mppw-arrow {
+    border-color: #ffa400;
+}
+
 /* Card Styles */
 .mpp-card {
     border-bottom-left-radius: var(--card-borderRadius);
@@ -110,7 +119,8 @@
 }
 
 .mpp-card--header {
-    max-height: 230px;
+    max-height: 225px;
+    overflow: hidden;
 }
 
 .mpp-card--badge {
@@ -172,8 +182,12 @@
 
 /* Forms */
 
-#customForm h1, #customForm h3 {
+.mppw-component-container h1, #responseFormTitle h2, #customForm h1, #customForm h3 {
     font-family: 'DM Serif Display';
+}
+
+.mpp-form--tabs {
+    margin-bottom: 2.5em;
 }
 
 .mppw-form-field--is-valid .mppw-form-field__control, .mppw-form-field--is-invalid .mppw-form-field__control, .mppw-form-field__static-container .mppw-form-field__control {
@@ -183,13 +197,39 @@
 .mppw-form-field__label {
     font-weight: 550;
     padding: 0.25em 1em;
+    background: transparent;
+    display: inline-block;
+    width: inherit;
+    position: absolute;
+    left: -0.25em;
+    top: -20px;
+    overflow: hidden;
+    pointer-events: none;
+    transition: none;
+    font-size: 12px;
+}
 
+.mppw-form-field__control:focus + .mppw-form-field__label {
+    left: -0.25em;
+    top: -20px;
 }
 
 .mppw-form-field__control:not([value=""]) + .mppw-form-field__label {
     padding: 0.25em 1em;
     left: 0;
-    top: -1.5em;
+    top: -20px;
+}
+
+.mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
+    background: transparent;
+}
+
+.mppw-form-field__static-container .mppw-form-field__label {
+    top: -20px;
+}
+
+.mppw-form-field__control:focus + .mppw-form-field__label {
+    top: -20px;
 }
 
 .mppw-form-field__control:focus + .mppw-form-field__label {
@@ -210,7 +250,7 @@
 .mppw-form-field__control:focus {
     padding: 0.75em 1em;
     background: rgba(0,0,0,0.035);
-    box-shadow: none;
+    box-shadow: var(--form-field-boxshadow--active);
     outline: 0;
 }
 
