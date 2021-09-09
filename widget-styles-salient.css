@@ -94,6 +94,12 @@
     /*clear: both;*/
 }
 
+.mpp-innerpage--map {
+    height: 100%;
+    min-height: 150px;
+    width: 100%;
+}
+
 /* Card Styles */
 .mpp-card {
     border-bottom-left-radius: var(--card-borderRadius);
