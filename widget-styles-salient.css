@@ -280,6 +280,32 @@
     border: none;
 }
 
+#registrationForm h1 {
+    text-decoration: underline;
+}
+
+#promoCodeContainer label {
+    font-weight: bold;
+}
+
+#promoCodeText {
+    border: 1px solid var(--form-field-border);
+    border-radius: 3px;
+    padding: 5px 10px;
+    background-color: var(--form-field-bgcolor);
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+#promoCodeText:active {
+    border: 1px solid var(--form-field-border--active);
+    background-color: var(--form-field-bgcolor--active);
+    box-shadow: var(--form-field-boxshadow--active);
+}
+
 /* Buttons */
 .mppw-btn {
     border-radius: 4px;
@@ -288,6 +314,15 @@
 .toggle--btn {
     background: var(--form-btn-primary-bgcolor);
     border-radius: var(--form-field-borderradius);
+}
+
+#addPromoCodeButton {
+    color: #fff;
+    background-color: #001f4a;
+    border: 0;
+    border-radius: 3px;
+    padding: 3px 10px;
+    font-weight: bold;
 }
 
 /* Login Widget */
