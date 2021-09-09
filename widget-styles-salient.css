@@ -306,6 +306,19 @@
     box-shadow: var(--form-field-boxshadow--active);
 }
 
+#registrationTotalContainer {
+    border-top: 1px dashed #efefef;
+}
+
+#registrationTotalValue::before {
+    content: "$";
+}
+
+#promoCodeTable tr td:nth-child(1) {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* Buttons */
 .mppw-btn {
     border-radius: 4px;
