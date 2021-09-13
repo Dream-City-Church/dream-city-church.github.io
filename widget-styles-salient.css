@@ -338,12 +338,12 @@
     font-weight: bold;
 }
 
-#saveAndAddButton:before {
-    content: "\f234";
+#saveAndAddButton {
+    font-family: 'FontAwesome', 'Open Sans', sans-serif;
 }
 
 #saveAndCheckoutButton:before {
-    content: "\f07a";
+    font-family: 'FontAwesome', 'Open Sans', sans-serif;
 }
 
 /* Login Widget */
