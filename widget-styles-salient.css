@@ -338,6 +338,14 @@
     font-weight: bold;
 }
 
+#saveAndAddButton:before {
+    content: "\f234";
+}
+
+#saveAndCheckoutButton:before {
+    content: "\f07a";
+}
+
 /* Login Widget */
 
 .mppw-icon-unlock:before:hover {
