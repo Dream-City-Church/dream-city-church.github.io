@@ -611,6 +611,13 @@ div#subscriptionsBody {
     margin-bottom: 2em;
 }
 
+/* My Contribution Statements */
+#myContributionsDiv .mppw-col {
+    flex: 1 1 content;
+    margin-bottom: 1rem;
+}
+
+
 @media only screen and (max-width: 1000px) {
     div#subscriptionsBody {
         display: grid;
