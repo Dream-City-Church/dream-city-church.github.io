@@ -315,6 +315,14 @@
     letter-spacing: 1px;
 }
 
+
+@media only screen and (min-width: 700px) {
+    .custom-date-input {
+        width: 50% !important;
+        float: left;
+    }
+}
+
 /* Buttons */
 .mppw-btn {
     border-radius: 4px;
