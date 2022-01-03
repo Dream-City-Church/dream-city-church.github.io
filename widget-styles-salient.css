@@ -178,6 +178,10 @@
 
 /* Forms */
 
+.form--col {
+    min-height: 120px;
+}
+
 .mppw-component-container h1, #responseFormTitle h2, #customForm h1, #customForm h3 {
     font-family: 'DM Serif Display';
 }
@@ -513,6 +517,10 @@ li.mppw-login--list-item a i.fas.fa-users:before {
 
 .mpp-innerpage .progress--container {
     display: none;
+}
+
+input#InstallmentAmount::before {
+    content: "$";
 }
 
 /* My Household */
