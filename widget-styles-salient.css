@@ -116,6 +116,7 @@
 
 .mpp-card--header {
     max-height: 225px;
+    min-height: 160px;
     overflow: hidden;
 }
 
@@ -526,10 +527,6 @@ input#InstallmentAmount::before {
 div#pledgeAmountButtonWrapper {
     position: relative;
     top: 2em;
-}
-
-#myPledgesWrapper .mpp-card--header {
-    max-height: 95px;
 }
 
 /* My Household */
