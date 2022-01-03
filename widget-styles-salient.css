@@ -523,6 +523,11 @@ input#InstallmentAmount::before {
     content: "$";
 }
 
+div#pledgeAmountButtonWrapper {
+    position: relative;
+    top: 2em;
+}
+
 /* My Household */
 .mpp-household {
     font-family: 'Open Sans';
