@@ -188,6 +188,8 @@
 
 .mppw-form-field--is-valid .mppw-form-field__control, .mppw-form-field--is-invalid .mppw-form-field__control, .mppw-form-field__static-container .mppw-form-field__control {
     padding: 0.75em 1em;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 }
 
 .mppw-form-field__label {
