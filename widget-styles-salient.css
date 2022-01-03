@@ -528,6 +528,10 @@ div#pledgeAmountButtonWrapper {
     top: 2em;
 }
 
+#myPledgesWrapper .mpp-card--header {
+    max-height: 95px;
+}
+
 /* My Household */
 .mpp-household {
     font-family: 'Open Sans';
