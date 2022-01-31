@@ -23,7 +23,7 @@
     --form-field-border: #e0e0e0;
     --form-field-boxshadow--active: 0 0.5em 0.5em 0 rgb(0 0 0 / 5%);
     --form-field-color: #333;
-    --form-field-margin: 2em;
+    --form-field-margin: 1em;
     --innerPage-bgColor: #657783;
     --innerPage-textColor: #384249;
     --innerPage-fontSize: 16px;
@@ -180,7 +180,7 @@
 /* Forms */
 
 .form--col {
-    min-height: 120px;
+    min-height: 60px;
 }
 
 .mppw-component-container h1, #responseFormTitle h2, #customForm h1, #customForm h3 {
@@ -195,6 +195,7 @@
     padding: 0.75em 1em;
     margin-top: 0.25em;
     margin-bottom: 0.25em;
+    font-weight: bold;
 }
 
 .mppw-form-field__label {
@@ -337,6 +338,10 @@
 
 .mppw-btn.mpp-innerpage--button.primary {
     font-family: 'FontAwesome', 'Open Sans', sans-serif;
+}
+
+.mpp-innerpage--description {
+    margin-bottom: 2em;
 }
 
 .toggle--btn {
