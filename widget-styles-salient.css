@@ -23,7 +23,7 @@
     --form-field-border: #e0e0e0;
     --form-field-boxshadow--active: 0 0.5em 0.5em 0 rgb(0 0 0 / 5%);
     --form-field-color: #333;
-    --form-field-margin: 1em;
+    --form-field-margin: 1.5em;
     --innerPage-bgColor: #657783;
     --innerPage-textColor: #384249;
     --innerPage-fontSize: 16px;
@@ -189,6 +189,10 @@
 
 .mpp-form--tabs {
     margin-bottom: 2.5em;
+}
+
+.mppw-form-field {
+    margin-bottom: 0;
 }
 
 .mppw-form-field--is-valid .mppw-form-field__control, .mppw-form-field--is-invalid .mppw-form-field__control, .mppw-form-field__static-container .mppw-form-field__control {
