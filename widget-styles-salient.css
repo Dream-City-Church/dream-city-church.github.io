@@ -330,13 +330,14 @@
         float: left;
     }
     .mppw-form-field-alt {
-        width: 50% !important;
+        width: 50%;
         float: left;
     }
 }
 
 .submit--btn {
     clear:both;
+    float:left;
 }
 
 /* Buttons */
