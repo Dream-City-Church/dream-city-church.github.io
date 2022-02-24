@@ -333,6 +333,9 @@
         width: 50%;
         float: left;
     }
+    .mppw-form-field {
+        clear: both;
+    }
 }
 
 .submit--btn {
