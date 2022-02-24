@@ -329,6 +329,14 @@
         width: 50% !important;
         float: left;
     }
+    .mpp-form-Field-alt {
+        width: 50% !important;
+        float: left;
+    }
+}
+
+.submit--btn {
+    clear:both;
 }
 
 /* Buttons */
