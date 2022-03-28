@@ -514,9 +514,9 @@ li.mppw-login--list-item a i.fas.fa-envelope-open-text:before {
     content: "\f658";
 }
 
-li.mppw-login--list-item a i.far.fa-calendar-check:before {
-    /* My Commitments */
-    content: "\f274";
+li.mppw-login--list-item a i.fa-solid.fa-hand-fingers-crossed:before {
+    /* My Faith Promises */
+    content: "\e1a3";
     font-weight: bolder;
 }
 
