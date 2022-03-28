@@ -514,9 +514,9 @@ li.mppw-login--list-item a i.fas.fa-envelope-open-text:before {
     content: "\f658";
 }
 
-li.mppw-login--list-item a i.fa-solid.fa-hand-fingers-crossed:before {
+li.mppw-login--list-item a i.fa-solid.fa-hand-holding-heart:before {
     /* My Faith Promises */
-    content: "\e1a3";
+    content: "\f4be";
     font-weight: bolder;
 }
 
