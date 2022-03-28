@@ -540,12 +540,20 @@ li.mppw-login--list-item a i.fas.fa-users:before {
     display: none;
 }
 
-.mpp-pledge-campaign h2 {
-    display: none;
+#pledgeCampaignDetails h2 {
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 0.5em;
 }
 
-.mpp-innerpage .progress--container {
-    display: none;
+.progress--subtitle {
+    margin-bottom: 0.5em;
+}
+
+#pledgeForm h2 {
+    font-family: var(--innerPage-h1fontFamily);
+    margin-bottom: 0;
 }
 
 input#InstallmentAmount::before {
