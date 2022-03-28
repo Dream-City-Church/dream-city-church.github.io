@@ -179,6 +179,10 @@
 
 /* Forms */
 
+.form-row {
+    align-items: baseline;
+}
+
 .form--col {
     min-height: 60px;
 }
@@ -360,6 +364,12 @@
 .toggle--btn {
     background: var(--form-btn-primary-bgcolor);
     border-radius: var(--form-field-borderradius);
+    padding: 10px 20px;
+}
+
+.toggle--btn .active {
+    background-color: #ffa400;
+    border-color: #AAAAAA;
 }
 
 #addPromoCodeButton {
