@@ -354,7 +354,7 @@
 }
 
 .mppw-btn.mpp-innerpage--button.primary {
-    font-family: 'FontAwesome', 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif, 'FontAwesome';
 }
 
 .mpp-innerpage--description {
@@ -382,11 +382,11 @@
 }
 
 #saveAndAddButton {
-    font-family: 'FontAwesome', 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif, 'FontAwesome';
 }
 
 #saveAndCheckoutButton {
-    font-family: 'FontAwesome', 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif, 'FontAwesome';
 }
 
 /* Login Widget */
