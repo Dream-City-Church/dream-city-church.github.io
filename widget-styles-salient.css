@@ -95,6 +95,10 @@
     margin: 0 2em 1em 2em;
 }
 
+.mpp-innerpage--placeholder {
+    display: none;
+}
+
 .mpp-innerpage--map {
     height: 100%;
     min-height: 150px;
@@ -115,31 +119,29 @@
 }
 
 .mpp-card--header {
-    max-height: 225px;
-    min-height: 160px;
+    height: 215px;
     overflow: hidden;
 }
 
 .mpp-card--badge {
-    background: linear-gradient(160deg, rgba(255, 164, 0, 0.8) 0%, rgba(255, 164, 0, 0.4) 100%);
+    background: linear-gradient(160deg, rgba(255, 164, 0, 1) 33%, rgba(255, 164, 0, 0.6) 100%);
     border-top-left-radius: 0;
     font-size: 0.8em;
     line-height: 2em;
-    box-shadow: 0 0 1em rgb(125 80 0 / 25%);
+    box-shadow: 0 0 1em rgb(0 0 0 / 25%);
     opacity: 1;
     padding: 0.25em 0.5em;
-    margin-top: 1px;
     color: rgba(255,255,255,0.85);
 }
 
 .mpp-card--badge.Completed {
-    background: linear-gradient(160deg, #c7c9c8aa 0%, #c7c9c866 100%);
+    background: linear-gradient(160deg, #c7c9c8aa 33%, #c7c9c866 100%);
 }
 
 .mpp-card--image {
-    box-shadow: var(--card-boxShadow);
+    /*box-shadow: var(--card-boxShadow);*/
     height: 100%;
-    border-top: 1px solid #fafafa;
+    /*border-top: 1px solid #fafafa;*/
 }
 
 .mpp-card--body {
