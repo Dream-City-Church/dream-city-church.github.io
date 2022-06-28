@@ -136,11 +136,11 @@
 }
 
 .mpp-card--badge {
-    background: linear-gradient(160deg, rgba(255, 164, 0, 1) 33%, rgba(255, 164, 0, 0.6) 100%);
+    background: linear-gradient(160deg, rgba(255, 164, 0, 1) 10%, rgba(255, 164, 0, 0.75) 100%);
     border-top-left-radius: 0;
     font-size: 0.8em;
     line-height: 2em;
-    box-shadow: 0 0 1em rgb(0 0 0 / 25%);
+    box-shadow: 0 0 1em rgb(0 0 0 / 30%);
     opacity: 1;
     padding: 0.25em 1em 0.25em 0.5em;
     color: rgba(255,255,255,0.85);
