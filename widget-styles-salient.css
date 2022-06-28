@@ -142,13 +142,14 @@
     line-height: 2em;
     box-shadow: 0 0 1em rgb(0 0 0 / 25%);
     opacity: 1;
-    padding: 0.25em 0.5em;
+    padding: 0.25em 1em 0.25em 0.5em;
     color: rgba(255,255,255,0.85);
 }
 
 .mpp-card--badge:before {
     content: "\f559";
     font-family: FontAwesome;
+    margin: 0 0.5em;
 }
 
 .mpp-card--badge.Completed {
