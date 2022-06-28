@@ -111,8 +111,8 @@
 
 @media only screen and (max-width: 700px) {
     .mpp-innerpage--image {
-        width: 120%;
-        margin: 0 -10%;
+        width: 130%;
+        margin: 0 -15%;
         float: none;
         max-height: 250px;
     }
@@ -144,6 +144,7 @@
     opacity: 1;
     padding: 0.25em 0.5em;
     color: rgba(255,255,255,0.85);
+    content: "\f559 FEATURED"
 }
 
 .mpp-card--badge.Completed {
@@ -194,6 +195,19 @@
     content: "\f017";
 }
 */
+
+@media only screen and (max-width: 768px) {
+    .mpp-card {
+        margin-bottom: 1em;
+    }
+    .mpp-card--header {
+        height: 180px;
+    }
+    .mpp-card--description {
+        -webkit-line-clamp: 2;
+        font-weight: 400;
+    }
+}
 
 /* Forms */
 
