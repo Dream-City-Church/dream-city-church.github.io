@@ -144,7 +144,11 @@
     opacity: 1;
     padding: 0.25em 0.5em;
     color: rgba(255,255,255,0.85);
-    content: "\f559 FEATURED";
+}
+
+.mpp-card--badge:before {
+    content: "\f559";
+    font-family: FontAwesome;
 }
 
 .mpp-card--badge.Completed {
