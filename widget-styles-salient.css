@@ -112,7 +112,7 @@
 @media only screen and (max-width: 700px) {
     .mpp-innerpage--image {
         width: 120%;
-        margin: 0 10%;
+        margin: 0 -10%;
         float: none;
         max-height: 250px;
     }
