@@ -6,7 +6,7 @@
     --primary: #ffa400;
     --secondary: #001f4e;
     --card-borderRadius: 4px;
-    --card-boxShadow: 0em 0.25em 0.25em 0em rgb(0 0 0 / 5%);
+    --card-boxShadow: 0em 0.25em 0.25em 0em rgb(0 0 0 / 15%);
     --card-fontSize: 0.85em;
     --card-lineHeight: 1.75em;
     --card-primaryColor: #001f4e;
@@ -93,6 +93,7 @@
     width: 30%;
     float: right;
     margin: 0 0 1em 2em;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
 }
 
 .mpp-innerpage--placeholder {
@@ -132,6 +133,7 @@
 
 .mpp-card--header {
     height: 215px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 50%);
     overflow: hidden;
 }
 
@@ -181,6 +183,7 @@
     -webkit-line-clamp: 3;
     clear: both;
     font-weight: 600;
+    line-height: 1.25em;
 }
 
 .mpp-card--subtitle {
@@ -203,13 +206,13 @@
 
 @media only screen and (max-width: 768px) {
     .mpp-card {
-        margin-bottom: 1em;
+        margin-bottom: 2em;
     }
     .mpp-card--header {
         height: 180px;
     }
     .mpp-card--description {
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         font-weight: 400;
     }
 }
