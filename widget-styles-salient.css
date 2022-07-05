@@ -572,6 +572,12 @@ li.mppw-login--list-item a i.fas.fa-users:before {
     content: "\f0c0";
 }
 
+/* Locale Widget */
+#localeDropdown {
+    background-color: #efefef;
+    color: #333;
+}
+
 /* Pledge Campaigns */
 #pledgeCampaignDetails .mpp-card--header {
     display: none;
