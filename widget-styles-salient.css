@@ -123,12 +123,18 @@
 }
 
 /* Card Styles */
+.mppw-card--grid {
+    display: grid;
+    grid-template-columns: 31% 31% 31%;
+    grid-gap: 2.5em 3.5%;
+    margin-top: 1em;
+}
+
 .mpp-card {
     border-bottom-left-radius: var(--card-borderRadius);
     border-bottom-right-radius: var(--card-borderRadius);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom: 1px solid #ddd;
 }
 
 .mpp-card--header {
@@ -192,6 +198,7 @@
 .mpp-card--subtitle {
     font-weight: 800;
     padding: 0 0.75em;
+    text-align: center;
 }
 
 .mpp-card--subtitle:nth-child(1) {
@@ -209,6 +216,10 @@
     border-radius: 0;
     width: 100%;
     background: linear-gradient(160deg, rgb(0 31 78 / 95%), rgb(0 31 78 / 85%));
+}
+
+.mpp-card--footer .mppw-btn.primary:hover {
+    background: var(--form-btn-primary-active);
 }
 
 /*
