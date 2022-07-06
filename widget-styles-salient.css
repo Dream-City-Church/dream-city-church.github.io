@@ -110,6 +110,11 @@
     border-color: #ffa400;
 }
 
+.mpp-innerpage--fixed-img {
+    width: 30%;
+    float: right;
+}
+
 @media only screen and (max-width: 700px) {
     .mpp-innerpage--image {
         width: 130%;
@@ -119,6 +124,11 @@
     }
     .mpp-innerpage--datetime {
         font-size: 0.75rem;
+    }
+    .mpp-innerpage--fixed-img {
+        width: 100%;
+        float: left;
+        background-size: contain !important;
     }
 }
 
