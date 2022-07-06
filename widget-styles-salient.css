@@ -247,6 +247,11 @@
 */
 
 @media only screen and (max-width: 768px) {
+    .mppw-card--grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 0;
+    }
     .mpp-card {
         margin-bottom: 2em;
     }
