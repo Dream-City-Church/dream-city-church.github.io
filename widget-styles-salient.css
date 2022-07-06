@@ -116,19 +116,50 @@
 }
 
 @media only screen and (max-width: 700px) {
-    .mpp-innerpage--image {
-        width: 130%;
-        margin: 0 -15%;
-        float: none;
-        max-height: 250px;
+    .mpp-innerpage h1 {
+        margin-top: 0.25em;
+        text-align:center;
+    }
+    .mpp-innerpage--labels {
+        text-align: center;
     }
     .mpp-innerpage--datetime {
+        text-align: center;
         font-size: 0.75rem;
+    }
+    .mpp-innerpage--image {
+        width: 120%;
+        margin: 0 -10%;
+        float: none;
+        max-height: 250px; 
     }
     .mpp-innerpage--fixed-img {
         width: 100%;
         float: left;
         background-size: contain !important;
+    }
+    #detailsContainer > strong > a {
+        float: left;
+        border: 1px solid var(--primary);
+        padding: 0.5em;
+        border-radius: var(--card-borderRadius);
+        color: var(--primary);
+        text-decoration: none;
+    }
+    .mppw-ics-link {
+        float: right;
+        border: 1px solid var(--primary);
+        padding: 0.5em;
+        border-radius: var(--card-borderRadius);
+        color: var(--primary);
+        text-decoration: none;
+    }
+    #registrationFormContainer {
+        clear: both;
+        overflow: auto;
+    }
+    #promoCodeContainer {
+        margin-top: 1em;
     }
 }
 
@@ -211,7 +242,7 @@
     text-align: center;
 }
 
-.mpp-card--subtitle:nth-child(1) {
+h4.mpp-card--subtitle:nth-child(1) {
     margin-top: 0.5em;
 }
 
@@ -745,6 +776,12 @@ div#emailUnlistedCheck {
 
 div#mobileUnlistedCheck {
     display: none;
+}
+
+@media only screen and (max-width: 700px) {
+    .mpp-household .mpp-household--header-container {
+        display: inline-block;
+    }
 }
 
 /* My Subscriptions */
