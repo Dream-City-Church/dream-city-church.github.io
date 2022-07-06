@@ -133,7 +133,7 @@
 
 .mpp-card--header {
     height: 215px;
-    box-shadow: 0 0 5px rgb(0 0 0 / 50%);
+    box-shadow: 0 0 0.5em rgb(0 0 0 / 25%);
     overflow: hidden;
 }
 
@@ -165,7 +165,7 @@
 }
 
 .mpp-card--body {
-    padding: 0 1.25em;
+    padding: 0;
     font-family: 'Poppins';
 }
 
@@ -173,10 +173,12 @@
     font-size: 1.75em;
     font-family: 'DM Serif Display';
     color: var(--root-text-color);
-    line-height: 2em;
+    line-height: 1.75em;
     -webkit-line-clamp: 1;
     text-overflow: ellipsis;
-    border-bottom: 1px solid #efefef;
+    text-align: center;
+    padding: 0 0.75em;
+    box-shadow: 0 0 0.5em rgb(0 0 0 / 10%);
 }
 
 .mpp-card--description {
@@ -184,10 +186,29 @@
     clear: both;
     font-weight: 600;
     line-height: 1.25em;
+    padding: 0 0.75em;
 }
 
 .mpp-card--subtitle {
     font-weight: 800;
+    padding: 0 0.75em;
+}
+
+.mpp-card--subtitle:nth-child(1) {
+    margin-top: 0.5em;
+}
+
+.mpp-card--footer {
+    padding: 0;
+    text-align: center;
+}
+
+.mpp-card-footer .mppw-btn.primary {
+    margin: 0;
+    margin-top: 1em;
+    border-radius: 0;
+    width: 100%;
+    background: linear-gradient(160deg, rgb(0 31 78 / 95%), rgb(0 31 78 / 85%));
 }
 
 /*
@@ -214,6 +235,9 @@
     .mpp-card--description {
         -webkit-line-clamp: 3;
         font-weight: 400;
+    }
+    .mpp-card--title {
+        font-size: 1.5em;
     }
 }
 
