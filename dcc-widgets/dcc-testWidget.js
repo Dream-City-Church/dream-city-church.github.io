@@ -1,10 +1,10 @@
 function TestAzureLogicApp() {
+    await new Promise(r => setTimeout(r, 500));
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     let divHTML = "";
 
     if(authToken == null || authToken == ''){
-        await new Promise(r => setTimeout(r, 500));
         console.log("No auth token. Continuing.");
     }  else if ((authToken !== null && authToken !== '') && new Date(tokenExpires) >= new Date()){
         console.log('Have token');
