@@ -21,14 +21,13 @@ function waitForToken() {
                 authToken = localStorage.getItem('mpp-widgets_AuthToken');
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
                 if((authToken !== null && authToken !== 'null') && new Date(tokenExpires) > new Date()) {console.log('Token found after waiting. Proceeding...');TestAzureLogicApp();};
-                if(i=5) {console.log('Token not found after waiting...');notSignedIn();};
+                if(i=5 && (authToken == null || authToken == 'null' || new Date(tokenExpires) < new Date())) {console.log('Token not found after waiting...');notSignedIn();};
                 console.log('Waiting 500 msecs...');
             }, 500*i);
             if((authToken !== null && authToken !== 'null') && new Date(tokenExpires) > new Date()) {break;};
             if(i=5) {break;};
         }
 }
-
 
 function notSignedIn() {
     let divHTML = "";
