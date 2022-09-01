@@ -1,10 +1,13 @@
 function testForToken() {
+    console.log('Testing for tokens...');
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
 
     if((!authToken || !tokenExpires) || new Date(tokenExpires) < new Date()) {
+        console.log('Token not found. Waiting...');
         waitForToken();
     } else {
+        console.log('Token found. Proceeding...');
         TestAzureLogicApp();
     }
 }
@@ -12,21 +15,22 @@ function testForToken() {
 function waitForToken() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-    console.log('Auth token not found. Waiting for loading');
+    console.log('Starting wait loop...');
         for (var i=1; i <= 5; i++) {
             setTimeout(function() {
                 authToken = localStorage.getItem('mpp-widgets_AuthToken');
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
+                console.log('Waiting 500 msecs...');
             }, 500*i);
-            if((authToken !== null && authToken !== '') && new Date(tokenExpires) > new Date()) {TestAzureLogicApp();break;};
-            if(i=5) {notSignedIn();break;};
+            if((authToken !== null && authToken !== '') && new Date(tokenExpires) > new Date()) {console.log('Token found after waiting. Proceeding...');TestAzureLogicApp();break;};
+            if(i=5) {console.log('Token not found after waiting...');notSignedIn();break;};
         }
 }
 
 
 function notSignedIn() {
     let divHTML = "";
-    console.log('User not signed in');
+    console.log('No token found. Displaying error.');
     divHTML = "Please sign in to view this page.";
     document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
     document.getElementsByTagName("dcc-testWidget")[0].className = "statusFail";
@@ -36,7 +40,7 @@ function TestAzureLogicApp() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     let divHTML = "";
-    console.log('Token found.');
+    console.log('Sending API call...');
     const params = {
         "authToken": authToken,
         "expires": new Date(tokenExpires)
@@ -51,21 +55,24 @@ function TestAzureLogicApp() {
         .then(function (data) {
             /*Start DIV writeback*/
             if(data.status=="success"){
-            divHTML = `<p><strong>The following user information was found:</strong><br />
-                Name: ${data.nickname} ${data.last_name}<br />
-                Email: ${data.email}<br />
-                Mobile: ${data.mobile_phone}<br />
-                DOB: ${data.date_of_birth}<br />
-                Age: ${data.age}<br />
-                Campus: ${data.campus}<br />
-                Address: ${data.address1}, ${data.city}, ${data.state} ${data.zip}<br /></p>`;
-            document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
+                console.log('API success. Returning data.');
+                divHTML = `<p><strong>The following user information was found:</strong><br />
+                    Name: ${data.nickname} ${data.last_name}<br />
+                    Email: ${data.email}<br />
+                    Mobile: ${data.mobile_phone}<br />
+                    DOB: ${data.date_of_birth}<br />
+                    Age: ${data.age}<br />
+                    Campus: ${data.campus}<br />
+                    Address: ${data.address1}, ${data.city}, ${data.state} ${data.zip}<br /></p>`;
+                document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
             } else {
+                console.log('API returned failure. Returning error.');
                 divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
                 document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
             }
         })
         .catch(function (fail) {
+            console.log('API call failed. Returning error.');
             divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
             document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
         }
