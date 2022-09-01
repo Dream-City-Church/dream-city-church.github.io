@@ -2,7 +2,7 @@ function testForToken() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
 
-    if(!authToken || !tokenExpires) {
+    if((!authToken || !tokenExpires) || new Date(tokenExpires) < new Date()) {
         waitForToken();
     } else {
         TestAzureLogicApp();
@@ -18,7 +18,7 @@ function waitForToken() {
                 authToken = localStorage.getItem('mpp-widgets_AuthToken');
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
             }, 250*i);
-            if(authToken !== null && authToken !== '') {TestAzureLogicApp();break;};
+            if((authToken !== null && authToken !== '') && new Date(tokenExpires) < new Date()) {TestAzureLogicApp();break;};
             if(i=5) {notSignedIn();};
         }
 }
