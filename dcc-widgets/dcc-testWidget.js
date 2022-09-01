@@ -13,7 +13,7 @@ function waitForToken() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     console.log('Auth token not found. Waiting for loading');
-        for (var i=1; i <= 5 && !authToken; i++) {
+        for (var i=1; i <= 5; i++) {
             setTimeout(function() {
                 authToken = localStorage.getItem('mpp-widgets_AuthToken');
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
@@ -21,6 +21,15 @@ function waitForToken() {
             if((authToken !== null && authToken !== '') && new Date(tokenExpires) > new Date()) {TestAzureLogicApp();break;};
             if(i=5) {notSignedIn();break;};
         }
+}
+
+
+function notSignedIn() {
+    let divHTML = "";
+    console.log('User not signed in');
+    divHTML = "Please sign in to view this page.";
+    document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
+    document.getElementsByTagName("dcc-testWidget")[0].className = "statusFail";
 }
 
 function TestAzureLogicApp() {
@@ -61,14 +70,6 @@ function TestAzureLogicApp() {
             document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
         }
     )
-}
-
-function notSignedIn() {
-    let divHTML = "";
-    console.log('User not signed in');
-    divHTML = "Please sign in to view this page.";
-    document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
-    document.getElementsByTagName("dcc-testWidget")[0].className = "statusFail";
 }
 
 window.onload = setTimeout(testForToken, 500);
