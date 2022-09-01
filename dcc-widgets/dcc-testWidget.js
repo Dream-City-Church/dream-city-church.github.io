@@ -3,7 +3,7 @@ function testForToken() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
 
-    if((!authToken || !tokenExpires) || new Date(tokenExpires) < new Date()) {
+    if(authToken==null || authToken=='null' || tokenExpires==null || tokenExpires=='null' || new Date(tokenExpires) < new Date()) {
         console.log('Token not found. Waiting...');
         waitForToken();
     } else {
