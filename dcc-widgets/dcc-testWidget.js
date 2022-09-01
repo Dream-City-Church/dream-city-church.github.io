@@ -1,9 +1,9 @@
+let authToken = localStorage.getItem('mpp-widgets_AuthToken');
+let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
+let divHTML = "";
+
 function testForToken() {
-    let authToken = localStorage.getItem('mpp-widgets_AuthToken');
-    let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-    let divHTML = "";
-    
-    if(!authToken || !tokenExpires) {
+     if(!authToken || !tokenExpires) {
         waitForToken();
     } else {
         TestAzureLogicApp();
