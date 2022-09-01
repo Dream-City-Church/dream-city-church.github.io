@@ -4,7 +4,13 @@ function TestAzureLogicApp() {
     let divHTML = "";
 
     if(!authToken){
-        console.log("No auth token. Continuing.");
+        console.log('Auth token not found. Waiting for loading...');
+        for (var i=1; i <= 4 && !authToken; i++) {
+            setTimeout(function() {
+                authToken = localStorage.getItem('mpp-widgets_AuthToken');
+                tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
+            }, 250);
+        }
     }  else if ((authToken !== null && authToken !== '') && new Date(tokenExpires) >= new Date()){
         console.log('Have token');
         const params = {
@@ -36,7 +42,7 @@ function TestAzureLogicApp() {
             }
             )
     } else {
-        console.log('No JWT token found');
+        console.log('User not signed in');
         divHTML = "Please sign in to view this page.";
         document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
         document.getElementsByTagName("dcc-testWidget")[0].className = "statusFail";
