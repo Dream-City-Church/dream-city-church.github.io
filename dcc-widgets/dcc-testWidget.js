@@ -17,7 +17,7 @@ function waitForToken() {
             setTimeout(function() {
                 authToken = localStorage.getItem('mpp-widgets_AuthToken');
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-            }, 250*i);
+            }, 500*i);
             if((authToken !== null && authToken !== '') && new Date(tokenExpires) > new Date()) {TestAzureLogicApp();break;};
             if(i=5) {notSignedIn();break;};
         }
