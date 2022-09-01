@@ -41,6 +41,7 @@ function TestAzureLogicApp() {
         .then(function (response) {return response.json();})
         .then(function (data) {
             /*Start DIV writeback*/
+            if(data.status=="success"){
             divHTML = `<p><strong>The following user information was found:</strong><br />
                 Name: ${data.nickname} ${data.last_name}<br />
                 Email: ${data.email}<br />
@@ -50,6 +51,10 @@ function TestAzureLogicApp() {
                 Campus: ${data.campus}<br />
                 Address: ${data.address1}, ${data.city}, ${data.state} ${data.zip}<br /></p>`;
             document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
+            } else {
+                divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
+                document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
+            }
         })
         .catch(function (fail) {
             divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
