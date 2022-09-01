@@ -1,5 +1,4 @@
 function TestAzureLogicApp() {
-    await new Promise(r => setTimeout(r, 500));
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     let divHTML = "";
@@ -30,7 +29,11 @@ function TestAzureLogicApp() {
                     Campus: ${data.campus}<br />
                     Address: ${data.address1}, ${data.city}, ${data.state} ${data.zip}<br /></p>`;
                 document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
-            });  
+            })
+            .catch(function (fail) {
+                divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
+                document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;}
+            )
     } else {
         console.log('No JWT token found');
         divHTML = "Please sign in to view this page.";
@@ -38,5 +41,5 @@ function TestAzureLogicApp() {
         document.getElementsByTagName("dcc-testWidget")[0].className = "statusFail";
     };
 }
-
+await new Promise(r => setTimeout(r, 500));
 window.onload = TestAzureLogicApp();
