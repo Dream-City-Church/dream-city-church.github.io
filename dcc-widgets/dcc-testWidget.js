@@ -1,10 +1,9 @@
-let authToken = localStorage.getItem('mpp-widgets_AuthToken');
-let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-let divHTML = "";
-
 function testForToken() {
+    let authToken = localStorage.getItem('mpp-widgets_AuthToken');
+    let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
+
      if(!authToken || !tokenExpires) {
-        waitForToken();
+        waitForToken(authToken,tokenExpires);
     } else {
         TestAzureLogicApp();
     }
@@ -16,13 +15,14 @@ function waitForToken() {
             setTimeout(function() {
                 authToken = localStorage.getItem('mpp-widgets_AuthToken');
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-                if(authToken !== null && authToken !== '') {TestAzureLogicApp;};
-                if(i=5) {notSignedIn;};
+                if(authToken !== null && authToken !== '') {TestAzureLogicApp(authToken,tokeExpires);};
+                if(i=5) {notSignedIn();};
             }, 250*i);
         }
 }
 
 function TestAzureLogicApp() {
+    let divHTML = "";
     console.log('Token found.');
     const params = {
         "authToken": authToken,
@@ -55,6 +55,7 @@ function TestAzureLogicApp() {
 }
 
 function notSignedIn() {
+    let divHTML = "";
     console.log('User not signed in');
     divHTML = "Please sign in to view this page.";
     document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
