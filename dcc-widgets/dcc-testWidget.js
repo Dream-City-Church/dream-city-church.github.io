@@ -41,5 +41,21 @@ function TestAzureLogicApp() {
         document.getElementsByTagName("dcc-testWidget")[0].className = "statusFail";
     };
 }
-await new Promise(r => setTimeout(r, 500));
-window.onload = TestAzureLogicApp();
+
+function loadWait() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, 500);
+    });
+  }
+
+async function asyncCall() {
+    console.log('calling');
+    const result = await loadWait();
+    console.log(result);
+    TestAzureLogicApp();
+    // expected output: "resolved"
+  }
+
+window.onload = asyncCall();
