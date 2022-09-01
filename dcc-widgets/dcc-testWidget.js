@@ -10,18 +10,22 @@ function testForToken() {
 }
 
 function waitForToken() {
+    let authToken = localStorage.getItem('mpp-widgets_AuthToken');
+    let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     console.log('Auth token not found. Waiting for loading');
         for (var i=1; i <= 5 && !authToken; i++) {
             setTimeout(function() {
                 authToken = localStorage.getItem('mpp-widgets_AuthToken');
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-                if(authToken !== null && authToken !== '') {TestAzureLogicApp(authToken,tokeExpires);};
+                if(authToken !== null && authToken !== '') {TestAzureLogicApp(authToken,tokeExpires); break;};
                 if(i=5) {notSignedIn();};
             }, 250*i);
         }
 }
 
 function TestAzureLogicApp() {
+    let authToken = localStorage.getItem('mpp-widgets_AuthToken');
+    let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     let divHTML = "";
     console.log('Token found.');
     const params = {
