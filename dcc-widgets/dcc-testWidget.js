@@ -19,7 +19,7 @@ function waitForToken() {
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
             }, 250*i);
             if((authToken !== null && authToken !== '') && new Date(tokenExpires) > new Date()) {TestAzureLogicApp();break;};
-            if(i=5) {notSignedIn();};
+            if(i=5) {notSignedIn();break;};
         }
 }
 
