@@ -9,7 +9,7 @@ function TestAzureLogicApp() {
             setTimeout(function() {
                 authToken = localStorage.getItem('mpp-widgets_AuthToken');
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-            }, 250);
+            }, 250*i);
         }
     }  else if ((authToken !== null && authToken !== '') && new Date(tokenExpires) >= new Date()){
         console.log('Have token');
