@@ -3,7 +3,7 @@ function TestAzureLogicApp() {
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     let divHTML = "";
 
-    if(authToken == null || authToken == ''){
+    if(!authToken){
         console.log("No auth token. Continuing.");
     }  else if ((authToken !== null && authToken !== '') && new Date(tokenExpires) >= new Date()){
         console.log('Have token');
@@ -32,7 +32,8 @@ function TestAzureLogicApp() {
             })
             .catch(function (fail) {
                 divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
-                document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;}
+                document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
+            }
             )
     } else {
         console.log('No JWT token found');
@@ -42,20 +43,4 @@ function TestAzureLogicApp() {
     };
 }
 
-function loadWait() {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve('resolved');
-      }, 500);
-    });
-  }
-
-async function asyncCall() {
-    console.log('calling');
-    const result = await loadWait();
-    console.log(result);
-    TestAzureLogicApp();
-    // expected output: "resolved"
-  }
-
-window.onload = asyncCall();
+window.onload = setTimeout(TestAzureLogicApp, 500);
