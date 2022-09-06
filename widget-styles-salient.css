@@ -14,13 +14,13 @@
     --form-btn-primary-bgcolor: #001f4e;
     --form-btn-primary-hover: #203f6e;
     --form-btn-secondary-text: #999;
-    --form-btn-secondary-bgcolor: #fff;
-    --form-btn-secondary-hover: #FAFAFA;
-    --form-btn-secondary-active: #ededed;
+    --form-btn-secondary-bgcolor: #FAFAFA;
+    --form-btn-secondary-hover: #FFFFFF;
+    --form-btn-secondary-active: #EDEDED;
     --form-field-bgcolor--active: rgba(0,0,0,0.035);
     --form-field-border--active: #ffa400;
     --form-field-borderradius: 0;
-    --form-field-border: #e0e0e0;
+    --form-field-border: #E0E0E0;
     --form-field-boxshadow--active: 0 0.5em 0.5em 0 rgb(0 0 0 / 5%);
     --form-field-color: #333;
     --form-field-margin: 1.5em;
@@ -266,6 +266,14 @@ h4.mpp-card--subtitle:nth-child(1) {
 
 .mpp-card--footer .mppw-btn.primary:hover {
     background: var(--form-btn-primary-active);
+}
+
+.mppw-btn.secondary {
+    background: var(--form-btn-secondary-bgcolor);
+    border: 1px solid var(--form-field-border);
+    box-shadow: none;
+    color: var(--form-btn-secondary-text);
+    font-weight: bold;
 }
 
 /*
