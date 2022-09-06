@@ -240,8 +240,9 @@
 
 .mpp-card--subtitle {
     font-family: 'DM SerifDisplay';
+    font-size: 1.1rem;
     font-weight: 600;
-    color: var(--card-text-color);
+    color: var(--root-text-color);
     padding: 0 0.75em;
     text-align: center;
 }
