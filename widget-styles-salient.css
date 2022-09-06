@@ -176,6 +176,7 @@
     border-bottom-right-radius: var(--card-borderRadius);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    border: 5px solid white;
 }
 
 .mpp-card--header {
@@ -219,25 +220,28 @@
 .mpp-card--title {
     font-size: 1.75em;
     font-family: 'DM Serif Display';
-    color: var(--root-text-color);
+    color: var(--secondary);
     line-height: 1.75em;
     -webkit-line-clamp: 1;
     text-overflow: ellipsis;
     text-align: center;
     padding: 0 0.75em;
+    margin-bottom: 0.35em !important;
     box-shadow: 0 0 0.5em rgb(0 0 0 / 10%);
 }
 
 .mpp-card--description {
     -webkit-line-clamp: 3;
     clear: both;
-    font-weight: 600;
     line-height: 1.25em;
     padding: 0 0.75em;
+    color: var(--root-text-color);
 }
 
 .mpp-card--subtitle {
-    font-weight: 800;
+    font-family: 'DM SerifDisplay';
+    font-weight: 600;
+    color: var(--card-text-color);
     padding: 0 0.75em;
     text-align: center;
 }
@@ -378,6 +382,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     border: none;
     border-bottom: 2px solid var(--form-field-border);
     background-color: rgba(0,0,0,0.035);
+    border: 1px solid #FAFAFA;
 }
 
 .mppw-form-field__control:focus {
@@ -385,6 +390,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     background: rgba(0,0,0,0.035);
     box-shadow: var(--form-field-boxshadow--active);
     outline: 0;
+    border-bottom: 2px solid #ffa400;
 }
 
 .mpp-form--tabs label:active, .mpp-form--tabs label.active {
