@@ -41,7 +41,7 @@ function householdPRF() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     let divHTML = "";
-    console.log('V.0.2 - Sending API call...');
+    console.log('V.0.4 - Sending API call...');
     const params = {
         "authToken": authToken,
         "expires": new Date(tokenExpires)
