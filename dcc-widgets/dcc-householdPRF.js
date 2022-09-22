@@ -40,8 +40,10 @@ function notSignedIn() {
 function householdPRF() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-    let divHTML = "";
-    console.log('V.0.5 - Sending API call...');
+    let divHTML = "<h3>Household Participation Release Forms</h3>";
+    document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
+
+    console.log('V.0.6 - Sending API call...');
     const params = {
         "authToken": authToken,
         "expires": new Date(tokenExpires)
@@ -57,7 +59,6 @@ function householdPRF() {
             /*Start DIV writeback*/
             if(data.status=="success"){
                 console.log('API success. Returning data.');
-                divHTML = `<h3>Household Participation Release Forms</h3>`;
                 data.members.forEach((person) => {
                     divHTML = divHTML+`${person.FirstName} ${person.LastName}: `;
                     if (person.State == "Valid") {
@@ -72,7 +73,7 @@ function householdPRF() {
                 document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
             } else {
                 console.log('API returned failure. Returning error.');
-                divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
+                divHTML = divHTML+`<p>Sorry, something went wrong. Please try again.</p>`;
                 document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
             }
         })
