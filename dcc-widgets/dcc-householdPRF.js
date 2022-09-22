@@ -65,6 +65,7 @@ function householdPRF() {
                     } else {
                         divHTML = divHTML+`<i class="fa-regular fa-circle-xmark" style="color:red;"></i> No valid Participation Release Form on file. <a href="https://dreamcitychurch.us/mydcc/participation-release-form/" target="_blank">Complete your form here</a>.`;
                     }
+                    divHTML = divHTML+`<br />`;
                 }
                 )
 
