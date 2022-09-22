@@ -57,7 +57,7 @@ function TestAzureLogicApp() {
             /*Start DIV writeback*/
             if(data.status=="success"){
                 console.log('API success. Returning data.');
-                divHTML = `<p><strong>The following user information was found:</strong><br />
+                divHTML = `<p><strong>The signed in user has the below information:</strong><br /><br />
                     Name: ${data.nickname} ${data.last_name}<br />
                     Email: ${data.email}<br />
                     Mobile: ${data.mobile_phone}<br />
