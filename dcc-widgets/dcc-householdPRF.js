@@ -57,8 +57,13 @@ function householdPRF() {
             /*Start DIV writeback*/
             if(data.status=="success"){
                 console.log('API success. Returning data.');
-                divHTML = `<p><strong>The below data was returned:</strong><br /><br />
-                    ${data}`;
+                divHTML = `<p><strong>The below data was returned:</strong><br /><br />`;
+                    data.members.forEach((person) => {
+                        divHTML = divHTML+`${data.members.FirstName} ${data.members.LastName}, ${data.members.Expires} (Status: ${data.members.FirstName})`
+                    }
+
+                    )
+
                 document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
             } else {
                 console.log('API returned failure. Returning error.');
