@@ -776,6 +776,10 @@ div.mpp-card--household {
     background-color: #fafafa;
 }
 
+.mpp-household .mpp-card--household {
+    border-color: #fafafa;
+}
+
 .mpp-household .mppw-form .mpp-household--form-body {
     padding: 1em 3em;
     background: #fafafa;
