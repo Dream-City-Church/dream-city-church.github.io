@@ -57,10 +57,15 @@ function householdPRF() {
             /*Start DIV writeback*/
             if(data.status=="success"){
                 console.log('API success. Returning data.');
-                divHTML = `<p><strong>The below data was returned:</strong><br /><br />`;
+                divHTML = `<h2>Household Participation Release Forms</h2>`;
                 data.members.forEach((person) => {
-                    divHTML = divHTML+`${person.FirstName} ${person.LastName}, ${person.Expires} (Status: ${person.FirstName})<br />`;
+                    divHTML = divHTML+`${person.FirstName} ${person.LastName}: `;
+                    if (person.State == "Valid") {
+                        divHTML = divHTML+`<i class="fa-regular fa-circle-check" style="color:green;"></i> Participation Release Form valid until ${person.Expires}.`;
+                    } else {
+                        divHTML = divHTML+`<i class="fa-regular fa-circle-xmark" style="color:red;"></i> No valid Participation Release Form on file. <a href="https://dreamcitychurch.us/mydcc/participation-release-form/" target="_blank">Complete your form here</a>.`;
                     }
+                }
                 )
 
                 document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
