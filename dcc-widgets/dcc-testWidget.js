@@ -32,7 +32,7 @@ function waitForToken() {
 function notSignedIn() {
     let divHTML = "";
     console.log('No token found. Displaying sign in message.');
-    divHTML = '<p>Please sign in to view this page.</p><p><mpp-user-login customcss="https://dream-city-church.github.io/widget-styles-salient.css?cache=no"></mpp-user-login></p>';
+    divHTML = '<p>Please sign in to view this page.</p>';
     document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
     document.getElementsByTagName("dcc-testWidget")[0].className = "statusFail";
 }
