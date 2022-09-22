@@ -33,8 +33,8 @@ function notSignedIn() {
     let divHTML = "";
     console.log('No token found. Displaying sign in message.');
     divHTML = '<p>Please sign in to view this page.</p>';
-    document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
-    document.getElementsByTagName("dcc-testWidget")[0].className = "statusFail";
+    document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
+    document.getElementsByTagName("dcc-householdPRF")[0].className = "statusFail";
 }
 
 function householdPRF() {
@@ -63,13 +63,13 @@ function householdPRF() {
             } else {
                 console.log('API returned failure. Returning error.');
                 divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
-                document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
+                document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
             }
         })
         .catch(function (fail) {
             console.log('API call failed. Returning error.');
             divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
-            document.getElementsByTagName("dcc-testWidget")[0].innerHTML = divHTML;
+            document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
         }
     )
 }
