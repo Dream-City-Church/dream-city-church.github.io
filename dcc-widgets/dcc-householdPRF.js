@@ -41,7 +41,7 @@ function householdPRF() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     let divHTML = "";
-    console.log('V.0.4 - Sending API call...');
+    console.log('V.0.5 - Sending API call...');
     const params = {
         "authToken": authToken,
         "expires": new Date(tokenExpires)
@@ -57,7 +57,7 @@ function householdPRF() {
             /*Start DIV writeback*/
             if(data.status=="success"){
                 console.log('API success. Returning data.');
-                divHTML = `<h2>Household Participation Release Forms</h2>`;
+                divHTML = `<h3>Household Participation Release Forms</h3>`;
                 data.members.forEach((person) => {
                     divHTML = divHTML+`${person.FirstName} ${person.LastName}: `;
                     if (person.State == "Valid") {
