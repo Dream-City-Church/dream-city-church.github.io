@@ -9,6 +9,7 @@ dcc-householdprf h3 {
     background-color: #fafafa;
     border-radius: 0.25em;
     width: 50%;
+    box-shadow: 0em 0.15em 0.25em 0em rgb(0 0 0 / 10%);
 }
 
 .dccw-prf-person {
