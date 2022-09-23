@@ -718,6 +718,16 @@ div#pledgeAmountButtonWrapper {
     font-family: 'Open Sans';
 }
 
+h2#householdName {
+    font-family: 'DM Serif Display';
+    color: #606060;
+}
+
+h2.mpp-household--header {
+    font-family: 'DM Serif Display';
+    color: #606060;
+}
+
 .mpp-card--household-text-wrapper p {
     font-size: 1.25em;
     font-family: 'Open Sans';
