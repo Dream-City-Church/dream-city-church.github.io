@@ -39,7 +39,7 @@ function notSignedIn() {
 function householdPRF() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-    let divHTML = "<h3>Household Participation Release Forms</h3>";
+    let divHTML = `<h3>Household Participation Release Forms</h3><br /><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
     document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
 
     console.log('V.0.7 - Sending API call...');
@@ -58,7 +58,7 @@ function householdPRF() {
             /*Start DIV writeback*/
             if(data.status=="success"){
                 console.log('API success. Returning data.');
-                divHTML = divHTML+`<div class="dccw-prf-cardcontainer">`;
+                divHTML = `<h3>Household Participation Release Forms</h3><div class="dccw-prf-cardcontainer">`;
                 data.members.forEach((person) => {
                     divHTML = divHTML+`<div class="dccw-prf-card"><div class="dccw-prf-person">${person.FirstName} ${person.LastName}</div>`;
                     if (person.State == "Valid") {
