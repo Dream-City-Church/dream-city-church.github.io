@@ -3,6 +3,10 @@ dcc-householdprf h3 {
     padding-bottom: 0.5em;
 }
 
+.dccw-prf-cardcontainer {
+    min-height:100px;
+}
+
 .dccw-prf-card {
     margin-bottom: 1em;
     padding: 0.5em 1em;
