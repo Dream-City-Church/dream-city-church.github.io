@@ -5,6 +5,7 @@ dcc-householdprf h3 {
 
 .dccw-prf-cardcontainer {
     min-height:100px;
+    width: 50%;
 }
 
 .dccw-prf-card {
@@ -12,7 +13,7 @@ dcc-householdprf h3 {
     padding: 0.5em 1em;
     background-color: #fafafa;
     border-radius: 0.25em;
-    width: 50%;
+    width: 100%;
     box-shadow: 0em 0.15em 0.25em 0em rgb(0 0 0 / 10%);
 }
 
@@ -28,12 +29,18 @@ dcc-householdprf h3 {
 }
 
 @media (max-width: 800px) {
-    .dccw-prf-card {
+    .dccw-prf-cardcontainer {
         width: 100%;
     }
 }
 
 /* Loading Spinner */
+.dccw-spinnercontainer {
+    padding-left:48%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .lds-default {
     display: inline-block;
     position: relative;
