@@ -58,6 +58,7 @@ function householdPRF() {
             /*Start DIV writeback*/
             if(data.status=="success"){
                 console.log('API success. Returning data.');
+                divHTML = divHTML+`<div class="dccw-prf-cardcontainer">`;
                 data.members.forEach((person) => {
                     divHTML = divHTML+`<div class="dccw-prf-card"><div class="dccw-prf-person">${person.FirstName} ${person.LastName}</div>`;
                     if (person.State == "Valid") {
@@ -68,7 +69,8 @@ function householdPRF() {
                     divHTML = divHTML+`</div>`;
                 }
                 )
-
+                
+                divHTML = divHTML+`</div>`;
                 document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
             } else {
                 console.log('API returned failure. Returning error.');

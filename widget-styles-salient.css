@@ -723,6 +723,10 @@ h2#householdName {
     color: #606060;
 }
 
+.mpp-innerpage--address-container {
+    font-size: 1rem;
+}
+
 h2.mpp-household--header {
     font-family: 'DM Serif Display';
     color: #606060;
