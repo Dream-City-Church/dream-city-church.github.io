@@ -16,12 +16,12 @@ function waitForToken() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
     console.log('Starting wait loop...');
-        for (var i=1; i <= 5; i++) {
+        for (var i=1; i <= 6; i++) {
             setTimeout(function() {
                 authToken = localStorage.getItem('mpp-widgets_AuthToken');
                 tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
                 if((authToken !== null && authToken !== 'null') && new Date(tokenExpires) > new Date()) {console.log('Token found after waiting. Proceeding...');householdPRF();};
-                if(i=5 && (authToken == null || authToken == 'null' || new Date(tokenExpires) < new Date())) {console.log('Token not found after waiting...');notSignedIn();};
+                if(i=6 && (authToken == null || authToken == 'null' || new Date(tokenExpires) < new Date())) {console.log('Token not found after waiting...');notSignedIn();};
                 console.log('Waiting 500 msecs...');
             }, 500*i);
             if((authToken !== null && authToken !== 'null') && new Date(tokenExpires) > new Date()) {break;};
@@ -32,7 +32,6 @@ function waitForToken() {
 function notSignedIn() {
     let divHTML = "";
     console.log('No token found. Displaying sign in message.');
-    divHTML = '<p>Please sign in to view this page.</p>';
     document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
     document.getElementsByTagName("dcc-householdPRF")[0].className = "statusFail";
 }
@@ -60,13 +59,13 @@ function householdPRF() {
             if(data.status=="success"){
                 console.log('API success. Returning data.');
                 data.members.forEach((person) => {
-                    divHTML = divHTML+`<div class="dccw-prf-person">${person.FirstName} ${person.LastName}</div>`;
+                    divHTML = divHTML+`<div class="dccw-prf-card"><div class="dccw-prf-person">${person.FirstName} ${person.LastName}</div>`;
                     if (person.State == "Valid") {
                         divHTML = divHTML+`<div class="dccw-prf-person-status"><i class="fa-regular fa-circle-check" style="color:green;"></i> Participation Release Form valid until ${person.Expires}.</div>`;
                     } else {
                         divHTML = divHTML+`<div class="dccw-prf-person-status"><i class="fa-regular fa-circle-xmark" style="color:red;"></i> No valid Participation Release Form on file. <a href="https://dreamcitychurch.us/mydcc/participation-release-form/" target="_blank">Complete your form here</a>.</div>`;
                     }
-                    divHTML = divHTML+`<br />`;
+                    divHTML = divHTML+`</div>`;
                 }
                 )
 
