@@ -39,7 +39,7 @@ function notSignedIn() {
 function householdPRF() {
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     let tokenExpires = localStorage.getItem('mpp-widgets_ExpiresAfter');
-    let divHTML = `<h3>Household Participation Release Forms</h3><br /><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+    let divHTML = `<h3>Household Participation Release Forms</h3><br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
     document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
 
     console.log('V.0.7 - Sending API call...');
