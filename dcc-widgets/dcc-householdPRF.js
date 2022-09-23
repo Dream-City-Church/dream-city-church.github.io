@@ -43,7 +43,7 @@ function householdPRF() {
     let divHTML = "<h3>Household Participation Release Forms</h3>";
     document.getElementsByTagName("dcc-householdPRF")[0].innerHTML = divHTML;
 
-    console.log('V.0.6 - Sending API call...');
+    console.log('V.0.7 - Sending API call...');
     const params = {
         "authToken": authToken,
         "expires": new Date(tokenExpires)
@@ -60,11 +60,11 @@ function householdPRF() {
             if(data.status=="success"){
                 console.log('API success. Returning data.');
                 data.members.forEach((person) => {
-                    divHTML = divHTML+`${person.FirstName} ${person.LastName}: `;
+                    divHTML = divHTML+`<div class="dccw-prf-person">${person.FirstName} ${person.LastName}</div>`;
                     if (person.State == "Valid") {
-                        divHTML = divHTML+`<i class="fa-regular fa-circle-check" style="color:green;"></i> Participation Release Form valid until ${person.Expires}.`;
+                        divHTML = divHTML+`<div class="dccw-prf-person-status"><i class="fa-regular fa-circle-check" style="color:green;"></i> Participation Release Form valid until ${person.Expires}.</div>`;
                     } else {
-                        divHTML = divHTML+`<i class="fa-regular fa-circle-xmark" style="color:red;"></i> No valid Participation Release Form on file. <a href="https://dreamcitychurch.us/mydcc/participation-release-form/" target="_blank">Complete your form here</a>.`;
+                        divHTML = divHTML+`<div class="dccw-prf-person-status"><i class="fa-regular fa-circle-xmark" style="color:red;"></i> No valid Participation Release Form on file. <a href="https://dreamcitychurch.us/mydcc/participation-release-form/" target="_blank">Complete your form here</a>.</div>`;
                     }
                     divHTML = divHTML+`<br />`;
                 }
