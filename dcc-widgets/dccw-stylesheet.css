@@ -1,4 +1,8 @@
 /* Househodl PRF Widget */
+dcc-householdprf h3 {
+    padding-bottom: 0.5em;
+}
+
 .dccw-prf-card {
     margin-bottom: 1em;
     padding: 0.5em 1em;
@@ -18,7 +22,7 @@
     font-size: 0.95em;
 }
 
-@media screen(max-width: 800px) {
+@media (max-width: 800px) {
     .dccw-prf-card {
         width: 100%;
     }
