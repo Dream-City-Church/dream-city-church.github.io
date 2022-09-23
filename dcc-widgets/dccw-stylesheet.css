@@ -39,12 +39,14 @@ dcc-householdprf h3 {
     position: relative;
     width: 80px;
     height: 80px;
+    margin-right: auto;
+    margin-left: auto;
   }
   .lds-default div {
     position: absolute;
     width: 6px;
     height: 6px;
-    background: #001f4e;
+    background: #c7c9c8;
     border-radius: 50%;
     animation: lds-default 1.2s linear infinite;
   }
