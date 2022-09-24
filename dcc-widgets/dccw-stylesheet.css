@@ -5,16 +5,18 @@ dcc-householdprf h3 {
 
 .dccw-prf-cardcontainer {
     min-height:100px;
-    width: 50%;
+    width: 100%;
 }
 
 .dccw-prf-card {
-    margin-bottom: 1em;
-    padding: 0.5em 1em;
-    background-color: #fafafa;
-    border-radius: 0.25em;
-    width: 100%;
-    box-shadow: 0em 0.15em 0.25em 0em rgb(0 0 0 / 10%);
+  width: 48%;  
+  margin-bottom: 1em;
+  margin-right: 2%;
+  float: left;
+  padding: 0.5em 1em;
+  background-color: #fafafa;
+  border-radius: 0.25em;
+  box-shadow: 0em 0.15em 0.25em 0em rgb(0 0 0 / 10%);
 }
 
 .dccw-prf-person {
@@ -29,8 +31,10 @@ dcc-householdprf h3 {
 }
 
 @media (max-width: 800px) {
-    .dccw-prf-cardcontainer {
+    .dccw-prf-card {
         width: 100%;
+        margin-right: 0;
+        float: none;
     }
 }
 
