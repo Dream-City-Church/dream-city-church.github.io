@@ -301,7 +301,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         margin-bottom: 2em;
     }
     .mpp-card--header {
-        height: 180px;
+        height: 190px;
     }
     .mpp-card--description {
         -webkit-line-clamp: 3;
