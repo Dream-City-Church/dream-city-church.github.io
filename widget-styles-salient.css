@@ -233,10 +233,15 @@
 
 .mpp-card--description {
     -webkit-line-clamp: 3;
+    overflow: hidden;
     clear: both;
     line-height: 1.25em;
     padding: 0 0.75em;
     color: var(--root-text-color);
+}
+
+.mpp-card--description p {
+    display: inline;
 }
 
 .mpp-card--subtitle {
