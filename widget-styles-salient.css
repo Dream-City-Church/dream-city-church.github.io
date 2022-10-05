@@ -257,6 +257,18 @@ h4.mpp-card--subtitle:nth-child(1) {
     margin-top: 0.5em;
 }
 
+.event-date-range:before, .group-meeting-day:before, .opportunity-start-date:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f073";
+}
+
+.event-location:before, .group-location:before, .opportunity-location:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f3c5";
+}
+
 .mpp-card--footer {
     padding: 0;
     text-align: center;
