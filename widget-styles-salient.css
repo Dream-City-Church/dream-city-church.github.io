@@ -270,7 +270,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     content: "\f3c5";
 }
 
-.group-start-date {
+.group-start-date:before {
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f017";
