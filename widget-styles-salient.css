@@ -250,7 +250,7 @@
     font-weight: 600;
     color: var(--root-text-color);
     padding: 0 0.75em;
-    text-align: center;
+    text-align: left;
 }
 
 h4.mpp-card--subtitle:nth-child(1) {
@@ -266,7 +266,14 @@ h4.mpp-card--subtitle:nth-child(1) {
 .event-location:before, .group-location:before, .opportunity-location:before {
     font-family: 'FontAwesome';
     padding-right: 7px;
+    padding-left: 1px;
     content: "\f3c5";
+}
+
+.group-start-date {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f017";
 }
 
 .mpp-card--footer {
