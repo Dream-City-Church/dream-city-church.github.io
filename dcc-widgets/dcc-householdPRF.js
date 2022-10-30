@@ -59,10 +59,10 @@ function householdPRF() {
             if(data.status=="success"){
                 console.log('API success. Returning data.');
                 divHTML = `<h3>Household Participation Release Forms</h3><div class="dccw-prf-cardcontainer">`;
-                data.members.forEach((person) => {
+                data.members[0].forEach((person) => {
                     divHTML = divHTML+`<div class="dccw-prf-card"><div class="dccw-prf-person">${person.FirstName} ${person.LastName}</div>`;
                     if (person.State == "Valid") {
-                        divHTML = divHTML+`<div class="dccw-prf-person-status"><i class="fa-regular fa-circle-check" style="color:green;"></i> Participation Release Form valid until ${person.Expires}.</div>`;
+                        divHTML = divHTML+`<div class="dccw-prf-person-status"><i class="fa-regular fa-circle-check" style="color:green;"></i> Participation Release Form valid until ${person.Expires}.</div><div id="downloadPRF" class="dccw-downloadButton"><a href="${person.FileUrl}" target="_blank"><i class="fa-solid fa-file-arrow-down"></i></a></div>`;
                     } else {
                         divHTML = divHTML+`<div class="dccw-prf-person-status"><i class="fa-regular fa-circle-xmark" style="color:red;"></i> No valid Participation Release Form on file. <a href="https://dreamcitychurch.us/mydcc/participation-release-form/" target="_blank">Complete your form here</a>.</div>`;
                     }
