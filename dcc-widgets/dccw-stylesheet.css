@@ -1,11 +1,11 @@
 /* Househodl PRF Widget */
 dcc-householdprf h3 {
-    padding-bottom: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 .dccw-prf-cardcontainer {
-    min-height:100px;
-    width: 100%;
+  min-height:100px;
+  width: 100%;
 }
 
 .dccw-prf-card {
@@ -20,14 +20,19 @@ dcc-householdprf h3 {
 }
 
 .dccw-prf-person {
-    font-weight: bold;
-    font-size: 1.1em;
-    padding-bottom: 0.25em;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding-bottom: 0.25em;
 }
 
 .dccw-prf-person-status {
-    font-style: italic;
-    font-size: 0.95em;
+  font-style: italic;
+  font-size: 0.95em;
+  float: left;
+}
+
+#downloadPRF {
+  text-align: right;
 }
 
 @media (max-width: 800px) {
@@ -35,6 +40,10 @@ dcc-householdprf h3 {
         width: 100%;
         margin-right: 0;
         float: none;
+    }
+
+    #downloadPRF {
+      text-align: left;
     }
 }
 
