@@ -32,7 +32,9 @@ dcc-householdprf h3 {
 }
 
 #downloadPRF {
-  text-align: right;
+  float: right;
+  height: 0;
+  margin-top: -1.4em;
 }
 
 @media (max-width: 800px) {
@@ -40,10 +42,6 @@ dcc-householdprf h3 {
         width: 100%;
         margin-right: 0;
         float: none;
-    }
-
-    #downloadPRF {
-      text-align: left;
     }
 }
 
