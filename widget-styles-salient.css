@@ -524,26 +524,17 @@ div#formFields {
     letter-spacing: 1px;
 }
 
-/*
-@media only screen and (min-width: 700px) {
-    .custom-date-input {
-        width: 50% !important;
-        float: left;
+
+@media only screen and (min-width: 768px) {
+    #contactInfoForm > .mppw-row > .mppw-col {
+        flex: 0 1 100%;
+        margin-bottom: 1.5rem;
     }
-    .mppw-form-field-alt {
-        width: 50%;
-        float: left;
-    }
-    .mppw-form-field {
-        clear: both;
+    #addressFormWrapper > .mpp-row {
+        margin-bottom: 1.5rem;
     }
 }
 
-.submit--btn {
-    clear:both;
-    float:left;
-}
-*/
 
 /* Buttons */
 .mppw-btn {
