@@ -107,6 +107,12 @@
     width: 100%;
 }
 
+.mpp-innerpage--datetime:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f017";
+}
+
 .mppw-arrow {
     border-color: #ffa400;
 }
@@ -342,8 +348,16 @@ h4.mpp-card--subtitle:nth-child(1) {
     align-items: baseline;
 }
 
+.form--row {
+    padding-bottom: 1.5rem;
+}
+
 .form--col {
     min-height: 60px;
+}
+
+div#formFields {
+    padding-top: 0.5em;
 }
 
 .mppw-component-container h1, #responseFormTitle h2, #customForm h1, #customForm h3 {
@@ -359,25 +373,43 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mppw-form-field--is-valid .mppw-form-field__control, .mppw-form-field--is-invalid .mppw-form-field__control, .mppw-form-field__static-container .mppw-form-field__control {
-    padding: 0.75em 1em;
+    font-size: 1rem;
+    padding: 0.5rem 0;
     margin-top: 0.25em;
     margin-bottom: 0.25em;
     font-weight: bold;
 }
 
 .mppw-form-field__label {
+    color: #777;
+    font-size: 1rem;
     font-weight: 550;
-    padding: 0.25em 1em;
+    padding: 0.5rem 0;
     background: transparent;
     display: inline-block;
     width: inherit;
     position: absolute;
-    left: -0.25em;
-    top: -20px;
+    left: 0;
+    top: -1.75rem;
     overflow: hidden;
     pointer-events: none;
     transition: none;
-    font-size: 12px;
+}
+
+.mppw-form-field__alt-label {
+
+    font-size: 1rem;
+    font-weight: 550;
+    padding: 0.5rem 0;
+    background: transparent;
+    display: inline-block;
+    width: inherit;
+    position: absolute;
+    left: 0;
+    top: -1.75rem;
+    overflow: hidden;
+    pointer-events: none;
+    transition: none;
 }
 
 .mppw-form-field__control:focus + .mppw-form-field__label {
@@ -433,16 +465,20 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
-    color: #999;
+    color: #777;
     font-weight: 550;
 }
 
 .mppw-form-field-alt {
     border: none;
+    padding: 0.5em 0;
 }
 
 .mppw-form-field__alt-label {
     margin-bottom: 0.25em;
+    font-size: 1rem;
+    font-weight: 550;
+    padding: 0;
 }
 
 .mppw-form-field_alt-control {
