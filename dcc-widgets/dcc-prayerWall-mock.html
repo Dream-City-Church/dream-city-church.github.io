@@ -1,0 +1,177 @@
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/a6a26322af.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding:0;
+            margin:0;
+            font-family:sans-serif;
+            font-size: 1em;
+        }
+        #container {
+            max-width:900px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 4em;
+            padding: 0 1em;
+        }
+        #prayer-wall {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: space-between;
+            gap: 1% 2%
+
+        }
+        .prayer-card {
+            background-color: #efefef;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            padding: 1em;
+            flex: 0 0 45%;
+            box-shadow: 0.15em 0.25em 0.15em rgb(0 0 0 / 0.1)
+        }
+        @media screen and (max-width: 850px) {
+            .prayer-card {
+                flex: 1 1 100%;
+            }
+        }
+        .prayer-name {
+            font-weight: bold;
+            float: left;
+            width: 60%;
+        }
+        .prayer-date {
+            float: right;
+            width: 40%;
+            text-align: right;
+            font-size: 0.75em;
+            color: #777;
+        }
+        .prayer-description {
+            margin: 2em 1em 1em 1em;
+            padding: 1em 0.5em;
+            border-top: 1px solid #dfdfdf;
+            border-bottom: 1px solid #dfdfdf;
+        }
+        .prayer-counter {
+            text-align:center;
+            font-style:italic;
+            font-size: 0.8em;
+            color: #777;
+        }
+        .prayer-action {
+            width: 66%;
+            max-width: 300px;
+            margin-right:auto;
+            margin-left:auto;
+            text-align: center;
+            margin-top: 1em;
+        }
+        .prayer-button {
+            width:100%;
+            border: 0;
+            padding: 0.5em 1em;
+            color: #fff;
+            border-radius: 0.5em;
+            font-weight: bold;
+        }
+        .prayer-needs-prayer {
+            background-color: #001f4e;
+        }
+        .prayer-is-praying {
+            background-color: #ffa400;
+        }
+    </style>
+    <body>
+        <div id="container">
+            <div id="prayer-wall">
+                <div class="prayer-card">
+                    <div class="prayer-name">Renata</div>
+                    <div class="prayer-date">10/24/2022</div>
+                    <div class="prayer-description">for daughters to come out of addictions and invite Jesus in their lives</div>
+                    <div class="prayer-counter">23 are praying</div>
+                    <div class="prayer-action prayer-id-1679">
+                        <button class="prayer-button prayer-needs-prayer">
+                            <i class="fa-solid fa-hands-praying" style="Font-Family:FontAwesome;"></i> I will pray
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="prayer-card">
+                    <div class="prayer-name">Laurie</div>
+                    <div class="prayer-date">10/03/2022</div>
+                    <div class="prayer-description">My brother was in explosion/fire. 2nd and 3rd degree burns on 18% of his body. Lungs appear to be ok but sedated and in ventilator because of the deep burns on chest. Mom and sister driving across state. Surgery today. Praying for Healing, recovery and life changes. Travel mercies. </div>
+                    <div class="prayer-counter">74 are praying</div>
+                    <div class="prayer-action prayer-id-1662">
+                        <button class="prayer-button prayer-is-praying">
+                            <i class="fa-solid fa-hands-praying" style="Font-Family:FontAwesome;"></i> I'm praying!
+                        </button>
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="prayer-name">Carol</div>
+                    <div class="prayer-date">10/16/2022</div>
+                    <div class="prayer-description">I have been recently diagnosed with heart failure and I'm a insullin Diabetic- please pray for healing</div>
+                    <div class="prayer-counter">53 are praying</div>
+                    <div class="prayer-action prayer-id-1679">
+                        <button class="prayer-button prayer-is-praying">
+                            <i class="fa-solid fa-hands-praying" style="Font-Family:FontAwesome;"></i> I'm praying!
+                        </button>
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="prayer-name">Leila</div>
+                    <div class="prayer-date">10/10/2022</div>
+                    <div class="prayer-description">I am 8 months pregnant and I would like to pray for a healthy baby and delivery</div>
+                    <div class="prayer-counter">138 are praying</div>
+                    <div class="prayer-action prayer-id-1679">
+                        <button class="prayer-button prayer-needs-prayer">
+                            <i class="fa-solid fa-hands-praying" style="Font-Family:FontAwesome;"></i> I will pray
+                        </button>
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="prayer-name">Steve</div>
+                    <div class="prayer-date">10/24/2022</div>
+                    <div class="prayer-description">for daughters to come out of addictions and invite Jesus in their lives</div>
+                    <div class="prayer-counter">23 are praying</div>
+                    <div class="prayer-action prayer-id-1679">
+                        <button class="prayer-button  prayer-is-praying">
+                            <i class="fa-solid fa-hands-praying" style="Font-Family:FontAwesome;"></i> I'm praying!
+                        </button>
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="prayer-name">Suzie</div>
+                    <div class="prayer-date">10/16/2022</div>
+                    <div class="prayer-description">I have been recently diagnosed with heart failure and I'm a insullin Diabetic- please pray for healing</div>
+                    <div class="prayer-counter">53 are praying</div>
+                    <div class="prayer-action prayer-id-1679">
+                        <button class="prayer-button prayer-is-praying">
+                            <i class="fa-solid fa-hands-praying" style="Font-Family:FontAwesome;"></i> I'm praying!
+                        </button>
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="prayer-name">Mary</div>
+                    <div class="prayer-date">10/10/2022</div>
+                    <div class="prayer-description">I am 8 months pregnant and I would like to pray for a healthy baby and delivery</div>
+                    <div class="prayer-counter">138 are praying</div>
+                    <div class="prayer-action prayer-id-1679">
+                        <button class="prayer-button prayer-needs-prayer">
+                            <i class="fa-solid fa-hands-praying" style="Font-Family:FontAwesome;"></i> I will pray
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </body>
