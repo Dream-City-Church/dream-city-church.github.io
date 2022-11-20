@@ -11,7 +11,7 @@ function loadPrayerWall() {
                 console.log('API success. Returning data.');
                 divHTML = `<div id="prayer-wall">`;
                 data.prayers[0].forEach((prayer) => {
-                    divHTML = divHTML+`<div class="prayer-card prayer-id-${prayer.PrayerId}">
+                    divHTML = divHTML+`<div class="prayer-card prayer-id-${prayer.PrayerID}">
                     <div class="prayer-name">${prayer.Name}</div>
                     <div class="prayer-date">${prayer.Date}</div>
                     <div class="prayer-description">${prayer.Description}</div>
