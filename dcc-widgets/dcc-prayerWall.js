@@ -1,4 +1,7 @@
 function loadPrayerWall() {
+    divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
+    document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+    
     const options = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'}
