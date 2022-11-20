@@ -15,7 +15,6 @@ function loadPrayerWall() {
                     <div class="prayer-name">${prayer.Name}</div>
                     <div class="prayer-date">${prayer.Date}</div>
                     <div class="prayer-description">${prayer.Description}</div>
-                    <div class="prayer-counter">23 are praying</div>
                     </div>`;
                 }
                 )
