@@ -45,6 +45,76 @@ dcc-householdprf h3 {
     }
 }
 
+/* Prayer Wall */
+#prayer-wall {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: space-between;
+  gap: 1% 2%
+
+}
+.prayer-card {
+  background-color: #efefef;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  padding: 1em;
+  flex: 0 0 45%;
+  box-shadow: 0.15em 0.25em 0.15em rgb(0 0 0 / 0.1)
+}
+@media screen and (max-width: 850px) {
+  .prayer-card {
+      flex: 1 1 100%;
+  }
+}
+.prayer-name {
+  font-weight: bold;
+  float: left;
+  width: 60%;
+}
+.prayer-date {
+  float: right;
+  width: 40%;
+  text-align: right;
+  font-size: 0.75em;
+  color: #777;
+}
+.prayer-description {
+  margin: 2em 1em 1em 1em;
+  padding: 1em 0.5em;
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+}
+.prayer-counter {
+  text-align:center;
+  font-style:italic;
+  font-size: 0.8em;
+  color: #777;
+}
+.prayer-action {
+  width: 66%;
+  max-width: 300px;
+  margin-right:auto;
+  margin-left:auto;
+  text-align: center;
+  margin-top: 1em;
+}
+.prayer-button {
+  width:100%;
+  border: 0;
+  padding: 0.5em 1em;
+  color: #fff;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+.prayer-needs-prayer {
+  background-color: #001f4e;
+}
+.prayer-is-praying {
+  background-color: #ffa400;
+}
+
 /* Loading Spinner */
 .dccw-spinnercontainer {
     padding-left:48%;
