@@ -60,7 +60,7 @@ dcc-householdprf h3 {
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   padding: 1em;
-  flex: 0 0 45%;
+  flex: 0 0 49%;
   box-shadow: 0.15em 0.25em 0.15em rgb(0 0 0 / 0.1)
 }
 @media screen and (max-width: 850px) {
