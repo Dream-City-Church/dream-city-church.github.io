@@ -527,6 +527,31 @@ div#formFields {
     #addressFormWrapper > .mpp-row {
         margin-bottom: 1.5rem;
     }
+
+    .mppw-form-field {
+        margin-top: 2.5rem;
+    }
+
+    .mpp-household .mppw-form-field__control:not([value=""]) {
+        padding: 0.75em 1em;
+        font-weight: bold;
+    }
+
+    label[for="emailUnlistedCheck"] {
+        display:none;
+    }
+
+    label[for="mobileUnlistedCheck"] {
+        display:none;
+    }
+
+    label[for="doNotTextCheck"] {
+        display:none;
+    }
+
+    label[for="bulkEmailOptOutCheck"] {
+        display:none;
+    }
 }
 
 
@@ -860,6 +885,10 @@ div#mobileUnlistedCheck {
 @media only screen and (max-width: 700px) {
     .mpp-household .mpp-household--header-container {
         display: inline-block;
+    }
+
+    .mpp-household .mpp-household--form-subheader {
+        line-height: inherit;
     }
 }
 
