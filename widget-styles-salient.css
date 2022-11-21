@@ -539,6 +539,10 @@ div#formFields {
         font-weight: bold;
     }
 
+    .mpp-household--checkbox-container > label {
+        display: none;
+    }
+
     label[for="emailUnlistedCheck"] {
         display:none;
     }
