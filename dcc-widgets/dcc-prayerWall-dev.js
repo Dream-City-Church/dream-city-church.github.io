@@ -1,13 +1,27 @@
 function addPrayer(prayerID) {
+    /*Get local storage, append new prayerID, then store back to local*/
+    var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
+    prayedForPrayers.push(prayerID);
+    localStorage.setItem("prayedForPrayers", JSON.stringify(prayedForPrayers));
+    /*Update element to show as prayed for*/
     document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
     document.getElementById("prayer-id-"+prayerID).classList.add(".prayer-is-praying");
     document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
 }
 
 function loadPrayerWall() {
+    /*Initialize local storage for prayed-for prayers*/
+    var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
+    if(prayedForPrayers == null) {
+        prayedForPrayers = [];
+        localStorage.setItem("prayedForPrayers", JSON.stringify(prayedForPrayers));
+    }
+
+    /*Initialize loading spinner*/
     divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
     
+    /*Set API options*/
     const options = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'}
@@ -17,7 +31,7 @@ function loadPrayerWall() {
         .then(function (data) {
             /*Start DIV writeback*/
             if(data.status=="success"){
-                console.log('API success. Returning data.');
+                console.log('Loading Prayer Wall');
                 divHTML = `<div id="prayer-wall">`;
                 data.prayers[0].forEach((prayer) => {
                     divHTML = divHTML+`<div class="prayer-card">
@@ -35,14 +49,25 @@ function loadPrayerWall() {
                 
                 divHTML = divHTML+`</div>`;
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+
             } else {
-                console.log('API returned failure. Returning error.');
+                /*Report something went wrong - failure response from server*/
+                console.log('Prayer Wall resposne failure. Returning error.');
                 divHTML = divHTML+`<p>Sorry, something went wrong. Please try again.</p>`;
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
         })
+        .then(function () {
+            /*Loop through Prayed For Prayers and update to show as prayed for*/
+            prayedForPrayers.forEach(prayerID) {
+                document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
+                document.getElementById("prayer-id-"+prayerID).classList.add(".prayer-is-praying");
+                document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
+            }
+        })
         .catch(function (fail) {
-            console.log('API call failed. Returning error.');
+            /*Report something went wrong - couldn't connect to API*/
+            console.log('Prayer Wall connection failure. Returning error.');
             divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
             document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
         }
