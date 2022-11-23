@@ -10,7 +10,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.22.11.23.1');
+    console.log('Prayer Wall v0.22.11.23.2');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -60,11 +60,11 @@ function loadPrayerWall() {
         })
         .then(function () {
             /*Loop through Prayed For Prayers and update to show as prayed for*/
-            prayedForPrayers.forEach(prayerID) {
+            prayedForPrayers.forEach(function(prayerID) {
                 document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
                 document.getElementById("prayer-id-"+prayerID).classList.add(".prayer-is-praying");
                 document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
-            }
+            });
         })
         .catch(function (fail) {
             /*Report something went wrong - couldn't connect to API*/
