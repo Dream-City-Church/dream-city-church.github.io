@@ -1,3 +1,9 @@
+function addPrayer(prayerID) {
+    document.getElementById("prayer-id-"+prayerID).onclick="";
+    document.getElementById("prayer-id-"+prayerID).classList.add(".prayer-is-praying");
+    document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
+}
+
 function loadPrayerWall() {
     divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
@@ -14,12 +20,12 @@ function loadPrayerWall() {
                 console.log('API success. Returning data.');
                 divHTML = `<div id="prayer-wall">`;
                 data.prayers[0].forEach((prayer) => {
-                    divHTML = divHTML+`<div class="prayer-card prayer-id-${prayer.PrayerID}">
+                    divHTML = divHTML+`<div class="prayer-card">
                     <div class="prayer-name">${prayer.Name}</div>
                     <div class="prayer-date">${prayer.Date}</div>
                     <div class="prayer-description">${prayer.Description}</div>
                     <div class="prayer-action ">
-                        <button class="prayer-button prayer-id-${prayer.PrayerID}">
+                        <button id="prayer-id-${prayer.PrayerID}" class="prayer-button" onclick="addPrayer(${prayer.PrayerID})">
                             I Will Pray <i class="fa-solid fa-hands-praying"></i> 
                         </button>
                     </div>
