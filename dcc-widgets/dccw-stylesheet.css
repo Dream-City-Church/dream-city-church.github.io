@@ -99,9 +99,10 @@ dcc-householdprf h3 {
   margin-top: 1em;
 }
 .prayer-button {
-  font-size:0.85em;
-  width:50%;
-  height:2rem;
+  font-size: 0.85em;
+  width: 50%;
+  max-width: 200px;
+  height: 2rem;
   padding: 0.5em 1em;
   color: #001f4e;
   border-radius: 0.5em;
@@ -222,7 +223,7 @@ dcc-householdprf h3 {
     position: absolute;
     width: 5px;
     height: 5px;
-    top: -10px;
+    top: -5px;
     border-radius: 50%;
     background: #ffa400;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
