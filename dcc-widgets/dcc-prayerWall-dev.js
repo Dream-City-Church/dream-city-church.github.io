@@ -24,17 +24,16 @@ function addPrayer(prayerID) {
             }else{
                 document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
                 document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';
-            }
-        }
+            };
+        })
         .catch(function(fail){
             document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
             document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';
         })
-        );
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.22.11.23.4');
+    console.log('Prayer Wall v0.22.11.23.5');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
