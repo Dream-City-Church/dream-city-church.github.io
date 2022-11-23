@@ -1,4 +1,6 @@
 function addPrayer(prayerID) {
+    document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
+    document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
     const params = {
         "prayerID": prayerID,
     };
@@ -19,8 +21,15 @@ function addPrayer(prayerID) {
                 document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
                 document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
                 document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
+            }else{
+                document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
+                document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';
             }
         }
+        .catch(function(fail){
+            document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
+            document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';
+        })
         );
 }
 
