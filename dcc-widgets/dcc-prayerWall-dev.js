@@ -10,7 +10,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.8.1');
+    console.log('Prayer Wall v0.22.11.23.1');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
