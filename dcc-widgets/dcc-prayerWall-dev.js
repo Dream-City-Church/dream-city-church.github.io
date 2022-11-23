@@ -1,5 +1,5 @@
 function addPrayer(prayerID) {
-    document.getElementById("prayer-id-"+prayerID).onclick="";
+    document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
     document.getElementById("prayer-id-"+prayerID).classList.add(".prayer-is-praying");
     document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
 }
