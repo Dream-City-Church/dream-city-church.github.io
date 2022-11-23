@@ -5,7 +5,7 @@ function addPrayer(prayerID) {
     localStorage.setItem("prayedForPrayers", JSON.stringify(prayedForPrayers));
     /*Update element to show as prayed for*/
     document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
-    document.getElementById("prayer-id-"+prayerID).classList.add(".prayer-is-praying");
+    document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
     document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
 }
 
@@ -62,7 +62,7 @@ function loadPrayerWall() {
             /*Loop through Prayed For Prayers and update to show as prayed for*/
             prayedForPrayers.forEach(function(prayerID) {
                 document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
-                document.getElementById("prayer-id-"+prayerID).classList.add(".prayer-is-praying");
+                document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
                 document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
             });
         })
