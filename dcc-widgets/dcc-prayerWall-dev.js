@@ -1,16 +1,31 @@
 function addPrayer(prayerID) {
-    /*Get local storage, append new prayerID, then store back to local*/
-    var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
-    prayedForPrayers.push(prayerID);
-    localStorage.setItem("prayedForPrayers", JSON.stringify(prayedForPrayers));
-    /*Update element to show as prayed for*/
-    document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
-    document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
-    document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
+    const params = {
+        "prayerID": prayerID,
+    };
+    const options = {
+        method: 'POST',
+        body: JSON.stringify( params ),
+        headers: {'Content-Type': 'application/json'}
+    };
+    fetch( 'https://prod-24.westus2.logic.azure.com:443/workflows/434c7064b3204e948e1dcc7a96dfe540/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0imIlONgjS1gpDOm9g2DG-dv4_iZzO5H-KnRn6IYGAc', options )
+        .then(function (response) {return response.json();})
+        .then(function (data) {
+            if(data.status=="success"){
+                /*Get local storage, append new prayerID, then store back to local*/
+                var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
+                prayedForPrayers.push(prayerID);
+                localStorage.setItem("prayedForPrayers", JSON.stringify(prayedForPrayers));
+                /*Update element to show as prayed for*/
+                document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
+                document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
+                document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
+            }
+        }
+        );
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.22.11.23.2');
+    console.log('Prayer Wall v0.22.11.23.3');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
