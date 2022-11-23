@@ -100,6 +100,7 @@ dcc-householdprf h3 {
 .prayer-button {
   font-size:0.85em;
   width:50%;
+  height:2rem;
   padding: 0.5em 1em;
   color: #001f4e;
   border-radius: 0.5em;
@@ -134,6 +135,7 @@ dcc-householdprf h3 {
   }
   .lds-default div {
     position: absolute;
+    top: -5px;
     width: 6px;
     height: 6px;
     background: #c7c9c8;
