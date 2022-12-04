@@ -518,6 +518,38 @@ div#formFields {
     letter-spacing: 1px;
 }
 
+h3.mpp-household--form-header {
+    text-decoration: underline;
+}
+
+#removeFromDirectoryCheck {
+    display: none;
+}
+
+#emailUnlistedCheck {
+    display: none;
+}
+
+#mobileUnlistedCheck {
+    display: none;
+}
+
+label[for="emailUnlistedCheck"] {
+    display:none;
+}
+
+label[for="mobileUnlistedCheck"] {
+    display:none;
+}
+
+label[for="doNotTextCheck"] {
+    display:none;
+}
+
+label[for="bulkEmailOptOutCheck"] {
+    display:none;
+}
+
 
 @media only screen and (min-width: 768px) {
     #contactInfoForm > .mppw-row > .mppw-col {
@@ -543,21 +575,6 @@ div#formFields {
         display: none;
     }
 
-    label[for="emailUnlistedCheck"] {
-        display:none;
-    }
-
-    label[for="mobileUnlistedCheck"] {
-        display:none;
-    }
-
-    label[for="doNotTextCheck"] {
-        display:none;
-    }
-
-    label[for="bulkEmailOptOutCheck"] {
-        display:none;
-    }
 }
 
 /* Buttons */
