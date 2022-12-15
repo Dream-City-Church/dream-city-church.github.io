@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.22.11.23.5');
+    console.log('Prayer Wall v0.22.12.14.5');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -55,19 +55,33 @@ function loadPrayerWall() {
         .then(function (data) {
             /*Start DIV writeback*/
             if(data.status=="success"){
-                console.log('Loading Prayer Wall');
                 divHTML = `<div id="prayer-wall">`;
                 data.prayers[0].forEach((prayer) => {
-                    divHTML = divHTML+`<div class="prayer-card">
-                    <div class="prayer-name">${prayer.Name}</div>
-                    <div class="prayer-date">${prayer.Date}</div>
-                    <div class="prayer-description">${prayer.Description}</div>
-                    <div class="prayer-action ">
-                        <button id="prayer-id-${prayer.PrayerID}" class="prayer-button" onclick="addPrayer(${prayer.PrayerID})">
-                            I Will Pray <i class="fa-solid fa-hands-praying"></i> 
-                        </button>
-                    </div>
-                    </div>`;
+                    if(prayedForPrayers.indexOf(prayer.PrayerID)!==-1){
+                        /* Prayer ID found in local storage as prayed for */
+                        divHTML = divHTML+`<div class="prayer-card">
+                        <div class="prayer-name">${prayer.Name}</div>
+                        <div class="prayer-date">${prayer.Date}</div>
+                        <div class="prayer-description">${prayer.Description}</div>
+                        <div class="prayer-action ">
+                            <button id="prayer-id-${prayer.PrayerID}" class="prayer-button prayer-is-praying">
+                                I'm Praying! 
+                            </button>
+                        </div>
+                        </div>`;
+                    } else {
+                        /* Prayer ID not found in local storage as prayed for */
+                        divHTML = divHTML+`<div class="prayer-card">
+                        <div class="prayer-name">${prayer.Name}</div>
+                        <div class="prayer-date">${prayer.Date}</div>
+                        <div class="prayer-description">${prayer.Description}</div>
+                        <div class="prayer-action ">
+                            <button id="prayer-id-${prayer.PrayerID}" class="prayer-button" onclick="addPrayer(${prayer.PrayerID})">
+                                I Will Pray <i class="fa-solid fa-hands-praying"></i> 
+                            </button>
+                        </div>
+                        </div>`;
+                    }
                 }
                 )
                 
@@ -76,23 +90,15 @@ function loadPrayerWall() {
 
             } else {
                 /*Report something went wrong - failure response from server*/
-                console.log('Prayer Wall resposne failure. Returning error.');
-                divHTML = divHTML+`<p>Sorry, something went wrong. Please try again.</p>`;
+                console.log('Prayer Wall response failure. Returning error.');
+                divHTML = divHTML+`<p>Sorry, something went wrong. Please try again later.</p>`;
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
-        })
-        .then(function () {
-            /*Loop through Prayed For Prayers and update to show as prayed for*/
-            prayedForPrayers.forEach(function(prayerID) {
-                document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
-                document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
-                document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
-            });
         })
         .catch(function (fail) {
             /*Report something went wrong - couldn't connect to API*/
             console.log('Prayer Wall connection failure. Returning error.');
-            divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
+            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
             document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
         }
     )
