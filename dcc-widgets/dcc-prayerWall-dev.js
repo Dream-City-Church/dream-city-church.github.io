@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.22.12.14.2');
+    console.log('Prayer Wall v0.22.12.14.3');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -82,6 +82,12 @@ function loadPrayerWall() {
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
         })
+        .catch(function (fail) {
+            /*Report something went wrong - couldn't connect to API*/
+            console.log('Prayer Wall connection failure. Returning error.');
+            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
+            document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+        }
         .then(function () {
             /*Loop through Prayed For Prayers and update to show as prayed for*/
             console.log('Updating prayed for prayers');
@@ -92,12 +98,6 @@ function loadPrayerWall() {
                 document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
             });
         })
-        .catch(function (fail) {
-            /*Report something went wrong - couldn't connect to API*/
-            console.log('Prayer Wall connection failure. Returning error.');
-            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
-            document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
-        }
     )
 }
 
