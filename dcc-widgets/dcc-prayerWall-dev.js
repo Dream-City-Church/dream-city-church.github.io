@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.22.12.14.3');
+    console.log('Prayer Wall v0.22.12.14.4');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -58,17 +58,31 @@ function loadPrayerWall() {
                 console.log('Loading Prayer Wall');
                 divHTML = `<div id="prayer-wall">`;
                 data.prayers[0].forEach((prayer) => {
-                    console.log('Loading prayer card '+prayer.PrayerID);
-                    divHTML = divHTML+`<div class="prayer-card">
-                    <div class="prayer-name">${prayer.Name}</div>
-                    <div class="prayer-date">${prayer.Date}</div>
-                    <div class="prayer-description">${prayer.Description}</div>
-                    <div class="prayer-action ">
-                        <button id="prayer-id-${prayer.PrayerID}" class="prayer-button" onclick="addPrayer(${prayer.PrayerID})">
-                            I Will Pray <i class="fa-solid fa-hands-praying"></i> 
-                        </button>
-                    </div>
-                    </div>`;
+                    if(prayedForPrayers.indexOf(prayer.PrayerID)!==-1){
+                        console.log('Loading prayed for card '+prayer.PrayerID);
+                        divHTML = divHTML+`<div class="prayer-card">
+                        <div class="prayer-name">${prayer.Name}</div>
+                        <div class="prayer-date">${prayer.Date}</div>
+                        <div class="prayer-description">${prayer.Description}</div>
+                        <div class="prayer-action ">
+                            <button id="prayer-id-${prayer.PrayerID}" class="prayer-button prayer-is-praying">
+                                I'm Praying! 
+                            </button>
+                        </div>
+                        </div>`;
+                    } else {
+                        console.log('Loading prayer card '+prayer.PrayerID);
+                        divHTML = divHTML+`<div class="prayer-card">
+                        <div class="prayer-name">${prayer.Name}</div>
+                        <div class="prayer-date">${prayer.Date}</div>
+                        <div class="prayer-description">${prayer.Description}</div>
+                        <div class="prayer-action ">
+                            <button id="prayer-id-${prayer.PrayerID}" class="prayer-button" onclick="addPrayer(${prayer.PrayerID})">
+                                I Will Pray <i class="fa-solid fa-hands-praying"></i> 
+                            </button>
+                        </div>
+                        </div>`;
+                    }
                 }
                 )
                 
@@ -78,7 +92,7 @@ function loadPrayerWall() {
             } else {
                 /*Report something went wrong - failure response from server*/
                 console.log('Prayer Wall response failure. Returning error.');
-                divHTML = divHTML+`<p>Sorry, something went wrong. Please try again.</p>`;
+                divHTML = divHTML+`<p>Sorry, something went wrong. Please try again later.</p>`;
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
         })
@@ -88,16 +102,16 @@ function loadPrayerWall() {
             divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
             document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
         }
-        .then(function () {
+        /*.then(function () {
             /*Loop through Prayed For Prayers and update to show as prayed for*/
-            console.log('Updating prayed for prayers');
+            /*console.log('Updating prayed for prayers');
             prayedForPrayers.forEach(function(prayerID) {
                 console.log('Updating prayer card '+prayerID);
                 document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
                 document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
                 document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
             });
-        })
+        }) */
     )
 }
 
