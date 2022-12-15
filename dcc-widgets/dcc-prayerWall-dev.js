@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.22.12.14.1');
+    console.log('Prayer Wall v0.22.12.14.2');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -58,6 +58,7 @@ function loadPrayerWall() {
                 console.log('Loading Prayer Wall');
                 divHTML = `<div id="prayer-wall">`;
                 data.prayers[0].forEach((prayer) => {
+                    console.log('Loading prayer card '+prayer.PrayerID);
                     divHTML = divHTML+`<div class="prayer-card">
                     <div class="prayer-name">${prayer.Name}</div>
                     <div class="prayer-date">${prayer.Date}</div>
