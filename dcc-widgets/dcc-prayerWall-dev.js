@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.22.11.23.5');
+    console.log('Prayer Wall v0.22.12.14.1');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -76,14 +76,16 @@ function loadPrayerWall() {
 
             } else {
                 /*Report something went wrong - failure response from server*/
-                console.log('Prayer Wall resposne failure. Returning error.');
+                console.log('Prayer Wall response failure. Returning error.');
                 divHTML = divHTML+`<p>Sorry, something went wrong. Please try again.</p>`;
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
         })
         .then(function () {
             /*Loop through Prayed For Prayers and update to show as prayed for*/
+            console.log('Updating prayed for prayers');
             prayedForPrayers.forEach(function(prayerID) {
+                console.log('Updating prayer card '+prayerID);
                 document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
                 document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
                 document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";
@@ -92,7 +94,7 @@ function loadPrayerWall() {
         .catch(function (fail) {
             /*Report something went wrong - couldn't connect to API*/
             console.log('Prayer Wall connection failure. Returning error.');
-            divHTML = `<p>Sorry, something went wrong. Please try again.</p>`;
+            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
             document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
         }
     )
