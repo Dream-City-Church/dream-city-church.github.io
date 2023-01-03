@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.23.01.02.1');
+    console.log('Prayer Wall v0.23.01.03.1');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -95,8 +95,7 @@ function loadPrayerWall() {
                 for (const pDescription of [...prayerDescriptions]) {
                     if (pDescription.offsetHeight < pDescription.scrollHeight ||
                         pDescription.offsetWidth < pDescription.scrollWidth) {
-                            pDescription.classList.add("description-closed");
-                            pDescription.innerHTML = pDescription.innerHTML + '<br /><button onclick=\'event.target.parentNode.classList.add("prayer-description-full");\'>Read More</button>';
+                            pDescription.innerHTML += '<div class="prayer-read-more"><button onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button></div>';
                         }
                     }
     
