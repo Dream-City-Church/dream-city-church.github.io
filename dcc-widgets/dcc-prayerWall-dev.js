@@ -98,7 +98,7 @@ function loadPrayerWall() {
                         pDescription.offsetWidth < pDescription.scrollWidth) {
                             pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
                         }
-                    });
+                });
 
                     
     
