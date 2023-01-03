@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.22.12.14.5');
+    console.log('Prayer Wall v0.23.01.02.1');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -90,6 +90,16 @@ function loadPrayerWall() {
                 
                 divHTML = divHTML+`</div>`;
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+
+                const prayerDescriptions = document.querySelectorAll('.prayer-description')
+                for (const pDescription of [...prayerDescriptions]) {
+                    if (pDescription.offsetHeight < pDescription.scrollHeight ||
+                        pDescription.offsetWidth < pDescription.scrollWidth) {
+                            pDescription.classList.add("description-closed");
+                            pDescription.innerHTML = pDescription.innerHTML + '<br /><button onclick=\'event.target.parentNode.classList.add("prayer-description-full");\'>Read More</button>';
+                        }
+                    }
+                }
 
             } else {
                 /*Report something went wrong - failure response from server*/
