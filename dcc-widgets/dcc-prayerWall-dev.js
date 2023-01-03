@@ -92,12 +92,15 @@ function loadPrayerWall() {
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
 
                 const prayerDescriptions = document.querySelectorAll('.prayer-description')
-                for (const pDescription of [...prayerDescriptions]) {
+
+                prayerDescriptions.forEach(pDescription => {
                     if (pDescription.offsetHeight < pDescription.scrollHeight ||
                         pDescription.offsetWidth < pDescription.scrollWidth) {
                             pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
                         }
-                    }
+                    });
+
+                    
     
             } else {
                 /*Report something went wrong - failure response from server*/
