@@ -99,8 +99,7 @@ function loadPrayerWall() {
                             pDescription.innerHTML = pDescription.innerHTML + '<br /><button onclick=\'event.target.parentNode.classList.add("prayer-description-full");\'>Read More</button>';
                         }
                     }
-                }
-
+    
             } else {
                 /*Report something went wrong - failure response from server*/
                 console.log('Prayer Wall response failure. Returning error.');
