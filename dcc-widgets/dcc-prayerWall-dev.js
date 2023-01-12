@@ -99,11 +99,13 @@ function loadPrayerWall() {
             }
         })
         .then(function (readMore) {
+            console.log('Starting read more buttons')
             const prayerDescriptions = document.querySelectorAll('.prayer-description')
 
                 prayerDescriptions.forEach(pDescription => {
                     if (pDescription.offsetHeight < pDescription.scrollHeight) {
-                            pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
+                        console.log('Adding read more button')    
+                        pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
                         }
                 });
         })
