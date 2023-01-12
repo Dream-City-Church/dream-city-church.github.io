@@ -94,8 +94,7 @@ function loadPrayerWall() {
                 const prayerDescriptions = document.querySelectorAll('.prayer-description')
 
                 prayerDescriptions.forEach(pDescription => {
-                    if (pDescription.offsetHeight < pDescription.scrollHeight ||
-                        pDescription.offsetWidth < pDescription.scrollWidth) {
+                    if (pDescription.offsetHeight < pDescription.scrollHeight) {
                             pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
                         }
                 });
