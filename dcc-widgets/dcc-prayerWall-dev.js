@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.23.01.12.5');
+    console.log('Prayer Wall v0.23.01.12.7');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -105,10 +105,10 @@ function loadPrayerWall() {
 
                 prayerDescriptions.forEach(pDescription => {
                     if (pDescription.offsetHeight < pDescription.scrollHeight) {
-                        console.log('Adding read more button')    
+                        console.log('Adding read more button. Offset: '+pDescription.offsetHeight+'; Scroll: '+pDescription.scrollHeight)    
                         pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
                         }
-                });}, 500)
+                });}, 1000)
         })
         .catch(function (fail) {
             /*Report something went wrong - couldn't connect to API*/
