@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.23.01.12.4');
+    console.log('Prayer Wall v0.23.01.12.5');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -108,7 +108,7 @@ function loadPrayerWall() {
                         console.log('Adding read more button')    
                         pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
                         }
-                });}, 200)
+                });}, 500)
         })
         .catch(function (fail) {
             /*Report something went wrong - couldn't connect to API*/
