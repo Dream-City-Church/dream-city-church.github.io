@@ -428,6 +428,9 @@ div#formFields {
     background-color: rgba(0,0,0,0.035);
     border: 1px solid #FAFAFA;
     border-bottom: 2px solid var(--form-field-border);
+    padding: 0.75rem 0.5rem !important;
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 
 .mppw-form-field__control:focus {
@@ -477,6 +480,14 @@ div#formFields {
 
 .mppw-form-field .mpp-household--checkbox {
     border: none;
+}
+
+.mpp-household--form-row {
+    margin-top: 1rem;
+}
+
+.mpp-household--form-row.w-50 {
+    margin-top: 2rem;
 }
 
 #registrationForm h1 {
@@ -534,19 +545,19 @@ h3.mpp-household--form-header {
     display: none;
 }
 
-label[for="emailUnlistedCheck"] {
+label.mppw-form-field__label[for="emailUnlistedCheck"] {
     display:none;
 }
 
-label[for="mobileUnlistedCheck"] {
+label.mppw-form-field__label[for="mobileUnlistedCheck"] {
     display:none;
 }
 
-label[for="doNotTextCheck"] {
+label.mppw-form-field__label[for="doNotTextCheck"] {
     display:none;
 }
 
-label[for="bulkEmailOptOutCheck"] {
+label.mppw-form-field__label[for="bulkEmailOptOutCheck"] {
     display:none;
 }
 
