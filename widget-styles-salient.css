@@ -545,19 +545,19 @@ h3.mpp-household--form-header {
     display: none;
 }
 
-label.mppw-form-field__label[for=emailUnlistedCheck] {
+label[for=emailUnlistedCheck] {
     display:none;
 }
 
-label.mppw-form-field__label[for=mobileUnlistedCheck] {
+label[for=mobileUnlistedCheck] {
     display:none;
 }
 
-label.mppw-form-field__label[for=doNotTextCheck] {
+label[for=doNotTextCheck] {
     display:none;
 }
 
-label.mppw-form-field__label[for=bulkEmailOptOutCheck] {
+label[for=bulkEmailOptOutCheck] {
     display:none;
 }
 
