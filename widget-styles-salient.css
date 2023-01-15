@@ -545,24 +545,20 @@ h3.mpp-household--form-header {
     display: none;
 }
 
-.mpp-household--checkbox-container > label {
-    display: none;
-}
-
 label[for=emailUnlistedCheck] {
-    display:none;
+    display:none !important;
 }
 
 label[for=mobileUnlistedCheck] {
-    display:none;
+    display:none !important;
 }
 
 label[for=doNotTextCheck] {
-    display:none;
+    display:none !important;
 }
 
 label[for=bulkEmailOptOutCheck] {
-    display:none;
+    display:none !important;
 }
 
 
