@@ -545,6 +545,10 @@ h3.mpp-household--form-header {
     display: none;
 }
 
+.mpp-household--checkbox-container > label {
+    display: none;
+}
+
 label[for=emailUnlistedCheck] {
     display:none;
 }
