@@ -72,7 +72,7 @@ function loadPrayerWall() {
                             /* Prayer ID found in local storage as prayed for */
                             console.log('Loading prayed for card '+prayer.PrayerID);
                             divHTML = divHTML+`<div class="prayer-card">
-                            <div class="prayer-name">${prayer.Name}</div>
+                            <div class="prayer-name">Prayer Request from ${prayer.Name}</div>
                             <div class="prayer-date">${prayer.Date}</div>
                             <div class="prayer-description">${prayer.Description}</div>
                             <div class="prayer-action ">
@@ -85,7 +85,7 @@ function loadPrayerWall() {
                             /* Prayer ID found in local storage as prayed for - Praise Reports*/
                             console.log('Loading prayed for card '+prayer.PrayerID);
                             divHTML = divHTML+`<div class="prayer-card praise-report">
-                            <div class="prayer-name">${prayer.Name}</div>
+                            <div class="prayer-name">Praise Report from ${prayer.Name}</div>
                             <div class="prayer-date">${prayer.Date}</div>
                             <div class="prayer-description">${prayer.Description}</div>
                             <div class="prayer-action ">
@@ -100,7 +100,7 @@ function loadPrayerWall() {
                             /* Prayer ID not found in local storage as prayed for */
                             console.log('Loading prayer card '+prayer.PrayerID);
                             divHTML = divHTML+`<div class="prayer-card">
-                            <div class="prayer-name">${prayer.Name}</div>
+                            <div class="prayer-name">Prayer Request from ${prayer.Name}</div>
                             <div class="prayer-date">${prayer.Date}</div>
                             <div class="prayer-description">${prayer.Description}</div>
                             <div class="prayer-action ">
@@ -113,7 +113,7 @@ function loadPrayerWall() {
                             /* Prayer ID not found in local storage as prayed for - Praise Report */
                             console.log('Loading prayer card '+prayer.PrayerID);
                             divHTML = divHTML+`<div class="prayer-card praise-report">
-                            <div class="prayer-name">${prayer.Name}</div>
+                            <div class="prayer-name">Praise Report from ${prayer.Name}</div>
                             <div class="prayer-date">${prayer.Date}</div>
                             <div class="prayer-description">${prayer.Description}</div>
                             <div class="prayer-action ">
