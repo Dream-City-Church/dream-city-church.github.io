@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.230118.1');
+    console.log('Prayer Wall v0.230118.2');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -65,31 +65,61 @@ function loadPrayerWall() {
                 divHTML = `<div id="prayer-wall">`;
                 data.prayers[0].forEach((prayer) => {
                     if(prayedForPrayers.indexOf(prayer.PrayerID)!==-1){
-                        /* Prayer ID found in local storage as prayed for */
-                        console.log('Loading prayed for card '+prayer.PrayerID);
-                        divHTML = divHTML+`<div class="prayer-card">
-                        <div class="prayer-name">${prayer.Name}</div>
-                        <div class="prayer-date">${prayer.Date}</div>
-                        <div class="prayer-description">${prayer.Description}</div>
-                        <div class="prayer-action ">
-                            <button id="prayer-id-${prayer.PrayerID}" class="prayer-button prayer-is-praying">
-                                I'm Praying! 
-                            </button>
-                        </div>
-                        </div>`;
+                        if(prayer.TypeID==1){
+                            /* Prayer ID found in local storage as prayed for */
+                            console.log('Loading prayed for card '+prayer.PrayerID);
+                            divHTML = divHTML+`<div class="prayer-card">
+                            <div class="prayer-name">${prayer.Name}</div>
+                            <div class="prayer-date">${prayer.Date}</div>
+                            <div class="prayer-description">${prayer.Description}</div>
+                            <div class="prayer-action ">
+                                <button id="prayer-id-${prayer.PrayerID}" class="prayer-button prayer-is-praying">
+                                    I'm Praying! 
+                                </button>
+                            </div>
+                            </div>`;
+                        }else{
+                            /* Prayer ID found in local storage as prayed for - Praise Reports*/
+                            console.log('Loading prayed for card '+prayer.PrayerID);
+                            divHTML = divHTML+`<div class="prayer-card praise-report">
+                            <div class="prayer-name">${prayer.Name}</div>
+                            <div class="prayer-date">${prayer.Date}</div>
+                            <div class="prayer-description">${prayer.Description}</div>
+                            <div class="prayer-action ">
+                                <button id="prayer-id-${prayer.PrayerID}" class="prayer-button prayer-is-praying">
+                                    I'm Celebrating!
+                                </button>
+                            </div>
+                            </div>`;
+                        }
                     } else {
-                        /* Prayer ID not found in local storage as prayed for */
-                        console.log('Loading prayer card '+prayer.PrayerID);
-                        divHTML = divHTML+`<div class="prayer-card">
-                        <div class="prayer-name">${prayer.Name}</div>
-                        <div class="prayer-date">${prayer.Date}</div>
-                        <div class="prayer-description">${prayer.Description}</div>
-                        <div class="prayer-action ">
-                            <button id="prayer-id-${prayer.PrayerID}" class="prayer-button" onclick="addPrayer(${prayer.PrayerID})">
-                                I Will Pray <i class="fa-solid fa-hands-praying"></i> 
-                            </button>
-                        </div>
-                        </div>`;
+                        if(prayer.TypeID==1){
+                            /* Prayer ID not found in local storage as prayed for */
+                            console.log('Loading prayer card '+prayer.PrayerID);
+                            divHTML = divHTML+`<div class="prayer-card">
+                            <div class="prayer-name">${prayer.Name}</div>
+                            <div class="prayer-date">${prayer.Date}</div>
+                            <div class="prayer-description">${prayer.Description}</div>
+                            <div class="prayer-action ">
+                                <button id="prayer-id-${prayer.PrayerID}" class="prayer-button" onclick="addPrayer(${prayer.PrayerID})">
+                                    I Will Pray <i class="fa-solid fa-hands-praying"></i> 
+                                </button>
+                            </div>
+                            </div>`;
+                        } else {
+                            /* Prayer ID not found in local storage as prayed for - praise report */
+                            console.log('Loading prayer card '+prayer.PrayerID);
+                            divHTML = divHTML+`<div class="prayer-card praise-report">
+                            <div class="prayer-name">${prayer.Name}</div>
+                            <div class="prayer-date">${prayer.Date}</div>
+                            <div class="prayer-description">${prayer.Description}</div>
+                            <div class="prayer-action ">
+                                <button id="prayer-id-${prayer.PrayerID}" class="prayer-button" onclick="addPrayer(${prayer.PrayerID})">
+                                    Celebrate! <i class="fa-solid fa-hands-clapping"></i> 
+                                </button>
+                            </div>
+                            </div>`;
+                        }
                     }
                 }
                 )
