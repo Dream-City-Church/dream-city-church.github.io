@@ -20,8 +20,10 @@ function addPrayer(prayerID,TypeID) {
                 /*Update element to show as prayed for*/
                 document.getElementById("prayer-id-"+prayerID).setAttribute('onclick','');
                 document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
-                if(TypeID==1){document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";}
-                else if(TypeID==2){document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Celebrating!";}
+                if(TypeID==1){
+                    document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Praying!";}
+                else if(TypeID==2){
+                    document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Celebrating!";}
             }else{
                 document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
                 if(TypeID==1){document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';}
@@ -36,7 +38,7 @@ function addPrayer(prayerID,TypeID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.2301.42');
+    console.log('Prayer Wall v0.2301.43');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
