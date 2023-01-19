@@ -33,7 +33,7 @@ function addPrayer(prayerID) {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.23.01.12.8');
+    console.log('Prayer Wall v0.230118.1');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -46,8 +46,14 @@ function loadPrayerWall() {
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
     
     /*Set API options*/
+    const params = {
+        "prayer": 1,
+        "praise": 1
+    };
+
     const options = {
         method: 'POST',
+        body: JSON.stringify( params ),
         headers: {'Content-Type': 'application/json'}
     };
     fetch( 'https://prod-28.westus2.logic.azure.com:443/workflows/eaafcdc3ed3a4652bffa62407b02f934/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=8UdRnlOJSRoxY-LiSTfhQmYxjOFtpnX2o-8BE192LAg', options)
