@@ -588,6 +588,11 @@ label[for=bulkEmailOptOutCheck] {
 
 }
 
+div[data-id="mp_customform_2389"]{
+    /*Hides Praise Report related field */
+    display: none;
+}
+
 /* Buttons */
 .mppw-btn {
     border-radius: 4px;
