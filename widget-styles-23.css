@@ -506,6 +506,19 @@ div#formFields {
     padding: 0.75em 0;
 }
 
+.mppw-form-field--is-valid .product-form__control {
+    padding: inherit;
+}
+
+
+#updateInformationWarningMessage {
+    margin-bottom: 2rem;
+}
+
+#singlePriceContainer {
+    display: none;
+}
+
 #promoCodeContainer label {
     font-weight: bold;
 }
