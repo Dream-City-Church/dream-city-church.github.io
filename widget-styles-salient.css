@@ -498,6 +498,10 @@ div#formFields {
     padding: 0.75em 0;
 }
 
+#singlePriceContainer {
+    display: none;
+}
+
 #promoCodeContainer label {
     font-weight: bold;
 }
