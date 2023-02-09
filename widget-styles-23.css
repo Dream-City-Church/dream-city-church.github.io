@@ -167,21 +167,24 @@
 /* Card Styles */
 .mppw-card--grid {
     display: grid;
-    grid-template-columns: 31% 31% 31%;
-    grid-gap: 2.5em 3.5%;
+    grid-template-columns: 100%;
+    grid-gap: 2rem;
     margin-top: 1em;
 }
 
 .mpp-card {
     border-bottom-left-radius: var(--card-borderRadius);
     border-bottom-right-radius: var(--card-borderRadius);
+    display: inline-block;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border: 5px solid white;
 }
 
 .mpp-card--header {
-    height: 215px;
+    width: 30%;
+    height: 100%;
+    float: left;
     box-shadow: 0 0 0.5em rgb(0 0 0 / 25%);
     overflow: hidden;
 }
@@ -214,6 +217,8 @@
 }
 
 .mpp-card--body {
+    width: 70%;
+    float: left;
     padding: 0;
     font-family: 'Poppins';
 }
@@ -225,8 +230,8 @@
     line-height: 1.75em;
     -webkit-line-clamp: 1;
     text-overflow: ellipsis;
-    text-align: center;
-    padding: 0 0.75em;
+    text-align: left;
+    padding: 0 1rem;
     margin-bottom: 0.35em !important;
     box-shadow: 0 0 0.5em rgb(0 0 0 / 10%);
 }
@@ -236,7 +241,7 @@
     overflow: hidden;
     clear: both;
     line-height: 1.25em;
-    padding: 0 0.75em;
+    padding: 0 1rem;
     color: var(--root-text-color);
 }
 
@@ -249,7 +254,7 @@
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--root-text-color);
-    padding: 0 0.75em;
+    padding: 0 1rem;
     text-align: left;
 }
 
@@ -277,13 +282,16 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mpp-card--footer {
+    float: right;
+    margin-right: 0.25rem;
     padding: 0;
     text-align: center;
 }
 
 .mpp-card--footer .mppw-btn.primary {
     margin: 0;
-    margin-top: 1em;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 0;
     width: 100%;
     background: linear-gradient(160deg, rgb(0 31 78 / 95%), rgb(0 31 78 / 85%));
