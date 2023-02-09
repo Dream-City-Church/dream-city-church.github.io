@@ -333,14 +333,28 @@ h4.mpp-card--subtitle:nth-child(1) {
         margin-bottom: 2em;
     }
     .mpp-card--header {
-        height: 190px;
+        height: 100%;
+        width: 25%;
+    }
+    .mpp-card--subtitle {
+        font-size:0.8rem;
     }
     .mpp-card--description {
-        -webkit-line-clamp: 3;
-        font-weight: 400;
+        display: none;
+    }
+    .mpp-card--footer {
+        display: none;
     }
     .mpp-card--title {
-        font-size: 1.5em;
+        line-height: 1rem;
+        padding: 0 0.5rem;
+        box-shadow: none;
+    }
+    .event-date-range::before{
+        content: none;
+    }
+    .event-location::before{
+        content: none;
     }
 }
 
