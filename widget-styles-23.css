@@ -330,7 +330,13 @@ h4.mpp-card--subtitle:nth-child(1) {
         grid-gap: 0;
     }
     .mpp-card {
-        margin-bottom: 2em;
+        margin-bottom: 1em;
+        padding-bottom: 1rem;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        border-bottom: 1px solid #e5e5e5;
+        border-radius: 0;
     }
     .mpp-card--header {
         height: 100%;
@@ -338,6 +344,8 @@ h4.mpp-card--subtitle:nth-child(1) {
     }
     .mpp-card--subtitle {
         font-size:0.8rem;
+        padding: 0 0.5rem;
+        letter-spacing: -0.25px;
     }
     .mpp-card--description {
         display: none;
@@ -346,7 +354,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         display: none;
     }
     .mpp-card--title {
-        line-height: 1rem;
+        line-height: 1.25rem;
         padding: 0 0.5rem;
         box-shadow: none;
     }
@@ -355,6 +363,9 @@ h4.mpp-card--subtitle:nth-child(1) {
     }
     .event-location::before{
         content: none;
+    }
+    .mpp-card--badge {
+        display: none;
     }
 }
 
