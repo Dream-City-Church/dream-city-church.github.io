@@ -177,12 +177,13 @@
     display: inline-block;
     position: relative;
     background-color: #fafafa;
+    transition: background-color 250ms linear; 
 }
 
 .mpp-card:hover {
     cursor: pointer;
     background-color: #ffffff;
-    transition: background-color 500ms linear; 
+    transition: background-color 250ms linear; 
 }
 
 .mpp-card--header {
