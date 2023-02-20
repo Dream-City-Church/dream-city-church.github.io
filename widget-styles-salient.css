@@ -478,6 +478,10 @@ div#formFields {
     margin-bottom: 0;
 }
 
+label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content {
+    color: #777;
+}
+
 .mppw-form-field .mpp-household--checkbox {
     border: none;
 }
