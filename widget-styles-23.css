@@ -177,6 +177,7 @@
     border-radius: 0;
     display: inline-block;
     position: relative;
+    max-height: 170px;
     box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.1);
     background-color: rgb(255 255 255 / 0.25);
     transition: background-color 250ms linear, box-shadow 250ms linear; 
@@ -190,8 +191,8 @@
 }
 
 .mpp-card--header {
-    width: 35%;
     height: 100%;
+    max-width: 304px;
     float: left;
     box-shadow: 0 0 0.5em rgb(0 0 0 / 25%);
     overflow: hidden;
@@ -225,7 +226,7 @@
 }
 
 .mpp-card--body {
-    width: 65%;
+    width: calc(100% - 305px);
     float: left;
     padding: 0.5rem 1.5rem;
 }
@@ -329,6 +330,18 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 */
 
+@media only screen and (max-width: 999px) {
+    .mpp-card {
+        max-height:120px;
+    }
+    .mpp-card--title {
+        margin-bottom: 0.5rem;
+    }
+    .mpp-card--description {
+        display:none;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .mppw-card--grid {
         display: grid;
@@ -346,7 +359,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     }
     .mpp-card--body {
         width: 75%;
-        padding: 0.5rem 0.5rem 0.5rem 1rem;
+        padding: 0 0.5rem 0.5rem 1rem;
     }
     .mpp-card--header {
         height: 100%;
@@ -365,7 +378,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         display: none;
     }
     .mpp-card--title {
-        line-height: 1.25rem;
+        line-height: 2rem;
         box-shadow: none;
     }
     .event-date-range::before{
