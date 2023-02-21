@@ -33,7 +33,7 @@
     --innerPage-primaryColor: #001f4e;
     --innerPage-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
     --innerPage-borderRadius: 4px;
-    --innerPage-h1fontFamily: 'DM SERIF DISPLAY';
+    --innerPage-h1fontFamily: 'Open Sans';
     --innerPage-h1fontSize: 2.5em;
     --innerPage-h1fontWeight: 600;
     --innerPage-h1lineHeight: 1.25em;
@@ -43,6 +43,7 @@
     --innerPage-h2fontWeight: 550;
     --innerPage-h3fontSize: 20px;
     --innerPage-h3lineHeight: 28px;
+    --innerPage-h3fontFamily: 'Open Sans';
     --innerPage-h3color: #152743;
     --innerPage-h4fontSize: 18px;
     --innerPage-h4lineHeight: 24px;
@@ -176,18 +177,20 @@
     border-radius: 0;
     display: inline-block;
     position: relative;
-    background-color: #fafafa;
-    transition: background-color 250ms linear; 
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.1);
+    background-color: rgb(255 255 255 / 0.25);
+    transition: background-color 250ms linear, box-shadow 250ms linear; 
 }
 
 .mpp-card:hover {
     cursor: pointer;
-    background-color: #ffffff;
-    transition: background-color 250ms linear; 
+    background-color: rgb(255 255 255 / 1);
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.25);
+    transition: background-color 250ms linear, box-shadow 250ms linear; 
 }
 
 .mpp-card--header {
-    width: 30%;
+    width: 35%;
     height: 100%;
     float: left;
     box-shadow: 0 0 0.5em rgb(0 0 0 / 25%);
@@ -222,31 +225,27 @@
 }
 
 .mpp-card--body {
-    width: 70%;
+    width: 65%;
     float: left;
-    padding: 0;
-    font-family: 'Poppins';
+    padding: 0.5rem 1.5rem;
 }
 
 .mpp-card--title {
-    font-size: 1.75em;
-    font-family: 'DM Serif Display';
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: var(--innerPage-h1fontFamily);
+    font-weight: 800;
     color: var(--secondary);
-    line-height: 1.75em;
     -webkit-line-clamp: 1;
     text-overflow: ellipsis;
     text-align: left;
-    padding: 0 1rem;
-    margin-bottom: 0.35em !important;
-    box-shadow: 0 0 0.5em rgb(0 0 0 / 10%);
 }
 
 .mpp-card--description {
     -webkit-line-clamp: 3;
     overflow: hidden;
     clear: both;
-    line-height: 1.25em;
-    padding: 0 1rem;
+    line-height: 1.25rem;
     color: var(--root-text-color);
 }
 
@@ -255,11 +254,10 @@
 }
 
 .mpp-card--subtitle {
-    font-family: 'DM SerifDisplay';
-    font-size: 1.1rem;
+    font-family: var(--innerPage-h2fontFamily);
+    font-size: 1rem;
     font-weight: 600;
     color: var(--root-text-color);
-    padding: 0 1rem;
     text-align: left;
 }
 
@@ -287,6 +285,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mpp-card--footer {
+    display: none;
     margin-right: 0.25rem;
     padding: 0;
     text-align: center;
@@ -345,24 +344,28 @@ h4.mpp-card--subtitle:nth-child(1) {
         border-bottom: 1px solid #e5e5e5;
         border-radius: 0;
     }
+    .mpp-card--body {
+        width: 75%;
+        padding: 0.5rem 0.5rem 0.5rem 1rem;
+    }
     .mpp-card--header {
         height: 100%;
         width: 25%;
     }
     .mpp-card--subtitle {
-        font-size:0.8rem;
-        padding: 0 0.5rem;
+        font-size: 0.75rem;
+        line-height: 0.95rem;
         letter-spacing: -0.25px;
     }
     .mpp-card--description {
         display: none;
+        width: initial;
     }
     .mpp-card--footer {
         display: none;
     }
     .mpp-card--title {
         line-height: 1.25rem;
-        padding: 0 0.5rem;
         box-shadow: none;
     }
     .event-date-range::before{
@@ -395,7 +398,7 @@ div#formFields {
 }
 
 .mppw-component-container h1, #responseFormTitle h2, #customForm h1, #customForm h3 {
-    font-family: 'DM Serif Display';
+    font-family: var(--innerPage-h3fontFamily);
 }
 
 .mpp-form--tabs {
@@ -875,7 +878,7 @@ div#pledgeAmountButtonWrapper {
 }
 
 h2#householdName {
-    font-family: 'DM Serif Display';
+    font-family: var(--innerPage-h2fontFamily);
     color: #606060;
 }
 
@@ -884,7 +887,7 @@ h2#householdName {
 }
 
 h2.mpp-household--header {
-    font-family: 'DM Serif Display';
+    font-family: var(--innerPage-h2fontFamily);
     color: #606060;
 }
 
