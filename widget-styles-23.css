@@ -334,8 +334,11 @@ h4.mpp-card--subtitle:nth-child(1) {
     .mpp-card {
         max-height:120px;
     }
-    .mpp-card--title {
-        margin-bottom: 0.5rem;
+    .mpp-card--header {
+        max-width: 214px;
+    }
+    .mpp-card--body {
+        width: calc(100% - 215px);
     }
     .mpp-card--description {
         display:none;
