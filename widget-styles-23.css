@@ -178,6 +178,7 @@
     display: inline-block;
     position: relative;
     max-height: 170px;
+    overflow: visible;
     box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.1);
     background-color: rgb(255 255 255 / 0.25);
     transition: background-color 250ms linear, box-shadow 250ms linear; 
@@ -195,24 +196,27 @@
     max-width: 304px;
     float: left;
     box-shadow: 0 0 0.5em rgb(0 0 0 / 25%);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .mpp-card--badge {
-    background: linear-gradient(160deg, rgba(255, 164, 0, 1) 10%, rgba(255, 164, 0, 0.75) 100%);
     border-top-left-radius: 0;
-    font-size: 0.8em;
-    line-height: 2em;
-    box-shadow: 0 0 1em rgb(0 0 0 / 30%);
-    opacity: 1;
-    padding: 0.25em 1em 0.25em 0.5em;
-    color: rgba(255,255,255,0.85);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5em;
+    opacity: 0.75;
+    color: var(--primary);
+    position: absolute;
+    left: -100px;
+    text-align: right;
 }
 
-.mpp-card--badge:before {
-    content: "\f559";
+.mpp-card--badge::before {
+    content: "\f559\A";
     font-family: FontAwesome;
-    margin: 0 0.5em;
+    text-align: right;
+    font-size: 2rem;
+    line-height: 2rem;
 }
 
 .mpp-card--badge.Completed {
