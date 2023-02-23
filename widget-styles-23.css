@@ -536,7 +536,7 @@ div#formFields {
     padding: 0;
 }
 
-.mppw-form-field__alt-label-content {
+label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content {
     color: #777;
 }
 
