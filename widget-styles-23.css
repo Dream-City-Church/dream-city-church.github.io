@@ -193,30 +193,31 @@
 
 .mpp-card--header {
     height: 100%;
-    max-width: 304px;
+    width:302px;
     float: left;
     box-shadow: 0 0 0.5em rgb(0 0 0 / 25%);
     overflow: visible;
 }
 
 .mpp-card--badge {
+    background-color: transparent;
     border-top-left-radius: 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    line-height: 1.5em;
+    padding: 0;
+    line-height: 2.5rem;
     opacity: 0.75;
     color: var(--primary);
     position: absolute;
-    left: -100px;
+    left: -125px;
     text-align: right;
 }
 
-.mpp-card--badge::before {
-    content: "\f559\A";
+.mpp-card--badge::after {
+    content: "\f559";
     font-family: FontAwesome;
-    text-align: right;
-    font-size: 2rem;
-    line-height: 2rem;
+    margin-left: 0.5rem;
+    position: absolute;
 }
 
 .mpp-card--badge.Completed {
@@ -347,6 +348,13 @@ h4.mpp-card--subtitle:nth-child(1) {
     .mpp-card--description {
         display:none;
     }
+    .mpp-card--badge {
+        left: -12px;
+        line-height: 1.5rem;
+        font-size: 0;
+        opacity: 1;
+        text-shadow: 0.5px 0.5px 0.5px white;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -393,9 +401,6 @@ h4.mpp-card--subtitle:nth-child(1) {
     }
     .event-location::before{
         content: none;
-    }
-    .mpp-card--badge {
-        display: none;
     }
 }
 
