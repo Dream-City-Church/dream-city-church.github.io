@@ -382,6 +382,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     .mpp-card--header {
         height: 100%;
         width: 25%;
+        max-height: 70px;
     }
     .mpp-card--subtitle {
         font-size: 0.75rem;
