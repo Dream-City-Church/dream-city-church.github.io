@@ -685,6 +685,7 @@ div[data-id="mp_customform_2389"]{
 /* Buttons */
 .mppw-btn {
     border-radius: 4px;
+    font-family: 'Open Sans', sans-serif, 'FontAwesome';
 }
 
 .mppw-btn.mpp-innerpage--button.primary {
