@@ -63,6 +63,210 @@
     --card-labelBgColor: #efefef;
 }
 
+.mppw-card--grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 2rem;
+    margin-top: 1em;
+}
+
+.mpp-card {
+    border-radius: 0;
+    display: inline-block;
+    position: relative;
+    max-height: 170px;
+    overflow: visible;
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.1);
+    background-color: rgb(255 255 255 / 0.25);
+    transition: background-color 250ms linear, box-shadow 250ms linear; 
+}
+
+.mpp-card:hover {
+    cursor: pointer;
+    background-color: rgb(255 255 255 / 1);
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.25);
+    transition: background-color 250ms linear, box-shadow 250ms linear; 
+}
+
+.mpp-card--header {
+    height: 100%;
+    width:302px;
+    float: left;
+    box-shadow: 0 0 0.5em rgb(0 0 0 / 25%);
+    overflow: visible;
+}
+
+.mpp-card--badge {
+    background-color: transparent;
+    border-top-left-radius: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0;
+    line-height: 2.5rem;
+    opacity: 0.75;
+    color: var(--primary);
+    position: absolute;
+    left: -125px;
+    text-align: right;
+}
+
+.mpp-card--badge::after {
+    content: "\f559";
+    font-family: 'FontAwesome';
+    margin-left: 0.5rem;
+    position: absolute;
+}
+
+.mpp-card--badge.Completed {
+    background: linear-gradient(160deg, #c7c9c8aa 33%, #c7c9c866 100%);
+}
+
+.mpp-card--image {
+    height: 100%;
+}
+
+.mpp-card--body {
+    width: calc(100% - 305px);
+    float: left;
+    padding: 0.5rem 1.5rem;
+}
+
+.mpp-card--title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: var(--innerPage-h1fontFamily);
+    font-weight: 800;
+    color: var(--secondary);
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.mpp-card--description {
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    clear: both;
+    line-height: 1.25rem;
+    color: var(--root-text-color);
+}
+
+.mpp-card--description p {
+    display: inline;
+}
+
+.mpp-card--subtitle {
+    font-family: var(--innerPage-h2fontFamily);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--root-text-color);
+    text-align: left;
+}
+
+h4.mpp-card--subtitle:nth-child(1) {
+    margin-top: 0.5em;
+}
+
+.event-date-range:before, .group-meeting-day:before, .opportunity-start-date:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f073";
+}
+
+.event-location:before, .group-location:before, .opportunity-location:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    padding-left: 1px;
+    content: "\f3c5";
+}
+
+.group-start-date:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f017";
+}
+
+.mpp-card--footer {
+    display: none;
+}
+
+@media only screen and (max-width: 999px) {
+    .mpp-card {
+        max-height:120px;
+    }
+    .mpp-card--header {
+        max-width: 214px;
+    }
+    .mpp-card--body {
+        width: calc(100% - 215px);
+    }
+    .mpp-card--description {
+        display:none;
+    }
+    .mpp-card--badge {
+        left: 86vw;
+        line-height: 1.5rem;
+        font-size: 0;
+        opacity: 1;
+        -webkit-text-stroke: 0.5px lighten(var(--primary), 50%);
+    }
+    .mpp-card--badge::after {
+        font-size: 1.25rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .mppw-card--grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 0;
+    }
+    .mpp-card {
+        padding-top: 1em;
+        padding-bottom: 1rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        width: 100vw;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        border-bottom: 1px solid var(--primary);
+        border-radius: 0;
+    }
+    .mpp-card--body {
+        width: 75%;
+        padding: 0 0.5rem 0.5rem 1rem;
+    }
+    .mpp-card--header {
+        height: 100%;
+        width: 25%;
+        max-height: 70px;
+    }
+    .mpp-card--subtitle {
+        font-size: 0.75rem;
+        line-height: 0.95rem;
+        letter-spacing: -0.25px;
+    }
+    .mpp-card--description {
+        display: none;
+        width: initial;
+    }
+    .mpp-card--footer {
+        display: none;
+    }
+    .mpp-card--title {
+        line-height: 2rem;
+        box-shadow: none;
+    }
+    .event-date-range::before{
+        content: none;
+    }
+    .event-location::before{
+        content: none;
+    }
+}
+
 /*--------------------------------------------*/
 /* Form                                       */
 /*--------------------------------------------*/
