@@ -352,11 +352,11 @@ h4.mpp-card--subtitle:nth-child(1) {
         display:none;
     }
     .mpp-card--badge {
-        left: -12px;
+        left: 86vw;
         line-height: 1.5rem;
         font-size: 0;
         opacity: 1;
-        text-shadow: 0.5px 0.5px 0.5px white;
+        -webkit-text-stroke: 0.5px #ffe440;
     }
     .mpp-card--badge::after {
         font-size: 1.25rem;
