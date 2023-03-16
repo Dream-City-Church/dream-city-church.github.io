@@ -1,1 +1,5 @@
 @import url("calvarynow.css");
+
+.mppw-form-wrapper {
+    display: none;
+}
