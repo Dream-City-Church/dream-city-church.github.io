@@ -117,6 +117,10 @@
     position: absolute;
 }
 
+.mpp-car--badge.Meets.Online {
+    display: none;
+}
+
 .mpp-card--badge.Completed {
     background: linear-gradient(160deg, #c7c9c8aa 33%, #c7c9c866 100%);
 }
@@ -146,7 +150,8 @@
     -webkit-line-clamp: 3;
     overflow: hidden;
     clear: both;
-    line-height: 1.25rem;
+    line-height: 1.5rem;
+    padding-top: 0.5rem;
     color: var(--root-text-color);
 }
 
@@ -160,6 +165,8 @@
     font-weight: 600;
     color: var(--root-text-color);
     text-align: left;
+    float: left;
+    margin-right: 5% !important;
 }
 
 h4.mpp-card--subtitle:nth-child(1) {
@@ -177,6 +184,12 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-right: 7px;
     padding-left: 1px;
     content: "\f3c5";
+}
+
+.group-capacity:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f0c0";
 }
 
 .group-start-date:before {
@@ -231,7 +244,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         background-color: transparent;
         box-shadow: none;
         border: none;
-        border-bottom: 1px solid var(--primary);
+        border-bottom: 0.25px solid rgb(0 118 169 / 0.15);;
         border-radius: 0;
     }
     .mpp-card--body {
@@ -247,6 +260,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         font-size: 0.75rem;
         line-height: 0.95rem;
         letter-spacing: -0.25px;
+        float: none;
     }
     .mpp-card--description {
         display: none;
