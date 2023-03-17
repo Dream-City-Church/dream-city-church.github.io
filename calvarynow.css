@@ -41,6 +41,7 @@
 /* Card                                       */
 /*--------------------------------------------*/
 :host {
+    --card-title-color: #323E48;
     --card-textColor: #384249;
     --card-borderRadius: 4px;
     --card-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
@@ -140,7 +141,7 @@
     line-height: 2rem;
     font-family: var(--innerPage-h1fontFamily);
     font-weight: 800;
-    color: var(--secondary);
+    color: var(--card-title-color);
     -webkit-line-clamp: 1;
     text-overflow: ellipsis;
     text-align: left;
@@ -178,6 +179,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f073";
+    color: var(--secondary);
 }
 
 .event-location:before, .group-location:before, .opportunity-location:before {
@@ -185,18 +187,21 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-right: 7px;
     padding-left: 1px;
     content: "\f3c5";
+    color: var(--secondary);
 }
 
 .group-capacity:before {
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f0c0";
+    color: var(--secondary);
 }
 
 .group-start-date:before {
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f017";
+    color: var(--secondary);
 }
 
 .mpp-card--footer {
