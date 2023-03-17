@@ -134,6 +134,9 @@
     width: calc(100% - 305px);
     float: left;
     padding: 0.5rem 1.5rem;
+    max-height: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .mpp-card--title {
