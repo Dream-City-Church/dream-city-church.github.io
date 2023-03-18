@@ -248,6 +248,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         position: absolute;
         background-color: #f4be49;
         padding: 0.5rem 0.75rem;
+        font-size: 1rem;
     }
 }
 
@@ -279,6 +280,9 @@ h4.mpp-card--subtitle:nth-child(1) {
         height: 100%;
         width: 25%;
         max-height: 70px;
+    }
+    .mpp-card--badge::after {
+        font-size: 0;
     }
     .mpp-card--subtitle {
         padding: 0;
