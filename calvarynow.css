@@ -367,6 +367,17 @@ h4.mpp-card--subtitle:nth-child(1) {
     --innerPage-mapBgColor: #efefef;
 }
 
+.mpp-innerpage--placeholder {
+    display: none;
+}
+
+.mpp-innerpage--image {
+    width: 30%;
+    float: right;
+    margin: 0 0 1em 2em;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+}
+
 .mpp-innerpage--fixed-img {
     width: 30%;
     float: right;
