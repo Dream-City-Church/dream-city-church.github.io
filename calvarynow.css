@@ -181,7 +181,7 @@
     text-align: left;
     float: left;
     padding-top: 0.5rem;
-    margin-right: 5% !important;
+    margin-right: 4% !important;
 }
 
 h4.mpp-card--subtitle:nth-child(1) {
@@ -223,7 +223,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 
 @media only screen and (max-width: 999px) {
     .mpp-card {
-        max-height:120px;
+        max-height:none;
     }
     .mpp-card--header {
         max-width: 214px;
