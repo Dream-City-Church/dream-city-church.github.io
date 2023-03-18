@@ -381,6 +381,8 @@ h4.mpp-card--subtitle:nth-child(1) {
 .mpp-innerpage--fixed-img {
     width: 30%;
     float: right;
+    background-position: center;
+    margin: 0 0 1rem 2rem;
 }
 
 @media only screen and (max-width: 700px) {
