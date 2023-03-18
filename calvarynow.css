@@ -164,7 +164,7 @@
     -webkit-line-clamp: 3;
     overflow: hidden;
     clear: both;
-    line-height: 1.5rem;
+    line-height: 1.6rem;
     padding-top: 0.5rem;
     color: var(--root-text-color);
 }
