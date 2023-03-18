@@ -48,6 +48,7 @@
     --card-primaryColor: #4a95ec;
     --card-badgeBgColor: var(--card-textColor);
     --card-headerBgColor: #666;
+    --card-badge-highlightColor: #f4be49;
     --card-badgeStatusActiveColor: var(--card-primaryColor);
     --card-badgeStatusPendingColor: #f0d030;
     --card-badgeStatusDiscontinuedColor: #ededed;
@@ -98,27 +99,36 @@
 }
 
 .mpp-card--badge {
-    background-color: transparent;
-    border-top-left-radius: 0;
+    border-radius: 0.5rem 0 0 0;
     font-size: 0.9rem;
     font-weight: 600;
-    padding: 0;
-    line-height: 2.5rem;
-    opacity: 0.75;
-    color: var(--primary);
-    position: absolute;
-    left: -125px;
-    text-align: right;
+    padding-left: 0.75rem;
+    z-index: -1;
+    background-color: #f4be49;
+    color: white;
+    left: -63px;
+    top: 83px;
+    transform: rotate(270deg);
 }
 
 .mpp-card--badge::after {
     content: "\f559";
     font-family: 'FontAwesome';
-    margin-left: 0.5rem;
+    top: 0px;
+    border-radius: 0 0.5rem 0 0;
     position: absolute;
+    background-color: #f4be49;
+    padding: 0.5rem 0.75rem;
 }
 
 .mpp-car--badge.Meets.Online {
+    background-color: var(--primary);
+    left: -77px;
+    top:70px;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.mpp-car--badge.Meets.Online::after {
     display: none;
 }
 
