@@ -235,7 +235,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         display:none;
     }
     .mpp-card--badge {
-        left: -38px;
+        left: -37px;
         top: 15px;
         transform: none;
         line-height: 1.5rem;
@@ -389,7 +389,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     margin: 0 0 1rem 2rem;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 999px) {
     .mpp-innerpage h1 {
         margin-top: 0.25em;
         text-align:center;
