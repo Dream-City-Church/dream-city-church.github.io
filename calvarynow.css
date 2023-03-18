@@ -121,14 +121,14 @@
     padding: 0.5rem 0.75rem;
 }
 
-.mpp-car--badge.Meets.Online {
+span.mpp-car--badge.Meets.Online {
     background-color: var(--primary);
     left: -77px;
     top:70px;
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.mpp-car--badge.Meets.Online::after {
+span.mpp-car--badge.Meets.Online::after {
     display: none;
 }
 
