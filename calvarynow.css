@@ -398,10 +398,11 @@ h4.mpp-card--subtitle:nth-child(1) {
         font-size: 0.75rem;
     }
     .mpp-innerpage--image {
-        width: 120%;
-        margin: 0 -10%;
+        width: 100vw;
         float: none;
-        max-height: 250px; 
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        background-size: cover !important;
     }
     .mpp-innerpage--fixed-img {
         width: 100vw;
