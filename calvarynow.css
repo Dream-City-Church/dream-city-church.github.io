@@ -302,12 +302,6 @@ h4.mpp-card--subtitle:nth-child(1) {
         line-height: 2rem;
         font-size: 1.1rem;
     }
-    .event-date-range::before{
-        /*content: none;*/
-    }
-    .event-location::before{
-        /*content: none;*/
-    }
 }
 
 /*--------------------------------------------*/
@@ -435,9 +429,6 @@ h4.mpp-card--subtitle:nth-child(1) {
     #registrationFormContainer {
         clear: both;
         overflow: auto;
-    }
-    #promoCodeContainer {
-        margin-top: 1em;
     }
 }
 
