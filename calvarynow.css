@@ -162,7 +162,10 @@
 
 .mpp-card--description {
     -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
     overflow: hidden;
+    height: 5.2rem;
     clear: both;
     line-height: 1.6rem;
     padding-top: 0.5rem;
