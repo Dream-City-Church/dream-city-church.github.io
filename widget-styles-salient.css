@@ -501,12 +501,33 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
     text-decoration: underline;
 }
 
+.mppw-product-options {
+    width: auto !important;
+    min-width: 50%;
+}
+
 .product-form td {
     padding: 0.75em 0;
 }
 
+table.mppw-invoice td, th {
+    font-size: 1rem;
+}
+
+.product-form__control {
+    font-size: 1rem;
+}
+
+.product-form__control label {
+    font-weight: bold;
+}
+
 .mppw-form-field--is-valid .product-form__control {
     padding: inherit;
+}
+
+.product-form .option-name {
+    padding-right: 5rem;
 }
 
 #updateInformationWarningMessage {
@@ -588,7 +609,11 @@ label[for=bulkEmailOptOutCheck] {
     }
     #addressFormWrapper > .mpp-row {
         margin-bottom: 1.5rem;
-    }    
+    }
+    .mppw-product-options {
+        width: initial;
+        min-width: none;
+    }
 }
 
 @media only screen and (max-width: 700px) {
