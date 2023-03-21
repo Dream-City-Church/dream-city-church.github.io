@@ -545,6 +545,22 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
     text-decoration: underline;
 }
 
+.attendeeInfoForm h3 {
+    color: var(--primary);
+}
+
+.parentInfoForm h3 {
+    color: var(--primary);
+}
+
+.addressFormWrapper h3 {
+    color: var(--primary);
+}
+
+#productOptionsContainer h3 {
+    color: var(--primary);
+}
+
 .mppw-product-options {
     width: auto !important;
     min-width: 50%;
@@ -552,6 +568,13 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 
 .product-form td {
     padding: 0.75em 0;
+}
+
+.product-form th {
+    color: var(--innerPage-textColor);
+    font-weight: normal;
+    font-style: italic;
+    border-bottom: solid 1px #efefef;
 }
 
 table.mppw-invoice td, th {
