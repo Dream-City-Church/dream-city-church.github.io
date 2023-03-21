@@ -501,15 +501,15 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
     text-decoration: underline;
 }
 
-.attendeeInfoForm h3 {
+#attendeeInfoForm h3 {
     color: var(--primary);
 }
 
-.parentInfoForm h3 {
+#parentInfoForm h3 {
     color: var(--primary);
 }
 
-.addressFormWrapper h3 {
+#addressFormWrapper h3 {
     color: var(--primary);
 }
 
