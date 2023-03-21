@@ -561,6 +561,16 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
     color: var(--primary);
 }
 
+#registerAsContainer {
+    color: white !important;
+    padding: 0.5rem;
+    border: 1px solid var(--primary);
+}
+
+#registerAsContainer #registerAs {
+    background-color: #fafafa !important;
+}
+
 .mppw-product-options {
     width: auto !important;
     min-width: 50%;
