@@ -3,5 +3,6 @@
 .mppw-login {
     position: relative;
     float: right;
-    padding-top: 0.9rem;
+    top: 50%;
+    transform: translateY(50%);
 }
