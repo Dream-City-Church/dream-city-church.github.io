@@ -1,2 +1,6 @@
-@import url(widget-styles-23.css)
+@import url(widget-styles-23.css);
 
+.mppw-login {
+    position: relative;
+    padding-top: 1.3rem;
+}
