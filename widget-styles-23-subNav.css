@@ -2,5 +2,6 @@
 
 .mppw-login {
     position: relative;
-    padding-top: 1.3rem;
+    float: right;
+    padding-top: 0.9rem;
 }
