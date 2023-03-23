@@ -1,5 +1,6 @@
 @import url(/calvarynow.css);
 
+
 .mpp-card:hover {
     cursor: initial;
 }
@@ -20,13 +21,31 @@
 }
 
 .mpp-card--footer {
-    display: inline-block;
-    padding-top: 25px;
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 25%;
+    margin-right:1rem;
+}
+
+.mpp-card--footer a {
+    width: 100%;
+}
+
+@media only screen and (max-width: 999px) {
+    .mpp-card--footer {
+        position: initial;
+        display: inline-block;
+        float: right;
+    }
 }
 
 @media only screen and (max-width: 768px) {
     .mpp-card--footer {
         display: block;
         padding: 0 1rem;
+        width: 100%;
+        margin: auto;
     }
 }
