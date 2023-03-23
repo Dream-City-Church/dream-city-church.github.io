@@ -91,6 +91,10 @@
     transition: border 400ms ease, box-shadow 400ms ease;
 }
 
+#myGroupsWrapper .mpp-card:hover {
+    cursor: initial;
+}
+
 .mpp-card--header {
     height: 100%;
     width:302px;
