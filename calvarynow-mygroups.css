@@ -1,7 +1,6 @@
 @import url(/calvarynow.css);
 
-
-#myGroupsWrapper .mpp-card:hover {
+.mpp-card:hover {
     cursor: initial;
 }
 
@@ -16,11 +15,11 @@
     display: none;
 }
 
-#myGroupsWrapper .mpp-card--description {
+.mpp-card--description {
     display: none;
 }
 
-#myGroupsWrapper .mpp-card--footer {
+.mpp-card--footer {
     display: inline-block;
     padding-top: 25px;
 }
