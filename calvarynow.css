@@ -91,10 +91,6 @@
     transition: border 400ms ease, box-shadow 400ms ease;
 }
 
-#myGroupsWrapper .mpp-card:hover {
-    cursor: initial;
-}
-
 .mpp-card--header {
     height: 100%;
     width:302px;
@@ -132,18 +128,7 @@
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.mpp-card--badge.Leader {
-    background-color: var(--primary);
-    left: -77px;
-    top:70px;
-    border-radius: 0.5rem 0.5rem 0 0;
-}
-
 .mpp-card--badge.Meets.Online::after {
-    display: none;
-}
-
-.mpp-card--badge.Leader::after {
     display: none;
 }
 
@@ -185,10 +170,6 @@
     line-height: 1.6rem;
     padding-top: 0.5rem;
     color: var(--root-text-color);
-}
-
-#myGroupsWrapper .mpp-card--description {
-    display: none;
 }
 
 .mpp-card--description p {
@@ -241,11 +222,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 
 .mpp-card--footer {
     display: none;
-}
-
-#myGroupsWrapper .mpp-card--footer {
-    display: inline-block;
-    padding-top: 25px;
 }
 
 @media only screen and (max-width: 999px) {
@@ -321,10 +297,6 @@ h4.mpp-card--subtitle:nth-child(1) {
     .mpp-card--description {
         display: none;
         width: initial;
-    }
-    .mpp-card--footer {
-        display: block;
-        padding: 0 1rem;
     }
     .mpp-card--title {
         line-height: 2rem;

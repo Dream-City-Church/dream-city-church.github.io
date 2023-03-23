@@ -1,0 +1,33 @@
+@import url(/calvarynow.css);
+
+
+#myGroupsWrapper .mpp-card:hover {
+    cursor: initial;
+}
+
+.mpp-card--badge.Leader {
+    background-color: var(--primary);
+    left: -77px;
+    top:70px;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.mpp-card--badge.Leader::after {
+    display: none;
+}
+
+#myGroupsWrapper .mpp-card--description {
+    display: none;
+}
+
+#myGroupsWrapper .mpp-card--footer {
+    display: inline-block;
+    padding-top: 25px;
+}
+
+@media only screen and (max-width: 768px) {
+    .mpp-card--footer {
+        display: block;
+        padding: 0 1rem;
+    }
+}
