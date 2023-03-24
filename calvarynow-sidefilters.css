@@ -47,6 +47,10 @@
         display: none !important;
     }
 
+    #advancedSearchSection[style="display: none"] {
+        display: none !important;
+    }
+
     #advancedSearchSection[style="display: block;"] {
         display: block !important;
     }
