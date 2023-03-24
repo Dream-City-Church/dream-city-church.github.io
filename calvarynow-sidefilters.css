@@ -1,5 +1,15 @@
 @import url(/calvarynow.css);
 
+/* 
+This code block needs to be added to the Divi WordPress styles for the sticky section to work.
+Sticky will not work on any parent/grandparent element that has an 'overflow' value set.
+
+    .et_pb_section_0, .et_pb_section_3, .et_pb_section_5, .et_pb_section_4, .et_pb_section_2 {
+        overflow: initial !important;
+    }
+
+*/
+
 .mppw-form-wrapper {
     width: 30%;
     margin-left: 3%;
@@ -24,10 +34,6 @@
 
 .mpp-card--subtitle {
     font-size: 0.95rem;
-}
-
-.et_pb_section_0, .et_pb_section_3, .et_pb_section_5, .et_pb_section_4, .et_pb_section_2 {
-    overflow: initial !important;
 }
 
 @media only screen and (max-width: 1199px) {
