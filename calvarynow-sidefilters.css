@@ -1,2 +1,47 @@
 @import url(/calvarynow.css);
 
+.mppw-form-wrapper {
+    width: 30%;
+    margin-left: 3%;
+    float: right;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2rem;
+}
+
+.mppw-form-wrapper h1 {
+    display: none;
+}
+
+.mppw-right {
+    display: none;
+}
+
+#advancedSearchSection {
+    display: block !important;
+}
+
+.et_pb_section_0, .et_pb_section_3, .et_pb_section_5, .et_pb_section_4, .et_pb_section_2 {
+    overflow: initial !important;
+}
+
+@media only screen and (max-width: 999px) {
+    .mppw-form-wrapper {
+        width: auto;
+        margin-left: 0;
+        float: none;
+        position: static;
+    }
+    
+    .mppw-right {
+        display: initial;
+    }
+    
+    #advancedSearchSection[style="display: none;"] {
+        display: none !important;
+    }
+
+    #advancedSearchSection[style="display: block;"] {
+        display: block !important;
+    }
+}

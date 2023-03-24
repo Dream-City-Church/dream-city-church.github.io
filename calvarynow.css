@@ -136,6 +136,17 @@
     background: linear-gradient(160deg, #c7c9c8aa 33%, #c7c9c866 100%);
 }
 
+.mpp-card--badge.full {
+    background-color: var(--card-badgeStatusDiscontinuedColor);
+    color: var(--alt-text-color);
+    border-radius: 0.5rem 0.5rem 0 0;
+    left: -43px;
+}
+
+.mpp-card--badge.full::after {
+    display: none;
+}
+
 .mpp-card--image {
     height: 100%;
 }
