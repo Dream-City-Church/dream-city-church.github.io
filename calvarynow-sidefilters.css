@@ -3,6 +3,7 @@
 .mppw-form-wrapper {
     width: 30%;
     margin-left: 3%;
+    margin-top: -0.4rem;
     float: right;
     position: -webkit-sticky;
     position: sticky;
@@ -25,10 +26,11 @@
     overflow: initial !important;
 }
 
-@media only screen and (max-width: 999px) {
+@media only screen and (max-width: 1199px) {
     .mppw-form-wrapper {
         width: auto;
         margin-left: 0;
+        margin-top: 0;
         float: none;
         position: static;
     }
