@@ -22,6 +22,10 @@
     display: block !important;
 }
 
+.mpp-card--subtitle {
+    font-size: 0.95rem;
+}
+
 .et_pb_section_0, .et_pb_section_3, .et_pb_section_5, .et_pb_section_4, .et_pb_section_2 {
     overflow: initial !important;
 }
