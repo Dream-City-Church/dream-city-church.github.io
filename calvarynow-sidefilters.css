@@ -46,7 +46,7 @@ Sticky will not work on any parent/grandparent element that has an 'overflow' va
     }
     
     .mppw-right {
-        display: initial;
+        display: revert;
     }
     
     #advancedSearchSection[style="display: none;"] {
