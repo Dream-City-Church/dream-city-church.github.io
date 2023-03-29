@@ -570,7 +570,7 @@ table.mppw-invoice td, th {
 }
 
 #singlePriceContainer {
-    display: none;
+    /*display: none;*/
 }
 
 #promoCodeContainer label {
