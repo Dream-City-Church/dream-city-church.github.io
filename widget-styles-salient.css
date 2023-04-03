@@ -672,6 +672,10 @@ div[data-id="mp_customform_2389"]{
     display: none;
 }
 
+hr {
+    border: 2px dashed #ffa400;
+}
+
 /* Buttons */
 .mppw-btn {
     border-radius: 4px;
