@@ -1,0 +1,19 @@
+@import url(widget-styles-23.css);
+
+.mppw-loggedout--username {
+    color: #ffa400;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.mppw-loggedout--username:hover, .mppw-loggedout--username:focus {
+    color: #ffb410;
+    text-decoration: underline;
+}
+
+.mppw-login--container {
+    color: #fff;
+    text-decoration: none;
+    justify-content: normal;
+    font-weight: 600;
+}
