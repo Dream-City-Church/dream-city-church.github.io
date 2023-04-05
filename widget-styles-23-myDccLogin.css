@@ -16,9 +16,6 @@
     color: #c7c9c8;
 }
 
-.mppw-login--container {
-    color: #fff;
-    text-decoration: none;
-    justify-content: normal;
-    font-weight: 600;
+.mppw-login--container, .mppw-login--container:hover {
+    color: #c7c9c8;
 }
