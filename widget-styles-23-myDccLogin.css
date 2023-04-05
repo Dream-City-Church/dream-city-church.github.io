@@ -5,19 +5,19 @@
 }
 
 .mppw-loggedout--username {
-    color: #c7c9c8;
+    color: #707070;
 }
 
 .mppw-loggedout--username:hover, .mppw-loggedout--username:focus {
-    color: #b7b9b8;
+    color: #707070;
 }
 
 .mppw-icon-unlock:before {
-    color: #c7c9c8;
+    color: #707070;
 }
 
-.mppw-login--container, .mppw-login--container:hover {
-    color: #c7c9c8;
+.mppw-login--container, .mppw-login--container:hover, .mppw-login--container:focus {
+    color: #707070 !important;
     justify-content: flex-end;
 }
 
