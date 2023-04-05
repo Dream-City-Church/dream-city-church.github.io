@@ -26,8 +26,15 @@
 }
 
 @media only screen and (min-width: 999px) {
-    .mppw-login--container {
-        justify-content: center;
+    .mppw-login {
         margin-top: 1rem;
+    }
+    
+    .mppw-login--container {
+        margin-top: 1rem;
+    }
+
+    #userDisplayName {
+        display: none;
     }
 }
