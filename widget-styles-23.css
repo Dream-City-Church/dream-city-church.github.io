@@ -837,7 +837,7 @@ hr {
 /* Login Icons */
 .mppw-icon-unlock:before {
     /* Login */
-    content: "\f2f6";
+    content: "\f502";
     font-family: 'FontAwesome';
     color: #fff;
     font-size: 1em;
