@@ -18,4 +18,16 @@
 
 .mppw-login--container, .mppw-login--container:hover {
     color: #c7c9c8;
+    justify-content: flex-end;
+}
+
+.mppw-login--dropdown {
+    width: unset;
+}
+
+@media only screen and (min-width: 999px) {
+    .mppw-login--container {
+        justify-content: center;
+        margin-top: 1rem;
+    }
 }
