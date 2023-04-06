@@ -113,9 +113,13 @@
 
 .mpp-innerpage--fixed-img {
     width: 30%;
-    height: 210px;
+    margin-left: 2%;
     float: right;
     background-size: cover;
+}
+
+.mpp-innerpage--fixed-imgcontainer {
+    height: 210px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -153,6 +157,7 @@
         text-decoration: none;
     }
     .mppw-ics-link {
+        display: none;
         float: right;
         border: 1px solid var(--primary);
         padding: 0.5em;
