@@ -1091,3 +1091,9 @@ div#subscriptionsBody {
 #myGroupsWrapper {
     display: none;
 }
+
+
+/* TEMP 4-15-2023 */
+#registrationNotActiveMessageContainer {
+    display: none;
+}
