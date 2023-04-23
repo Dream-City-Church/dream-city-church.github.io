@@ -27,6 +27,7 @@ function loadEventParticipants() {
         .then(function (response) {return response.json();})
         .then(function (data) {
             /*Start DIV writeback*/
+            console.log(data.status);
             if(data.status=="success"){
                 divHTML = `<div id="event-participants">`;
                 data.prayers[0].forEach((participant) => {
