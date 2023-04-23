@@ -53,10 +53,10 @@ function loadEventParticipants() {
             }
         })
         /*.catch(function (fail) {
-            /*Report something went wrong - couldn't connect to API*/
+        /*Report something went wrong - couldn't connect to API*/
         /*    console.log('Event Participant connection failure. Returning error.');
-            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
-            document.getElementsByTagName("dcc-EventParticipants")[0].innerHTML = divHTML;
+        /*    divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
+        /*    document.getElementsByTagName("dcc-EventParticipants")[0].innerHTML = divHTML;
         } */
     
 }
