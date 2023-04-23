@@ -52,13 +52,13 @@ function loadEventParticipants() {
                 document.getElementsByTagName("dcc-EventParticipants")[0].innerHTML = divHTML;
             }
         })
-        .catch(function (fail) {
+        /*.catch(function (fail) {
             /*Report something went wrong - couldn't connect to API*/
-            console.log('Event Participant connection failure. Returning error.');
+        /*    console.log('Event Participant connection failure. Returning error.');
             divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
             document.getElementsByTagName("dcc-EventParticipants")[0].innerHTML = divHTML;
-        }
-    )
+        } */
+    
 }
 
 window.onload = setTimeout(loadEventParticipants, 500);
