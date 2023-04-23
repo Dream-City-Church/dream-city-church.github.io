@@ -30,7 +30,7 @@ function loadEventParticipants() {
             console.log(data.status);
             if(data.status=="success"){
                 divHTML = `<div id="event-participants">`;
-                data.prayers[0].forEach((participant) => {
+                data.EventParticipants[0].forEach((participant) => {
                     divHTML = divHTML+`<div class="participant-card">
                         <table>
                         <tr><td class="participant-name">${participant.Participant_Name}</td></tr>
@@ -52,12 +52,12 @@ function loadEventParticipants() {
                 document.getElementsByTagName("dcc-EventParticipants")[0].innerHTML = divHTML;
             }
         })
-        /*.catch(function (fail) {
-        /*Report something went wrong - couldn't connect to API*/
-        /*    console.log('Event Participant connection failure. Returning error.');
-        /*    divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
-        /*    document.getElementsByTagName("dcc-EventParticipants")[0].innerHTML = divHTML;
-        } */
+        .catch(function (fail) {
+            /*Report something went wrong - couldn't connect to API*/
+            console.log('Event Participant connection failure. Returning error.');
+            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
+            document.getElementsByTagName("dcc-EventParticipants")[0].innerHTML = divHTML;
+        } 
     
 }
 
