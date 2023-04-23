@@ -30,6 +30,7 @@ function loadEventParticipants() {
             console.log(data.status);
             if(data.status=="success"){
                 divHTML = `<div id="event-participants">`;
+                
                 data.EventParticipants[0].forEach((participant) => {
                     divHTML = divHTML+`<div class="participant-card">
                         <table>
@@ -38,7 +39,8 @@ function loadEventParticipants() {
                         <tr><td class="participant-paid">Total Paid: ${participant.Paid_Total}</td></tr>
                         <tr><td class="participant-remaining">Payment Remaining: ${participant.Remaining}</td></tr>
                         <tr><td class="participant-options">Registration Options: ${participant.Selected_Options}</td></tr>
-                        </table></div>`;
+                        </table>
+                        </div>`;
                     }
                 )
                 
