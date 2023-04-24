@@ -29,7 +29,8 @@ function loadEventParticipants() {
             /*Start DIV writeback*/
             console.log(data.status);
             if(data.status=="success"){
-                divHTML = `<div id="event-participants">`;
+                divHTML = `<div class="event-title"><h2>${data.EventTitle}</h2></div><div class="event-start-date">${data.EventStartDate}</div><div class="event-registered-count">Registered: ${data.RegisteredCount}</div>`;
+                divHTML = divHTML+`<div id="event-participants">`;
                 data.EventParticipants[0].forEach((participant) => {
                     divHTML = divHTML+`<div class="participant-card">
                         <div class="participant-name">${participant.Participant_Name}</div>
