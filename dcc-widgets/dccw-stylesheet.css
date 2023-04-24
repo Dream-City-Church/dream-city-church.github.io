@@ -181,6 +181,43 @@ dcc-householdprf h3 {
   border-image-slice: 1;
 }
 
+/* Event Participants Cards */
+#event-participants {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: space-between;
+  gap: 1% 1%
+
+}
+.participant-card {
+  background-color: #ffffff;
+  margin-bottom: 1rem;
+  border-radius: 0 0 4px 4px;
+  padding: 0.5rem;
+  flex: 1 1 100%;
+  box-shadow: 0.15em 0.25em 0.15em rgb(0 0 0 / 0.1);
+  display: grid;
+  grid-template-columns: 49% 49%;
+  grid-gap: 10px 2%;
+}
+
+.participant-name {
+  font-family: 'DM Serif Display';
+  font-weight: bold;
+  font-size: 2rem;
+  float: left;
+  width: 60%;
+  display: inherit;
+  grid-column-end: span 2;
+}
+
+.registration-date {
+  display: inherit;
+  grid-column-end: span 2;
+}
+
 /* Loading Spinner */
 .dccw-spinnercontainer {
     width: 80px;
