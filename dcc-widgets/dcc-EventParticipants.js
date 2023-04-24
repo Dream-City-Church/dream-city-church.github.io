@@ -35,8 +35,8 @@ function loadEventParticipants() {
                     divHTML = divHTML+`<div class="participant-card">
                         <div class="participant-name">${participant.Participant_Name}</div>
                         <div class="registration-date">Registered at ${participant.Registration_Date}</div>`;
-                    if(participant.Mobile_Phone){divHTML = divHTML+`<div class="participant-mobile"><a href="tel:${participant.Mobile_Phone}" target="_blank">${participant.Mobile_Phone}</a></div>`;}
-                    if(participant.Email_Address){divHTML = divHTML+`<div class="participant-email"><a href="mailto:${participant.Email_Address}" target="_blank">${participant.Email_Address}</a></div>`;}
+                    if(participant.Mobile_Phone){divHTML = divHTML+`<div class="participant-mobile"><a href="tel:${participant.Mobile_Phone}" target="_blank"><i class="fa-solid fa-mobile-screen"></i> ${participant.Mobile_Phone}</a></div>`;}
+                    if(participant.Email_Address){divHTML = divHTML+`<div class="participant-email"><a href="mailto:${participant.Email_Address}" target="_blank"><i class="fa-solid fa-envelope"></i> ${participant.Email_Address}</a></div>`;}
                     divHTML = divHTML+`                       
                         <div class="participant-paid">Paid: $${participant.Paid_Total}</div>
                         <div class="participant-options">Selected Options: ${participant.Selected_Options}</div>
