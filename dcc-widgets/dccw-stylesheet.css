@@ -181,6 +181,34 @@ dcc-householdprf h3 {
   border-image-slice: 1;
 }
 
+div#prayerStatusDialog {
+  width: 100%;
+  text-align: center;  
+}
+
+.prayerStatusNone{
+  opacity: 0;
+  padding: 0;
+}
+
+.prayerStatusSuccess{
+  background-color: white;
+  padding: 1rem;
+  font-weight: bold;
+  border: 1px solid lightgreen;
+  opacity: 1;
+  transition: opacity 0.5s ease 0.25s, padding 0.5s ease 0.25s;
+}
+
+.prayerStatusFailure{
+  background-color: white;
+  padding: 1rem;
+  font-weight: bold;
+  border: 1px solid lightgreen;
+  opacity: 1;
+  transition: opacity 0.5s ease 0.25s, padding 0.5s ease 0.25s;
+}
+
 /* Event Participants Cards */
 .event-title h2 {
   text-align: center;
