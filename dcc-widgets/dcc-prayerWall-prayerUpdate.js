@@ -11,7 +11,7 @@ function updatePrayerStatus() {
     const feedbackAction = getUrlVars()["action"];
     const urlBase = window.location.href.split('?')[0];
     var divHTML = "";
-    if (feedbackGuid!=null && feedbackAction!=null){
+    if (feedbackGuid && feedbackAction){
         const params = {
             guid: feedbackGuid,
             action: feedbackAction
