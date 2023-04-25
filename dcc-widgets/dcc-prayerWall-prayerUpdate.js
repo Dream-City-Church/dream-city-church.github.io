@@ -7,8 +7,8 @@ function getUrlVars() {
 }
 
 function updatePrayerStatus() {
-    var feedbackGuid = getUrlVars()["guid"];
-    var feedbackAction = getUrlVars()["action"];
+    const feedbackGuid = getUrlVars()["guid"];
+    const feedbackAction = getUrlVars()["action"];
     const urlBase = window.location.href.split('?')[0];
     var divHTML = "";
     if (!feedbackGuid && !feedbackAction){
