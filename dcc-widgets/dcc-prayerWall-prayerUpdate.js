@@ -18,6 +18,7 @@ function updatePrayerStatus() {
         };
         const options = {
             method: 'POST',
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify( params )  
         };
         fetch('https://prod-25.westus2.logic.azure.com:443/workflows/510cfa6ebac0464fa12496d41aa6c356/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=fy-hW0-_TydEDcYjNO5jmc_DhWGzT1tAFBpi1eH9BF8', options )
