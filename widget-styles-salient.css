@@ -120,6 +120,8 @@
 
 .mpp-innerpage--fixed-imgcontainer {
     height: 210px;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 700px) {
