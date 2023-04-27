@@ -20,7 +20,7 @@ function updateOptionPrices(){
     var OptionPrices = document.querySelector('mpp-event-details').shadowRoot.querySelectorAll('.option-price');
     console.log(OptionPrices);
     for (var i = 0; i < OptionPrices.length; i++) {
-        if(OptionPrices.item(i).innerHTML=="$.0.00"){
+        if(OptionPrices.item(i).innerHTML=="$0.00"){
             OptionPrices.item(i).innerHTML="";
         }
     }
