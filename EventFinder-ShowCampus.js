@@ -11,7 +11,7 @@ function ShowCampusPicker(){
     var FormFields = document.querySelector('mpp-event-finder').shadowRoot.querySelectorAll('.mppw-form-field mppw-form-field__static-container');
     console.log('Showing campus picker')
     for (var i = 0; i < FormFields.length; i++) {
-        if(FormFields.item(i).style.display="none") {}
+        if(FormFields.item(i).style.display==="none") {}
             FormFields.item(i).style.display="inherit";
     }
 }
