@@ -18,7 +18,7 @@ function waitForDateFields(timeToWait,currentRun,maxRun) {
 
 function updateDateFields(){
     var DateFields = document.querySelector('mpp-event-finder').shadowRoot.querySelectorAll('.event-date-range');
-    /* console.log(DateFields); */
+    console.log('Hiding end dates.');
     for (var i = 0; i < DateFields.length; i++) {
         DateFields.item(i).innerHTML = DateFields.item(i).innerHTML.replace(/- [0-9].*/gm,'');
     }

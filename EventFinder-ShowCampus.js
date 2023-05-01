@@ -9,7 +9,7 @@ function waitForShadow(timeToWait,currentRun,maxRun) {
 
 function ShowCampusPicker(){
     var FormFields = document.querySelector('mpp-event-finder').shadowRoot.querySelectorAll('.mppw-form-field mppw-form-field__static-container');
-    /* console.log(DateFields); */
+    console.log('Showing campus picker')
     for (var i = 0; i < FormFields.length; i++) {
         if(FormFields.item(i).getElementsByClassName.style.display="none") {}
             FormFields.item(i).getElementsByClassName.style.display="inherit";
