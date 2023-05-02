@@ -1,7 +1,7 @@
 function waitForShadow(timeToWait,currentRun,maxRun) {
     if (document.querySelector('mpp-event-finder').shadowRoot) {
         waitForDateFields(timeToWait,1,maxRun);
-        SearchButtonListener();
+        SearchButtonListener(timeToWait);
     } else if (maxRun > currentRun-1) {
         currentRun = currentRun+1;
         setTimeout(waitForShadow,timeToWait,timeToWait,currentRun,maxRun);
@@ -35,11 +35,13 @@ function updateDateFields(){
     }
 }
 
-function SearchButtonListener(){
+function SearchButtonListener(timeToWait){
     const SearchButton = document.querySelector('mpp-event-finder').shadowRoot.querySelector('#searchButton');
+    const currentRun=1;
+    const maxRun=40;
     SearchButton.addEventListener('click',event => {
         console.log('Search button click');
-        setTimeout(waitForDateFields,250,100,1,40);
+        setTimeout(waitForDateFields,timeToWait,timeToWait,currentRun,maxRun);
     })
 }
 
