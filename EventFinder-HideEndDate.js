@@ -39,7 +39,7 @@ function SearchButtonListener(){
     const SearchButton = document.querySelector('mpp-event-finder').shadowRoot.querySelector('#searchButton');
     SearchButton.addEventListener('click',event => {
         console.log('Search button click')
-        waitForDateFields(100,1,40);
+        setTimeout(waitForDateFields,250,100,1,40);
     })
 }
 
