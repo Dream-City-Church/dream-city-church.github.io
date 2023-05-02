@@ -1,6 +1,7 @@
 function waitForShadow(timeToWait,currentRun,maxRun) {
     if (document.querySelector('mpp-event-finder').shadowRoot) {
         waitForDateFields(timeToWait,1,maxRun);
+        SearchButtonListener();
     } else if (maxRun > currentRun-1) {
         currentRun = currentRun+1;
         setTimeout(waitForShadow,timeToWait,timeToWait,currentRun,maxRun);
@@ -32,6 +33,13 @@ function updateDateFields(){
     for (var i = 0; i < DateFields.length; i++) {
         DateFields.item(i).innerHTML = DateFields.item(i).innerHTML.replace(/- [0-9].*/gm,'');
     }
+}
+
+function SearchButtonListener(){
+    const SearchButton = document.querySelector('mpp-event-finder').shadowRoot.querySelector('#searchButton');
+    SearchButton.addEventListener('click',event => {
+        setTimeout(waitForDateFields(100,1,40));
+    })
 }
 
 window.onload=waitForShadow(100,1,40);
