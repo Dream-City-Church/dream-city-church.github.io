@@ -38,7 +38,7 @@ function updateDateFields(){
 function SearchButtonListener(){
     const SearchButton = document.querySelector('mpp-event-finder').shadowRoot.querySelector('#searchButton');
     SearchButton.addEventListener('click',event => {
-        console.log('Search button click')
+        console.log('Search button click');
         setTimeout(waitForDateFields,250,100,1,40);
     })
 }
