@@ -20,10 +20,11 @@ function waitForDateFields(timeToWait,currentRun,maxRun) {
 
 function ShowCampusPicker(){
     var FormFields = document.querySelector('mpp-event-finder').shadowRoot.querySelectorAll('.mppw-form-field__static-container');
-    console.log('Showing campus picker')
     for (var i = 0; i < FormFields.length; i++) {
-        if(FormFields.item(i).style.display==="none") {}
+        if(FormFields.item(i).style.display==="none") {
+            console.log('Showing campus picker')
             FormFields.item(i).style.display="inherit";
+        }
     }
 }
 
@@ -40,7 +41,6 @@ function SearchButtonListener(timeToWait){
     const currentRun=1;
     const maxRun=40;
     SearchButton.addEventListener('click',event => {
-        console.log('Search button click');
         setTimeout(waitForDateFields,timeToWait,timeToWait,currentRun,maxRun);
     })
 }
