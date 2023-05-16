@@ -26,4 +26,4 @@ function updateOptionPrices(){
     }
 }
 
-window. Onload=waitForShadow(100,1,40);
+window.onload=waitForShadow(100,1,40);
