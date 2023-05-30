@@ -22,6 +22,7 @@ function waitForLoginBtn(timeToWait, currentRun, maxRun) {
 }
 
 function getContactGuid() {
+    new Date().setDate()
     let authToken = localStorage.getItem('mpp-widgets_AuthToken');
     const options = {
         method: 'POST',
