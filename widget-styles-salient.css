@@ -704,8 +704,14 @@ hr {
     margin-bottom: 2em;
 }
 
-.toggle--btn {
+.toggle--btn, .mp-about-me--submit-button {
     background: var(--form-btn-primary-bgcolor);
+    border-radius: var(--form-field-borderradius);
+    padding: 10px 20px;
+}
+
+.mp-about-me--cancel-button {
+    background: var(--form-btn-secondary-active);
     border-radius: var(--form-field-borderradius);
     padding: 10px 20px;
 }
