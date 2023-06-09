@@ -1028,6 +1028,15 @@ div#mobileUnlistedCheck {
     }
 }
 
+/* About Me */
+.mpp-about-me--attribute {
+    display: inline-block;
+    margin: 0.25rem;
+    margin-right: 3rem;
+    font-size: inherit;
+    margin-bottom: 1rem;
+}
+
 /* My Subscriptions */
 .mpp-subscriptions {
     padding-bottom: 3em;
