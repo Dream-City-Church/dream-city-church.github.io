@@ -1035,6 +1035,16 @@ div#mobileUnlistedCheck {
 }
 
 /* About Me */
+.mpp-about-me--edit-button {
+    background-color: var(--primary);
+    color: var(--form-btn-primary-text);
+    border: none;
+}
+
+.mpp-about-me--edit-attributes-icon {
+    filter: invert(1);
+}
+
 .mpp-about-me--attribute {
     display: inline-block;
     margin: 0.25rem;
