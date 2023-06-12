@@ -926,7 +926,7 @@ div#pledgeAmountButtonWrapper {
 }
 
 h2#householdName {
-    font-family: 'DM Serif Display';
+    font-family: 'Open Sans';
     color: #606060;
 }
 
@@ -935,7 +935,7 @@ h2#householdName {
 }
 
 h2.mpp-household--header {
-    font-family: 'DM Serif Display';
+    font-family: 'Open Sans';
     color: #606060;
 }
 
@@ -1051,6 +1051,19 @@ div#mobileUnlistedCheck {
     margin-right: 3rem;
     font-size: inherit;
     margin-bottom: 1rem;
+}
+
+.mpp-about-me--header {
+    font-size: 24px;
+    font-family: 'Open Sans';
+    color: #606060;
+}
+
+.mpp-about-me--attributes-block-title {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--primary);
 }
 
 /* My Subscriptions */
