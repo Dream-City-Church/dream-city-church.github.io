@@ -707,6 +707,7 @@ hr {
 .toggle--btn, .mp-about-me--submit-button {
     background: var(--form-btn-primary-bgcolor);
     border-radius: var(--form-field-borderradius);
+    color: white;
     padding: 10px 20px;
 }
 
@@ -1074,26 +1075,35 @@ div#mobileUnlistedCheck {
 
 .mpp-about-me--attribute {
     display: inline-block;
-    margin: 0.25rem;
-    margin-right: 3rem;
-    font-size: inherit;
-    margin-bottom: 1rem;
+    color: #333;
+    border: 1px solid #efefef;
+    background-color: #fafafa;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
 }
 
 .mpp-about-me--checkbox-container input[type="checkbox"] {
     background-color: #fafafa;
-    border: 1px solid #efefef;
+    border: 1px solid #c7c9c8;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 0.7rem;
 }
 
 .mpp-about-me--checkbox-container input[type="checkbox"]::before {
-    box-shadow: inset 1em 1em var(--primary);
-    width: 16px;
-    height: 16px;
+    box-shadow: inset 1rem 1rem var(--primary);
+    width: 1rem;
+    height: 1rem;
+    border-radius: .5rem;
 }
 
 .mpp-about-me--submit-button {
     border: 2px solid var(--form-btn-primary-bgcolor);
     background-color: var(--form-btn-primary-bgcolor);
+    color: white;
 }
 
 .mpp-about-me--cancel-button {
