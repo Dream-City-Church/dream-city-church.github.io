@@ -6,10 +6,13 @@ dcc-householdprf h3 {
 .dccw-prf-cardcontainer {
   min-height:100px;
   width: 100%;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  grid-column-gap: 4%;
+  grid-row-gap: 1rem;
 }
 
 .dccw-prf-card {
-  width: 48%;  
   margin-bottom: 1em;
   margin-right: 2%;
   float: left;
