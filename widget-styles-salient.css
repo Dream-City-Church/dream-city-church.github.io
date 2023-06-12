@@ -179,8 +179,8 @@
 /* Card Styles */
 .mppw-card--grid {
     display: grid;
-    grid-template-columns: 31% 31% 31%;
-    grid-gap: 2.5em 3.5%;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-gap: 2.5em 1.25%;
     margin-top: 1em;
 }
 
@@ -1035,10 +1035,37 @@ div#mobileUnlistedCheck {
 }
 
 /* About Me */
+.mpp-about-me--header-container {
+    margin-bottom: 1.5rem;
+}
+
 .mpp-about-me--edit-button {
     background-color: var(--primary);
     color: var(--form-btn-primary-text);
     border: none;
+}
+
+.mpp-about-me--header {
+    font-size: 24px;
+    font-family: 'Open Sans';
+    color: #606060;
+}
+
+.mpp-about-me--header-subtitle {
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.mpp-about-me--attributes-block {
+    margin-bottom: 0;
+}
+
+.mpp-about-me--attributes-block-title {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 0px;
+    color: var(--primary);
 }
 
 .mpp-about-me--edit-attributes-icon {
@@ -1053,21 +1080,25 @@ div#mobileUnlistedCheck {
     margin-bottom: 1rem;
 }
 
-.mpp-about-me--header {
-    font-size: 24px;
-    font-family: 'Open Sans';
-    color: #606060;
-}
-
-.mpp-about-me--attributes-block-title {
-    font-size: 1.15rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--primary);
+.mpp-about-me--checkbox-container input[type="checkbox"] {
+    background-color: #fafafa;
+    border: 1px solid #efefef;
 }
 
 .mpp-about-me--checkbox-container input[type="checkbox"]::before {
     box-shadow: inset 1em 1em var(--primary);
+    width: 16px;
+    height: 16px;
+}
+
+.mpp-about-me--submit-button {
+    border: 2px solid var(--form-btn-primary-bgcolor);
+    background-color: var(--form-btn-primary-bgcolor);
+}
+
+.mpp-about-me--cancel-button {
+    border: 2px solid var(--form-btn-disabled);
+    color: var(--form-btn-disabled);
 }
 
 /* My Subscriptions */
