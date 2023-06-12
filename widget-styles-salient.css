@@ -1066,6 +1066,10 @@ div#mobileUnlistedCheck {
     color: var(--primary);
 }
 
+.mpp-about-me--checkbox-container input[type="checkbox"]::before {
+    box-shadow: inset 1em 1em var(--primary);
+}
+
 /* My Subscriptions */
 .mpp-subscriptions {
     padding-bottom: 3em;
