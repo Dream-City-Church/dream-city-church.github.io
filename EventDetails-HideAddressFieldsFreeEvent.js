@@ -1,9 +1,9 @@
-function waitForShadow(timeToWait,currentRun,maxRun) {
+function waitForShadowHideAddress(timeToWait,currentRun,maxRun) {
     if (document.querySelector('mpp-event-details').shadowRoot) {
         waitForRegistrationContainer(timeToWait,1,maxRun);
     } else if (maxRun > currentRun-1) {
         currentRun = currentRun+1;
-        setTimeout(waitForShadow,timeToWait,timeToWait,currentRun,maxRun);
+        setTimeout(waitForShadowHideAddress,timeToWait,timeToWait,currentRun,maxRun);
     }
 }
 
@@ -23,4 +23,4 @@ function updateAddressFields(){
     AddressFields.style.display = 'none';
 }
 
-window.onload=waitForShadow(100,1,40);
+window.onload=waitForShadowHideAddress(100,1,40);
