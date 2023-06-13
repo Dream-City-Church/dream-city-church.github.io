@@ -9,6 +9,7 @@ function waitForShadowHideAddress(timeToWait,currentRun,maxRun) {
 
 function waitForRegistrationContainer(timeToWait,currentRun,maxRun) {
     if (document.querySelector('mpp-event-details').shadowRoot.querySelector('#registrationTotalContainer').style.display == 'none') {
+        console.log('Reg container found');
         updateAddressFields();
     } else if (maxRun > currentRun-1) {
         currentRun = currentRun+1;
