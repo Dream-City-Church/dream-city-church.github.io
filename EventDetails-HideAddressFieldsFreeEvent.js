@@ -14,12 +14,13 @@ function waitForRegistrationContainer(timeToWait,currentRun,maxRun) {
         }
     } else if (maxRun > currentRun-1) {
         currentRun = currentRun+1;
-        setTimeout(waitForOptionPrices,timeToWait,timeToWait,currentRun,maxRun);
+        setTimeout(waitForRegistrationContainer,timeToWait,timeToWait,currentRun,maxRun);
     }
 }
 
 function updateAddressFields(){
     var AddressFields = document.querySelector('mpp-event-details').shadowRoot.querySelectorAll('#addressFormWrapper');
+    console.log('Hiding address fields');
     AddressFields.style.display = 'none';
 }
 
