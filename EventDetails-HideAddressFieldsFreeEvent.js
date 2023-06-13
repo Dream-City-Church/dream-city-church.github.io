@@ -8,7 +8,7 @@ function waitForShadowHideAddress(timeToWait,currentRun,maxRun) {
 }
 
 function waitForRegistrationContainer(timeToWait,currentRun,maxRun) {
-    if (document.querySelector('mpp-event-details').shadowRoot.getElementById('registrationTotalContainer').style.display == 'none') {
+    if (document.querySelector('mpp-event-details').shadowRoot.querySelector('#registrationTotalContainer').style.display == 'none') {
         updateAddressFields();
     } else if (maxRun > currentRun-1) {
         currentRun = currentRun+1;
@@ -17,7 +17,7 @@ function waitForRegistrationContainer(timeToWait,currentRun,maxRun) {
 }
 
 function updateAddressFields(){
-    var AddressFields = document.querySelector('mpp-event-details').shadowRoot.querySelectorAll('#addressFormWrapper');
+    var AddressFields = document.querySelector('mpp-event-details').shadowRoot.querySelector('#addressFormWrapper');
     console.log('Hiding address fields');
     AddressFields.style.display = 'none';
 }
