@@ -584,6 +584,15 @@ table.mppw-invoice td, th {
     padding-right: 5rem;
 }
 
+.product-form td.option-qty select {
+    width: auto;
+    border: 1px solid #efefef;
+    border-radius: 0.5rem;
+    background-color: #fafafa;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+}
+
 #updateInformationWarningMessage {
     margin-bottom: 2rem;
 }
