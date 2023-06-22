@@ -142,17 +142,6 @@ function loadPrayerWall() {
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
         })
-        .then (function (addPrayerFromUrl) {
-            const prayerUrlIds = getUrlVars()["prayers"];
-            const prayerUrlIdArray=prayerUrlIds.split(',');
-            console.log(prayerUrlIdArray);
-            if (prayerUrlIdArray) {
-                prayerUrlIdArray.forEach(prayerUrlId => {
-                    addPrayer(prayerUrlId,1);
-                    console.log('prayer id '+prayerUrlId);
-                });
-            }
-        })
         .then(function (readMore) {
             /* Adds a Read More button to long description boxes */
             const prayerDescriptions = document.querySelectorAll('.prayer-description')
@@ -161,6 +150,17 @@ function loadPrayerWall() {
                         pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
                         }
                 });
+        })
+        .then (function (addPrayerFromUrl) {
+            const prayerUrlIds = getUrlVars()["prayers"];
+            console.log(prayerUrlIds);
+            if (prayerUrlIds) {
+                const prayerUrlIdArray=prayerUrlIds.split(',');
+                prayerUrlIdArray.forEach(prayerUrlId => {
+                    addPrayer(prayerUrlId,1);
+                    console.log('prayer id '+prayerUrlId);
+                });
+            }
         })
         .catch(function (fail) {
             /*Report something went wrong - couldn't connect to API*/
