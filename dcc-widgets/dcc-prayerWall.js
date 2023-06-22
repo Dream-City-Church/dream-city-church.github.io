@@ -1,3 +1,11 @@
+function getUrlVars() {
+    var urlVars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        urlVars[key] = value;
+    });
+    return urlVars;
+}
+
 function addPrayer(prayerID,TypeID) {
     document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
     document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
@@ -37,8 +45,20 @@ function addPrayer(prayerID,TypeID) {
         })
 }
 
+function addPrayerFromUrl() {
+    const prayerUrlIds = getUrlVars()["prayers"];
+    if (prayerUrlIds) {
+        const prayerUrlIdArray=prayerUrlIds.split(',');
+        prayerUrlIdArray.forEach(prayerUrlId => {
+            addPrayer(prayerUrlId,1);
+        });
+        document.getElementById("prayer-wall-status-message").innerHTML="Thank you for praying!";
+        document.getElementById("prayer-wall-status-message").className = "prayerStatusSuccess";
+    }
+}
+
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.2301.43');
+    console.log('Prayer Wall v0.2306.10');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -65,7 +85,7 @@ function loadPrayerWall() {
         .then(function (data) {
             /*Start DIV writeback*/
             if(data.status=="success"){
-                divHTML = `<div id="prayer-wall">`;
+                divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div>`;
                 data.prayers[0].forEach((prayer) => {
                     if(prayedForPrayers.indexOf(prayer.PrayerID)!==-1){
                         if(prayer.TypeID==1){
@@ -133,6 +153,13 @@ function loadPrayerWall() {
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
         })
+        .catch(function (fail) {
+            /*Report something went wrong - couldn't connect to API*/
+            console.log('Prayer Wall connection failure. Returning error.');
+            console.log(fail);
+            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
+            document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+        })
         .then(function (readMore) {
             /* Adds a Read More button to long description boxes */
             const prayerDescriptions = document.querySelectorAll('.prayer-description')
@@ -142,13 +169,7 @@ function loadPrayerWall() {
                         }
                 });
         })
-        .catch(function (fail) {
-            /*Report something went wrong - couldn't connect to API*/
-            console.log('Prayer Wall connection failure. Returning error.');
-            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
-            document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
-        }
-    )
+        .then(setTimeout(addPrayerFromUrl,2000))
 }
 
 window.onload = setTimeout(loadPrayerWall, 500);

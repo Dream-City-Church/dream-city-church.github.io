@@ -7,7 +7,6 @@ function getUrlVars() {
 }
 
 function addPrayer(prayerID,TypeID) {
-    console.log('adding prayer '+prayerID+' with type '+TypeID)
     document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
     document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
     const params = {
@@ -48,12 +47,10 @@ function addPrayer(prayerID,TypeID) {
 
 function addPrayerFromUrl() {
     const prayerUrlIds = getUrlVars()["prayers"];
-    console.log(prayerUrlIds);
     if (prayerUrlIds) {
         const prayerUrlIdArray=prayerUrlIds.split(',');
         prayerUrlIdArray.forEach(prayerUrlId => {
             addPrayer(prayerUrlId,1);
-            console.log('prayer id '+prayerUrlId);
         });
         document.getElementById("prayer-wall-status-message").innerHTML="Thank you for praying!";
         document.getElementById("prayer-wall-status-message").className = "prayerStatusSuccess";
@@ -61,7 +58,7 @@ function addPrayerFromUrl() {
 }
 
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.2301.43');
+    console.log('Prayer Wall v0.2306.10');
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
