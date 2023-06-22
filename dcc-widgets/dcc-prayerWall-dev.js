@@ -1,3 +1,11 @@
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
 function addPrayer(prayerID,TypeID) {
     document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
     document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
@@ -35,6 +43,16 @@ function addPrayer(prayerID,TypeID) {
             if(TypeID==1){document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';}
             else if(TypeID==2){document.getElementById("prayer-id-"+prayerID).innerHTML='Celebrate! <i class="fa-solid fa-hands-praying"></i> ';}
         })
+}
+
+function addPrayerFromUrl() {
+    const prayerIDs = getUrlVars()["prayers"];
+    if (prayerIDs) {
+        prayerIDs.forEach(prayer => {
+            addPrayer(prayer,1);
+            console.log('prayer id '+prayer);
+        });
+    }
 }
 
 function loadPrayerWall() {
