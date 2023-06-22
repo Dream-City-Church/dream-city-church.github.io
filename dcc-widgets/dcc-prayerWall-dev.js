@@ -55,7 +55,6 @@ function loadPrayerWall() {
         "prayer": 1,
         "praise": 1
     };
-
     const options = {
         method: 'POST',
         body: JSON.stringify( params ),
@@ -66,13 +65,11 @@ function loadPrayerWall() {
         .then(function (data) {
             /*Start DIV writeback*/
             if(data.status=="success"){
-                console.log('Loading Prayer Wall');
                 divHTML = `<div id="prayer-wall">`;
                 data.prayers[0].forEach((prayer) => {
                     if(prayedForPrayers.indexOf(prayer.PrayerID)!==-1){
                         if(prayer.TypeID==1){
                             /* Prayer ID found in local storage as prayed for */
-                            console.log('Loading prayed for card '+prayer.PrayerID);
                             divHTML = divHTML+`<div class="prayer-card">
                             <div class="prayer-name">Prayer Request from ${prayer.Name}</div>
                             <div class="prayer-date">${prayer.Date}</div>
@@ -85,7 +82,6 @@ function loadPrayerWall() {
                             </div>`;
                         }else if(prayer.TypeID==2){
                             /* Prayer ID found in local storage as prayed for - Praise Reports*/
-                            console.log('Loading prayed for card '+prayer.PrayerID);
                             divHTML = divHTML+`<div class="prayer-card praise-report">
                             <div class="prayer-name">Praise Report from ${prayer.Name}</div>
                             <div class="prayer-date">${prayer.Date}</div>
@@ -100,7 +96,6 @@ function loadPrayerWall() {
                     } else {
                         if(prayer.TypeID==1){
                             /* Prayer ID not found in local storage as prayed for */
-                            console.log('Loading prayer card '+prayer.PrayerID);
                             divHTML = divHTML+`<div class="prayer-card">
                             <div class="prayer-name">Prayer Request from ${prayer.Name}</div>
                             <div class="prayer-date">${prayer.Date}</div>
@@ -113,7 +108,6 @@ function loadPrayerWall() {
                             </div>`;
                         } else if(prayer.TypeID==2) {
                             /* Prayer ID not found in local storage as prayed for - Praise Report */
-                            console.log('Loading prayer card '+prayer.PrayerID);
                             divHTML = divHTML+`<div class="prayer-card praise-report">
                             <div class="prayer-name">Praise Report from ${prayer.Name}</div>
                             <div class="prayer-date">${prayer.Date}</div>
@@ -131,7 +125,7 @@ function loadPrayerWall() {
                 
                 divHTML = divHTML+`</div>`;
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
-    
+
             } else {
                 /*Report something went wrong - failure response from server*/
                 console.log('Prayer Wall response failure. Returning error.');
@@ -140,12 +134,10 @@ function loadPrayerWall() {
             }
         })
         .then(function (readMore) {
-            console.log('Starting read more buttons')
+            /* Adds a Read More button to long description boxes */
             const prayerDescriptions = document.querySelectorAll('.prayer-description')
-
                 prayerDescriptions.forEach(pDescription => {
                     if (pDescription.offsetHeight < pDescription.scrollHeight-2) {
-                        console.log('Adding read more button. Offset: '+pDescription.offsetHeight+'; Scroll: '+pDescription.scrollHeight)    
                         pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
                         }
                 });
