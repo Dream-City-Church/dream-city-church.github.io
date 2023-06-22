@@ -151,7 +151,15 @@ function loadPrayerWall() {
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
         })
-        .then (addPrayerFromUrl())
+        .then (function (addPrayerFromUrl) {
+            const prayerIDs = getUrlVars()["prayers"];
+            if (prayerIDs) {
+                prayerIDs.forEach(prayer => {
+                    addPrayer(prayer,1);
+                    console.log('prayer id '+prayer);
+                });
+            }
+        })
         .then(function (readMore) {
             /* Adds a Read More button to long description boxes */
             const prayerDescriptions = document.querySelectorAll('.prayer-description')
