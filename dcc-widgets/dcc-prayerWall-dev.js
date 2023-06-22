@@ -154,6 +154,13 @@ function loadPrayerWall() {
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
         })
+        .catch(function (fail) {
+            /*Report something went wrong - couldn't connect to API*/
+            console.log('Prayer Wall connection failure. Returning error.');
+            console.log(fail);
+            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
+            document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+        })
         .then(function (readMore) {
             /* Adds a Read More button to long description boxes */
             const prayerDescriptions = document.querySelectorAll('.prayer-description')
@@ -163,14 +170,7 @@ function loadPrayerWall() {
                         }
                 });
         })
-        .catch(function (fail) {
-            /*Report something went wrong - couldn't connect to API*/
-            console.log('Prayer Wall connection failure. Returning error.');
-            console.log(fail);
-            divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
-            document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
-        })
-    addPrayerFromUrl();
+        .then(addPrayerFromUrl())
 }
 
 window.onload = setTimeout(loadPrayerWall, 500);
