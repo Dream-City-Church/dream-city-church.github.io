@@ -7,6 +7,7 @@ function getUrlVars() {
 }
 
 function addPrayer(prayerID,TypeID) {
+    console.log('adding prayer '+prayerID+' with type '+TypeID)
     document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
     document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
     const params = {
