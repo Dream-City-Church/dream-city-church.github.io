@@ -46,6 +46,18 @@ function addPrayer(prayerID,TypeID) {
         })
 }
 
+function addPrayerFromUrl() {
+    const prayerUrlIds = getUrlVars()["prayers"];
+    console.log(prayerUrlIds);
+    if (prayerUrlIds) {
+        const prayerUrlIdArray=prayerUrlIds.split(',');
+        prayerUrlIdArray.forEach(prayerUrlId => {
+            addPrayer(prayerUrlId,1);
+            console.log('prayer id '+prayerUrlId);
+        });
+    }
+}
+
 function loadPrayerWall() {
     console.log('Prayer Wall v0.2301.43');
     /*Initialize local storage for prayed-for prayers*/
@@ -151,25 +163,14 @@ function loadPrayerWall() {
                         }
                 });
         })
-        .then (function (addPrayerFromUrl) {
-            const prayerUrlIds = getUrlVars()["prayers"];
-            console.log(prayerUrlIds);
-            if (prayerUrlIds) {
-                const prayerUrlIdArray=prayerUrlIds.split(',');
-                prayerUrlIdArray.forEach(prayerUrlId => {
-                    addPrayer(prayerUrlId,1);
-                    console.log('prayer id '+prayerUrlId);
-                });
-            }
-        })
         .catch(function (fail) {
             /*Report something went wrong - couldn't connect to API*/
             console.log('Prayer Wall connection failure. Returning error.');
             console.log(fail);
             divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
             document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
-        }
-    )
+        })
+    addPrayerFromUrl();
 }
 
 window.onload = setTimeout(loadPrayerWall, 500);
