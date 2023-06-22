@@ -46,16 +46,6 @@ function addPrayer(prayerID,TypeID) {
         })
 }
 
-function addPrayerFromUrl() {
-    const prayerIDs = getUrlVars()["prayers"];
-    if (prayerIDs) {
-        prayerIDs.forEach(prayer => {
-            addPrayer(prayer,1);
-            console.log('prayer id '+prayer);
-        });
-    }
-}
-
 function loadPrayerWall() {
     console.log('Prayer Wall v0.2301.43');
     /*Initialize local storage for prayed-for prayers*/
@@ -174,6 +164,7 @@ function loadPrayerWall() {
         .catch(function (fail) {
             /*Report something went wrong - couldn't connect to API*/
             console.log('Prayer Wall connection failure. Returning error.');
+            console.log(fail);
             divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
             document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
         }
