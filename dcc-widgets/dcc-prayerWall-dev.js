@@ -1,9 +1,9 @@
 function getUrlVars() {
-    var vars = {};
+    var urlVars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
+        urlVars[key] = value;
     });
-    return vars;
+    return urlVars;
 }
 
 function addPrayer(prayerID,TypeID) {
@@ -152,11 +152,12 @@ function loadPrayerWall() {
             }
         })
         .then (function (addPrayerFromUrl) {
-            const prayerIDs = getUrlVars()["prayers"];
-            if (prayerIDs) {
-                prayerIDs.forEach(prayer => {
-                    addPrayer(prayer,1);
-                    console.log('prayer id '+prayer);
+            const prayerUrlIds = getUrlVars()["prayers"];
+            console.log(prayerUrlIds);
+            if (prayerUrlIds) {
+                prayerUrlIds.forEach(prayerUrlId => {
+                    addPrayer(prayerUrlId,1);
+                    console.log('prayer id '+prayerUrlId);
                 });
             }
         })
