@@ -143,6 +143,7 @@ function loadPrayerWall() {
                 
                 divHTML = divHTML+`</div>`;
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+                addPrayerFromUrl();
 
             } else {
                 /*Report something went wrong - failure response from server*/
