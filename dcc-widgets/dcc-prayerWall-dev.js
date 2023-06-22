@@ -143,7 +143,6 @@ function loadPrayerWall() {
                 
                 divHTML = divHTML+`</div>`;
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
-                addPrayerFromUrl;
 
             } else {
                 /*Report something went wrong - failure response from server*/
@@ -152,6 +151,7 @@ function loadPrayerWall() {
                 document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
             }
         })
+        .then (addPrayerFromUrl())
         .then(function (readMore) {
             /* Adds a Read More button to long description boxes */
             const prayerDescriptions = document.querySelectorAll('.prayer-description')
