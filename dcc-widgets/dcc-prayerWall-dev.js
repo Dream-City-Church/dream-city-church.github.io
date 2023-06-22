@@ -55,6 +55,8 @@ function addPrayerFromUrl() {
             addPrayer(prayerUrlId,1);
             console.log('prayer id '+prayerUrlId);
         });
+        document.getElementById("prayer-wall-status-message").innerHTML="Thank you for praying!";
+        document.getElementById("prayer-wall-status-message").className = "prayerStatusSuccess";
     }
 }
 
@@ -86,7 +88,7 @@ function loadPrayerWall() {
         .then(function (data) {
             /*Start DIV writeback*/
             if(data.status=="success"){
-                divHTML = `<div id="prayer-wall">`;
+                divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div>`;
                 data.prayers[0].forEach((prayer) => {
                     if(prayedForPrayers.indexOf(prayer.PrayerID)!==-1){
                         if(prayer.TypeID==1){
