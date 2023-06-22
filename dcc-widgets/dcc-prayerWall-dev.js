@@ -144,9 +144,10 @@ function loadPrayerWall() {
         })
         .then (function (addPrayerFromUrl) {
             const prayerUrlIds = getUrlVars()["prayers"];
-            console.log(prayerUrlIds);
-            if (prayerUrlIds) {
-                Array.prototype.forEach.call(prayerUrlIds.children, prayerUrlId => {
+            const prayerUrlIdArray=prayerUrlIds.split(',');
+            console.log(prayerUrlIdArray);
+            if (prayerUrlIdArray) {
+                prayerUrlIdArray.forEach(prayerUrlId => {
                     addPrayer(prayerUrlId,1);
                     console.log('prayer id '+prayerUrlId);
                 });
