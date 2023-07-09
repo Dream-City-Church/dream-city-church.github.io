@@ -192,7 +192,8 @@ dcc-householdprf h3 {
 
 div#prayerStatusDialog, div#prayer-wall-status-message {
   width: 100%;
-  text-align: center;  
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .prayerStatusNone{
