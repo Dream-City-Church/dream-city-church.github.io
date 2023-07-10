@@ -24,7 +24,7 @@ function loadEventSignIn() {
                 <center><h2>${data.Event_Title}</h2></center>
                 <center><strong>${data.Event_Start_Date}</strong></center><br />
                 <div id="dcc-signinform">
-                <form class="form-horizontal" onSubmit="submitEventSignIn()">
+                <form class="form-horizontal" onSubmit="submitEventSignIn(e)">
                 <fieldset>
                 <!-- First Name -->
                 <div class="form-group">
@@ -116,7 +116,8 @@ function loadEventSignIn() {
 
 }
 
-function submitEventSignIn() {
+function submitEventSignIn(event) {
+    event.preventDefault();
     /*Set API options*/
     const params = {
         "Event_ID": document.getElementById("form_event_id").value,
