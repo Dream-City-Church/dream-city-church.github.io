@@ -7,7 +7,7 @@ function loadEventSignIn() {
 
     /*Set API options*/
     const params = {
-        "EventId": getUrlVars()["EventId"]
+        "EventId": getUrlVars()["id"]
     };
     const options = {
         method: 'POST',
@@ -24,7 +24,7 @@ function loadEventSignIn() {
                 <center><h2>${data.Event_Title}</h2></center>
                 <center><strong>${data.Event_Start_Date}</strong></center><br />
                 <div id="dcc-signinform">
-                <form class="form-horizontal">
+                <form class="form-horizontal" onSubmit="submitEventSignIn()">
                 <fieldset>
                 <!-- First Name -->
                 <div class="form-group">
@@ -96,7 +96,7 @@ function loadEventSignIn() {
             divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
             document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
         })
-        .then(function (createFormListener) {
+        /*.then(function (createFormListener) {
             var submitBtn = document.getElementById("submitCheckInForm")
             if(submitBtn.addEventListener) {
                 submitBtn.addEventListener("submit", function(e){
@@ -112,18 +112,18 @@ function loadEventSignIn() {
                     }
                 });
             }
-        })
+        })*/
 
 }
 
-function submitEventSignIn(formFirstName,formLastName,formEmailAddress,formMobilePhone,formEventId) {
+function submitEventSignIn() {
     /*Set API options*/
     const params = {
-        "Event_ID": formEventId,
-        "First_Name": formFirstName,
-        "Last_Name": formLastName,
-        "Email_Address": formEmailAddress,
-        "Mobile_Phone": formMobilePhone
+        "Event_ID": document.getElementById("form_event_id").value,
+        "First_Name": document.getElementById("form_first_name").value,
+        "Last_Name": document.getElementById("form_last_name").value,
+        "Email_Address": document.getElementById("form_email_address").value,
+        "Mobile_Phone": document.getElementById("form_mobile_phone").value
     };
     const options = {
         method: 'POST',
