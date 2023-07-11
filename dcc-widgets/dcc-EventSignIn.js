@@ -123,11 +123,11 @@ function submitEventSignIn() {
     document.getElementById("dcc-signinform").innerHTML = divHTML;
     fetch('https://prod-13.westus2.logic.azure.com:443/workflows/1b11793e1b9b400e89f137820e0852c6/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=eokGnYOfjDaB78nBjC8FAgjgJf5ihpPlVSErMcZvfhk', options)
         .then(function (submitted) {
-            divHTML = `You have been signed in!`;
+            divHTML = `<center>You have been signed in!</center>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
         })
         .catch(function (notSubmitted){
-            divHTML = `Sorry, something went wrong. Please try again later.`;
+            divHTML = `<center>Sorry, something went wrong. Please try again later.</center>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
         })
 }
