@@ -24,7 +24,7 @@ function loadEventSignIn() {
                 <center><h2>${data.Event_Title}</h2></center>
                 <center><strong>${data.Event_Start_Date}</strong></center><br />
                 <div id="dcc-signinform">
-                <form class="form-horizontal" onSubmit="submitEventSignIn(e)">
+                <form id="sign-in-form" class="form-horizontal">
                 <fieldset>
                 <!-- First Name -->
                 <div class="form-group">
@@ -96,28 +96,18 @@ function loadEventSignIn() {
             divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
             document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
         })
-        /*.then(function (createFormListener) {
-            var submitBtn = document.getElementById("submitCheckInForm")
-            if(submitBtn.addEventListener) {
-                submitBtn.addEventListener("submit", function(e){
-                    if(!isValid){
-                        e.preventDefault();
-                    }else{
-                        var formFirstName=document.getElementById("form_first_name").value;
-                        var formLastName=document.getElementById("form_last_name").value;
-                        var formEmailAddress=document.getElementById("form_email_address").value;
-                        var formMobilePhone=document.getElementById("form_mobile_phone").value;
-                        var formEventId=document.getElementById("form_event_id").value;
-                        submitEventSignIn(formFirstName,formLastName,formEmailAddress,formMobilePhone,formEventId);
-                    }
-                });
+        .then(function (createFormListener) {
+            document.getElementById("sign-in-form").addEventListener("submit", function(formSubmitted){
+                formSubmitted.preventDefault();
+                submitEventSignIn();
             }
-        })*/
+        })
 
 }
 
-function submitEventSignIn(event) {
+function submitEventSignIn() {
     event.preventDefault();
+    event.stopPropagation();
     /*Set API options*/
     const params = {
         "Event_ID": document.getElementById("form_event_id").value,
