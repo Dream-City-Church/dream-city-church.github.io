@@ -283,6 +283,12 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
   }
 }
 
+/*  Event Sign In */
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
 /* Loading Spinner */
 .dccw-spinnercontainer {
     width: 80px;
