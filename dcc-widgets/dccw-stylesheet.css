@@ -285,8 +285,28 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
 
 /*  Event Sign In */
 
+dcc-eventsignin {
+  display: block;
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+}
+
+dcc-eventsignin h2 {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+div#dcc-signinform {
+  padding: 0 1rem;
+}
+
 .form-group {
   margin-bottom: 1rem;
+}
+
+.submit-container {
+  text-align: center;
 }
 
 /* Loading Spinner */

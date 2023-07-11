@@ -70,7 +70,7 @@ function loadEventSignIn() {
                 </div>
                 
                 <!-- Submit Button -->
-                <div class="form-group">
+                <div class="form-group submit-container">
                   <label class="col-md-4 control-label" for="submit"></label>
                   <div class="col-md-4">
                     <button id="submitCheckInForm" name="submit" type="submit" class="btn btn-primary">Sign In</button>
