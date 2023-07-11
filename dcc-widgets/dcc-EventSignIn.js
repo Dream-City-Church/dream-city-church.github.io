@@ -97,7 +97,7 @@ function loadEventSignIn() {
             document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
         })
         .then(function (createFormListener) {
-            document.getElementById("sign-in-form").addEventListener("submit", SubmitFormListener, form)
+            document.getElementById("sign-in-form").addEventListener("submit", SubmitFormListener)
         })
 
 }
