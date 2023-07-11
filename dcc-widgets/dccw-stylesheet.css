@@ -303,7 +303,7 @@ dcc-eventsignin #header-image {
 
 #dcc-signinform #form-description-text {
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 dcc-eventsignin h2 {

@@ -24,7 +24,7 @@ function loadEventSignIn() {
                 divHTML = `
                 <div id="header-image" style="background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
                 <div id="dcc-signinform">
-                <div id="form-description-text">Please complete this form so that we can know you attended <strong>${data.Event_Title}</strong> on <strong>${data.Event_Start_Date}</strong>.</div>
+                <div id="form-description-text">Please complete this form so that we know you attended <strong>${data.Event_Title}</strong> on <strong>${data.Event_Start_Date}</strong>.</div>
                 <form id="sign-in-form" class="form-horizontal">
                 <fieldset>
                 <!-- First Name -->
