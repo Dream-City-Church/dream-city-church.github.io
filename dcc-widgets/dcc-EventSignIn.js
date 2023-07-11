@@ -21,10 +21,10 @@ function loadEventSignIn() {
             /*Start DIV writeback*/
             console.log(data.status);
             if(data.status=="success"){
-                divHTML = `<img src="https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID}" style="width:100%">
-                <center><h2>${data.Event_Title}</h2></center>
-                <center><strong>${data.Event_Start_Date}</strong></center><br />
+                divHTML = `
+                <div id="header-image" style="background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
                 <div id="dcc-signinform">
+                <div id="form-description-text">Please complete this form so that we can know you attended <strong>${data.Event_Title}</strong> on <strong>${data.Event_Start_Date}</strong>.</div>
                 <form id="sign-in-form" class="form-horizontal">
                 <fieldset>
                 <!-- First Name -->
@@ -129,11 +129,11 @@ function submitEventSignIn() {
     document.getElementById("dcc-signinform").innerHTML = divHTML;
     fetch('https://prod-13.westus2.logic.azure.com:443/workflows/1b11793e1b9b400e89f137820e0852c6/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=eokGnYOfjDaB78nBjC8FAgjgJf5ihpPlVSErMcZvfhk', options)
         .then(function (submitted) {
-            divHTML = `<center>You have been signed in!</center>`;
+            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success">You have been signed in!</div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
         })
         .catch(function (notSubmitted){
-            divHTML = `<center>Sorry, something went wrong. Please try again later.</center>`;
+            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-failure">Sorry, something went wrong. Please try again later.</div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
         })
 }

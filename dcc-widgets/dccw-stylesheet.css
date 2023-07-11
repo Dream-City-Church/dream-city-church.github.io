@@ -292,6 +292,20 @@ dcc-eventsignin {
   margin: auto;
 }
 
+#dcc-signinform div#header-image {
+  height: 0;
+  padding-bottom: 50%;
+  width: 105%;
+  margin-left: -2.5%;
+  background-size: cover;
+  background-position: center center;
+}
+
+#dcc-signinform #form-description-text {
+  text-align: center;
+  padding: 1rem;
+}
+
 dcc-eventsignin h2 {
   margin-top: 1rem;
   font-weight: bold;
@@ -301,11 +315,15 @@ div#dcc-signinform {
   padding: 0 1rem;
 }
 
-.form-group {
+#dcc-signinform .form-group {
   margin-bottom: 1rem;
 }
 
-.submit-container {
+#dcc-signinform .submit-container {
+  text-align: center;
+}
+
+#sign-in-confirmation-message {
   text-align: center;
 }
 
