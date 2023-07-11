@@ -106,6 +106,8 @@ function loadEventSignIn() {
 }
 
 function submitEventSignIn() {
+    var divHTML = ``;
+
     /*Set API options*/
     const params = {
         "Event_ID": document.getElementById("form_event_id").value,
