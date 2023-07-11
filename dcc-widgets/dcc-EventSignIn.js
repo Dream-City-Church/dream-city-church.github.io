@@ -129,11 +129,11 @@ function submitEventSignIn() {
     document.getElementById("dcc-signinform").innerHTML = divHTML;
     fetch('https://prod-13.westus2.logic.azure.com:443/workflows/1b11793e1b9b400e89f137820e0852c6/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=eokGnYOfjDaB78nBjC8FAgjgJf5ihpPlVSErMcZvfhk', options)
         .then(function (submitted) {
-            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p>You have been signed in!</p><p>You may close this window or <a href="javascript:window.location.href=window.location.href">click here</a> to sign in someone else.</p></div>`;
+            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="javascript:window.location.href=window.location.href">click here</a> to sign in someone else.</p></div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
         })
         .catch(function (notSubmitted){
-            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-failure">Sorry, something went wrong. Please try again later.</div>`;
+            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-failure"><p style="font-weight:bold;">Sorry, something went wrong.</p><p>Please try again later. <a href="javascript:window.location.href=window.location.href">Click here</a> to reload the page.</p></div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
         })
 }
