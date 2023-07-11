@@ -57,7 +57,7 @@ function loadEventSignIn() {
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="mobile_phone">Phone Number</label>  
                   <div class="col-md-4">
-                  <input id="form_mobile_phone" name="mobile_phone" type="tel" placeholder="555-123-4567" maxlength="12" class="form-control input-md">
+                  <input id="form_mobile_phone" name="mobile_phone" type="tel" placeholder="555-123-4567" maxlength="12" class="form-control input-md" onInput="this.value = phoneFormat(this.value)">
                     
                   </div>
                 </div>
@@ -140,6 +140,14 @@ function getUrlVars() {
         vars[key] = value;
     });
     return vars;
+}
+
+function phoneFormat(input) {//returns ###-###-####
+    input = input.replace(/\D/g,'');
+    var size = input.length;
+    if (size>3) {input=input.slice(0,3)+"-"+input.slice(3,12)}
+    if (size>6) {input=input.slice(0,7)+"-" +input.slice(7,12)}
+    return input;
 }
 
 window.onload = setTimeout(loadEventSignIn, 500);
