@@ -98,8 +98,10 @@ function loadEventSignIn() {
         })
         .then(function (createFormListener) {
             document.getElementById("sign-in-form").addEventListener("submit", function(formSubmitted){
-                formSubmitted.preventDefault();
-                submitEventSignIn();
+                if(formSubmitted.checkValidity()){
+                    formSubmitted.preventDefault();
+                    submitEventSignIn();
+                }
             })
         })
 
