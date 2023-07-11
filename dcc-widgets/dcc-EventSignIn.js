@@ -97,16 +97,16 @@ function loadEventSignIn() {
             document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
         })
         .then(function (createFormListener) {
-            document.getElementById("sign-in-form").addEventListener("submit", function(formSubmitted){
-                if(formSubmitted.checkValidity()){
-                    formSubmitted.preventDefault();
-                    submitEventSignIn();
-                }else{
-                    createFormListener();
-                }
-            })
+            document.getElementById("sign-in-form").addEventListener("submit", SubmitFormListener, form)
         })
 
+}
+
+function SubmitFormListener(form) {
+        if(form.checkValidity()){
+            form.preventDefault();
+            submitEventSignIn();
+        }
 }
 
 function submitEventSignIn() {
