@@ -100,7 +100,7 @@ function loadEventSignIn() {
             document.getElementById("sign-in-form").addEventListener("submit", function(formSubmitted){
                 formSubmitted.preventDefault();
                 submitEventSignIn();
-            }
+            })
         })
 
 }
