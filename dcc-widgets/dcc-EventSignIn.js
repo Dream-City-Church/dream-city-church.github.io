@@ -1,5 +1,6 @@
 function loadEventSignIn() {
     console.log('Event Sign In v0.2307.1');
+    var emailRegex = '[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.+[a-zA-Z0-9-]+';
 
     /*Initialize loading spinner*/
     divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
@@ -28,7 +29,7 @@ function loadEventSignIn() {
                 <fieldset>
                 <!-- First Name -->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="first_name">First Name</label>  
+                  <label class="col-md-4 control-label" for="first_name">First Name*</label>  
                   <div class="col-md-4">
                   <input id="form_first_name" name="first_name" type="text" placeholder="" class="form-control input-md" required="">
                     
@@ -37,7 +38,7 @@ function loadEventSignIn() {
                 
                 <!-- Last Name -->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="last_name">Last Name</label>  
+                  <label class="col-md-4 control-label" for="last_name">Last Name*</label>  
                   <div class="col-md-4">
                   <input id="form_last_name" name="last_name" type="text" placeholder="" class="form-control input-md" required="">
                     
@@ -46,9 +47,9 @@ function loadEventSignIn() {
                 
                 <!-- Email Address -->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="email_address">Email Address</label>  
+                  <label class="col-md-4 control-label" for="email_address">Email Address*</label>  
                   <div class="col-md-4">
-                  <input id="form_email_address" name="email_address" type="email" placeholder="" class="form-control input-md" required="">
+                  <input id="form_email_address" name="email_address" type="email" placeholder="" class="form-control input-md" required="" pattern="${emailRegex}" title="Please enter a full email address.">
                     
                   </div>
                 </div>
@@ -57,7 +58,7 @@ function loadEventSignIn() {
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="mobile_phone">Phone Number</label>  
                   <div class="col-md-4">
-                  <input id="form_mobile_phone" name="mobile_phone" type="tel" placeholder="555-123-4567" maxlength="12" class="form-control input-md" onInput="this.value = phoneFormat(this.value)">
+                  <input id="form_mobile_phone" name="mobile_phone" type="tel" placeholder="" maxlength="12" class="form-control input-md" onInput="this.value = phoneFormat(this.value)">
                     
                   </div>
                 </div>
