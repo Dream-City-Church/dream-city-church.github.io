@@ -103,6 +103,7 @@ function loadEventSignIn() {
 }
 
 function SubmitFormListener(form) {
+    console.log('Submit click detected');
         if(form.checkValidity()){
             form.preventDefault();
             submitEventSignIn();
