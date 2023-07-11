@@ -106,9 +106,6 @@ function loadEventSignIn() {
 }
 
 function submitEventSignIn() {
-    var divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
-    document.getElementById("dcc-signinform").innerHTML = divHTML;
-
     /*Set API options*/
     const params = {
         "Event_ID": document.getElementById("form_event_id").value,
@@ -122,6 +119,8 @@ function submitEventSignIn() {
         body: JSON.stringify( params ),
         headers: {'Content-Type': 'application/json'}
     };
+    var divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
+    document.getElementById("dcc-signinform").innerHTML = divHTML;
     fetch('https://prod-13.westus2.logic.azure.com:443/workflows/1b11793e1b9b400e89f137820e0852c6/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=eokGnYOfjDaB78nBjC8FAgjgJf5ihpPlVSErMcZvfhk', options)
         .then(function (submitted) {
             divHTML = `You have been signed in!`;
