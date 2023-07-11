@@ -324,6 +324,7 @@ div#dcc-signinform {
 }
 
 #sign-in-confirmation-message {
+  margin-top: 2rem;
   text-align: center;
 }
 
