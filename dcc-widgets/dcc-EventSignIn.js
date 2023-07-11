@@ -105,7 +105,7 @@ function loadEventSignIn() {
 function SubmitFormListener() {
     console.log('Submit click detected');
     if(this.checkValidity()) {
-        this.preventDefault();
+        event.preventDefault();
         submitEventSignIn();
     }
 }
