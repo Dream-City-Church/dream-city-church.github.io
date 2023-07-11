@@ -101,6 +101,8 @@ function loadEventSignIn() {
                 if(formSubmitted.checkValidity()){
                     formSubmitted.preventDefault();
                     submitEventSignIn();
+                }else{
+                    createFormListener();
                 }
             })
         })
