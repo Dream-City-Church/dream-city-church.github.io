@@ -86,8 +86,9 @@ function loadEventSignIn() {
                 document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
 
             } else if(data.status=="expired-event"){
+                var headerDisplay = data.File_GUID ? "block" : "none";
                 divHTML = `
-                <div id="header-image" style="background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
+                <div id="header-image" style="display: ${headerDisplay};background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
                 <div id="dcc-signinform">
                 <div id="form-description-text">Sorry, it looks like <strong>${data.Event_Title}</strong> already occured on <strong>${data.Event_Start_Date}</strong>.<br /><br />Sign in for this event is closed.</div>`;
 
