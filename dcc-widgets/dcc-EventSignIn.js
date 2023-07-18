@@ -106,8 +106,9 @@ function loadEventSignIn() {
             document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
         })
         .then(function (createFormListener) {
-            console.log(createFormListener.status);
-            document.getElementById("sign-in-form").addEventListener("submit", SubmitFormListener);
+            if(document.getElementById("sign-in-form")){
+                document.getElementById("sign-in-form").addEventListener("submit", SubmitFormListener);
+            }
         })
 
 }
