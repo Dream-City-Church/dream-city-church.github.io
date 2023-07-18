@@ -90,7 +90,16 @@ function loadEventSignIn() {
                 divHTML = `
                 <div id="header-image" style="display: ${headerDisplay};background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
                 <div id="dcc-signinform">
-                <div id="form-description-text">Sorry, it looks like <strong>${data.Event_Title}</strong> already occured on <strong>${data.Event_Start_Date}</strong>.<br /><br />Sign in for this event is closed.</div>`;
+                <div id="form-description-text">Sorry, it looks like <strong>${data.Event_Title}</strong> already occured on <strong>${data.Event_Start_Date}</strong>.<br /><br />Sign in for this event is closed.</div>
+                </div>`;
+
+                document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
+
+            } else if(data.status=="event-not-found"){
+                divHTML = `
+                <div id="dcc-signinform">
+                <div id="form-description-text">Uh oh, something went wrong.<br /><br />We couldn't find any events at this link. It may have been moved or deleted.</div>
+                </div>`;
 
                 document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
 
