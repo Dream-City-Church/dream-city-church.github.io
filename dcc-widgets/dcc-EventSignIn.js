@@ -106,7 +106,7 @@ function loadEventSignIn() {
             } else {
                 /*Report something went wrong - failure response from server*/
                 console.log('Event data response failure. Returning error.');
-                divHTML = divHTML+`<div id="dcc-signinform"><div id="form-description-text"><p>Sorry, something went wrong. Please try again later.</p></div></div>`;
+                divHTML = divHTML+`<div id="dcc-signinform"><div id="form-description-text"><p>Uh oh, something went wrong.<br /><br />We're having trouble communicating with our services. Please try again later.</p></div></div>`;
                 document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
             }
         })
