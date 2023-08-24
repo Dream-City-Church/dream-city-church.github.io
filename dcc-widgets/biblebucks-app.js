@@ -11,13 +11,13 @@ function loadBibleBucksApp(){
 function loadEarnParticipantSelect(){
     document.querySelector('#biblebucks-content').innerHTML=bb_participantEarnTemplate;
     document.getElementById("home-btn").addEventListener("click", loadBibleBucksApp);
-    document.getElementById("submit-participant-earn-btn").addEventListener("submit", function(){submitParticipantListener('earnPointsPage')});
+    document.getElementById("submit-participant-earn-btn").addEventListener("click", function(){earnParticipantLookup(0)});
 }
 
 function loadSpendParticipantSelect(){
     document.querySelector('#biblebucks-content').innerHTML=bb_participantSpendTemplate;
     document.getElementById("home-btn").addEventListener("click", loadBibleBucksApp);
-    document.getElementById("submit-participant-spend-btn").addEventListener("submit", function(){submitParticipantListener('spendPointsPage')});
+    document.getElementById("submit-participant-spend-btn").addEventListener("click", function(){spendParticipantLookup(0)});
 }
 
 // PARTICIPANT LOOKUPS //
@@ -163,16 +163,6 @@ function addPointsValue(addAmount) {
     document.getElementById('points-total').value = Number(currentPoints)+Number(addAmount);
 }
 
-function submitParticipantListener(reference) {
-    console.log('Submit click detected');
-    event.preventDefault();
-    if(reference=="earnPointsPage"){
-        earnParticipantLookup(0);
-    }else if(reference=="spendPointsPage"){
-        spendParticipantLookup(0);
-    };
-}
-
 function submitFormListener(reference) {
     console.log('Submit click detected');
     event.preventDefault();
@@ -242,7 +232,7 @@ var bb_participantEarnTemplate=`<div id="biblebucks-participantearnselect">
     <div id="content-card">
         <form>
             <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
-            <button type="submit" id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
+            <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
         </form>
     </div>
 </div>`;
@@ -255,7 +245,7 @@ var bb_participantSpendTemplate=`<div id="biblebucks-participantspendselect">
     <div id="content-card">
         <form>
             <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
-            <button type="submit" id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
+            <button id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
         </form>
     </div>
 </div>`;
