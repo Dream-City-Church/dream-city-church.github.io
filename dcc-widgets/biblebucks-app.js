@@ -11,13 +11,13 @@ function loadBibleBucksApp(){
 function loadEarnParticipantSelect(){
     document.querySelector('#biblebucks-content').innerHTML=bb_participantEarnTemplate;
     document.getElementById("home-btn").addEventListener("click", loadBibleBucksApp);
-    document.getElementById("submit-participant-earn-btn").addEventListener("submit", function(){event.preventDefault();event.stopPropogation();earnParticipantLookup(0)});
+    document.getElementById("submit-participant-earn-btn").addEventListener("submit", submitParticipantListener('earnPointsPage'));
 }
 
 function loadSpendParticipantSelect(){
     document.querySelector('#biblebucks-content').innerHTML=bb_participantSpendTemplate;
     document.getElementById("home-btn").addEventListener("click", loadBibleBucksApp);
-    document.getElementById("submit-participant-spend-btn").addEventListener("submit", function(){event.preventDefault();event.stopPropogation();spendParticipantLookup(0)});
+    document.getElementById("submit-participant-spend-btn").addEventListener("submit", submitParticipantListener('spendPointsPage'));
 }
 
 
@@ -169,6 +169,16 @@ function addPointsValue(addAmount) {
     document.getElementById('points-total').value = Number(currentPoints)+Number(addAmount);
 }
 
+function submitParticipantListener(reference) {
+    console.log('Submit click detected');
+    event.preventDefault();
+    if(reference=="earnPointsPage"){
+        earnParticipantLookup(0);
+    }else if(reference=="spendPointsPage"){
+        spendParticipantLookup(0);
+    };
+}
+
 function submitFormListener(reference) {
     console.log('Submit click detected');
     event.preventDefault();
@@ -197,7 +207,7 @@ function submitPointsTransaction(reference){
                 }else if(reference=="spendPointsPage"){
                     console.log('Posting Points Success');
                     spendParticipantLookup(data.ParticipantId);
-                }{
+                }else{
                     console.log(data.status)
                 }
             }
