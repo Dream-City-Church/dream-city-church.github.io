@@ -229,7 +229,7 @@ var bb_participantEarnTemplate=`<div id="biblebucks-participantearnselect">
     </div>
     <div id="content-card">
         <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
-        <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
+        <button type="submit" id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
     </div>
 </div>`;
 
@@ -240,7 +240,7 @@ var bb_participantSpendTemplate=`<div id="biblebucks-participantspendselect">
     </div>
     <div id="content-card">
     <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
-        <button id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
+        <button type="submit" id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
     </div>
 </div>`;
 
@@ -270,7 +270,7 @@ var bb_earnPointsTemplate=`<div id="biblebucks-earnpoints">
     </div>
     <div class="input-field"><input type="number" id="points-total" class="secondary-input" min="25" max="1000">
     <input type="hidden" id="participant-id" value=""></div>
-    <button id="submit-points-earn-btn" class="submit-button">SUBMIT</button>
+    <button type="submit" id="submit-points-earn-btn" class="submit-button">SUBMIT</button>
 </div>
 </div>`;
 
@@ -300,6 +300,6 @@ var bb_spendPointsTemplate=`<div id="biblebucks-earnpoints">
     </div>
     <div class="input-field"><input type="number" id="points-total" class="secondary-input" min="25" max="1000">
     <input type="hidden" id="participant-id" value=""></div>
-    <button id="submit-points-spend-btn" class="submit-button">SUBMIT</button>
+    <button type="submit" id="submit-points-spend-btn" class="submit-button">SUBMIT</button>
 </div>
 </div>`;
