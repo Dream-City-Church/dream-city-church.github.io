@@ -56,6 +56,10 @@ div#content-card {
     height: 400px;
 }
 
+div#reader {
+  position:absolute;
+}
+
 .primary-button-wrapper {
     padding-top: 60px;
     padding-bottom: 55px;

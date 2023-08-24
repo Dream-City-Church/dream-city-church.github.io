@@ -12,13 +12,40 @@ function loadEarnParticipantSelect(){
     document.querySelector('#biblebucks-content').innerHTML=bb_participantEarnTemplate;
     document.getElementById("home-btn").addEventListener("click", loadBibleBucksApp);
     document.getElementById("submit-participant-earn-btn").addEventListener("click", function(){earnParticipantLookup(0)});
+    document.getElementById("qr-scanner").addEventListener("click", function(){html5QrcodeScanner.render(onScanSuccess, onScanFailure)});
 }
 
 function loadSpendParticipantSelect(){
     document.querySelector('#biblebucks-content').innerHTML=bb_participantSpendTemplate;
     document.getElementById("home-btn").addEventListener("click", loadBibleBucksApp);
     document.getElementById("submit-participant-spend-btn").addEventListener("click", function(){spendParticipantLookup(0)});
+    document.getElementById("qr-scanner").addEventListener("click", function(){html5QrcodeScanner.render(onScanSuccess, onScanFailure)});
 }
+
+// QR SCANNING //
+
+function onScanSuccess(decodedText, decodedResult) {
+    // handle the scanned code as you like, for example:
+    console.log(`Code matched = ${decodedText}`, decodedResult);
+    if(document.getElementById("submit-participant-earn-btn")){
+        earnParticipantLookup(decodedText);
+    }
+    if(document.getElementById("submit-participant-spend-btn")){
+        spendParticipantLookup(decodedText);
+    }
+}
+  
+  function onScanFailure(error) {
+    // handle scan failure, usually better to ignore and keep scanning.
+    // for example:
+    console.warn(`Code scan error = ${error}`);
+  }
+  
+  let html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader",
+    { fps: 10, qrbox: {width: 250, height: 250} },
+    /* verbose= */ false);
+  
 
 // PARTICIPANT LOOKUPS //
 
@@ -230,8 +257,10 @@ var bb_participantEarnTemplate=`<div id="biblebucks-participantearnselect">
         <div class="header-text secondary-header">EARN POINTS</div>
     </div>
     <div id="content-card">
+        <div id="reader" width="600px"></div>
         <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
         <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
+        <button id="qr-scanner" class="navigation-button">QR</button>
     </div>
 </div>`;
 
@@ -241,7 +270,9 @@ var bb_participantSpendTemplate=`<div id="biblebucks-participantspendselect">
         <div class="header-text secondary-header">SPEND POINTS</div>
     </div>
     <div id="content-card">
+        <div id="reader" width="600px"></div>
         <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
         <button id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
+        <button id="qr-scanner" class="navigation-button">QR</button>
     </div>
 </div>`;
