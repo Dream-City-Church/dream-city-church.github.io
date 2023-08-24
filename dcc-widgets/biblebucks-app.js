@@ -238,7 +238,7 @@ var bb_participantEarnTemplate=`<div id="biblebucks-participantearnselect">
         <div id="reader" width="100%"></div>
         <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
         <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
-        <button id="qr-scanner" class="navigation-button" onclick="function(){html5QrcodeScanner.render(onScanSuccess, onScanFailure)}">QR</button>
+        <button id="qr-scanner" onclick="html5QrcodeScanner.render(onScanSuccess, onScanFailure)">QR</button>
     </div>
 </div>`;
 
@@ -251,6 +251,6 @@ var bb_participantSpendTemplate=`<div id="biblebucks-participantspendselect">
         <div id="reader" width="100%"></div>
         <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
         <button id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
-        <button id="qr-scanner" class="navigation-button" onclick="function(){html5QrcodeScanner.render(onScanSuccess, onScanFailure)}">QR</button>
+        <button id="qr-scanner" onclick="html5QrcodeScanner.render(onScanSuccess, onScanFailure)">QR</button>
     </div>
 </div>`;
