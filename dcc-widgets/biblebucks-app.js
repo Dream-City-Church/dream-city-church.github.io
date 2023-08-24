@@ -11,19 +11,13 @@ function loadBibleBucksApp(){
 function loadEarnParticipantSelect(){
     document.querySelector('#biblebucks-content').innerHTML=bb_participantEarnTemplate;
     document.getElementById("home-btn").addEventListener("click", loadBibleBucksApp);
-    document.getElementById("submit-participant-earn-btn").addEventListener("submit", submitParticipantListener('earnPointsPage'));
+    document.getElementById("submit-participant-earn-btn").addEventListener("submit", function(){submitParticipantListener('earnPointsPage')});
 }
 
 function loadSpendParticipantSelect(){
     document.querySelector('#biblebucks-content').innerHTML=bb_participantSpendTemplate;
     document.getElementById("home-btn").addEventListener("click", loadBibleBucksApp);
-    document.getElementById("submit-participant-spend-btn").addEventListener("submit", submitParticipantListener('spendPointsPage'));
-}
-
-
-
-function loadSpendPointsTemplate(){
-    document.querySelector('#biblebucks-content').innerHTML=bb_spendPointsTemplate;
+    document.getElementById("submit-participant-spend-btn").addEventListener("submit", function(){submitParticipantListener('spendPointsPage')});
 }
 
 // PARTICIPANT LOOKUPS //
