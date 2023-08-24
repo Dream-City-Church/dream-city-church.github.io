@@ -41,7 +41,7 @@ function onScanSuccess(decodedText, decodedResult) {
     console.warn(`Code scan error = ${error}`);
   }
   
-  let html5QrcodeScanner = new html5QrcodeScanner(
+let html5QrcodeScanner = new Html5QrcodeScanner(
     "reader",
     { fps: 10, qrbox: {width: 250, height: 250} },
     /* verbose= */ false);
@@ -257,7 +257,7 @@ var bb_participantEarnTemplate=`<div id="biblebucks-participantearnselect">
         <div class="header-text secondary-header">EARN POINTS</div>
     </div>
     <div id="content-card">
-        <div id="reader" width="600px"></div>
+        <div id="reader" width="100%"></div>
         <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
         <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
         <button id="qr-scanner" class="navigation-button">QR</button>
@@ -270,7 +270,7 @@ var bb_participantSpendTemplate=`<div id="biblebucks-participantspendselect">
         <div class="header-text secondary-header">SPEND POINTS</div>
     </div>
     <div id="content-card">
-        <div id="reader" width="600px"></div>
+        <div id="reader" width="100%"></div>
         <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
         <button id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
         <button id="qr-scanner" class="navigation-button">QR</button>
