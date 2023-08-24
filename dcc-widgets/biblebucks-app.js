@@ -70,7 +70,7 @@ function earnParticipantLookup(ParticipantId){
                             <button id="quickpoint-button" class="quickpoint-button" onclick="addPointsValue(100)">+100</button>
                         </div>
                     </div>
-                    <form id="points-form"><div class="input-field"><input type="number" id="points-total" class="secondary-input" min="25" max="1000" required>
+                    <form id="points-form"><div class="input-field"><input type="number" id="points-total" class="secondary-input" min="1" max="1000" required>
                     <input type="hidden" id="participant-id" value="${data.participantId}" required></div>
                     <button type="submit" id="submit-points-btn" class="submit-button" >SUBMIT</button></form>
                 </div>
@@ -133,7 +133,7 @@ function spendParticipantLookup(ParticipantId){
                             <button id="quickpoint-button" class="quickpoint-button" onclick="addPointsValue(-100)">-100</button>
                         </div>
                     </div>
-                    <form id="points-form"><div class="input-field"><input type="number" id="points-total" class="secondary-input" min="-1000" max="-25" required>
+                    <form id="points-form"><div class="input-field"><input type="number" id="points-total" class="secondary-input" min="-1000" max="-1" required>
                     <input type="hidden" id="participant-id" value="${data.participantId}" required></div>
                     <button type="submit" id="submit-points-btn" class="submit-button" >SUBMIT</button></form>
                 </div>
