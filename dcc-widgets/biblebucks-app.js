@@ -70,9 +70,13 @@ function earnParticipantLookup(ParticipantId){
                             <button id="quickpoint-button" class="quickpoint-button" onclick="addPointsValue(100)">+100</button>
                         </div>
                     </div>
-                    <form id="points-form"><div class="input-field"><input type="number" id="points-total" class="secondary-input" min="1" max="1000" required>
-                    <input type="hidden" id="participant-id" value="${data.participantId}" required></div>
-                    <button type="submit" id="submit-points-btn" class="submit-button" >SUBMIT</button></form>
+                    <form id="points-form">
+                        <div class="input-field">
+                            <input type="number" id="points-total" class="secondary-input" min="1" max="1000" required>
+                            <input type="hidden" id="participant-id" value="${data.participantId}" required>
+                        </div>
+                        <button type="submit" id="submit-points-btn" class="submit-button" >SUBMIT</button>
+                    </form>
                 </div>
                 </div>`;
 
@@ -133,9 +137,13 @@ function spendParticipantLookup(ParticipantId){
                             <button id="quickpoint-button" class="quickpoint-button" onclick="addPointsValue(-100)">-100</button>
                         </div>
                     </div>
-                    <form id="points-form"><div class="input-field"><input type="number" id="points-total" class="secondary-input" min="-1000" max="-1" required>
-                    <input type="hidden" id="participant-id" value="${data.participantId}" required></div>
-                    <button type="submit" id="submit-points-btn" class="submit-button" >SUBMIT</button></form>
+                    <form id="points-form">
+                        <div class="input-field">
+                            <input type="number" id="points-total" class="secondary-input" min="-1000" max="-1" required>
+                            <input type="hidden" id="participant-id" value="${data.participantId}" required>
+                        </div>
+                        <button type="submit" id="submit-points-btn" class="submit-button" >SUBMIT</button>
+                    </form>
                 </div>
                 </div>`;
 
@@ -228,8 +236,10 @@ var bb_participantEarnTemplate=`<div id="biblebucks-participantearnselect">
         <div class="header-text secondary-header">EARN POINTS</div>
     </div>
     <div id="content-card">
-        <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
-        <button type="submit" id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
+        <form>
+            <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
+            <button type="submit" id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
+        </form>
     </div>
 </div>`;
 
@@ -239,67 +249,9 @@ var bb_participantSpendTemplate=`<div id="biblebucks-participantspendselect">
         <div class="header-text secondary-header">SPEND POINTS</div>
     </div>
     <div id="content-card">
-    <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
-        <button type="submit" id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
+        <form>
+            <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
+            <button type="submit" id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
+        </form>
     </div>
-</div>`;
-
-var bb_earnPointsTemplate=`<div id="biblebucks-earnpoints">
-<div id="header">
-    <div id="earn-points-title" class="page-title">EARN POINTS</div>
-    <button id="back-earnpoints-btn" class="navigation-button">BACK</button>
-    <div id="participant-info" class="participant-info">
-        <div class="participant-name"></div>
-        <div class="participant-balance">${coinEmoji}</div>
-    </div>
-</div>
-<div id="content-card">
-    <div id="quick-button-grid">
-        <div class="quick-button">
-            <button id="quickpoint-button" class="quickpoint-button" value="25">+25</button>
-        </div>
-        <div class="quick-button">
-            <button id="quickpoint-button" class="quickpoint-button" value="50">+50</button>
-        </div>
-        <div class="quick-button">
-            <button id="quickpoint-button" class="quickpoint-button" value="75">+75</button>
-        </div>
-        <div class="quick-button">
-            <button id="quickpoint-button" class="quickpoint-button" value="100">+100</button>
-        </div>
-    </div>
-    <div class="input-field"><input type="number" id="points-total" class="secondary-input" min="25" max="1000">
-    <input type="hidden" id="participant-id" value=""></div>
-    <button type="submit" id="submit-points-earn-btn" class="submit-button">SUBMIT</button>
-</div>
-</div>`;
-
-var bb_spendPointsTemplate=`<div id="biblebucks-earnpoints">
-<div id="header">
-    <div id="earn-points-title" class="page-title">EARN POINTS</div>
-    <button id="back-spendpoints-btn" class="navigation-button">BACK</button>
-    <div id="participant-info" class="participant-info">
-        <div class="participant-name">Bilbo Baggins</div>
-        <div class="participant-balance">${coinEmoji}475</div>
-    </div>
-</div>
-<div id="content-card">
-    <div id="quick-button-grid">
-        <div class="quick-button">
-            <button id="quickpoint-button" class="quickpoint-button" value="25">-25</button>
-        </div>
-        <div class="quick-button">
-            <button id="quickpoint-button" class="quickpoint-button" value="50">-50</button>
-        </div>
-        <div class="quick-button">
-            <button id="quickpoint-button" class="quickpoint-button" value="75">-75</button>
-        </div>
-        <div class="quick-button">
-            <button id="quickpoint-button" class="quickpoint-button" value="100">-100</button>
-        </div>
-    </div>
-    <div class="input-field"><input type="number" id="points-total" class="secondary-input" min="25" max="1000">
-    <input type="hidden" id="participant-id" value=""></div>
-    <button type="submit" id="submit-points-spend-btn" class="submit-button">SUBMIT</button>
-</div>
 </div>`;
