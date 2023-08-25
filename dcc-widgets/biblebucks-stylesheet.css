@@ -61,6 +61,8 @@ div#reader {
   z-index: 2;
   width: 92.5%;
   background-color: white;
+  height: 400px;
+  border: none !important;
 }
 
 .primary-button-wrapper {

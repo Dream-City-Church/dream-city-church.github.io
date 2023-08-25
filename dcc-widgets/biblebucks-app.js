@@ -41,7 +41,7 @@ function onScanFailure(error) {
 
 
 function startQrScanner(){
-    let html5QrcodeScanner = new Html5QrcodeScanner("reader",{ fps: 10, qrbox: {width: 250, height: 250} },/* verbose= */ false);
+    let html5QrcodeScanner = new Html5QrcodeScanner("reader",{ fps: 10, qrbox: {width: 300, height: 300} },/* verbose= */ false);
     html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 }
 
