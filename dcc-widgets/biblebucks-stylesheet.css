@@ -17,7 +17,7 @@
   cursor: pointer; /* Add a pointer on hover */
 }
 
-div#currentVersion {
+div#current-version {
   font-size:0.75;
   color:lightgray;
   float:right;
