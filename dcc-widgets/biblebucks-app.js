@@ -41,7 +41,8 @@ function onScanFailure(error) {
 
 
 function startQrScanner(){
-    let html5QrcodeScanner = new Html5QrcodeScanner("reader",{ fps: 10, qrbox: {width: 300, height: 300} },/* verbose= */ false);
+    document.getElementById("reader").style="display:block;";
+    let html5QrcodeScanner = new Html5QrcodeScanner("reader",{ fps: 10, qrbox: {width: 300, height: 300},supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA], facingMode: { exact: "environment"} },/* verbose= */ false);
     html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 }
 
@@ -227,6 +228,7 @@ function submitPointsTransaction(reference){
 // PAGE TEMPLATES //
 
 var coinEmoji = String.fromCodePoint(0x1FA99);
+var cameraEmoji = String.fromCodePoint(0x1F4F7);
 
 var bb_elementContainer=`<div id="biblebucks-wrapper">
 <div id="loading-overlay"> <div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div> </div>
@@ -256,9 +258,9 @@ var bb_participantEarnTemplate=`<div id="biblebucks-participantearnselect">
     </div>
     <div id="content-card">
         <div id="reader"></div>
-        <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
+        <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"><button id="qr-reader" onclick="startQrScanner();">${cameraEmoji}</button></div>
         <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>
-        <button id="qr-reader" onclick="startQrScanner();">QR</button>
+        
     </div>
 </div>`;
 
@@ -269,8 +271,8 @@ var bb_participantSpendTemplate=`<div id="biblebucks-participantspendselect">
     </div>
     <div id="content-card">
         <div id="reader"></div>
-        <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"></div>
+        <div class="input-field"><input type="number" id="participant-id" class="primary-input" max="999999"><button id="qr-reader" onclick="startQrScanner();">${cameraEmoji}</button></div>
         <button id="submit-participant-spend-btn" class="submit-button">SUBMIT</button>
-        <button id="qr-reader" onclick="startQrScanner();">QR</button>
+        
     </div>
 </div>`;
