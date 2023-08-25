@@ -235,9 +235,9 @@ var cameraEmoji = String.fromCodePoint(0x1F4F7);
 var bb_elementContainer=`<div id="biblebucks-wrapper">
 <div id="loading-overlay"> <div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div> </div>
 <div id="biblebucks-content">
-<div id="current-version">${currentVersion}</div>
 </div>
-</div>`;
+</div>
+<div id="current-version">${currentVersion}</div>`;
 
 var bb_homeTemplate=`<div id="biblebucks-home">
     <div id="header">
