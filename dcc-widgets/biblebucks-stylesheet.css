@@ -13,7 +13,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(255,255,255,0.75); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  z-index: 100; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
 
@@ -57,7 +57,10 @@ div#content-card {
 }
 
 div#reader {
-  position:absolute;
+  position: absolute !important;
+  z-index: 2;
+  width: 92.5%;
+  background-color: white;
 }
 
 .primary-button-wrapper {
