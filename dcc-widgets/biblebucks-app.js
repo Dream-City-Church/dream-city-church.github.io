@@ -1,3 +1,5 @@
+const currentVersion='0.9.1';
+
 // BASIC NAVIGATION //
 
 function loadBibleBucksApp(){
@@ -233,7 +235,7 @@ var cameraEmoji = String.fromCodePoint(0x1F4F7);
 var bb_elementContainer=`<div id="biblebucks-wrapper">
 <div id="loading-overlay"> <div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div> </div>
 <div id="biblebucks-content">
-
+<div id="current-version">${currentVersion}</div>
 </div>
 </div>`;
 

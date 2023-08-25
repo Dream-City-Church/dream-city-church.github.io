@@ -17,6 +17,14 @@
   cursor: pointer; /* Add a pointer on hover */
 }
 
+div#currentVersion {
+  font-size:0.75;
+  color:lightgray;
+  float:right;
+  text-align:right;
+  padding:2rem;
+}
+
 div#biblebucks-wrapper {
     max-width: 1000px;
     margin-left: auto;
