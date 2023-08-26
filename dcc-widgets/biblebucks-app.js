@@ -1,4 +1,4 @@
-const currentVersion='0.9.3';
+const currentVersion='0.9.4';
 
 // BASIC NAVIGATION //
 
@@ -41,6 +41,8 @@ function startQrScanner(){
             earnParticipantLookup(decodedText);
         }
         if(document.getElementById("submit-participant-spend-btn")){
+            html5QrcodeScanner.clear();
+            document.getElementById("reader").style="display:none;";
             spendParticipantLookup(decodedText);
         }
     }
