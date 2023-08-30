@@ -91,6 +91,7 @@ span#html5-qrcode-anchor-scan-type-change {
   font-size: 3rem;
   right: 2rem;
   display:inline-block;
+  margin-left: 2rem;
 }
 
 @media screen and (min-width:1000px) {
