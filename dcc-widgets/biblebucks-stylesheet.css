@@ -5,8 +5,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+body {
+  font-family: 'Open Sans',sans-serif;
+}
+
 dcc-biblebucks {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans',sans-serif;
 }
 
 #loading-overlay {
@@ -41,7 +45,7 @@ div#biblebucks-wrapper {
 
 .header-text {
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 4rem;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
 }
@@ -135,7 +139,7 @@ span#html5-qrcode-anchor-scan-type-change {
 }
 
 .submit-button {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     border: none;
     background-color: transparent;
@@ -155,13 +159,11 @@ span#html5-qrcode-anchor-scan-type-change {
     background-color: var(--color-primary);
     color: white;
     border: none;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     padding: 0.5rem 3rem;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
     letter-spacing: 0.2rem;
-    border: 1.5rem solid white;
-    border-radius: 2.5rem;
 }
 
 .quickpoint-button:hover {
@@ -195,7 +197,7 @@ input#participant-id {
 .secondary-input {
     text-align: center;
     letter-spacing: 0.5rem;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 600;
     padding: 1rem;
     border: none;
@@ -253,16 +255,17 @@ div#participant-info {
 }
 
 .participant-name {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: bold;
     letter-spacing:0.1rem;
 }
 
 .participant-balance {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: bold;
     color: #ffa400;
     padding-right: 1rem;
+    line-height: 3.5rem;
 }
 
 #participant-balance-value {
@@ -275,7 +278,21 @@ div#quick-button-grid {
     margin-top: 2rem;
 }
 
+/* Scanner */
+#reader__scan_region img {
+  width: 100px;
+}
 
+button#html5-qrcode-button-camera-permission {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem 2rem;
+}
+
+span#html5-qrcode-anchor-scan-type-change {
+  font-size: 1.5rem;
+}
 
 /* Loading Spinner */
 .dccw-spinnercontainer {

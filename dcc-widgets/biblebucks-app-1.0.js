@@ -73,16 +73,16 @@ function participantLookup(ParticipantId){
                 <div id="content-card">
                     <div id="quick-button-grid">
                         <div class="quick-button">
-                            <button id="quickpoint-button" class="quickpoint-button remove-points" onclick="addPointsValue(-25)">-25</button>
+                            <button id="quickpoint-button" class="quickpoint-button remove-points" onclick="addPointsValue(-100)">-100</button>
                         </div>
                         <div class="quick-button">
-                            <button id="quickpoint-button" class="quickpoint-button remove-points" onclick="addPointsValue(-50)">-50</button>
+                            <button id="quickpoint-button" class="quickpoint-button remove-points" onclick="addPointsValue(-200)">-200</button>
                         </div>
                         <div class="quick-button">
-                            <button id="quickpoint-button" class="quickpoint-button add-points" onclick="addPointsValue(50)">+50</button>
+                            <button id="quickpoint-button" class="quickpoint-button add-points" onclick="addPointsValue(200)">+200</button>
                         </div>
                         <div class="quick-button">
-                            <button id="quickpoint-button" class="quickpoint-button add-points" onclick="addPointsValue(25)">+25</button>
+                            <button id="quickpoint-button" class="quickpoint-button add-points" onclick="addPointsValue(100)">+100</button>
                         </div>
                     </div>
                     <form id="points-form">
