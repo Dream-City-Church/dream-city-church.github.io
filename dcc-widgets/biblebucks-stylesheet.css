@@ -160,6 +160,8 @@ span#html5-qrcode-anchor-scan-type-change {
     font-size: 1.5rem;
     font-weight: bold;
     letter-spacing: 0.2rem;
+    border: 1.5rem solid white;
+    border-radius: 2.5rem;
 }
 
 .quickpoint-button:hover {
