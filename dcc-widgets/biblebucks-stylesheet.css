@@ -207,7 +207,7 @@ input#participant-id {
   padding: 3rem;
   font-weight: bold;
   font-size: 1.25rem;
-  color: darkgray;
+  color: lightgreen;
   visibility: visible;
   opacity: 1;
 }
