@@ -2,11 +2,17 @@ const currentVersion='1.0.0';
 
 // BASIC NAVIGATION //
 
-function loadBibleBucksApp(){
+function loadBibleBucksApp(messageType,amountValue){
     document.querySelector('dcc-biblebucks').innerHTML=bb_elementContainer;
     document.querySelector('#biblebucks-content').innerHTML=bb_participantSelection;
     document.getElementById("participant-form").addEventListener("submit", function(){submitParticipantListener(0);});
-    //document.getElementById("submit-participant-earn-btn").addEventListener("click", function(){participantLookup(0)});
+
+    if(messageType==1){
+        document.getElementById("message").innerHTML=amountValue+' Points were added!';
+    }
+    if(messageType==2){
+        document.getElementById("message").innerHTML=amountValue+' Points were removed!';
+    }
 }
 
 // QR Reader //
@@ -19,16 +25,11 @@ function startQrScanner(){
     function onScanSuccess(decodedText, decodedResult) {
         // handle the scanned code as you like, for example:
         console.log(`Code matched = ${decodedText}`, decodedResult);
-        if(document.getElementById("submit-participant-earn-btn")){
-            html5QrcodeScanner.clear();
-            document.getElementById("reader").style="display:none;";
-            earnParticipantLookup(decodedText);
-        }
-        if(document.getElementById("submit-participant-spend-btn")){
-            html5QrcodeScanner.clear();
-            document.getElementById("reader").style="display:none;";
-            spendParticipantLookup(decodedText);
-        }
+
+        html5QrcodeScanner.clear();
+        document.getElementById("reader").style="display:none;";
+        participantLookup(decodedText);
+        
     }
     
     function onScanFailure(error) {
@@ -143,9 +144,10 @@ function submitFormListener() {
 
 function submitPointsTransaction(){
     document.getElementById("loading-overlay").style.display="block";
+    pointsAmount=Number(document.getElementById("points-total").value);
     const params = {
         "Participant_ID": Number(document.getElementById("participant-id").value),
-        "Points": Number(document.getElementById("points-total").value),
+        "Points": pointsAmount,
     };
     const options = {
         method: 'POST',
@@ -156,7 +158,11 @@ function submitPointsTransaction(){
         .then(function (response) {console.log('response received');return response.json();})
         .then(function (data) {
             if(data.status=="ok"){
-                loadBibleBucksApp();
+                if(pointsAmount>0){
+                    loadBibleBucksApp(1,pointsAmount);
+                } else {
+                    loadBibleBucksApp(2,pointsAmount);
+                }
             }
             else{}
         })
@@ -182,6 +188,6 @@ var bb_participantSelection=`<div id="biblebucks-participantearnselect">
     <div id="reader"></div>
     <form id="participant-form"><div class="input-field"><input type="number" id="participant-id" class="primary-input" min="1" max="999999"><div id="qr-reader" onclick="startQrScanner();">${cameraEmoji}</div></div>
     <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button></form>
-    
 </div>
+<div id="message" class="fadeout"></div>
 </div>`;

@@ -91,7 +91,7 @@ span#html5-qrcode-anchor-scan-type-change {
 
 @media screen and (min-width:1000px) {
   #qr-reader {
-    display: none;
+    /* display: none; */
   }
 }
 
@@ -201,6 +201,19 @@ input#participant-id {
     border-radius: 1rem;
     margin: 5rem 0;
     width: 50%;
+}
+
+div#message {
+  padding: 3rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: darkgray;
+}
+
+.fadeout {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 5s, opacity 3s 2s linear;
 }
 
 /* Chrome, Safari, Edge, Opera */
