@@ -81,12 +81,20 @@ span#html5-qrcode-anchor-scan-type-change {
   margin-top: 3rem;
 }
 
-button#qr-reader {
+#qr-reader {
   border: none;
   background-color: transparent;
   font-size: 3rem;
   right: 2rem;
+  display:inline-block;
 }
+
+@media screen and (min-width:1000px) {
+  #qr-reader {
+    display: none;
+  }
+}
+
 
 .primary-button-wrapper {
     padding-top: 60px;
@@ -155,12 +163,21 @@ button#qr-reader {
 }
 
 .quickpoint-button:hover {
-  background-color: #8565FF;
+  background-color: darkblue;
   cursor: pointer;
+}
+
+.remove-points {
+  background-color: red;
+}
+
+.remove-points:hover {
+  background-color: darkred;
 }
 
 input#participant-id {
     text-align: center;
+    min-width: 400px;
     max-width: 600px;
     letter-spacing: 1.5rem;
     font-size: 3rem;
@@ -223,6 +240,10 @@ div#participant-info {
     font-weight: bold;
     color: #ffa400;
     padding-right: 1rem;
+}
+
+#participant-balance-value {
+  display: inline-block;
 }
 
 div#quick-button-grid {

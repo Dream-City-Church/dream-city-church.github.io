@@ -24,9 +24,6 @@ function loadSpendParticipantSelect(){
 
 // QR Reader //
 
-
-
-
 function startQrScanner(){
     document.getElementById("reader").style="display:block;";
     let html5QrcodeScanner = new Html5QrcodeScanner("reader",{ fps: 10, qrbox: {width: 300, height: 300} },/* verbose= */ false);
@@ -80,7 +77,7 @@ function earnParticipantLookup(ParticipantId){
                     <button id="back-btn" class="navigation-button">BACK</button>
                     <div id="participant-info" class="participant-info">
                         <div class="participant-name">${data.participantName}</div>
-                        <div class="participant-balance">${coinEmoji}${data.participantBalance}</div>
+                        <div id="participant-balance" class="participant-balance">${coinEmoji}<div id="participant-balance-value">${data.participantBalance}</div></div>
                     </div>
                 </div>
                 <div id="content-card">
@@ -147,7 +144,7 @@ function spendParticipantLookup(ParticipantId){
                     <button id="back-btn" class="navigation-button">BACK</button>
                     <div id="participant-info" class="participant-info">
                         <div class="participant-name">${data.participantName}</div>
-                        <div class="participant-balance">${coinEmoji}${data.participantBalance}</div>
+                        <div class="participant-balance">${coinEmoji}<div id="participant-balance-value">${data.participantBalance}</div></div>
                     </div>
                 </div>
                 <div id="content-card">
@@ -193,8 +190,14 @@ function spendParticipantLookup(ParticipantId){
 // POINTS FUNCTIONS //
 
 function addPointsValue(addAmount) {
-    currentPoints = document.getElementById('points-total').value;
-    document.getElementById('points-total').value = Number(currentPoints)+Number(addAmount);
+    currentPoints = Number(document.getElementById('points-total').value);
+    addPoints = Number(addAmount);
+    availablePoints = Number(document.getElementById('participant-balance-value').innerHTML);
+    if(currentPoints+addPoints+availablePoints >= 0){
+        document.getElementById('points-total').value = currentPoints+Number(addAmount);
+    } else {
+        alert('Not enough points!');
+    }
 }
 
 function submitFormListener(reference) {
