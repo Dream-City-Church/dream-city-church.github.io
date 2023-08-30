@@ -203,14 +203,22 @@ input#participant-id {
     width: 50%;
 }
 
-div#message {
+#message {
   padding: 3rem;
   font-weight: bold;
   font-size: 1.25rem;
   color: darkgray;
+  visibility: visible;
+  opacity: 1;
 }
 
-.fadeout {
+#message.fadein {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s 5s, opacity 3s 2s linear;
+}
+
+#message.fadeout {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s 5s, opacity 3s 2s linear;

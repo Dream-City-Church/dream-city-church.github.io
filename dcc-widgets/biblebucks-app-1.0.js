@@ -9,10 +9,13 @@ function loadBibleBucksApp(messageType,amountValue){
 
     if(messageType==1){
         document.getElementById("message").innerHTML=amountValue+' Points were added!';
-    }
-    if(messageType==2){
+    } else if(messageType==2){
         document.getElementById("message").innerHTML=amountValue+' Points were removed!';
     }
+
+    setTimeout(function(){
+        document.getElementById('message').className = 'fadeout';
+    }, 500);
 }
 
 // QR Reader //
@@ -189,5 +192,5 @@ var bb_participantSelection=`<div id="biblebucks-participantearnselect">
     <form id="participant-form"><div class="input-field"><input type="number" id="participant-id" class="primary-input" min="1" max="999999"><div id="qr-reader" onclick="startQrScanner();">${cameraEmoji}</div></div>
     <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button></form>
 </div>
-<div id="message" class="fadeout"></div>
+<div id="message"></div>
 </div>`;
