@@ -5,12 +5,21 @@ const currentVersion='1.0.0';
 function loadBibleBucksApp(messageType,amountValue){
     document.querySelector('dcc-biblebucks').innerHTML=bb_elementContainer;
     document.querySelector('#biblebucks-content').innerHTML=bb_participantSelection;
-    document.getElementById("participant-form").addEventListener("submit", function(){submitParticipantListener(0);});
+
+    recordID = getUrlVars()["recordID"];
+
+    if(recordID){
+        recordParticipantLookup(recordID);
+    } else {
+        document.getElementById("participant-form").addEventListener("submit", function(){submitParticipantListener(0);});
+    }
 
     if(messageType==1){
         document.getElementById("message").innerHTML=amountValue+' Points were added!';
     } else if(messageType==2){
         document.getElementById("message").innerHTML=amountValue+' Points were removed!';
+    } else if(messageType==3){
+        document.getElementById("message").innerHTML='Sorry, something went wrong.';
     }
 
     setTimeout(function(){
@@ -101,12 +110,39 @@ function participantLookup(ParticipantId){
             };
         })
         .then(function (eventListeners) {
-            document.getElementById("back-btn").addEventListener("click", loadBibleBucksApp);
+            document.getElementById("back-btn").addEventListener("click", function(){window.history.replaceState(null, '', window.location.pathname);loadBibleBucksApp();});
             document.getElementById("points-form").addEventListener("submit", function(){submitFormListener();});
         })
         .catch(function(fail){
             console.log('something went wrong calling the fetch.');
-            loadBibleBucksApp();
+            loadBibleBucksApp(3,0);
+        })
+}
+
+function recordParticipantLookup(recordID) {
+    const params = {
+        "recordID": recordID,
+    };
+    const options = {
+        method: 'POST',
+        body: JSON.stringify( params ),
+        headers: {'Content-Type': 'application/json'}
+    };
+    fetch( 'https://prod-24.westus2.logic.azure.com:443/workflows/b323889ff2804adba7e484f871cd92b0/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=FlVRFy2Y4Hv8lhYN10xtiUdl6-WwCdt0IFnGGyOC2AE', options )
+        .then(function (response) {return response.json();})
+        .then(function (data) {
+            if(data.status=="ok"){
+                participantLookup(data.Participant_ID);
+            } else {
+                console.log(data.status);
+                window.history.replaceState(null, '', window.location.pathname);
+                loadBibleBucksApp(3,0);
+            }
+        })
+        .catch(function(fail){
+            console.log('something went wrong calling the fetch.');
+            window.history.replaceState(null, '', window.location.pathname);
+            loadBibleBucksApp(3,0);
         })
 }
 
@@ -169,6 +205,16 @@ function submitPointsTransaction(){
             }
             else{}
         })
+}
+
+// Utils //
+
+function getUrlVars() {
+    var urlVars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        urlVars[key] = value;
+    });
+    return urlVars;
 }
 
 // PAGE TEMPLATES //
