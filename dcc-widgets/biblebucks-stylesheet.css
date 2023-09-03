@@ -212,21 +212,32 @@ input#participant-id {
   padding: 3rem;
   font-weight: bold;
   font-size: 1.25rem;
-  color: lightgreen;
   visibility: visible;
   opacity: 1;
 }
 
-#message.fadein {
+.fadein {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s 5s, opacity 3s 2s linear;
 }
 
 #message.fadeout {
-  visibility: hidden;
-  opacity: 0;
+  visibility: hidden !important;
+  opacity: 0 !important;
   transition: visibility 0s 5s, opacity 3s 2s linear;
+}
+
+.message-error {
+  color: orange;
+}
+
+.message-pointsAdded {
+  color: darkgreen;
+}
+
+.message-pointsRemoved {
+  color: darkred;
 }
 
 /* Chrome, Safari, Edge, Opera */

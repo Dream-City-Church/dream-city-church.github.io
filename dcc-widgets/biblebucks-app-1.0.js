@@ -1,30 +1,27 @@
-const currentVersion='1.0.0';
+const currentVersion='1.0.1';
 
 // BASIC NAVIGATION //
 
-function loadBibleBucksApp(messageType,amountValue){
+function loadBibleBucksApp(messageContent,messageClass){
     document.querySelector('dcc-biblebucks').innerHTML=bb_elementContainer;
-    document.querySelector('#biblebucks-content').innerHTML=bb_participantSelection;
-
     recordID = getUrlVars()["recordID"];
+    pageID = getUrlVars()["pageID"];
 
-    if(recordID>0){
+    if(recordID>0 && pageID==645){
         recordParticipantLookup(recordID);
     } else {
+        document.querySelector('#biblebucks-content').innerHTML=bb_participantSelection;
         document.getElementById("participant-form").addEventListener("submit", function(){submitParticipantListener(0);});
+        document.getElementById("loading-overlay").style.display="none";
     }
 
-    if(messageType==1){
-        document.getElementById("message").innerHTML=amountValue+' Points were added!';
-    } else if(messageType==2){
-        document.getElementById("message").innerHTML=amountValue+' Points were removed!';
-    } else if(messageType==3){
-        document.getElementById("message").innerHTML='Sorry, something went wrong.';
+    if(messageContent){
+        document.getElementById('message').className = messageClass;
+        document.getElementById("message").innerHTML=messageContent;
+        setTimeout(function(){
+            document.getElementById('message').className += ' fadeout';
+        }, 500);
     }
-
-    setTimeout(function(){
-        document.getElementById('message').className = 'fadeout';
-    }, 500);
 }
 
 // QR Reader //
@@ -115,7 +112,7 @@ function participantLookup(ParticipantId){
         })
         .catch(function(fail){
             console.log('something went wrong calling the fetch.');
-            loadBibleBucksApp(3,0);
+            loadBibleBucksApp('Sorry, something went wrong. Try again later.','message-error');
         })
 }
 
@@ -136,13 +133,13 @@ function recordParticipantLookup(recordID) {
             } else {
                 console.log(data.status);
                 window.history.replaceState(null, '', window.location.pathname);
-                loadBibleBucksApp(3,0);
+                loadBibleBucksApp('Sorry, something went wrong. Try again later.','message-error');
             }
         })
         .catch(function(fail){
             console.log('something went wrong calling the fetch.');
             window.history.replaceState(null, '', window.location.pathname);
-            loadBibleBucksApp(3,0);
+            loadBibleBucksApp('Sorry, something went wrong. Try again later.','message-error');
         })
 }
 
@@ -198,9 +195,9 @@ function submitPointsTransaction(){
         .then(function (data) {
             if(data.status=="ok"){
                 if(pointsAmount>0){
-                    loadBibleBucksApp(1,pointsAmount);
+                    loadBibleBucksApp(`${pointsAmount} Bible Bucks have been added to ${data.ParticipantName}!`,'message-pointsAdded');
                 } else {
-                    loadBibleBucksApp(2,pointsAmount);
+                    loadBibleBucksApp(`${pointsAmount} Bible Bucks have been removed from ${data.ParticipantName}!`,'message-pointsRemoved');
                 }
             }
             else{}
@@ -223,7 +220,7 @@ var coinEmoji = String.fromCodePoint(0x1FA99);
 var cameraEmoji = String.fromCodePoint(0x1F4F7);
 
 var bb_elementContainer=`<div id="biblebucks-wrapper">
-<div id="loading-overlay"> <div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div> </div>
+<div id="loading-overlay" style="display:block;"> <div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div> </div>
 <div id="biblebucks-content">
 </div>
 </div>
