@@ -8,7 +8,7 @@ function loadBibleBucksApp(messageType,amountValue){
 
     recordID = getUrlVars()["recordID"];
 
-    if(recordID){
+    if(recordID>0){
         recordParticipantLookup(recordID);
     } else {
         document.getElementById("participant-form").addEventListener("submit", function(){submitParticipantListener(0);});
@@ -96,7 +96,7 @@ function participantLookup(ParticipantId){
                     </div>
                     <form id="points-form">
                         <div class="input-field">
-                            <input type="number" id="points-total" class="secondary-input" required>
+                            <input type="number" id="points-total" class="secondary-input" min="-1000" max="1000" required>
                             <input type="hidden" id="participant-id" value="${data.participantId}" required>
                         </div>
                         <button type="submit" id="submit-points-btn" class="submit-button" >SUBMIT</button>
