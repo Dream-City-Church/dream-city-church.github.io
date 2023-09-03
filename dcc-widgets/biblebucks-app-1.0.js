@@ -1,12 +1,13 @@
 const currentVersion='1.0.1';
 
-// BASIC NAVIGATION //
+// APP HOMEPAGE //
 
 function loadBibleBucksApp(messageContent,messageClass){
     document.querySelector('dcc-biblebucks').innerHTML=bb_elementContainer;
     recordID = getUrlVars()["recordID"];
     pageID = getUrlVars()["pageID"];
 
+    // If loaded as an MP Tool
     if(recordID>0 && pageID==645){
         recordParticipantLookup(recordID);
     } else {
@@ -15,6 +16,7 @@ function loadBibleBucksApp(messageContent,messageClass){
         document.getElementById("loading-overlay").style.display="none";
     }
 
+    // If a message was sent to the function
     if(messageContent){
         document.getElementById('message').className = messageClass;
         document.getElementById("message").innerHTML=messageContent;
@@ -67,6 +69,7 @@ function participantLookup(ParticipantId){
         .then(function (response) {return response.json();})
         .then(function (data) {
             if(data.status=="ok"){
+                // If participant found
                 document.getElementById("loading-overlay").style.display="none";
                 document.querySelector('#biblebucks-content').innerHTML=`<div id="header">
                     <div class="page-title">${coinEmoji} Bible Bucks</div>
@@ -99,22 +102,29 @@ function participantLookup(ParticipantId){
                         <button type="submit" id="submit-points-btn" class="submit-button" >SUBMIT</button>
                     </form>
                 </div>`;
+                // Add button listeners
+                document.getElementById("back-btn").addEventListener("click", function(){window.history.replaceState(null, '', window.location.pathname);loadBibleBucksApp();});
+                document.getElementById("points-form").addEventListener("submit", function(){submitFormListener();});
 
-                
-
+            }else if(data.status=="participant_not_found"){
+                // If no participant found
+                console.log('Invalid Participant ID.');
+                loadBibleBucksApp('Invalid ID number. Please try again.','message-error');
             }else{
-                console.log('something went wrong processing the data.')
+                // If there was an error loading he participant
+                console.log('something went wrong processing the data.');
+                loadBibleBucksApp('Sorry, could not load the participant. Try again later.','message-error');
             };
         })
-        .then(function (eventListeners) {
-            document.getElementById("back-btn").addEventListener("click", function(){window.history.replaceState(null, '', window.location.pathname);loadBibleBucksApp();});
-            document.getElementById("points-form").addEventListener("submit", function(){submitFormListener();});
-        })
         .catch(function(fail){
+            // If some other error happened
             console.log('something went wrong calling the fetch.');
-            loadBibleBucksApp('Sorry, something went wrong. Try again later.','message-error');
+            console.log(fail);
+            loadBibleBucksApp('Server connection error. Try again later.','message-error');
         })
 }
+
+// RECORD LOOKUP - MP Tool //
 
 function recordParticipantLookup(recordID) {
     const params = {
@@ -133,17 +143,17 @@ function recordParticipantLookup(recordID) {
             } else {
                 console.log(data.status);
                 window.history.replaceState(null, '', window.location.pathname);
-                loadBibleBucksApp('Sorry, something went wrong. Try again later.','message-error');
+                loadBibleBucksApp('Sorry, could not load the participant. Try again later.','message-error');
             }
         })
         .catch(function(fail){
             console.log('something went wrong calling the fetch.');
             window.history.replaceState(null, '', window.location.pathname);
-            loadBibleBucksApp('Sorry, something went wrong. Try again later.','message-error');
+            loadBibleBucksApp('Server connection error. Try again later.','message-error');
         })
 }
 
-// POINTS FUNCTIONS //
+// POINTS CALCULATOR //
 
 function addPointsValue(addAmount) {
     currentPoints = Number(document.getElementById('points-total').value);
@@ -156,11 +166,15 @@ function addPointsValue(addAmount) {
     }
 }
 
+// PARTICIPANT FORM SUBMIT //
+
 function submitParticipantListener(ParticipantId) {
     console.log('Submit click detected');
     event.preventDefault();
     participantLookup(ParticipantId);
 }
+
+// POINTS FORM SUBMIT //
 
 function submitFormListener() {
     currentPoints = Number(document.getElementById('points-total').value);
@@ -177,6 +191,8 @@ function submitFormListener() {
         alert('Please enter a value!');
     }
 }
+
+// POINTS TRANSACTION //
 
 function submitPointsTransaction(){
     document.getElementById("loading-overlay").style.display="block";
@@ -200,11 +216,16 @@ function submitPointsTransaction(){
                     loadBibleBucksApp(`${pointsAmount} Bible Bucks have been removed from ${data.ParticipantName}!`,'message-pointsRemoved');
                 }
             }
-            else{}
+            else{
+                alert('Sorry, something went wrong. Please try again in a moment.');
+            }
+        })
+        .catch(function (fail) {
+            alert('Server communication error. Please try again');
         })
 }
 
-// Utils //
+// GET URL PARAMS //
 
 function getUrlVars() {
     var urlVars = {};
