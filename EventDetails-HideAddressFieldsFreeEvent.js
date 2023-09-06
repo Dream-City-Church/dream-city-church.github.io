@@ -19,13 +19,13 @@ function waitForRegistrationContainer(timeToWait,currentRun,maxRun) {
     }
 
     //Watch for changes on Total
-        const regTotalValue = document.querySelector("#registrationTotalValue")[0];
+        const regTotalValue = document.querySelector("#registrationTotalValue");
         const observer = new MutationObserver(() => {
             if (regTotalValue.innerHTML != "$0.00"){
                     document.querySelector("#registrationTotalValue").style.display = 'block';
             }
         });
-        observer.observe(regTotalValue, { characterData: true, subtree: true, childList: true });
+        observer.observe(regTotalValue, { characterData: true, subtree: true, childList: true, attributes: true });
 }
 
 function updateAddressFields(){
