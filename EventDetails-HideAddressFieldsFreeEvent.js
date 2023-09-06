@@ -19,7 +19,7 @@ function waitForRegistrationContainer(timeToWait,currentRun,maxRun) {
     }
 
     //Watch for changes on Total
-        const regTotalValue = document.querySelector("#registrationTotalValue");
+        const regTotalValue = document.querySelector("#registrationTotalValue")[0];
         const observer = new MutationObserver(() => {
             if (regTotalValue.innerHTML != "$0.00"){
                     document.querySelector("#registrationTotalValue").style.display = 'block';
