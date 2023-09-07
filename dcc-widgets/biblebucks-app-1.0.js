@@ -1,4 +1,4 @@
-const currentVersion='1.0.1';
+const currentVersion='1.0.2';
 
 // APP HOMEPAGE //
 
@@ -9,10 +9,10 @@ function loadBibleBucksApp(messageContent,messageClass){
 
     // If loaded as an MP Tool
     if(recordID>0 && pageID==645){
-        recordParticipantLookup(recordID);
+        participantLookup(recordID,'Record_ID');
     } else {
         document.querySelector('#biblebucks-content').innerHTML=bb_participantSelection;
-        document.getElementById("participant-form").addEventListener("submit", function(){submitParticipantListener(0);});
+        document.getElementById("participant-form").addEventListener("submit", function(){submitParticipantListener(0,'Participant_ID');});
         document.getElementById("loading-overlay").style.display="none";
     }
 
@@ -39,7 +39,7 @@ function startQrScanner(){
 
         html5QrcodeScanner.clear();
         document.getElementById("reader").style="display:none;";
-        participantLookup(decodedText);
+        participantLookup(decodedText,'Participant_ID');
         
     }
     
@@ -52,13 +52,14 @@ function startQrScanner(){
 
 // PARTICIPANT LOOKUPS //
 
-function participantLookup(ParticipantId){
+function participantLookup(IdNumber,IdType){
     document.getElementById("loading-overlay").style.display="block";
-    console.log('looking up participant')
-    if(ParticipantId==0){ParticipantId=Number(document.querySelector('#participant-id').value)};
+    console.log('looking up participant');
+    if(IdNumber==0){IdNumber=Number(document.querySelector('#participant-id').value)};
 
     const params = {
-        "Participant_ID": ParticipantId,
+        "Participant_ID": IdNumber,
+        "ID_Type": IdType
     };
     const options = {
         method: 'POST',
@@ -124,35 +125,6 @@ function participantLookup(ParticipantId){
         })
 }
 
-// RECORD LOOKUP - MP Tool //
-
-function recordParticipantLookup(recordID) {
-    const params = {
-        "recordID": recordID,
-    };
-    const options = {
-        method: 'POST',
-        body: JSON.stringify( params ),
-        headers: {'Content-Type': 'application/json'}
-    };
-    fetch( 'https://prod-24.westus2.logic.azure.com:443/workflows/b323889ff2804adba7e484f871cd92b0/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=FlVRFy2Y4Hv8lhYN10xtiUdl6-WwCdt0IFnGGyOC2AE', options )
-        .then(function (response) {return response.json();})
-        .then(function (data) {
-            if(data.status=="ok"){
-                participantLookup(data.Participant_ID);
-            } else {
-                console.log(data.status);
-                window.history.replaceState(null, '', window.location.pathname);
-                loadBibleBucksApp('Sorry, could not load the participant. Try again later.','message-error');
-            }
-        })
-        .catch(function(fail){
-            console.log('something went wrong calling the fetch.');
-            window.history.replaceState(null, '', window.location.pathname);
-            loadBibleBucksApp('Server connection error. Try again later.','message-error');
-        })
-}
-
 // POINTS CALCULATOR //
 
 function addPointsValue(addAmount) {
@@ -168,10 +140,10 @@ function addPointsValue(addAmount) {
 
 // PARTICIPANT FORM SUBMIT //
 
-function submitParticipantListener(ParticipantId) {
+function submitParticipantListener(ParticipantId,IdType) {
     console.log('Submit click detected');
     event.preventDefault();
-    participantLookup(ParticipantId);
+    participantLookup(ParticipantId,IdType);
 }
 
 // POINTS FORM SUBMIT //
@@ -210,6 +182,7 @@ function submitPointsTransaction(){
         .then(function (response) {console.log('response received');return response.json();})
         .then(function (data) {
             if(data.status=="ok"){
+                window.history.replaceState(null, '', window.location.pathname);
                 if(pointsAmount>0){
                     loadBibleBucksApp(`${pointsAmount} Bible Bucks have been added to ${data.ParticipantName}!`,'message-pointsAdded');
                 } else {
@@ -222,6 +195,7 @@ function submitPointsTransaction(){
         })
         .catch(function (fail) {
             alert('Server communication error. Please try again');
+            console.log(fail);
         })
 }
 
