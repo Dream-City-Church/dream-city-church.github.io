@@ -351,6 +351,12 @@ dcc-groupsignin h2 {
   font-weight: bold;
 }
 
+.checkbox label {
+  text-align: center;
+  display: block;
+  margin: 1rem 0;
+}
+
 /* Loading Spinner */
 .dccw-spinnercontainer {
     width: 80px;
