@@ -202,3 +202,4 @@ function getUrlParams() {
     return vars;
 }
 
+window.onload = setTimeout(loadGroupSignIn, 500);
