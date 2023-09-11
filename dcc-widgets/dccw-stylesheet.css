@@ -317,6 +317,7 @@ div#dcc-signinform {
 
 #dcc-signinform .form-group {
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 #dcc-signinform .submit-container {
@@ -353,8 +354,28 @@ dcc-groupsignin h2 {
 
 .checkbox label {
   text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #777;
   display: block;
   margin: 1rem 0;
+  background-color: rgb(0 0 0 / 0.01);
+  border: 2px solid lightgray;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkbox label input {
+  display: none;
+}
+
+.checkbox label:has(input:checked) {
+  border: 2px solid lightgreen;
+  background-color: white;
+  color: #333;
 }
 
 /* Loading Spinner */
