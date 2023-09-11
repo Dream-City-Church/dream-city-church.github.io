@@ -352,6 +352,12 @@ dcc-groupsignin h2 {
   font-weight: bold;
 }
 
+div#checkboxInstructions {
+  width: 100%;
+  text-align: center;
+  color: #777;
+}
+
 .checkbox label {
   text-align: center;
   font-size: 1.1rem;

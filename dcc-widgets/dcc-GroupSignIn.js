@@ -60,6 +60,10 @@ function getGroupData(groupId) {
                     }
                 }
 
+                if(data.Events.length>1){
+                    checkboxContainer.innerHTML = `<div id="checkboxInstructions">Select one or more events to sign in to:</div>${checkboxContainer.innerHTML}`;
+                }
+
                 // Main HTML Body
                 const groupSignInForm = `
                     <div id="header-image" style="display: ${headerDisplay};background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
