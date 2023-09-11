@@ -19,6 +19,11 @@ function loadGroupSignIn(groupId) {
     }
 }
 
+// Local Storage for saving user data a prefill form
+var savedContactInfo = localStorage.getItem('dcc-quickform-contactinfo');
+// Check if is additional person
+isAdditional= getUrlParams()["additional"]
+
 // Lookup Group from API
 function getGroupData(groupId) {
     var emailRegex = "[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+(\.[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*(\.[-a-zA-Z0-9_]+)*\.([cC][oO][mM]))(:[0-9]{1,5})?";
@@ -106,6 +111,14 @@ function getGroupData(groupId) {
                                     </div>
                                 </div>
 
+                                <!-- Reset Button -->
+                                <div class="form-group submit-container">
+                                    <label class="col-md-4 control-label" for="submit"></label>
+                                    <div class="col-md-4">
+                                        <button id="submitCheckInForm" name="submit" type="button" class="btn btn-reset" onclick="clearForm()">Reset Form</button>
+                                    </div>
+                                </div>
+
                                 <!-- Submit Button -->
                                 <div class="form-group submit-container">
                                     <label class="col-md-4 control-label" for="submit"></label>
@@ -119,6 +132,16 @@ function getGroupData(groupId) {
 
 
                 document.getElementsByTagName("dcc-GroupSignIn")[0].innerHTML = groupSignInForm;
+
+                // Prefill form if data is saved
+                if(savedContactInfo && isAdditional!="yes") {
+                    var contactInfo = JSON.parse(savedContactInfo);
+                    document.getElementById("form_first_name").value = contactInfo.First_Name;
+                    document.getElementById("form_last_name").value = contactInfo.Last_Name;
+                    document.getElementById("form_email_address").value = contactInfo.Email_Address;
+                    document.getElementById("form_mobile_phone").value = contactInfo.Mobile_Phone;
+                    document.querySelector('.btn-reset').style.display = "block";
+                }
 
 
             } else if(length(data.status.Events < 1)) {
@@ -158,6 +181,12 @@ function SubmitFormListener() {
     }
 }
 
+// Clear form and local storage
+function clearForm() {
+    localStorage.removeItem('dcc-quickform-contactinfo');
+    document.getElementById("sign-in-form").reset();
+}
+
 // Submit Form to API
 function submitGroupSignIn() {
     // Get Event IDs from Checkboxes
@@ -187,9 +216,14 @@ function submitGroupSignIn() {
     document.getElementById("dcc-signinform").innerHTML = divHTML;
     // Submit to API
     fetch('https://prod-22.westus2.logic.azure.com:443/workflows/449859db35564f838cb376dd3c2cc79b/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=AXIabYlSlyRM9k20wyC1OFFUP-oOOD1MS82qbzntq5w', options)
-        .then(function (submitted) {
-            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="javascript:window.location.href=window.location.href">click here</a> to sign in someone else.</p></div>`;
+        .then(function (response) {return response.json();})
+        .then(function (data) {
+            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="javascript:window.location.href=window.location.href+'&additional=yes">click here</a> to sign in someone else.</p></div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
+            if(isAdditional!="yes"){
+                var contactInfoReceived = {First_Name: data.First_Name,Last_Name: data.Last_Name,Email_Address: data.Email_Address,Mobile_Phone: data.Mobile_Phone};
+                localStorage.setItem('dcc-quickform-contactinfo', JSON.stringify(contactInfoReceived));
+            }
         })
         .catch(function (notSubmitted){
             divHTML = `<div id="sign-in-confirmation-message" class="sign-in-failure"><p style="font-weight:bold;">Sorry, something went wrong.</p><p>Please try again later. <a href="javascript:window.location.href=window.location.href">Click here</a> to reload the page.</p></div>`;

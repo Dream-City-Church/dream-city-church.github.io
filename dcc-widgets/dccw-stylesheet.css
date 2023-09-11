@@ -329,6 +329,18 @@ div#dcc-signinform {
   text-align: center;
 }
 
+.btn-reset {
+  display: none;
+  background-color: transparent;
+  border: none;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  color: gray;
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+}
+
 /*  Group Sign In */
 
 dcc-groupsignin {
