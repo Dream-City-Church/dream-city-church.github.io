@@ -274,4 +274,12 @@ function getUrlParams() {
     return vars;
 }
 
+function phoneFormat(input) {//returns ###-###-####
+    input = input.replace(/\D/g,'');
+    var size = input.length;
+    if (size>3) {input=input.slice(0,3)+"-"+input.slice(3,12)}
+    if (size>6) {input=input.slice(0,7)+"-" +input.slice(7,12)}
+    return input;
+}
+
 window.onload = setTimeout(loadGroupSignIn, 500);
