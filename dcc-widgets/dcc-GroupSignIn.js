@@ -1,3 +1,7 @@
+// Set current version
+var dccGroupSignInVersion = "1.0.0";
+console.log('dcc-GroupSignIn.js version ' + dccGroupSignInVersion + ' loaded.');
+
 // Main App
 function loadGroupSignIn(groupId) { 
 
@@ -227,7 +231,8 @@ function submitGroupSignIn() {
     fetch('https://prod-22.westus2.logic.azure.com:443/workflows/449859db35564f838cb376dd3c2cc79b/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=AXIabYlSlyRM9k20wyC1OFFUP-oOOD1MS82qbzntq5w', options)
         .then(function (response) {return response.json();})
         .then(function (data) {
-            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="javascript:window.location.href=window.location.href+'&additional=yes">click here</a> to sign in someone else.</p></div>`;
+            var submitAnotherUrl = window.location.href + "&additional=yes";
+            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="${submitAnotherUrl}">click here</a> to sign in someone else.</p></div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
             if(isAdditional!="yes"){
                 var contactInfoReceived = {First_Name: data.First_Name,Last_Name: data.Last_Name,Email_Address: data.Email_Address,Mobile_Phone: data.Mobile_Phone};
