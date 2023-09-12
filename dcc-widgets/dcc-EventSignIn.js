@@ -4,10 +4,6 @@ console.log('dcc-GroupSignIn.js version ' + dccGroupSignInVersion + ' loaded.');
 
 // Local Storage for saving user data a prefill form
 var savedContactInfo = localStorage.getItem('dcc-quickform-contactinfo');
-    // Clean up local storage if it seems malformed
-    if (savedContactInfo.length < 10) {
-        localStorage.removeItem('dcc-quickform-contactinfo');
-    }
 
 // Check if is additional person
 var isAdditional=getUrlVars()["additional"]

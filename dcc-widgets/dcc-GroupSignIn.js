@@ -4,10 +4,6 @@ console.log('dcc-GroupSignIn.js version ' + dccGroupSignInVersion + ' loaded.');
 
 // Local Storage for saving user data a prefill form
 var savedContactInfo = localStorage.getItem('dcc-quickform-contactinfo');
-    // Clean up local storage if it seems malformed
-    if (savedContactInfo.length < 10) {
-        localStorage.removeItem('dcc-quickform-contactinfo');
-    }
 
 // Check if is additional person
 var isAdditional= getUrlParams()["additional"]
@@ -241,7 +237,7 @@ function submitGroupSignIn() {
             } else {
                 var submitAnotherUrl = window.location.href;
             }
-            
+
             divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="${submitAnotherUrl}">click here</a> to sign in someone else.</p></div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
 
