@@ -5,7 +5,7 @@ console.log('dcc-GroupSignIn.js version ' + dccGroupSignInVersion + ' loaded.');
 // Local Storage for saving user data a prefill form
 var savedContactInfo = localStorage.getItem('dcc-quickform-contactinfo');
 // Check if is additional person
-isAdditional= getUrlParams()["additional"]
+isAdditional= getUrlVars()["additional"]
 
 
 // Main App
