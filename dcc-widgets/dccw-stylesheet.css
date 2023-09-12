@@ -375,6 +375,7 @@ div#checkboxInstructions {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  transition: border 0.25s ease, background-color 0.25s ease;
 }
 
 .checkbox label input {
@@ -387,6 +388,7 @@ div#checkboxInstructions {
   color: #333;
   font-weight: bold !important;
   font-style: normal;
+  transition: border 0.25s ease, background-color 0.25s ease;
 }
 
 /* Loading Spinner */
