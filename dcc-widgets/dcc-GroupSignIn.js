@@ -121,10 +121,10 @@ function getGroupData(groupId) {
                                     </div>
 
                                     <!-- Reset Button -->
-                                    <div class="form-group submit-container">
-                                        <label class="col-md-4 control-label" for="submit"></label>
+                                    <div class="form-group reset-container">
+                                        <label class="col-md-4 control-label" for="reset"></label>
                                         <div class="col-md-4">
-                                            <button id="submitCheckInForm" name="submit" type="button" class="btn btn-reset" onclick="clearForm()">Reset Form</button>
+                                            <button id="resetCheckInForm" name="reset-btn" type="button" class="btn btn-reset" onclick="clearForm()">Reset Form</button>
                                         </div>
                                     </div>
 
