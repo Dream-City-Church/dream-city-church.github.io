@@ -283,16 +283,16 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
   }
 }
 
-/*  Event Sign In */
 
-dcc-eventsignin {
+/* Quick Sign In Forms - Events and Groups */
+dcc-eventsignin, dcc-groupsignin {
   display: block;
   width: 100%;
   max-width: 650px;
   margin: auto;
 }
 
-dcc-eventsignin #header-image {
+dcc-eventsignin #header-image, dcc-groupsignin #header-image {
   height: 0;
   padding-bottom: 50%;
   width: 105%;
@@ -301,12 +301,7 @@ dcc-eventsignin #header-image {
   background-position: center center;
 }
 
-#dcc-signinform #form-description-text {
-  text-align: center;
-  padding: 1rem 0;
-}
-
-dcc-eventsignin h2 {
+dcc-eventsignin h2, dcc-groupsignin h2 {
   margin-top: 1rem;
   font-weight: bold;
 }
@@ -315,9 +310,28 @@ div#dcc-signinform {
   padding: 0 1rem;
 }
 
+form#sign-in-form {
+  position: relative;
+}
+
+form#sign-in-form fieldset {
+  border: none;
+}
+
+#dcc-signinform #form-description-text {
+  text-align: center;
+  padding: 1rem 0;
+}
+
 #dcc-signinform .form-group {
   margin-bottom: 1rem;
   width: 100%;
+  position: relative;
+}
+
+#dcc-signinform .form-group input {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #dcc-signinform .submit-container {
@@ -339,29 +353,6 @@ div#dcc-signinform {
   position: absolute;
   right: 5%;
   cursor: pointer;
-}
-
-/*  Group Sign In */
-
-dcc-groupsignin {
-  display: block;
-  width: 100%;
-  max-width: 650px;
-  margin: auto;
-}
-
-dcc-groupsignin #header-image {
-  height: 0;
-  padding-bottom: 50%;
-  width: 105%;
-  margin-left: -2.5%;
-  background-size: cover;
-  background-position: center center;
-}
-
-dcc-groupsignin h2 {
-  margin-top: 1rem;
-  font-weight: bold;
 }
 
 div#checkboxInstructions {

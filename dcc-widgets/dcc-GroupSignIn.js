@@ -39,117 +39,126 @@ function getGroupData(groupId) {
     fetch('https://prod-17.westus2.logic.azure.com:443/workflows/e879a39b992546ac9ec00a611065f655/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BCtOg6wyG_cz3RUaTxr8Rc7zzGT7UQOaAyIIFttOO3w', options)
         .then(function (response) {return response.json();})
         .then(function (data) {
+            // Set Header Image
+            headerDisplay = data.File_GUID ? "block" : "none";
+
             if(data.status=="success") {
-                
-                headerDisplay = data.File_GUID ? "block" : "none";
+                // If at least one event is returned, create form
+                if(data.Events.length >= 1){
 
-                // Create form checkbox for each Event returned
-                var checkboxContainer = document.createElement("div");
-                checkboxContainer.setAttribute('class', 'checkbox');
-                var label;
-                var checkbox;
+                    // Create form checkbox for each Event returned
+                    var checkboxContainer = document.createElement("div");
+                    checkboxContainer.setAttribute('class', 'checkbox');
+                    var label;
+                    var checkbox;
 
-                for(i=0;i<data.Events.length;i++) {
-                    label = document.createElement("label");
-                    checkbox = document.createElement("input");
-                    checkbox.setAttribute('type', 'checkbox');
-                    checkbox.setAttribute('name', 'group_event');
-                    checkbox.setAttribute('value', data.Events[i].Event_ID);
-                    checkbox.setAttribute('id', 'event_id_' + data.Events[i].Event_ID);
-                    label.appendChild(checkbox);
-                    label.appendChild(document.createTextNode(data.Events[i].Event_Start_Date));
-                    checkboxContainer.appendChild(label);
-                    if(data.Events.length==1){
-                        checkbox.setAttribute('checked', 'checked');
-                        checkbox.setAttribute('onclick','return false;');
+                    for(i=0;i<data.Events.length;i++) {
+                        label = document.createElement("label");
+                        checkbox = document.createElement("input");
+                        checkbox.setAttribute('type', 'checkbox');
+                        checkbox.setAttribute('name', 'group_event');
+                        checkbox.setAttribute('value', data.Events[i].Event_ID);
+                        checkbox.setAttribute('id', 'event_id_' + data.Events[i].Event_ID);
+                        label.appendChild(checkbox);
+                        label.appendChild(document.createTextNode(data.Events[i].Event_Start_Date));
+                        checkboxContainer.appendChild(label);
+                        if(data.Events.length==1){
+                            checkbox.setAttribute('checked', 'checked');
+                            checkbox.setAttribute('onclick','return false;');
+                        }
                     }
-                }
 
-                if(data.Events.length>1){
-                    checkboxContainer.innerHTML = `<div id="checkboxInstructions">Select one or more events to sign in to:</div>${checkboxContainer.innerHTML}`;
-                }
+                    console.log('Event objects: '+data.Events.length);
 
-                // Main HTML Body
-                const groupSignInForm = `
-                    <div id="header-image" style="display: ${headerDisplay};background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
+                    if(data.Events.length>1){
+                        checkboxContainer.innerHTML = `<div id="checkboxInstructions">Select one or more events to sign in to:</div>${checkboxContainer.innerHTML}`;
+                    }
+
+                    // Main HTML Body
+                    const groupSignInForm = `
+                        <div id="header-image" style="display: ${headerDisplay};background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
+                        <div id="dcc-signinform">
+                            <div id="form-description-text">Please complete this form so that we know you attended <strong>${data.Group_Name}</strong>.</div>
+                            <form id="sign-in-form" class="form-horizontal">
+                                <fieldset>
+                                    <!-- Events -->
+                                    ${checkboxContainer.outerHTML}
+
+                                    <!-- First Name -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="first_name">First Name*</label>  
+                                        <div class="col-md-4">
+                                            <input id="form_first_name" name="first_name" type="text" placeholder="" class="form-control input-md" required="">
+                                        </div>
+                                    </div>
+
+                                    <!-- Last Name -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="last_name">Last Name*</label>  
+                                        <div class="col-md-4">
+                                            <input id="form_last_name" name="last_name" type="text" placeholder="" class="form-control input-md" required="">
+                                        </div>
+                                    </div>
+
+                                    <!-- Email Address -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="email_address">Email Address*</label>  
+                                        <div class="col-md-4">
+                                            <input id="form_email_address" name="email_address" type="email" placeholder="" class="form-control input-md" required="" pattern="${emailRegex}" title="Please enter a full email address.">
+                                        </div>
+                                    </div>
+
+                                    <!-- Phone Number -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="mobile_phone">Phone Number</label>  
+                                        <div class="col-md-4">
+                                            <input id="form_mobile_phone" name="mobile_phone" type="tel" placeholder="" maxlength="12" class="form-control input-md" onInput="this.value = phoneFormat(this.value)">
+                                        </div>
+                                    </div>
+
+                                    <!-- Reset Button -->
+                                    <div class="form-group submit-container">
+                                        <label class="col-md-4 control-label" for="submit"></label>
+                                        <div class="col-md-4">
+                                            <button id="submitCheckInForm" name="submit" type="button" class="btn btn-reset" onclick="clearForm()">Reset Form</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <div class="form-group submit-container">
+                                        <label class="col-md-4 control-label" for="submit"></label>
+                                        <div class="col-md-4">
+                                            <button id="submitCheckInForm" name="submit" type="submit" class="btn btn-primary">Sign In</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>`;
+
+
+                    document.getElementsByTagName("dcc-GroupSignIn")[0].innerHTML = groupSignInForm;
+
+                    // Prefill form if data is saved
+                    if(savedContactInfo && isAdditional!="yes") {
+                        var contactInfo = JSON.parse(savedContactInfo);
+                        document.getElementById("form_first_name").value = contactInfo.First_Name;
+                        document.getElementById("form_last_name").value = contactInfo.Last_Name;
+                        document.getElementById("form_email_address").value = contactInfo.Email_Address;
+                        document.getElementById("form_mobile_phone").value = contactInfo.Mobile_Phone;
+                        document.querySelector('.btn-reset').style.display = "block";
+                    }
+
+
+                } else if(data.Events.length < 1) {
+                    divHTML = `<div id="header-image" style="display: ${headerDisplay};background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
                     <div id="dcc-signinform">
-                        <div id="form-description-text">Please complete this form so that we know you attended <strong>${data.Group_Name}</strong>.</div>
-                        <form id="sign-in-form" class="form-horizontal">
-                            <fieldset>
-                                <!-- Events -->
-                                ${checkboxContainer.outerHTML}
-
-                                <!-- First Name -->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="first_name">First Name*</label>  
-                                    <div class="col-md-4">
-                                        <input id="form_first_name" name="first_name" type="text" placeholder="" class="form-control input-md" required="">
-                                    </div>
-                                </div>
-
-                                <!-- Last Name -->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="last_name">Last Name*</label>  
-                                    <div class="col-md-4">
-                                        <input id="form_last_name" name="last_name" type="text" placeholder="" class="form-control input-md" required="">
-                                    </div>
-                                </div>
-
-                                <!-- Email Address -->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="email_address">Email Address*</label>  
-                                    <div class="col-md-4">
-                                        <input id="form_email_address" name="email_address" type="email" placeholder="" class="form-control input-md" required="" pattern="${emailRegex}" title="Please enter a full email address.">
-                                    </div>
-                                </div>
-
-                                <!-- Phone Number -->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="mobile_phone">Phone Number</label>  
-                                    <div class="col-md-4">
-                                        <input id="form_mobile_phone" name="mobile_phone" type="tel" placeholder="" maxlength="12" class="form-control input-md" onInput="this.value = phoneFormat(this.value)">
-                                    </div>
-                                </div>
-
-                                <!-- Reset Button -->
-                                <div class="form-group submit-container">
-                                    <label class="col-md-4 control-label" for="submit"></label>
-                                    <div class="col-md-4">
-                                        <button id="submitCheckInForm" name="submit" type="button" class="btn btn-reset" onclick="clearForm()">Reset Form</button>
-                                    </div>
-                                </div>
-
-                                <!-- Submit Button -->
-                                <div class="form-group submit-container">
-                                    <label class="col-md-4 control-label" for="submit"></label>
-                                    <div class="col-md-4">
-                                        <button id="submitCheckInForm" name="submit" type="submit" class="btn btn-primary">Sign In</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
+                        <div id="form-description-text"><p>Sorry, we couldn't find any recent or upcoming events for <strong>${data.Group_Name}</strong>.</p><p>Please try again later.</p></div>
                     </div>`;
-
-
-                document.getElementsByTagName("dcc-GroupSignIn")[0].innerHTML = groupSignInForm;
-
-                // Prefill form if data is saved
-                if(savedContactInfo && isAdditional!="yes") {
-                    var contactInfo = JSON.parse(savedContactInfo);
-                    document.getElementById("form_first_name").value = contactInfo.First_Name;
-                    document.getElementById("form_last_name").value = contactInfo.Last_Name;
-                    document.getElementById("form_email_address").value = contactInfo.Email_Address;
-                    document.getElementById("form_mobile_phone").value = contactInfo.Mobile_Phone;
-                    document.querySelector('.btn-reset').style.display = "block";
+                    document.getElementsByTagName("dcc-GroupSignIn")[0].innerHTML = divHTML;
+                } else {
+                    divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
+                    document.getElementsByTagName("dcc-GroupSignIn")[0].innerHTML = divHTML;
                 }
-
-
-            } else if(length(data.status.Events < 1)) {
-                divHTML = `<p>Sorry, we couldn't find any upcoming events for ${data.Group_Name}. Please try again later.</p>`;
-                document.getElementsByTagName("dcc-GroupSignIn")[0].innerHTML = divHTML;
-            } else {
-                divHTML = `<p>Sorry, something went wrong. Please try again later.</p>`;
-                document.getElementsByTagName("dcc-GroupSignIn")[0].innerHTML = divHTML;
             }
         })
         .catch(function (fail) {
