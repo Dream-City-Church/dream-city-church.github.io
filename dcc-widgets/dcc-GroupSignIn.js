@@ -2,6 +2,11 @@
 var dccGroupSignInVersion = "1.0.0";
 console.log('dcc-GroupSignIn.js version ' + dccGroupSignInVersion + ' loaded.');
 
+// Local Storage for saving user data a prefill form
+var savedContactInfo = localStorage.getItem('dcc-quickform-contactinfo');
+// Check if is additional person
+isAdditional= getUrlParams()["additional"]
+
 // Main App
 function loadGroupSignIn(groupId) { 
 
@@ -22,11 +27,6 @@ function loadGroupSignIn(groupId) {
         document.getElementsByTagName("dcc-GroupSignIn")[0].innerHTML = divHTML;
     }
 }
-
-// Local Storage for saving user data a prefill form
-var savedContactInfo = localStorage.getItem('dcc-quickform-contactinfo');
-// Check if is additional person
-isAdditional= getUrlParams()["additional"]
 
 // Lookup Group from API
 function getGroupData(groupId) {
@@ -234,6 +234,8 @@ function submitGroupSignIn() {
             var submitAnotherUrl = window.location.href + "&additional=yes";
             divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="${submitAnotherUrl}">click here</a> to sign in someone else.</p></div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
+
+            // If not additional person, save contact info to local storage
             if(isAdditional!="yes"){
                 var contactInfoReceived = {First_Name: data.First_Name,Last_Name: data.Last_Name,Email_Address: data.Email_Address,Mobile_Phone: data.Mobile_Phone};
                 localStorage.setItem('dcc-quickform-contactinfo', JSON.stringify(contactInfoReceived));

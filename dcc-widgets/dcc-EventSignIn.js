@@ -1,3 +1,14 @@
+// Set current version
+var dccGroupSignInVersion = "1.0.1";
+console.log('dcc-GroupSignIn.js version ' + dccGroupSignInVersion + ' loaded.');
+
+// Local Storage for saving user data a prefill form
+var savedContactInfo = localStorage.getItem('dcc-quickform-contactinfo');
+// Check if is additional person
+isAdditional= getUrlParams()["additional"]
+
+
+// Main App
 function loadEventSignIn() {
     console.log('Event Sign In v0.2307.1');
     var emailRegex = '[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.+[a-zA-Z0-9-]+';
@@ -71,6 +82,14 @@ function loadEventSignIn() {
                   </div>
                 </div>
                 
+                <!-- Reset Button -->
+                <div class="form-group reset-container">
+                    <label class="col-md-4 control-label" for="reset"></label>
+                    <div class="col-md-4">
+                        <button id="resetCheckInForm" name="reset-btn" type="button" class="btn btn-reset" onclick="clearForm()">Reset Form</button>
+                    </div>
+                </div>
+                
                 <!-- Submit Button -->
                 <div class="form-group submit-container">
                   <label class="col-md-4 control-label" for="submit"></label>
@@ -84,6 +103,16 @@ function loadEventSignIn() {
                 </div>`;
 
                 document.getElementsByTagName("dcc-EventSignIn")[0].innerHTML = divHTML;
+
+                // Prefill form if data is saved
+                if(savedContactInfo && isAdditional!="yes") {
+                    var contactInfo = JSON.parse(savedContactInfo);
+                    document.getElementById("form_first_name").value = contactInfo.First_Name;
+                    document.getElementById("form_last_name").value = contactInfo.Last_Name;
+                    document.getElementById("form_email_address").value = contactInfo.Email_Address;
+                    document.getElementById("form_mobile_phone").value = contactInfo.Mobile_Phone;
+                    document.querySelector('.btn-reset').style.display = "block";
+                }
 
             } else if(data.status=="expired-event"){
                 var headerDisplay = data.File_GUID ? "block" : "none";
@@ -124,12 +153,19 @@ function loadEventSignIn() {
 
 }
 
+// Validate and submit form
 function SubmitFormListener() {
     console.log('Submit click detected');
     if(this.checkValidity()) {
         event.preventDefault();
         submitEventSignIn();
     }
+}
+
+// Clear form and local storage
+function clearForm() {
+    localStorage.removeItem('dcc-quickform-contactinfo');
+    document.getElementById("sign-in-form").reset();
 }
 
 function submitEventSignIn() {
@@ -150,8 +186,15 @@ function submitEventSignIn() {
     document.getElementById("dcc-signinform").innerHTML = divHTML;
     fetch('https://prod-13.westus2.logic.azure.com:443/workflows/1b11793e1b9b400e89f137820e0852c6/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=eokGnYOfjDaB78nBjC8FAgjgJf5ihpPlVSErMcZvfhk', options)
         .then(function (submitted) {
-            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="javascript:window.location.href=window.location.href">click here</a> to sign in someone else.</p></div>`;
+            var submitAnotherUrl = window.location.href + "&additional=yes";
+            divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="${submitAnotherUrl}">click here</a> to sign in someone else.</p></div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
+
+            // If not additional person, save contact info to local storage
+            if(isAdditional!="yes"){
+                var contactInfoReceived = {First_Name: data.First_Name,Last_Name: data.Last_Name,Email_Address: data.Email_Address,Mobile_Phone: data.Mobile_Phone};
+                localStorage.setItem('dcc-quickform-contactinfo', JSON.stringify(contactInfoReceived));
+            }
         })
         .catch(function (notSubmitted){
             divHTML = `<div id="sign-in-confirmation-message" class="sign-in-failure"><p style="font-weight:bold;">Sorry, something went wrong.</p><p>Please try again later. <a href="javascript:window.location.href=window.location.href">Click here</a> to reload the page.</p></div>`;
