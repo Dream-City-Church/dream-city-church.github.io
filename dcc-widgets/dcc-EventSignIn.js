@@ -15,7 +15,6 @@ var isAdditional=getUrlVars()["additional"]
 
 // Main App
 function loadEventSignIn() {
-    console.log('Event Sign In v0.2307.1');
     var emailRegex = '[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.+[a-zA-Z0-9-]+';
 
     /*Initialize loading spinner*/
