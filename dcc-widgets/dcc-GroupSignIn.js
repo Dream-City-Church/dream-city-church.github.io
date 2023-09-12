@@ -4,8 +4,13 @@ console.log('dcc-GroupSignIn.js version ' + dccGroupSignInVersion + ' loaded.');
 
 // Local Storage for saving user data a prefill form
 var savedContactInfo = localStorage.getItem('dcc-quickform-contactinfo');
+    // Clean up local storage if it seems malformed
+    if (savedContactInfo.length < 10) {
+        localStorage.removeItem('dcc-quickform-contactinfo');
+    }
+
 // Check if is additional person
-isAdditional= getUrlParams()["additional"]
+var isAdditional= getUrlParams()["additional"]
 
 // Main App
 function loadGroupSignIn(groupId) { 
@@ -145,10 +150,10 @@ function getGroupData(groupId) {
                     // Prefill form if data is saved
                     if(savedContactInfo && isAdditional!="yes") {
                         var contactInfo = JSON.parse(savedContactInfo);
-                        document.getElementById("form_first_name").value = contactInfo.First_Name;
-                        document.getElementById("form_last_name").value = contactInfo.Last_Name;
-                        document.getElementById("form_email_address").value = contactInfo.Email_Address;
-                        document.getElementById("form_mobile_phone").value = contactInfo.Mobile_Phone;
+                        document.getElementById("form_first_name").value = contactInfo.First_Name ?? '';
+                        document.getElementById("form_last_name").value = contactInfo.Last_Name ?? '';
+                        document.getElementById("form_email_address").value = contactInfo.Email_Address ?? '';
+                        document.getElementById("form_mobile_phone").value = contactInfo.Mobile_Phone ?? '';
                         document.querySelector('.btn-reset').style.display = "block";
                     }
 
@@ -231,7 +236,12 @@ function submitGroupSignIn() {
     fetch('https://prod-22.westus2.logic.azure.com:443/workflows/449859db35564f838cb376dd3c2cc79b/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=AXIabYlSlyRM9k20wyC1OFFUP-oOOD1MS82qbzntq5w', options)
         .then(function (response) {return response.json();})
         .then(function (data) {
-            var submitAnotherUrl = window.location.href + "&additional=yes";
+            if(isAdditional!="yes"){
+                var submitAnotherUrl = window.location.href + "&additional=yes";
+            } else {
+                var submitAnotherUrl = window.location.href;
+            }
+            
             divHTML = `<div id="sign-in-confirmation-message" class="sign-in-success"><p style="font-weight:bold;">You have been signed in!</p><p>You may close this window or <a href="${submitAnotherUrl}">click here</a> to sign in someone else.</p></div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
 
@@ -242,6 +252,7 @@ function submitGroupSignIn() {
             }
         })
         .catch(function (notSubmitted){
+            console.log(notSubmitted);
             divHTML = `<div id="sign-in-confirmation-message" class="sign-in-failure"><p style="font-weight:bold;">Sorry, something went wrong.</p><p>Please try again later. <a href="javascript:window.location.href=window.location.href">Click here</a> to reload the page.</p></div>`;
             document.getElementById("dcc-signinform").innerHTML = divHTML;
         })
