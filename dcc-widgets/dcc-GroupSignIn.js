@@ -1,5 +1,5 @@
 // Set current version
-var dccGroupSignInVersion = "1.0.0";
+var dccGroupSignInVersion = "1.0.230912";
 console.log('dcc-GroupSignIn.js version ' + dccGroupSignInVersion + ' loaded.');
 
 // Local Storage for saving user data a prefill form
@@ -91,7 +91,7 @@ function getGroupData(groupId) {
 
                                     <!-- First Name -->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="first_name">First Name*</label>  
+                                        <label class="col-md-4 control-label" for="first_name">First Name</label>  
                                         <div class="col-md-4">
                                             <input id="form_first_name" name="first_name" type="text" placeholder="" class="form-control input-md" required="">
                                         </div>
@@ -99,7 +99,7 @@ function getGroupData(groupId) {
 
                                     <!-- Last Name -->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="last_name">Last Name*</label>  
+                                        <label class="col-md-4 control-label" for="last_name">Last Name</label>  
                                         <div class="col-md-4">
                                             <input id="form_last_name" name="last_name" type="text" placeholder="" class="form-control input-md" required="">
                                         </div>
@@ -107,9 +107,9 @@ function getGroupData(groupId) {
 
                                     <!-- Email Address -->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="email_address">Email Address*</label>  
+                                        <label class="col-md-4 control-label" for="email_address">Email Address</label>  
                                         <div class="col-md-4">
-                                            <input id="form_email_address" name="email_address" type="email" placeholder="" class="form-control input-md" required="" pattern="${emailRegex}" title="Please enter a full email address.">
+                                            <input id="form_email_address" name="email_address" type="email" placeholder="" class="form-control input-md" pattern="${emailRegex}" title="Please enter a full email address.">
                                         </div>
                                     </div>
 
@@ -185,10 +185,21 @@ function getGroupData(groupId) {
 function SubmitFormListener() {
     console.log('Submit click detected');
     if(this.checkValidity()) {
+        // Prevent HTML5 form processing
         event.preventDefault();
+
+        // Get checked boxes
         var checkedboxes = document.querySelectorAll('input[name="group_event"]:checked');
+
+        // If no boxes have been checked
         if(checkedboxes.length>0) {
-            submitGroupSignIn();
+            // If no email or phone number
+            if(document.getElementById("form_email_address").value == "" && document.getElementById("form_mobile_phone").value == "") {
+                alert("Please enter an email address or phone number.");
+            } else {
+                // Submit Form
+                submitGroupSignIn();
+            }
         } else {
             alert('Please select at least one event.');
         }

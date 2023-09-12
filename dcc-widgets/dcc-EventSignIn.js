@@ -1,5 +1,5 @@
 // Set current version
-var dccGroupSignInVersion = "1.0.1";
+var dccGroupSignInVersion = "1.0.230912";
 console.log('dcc-GroupSignIn.js version ' + dccGroupSignInVersion + ' loaded.');
 
 // Local Storage for saving user data a prefill form
@@ -41,7 +41,7 @@ function loadEventSignIn() {
                 <fieldset>
                 <!-- First Name -->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="first_name">First Name*</label>  
+                  <label class="col-md-4 control-label" for="first_name">First Name</label>  
                   <div class="col-md-4">
                   <input id="form_first_name" name="first_name" type="text" placeholder="" class="form-control input-md" required="">
                     
@@ -50,7 +50,7 @@ function loadEventSignIn() {
                 
                 <!-- Last Name -->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="last_name">Last Name*</label>  
+                  <label class="col-md-4 control-label" for="last_name">Last Name</label>  
                   <div class="col-md-4">
                   <input id="form_last_name" name="last_name" type="text" placeholder="" class="form-control input-md" required="">
                     
