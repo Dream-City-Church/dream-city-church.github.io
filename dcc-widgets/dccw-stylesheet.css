@@ -351,8 +351,9 @@ form#sign-in-form fieldset {
   text-decoration: underline;
   color: gray;
   position: absolute;
-  right: 5%;
+  right: 2%;
   cursor: pointer;
+  z-index: 100;
 }
 
 div#checkboxInstructions {
