@@ -364,6 +364,7 @@ div#checkboxInstructions {
 .checkbox label {
   text-align: center;
   font-size: 1.1rem;
+  font-style: italic;
   color: #777;
   display: block;
   margin: 1rem 0;
@@ -385,6 +386,7 @@ div#checkboxInstructions {
   background-color: white;
   color: #333;
   font-weight: bold !important;
+  font-style: normal;
 }
 
 /* Loading Spinner */
