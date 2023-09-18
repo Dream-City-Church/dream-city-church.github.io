@@ -169,7 +169,7 @@ function loadPrayerWall() {
                         }
                 });
         })
-        .then(setTimeout(addPrayerFromUrl,2000))
+        .then(setTimeout(addPrayerFromUrl,3000))
 }
 
 window.onload = setTimeout(loadPrayerWall, 500);
