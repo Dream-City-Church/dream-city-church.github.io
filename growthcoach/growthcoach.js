@@ -1,15 +1,18 @@
 var gcUserJson = loadGrowthCoachUser();
 var currentTab = 0; // Current tab is set to be the first tab (0)
-
+var currentChatHistory=[];
+const chatEndpointUrl = 'https://prod-28.southcentralus.logic.azure.com:443/workflows/8897a84bc942409e9d960e0f264d4cef/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k4_xK1LfAx38_kC_KkKcwiLccqD2niWaVPJZ_bZ754M';
 
 
 function growthCoachLaunch(){
     if(gcUserJson == null){
         // New User Page
-        document.getElementById("growthcoach").innerHTML = gcNewUserForm;
-        showTab(currentTab); // Display the current tab
+        //document.getElementById("growthcoach").innerHTML = gcNewUserForm;
+        //showTab(currentTab); // Display the current tab
+        startChat('newUser');
     }else{
         // Load Main App Page
+        startChat('newUser');
     }
 }
 
@@ -27,6 +30,91 @@ function saveGrowthCoachUser(gcUserJSON){
     localStorage.setItem("gcUser", JSON.stringify(gcUserJSON));
     loadGrowthCoachUser();
 }
+
+// Create a chat window that shows sent and received chats, with a text box to send a chat to a Logic App endpoint
+function startChat(chatType){
+    console.log('startChat');
+    document.getElementById("growthcoach").innerHTML += `<div id="chatWindow"></div><div id="chatInput"></div><div id="chatSend"></div>`;
+    var chatWindow = document.getElementById("chatWindow");
+    var chatInput = document.getElementById("chatInput");
+    var chatSend = document.getElementById("chatSend");
+
+    // Create the chat window
+    chatWindow.innerHTML = `
+        <div id="chatWindow" style="height: 100%; overflow-y: scroll; overflow-x: hidden;">
+            <div id="chatWindowContent" style="display: flex; flex-direction: column-reverse;"></div>
+        </div>`;
+
+    // Create the chat input and send button
+    chatInput.innerHTML = `
+        <div id="chatInput" style="display: flex;">
+            <input id="chatInputText" style="width: 100%;"/>
+            <button id="chatSend" style="width: 100%;">Send</button>
+        </div>`;
+    
+    // Send initial chat summary to ChatGPT
+    sendChat("",chatType)    
+
+    // Add an event listener to the send button
+    chatSend.addEventListener("click", function(){
+        var chatInputText = document.getElementById("chatInputText");
+        var chatWindowContent = document.getElementById("chatWindowContent");
+        var chatInputTextValue = chatInputText.value;
+
+        // Clear the chat input text
+        chatInputText.value = "";
+
+        // Add the chat to the chat window
+        chatWindowContent.innerHTML += `<div style="width: 100%; display: flex; flex-direction: column;">
+            <div style="width: 100%; text-align: right;">
+                <div style="display: inline-block; background-color: #c3e88d; padding: 10px; border-radius: 5px;" class="userChatMessage">
+                    ${chatInputTextValue}
+                </div>
+            </div>
+        </div>
+        <div id="loading-indicator"></div>`;
+        
+        // Send the chat to the Logic App endpoint
+        sendChat(chatInputTextValue,chatType);
+    });
+}
+
+function sendChat(chatInputTextValue,chatType) {
+    console.log('sendChat');
+    //update chat history
+    if(chatInputTextValue != "") {
+        currentChatHistory.push({"Content":chatInputTextValue,"Role":"User"});
+    }
+
+    const params = {
+        "chatHistory": currentChatHistory,
+        "gcUser": gcUserJson,
+        "chatType": chatType
+    };
+    const options = {
+        method: 'POST',
+        body: JSON.stringify( params ),
+        headers: {'Content-Type': 'application/json'}
+    };
+    fetch(chatEndpointUrl,options)
+    .then(response => response.json())
+    .then(function (data) {
+        if(data.status=="ok"){
+            //update chat history
+            currentChatHistory.push({"Content":data.response,"Role":"Assistant"});
+            //update chat window
+            var chatWindowContent = document.getElementById("chatWindowContent");
+            chatWindowContent.innerHTML += `<div style="width: 100%; display: flex; flex-direction: column;">
+                <div style="width: 100%;">
+                    <div style="display: inline-block; background-color: #82aaff; padding: 10px; border-radius: 5px;" class="botChatMessage">
+                        ${data.response}
+                    </div>
+                </div>
+            </div>`;
+        }
+    })
+}
+
 
 // Next/previous controls
 function showTab(n) {
@@ -68,7 +156,14 @@ function showTab(n) {
             var formObj ={};
             for(var i = 0 ; i < elements.length ; i++){
                 var item = elements.item(i);
-                formObj[item.name] = item.value;
+                if (item.type === 'radio') {
+                    if (item.checked === true) {
+                        // get value, set checked flag or do whatever you need to
+                        formObj[item.name] = item.value;
+                    }
+                } else {
+                    formObj[item.name] = item.value;
+                }
             }
 
             //Save to localStorage
