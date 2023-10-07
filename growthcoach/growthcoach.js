@@ -367,10 +367,10 @@ var gcNewUserForm = `
     </form>`;
 
 var gcHomeLayout = `
-<div id="salutation">Hi, ${gcUserJson.first_name}!</div>
+<div id="salutation"><h2>Hi, ${gcUserJson.first_name}!</h2></div>
 <div id="goals-card" class="card"><h3>Your Goals</h3></div>
 <div id="reading-plan-card" class="card"><h3>Reading Plan</h3></div>
-<div id="chat-card"></div>
+<div id="chat-card" class="card"></div>
 `;
 
 window.onload = growthCoachLaunch;
