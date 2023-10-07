@@ -2,6 +2,7 @@
   --primary: #9FD8DB;
   --secondary: #1B4156;
   --tertiary: #F9735B;
+  --quatinary: #23561B;
   --text-gray: #777777;
 }
 
@@ -141,4 +142,27 @@ div#chat-card {
   z-index: 999;
   height: 90vh;
   bottom: -90vh;
+}
+
+.botChatMessage {
+  background-color: var(--secondary);
+  color: white;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  line-height:1.25rem;
+}
+
+.botChatMessage h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.userChatMessage {
+  background-color: var(--quatinary);
+  color: white;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  line-height: 1.25rem;
 }

@@ -6,13 +6,20 @@ var currentChatHistory=[];
 const chatEndpointUrl = 'https://prod-28.southcentralus.logic.azure.com:443/workflows/8897a84bc942409e9d960e0f264d4cef/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k4_xK1LfAx38_kC_KkKcwiLccqD2niWaVPJZ_bZ754M';
 
 
-function growthCoachLaunch(){
-    if(gcUserJson == null){
+function growthCoachLaunch(action){
+    if((gcUserJson == null || gcUserJson == '') & action != 'homeScreen'){
         // New User Page
         document.getElementById("growthcoach").innerHTML = gcNewUserForm;
         showTab(currentTab); // Display the current tab
     }else{
         // Load Main App Page
+        var gcHomeLayout = `
+            <div id="salutation"><h2>Hi, ${gcUserJson.first_name}!</h2></div>
+            <div id="goals-card" class="card"><h3>Your Goals</h3></div>
+            <div id="reading-plan-card" class="card"><h3>Reading Plan</h3></div>
+            <div id="chat-card" class="card"></div>
+            `;
+
         document.getElementById("growthcoach").innerHTML = gcHomeLayout;
     }
 }
@@ -92,7 +99,7 @@ function startChat(chatType){
         // Add the chat to the chat window
         chatWindowContent.innerHTML += `<div style="width: 100%; display: flex; flex-direction: column;">
             <div style="width: 100%; text-align: right;">
-                <div style="display: inline-block; background-color: #c3e88d; padding: 10px; border-radius: 5px;" class="userChatMessage">
+                <div class="userChatMessage">
                     ${chatInputTextValue}
                 </div>
             </div>
@@ -140,7 +147,7 @@ function sendChat(chatInputTextValue,chatType) {
             var chatWindowContent = document.getElementById("chatWindowContent");
             chatWindowContent.innerHTML += `<div style="width: 100%; display: flex; flex-direction: column;">
                 <div style="width: 100%;">
-                    <div style="display: inline-block; background-color: #82aaff; padding: 10px; border-radius: 5px;" class="botChatMessage">
+                    <div class="botChatMessage">
                         ${data.response}
                     </div>
                 </div>
@@ -148,7 +155,7 @@ function sendChat(chatInputTextValue,chatType) {
         }
         if(data.goal_action == "add") {
             // save goals to localStorage
-            growthCoachGoals("add",data.function_data.goals);
+            growthCoachGoals("add",data.function_data);
 
             // remove chat input window and replace with close button
             document.getElementById("chatInput").innerHTML = `<button id="chatClose" style="width: 100%;">Close</button>`;
@@ -158,7 +165,7 @@ function sendChat(chatInputTextValue,chatType) {
             chatClose.addEventListener("click", function(){
                 console.log('close button click detected');
                 // remove chat window
-                document.getElementById('growthcoach').innerHTML = gcHomeLayout;
+                growthCoachLaunch('homeScreen');
             });
         }
     })
@@ -218,6 +225,7 @@ function showTab(n) {
             //Save to localStorage
             saveGrowthCoachUser(formObj);
             gcNewUserInfo = formObj;
+            gcUserJson = formObj;
             document.getElementById('growthcoach').innerHTML = "";
             startChat('newUser');
             
@@ -365,12 +373,5 @@ var gcNewUserForm = `
     </div>
 
     </form>`;
-
-var gcHomeLayout = `
-<div id="salutation"><h2>Hi, ${gcUserJson.first_name}!</h2></div>
-<div id="goals-card" class="card"><h3>Your Goals</h3></div>
-<div id="reading-plan-card" class="card"><h3>Reading Plan</h3></div>
-<div id="chat-card" class="card"></div>
-`;
 
 window.onload = growthCoachLaunch;
