@@ -166,3 +166,19 @@ div#chat-card {
   border-radius: 1rem;
   line-height: 1.25rem;
 }
+
+.goal {
+  margin: 2rem;
+  border-left: 2px solid var(--tertiary);
+  padding-left: 2rem;
+}
+
+span.goal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+span.goal-checkin {
+  font-style: italic;
+  color: var(--text-gray);
+}

@@ -26,7 +26,7 @@ function growthCoachLaunch(action){
         var goalsCard = document.getElementById("goals-card");
         gcUserGoals.forEach(function(goal) {
             console.log('adding goal');
-            goalsCard.innerHTML += `<div class="goal">${goal.goal_title}<br />${goal.goal_check_in_days}</div>`;
+            goalsCard.innerHTML += `<div class="goal"><span class="goal-title">${goal.goal_title}</span><br /><span class="goal-checkin">Next check in: ${goal.goal_check_in_days} days</span></div>`;
         });
     }
 }
