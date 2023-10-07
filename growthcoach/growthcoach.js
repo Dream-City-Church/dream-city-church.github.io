@@ -1,11 +1,12 @@
 var gcUserJson = loadGrowthCoachUser();
 var currentTab = 0; // Current tab is set to be the first tab (0)
 
+
+
 function growthCoachLaunch(){
     if(gcUserJson == null){
         // New User Page
         document.getElementById("growthcoach").innerHTML = gcNewUserForm;
-        
         showTab(currentTab); // Display the current tab
     }else{
         // Load Main App Page
@@ -24,6 +25,7 @@ function loadGrowthCoachUser(){
 function saveGrowthCoachUser(gcUserJSON){
     // Convert JSON to String and save to localStorage
     localStorage.setItem("gcUser", JSON.stringify(gcUserJSON));
+    loadGrowthCoachUser();
 }
 
 // Next/previous controls
@@ -47,33 +49,35 @@ function showTab(n) {
     }
 
     function nextPrev(n) {
-    // This function will figure out which tab to display
-    var x = document.getElementsByClassName("tab");
-    // Exit the function if any field in the current tab is invalid:
-    if (n == 1 && !validateForm()) return false;
-    // Hide the current tab:
-    x[currentTab].style.display = "none";
-    // Increase or decrease the current tab by 1:
-    currentTab = currentTab + n;
-    // if you have reached the end of the form... :
-    if (currentTab >= x.length) {
-        //...the form gets submitted:
-        //document.getElementById("regForm").submit();
+        // This function will figure out which tab to display
+        var x = document.getElementsByClassName("tab");
+        // Exit the function if any field in the current tab is invalid:
+        if (n == 1 && !validateForm()) return false;
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form... :
+        if (currentTab >= x.length) {
+            //...the form gets submitted:
+            //document.getElementById("regForm").submit();
 
-        // Save the form data to localStorage
-        var form = document.getElementById("regForm");
-        var elements = form.elements;
-        var formObj ={};
-        for(var i = 0 ; i < elements.length ; i++){
-            var item = elements.item(i);
-            formObj[item.name] = item.value;
+            // Save the form data to localStorage
+            var form = document.getElementById("regForm");
+            var elements = form.elements;
+            var formObj ={};
+            for(var i = 0 ; i < elements.length ; i++){
+                var item = elements.item(i);
+                formObj[item.name] = item.value;
+            }
+
+            //Save to localStorage
+            saveGrowthCoachUser(formObj);
+            
+            return false;
         }
-        saveGrowthCoachUser(formObj);
-        
-        return false;
-    }
-    // Otherwise, display the correct tab:
-    showTab(currentTab);
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
     }
 
     function validateForm() {
