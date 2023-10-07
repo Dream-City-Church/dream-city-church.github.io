@@ -27,9 +27,7 @@ function growthCoachLaunch(action){
             // if the chat card header has a data value of up
             if(document.getElementById("chat-card-header").getAttribute("data") == "up") {
                 startChat('generalChat',gcUserJson.first_name+' wants to chat about something. Ask them what they would like to discuss.');
-                var arrowUps = document.querySelectorAll('.arrow.up')
-                arrowUps.forEach((arrowUp) => {arrowUp.classList.replace('up','down');})
-                document.getElementById("chat-card-header").setAttribute("data","down");
+                
             } else {
                 document.getElementById("chat-card-header").setAttribute("data","up");
                 document.getElementById("chat-card").style.bottom = null;
@@ -100,6 +98,9 @@ function growthCoachGoals(goalActionType,goalArray) {
 function startChat(chatType,chatMessage){
     console.log('startChat');
     if(document.getElementById("chat-card")) {
+        var arrowUps = document.querySelectorAll('.arrow.up')
+        arrowUps.forEach((arrowUp) => {arrowUp.classList.replace('up','down');})
+        document.getElementById("chat-card-header").setAttribute("data","down");
         document.getElementById("chat-card").insertAdjacentHTML("beforeend", `<div id="chatWindow"></div><div id="chatInput"></div>`);
         document.getElementById("chat-card").style.bottom = 0;
     } else {

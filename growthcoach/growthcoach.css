@@ -135,6 +135,7 @@ div#salutation {
   border-radius: 1rem;
   min-height: 1rem;
   margin-bottom: 2rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0,0,0,0.2);
 }
 
 div#chat-card {
@@ -147,7 +148,7 @@ div#chat-card {
 }
 
 #chat-card #chatWindow {
-  max-height: 97%;
+  max-height: 96%;
 }
 
 .botChatMessage {
