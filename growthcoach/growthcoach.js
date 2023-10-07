@@ -21,6 +21,13 @@ function growthCoachLaunch(action){
             `;
 
         document.getElementById("growthcoach").innerHTML = gcHomeLayout;
+
+        // for each goal, add to the goals card
+        var goalsCard = document.getElementById("goals-card");
+        gcUserGoals.forEach(function(goal) {
+            console.log('adding goal');
+            goalsCard.innerHTML += `<div class="goal">${goal.goal_title}<br />${goal.goal_check_in_days}</div>`;
+        });
     }
 }
 
