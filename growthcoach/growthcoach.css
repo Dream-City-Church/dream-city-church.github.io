@@ -143,6 +143,11 @@ div#chat-card {
   z-index: 999;
   height: 90vh;
   bottom: -90vh;
+  overflow: hidden;
+}
+
+#chat-card #chatWindow {
+  max-height: 97%;
 }
 
 .botChatMessage {

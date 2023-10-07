@@ -36,7 +36,7 @@ function growthCoachLaunch(action){
             goal.addEventListener('click', function() {
                 console.log('goal click detected');
                 var goalTitle = goal.querySelector('.goal-title').innerHTML;
-                startChat('goalCheckin',gcUserJson.first_name+' wants to talk about their goal: '+goalTitle);
+                startChat('goalCheckin',gcUserJson.first_name+' wants to chat about their previously set goal of '+goalTitle+'. As them what they would like to discuss about the goal.');
             });
         });
     }
