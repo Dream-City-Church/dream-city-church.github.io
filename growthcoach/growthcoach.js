@@ -26,7 +26,18 @@ function growthCoachLaunch(action){
         var goalsCard = document.getElementById("goals-card");
         gcUserGoals.forEach(function(goal) {
             console.log('adding goal');
-            goalsCard.innerHTML += `<div class="goal"><span class="goal-title">${goal.goal_title}</span><br /><span class="goal-checkin">Next check in: ${goal.goal_check_in_days} days</span></div>`;
+            goalsCard.innerHTML += `<div class="goal" id="${goal.goal_id}" class="goal-${goal.goal_id}"><span class="goal-title">${goal.goal_title}</span><br /><span class="goal-checkin">Next check in: ${goal.goal_check_in_days} days</span></div>`;
+        });
+
+        // add event listener to each goal to detect click
+        var goals = document.querySelectorAll('.goal');
+
+        goals.forEach(function(goal) {
+            goal.addEventListener('click', function() {
+                console.log('goal click detected');
+                var goalTitle = goal.querySelector('.goal-title').innerHTML;
+                startChat('goalCheckin',gcUserJson.first_name+' wants to talk about their goal: '+goalTitle);
+            });
         });
     }
 }
@@ -71,9 +82,14 @@ function growthCoachGoals(goalActionType,goalArray) {
 }
 
 // Create a chat window that shows sent and received chats, with a text box to send a chat to a Logic App endpoint
-function startChat(chatType){
+function startChat(chatType,chatMessage){
     console.log('startChat');
-    document.getElementById("growthcoach").innerHTML += `<div id="chatWindow"></div><div id="chatInput"></div>`;
+    if(document.getElementById("chat-card")) {
+        document.getElementById("chat-card").innerHTML = `<div id="chatWindow"></div><div id="chatInput"></div>`;
+        document.getElementById("chat-card").style.bottom = 0;
+    } else {
+        document.getElementById("growthcoach").innerHTML += `<div id="chatWindow"></div><div id="chatInput"></div>`;
+    }
     var chatWindow = document.getElementById("chatWindow");
     var chatInput = document.getElementById("chatInput");
     
@@ -94,7 +110,11 @@ function startChat(chatType){
     var chatSend = document.getElementById("chatSend");
     
     // Send initial chat summary to ChatGPT
-    sendChat("",chatType);
+    if(!chatMessage) {
+        sendChat("",chatType);
+    } else {
+        sendChat(chatMessage,chatType);
+    }
 
     // Add an event listener to the send button
     chatSend.addEventListener("click", function(){
@@ -137,6 +157,7 @@ function sendChat(chatInputTextValue,chatType) {
     const params = {
         "chatHistory": currentChatHistory,
         "gcUser": userInfo,
+        "gcGoals": gcUserGoals,
         "chatType": chatType
     };
     const options = {
@@ -172,6 +193,7 @@ function sendChat(chatInputTextValue,chatType) {
             chatClose.addEventListener("click", function(){
                 console.log('close button click detected');
                 // remove chat window
+
                 growthCoachLaunch('homeScreen');
             });
         }

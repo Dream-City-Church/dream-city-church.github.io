@@ -52,7 +52,7 @@ h3 {
     font-size: 0.9rem;
     border-radius: 0.25rem;
     border: none;
-    
+    border: 1px solid var(--text-gray);
   }
   
   /* Mark input boxes that gets an error on validation: */
@@ -95,6 +95,7 @@ h3 {
     color: white;
     border: none;
     border-radius: 0.25rem;
+    cursor: pointer;
 }
 
 #regForm label {
@@ -171,6 +172,7 @@ div#chat-card {
   margin: 2rem;
   border-left: 2px solid var(--tertiary);
   padding-left: 2rem;
+  cursor: pointer;
 }
 
 span.goal-title {
