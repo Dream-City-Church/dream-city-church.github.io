@@ -17,10 +17,25 @@ function growthCoachLaunch(action){
             <div id="salutation"><h2>Hi, ${gcUserJson.first_name}!</h2></div>
             <div id="goals-card" class="card"><h3>Your Goals</h3></div>
             <div id="reading-plan-card" class="card"><h3>Reading Plan</h3></div>
-            <div id="chat-card" class="card"></div>
+            <div id="chat-card" class="card"><div id="chat-card-header" data="up"><span class="arrow up"></span>Chat with Growth Coach<span class="arrow up"></span></div></div>
             `;
 
         document.getElementById("growthcoach").innerHTML = gcHomeLayout;
+
+        document.getElementById("chat-card-header").addEventListener("click", function(){
+            console.log('chat header click detected');
+            // if the chat card header has a data value of up
+            if(document.getElementById("chat-card-header").getAttribute("data") == "up") {
+                startChat('generalChat',gcUserJson.first_name+' wants to chat about something. Ask them what they would like to discuss.');
+                var arrowUps = document.querySelectorAll('.arrow.up')
+                arrowUps.forEach((arrowUp) => {arrowUp.classList.replace('up','down');})
+                document.getElementById("chat-card-header").setAttribute("data","down");
+            } else {
+                document.getElementById("chat-card-header").setAttribute("data","up");
+                document.getElementById("chat-card").style.bottom = null;
+                document.getElementById("chat-card").innerHTML = `<div id="chat-card-header" data="up"><span class="arrow up"></span>Chat with Growth Coach<span class="arrow up"></span></div>`;
+            }
+        });
 
         // for each goal, add to the goals card
         var goalsCard = document.getElementById("goals-card");
@@ -85,7 +100,7 @@ function growthCoachGoals(goalActionType,goalArray) {
 function startChat(chatType,chatMessage){
     console.log('startChat');
     if(document.getElementById("chat-card")) {
-        document.getElementById("chat-card").innerHTML = `<div id="chatWindow"></div><div id="chatInput"></div>`;
+        document.getElementById("chat-card").insertAdjacentHTML("beforeend", `<div id="chatWindow"></div><div id="chatInput"></div>`);
         document.getElementById("chat-card").style.bottom = 0;
     } else {
         document.getElementById("growthcoach").innerHTML += `<div id="chatWindow"></div><div id="chatInput"></div>`;
