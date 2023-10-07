@@ -16,12 +16,14 @@ function loadGrowthCoachUser(){
     if(localStorage.getItem("gcUser") == null){
         return null;
     } else {
-        return localStorage.getItem("gcUser").toJson();
+        // Load from local storage and convert string to JSON
+        return JSON.parse(localStorage.getItem("gcUser"));
     }
 }
 
 function saveGrowthCoachUser(gcUserJSON){
-    localStorage.setItem(stringify(gcUserJSON));
+    // Convert JSON to String and save to localStorage
+    localStorage.setItem("gcUser", JSON.stringify(gcUserJSON));
 }
 
 // Next/previous controls
@@ -56,7 +58,18 @@ function showTab(n) {
     // if you have reached the end of the form... :
     if (currentTab >= x.length) {
         //...the form gets submitted:
-        document.getElementById("regForm").submit();
+        //document.getElementById("regForm").submit();
+
+        // Save the form data to localStorage
+        var form = document.getElementById("regForm");
+        var elements = form.elements;
+        var formObj ={};
+        for(var i = 0 ; i < elements.length ; i++){
+            var item = elements.item(i);
+            formObj[item.name] = item.value;
+        }
+        saveGrowthCoachUser(formObj);
+        
         return false;
     }
     // Otherwise, display the correct tab:
@@ -99,28 +112,82 @@ function showTab(n) {
 var gcNewUserForm = `
     <form id="regForm" action="">
 
-    <h1>Register:</h1>
-
     <!-- One "tab" for each step in the form: -->
-    <div class="tab">Name:
-    <p><input placeholder="First name..." oninput="this.className = ''"></p>
-    <p><input placeholder="Last name..." oninput="this.className = ''"></p>
+    <div class="tab"><h3>Some Basic Info</h3>
+        <p><input placeholder="First Name" oninput="this.className = ''" name="first_name"></p>
+        <p><input placeholder="Last Name" oninput="this.className = ''" name="last_name"></p>
+        <p><input placeholder="Email Address" oninput="this.className = ''" name="email_address"></p>
+        <p><input placeholder="Phone Number" oninput="this.className = ''" name="phone_number"></p>
+        <p><input placeholder="Your age" oninput="this.className = ''" name="age"></p>
+    </div>
+        
     </div>
 
-    <div class="tab">Contact Info:
-    <p><input placeholder="E-mail..." oninput="this.className = ''"></p>
-    <p><input placeholder="Phone..." oninput="this.className = ''"></p>
+    <div class="tab"><h3>What is your gender?</h3>
+        <label><input type="radio" value="male" oninput="this.className = ''" name="gender" required>Male</label>
+        <label><input type="radio" value="female" oninput="this.className = ''" name="gender">Female</label>
+        <label><input type="radio" value="not provided" oninput="this.className = ''" name="gender">Prefer not to answer</label>
     </div>
 
-    <div class="tab">Birthday:
-    <p><input placeholder="dd" oninput="this.className = ''"></p>
-    <p><input placeholder="mm" oninput="this.className = ''"></p>
-    <p><input placeholder="yyyy" oninput="this.className = ''"></p>
+    <div class="tab"><h3>What is your marital status?</h3>
+        <label><input type="radio" value="single" oninput="this.className = ''" name="marital" required>Single</label>
+        <label><input type="radio" value="married" oninput="this.className = ''" name="marital">Married</label>
+        <label><input type="radio" value="widowed" oninput="this.className = ''" name="marital">Widowed</label>
+        <label><input type="radio" value="divorced/seperated" oninput="this.className = ''" name="marital">Divorced/Seperated</label>
     </div>
 
-    <div class="tab">Login Info:
-    <p><input placeholder="Username..." oninput="this.className = ''"></p>
-    <p><input placeholder="Password..." oninput="this.className = ''"></p>
+    <div class="tab"><h3>Do you have any children?</h3>
+        <label><input type="checkbox" value="kids under 10" oninput="this.className = ''" name="children" required>Yes, under 10</label>
+        <label><input type="checkbox" value="kids 10-18" oninput="this.className = ''" name="children">Yes, 10-18</label>
+        <label><input type="checkbox" value="kids out of the house" oninput="this.className = ''" name="children">Yes, out of the house</label>
+    </div>
+
+    <div class="tab"><h3>How long have you been a Christian?</h3>
+        <label><input type="radio" value="not a Christian" oninput="this.className = ''" name="time_as_christian" required>Not a Christian</label>
+        <label><input type="radio" value="less than 1 year" oninput="this.className = ''" name="time_as_christian">Less than 1 year</label>
+        <label><input type="radio" value="1-5 years" oninput="this.className = ''" name="time_as_christian">1-5 years</label>
+        <label><input type="radio" value="5+ years" oninput="this.className = ''" name="time_as_christian">5+ years</label>
+    </div>
+
+    <div class="tab"><h3>How often do you attend church?</h3>
+        <label><input type="radio" value="infrequently" oninput="this.className = ''" name="church_attendance" required>Infrequently</label>
+        <label><input type="radio" value="a few times a year" oninput="this.className = ''" name="church_attendance">A few times a year</label>
+        <label><input type="radio" value="once a month" oninput="this.className = ''" name="church_attendance">Once a month</label>
+        <label><input type="radio" value="couple times a month" oninput="this.className = ''" name="church_attendance">Couple times a month</label>
+        <label><input type="radio" value="weekly" oninput="this.className = ''" name="church_attendance">Weekly</label>
+    </div>
+
+    <div class="tab"><h3>How often do you read the bible?</h3>
+        <label><input type="radio" value="infrequently" oninput="this.className = ''" name="bible" required>Infrequently</label>
+        <label><input type="radio" value="a few times a year" oninput="this.className = ''" name="bible">A few times a year</label>
+        <label><input type="radio" value="once a month" oninput="this.className = ''" name="bible">Once a month</label>
+        <label><input type="radio" value="couple times a month" oninput="this.className = ''" name="bible">Couple times a month</label>
+        <label><input type="radio" value="weekly" oninput="this.className = ''" name="bible">Weekly</label>
+        <label><input type="radio" value="daily" oninput="this.className = ''" name="bible">Daily</label>
+    </div>
+
+    <div class="tab"><h3>How often do you pray?</h3>
+        <label><input type="radio" value="infrequently" oninput="this.className = ''" name="prayer" required>Infrequently</label>
+        <label><input type="radio" value="a few times a year" oninput="this.className = ''" name="prayer">A few times a year</label>
+        <label><input type="radio" value="once a month" oninput="this.className = ''" name="prayer">Once a month</label>
+        <label><input type="radio" value="couple times a month" oninput="this.className = ''" name="prayer">Couple times a month</label>
+        <label><input type="radio" value="weekly" oninput="this.className = ''" name="prayer">Weekly</label>
+        <label><input type="radio" value="daily" oninput="this.className = ''" name="prayer">Daily</label>
+    </div>
+
+    <div class="tab"><h3>Are you in a small group?</h3>
+        <label><input type="radio" value="yes" oninput="this.className = ''" name="small_group" required>Yes</label>
+        <label><input type="radio" value="no" oninput="this.className = ''" name="small_group">No</label>
+    </div>
+
+    <div class="tab"><h3>Do you serve or volunteer?</h3>
+        <label><input type="radio" value="yes" oninput="this.className = ''" name="volunteer" required>Yes</label>
+        <label><input type="radio" value="no" oninput="this.className = ''" name="volunteer">No</label>
+    </div>
+
+    <div class="tab"><h3>Do you give financially to a church or ministry?</h3>
+        <label><input type="radio" value="yes" oninput="this.className = ''" name="give" required>Yes</label>
+        <label><input type="radio" value="no" oninput="this.className = ''" name="give">No</label>
     </div>
 
     <div style="overflow:auto;">
@@ -132,6 +199,13 @@ var gcNewUserForm = `
 
     <!-- Circles which indicates the steps of the form: -->
     <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
