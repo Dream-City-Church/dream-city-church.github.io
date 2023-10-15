@@ -13,7 +13,7 @@ function verifyEmail() {
     }
 
     // Set loading message in container
-    container.innerHTML = '<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>';
+    container.innerHTML = '<p>Loading...</p><br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>';
 
     // Create JSON object with cid to send to server
     var data = { "contact_id": cid };
