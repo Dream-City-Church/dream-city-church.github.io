@@ -392,6 +392,13 @@ div#checkboxInstructions {
   transition: border 0.25s ease, background-color 0.25s ease;
 }
 
+/* Email Verification */
+dcc-emailVerification {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
 /* Loading Spinner */
 .dccw-spinnercontainer {
     width: 80px;
