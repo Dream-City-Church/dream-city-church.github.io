@@ -341,9 +341,8 @@ h4.mpp-card--subtitle:nth-child(1) {
     float: right;
 }
 
-.mpp-event-details .mpp-innerpage--labels {
-    /* hide this block while not in use for Events */
-    display: none;
+ul.mpp-innerpage--labels {
+    margin-bottom: 0;
 }
 
 .event-date-range {
