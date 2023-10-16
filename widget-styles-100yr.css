@@ -7,6 +7,7 @@
     --root-line-height: 1.25rem;
     --primary: #e07e3c;
     --secondary: #bc204b;
+    --tertiary: #bcbcbc;
     --form-field-bgcolor: #f9f9f9;
     --form-field-border: #bcbcbc;
     --form-field-border--active: #e07e3c;
@@ -281,7 +282,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         background-color: transparent;
         box-shadow: none;
         border: none;
-        border-bottom: 0.25px solid var(--card-primaryColor);
+        border-bottom: 0.25px solid var(--tertiary);
         border-radius: 0;
     }
     .mpp-card--body {
@@ -313,6 +314,43 @@ h4.mpp-card--subtitle:nth-child(1) {
     }
 }
 
+/* Inner Page Styles */
+.mpp-innerpage--back, .mpp-innerpage--back a {
+    color: var(--primary);
+}
+
+.mpp-innerpage--fixed-img {
+    width: 33%;
+    border-radius: var(--card-borderRadius);
+}
+
+.mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description {
+    width: 62%;
+    float: right;
+}
+
+.mpp-innerpage--special {
+    float: left;
+    clear: left;
+    width: 33%;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border-radius: var(--card-borderRadius);
+    background-color: #253746;
+}
+
+.mpp-innerpage--special-title, .mpp-innerpage--special-content {
+    color: white;
+}
+
+.mpp-innerpage--contact {
+    background: none;
+}
+
+div#mapContainer {
+    clear: both;
+}
 
 
 /* YOUTUBE EMBED IN DESCRIPTION */
