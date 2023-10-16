@@ -332,7 +332,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 .mpp-innerpage--fixed-img {
     float: left;
     width: 33%;
-    height: 250px;
+    height: 200px;
     background-size: cover;
     background-position: center;
     border-radius: var(--card-borderRadius);
@@ -368,6 +368,10 @@ ul.mpp-innerpage--labels {
 
 .mpp-innerpage--contact {
     background: none;
+}
+
+.mpp-innerpage--name {
+    font-size: 1rem;
 }
 
 div#mapContainer {
