@@ -75,7 +75,7 @@
     position: relative;
     max-height: 170px;
     overflow: visible;
-    border: none;
+    border: 1px solid #bcbcbc;
     box-shadow: var(--card-boxShadow);
     transition: border 250ms ease, box-shadow 250ms ease; 
 }
@@ -83,7 +83,7 @@
 .mpp-card:hover {
     cursor: pointer;
     background-color: rgb(255 255 255 / 1);
-    border: 0.25px solid rgb(0 118 169 / 0.15);
+    border: 0.25px solid #253746;
     box-shadow: var(--card-boxShadow);
     transition: border 400ms ease, box-shadow 400ms ease;
 }
