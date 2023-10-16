@@ -28,6 +28,7 @@
     --progress-pledged: #bc204b;
     --progress-received: #e07e3c;
     --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
+    --innerPage-h1fontFamily: 'termina test heavy',Helvetica,Arial,Lucida,sans-serif;
     --alt-text-color: #777777;
 }
 
@@ -48,9 +49,10 @@
     --card-badgeStatusPendingColor: #253746;
     --card-badgeStatusDiscontinuedColor: #3f4444;
     --card-badgeStatusCompleteColor: #bcbcbc;
-    --card-fontSize: 1.25rem;
-    --card-fontSizeHeader: 2rem;
-    --card-lineHeight: 1.25rem;
+    --card-fontSize: 1rem;
+    --card-lineHeight: 0.75rem;
+    --card-fontSizeHeader: 1.5rem;
+    --card-lineHeightHeader: 1.5rem;
     --card-progressBarColor: #bc204b;
     --card-progressBarActiveColor: linear-gradient(90deg, #e07e3c 0%, #bc204b 100%);
     --card-progressBarRemainingColor: #efefef;
@@ -74,7 +76,7 @@
     max-height: 170px;
     overflow: visible;
     border: 1px solid rgb(0 0 0 / 0.05);
-    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.03);
+    box-shadow: var(--card-boxShadow);
     transition: border 250ms ease, box-shadow 250ms ease; 
 }
 
@@ -82,7 +84,7 @@
     cursor: pointer;
     background-color: rgb(255 255 255 / 1);
     border: 0.25px solid rgb(0 118 169 / 0.15);
-    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.1);
+    box-shadow: var(--card-boxShadow);
     transition: border 400ms ease, box-shadow 400ms ease;
 }
 
@@ -156,8 +158,8 @@
 }
 
 .mpp-card--title {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: var(--card-fontSizeHeader);
+    line-height: var(--card-lineHeightHeader);
     font-family: var(--innerPage-h1fontFamily);
     font-weight: 800;
     color: var(--card-title-color);
@@ -205,7 +207,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .event-location:before, .group-location:before, .opportunity-location:before {
-    font-family: 'FontAwesome';
+    font-family: 'FontAwesome' !important;
     padding-right: 7px;
     padding-left: 1px;
     content: "\f3c5";
