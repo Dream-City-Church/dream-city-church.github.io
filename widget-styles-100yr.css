@@ -332,7 +332,9 @@ h4.mpp-card--subtitle:nth-child(1) {
 .mpp-innerpage--fixed-img {
     float: left;
     width: 33%;
+    height: 250px;
     background-size: cover;
+    background-position: center;
     border-radius: var(--card-borderRadius);
 }
 
@@ -372,6 +374,29 @@ div#mapContainer {
     clear: both;
     padding-top: 2rem;
     background-color: white;
+}
+
+@media only screen and (max-width: 800px) {
+    .mpp-innerpage--fixed-img {
+        float: none;
+        width: 100%;
+    }
+
+    h1.mpp-innerpage--subtitle, h2.mpp-innerpage--datetime.event-date-range {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description {
+        width: 100%;
+        float: none;
+    }
+
+    .mpp-innerpage--special {
+        float: none;
+        clear: both;
+        width: 100%;
+    }
 }
 
 
