@@ -9,7 +9,7 @@
     --secondary: #bc204b;
     --form-field-bgcolor: #f9f9f9;
     --form-field-border: #bcbcbc;
-    --form-field-border--active: #bc204b;
+    --form-field-border--active: #e07e3c;
     --form-valid: #42bc34;
     --form-invalid: #dc3545;
     --form-btn-primary-text: #fff;
@@ -75,7 +75,7 @@
     position: relative;
     max-height: 170px;
     overflow: visible;
-    border: 1px solid rgb(0 0 0 / 0.05);
+    border: none;
     box-shadow: var(--card-boxShadow);
     transition: border 250ms ease, box-shadow 250ms ease; 
 }
@@ -101,7 +101,8 @@
     font-weight: 600;
     padding-left: 0.75rem;
     z-index: -1;
-    background-color: var(--card-primaryColor);
+    background-color: var(--secondary);
+    background-image: linear-gradient(270deg, var(--secondary), var(--primary));
     color: white;
     left: -63px;
     top: 83px;
@@ -114,7 +115,7 @@
     top: 0px;
     border-radius: 0 0.5rem 0 0;
     position: absolute;
-    background-color: var(--card-primaryColor);
+    background-color: var(--secondary);
     padding: 0.5rem 0.75rem;
 }
 
@@ -203,7 +204,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f073";
-    color: var(--secondary);
+    color: var(--primary);
 }
 
 .event-location:before, .group-location:before, .opportunity-location:before {
@@ -211,21 +212,21 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-right: 7px;
     padding-left: 1px;
     content: "\f3c5";
-    color: var(--secondary);
+    color: var(--primary);
 }
 
 .group-capacity:before {
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f0c0";
-    color: var(--secondary);
+    color: var(--primary);
 }
 
 .group-start-date:before {
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f017";
-    color: var(--secondary);
+    color: var(--primary);
 }
 
 .mpp-card--footer {
