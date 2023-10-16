@@ -63,6 +63,10 @@
     --card-labelBgColor: #fff;
 }
 
+* {
+    font-family: var(--root-font-face);
+}
+
 .mppw-card--grid {
     display: grid;
     grid-template-columns: 100%;
@@ -320,6 +324,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mpp-innerpage--fixed-img {
+    float: left;
     width: 33%;
     border-radius: var(--card-borderRadius);
 }
@@ -329,13 +334,17 @@ h4.mpp-card--subtitle:nth-child(1) {
     float: right;
 }
 
+.event-date-range {
+    width: 100%;
+}
+
 .mpp-innerpage--special {
     float: left;
     clear: left;
     width: 33%;
     padding: 1rem;
     margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     border-radius: var(--card-borderRadius);
     background-color: #253746;
 }
@@ -350,6 +359,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 
 div#mapContainer {
     clear: both;
+    margin-top: 2rem;
 }
 
 
