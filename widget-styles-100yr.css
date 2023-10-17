@@ -430,6 +430,12 @@ div#mapContainer {
 /* Form Styles */
 /***************/
 
+.mppw-form-field__control {
+    font-size: 1.1rem;
+    line-height: 1rem;
+    font-weight: bold;
+}
+
 .mppw-form-field__control:focus-visible {
     border: none;
     border-color: transparent;
@@ -439,7 +445,6 @@ div#mapContainer {
 
 .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
     color: var(--root-text-color);
-    font-weight: bold;
     font-size: 0.9rem;
 }
 
