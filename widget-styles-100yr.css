@@ -468,6 +468,10 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
     transition: background-size 0.3s ease;
 }
 
+select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-field__label, .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
+    background: transparent;
+}
+
 
 /********************************/
 /* YOUTUBE EMBED IN DESCRIPTION */
