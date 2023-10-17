@@ -39,13 +39,18 @@
     --progress-pledged: var(--secondary);
     --progress-received: var(--primary);
     --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
-    --innerPage-h1fontFamily: 'termina test heavy',Helvetica,Arial,Lucida,sans-serif;
+    --header-font-face: 'termina test heavy',Helvetica,Arial,Lucida,sans-serif;
+    --innerPage-h1fontFamily: var(--header-font-face);
     --innerPage-linkHoverColor: var(--secondary);
     --alt-text-color: #777777;
 }
 
 * {
     font-family: var(--root-font-face);
+}
+
+h1, h2, h3 {
+    font-family: var(--header-font-face);
 }
 
 .mppw-component-container {
@@ -69,7 +74,7 @@
     --card-boxShadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.15);
     --card-primaryColor: var(--primary);
     --card-badgeBgColor: var(--brand-sunshine);
-    --card-headerBgColor: #fff;
+    --card-headerBgColor: var(--brand-cloud);
     --card-badge-highlightColor: #fff;
     --card-badgeStatusActiveColor: var(--card-primaryColor);
     --card-badgeStatusPendingColor: var(--brand-dusk);
@@ -345,19 +350,33 @@ h4.mpp-card--subtitle:nth-child(1) {
     }
 }
 
+/***********/
+/* Buttons */
+/***********/
+
+.mppw-btn, .mppw-btn:hover, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, .mpp-about-me--cancel-button {
+    font-family: 'Open Sans', sans-serif, 'FontAwesome';
+    box-shadow: none;
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+}
+
+#loginButton, #registerAndCheckoutButton, #saveAndCheckoutButton, .mpp-about-me--submit-button{
+    background-image: linear-gradient(175deg, var(--primary), var(--secondary) 70%);
+    background-position: top left;
+    background-size: 100%;
+    transition: background-size 0.5s ease;
+}
+
+#loginButton, #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover, .mpp-about-me--submit-button{
+    background-size: 300%;
+    transition: background-size 0.3s ease;
+}
+
 
 /*********************/
 /* Inner Page Styles */
 /*********************/
-
-.mppw-btn, .mppw-btn:hover {
-    transition: background 0.3s ease;
-    font-family: 'Open Sans', sans-serif, 'FontAwesome';
-    box-shadow: none;
-    padding: 0 2rem;
-    height: 3rem;
-    border-radius: 1.5rem;
-}
 
 .mpp-innerpage--back, .mpp-innerpage--back a {
     color: var(--primary);
@@ -465,28 +484,82 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
     font-size: 0.9rem;
 }
 
-#addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton {
-    font-family: 'Open Sans', sans-serif, 'FontAwesome';
-    box-shadow: none;
-    padding: 0 2rem;
-    height: 3rem;
-    border-radius: 1.5rem;
-}
-
-#registerAndCheckoutButton, #saveAndCheckoutButton{
-    background-image: linear-gradient(175deg, var(--primary), var(--secondary) 70%);
-    background-position: top left;
-    background-size: 100%;
-    transition: background-size 0.5s ease;
-}
-
-#registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover{
-    background-size: 300%;
-    transition: background-size 0.3s ease;
-}
-
 select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-field__label, .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
     background: transparent;
+}
+
+
+/***********************/
+/* My Household Widget */
+/***********************/
+
+.mpp-innerpage--address-container {
+    font-size: 1rem;
+}
+
+h2.mpp-household--header {
+    color: var(--brand-dusk);
+}
+
+.mpp-card--household-text-wrapper p {
+    font-size: 1.25em;
+}
+
+.mpp-household h1 {
+    display: none;
+}
+
+h2#householdName:after {
+    content: " Household";
+}
+
+.mpp-innerpage--label {
+    font-weight: bolder;
+    font-size: 1em;
+    height: auto;
+    border-radius: 4px;
+}
+
+#householdDetails li.mpp-innerpage--label:before {
+    content: "\f51d";
+    font-family: 'FontAwesome';
+    padding-right: 0.75em;
+}
+
+.mpp-household .mpp-household--header-wrapper {
+    color: var(--primary);
+}
+
+.mpp-household .mpp-household--header-wrapper:hover, .mpp-household .mpp-household--header-wrapper:focus {
+    color: var(--primary);
+}
+
+.mpp-household .mpp-card--household-footer .mppw-btn.primary {
+    width: max-content;
+}
+
+.mpp-household .mpp-household--header-wrapper {
+    color: var(--primary);
+}
+
+a#editHouseholdName:before {
+    font-family: 'FontAwesome';
+    content: "\f044";
+    padding-right: 0.75em;
+}
+
+img.mpp-icon--household {
+    display: none;
+}
+
+a#addNewMember:before {
+    font-family: 'FontAwesome';
+    content: "\f234";
+    padding-right: 1em;
+}
+
+img.mpp-icon--household {
+    display: none;
 }
 
 
