@@ -435,12 +435,14 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 
 #registerAndCheckoutButton, #saveAndCheckoutButton{
     background-image: linear-gradient(170deg, var(--secondary), var(--primary));
-    transition: background-image 0.2s ease;
+    background-position: top left;
+    transition: background-size 0.2s ease;
 }
 
 #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover{
-    background-image: linear-gradient(170deg, var(--secondary), var(--primary) 150%);
-    transition: background-image 0.2s ease;
+    background-image: linear-gradient(170deg, var(--secondary), var(--primary));
+    background-size: 150%;
+    transition: background-size 0.2s ease;
 }
 
 /********************************/
