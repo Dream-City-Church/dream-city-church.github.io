@@ -66,7 +66,7 @@
     --card-title-color: #333333;
     --card-textColor: #333333;
     --card-borderRadius: 0.5rem;
-    --card-boxShadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.35);
+    --card-boxShadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.15);
     --card-primaryColor: var(--primary);
     --card-badgeBgColor: var(--brand-sunshine);
     --card-headerBgColor: #fff;
@@ -101,7 +101,7 @@
     position: relative;
     max-height: 170px;
     overflow: visible;
-    border: 1px solid #bcbcbc;
+    border: 1px solid #efefef;
     box-shadow: var(--card-boxShadow);
     transition: border 250ms ease, box-shadow 250ms ease; 
 }
@@ -127,10 +127,10 @@
     font-weight: 600;
     padding-left: 0.75rem;
     z-index: 100;
-    background-color: var(--secondary);
-    background-image: linear-gradient(270deg, var(--secondary), var(--primary));
+    background-color: var(--primary);
+    background-image: var(--brand-gradient);
     color: white;
-    left: -59px;
+    left: -66px;
     top: 83px;
     transform: rotate(270deg);
 }
@@ -141,8 +141,9 @@
     top: 0px;
     border-radius: 0 0.5rem 0 0;
     position: absolute;
-    background-color: var(--secondary);
+    background-color: var(--primary);
     padding: 0.5rem 0.75rem;
+    margin-left: 5px;
 }
 
 .mpp-card--badge.Meets.Online {
