@@ -8,27 +8,36 @@
     --primary: #e07e3c;
     --secondary: #bc204b;
     --tertiary: #bcbcbc;
+    --brand-gradient: linear-gradient(170deg, var(--primary) 0%, var(--secondary) 100%);
+    --brand-charcoal: #3f4444;
+    --brand-cloud: #bcbcbc;
+    --brand-sunshine: #ffaa4d;
+    --brand-fire: #e1523d;
+    --brand-dusk: #253746;
+    --form-field-color: var(--root-text-color);
     --form-field-bgcolor: #f9f9f9;
-    --form-field-border: #bcbcbc;
+    --form-field-bgcolor--active: #fff;
+    --form-field-border: var(--brand-cloud);
     --form-field-border--active: #e07e3c;
     --form-field-borderradius: 0.5rem;
+    --form-field-boxshadow--active: 0 0 0.2rem 0 var(--primary);
     --form-valid: #42bc34;
     --form-invalid: #dc3545;
     --form-btn-primary-text: #fff;
-    --form-btn-primary-bgcolor: #e07e3c;
-    --form-btn-primary-hover: #e07e3c;
-    --form-btn-primary-active: #e07e3c;
+    --form-btn-primary-bgcolor: var(--primary);
+    --form-btn-primary-hover: var(--brand-sunshine);
+    --form-btn-primary-active: var(--brand-fire);
     --form-btn-secondary-text: #fff;
-    --form-btn-secondary-bgcolor: #bc204b;
-    --form-btn-secondary-hover: #bc204b;
-    --form-btn-secondary-active: #bc204b;
-    --form-btn-disabled: #bcbcbc;
+    --form-btn-secondary-bgcolor: var(--secondary);
+    --form-btn-secondary-hover: var(--brand-fire);
+    --form-btn-secondary-active: var(--brand-sunshine);
+    --form-btn-disabled: var(--brand-cloud);
     --card-bgcolor: #fff;
-    --card-title-color: #333;
+    --card-title-color: var(--brand-dusk);
     --card-header-bgcolor: #ffffff;
     --box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.35);
-    --progress-pledged: #bc204b;
-    --progress-received: #e07e3c;
+    --progress-pledged: var(--secondary);
+    --progress-received: var(--primary);
     --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
     --innerPage-h1fontFamily: 'termina test heavy',Helvetica,Arial,Lucida,sans-serif;
     --alt-text-color: #777777;
@@ -57,21 +66,21 @@
     --card-textColor: #333333;
     --card-borderRadius: 0.5rem;
     --card-boxShadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.35);
-    --card-primaryColor: #e07e3c;
-    --card-badgeBgColor: #ffaa4d;
+    --card-primaryColor: var(--primary);
+    --card-badgeBgColor: var(--brand-sunshine);
     --card-headerBgColor: #fff;
     --card-badge-highlightColor: #fff;
     --card-badgeStatusActiveColor: var(--card-primaryColor);
-    --card-badgeStatusPendingColor: #253746;
-    --card-badgeStatusDiscontinuedColor: #3f4444;
-    --card-badgeStatusCompleteColor: #bcbcbc;
+    --card-badgeStatusPendingColor: var(--brand-dusk);
+    --card-badgeStatusDiscontinuedColor: var(--brand-cloud);
+    --card-badgeStatusCompleteColor: var(--brand-cloud);
     --card-fontSize: 1rem;
     --card-lineHeight: 0.75rem;
     --card-fontSizeHeader: 1.5rem;
     --card-lineHeightHeader: 1.5rem;
-    --card-progressBarColor: #bc204b;
-    --card-progressBarActiveColor: linear-gradient(90deg, #e07e3c 0%, #bc204b 100%);
-    --card-progressBarRemainingColor: #efefef;
+    --card-progressBarColor: var(--secondary);
+    --card-progressBarActiveColor: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    --card-progressBarRemainingColor: white;
     --card-progressBarCompleteColor: #77be43;
     --card-imageBgColor: #bcbcbc;
     --card-checkboxDefaultColor: #bcbcbc;
@@ -425,7 +434,6 @@ div#mapContainer {
 
 label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content {
     color: var(--root-text-color);
-    font-weight: bold;
     font-size: 0.9rem;
 }
 
@@ -438,7 +446,7 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 }
 
 #registerAndCheckoutButton, #saveAndCheckoutButton{
-    background-image: linear-gradient(175deg, var(--secondary), var(--primary) 70%);
+    background-image: linear-gradient(175deg, var(--primary), var(--secondary) 70%);
     background-position: top left;
     background-size: 100%;
     transition: background-size 0.5s ease;
