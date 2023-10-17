@@ -20,12 +20,12 @@
     --form-field-border: var(--brand-cloud);
     --form-field-border--active: #e07e3c;
     --form-field-borderradius: 0.5rem;
-    --form-field-boxshadow--active: 0 0 0.2rem 0 var(--primary);
+    --form-field-boxshadow--active: 0 0 0.2rem 0.05rem var(--primary);
     --form-valid: #42bc34;
     --form-invalid: #dc3545;
     --form-btn-primary-text: #fff;
     --form-btn-primary-bgcolor: var(--primary);
-    --form-btn-primary-hover: var(--brand-sunshine);
+    --form-btn-primary-hover: var(--brand-fire);
     --form-btn-primary-active: var(--brand-fire);
     --form-btn-secondary-text: #fff;
     --form-btn-secondary-bgcolor: var(--secondary);
@@ -40,6 +40,7 @@
     --progress-received: var(--primary);
     --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
     --innerPage-h1fontFamily: 'termina test heavy',Helvetica,Arial,Lucida,sans-serif;
+    --innerPage-linkHoverColor: var(--secondary);
     --alt-text-color: #777777;
 }
 
