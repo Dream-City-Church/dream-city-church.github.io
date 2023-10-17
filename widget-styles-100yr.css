@@ -128,9 +128,9 @@
     padding-left: 0.75rem;
     z-index: 100;
     background-color: var(--primary);
-    background-image: var(--brand-gradient);
+    background-image: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
-    left: -66px;
+    left: -59px;
     top: 83px;
     transform: rotate(270deg);
 }
@@ -142,6 +142,7 @@
     border-radius: 0 0.5rem 0 0;
     position: absolute;
     background-color: var(--primary);
+    background-image: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
     padding: 0.5rem 0.75rem;
     margin-left: 5px;
 }
@@ -274,8 +275,8 @@ h4.mpp-card--subtitle:nth-child(1) {
         display:none;
     }
     .mpp-card--badge {
-        left: -37px;
-        top: 15px;
+        left: -25px;
+        top: 8px;
         transform: none;
         line-height: 1.5rem;
         padding: 0;
@@ -286,7 +287,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         border-radius: 0.5rem 0 0 0.5rem;
         position: absolute;
         background-color: var(--card-primaryColor);
-        padding: 0.5rem 0.75rem;
+        padding: 2.5rem 0.25rem;
         font-size: 1rem;
     }
 }
@@ -298,17 +299,14 @@ h4.mpp-card--subtitle:nth-child(1) {
         grid-gap: 0;
     }
     .mpp-card {
-        padding-top: 1em;
-        padding-bottom: 1rem;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        padding: 0.5rem 0;
         margin-left: calc(-50vw + 50%);
         margin-right: calc(-50vw + 50%);
         width: 100vw;
         background-color: transparent;
         box-shadow: none;
         border: none;
-        border-bottom: 0.25px solid var(--tertiary);
+        border-bottom: 0.25px solid var(--brand-cloud);
         border-radius: 0;
     }
     .mpp-card--body {
@@ -320,14 +318,21 @@ h4.mpp-card--subtitle:nth-child(1) {
         width: 25%;
         max-height: 70px;
     }
-    .mpp-card--badge::after {
+    .mpp-card--badge {
+        top: 0;
+        left: 94vw;
+        transform: none;
+        line-height: 1.5rem;
+        padding: 0;
         font-size: 0;
+    }
+    .mpp-card--badge::after {
+        font-size: 1rem;
     }
     .mpp-card--subtitle {
         padding: 0;
         font-size: 0.75rem;
         line-height: 1.2rem;
-        letter-spacing: -0.25px;
         float: none;
     }
     .mpp-card--description {
@@ -335,7 +340,7 @@ h4.mpp-card--subtitle:nth-child(1) {
         width: initial;
     }
     .mpp-card--title {
-        line-height: 2rem;
+        line-height: 1.5rem;
         font-size: 1.1rem;
     }
 }
