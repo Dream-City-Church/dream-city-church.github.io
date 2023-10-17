@@ -431,6 +431,10 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 
 #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton {
     font-family: 'Open Sans', sans-serif, 'FontAwesome';
+    box-shadow: none;
+    padding: 0 2rem;
+    height: 3rem;
+    border-radius: 1.5rem;
 }
 
 #registerAndCheckoutButton, #saveAndCheckoutButton{
