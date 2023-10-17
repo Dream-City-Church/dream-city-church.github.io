@@ -424,6 +424,16 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
     font-family: 'Open Sans', sans-serif, 'FontAwesome';
 }
 
+#registerAndCheckoutButton, #saveAndCheckoutButton{
+    background-image: linear-gradient(170deg, var(--secondary), var(--primary));
+    transition: background-image 0.2s ease;
+}
+
+#registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover{
+    background-image: linear-gradient(170deg, var(--secondary), var(--primary) 150%);
+    transition: background-image 0.2s ease;
+}
+
 /********************************/
 /* YOUTUBE EMBED IN DESCRIPTION */
 /********************************/
