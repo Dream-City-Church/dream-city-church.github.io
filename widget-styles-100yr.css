@@ -347,6 +347,11 @@ h4.mpp-card--subtitle:nth-child(1) {
 
 .mppw-btn, .mppw-btn:hover {
     transition: background 0.3s ease;
+    font-family: 'Open Sans', sans-serif, 'FontAwesome';
+    box-shadow: none;
+    padding: 0 2rem;
+    height: 3rem;
+    border-radius: 1.5rem;
 }
 
 .mpp-innerpage--back, .mpp-innerpage--back a {
