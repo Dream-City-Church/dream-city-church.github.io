@@ -1,6 +1,6 @@
-/*--------------------------------------------*/
-/* CSS Color Variables                        */
-/*--------------------------------------------*/
+/*********************/
+/* CSS Global Styles */
+/*********************/
 :host {
     --root-text-color: #333;
     --root-font-size: 1.25rem;
@@ -34,6 +34,19 @@
     --alt-text-color: #777777;
 }
 
+* {
+    font-family: var(--root-font-face);
+}
+
+.mppw-component-container {
+    font-family: var(--root-font-face);
+    color: var(--root-text-color);
+    line-height: initial;
+    max-width: 90vw;
+    border-bottom: 1px solid var(--tertiary);
+    padding-bottom: 8vh;
+}
+
 
 /***************/
 /* Card Styles */
@@ -63,10 +76,6 @@
     --card-imageBgColor: #bcbcbc;
     --card-checkboxDefaultColor: #bcbcbc;
     --card-labelBgColor: #fff;
-}
-
-* {
-    font-family: var(--root-font-face);
 }
 
 .mppw-card--grid {
