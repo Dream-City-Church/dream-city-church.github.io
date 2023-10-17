@@ -562,6 +562,31 @@ img.mpp-icon--household {
     display: none;
 }
 
+#householdDetails .mpp-innerpage--labels {
+    width: auto;
+}
+
+.mpp-household .mpp-innerpage--address-container {
+    width: initial;
+    font-size: 1.25rem;
+}
+
+#householdMemberList {
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    grid-gap: 3rem 5%;
+    margin-top: 0;
+}
+
+.mpp-card--household:hover {
+    cursor: initial;
+}
+
+.mpp-household .mpp-card--household-text-wrapper {
+    overflow: visible;
+    line-height: 1.5rem;
+}
+
 div#emailUnlistedCheck {
     display: none;
 }
