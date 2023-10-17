@@ -343,7 +343,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     float: right;
 }
 
-ul.mpp-innerpage--labels {
+.mpp-innerpage ul.mpp-innerpage--labels {
     margin-bottom: 0;
 }
 
