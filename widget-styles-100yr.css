@@ -476,7 +476,7 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 }
 
 #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover{
-    background-size: 200%;
+    background-size: 300%;
     transition: background-size 0.3s ease;
 }
 
