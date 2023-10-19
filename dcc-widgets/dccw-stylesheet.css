@@ -421,7 +421,7 @@ dcc-emailVerification {
   #dcc-signinform #form-description-text {
     font-size: 24pt;
     line-height: 30pt;
-    text-align: justify;
+    text-align: left;
   }
 }
 
