@@ -323,6 +323,10 @@ form#sign-in-form fieldset {
   padding: 1rem 0;
 }
 
+#dcc-signinform .datapoint {
+  font-weight: bold;
+}
+
 #dcc-signinform .form-group {
   margin-bottom: 1rem;
   width: 100%;
@@ -419,9 +423,12 @@ dcc-emailVerification {
     display: none !important;
   }
   #dcc-signinform #form-description-text {
-    font-size: 24pt;
-    line-height: 30pt;
+    font-size: 22pt;
+    line-height: 26pt;
     text-align: left;
+  }
+  #dcc-signinform .datapoint {
+    display: block;
   }
 }
 
