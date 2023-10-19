@@ -407,7 +407,7 @@ dcc-emailVerification {
     display: grid;
     grid-template-columns: 45% 45%;
     grid-column-gap: 5%;
-    transform: rotate (180deg);
+    transform: rotate(180deg);
   }
   dcc-eventsignin #header-image, dcc-groupsignin #header-image {
     display: none !important;
@@ -419,8 +419,8 @@ dcc-emailVerification {
     display: none !important;
   }
   #dcc-signinform #form-description-text {
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
     text-align: justify;
   }
 }
