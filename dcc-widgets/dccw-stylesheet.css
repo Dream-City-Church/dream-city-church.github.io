@@ -419,8 +419,8 @@ dcc-emailVerification {
     display: none !important;
   }
   #dcc-signinform #form-description-text {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
+    font-size: 24pt;
+    line-height: 30pt;
     text-align: justify;
   }
 }
