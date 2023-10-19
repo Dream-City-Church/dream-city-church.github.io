@@ -399,6 +399,32 @@ dcc-emailVerification {
   font-weight: bold;
 }
 
+/* Print Styling */
+@media print {
+  dcc-eventsignin, dcc-groupsignin {
+    max-width:100%;
+    padding: 5%;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-column-gap: 5%;
+    transform: rotate (180deg);
+  }
+  dcc-eventsignin #header-image, dcc-groupsignin #header-image {
+    display: none !important;
+  }
+  dcc-eventsignin #qr-image, dcc-groupsignin #qr-image {
+    display: block !important;
+  }
+  dcc-eventsignin #sign-in-form, dcc-groupsignin #sign-in-form {
+    display: none !important;
+  }
+  #dcc-signinform #form-description-text {
+    font-size: 2rem;
+    line-height: 3rem;
+    text-align: justify;
+  }
+}
+
 /* Loading Spinner */
 .dccw-spinnercontainer {
     width: 80px;

@@ -82,6 +82,7 @@ function getGroupData(groupId) {
                     // Main HTML Body
                     const groupSignInForm = `
                         <div id="header-image" style="display: ${headerDisplay};background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.File_GUID})"></div>
+                        <div id="qr-image" style="display: none;"><img src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${window.location.href}" /></div>
                         <div id="dcc-signinform">
                             <div id="form-description-text">Please complete this form so that we know you attended <strong>${data.Group_Name}</strong>.</div>
                             <form id="sign-in-form" class="form-horizontal">
