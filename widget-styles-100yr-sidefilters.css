@@ -12,6 +12,17 @@
     top: 8rem;
 }
 
+#suggestGroupDetailsContainer .mppw-form-wrapper {
+    /* Make the suggest-a-group form full width */
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    float: none;
+    position: relative;
+    position: relative;
+    top: 0;
+}
+
 .mppw-form-wrapper h1 {
     display: none;
 }
