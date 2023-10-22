@@ -41,7 +41,9 @@
     --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
     --header-font-face: 'termina test heavy',Helvetica,Arial,Lucida,sans-serif;
     --innerPage-h1fontFamily: var(--header-font-face);
+    --innerPage-primaryColor: var(--primary);
     --innerPage-linkHoverColor: var(--secondary);
+    --innerPage-linkColor: var(--primary);
     --alt-text-color: #777777;
 }
 
@@ -434,6 +436,18 @@ div#mapContainer {
     background-color: white;
 }
 
+#inquiryContainer, #signupContainer {
+    padding: 0.5rem;
+}
+
+.mpp-innerpage--datetime-wrapper {
+    width: 100%;
+}
+
+.mpp-innerpage--datetime-wrapper .mpp-innerpage--datetime {
+    text-align: left;
+}
+
 @media only screen and (max-width: 800px) {
     .mpp-innerpage--fixed-img {
         float: none;
@@ -487,6 +501,11 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 
 select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-field__label, .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
     background: transparent;
+}
+
+.mpp-form--container {
+    clear: both;
+    padding-top: 2rem;
 }
 
 
