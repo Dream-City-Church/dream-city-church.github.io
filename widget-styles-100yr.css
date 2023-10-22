@@ -407,7 +407,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     width: 100%;
 }
 
-.mpp-innerpage--special {
+.mpp-innerpage--special, .mpp-innerpage--capacity {
     float: left;
     clear: left;
     width: 33%;
@@ -418,7 +418,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     background-color: #253746;
 }
 
-.mpp-innerpage--special-title, .mpp-innerpage--special-content {
+.mpp-innerpage--special-title, .mpp-innerpage--special-content, .mpp-innerpage--capacity-title, .mpp-innerpage--capacity-content {
     color: white;
 }
 
