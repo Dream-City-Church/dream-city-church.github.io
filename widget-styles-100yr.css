@@ -465,7 +465,7 @@ div#mapContainer {
         float: none;
     }
 
-    .mpp-innerpage--special {
+    .mpp-innerpage--special, .mpp-innerpage--capacity {
         float: none;
         clear: both;
         width: 100%;
