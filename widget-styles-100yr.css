@@ -385,7 +385,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     color: var(--primary);
 }
 
-.mpp-innerpage--fixed-img {
+.mpp-innerpage--fixed-img, .mpp-innerpage--fixed-imgplaceholder {
     float: left;
     width: 33%;
     height: 200px;
@@ -450,7 +450,7 @@ div#mapContainer {
 }
 
 @media only screen and (max-width: 800px) {
-    .mpp-innerpage--fixed-img {
+    .mpp-innerpage--fixed-img, .mpp-innerpage--fixed-imgplaceholder {
         float: none;
         width: 100%;
     }
