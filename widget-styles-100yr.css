@@ -60,8 +60,6 @@ h1, h2, h3 {
     color: var(--root-text-color);
     line-height: initial;
     max-width: 90vw;
-    border-bottom: 1px solid var(--tertiary);
-    padding-bottom: 8vh;
 }
 
 
@@ -524,6 +522,10 @@ select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-fi
 
 .mppw-component-container.mppw-login a {
     color: var(--secondary);
+}
+
+.mppw-component-container.mppw-login li a {
+    color: var(--brand-dusk);
 }
 
 .mppw-login--list-item a:hover, .mppw-login--list-item a:focus {
