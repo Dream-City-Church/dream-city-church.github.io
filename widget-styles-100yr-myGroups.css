@@ -7,13 +7,17 @@
 
 .mpp-card--badge.Leader {
     background-color: var(--primary);
-    left: -77px;
+    left: -51px;
     top:70px;
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .mpp-card--badge.Leader::after {
     display: none;
+}
+
+.buildDetailsButton {
+    background-image: var(--brand-gradient);
 }
 
 .mpp-card--description {
