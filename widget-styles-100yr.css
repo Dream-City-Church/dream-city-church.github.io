@@ -535,6 +535,16 @@ select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-fi
     width: 40px;
 }
 
+.mppw-icon-unlock {
+    background: none;
+}
+
+.mppw-icon-unlock:before {
+    content: "\f502";
+    font-family: 'FontAwesome';
+    color: white;
+}
+
 
 /***********************/
 /* My Household Widget */
