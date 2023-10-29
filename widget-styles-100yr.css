@@ -93,7 +93,7 @@ h1, h2, h3 {
     --card-labelBgColor: #fff;
 }
 
-.mppw-card--grid {
+.mppw-card--grid, #subscriptionsBody {
     display: grid;
     grid-template-columns: 100%;
     grid-gap: 2rem;
@@ -355,21 +355,21 @@ h4.mpp-card--subtitle:nth-child(1) {
 /* Buttons */
 /***********/
 
-.mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, .mpp-about-me--cancel-button {
+.mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, .mpp-about-me--cancel-button, #saveAsPDFButton {
     font-family: 'Open Sans', sans-serif, 'FontAwesome';
     box-shadow: none;
     padding: 1rem 2rem;
     border-radius: 1.5rem;
 }
 
-#loginButton, #registerAndCheckoutButton, #saveAndCheckoutButton, .mpp-about-me--submit-button{
+#loginButton, #registerAndCheckoutButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton{
     background-image: linear-gradient(175deg, var(--primary), var(--secondary) 70%);
     background-position: top left;
     background-size: 100%;
     transition: background-size 0.5s ease;
 }
 
-#loginButton:hover, #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover, .mpp-about-me--submit-button:hover{
+#loginButton:hover, #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover, .mpp-about-me--submit-button:hover, #saveAsPDFButton:hover{
     background-size: 300%;
     transition: background-size 0.3s ease;
 }
@@ -664,6 +664,34 @@ div#mobileUnlistedCheck {
     }
 }
 
+/********************/
+/* My Faith Promise */
+/********************/
+
+#myPledgesWrapper h3, #myPledgesWrapper h4 {
+    line-height: initial;
+    margin-bottom: 0.5rem;
+}
+
+#myPledgesWrapper .mpp-card--subtitle {
+    float: none;
+}
+
+#myPledgesWrapper .mpp-card {
+    min-height: 160px;
+}
+
+#myPledgesWrapper .mpp-card--badge {
+    left: -48px;
+}
+
+#myPledgesWrapper .mpp-card--description {
+    display: none;
+}
+
+#myPledgesWrapper .group-location:before {
+    content: "\f007";
+}
 
 /********************************/
 /* YOUTUBE EMBED IN DESCRIPTION */
