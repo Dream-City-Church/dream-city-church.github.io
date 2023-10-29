@@ -357,7 +357,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 /* Buttons */
 /***********/
 
-.mppw-btn, .mppw-btn:hover, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, .mpp-about-me--cancel-button {
+.mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, .mpp-about-me--cancel-button {
     font-family: 'Open Sans', sans-serif, 'FontAwesome';
     box-shadow: none;
     padding: 1rem 2rem;
@@ -371,7 +371,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     transition: background-size 0.5s ease;
 }
 
-#loginButton, #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover, .mpp-about-me--submit-button{
+#loginButton:hover, #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover, .mpp-about-me--submit-button:hover{
     background-size: 300%;
     transition: background-size 0.3s ease;
 }
@@ -507,6 +507,32 @@ select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-fi
 .mpp-form--container {
     clear: both;
     padding-top: 2rem;
+}
+
+/****************/
+/* Login Widget */
+/****************/
+
+.mppw-component-container.mppw-login {
+    border: none;
+    height: auto;
+    padding-bottom: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.mppw-component-container.mppw-login a {
+    color: var(--secondary);
+}
+
+.mppw-login--list-item a:hover, .mppw-login--list-item a:focus {
+    color: var(--secondary);
+}
+
+.mppw-user-photo {
+    height: 40px;
+    width: 40px;
 }
 
 
