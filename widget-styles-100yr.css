@@ -44,6 +44,8 @@
     --innerPage-primaryColor: var(--primary);
     --innerPage-linkHoverColor: var(--secondary);
     --innerPage-linkColor: var(--primary);
+    --innerPage-fontSize: 1.1rem;
+    --innerPage-lineHeight: 1.6rem;
     --alt-text-color: #777777;
 }
 
