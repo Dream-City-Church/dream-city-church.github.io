@@ -3,6 +3,21 @@
   --brand_secondary: #e07e3c;
 }
 
+/* Event Details */
+#Download-ICS {
+  display: none;
+  float: left;
+}
+#Download-ICS i {
+  top: 3px;
+}
+@media only screen and (min-width: 700px) {
+  #Download-ICS {
+      float: left;
+      width: 45%;
+  }
+}
+
 /* Househodl PRF Widget */
 dcc-householdprf h3 {
   font-size: 24px;

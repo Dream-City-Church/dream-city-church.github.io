@@ -362,7 +362,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     font-family: 'Open Sans', sans-serif, 'FontAwesome';
     box-shadow: none;
     padding: 0.5rem 2rem;
-    border-radius: 1rem;
+    border-radius: 2rem;
 }
 
 #loginButton, #registerAndCheckoutButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton{
