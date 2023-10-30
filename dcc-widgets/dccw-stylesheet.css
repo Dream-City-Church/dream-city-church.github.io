@@ -11,10 +11,9 @@
 #Download-ICS i {
   top: 3px;
 }
-@media only screen and (min-width: 700px) {
+@media only screen and (max-width: 700px) {
   #Download-ICS {
       float: left;
-      width: 45%;
   }
 }
 
