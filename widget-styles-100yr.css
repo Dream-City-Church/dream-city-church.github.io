@@ -381,6 +381,11 @@ h4.mpp-card--subtitle:nth-child(1) {
     text-decoration: underline;
 }
 
+.mpp-innerpage h3 {
+    clear: both;
+    padding-top: 1rem;
+}
+
 
 /*********************/
 /* Inner Page Styles */
