@@ -397,7 +397,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     border-radius: var(--card-borderRadius);
 }
 
-.mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description {
+.mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p {
     width: 62%;
     float: right;
 }
@@ -464,7 +464,7 @@ div#mapContainer {
         margin-top: 1rem;
     }
 
-    .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description {
+    .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p {
         width: 100%;
         float: none;
     }
