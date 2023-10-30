@@ -513,6 +513,11 @@ select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-fi
     padding-top: 2rem;
 }
 
+h2#responseFormTitle {
+    clear: both;
+    padding-top: 2rem;
+}
+
 /****************/
 /* Login Widget */
 /****************/
