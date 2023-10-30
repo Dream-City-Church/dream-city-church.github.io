@@ -358,8 +358,8 @@ h4.mpp-card--subtitle:nth-child(1) {
 .mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, .mpp-about-me--cancel-button, #saveAsPDFButton {
     font-family: 'Open Sans', sans-serif, 'FontAwesome';
     box-shadow: none;
-    padding: 1rem 2rem;
-    border-radius: 1.5rem;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
 }
 
 #loginButton, #registerAndCheckoutButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton{
@@ -367,11 +367,15 @@ h4.mpp-card--subtitle:nth-child(1) {
     background-position: top left;
     background-size: 100%;
     transition: background-size 0.5s ease;
+    color: white;
+    line-height: 1.25rem;
+    text-decoration: none;
 }
 
 #loginButton:hover, #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover, .mpp-about-me--submit-button:hover, #saveAsPDFButton:hover{
     background-size: 300%;
     transition: background-size 0.3s ease;
+    text-decoration: underline;
 }
 
 
@@ -445,6 +449,7 @@ div#mapContainer {
 .mpp-innerpage--datetime-wrapper .mpp-innerpage--datetime {
     text-align: left;
     width: 100%;
+    justify-content: normal;
 }
 
 @media only screen and (max-width: 800px) {
@@ -510,6 +515,10 @@ select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-fi
 /****************/
 /* Login Widget */
 /****************/
+
+.mppw-login {
+    float: right;
+}
 
 .mppw-component-container.mppw-login {
     border: none;
