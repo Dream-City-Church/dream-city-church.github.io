@@ -1,6 +1,6 @@
 @import url(/widget-styles-100yr-sidefilters.css);
 
 #advancedSearchSection {
-    display: none;
+    display: none !important;
 }
 
