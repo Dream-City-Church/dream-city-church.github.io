@@ -392,6 +392,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     float: left;
     width: 33%;
     height: 200px;
+    margin-bottom: 1rem;
     background-size: cover;
     background-position: center;
     border-radius: var(--card-borderRadius);
@@ -411,7 +412,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mpp-innerpage--special, .mpp-innerpage--capacity {
-    float: left;
     clear: left;
     width: 33%;
     padding: 1rem;
