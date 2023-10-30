@@ -398,6 +398,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     background-size: cover;
     background-position: center;
     border-radius: var(--card-borderRadius);
+    border: 1px solid #efefef;
 }
 
 .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p {
@@ -425,6 +426,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 
 .mpp-innerpage--special-title, .mpp-innerpage--special-content, .mpp-innerpage--capacity-title, .mpp-innerpage--capacity-content {
     color: white;
+    padding-left: 0;
 }
 
 .mpp-innerpage--contact {
