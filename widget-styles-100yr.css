@@ -131,11 +131,12 @@ h1, h2, h3 {
     font-size: 0.9rem;
     font-weight: 600;
     padding-left: 0.75rem;
-    z-index: 100;
+    padding-bottom: 0.5rem;
+    z-index: -1;
     background-color: var(--primary);
     background-image: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
-    left: -59px;
+    left: -60px;
     top: 83px;
     transform: rotate(270deg);
 }
