@@ -23,6 +23,12 @@
     top: 0;
 }
 
+#eventsEmpty {
+    width: 65%;
+    position: relative;
+    top: 3px;
+}
+
 .mppw-form-wrapper h1 {
     display: none;
 }

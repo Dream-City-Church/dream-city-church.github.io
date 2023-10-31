@@ -701,35 +701,6 @@ div#mobileUnlistedCheck {
     }
 }
 
-/********************/
-/* My Faith Promise */
-/********************/
-
-#myPledgesWrapper h3, #myPledgesWrapper h4 {
-    line-height: initial;
-    margin-bottom: 0.5rem;
-}
-
-#myPledgesWrapper .mpp-card--subtitle {
-    float: none;
-}
-
-#myPledgesWrapper .mpp-card {
-    min-height: 160px;
-}
-
-#myPledgesWrapper .mpp-card--badge {
-    left: -48px;
-}
-
-#myPledgesWrapper .mpp-card--description {
-    display: none;
-}
-
-#myPledgesWrapper .group-location:before {
-    content: "\f007";
-}
-
 /********************************/
 /* YOUTUBE EMBED IN DESCRIPTION */
 /********************************/

@@ -1,0 +1,30 @@
+@import url(/widget-styles-100yr.css);
+
+/********************/
+/* My Faith Promise */
+/********************/
+
+h3, h4 {
+    line-height: initial;
+    margin-bottom: 0.5rem;
+}
+
+.mpp-card--subtitle {
+    float: none;
+}
+
+.mpp-card {
+    min-height: 160px;
+}
+
+.mpp-card--badge {
+    left: -48px;
+}
+
+.mpp-card--description {
+    display: none;
+}
+
+.group-location:before {
+    content: "\f007";
+}
