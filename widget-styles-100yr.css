@@ -125,6 +125,12 @@ h1, h2, h3 {
     transition: border 400ms ease, box-shadow 400ms ease;
 }
 
+.mpp-card--household {
+    cursor: initial;
+    border: inherit;
+    box-shadow: inherit;
+}
+
 .mpp-card--header {
     height: 100%;
     width:302px;
@@ -305,7 +311,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 @media only screen and (max-width: 768px) {
-    .mppw-card--grid {
+    .mppw-card--grid, #householdMemberList {
         display: grid;
         grid-template-columns: 100%;
         grid-gap: 0;
