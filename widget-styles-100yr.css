@@ -657,6 +657,10 @@ img.mpp-icon--household {
     line-height: 1.5rem;
 }
 
+div#removeFromDirectoryCheck {
+    display: none;
+}
+
 div#emailUnlistedCheck {
     display: none;
 }
