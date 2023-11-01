@@ -373,6 +373,9 @@ h4.mpp-card--subtitle:nth-child(1) {
     box-shadow: none;
     padding: 0.5rem 2rem;
     border-radius: 2rem;
+    border: 2px solid var(--brand-secondary);
+    color: var(--brand-secondary);
+    font-weight: bold;
 }
 
 #loginButton, #registerAndCheckoutButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton{
@@ -381,8 +384,10 @@ h4.mpp-card--subtitle:nth-child(1) {
     background-size: 100%;
     transition: background-size 0.5s ease;
     color: white;
-    line-height: 1.25rem;
+    line-height: 1.5rem;
     text-decoration: none;
+    border: none;
+    font-weight: bold;
 }
 
 #loginButton:hover, #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover, .mpp-about-me--submit-button:hover, #saveAsPDFButton:hover{
@@ -686,6 +691,8 @@ img.mpp-icon--household {
 
 .mpp-card--household:hover {
     cursor: initial;
+    border: none;
+    box-shadow: none;
 }
 
 .mpp-household .mpp-card--household-text-wrapper {
@@ -709,6 +716,60 @@ div#mobileUnlistedCheck {
     .mpp-household .mpp-household--form-subheader {
         line-height: inherit;
     }
+}
+
+/*********************/
+/* Attributes Widget */
+/*********************/
+
+.mpp-about-me--header-container {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mpp-about-me--header-subtitle {
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+.mpp-about-me--attributes-block {
+    border: 1px solid #efefef;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mpp-about-me--atributes-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mpp-about-me--attribute {
+    margin: 0.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--brand-dusk);
+    border: 1px solid #efefef;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+}
+
+#userAttributesEditMode {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.mpp-about-me--atributes-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mpp-about-me--checkbox-container input[type="checkbox"] {
+    border: 2px solid #efefef;
+}
+
+.mpp-about-me--checkbox-container input[type="checkbox"]::before {
+    box-shadow: inset 1em 1em var(--brand-primary);
 }
 
 /********************************/
