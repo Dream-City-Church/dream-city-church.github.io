@@ -57,15 +57,6 @@ h1, h2, h3 {
     font-family: var(--header-font-face);
 }
 
-.mppw-component-container {
-    font-family: var(--root-font-face);
-    color: var(--root-text-color);
-    line-height: initial;
-    clear: both;
-    max-width: 90vw;
-}
-
-
 /***************/
 /* Card Styles */
 /***************/
