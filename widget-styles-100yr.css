@@ -368,14 +368,22 @@ h4.mpp-card--subtitle:nth-child(1) {
 /* Buttons */
 /***********/
 
-.mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, .mpp-about-me--cancel-button, #saveAsPDFButton {
+.mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton {
     font-family: 'Open Sans', sans-serif, 'FontAwesome';
     box-shadow: none;
     padding: 0.5rem 2rem;
     border-radius: 2rem;
-    border: 2px solid var(--brand-secondary);
-    color: var(--brand-secondary);
     font-weight: bold;
+}
+
+.mpp-about-me--cancel-button {
+    font-family: 'Open Sans', sans-serif, 'FontAwesome';
+    box-shadow: none;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    color: var(--brand-secondary);
+    border: 2px solid var(--brand-secondary);
 }
 
 #loginButton, #registerAndCheckoutButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton{
