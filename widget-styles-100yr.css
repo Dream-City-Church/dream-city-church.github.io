@@ -472,6 +472,15 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 
 select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-field__label, .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
     background: transparent;
+    background-color: #fafafa !important;
+}
+
+.mppw-form-field__alt-label {
+    margin: 0;
+}
+
+.mppw-form-field_alt-control {
+    background-color: #fafafa;
 }
 
 .mpp-form--container {
