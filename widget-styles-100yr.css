@@ -509,8 +509,9 @@ h2#responseFormTitle {
 }
 
 .mppw-login--dropdown {
-    position: relative;
+    position: absolute;
     z-index: 100;
+    width: max-content;
 }
 
 .mppw-component-container.mppw-login {
@@ -877,6 +878,9 @@ div#mobileUnlistedCheck {
     /* Login Widget */
     #userDisplayName {
         display: none;
+    }
+    .mppw-login--container, .mppw-loggedout--username {
+        justify-content: flex-end;
     }
 
     /* My Household */
