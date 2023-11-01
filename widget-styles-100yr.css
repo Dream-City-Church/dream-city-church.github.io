@@ -484,6 +484,11 @@ select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-fi
     background-color: #fafafa;
 }
 
+.mppw-form-field_alt-control input[type=date] {
+    flex-direction: row-reverse;
+    gap: 1rem;
+}
+
 .mpp-form--container {
     clear: both;
     padding-top: 2rem;
