@@ -61,6 +61,7 @@ h1, h2, h3 {
     font-family: var(--root-font-face);
     color: var(--root-text-color);
     line-height: initial;
+    clear: both;
     max-width: 90vw;
 }
 
@@ -507,6 +508,11 @@ h2#responseFormTitle {
     float: right;
 }
 
+.mppw-login--dropdown {
+    position: relative;
+    z-index: 100;
+}
+
 .mppw-component-container.mppw-login {
     border: none;
     height: auto;
@@ -562,6 +568,10 @@ h2.mpp-household--header {
 
 .mpp-household h1 {
     display: none;
+}
+
+.mpp-innerpage h3 {
+    clear: left;
 }
 
 h2#householdName:after {
@@ -862,6 +872,11 @@ div#mobileUnlistedCheck {
     .mpp-card--title {
         line-height: 1.5rem;
         font-size: 1.1rem;
+    }
+
+    /* Login Widget */
+    #userDisplayName {
+        display: none;
     }
 
     /* My Household */
