@@ -756,8 +756,9 @@ div#mobileUnlistedCheck {
     margin: 0.25rem;
     font-size: 1rem;
     font-weight: bold;
-    color: var(--brand-dusk);
-    border: 1px solid #efefef;
+    color: white;
+    background-color: var(--brand-primary);
+    border: none;
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
 }
