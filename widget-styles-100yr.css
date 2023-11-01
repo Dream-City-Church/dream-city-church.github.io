@@ -279,91 +279,6 @@ h4.mpp-card--subtitle:nth-child(1) {
     display: none;
 }
 
-@media only screen and (max-width: 999px) {
-    .mpp-card {
-        max-height:none;
-    }
-    .mpp-card--header {
-        max-width: 214px;
-    }
-    .mpp-card--body {
-        width: calc(100% - 215px);
-    }
-    .mpp-card--description {
-        display:none;
-    }
-    .mpp-card--badge {
-        left: -25px;
-        top: 8px;
-        transform: none;
-        line-height: 1.5rem;
-        padding: 0;
-        font-size: 0;
-    }
-    .mpp-card--badge::after {
-        top: 0px;
-        border-radius: 0.5rem 0 0 0.5rem;
-        position: absolute;
-        background-color: var(--card-primaryColor);
-        padding: 2.5rem 0.25rem;
-        font-size: 1rem;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .mppw-card--grid, #householdMemberList {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-gap: 0;
-    }
-    .mpp-card {
-        padding: 0.5rem 0;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-        width: 100vw;
-        background-color: transparent;
-        box-shadow: none;
-        border: none;
-        border-bottom: 0.25px solid var(--brand-cloud);
-        border-radius: 0;
-    }
-    .mpp-card--body {
-        width: 75%;
-        padding: 0 0.5rem 0.5rem 1rem;
-    }
-    .mpp-card--header {
-        height: 100%;
-        width: 25%;
-        max-height: 70px;
-    }
-    .mpp-card--badge {
-        top: 0;
-        left: 94vw;
-        transform: none;
-        line-height: 1.5rem;
-        padding: 0;
-        font-size: 0;
-    }
-    .mpp-card--badge::after {
-        font-size: 1rem;
-        padding: 1.5rem 0.25rem;
-    }
-    .mpp-card--subtitle {
-        padding: 0;
-        font-size: 0.75rem;
-        line-height: 1.2rem;
-        float: none;
-    }
-    .mpp-card--description {
-        display: none;
-        width: initial;
-    }
-    .mpp-card--title {
-        line-height: 1.5rem;
-        font-size: 1.1rem;
-    }
-}
-
 /***********/
 /* Buttons */
 /***********/
@@ -703,6 +618,18 @@ img.mpp-icon--household {
     box-shadow: none;
 }
 
+.mpp-household .mpp-card--household-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mpp-household .mpp-card--household-footer {
+    margin-top: 16px;
+    text-align: center;
+}
+
 .mpp-household .mpp-card--household-text-wrapper {
     overflow: visible;
     line-height: 1.5rem;
@@ -714,16 +641,6 @@ div#emailUnlistedCheck {
 
 div#mobileUnlistedCheck {
     display: none;
-}
-
-@media only screen and (max-width: 700px) {
-    .mpp-household .mpp-household--header-container {
-        display: inline-block;
-    }
-
-    .mpp-household .mpp-household--form-subheader {
-        line-height: inherit;
-    }
 }
 
 /*********************/
@@ -751,15 +668,6 @@ div#mobileUnlistedCheck {
     height: max-content;
     justify-self: end;
     align-self: end;
-}
-
-@media only screen and (max-width: 700px) {
-    .mpp-about-me--header-container {
-        grid-template-columns: 100%;
-    }
-    .mpp-about-me--header {
-        grid-column-start: 1;
-    }
 }
 
 .mpp-about-me--attributes-block {
@@ -836,3 +744,125 @@ div#mobileUnlistedCheck {
     width: 100%;
     height: 100%;
   }
+
+  /*****************/
+  /* MOBILE STYLES */
+  /*****************/
+
+  @media only screen and (max-width: 999px) {
+    /* TABLET SIZE */
+    .mpp-card {
+        max-height:none;
+    }
+    .mpp-card--header {
+        max-width: 214px;
+    }
+    .mpp-card--body {
+        width: calc(100% - 215px);
+    }
+    .mpp-card--description {
+        display:none;
+    }
+    .mpp-card--badge {
+        left: -25px;
+        top: 8px;
+        transform: none;
+        line-height: 1.5rem;
+        padding: 0;
+        font-size: 0;
+    }
+    .mpp-card--badge::after {
+        top: 0px;
+        border-radius: 0.5rem 0 0 0.5rem;
+        position: absolute;
+        background-color: var(--card-primaryColor);
+        padding: 2.5rem 0.25rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* PHONE SIZE */
+
+    /* Cards */
+    .mppw-card--grid, #householdMemberList {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 0;
+    }
+    .mpp-card {
+        padding: 0.5rem 0;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        width: 100vw;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        border-bottom: 0.25px solid var(--brand-cloud);
+        border-radius: 0;
+    }
+    .mpp-card--body {
+        width: 75%;
+        padding: 0 0.5rem 0.5rem 1rem;
+    }
+    .mpp-card--header {
+        height: 100%;
+        width: 25%;
+        max-height: 70px;
+    }
+    .mpp-card--badge {
+        top: 0;
+        left: 94vw;
+        transform: none;
+        line-height: 1.5rem;
+        padding: 0;
+        font-size: 0;
+    }
+    .mpp-card--badge::after {
+        font-size: 1rem;
+        padding: 1.5rem 0.25rem;
+    }
+    .mpp-card--subtitle {
+        padding: 0;
+        font-size: 0.75rem;
+        line-height: 1.2rem;
+        float: none;
+    }
+    .mpp-card--description {
+        display: none;
+        width: initial;
+    }
+    .mpp-card--title {
+        line-height: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    /* My Household */
+    div#householdDetails {
+        text-align: center;
+        margin: 0.5rem 1rem;
+    }
+    .mpp-household .mpp-household--header {
+        text-align: center;
+        margin: 1rem 0.5rem;
+    }
+    .mpp-household .mpp-household--header-container {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+    .mpp-household .mpp-innerpage--address-container {
+        margin-top: 1rem;
+    }
+    .mpp-household .mpp-household--form-subheader {
+        line-height: inherit;
+    }
+
+    /* My Attributes */
+    .mpp-about-me--header-container {
+        grid-template-columns: 100%;
+    }
+    .mpp-about-me--header {
+        grid-column-start: 1;
+    }
+}
