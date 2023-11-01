@@ -762,6 +762,11 @@ div#mobileUnlistedCheck {
     border-radius: 1rem;
 }
 
+#userAttributesEditMode .mpp-about-me--attribute {
+    background-color: white;
+    color: black;
+}
+
 #userAttributesEditMode {
     display: grid;
     grid-template-columns: 100%;
