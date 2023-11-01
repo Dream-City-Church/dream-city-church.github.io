@@ -747,6 +747,13 @@ div#mobileUnlistedCheck {
     margin-bottom: 1rem;
 }
 
+.mpp-about-me--attributes-block-title {
+    font-size: var(--innerPage-h2fontSize);
+    line-height: var(--innerPage-h2lineHeight);
+    font-weight: bold;
+    margin-bottom: auto;
+}
+
 .mpp-about-me--atributes-list {
     display: flex;
     flex-wrap: wrap;
