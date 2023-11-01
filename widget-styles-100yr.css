@@ -39,7 +39,7 @@
     --progress-pledged: var(--secondary);
     --progress-received: var(--primary);
     --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
-    --header-font-face: 'termina test heavy',Helvetica,Arial,Lucida,sans-serif;
+    --header-font-face: 'termina',Helvetica,Arial,Lucida,sans-serif;
     --innerPage-h1fontFamily: var(--header-font-face);
     --innerPage-primaryColor: var(--primary);
     --innerPage-linkHoverColor: var(--secondary);
@@ -733,12 +733,33 @@ div#mobileUnlistedCheck {
 .mpp-about-me--header-container {
     font-size: 1rem;
     margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.mpp-about-me--header {
+    grid-column-start: span 2;
 }
 
 .mpp-about-me--header-subtitle {
     font-size: 1rem;
     font-weight: normal;
     margin-bottom: 1rem;
+}
+
+.mpp-about-me--edit-button{
+    height: max-content;
+    justify-self: end;
+    align-self: end;
+}
+
+@media only screen and (max-width: 700px) {
+    .mpp-about-me--header-container {
+        grid-template-columns: 100%;
+    }
+    .mpp-about-me--header {
+        grid-column-start: 1;
+    }
 }
 
 .mpp-about-me--attributes-block {
