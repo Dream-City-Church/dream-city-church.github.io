@@ -628,9 +628,10 @@ img.mpp-icon--household {
 
 #householdMemberList {
     display: grid;
-    grid-template-columns: 47.5% 47.5%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 3rem 5%;
     margin-top: 0;
+    margin-bottom: 6rem;
 }
 
 .mpp-card--household:hover {
@@ -810,6 +811,7 @@ div#mobileUnlistedCheck {
         display: grid;
         grid-template-columns: 100%;
         grid-gap: 0;
+        margin-bottom: 2rem;
     }
     .mpp-card {
         padding: 0.5rem 0;
