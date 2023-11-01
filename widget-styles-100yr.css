@@ -451,6 +451,7 @@ div#mapContainer {
     font-size: 1.1rem;
     line-height: 1rem;
     font-weight: bold;
+    padding: 28px 13px 12px 13px;
 }
 
 .mppw-form-field__control:focus-visible {
