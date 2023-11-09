@@ -8,6 +8,10 @@
     justify-content: flex-start;
 }
 
+.mppw-component-container.mppw-login {
+    text-align: left;
+}
+
 .mppw-component-container.mppw-login a {
     color: white;
 }
