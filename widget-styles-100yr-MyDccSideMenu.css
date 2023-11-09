@@ -1,0 +1,24 @@
+@import url(/widget-styles-100yr.css);
+
+.mppw-login {
+    float: none;
+}
+
+.mppw-login--container {
+    justify-content: flex-start;
+}
+
+.mppw-component-container.mppw-login a {
+    color: white;
+}
+
+#loginButton {
+    background-image: none;
+    background-color: rgba(255,255,255,0.1);
+    transition: background-color 0.3s ease;
+}
+
+#loginButton:hover {
+    background-color: rgba(255,255,255,0.2);
+    transition: background-color 0.5s ease;
+}
