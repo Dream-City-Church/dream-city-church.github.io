@@ -336,7 +336,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     border: 1px solid #efefef;
 }
 
-.mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p {
+.mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container {
     width: 62%;
     float: right;
 }
@@ -422,7 +422,7 @@ div#mapContainer {
         margin-top: 1rem;
     }
 
-    .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p {
+    .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container {
         width: 100%;
         float: none;
     }
