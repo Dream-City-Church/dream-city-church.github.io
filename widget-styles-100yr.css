@@ -468,6 +468,10 @@ select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-fi
     background-color: #fafafa !important;
 }
 
+.mppw-form-field__control:focus + label {
+    background-color: transparent !important;
+}
+
 .mppw-form-field__alt-label {
     margin: 0;
 }
