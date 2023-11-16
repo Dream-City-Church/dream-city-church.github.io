@@ -370,6 +370,11 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-left: 0;
 }
 
+.mpp-innerpage--contacts {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
 .mpp-innerpage--contact {
     background: none;
 }
