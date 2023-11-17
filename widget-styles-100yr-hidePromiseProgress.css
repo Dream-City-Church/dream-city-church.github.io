@@ -11,3 +11,8 @@
 .mppw-form-field__static-container {
     min-height: 80px;
 }
+
+.mppw-form-field__control {
+    min-height: 68px;
+    margin-top: -3px;
+}
