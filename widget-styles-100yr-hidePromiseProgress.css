@@ -1,0 +1,13 @@
+@import url(/widget-styles-100yr.css);
+
+/********************/
+/* Make Faith Promise No Progress Indicator */
+/********************/
+
+.mpp-innerpage {
+    display: none;
+}
+
+.mppw-form-field__static-container {
+    min-height: 80px;
+}
