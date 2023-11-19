@@ -759,6 +759,13 @@ div#mobileUnlistedCheck {
     box-shadow: inset 1em 1em var(--brand-primary);
 }
 
+/***************************/
+/* MY CONTRIBUTIONS WIDGET */
+/***************************/
+#myContributionFooter .mppw-row {
+    display: inline-block;
+}
+
 /********************************/
 /* YOUTUBE EMBED IN DESCRIPTION */
 /********************************/
