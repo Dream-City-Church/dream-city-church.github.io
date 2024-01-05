@@ -11,3 +11,7 @@
 .mppw-form-field__static-container {
     min-height: 80px;
 }
+
+#Frequency, #Frequency+.mppw-form-field__label, #FirstInstallmentDate, #LastInstallmentDate {
+    display: none;
+  }

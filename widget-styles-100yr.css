@@ -500,6 +500,10 @@ h2#responseFormTitle {
     padding-top: 2rem;
 }
 
+#registrationForm {
+    clear: both;
+}
+
 /****************/
 /* Login Widget */
 /****************/
