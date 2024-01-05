@@ -504,6 +504,10 @@ h2#responseFormTitle {
     clear: both;
 }
 
+.mppw-product-description {
+    font-weight: initial;
+}
+
 /****************/
 /* Login Widget */
 /****************/
