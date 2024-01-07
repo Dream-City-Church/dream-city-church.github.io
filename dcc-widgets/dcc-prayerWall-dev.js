@@ -190,7 +190,7 @@ function loadPrayers() {
             /* Adds a Read More button to long description boxes */
             const prayerDescriptions = document.querySelectorAll('.prayer-description')
                 prayerDescriptions.forEach(pDescription => {
-                    if (pDescription.offsetHeight < pDescription.scrollHeight-2) {
+                    if (pDescription.offsetHeight < pDescription.scrollHeight-2 && !pDescription.contains('.prayer-read-more')) {
                         pDescription.innerHTML += '<button class="prayer-read-more" onclick=\'event.target.parentNode.classList.add("prayer-description-full");event.target.style.display="none";\'>Read More</button>';
                         }
                 });
