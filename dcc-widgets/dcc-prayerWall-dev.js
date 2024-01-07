@@ -161,7 +161,7 @@ function loadPrayers() {
                 )
                 
                 document.querySelector(".dccw-spinnercontainer").remove();
-                divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button">Load More Prayers</button></div>`;
+                divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button" onclick="loadMorePrayers()">Load More Prayers</button></div>`;
                 document.querySelector("#prayer-wall").innerHTML += divHTML;
 
             } else {
