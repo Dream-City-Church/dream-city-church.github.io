@@ -161,7 +161,10 @@ function loadPrayers() {
                 )
                 
                 document.querySelector(".dccw-spinnercontainer").remove();
-                divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button" onclick="loadMorePrayers()">Load More Prayers</button></div>`;
+                if (loadMorePrayers < 5) {
+                    /*Add Load More button if there are less than 5 pages already loaded*/
+                    divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button" onclick="loadMorePrayers()">Load More Prayers</button></div>`;
+                }
                 document.querySelector("#prayer-wall").innerHTML += divHTML;
 
             } else {

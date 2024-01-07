@@ -178,6 +178,9 @@ dcc-householdprf h3 {
   background-color: var(--brand-primary);
   border: none;
 }
+button#loadMorePrayers {
+  margin: 2rem auto;
+}
 .praise-report .prayer-button {
   background-color: var(--brand-secondary);
 }

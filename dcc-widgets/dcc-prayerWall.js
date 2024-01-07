@@ -1,3 +1,8 @@
+/* Set starting variables */
+const versionNumber = '1.240107';
+var pageNum = 1;
+
+/* Function for getting URL variables */
 function getUrlVars() {
     var urlVars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -6,6 +11,7 @@ function getUrlVars() {
     return urlVars;
 }
 
+/* Function for prayer as prayed for */
 function addPrayer(prayerID,TypeID) {
     document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
     document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
@@ -45,6 +51,7 @@ function addPrayer(prayerID,TypeID) {
         })
 }
 
+/* Function for adding prayers as prayed for from URL */
 function addPrayerFromUrl() {
     const prayerUrlIds = getUrlVars()["prayers"];
     if (prayerUrlIds) {
@@ -57,23 +64,38 @@ function addPrayerFromUrl() {
     }
 }
 
+/* Function for loading more prayers */
+function loadMorePrayers() {
+    pageNum = pageNum+1;
+    document.querySelector("#loadMorePrayers").remove();
+    loadPrayers();
+}
+
+/* Function for initial loading of prayer wall */
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.2306.10');
+    console.log('Prayer Wall v'+versionNumber);
+    divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div></div>`;
+    document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+    loadPrayers();
+}
+
+/* Function for loading prayers */
+function loadPrayers() {
+    divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+    document.querySelector("#prayer-wall").innerHTML += divHTML;
+
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
         prayedForPrayers = [];
         localStorage.setItem("prayedForPrayers", JSON.stringify(prayedForPrayers));
     }
-
-    /*Initialize loading spinner*/
-    divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
-    document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
     
     /*Set API options*/
     const params = {
         "prayer": 1,
-        "praise": 1
+        "praise": 1,
+        "pageNum": pageNum
     };
     const options = {
         method: 'POST',
@@ -143,8 +165,12 @@ function loadPrayerWall() {
                 }
                 )
                 
-                divHTML = divHTML+`</div>`;
-                document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+                document.querySelector(".dccw-spinnercontainer").remove();
+                if (loadMorePrayers < 5) {
+                    /*Add Load More button if there are less than 5 pages already loaded*/
+                    divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button" onclick="loadMorePrayers()">Load More Prayers</button></div>`;
+                }
+                document.querySelector("#prayer-wall").innerHTML += divHTML;
 
             } else {
                 /*Report something went wrong - failure response from server*/
