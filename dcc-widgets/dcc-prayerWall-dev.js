@@ -77,6 +77,7 @@ function loadPrayerWall() {
     /*Initialize loading spinner*/
     divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div></div>`;
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+    loadPrayers();
 }
 
 function loadPrayers() {
