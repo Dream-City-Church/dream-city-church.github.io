@@ -1,4 +1,4 @@
-const versionNumber = '1.240107.3';
+const versionNumber = '1.240107.4';
 var pageNum = 1;
 
 function getUrlVars() {
@@ -68,12 +68,6 @@ function loadMorePrayers() {
 
 function loadPrayerWall() {
     console.log('Prayer Wall v'+versionNumber);
-    /*Initialize local storage for prayed-for prayers*/
-    var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
-    if(prayedForPrayers == null) {
-        prayedForPrayers = [];
-        localStorage.setItem("prayedForPrayers", JSON.stringify(prayedForPrayers));
-    }
 
     /*Initialize loading spinner*/
     divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div></div>`;
@@ -84,6 +78,13 @@ function loadPrayerWall() {
 function loadPrayers() {
     divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
     document.querySelector("#prayer-wall").innerHTML += divHTML;
+
+    /*Initialize local storage for prayed-for prayers*/
+    var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
+    if(prayedForPrayers == null) {
+        prayedForPrayers = [];
+        localStorage.setItem("prayedForPrayers", JSON.stringify(prayedForPrayers));
+    }
     
     /*Set API options*/
     const params = {
