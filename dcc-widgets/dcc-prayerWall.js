@@ -81,7 +81,7 @@ function loadPrayerWall() {
 
 /* Function for loading prayers */
 function loadPrayers() {
-    divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+    divHTML = `<div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
     document.querySelector("#prayer-wall").innerHTML += divHTML;
 
     /*Initialize local storage for prayed-for prayers*/
