@@ -1,3 +1,6 @@
+const versionNumber = '1.240107';
+var pageNum = 1;
+
 function getUrlVars() {
     var urlVars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -57,8 +60,13 @@ function addPrayerFromUrl() {
     }
 }
 
+function loadMorePrayers() {
+    pageNum = pageNum+1;
+    loadPrayers();
+}
+
 function loadPrayerWall() {
-    console.log('Prayer Wall v0.2306.10');
+    console.log('Prayer Wall v'+versionNumber);
     /*Initialize local storage for prayed-for prayers*/
     var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
     if(prayedForPrayers == null) {
@@ -67,13 +75,20 @@ function loadPrayerWall() {
     }
 
     /*Initialize loading spinner*/
-    divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
+    divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div></div>`;
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+}
+
+function loadPrayers() {
+    document.querySelector("#loadMorePrayers").remove();
+    divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+    document.getElementbyId("prayer-wall").innerHTML += divHTML;
     
     /*Set API options*/
     const params = {
         "prayer": 1,
-        "praise": 1
+        "praise": 1,
+        "pageNum": pageNum
     };
     const options = {
         method: 'POST',
@@ -143,8 +158,9 @@ function loadPrayerWall() {
                 }
                 )
                 
-                divHTML = divHTML+`</div>`;
-                document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
+                document.querySelector(".dccw-spinnercontainer").remove();
+                divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button">Load More Prayers</button></div>`;
+                document.getElementbyId("prayer-wall").innerHTML += divHTML;
 
             } else {
                 /*Report something went wrong - failure response from server*/
@@ -169,7 +185,7 @@ function loadPrayerWall() {
                         }
                 });
         })
-        .then(setTimeout(addPrayerFromUrl,2000))
+        .then(setTimeout(addPrayerFromUrl,3000))
 }
 
 window.onload = setTimeout(loadPrayerWall, 500);
