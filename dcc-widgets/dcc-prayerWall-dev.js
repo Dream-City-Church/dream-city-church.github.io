@@ -1,6 +1,8 @@
-const versionNumber = '1.240107.4';
+/* Set starting variables */
+const versionNumber = '1.240107';
 var pageNum = 1;
 
+/* Function for getting URL variables */
 function getUrlVars() {
     var urlVars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -9,6 +11,7 @@ function getUrlVars() {
     return urlVars;
 }
 
+/* Function for prayer as prayed for */
 function addPrayer(prayerID,TypeID) {
     document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
     document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
@@ -48,6 +51,7 @@ function addPrayer(prayerID,TypeID) {
         })
 }
 
+/* Function for adding prayers as prayed for from URL */
 function addPrayerFromUrl() {
     const prayerUrlIds = getUrlVars()["prayers"];
     if (prayerUrlIds) {
@@ -60,21 +64,22 @@ function addPrayerFromUrl() {
     }
 }
 
+/* Function for loading more prayers */
 function loadMorePrayers() {
     pageNum = pageNum+1;
     document.querySelector("#loadMorePrayers").remove();
     loadPrayers();
 }
 
+/* Function for initial loading of prayer wall */
 function loadPrayerWall() {
     console.log('Prayer Wall v'+versionNumber);
-
-    /*Initialize loading spinner*/
     divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div></div>`;
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
     loadPrayers();
 }
 
+/* Function for loading prayers */
 function loadPrayers() {
     divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
     document.querySelector("#prayer-wall").innerHTML += divHTML;
@@ -102,7 +107,7 @@ function loadPrayers() {
         .then(function (data) {
             /*Start DIV writeback*/
             if(data.status=="success"){
-                divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div>`;
+                divHTML = ``;
                 data.prayers[0].forEach((prayer) => {
                     if(prayedForPrayers.indexOf(prayer.PrayerID)!==-1){
                         if(prayer.TypeID==1){
@@ -161,8 +166,8 @@ function loadPrayers() {
                 )
                 
                 document.querySelector(".dccw-spinnercontainer").remove();
-                if (pageNum < 5) {
-                    /*Add Load More button if there are less than 5 pages already loaded*/
+                if (pageNum < 4) {
+                    /*Add Load More button if there are less than 4 pages already loaded*/
                     divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button" onclick="loadMorePrayers()">Load More Prayers</button></div>`;
                 }
                 document.querySelector("#prayer-wall").innerHTML += divHTML;

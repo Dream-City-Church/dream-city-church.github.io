@@ -107,7 +107,7 @@ function loadPrayers() {
         .then(function (data) {
             /*Start DIV writeback*/
             if(data.status=="success"){
-                divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div>`;
+                divHTML = ``;
                 data.prayers[0].forEach((prayer) => {
                     if(prayedForPrayers.indexOf(prayer.PrayerID)!==-1){
                         if(prayer.TypeID==1){
@@ -166,8 +166,8 @@ function loadPrayers() {
                 )
                 
                 document.querySelector(".dccw-spinnercontainer").remove();
-                if (pageNum < 5) {
-                    /*Add Load More button if there are less than 5 pages already loaded*/
+                if (pageNum < 4) {
+                    /*Add Load More button if there are less than 4 pages already loaded*/
                     divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button" onclick="loadMorePrayers()">Load More Prayers</button></div>`;
                 }
                 document.querySelector("#prayer-wall").innerHTML += divHTML;
