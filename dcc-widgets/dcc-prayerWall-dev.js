@@ -1,4 +1,4 @@
-const versionNumber = '1.240107.2';
+const versionNumber = '1.240107.3';
 var pageNum = 1;
 
 function getUrlVars() {
@@ -83,7 +83,7 @@ function loadPrayerWall() {
 
 function loadPrayers() {
     divHTML = `<br /><div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
-    document.getElementbyId("prayer-wall").innerHTML += divHTML;
+    document.querySelector("#prayer-wall").innerHTML += divHTML;
     
     /*Set API options*/
     const params = {
@@ -161,7 +161,7 @@ function loadPrayers() {
                 
                 document.querySelector(".dccw-spinnercontainer").remove();
                 divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button">Load More Prayers</button></div>`;
-                document.getElementbyId("prayer-wall").innerHTML += divHTML;
+                document.querySelector("#prayer-wall").innerHTML += divHTML;
 
             } else {
                 /*Report something went wrong - failure response from server*/
