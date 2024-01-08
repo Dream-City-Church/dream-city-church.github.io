@@ -123,6 +123,11 @@ dcc-householdprf h3 {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
 }
+@media screen and (max-width: 800px) {
+  .prayer-description {
+    margin: 2rem 0 1rem 0;
+  }
+}
 .prayer-description-full {
   -webkit-line-clamp: initial;
 }
