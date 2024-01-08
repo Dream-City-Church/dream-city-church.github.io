@@ -13,7 +13,11 @@ function loadBibleBucksApp(messageContent,messageClass){
     if(recordID>0 && pageID==645){
         participantLookup(recordID,'Record_ID');
     } else {
-        document.querySelector('#biblebucks-content').innerHTML=bb_participantSelection;
+        if(LastParticipantId>0){
+            document.querySelector('#biblebucks-content').innerHTML=bb_participantSelectionRecall;
+        }else{
+            document.querySelector('#biblebucks-content').innerHTML=bb_participantSelection;
+        }
         document.getElementById("participant-form").addEventListener("submit", function(){submitParticipantListener(0,'Participant_ID');});
         document.getElementById("loading-overlay").style.display="none";
     }
@@ -233,7 +237,19 @@ var bb_participantSelection=`<div id="biblebucks-participantearnselect">
 <div id="content-card">
     <div id="reader"></div>
     <form id="participant-form"><div class="input-field"><input type="number" id="participant-id" class="primary-input" min="1" max="999999"><div id="qr-reader" onclick="startQrScanner();">${cameraEmoji}</div></div>
-    <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>${function(){if(LastParticipantId>0){return `<i class="fa-solid fa-arrows-rotate" aria-hidden="true" onclick="submitParticipantListener(${LastParticipantId},'Participant_ID')"></i>`;}}}</form>
+    <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button></form>
+</div>
+<div id="message"></div>
+</div>`;
+
+var bb_participantSelectionRecall=`<div id="biblebucks-participantearnselect">
+<div id="header">
+    <div class="header-text">${coinEmoji} Bible Bucks</div>
+</div>
+<div id="content-card">
+    <div id="reader"></div>
+    <form id="participant-form"><div class="input-field"><input type="number" id="participant-id" class="primary-input" min="1" max="999999"><div id="qr-reader" onclick="startQrScanner();">${cameraEmoji}</div></div>
+    <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button><i class="fa-solid fa-arrows-rotate" aria-hidden="true" onclick="submitParticipantListener('${LastParticipantId}','Participant_ID')"></i></form>
 </div>
 <div id="message"></div>
 </div>`;
