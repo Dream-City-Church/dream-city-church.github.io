@@ -193,7 +193,8 @@ button#loadMorePrayers {
   text-decoration: underline;
 }
 .new-prayers-available {
-  color: var(--brand-secondary);
+  color: var(--brand-secondary) !important;
+  font-style: normal !important;
   font-weight: bold;
 }
 .praise-report .prayer-button {
