@@ -222,6 +222,7 @@ function getUrlVars() {
 
 var coinEmoji = String.fromCodePoint(0x1FA99);
 var cameraEmoji = String.fromCodePoint(0x1F4F7);
+var reloadEmoji = String.fromCodePoint(0x1F504);
 
 var bb_elementContainer=`<div id="biblebucks-wrapper">
 <div id="loading-overlay" style="display:block;"> <div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div> </div>
@@ -249,7 +250,7 @@ var bb_participantSelectionRecall=`<div id="biblebucks-participantearnselect">
 <div id="content-card">
     <div id="reader"></div>
     <form id="participant-form"><div class="input-field"><input type="number" id="participant-id" class="primary-input" min="1" max="999999"><div id="qr-reader" onclick="startQrScanner();">${cameraEmoji}</div></div>
-    <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button><i class="fa-solid fa-arrows-rotate" aria-hidden="true" onclick="submitParticipantListener('${LastParticipantId}','Participant_ID')"></i></form>
+    <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button> <a class="reload-button" onclick="submitParticipantListener('${LastParticipantId}','Participant_ID')"></a></form>
 </div>
 <div id="message"></div>
 </div>`;
