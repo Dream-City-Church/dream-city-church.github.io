@@ -72,7 +72,6 @@ dcc-householdprf h3 {
 /* Prayer Wall */
 #prayer-wall {
   width: 100%;
-  min-height: 800px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
