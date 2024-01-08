@@ -68,7 +68,10 @@ function addPrayerFromUrl() {
 /* Function for reloading prayer wall */
 function reloadPrayerWall() {
     pageNum = 1;
-    document.querySelector("#prayer-wall").innerHTML = "";
+    let prayerCards = document.querySelectorAll('.prayer-card');
+    prayerCards.forEach(prayerCard => {
+        prayerCard.remove();
+    });
     loadPrayers();
 }
 

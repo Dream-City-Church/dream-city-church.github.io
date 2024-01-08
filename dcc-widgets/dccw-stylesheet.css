@@ -181,6 +181,13 @@ dcc-householdprf h3 {
 button#loadMorePrayers {
   margin: 2rem auto;
 }
+div#reload-prayer-wall {
+  margin: 0 0 1rem auto;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #555;
+}
 .praise-report .prayer-button {
   background-color: var(--brand-secondary);
 }
