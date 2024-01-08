@@ -156,6 +156,12 @@ span#html5-qrcode-anchor-scan-type-change {
   cursor: pointer;
 }
 
+a.reload-button {
+  font-size: 2rem;
+  margin: 1rem;
+  cursor: pointer;
+}
+
 .quickpoint-button {
     background-color: var(--color-primary);
     color: white;
