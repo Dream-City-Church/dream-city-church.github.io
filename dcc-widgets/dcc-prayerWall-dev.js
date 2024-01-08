@@ -73,6 +73,8 @@ function reloadPrayerWall() {
     prayerCards.forEach(prayerCard => {
         prayerCard.remove();
     });
+    document.getElementById("reload-prayer-wall").innerHTML='Refresh <i class="fa-solid fa-arrows-rotate"></i>';
+    document.getElementById("reload-prayer-wall").classList.remove('new-prayers-available');
     loadPrayers();
 }
 
@@ -97,7 +99,7 @@ function checkForNewPrayers() {
 
                 if(newMaxPrayerId > maxPrayerId){
                     document.getElementById("reload-prayer-wall").innerHTML='There are new prayers! <i class="fa-solid fa-arrows-rotate"></i>';
-                    document.getElementById("reload-prayer-wall").className += 'new-prayers-available';
+                    document.getElementById("reload-prayer-wall").className = 'new-prayers-available';
                 }
             }
         })
