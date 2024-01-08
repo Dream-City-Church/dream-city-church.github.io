@@ -1,6 +1,7 @@
 /* Set starting variables */
-const versionNumber = '1.240107';
+const versionNumber = '1.240108.1';
 var pageNum = 1;
+var maxPrayerId = 0;
 
 /* Function for getting URL variables */
 function getUrlVars() {
@@ -64,6 +65,40 @@ function addPrayerFromUrl() {
     }
 }
 
+/* Function for reloading prayer wall */
+function reloadPrayerWall() {
+    pageNum = 1;
+    document.querySelector("#prayer-wall").innerHTML = "";
+    loadPrayers();
+}
+
+/* Function to check if there are any new prayers */
+function checkForNewPrayers() {
+    var newMaxPrayerId = 0;
+    const params = {
+        "prayer": 1,
+        "praise": 1,
+        "pageNum": 1
+    };
+    const options = {
+        method: 'POST',
+        body: JSON.stringify( params ),
+        headers: {'Content-Type': 'application/json'}
+    };
+    fetch( 'https://prod-28.westus2.logic.azure.com:443/workflows/eaafcdc3ed3a4652bffa62407b02f934/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=8UdRnlOJSRoxY-LiSTfhQmYxjOFtpnX2o-8BE192LAg', options)
+        .then(function (response) {return response.json();})
+        .then(function (data) {
+            if(data.status=="success"){
+                newMaxPrayerId = Math.max.apply(Math, data.prayers[0].map(function(o) { return o.PrayerID; }));
+
+                if(newMaxPrayerId > maxPrayerId){
+                    document.getElementById("reload-prayer-wall").innerHTML='There are new prayers! <i class="fa-solid fa-arrows-rotate"></i>';
+                    document.getElementById("reload-prayer-wall").className += 'new-prayers-available';
+                }
+            }
+        })
+}
+
 /* Function for loading more prayers */
 function loadMorePrayers() {
     pageNum = pageNum+1;
@@ -74,9 +109,10 @@ function loadMorePrayers() {
 /* Function for initial loading of prayer wall */
 function loadPrayerWall() {
     console.log('Prayer Wall v'+versionNumber);
-    divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div></div>`;
+    divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div><div id="reload-prayer-wall" onclick="reloadPrayerWall()">Refresh <i class="fa-solid fa-arrows-rotate"></i></div></div>`;
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
     loadPrayers();
+    setInterval(checkForNewPrayers, 60*1000);
 }
 
 /* Function for loading prayers */
@@ -164,6 +200,9 @@ function loadPrayers() {
                     }
                 }
                 )
+
+                /* select the max prayer ID number then update variable */
+                maxPrayerId = Math.max.apply(Math, data.prayers[0].map(function(o) { return o.PrayerID; }));
                 
                 document.querySelector(".dccw-spinnercontainer").remove();
                 if (pageNum < 4) {
