@@ -1,4 +1,6 @@
-const currentVersion='1.0.2';
+const currentVersion='1.0.3';
+
+var LastParticipantId = 0;
 
 // APP HOMEPAGE //
 
@@ -97,12 +99,15 @@ function participantLookup(IdNumber,IdType){
                     </div>
                     <form id="points-form">
                         <div class="input-field">
-                            <input type="number" id="points-total" class="secondary-input" min="-1000" max="1000" required>
+                            <input type="number" id="points-total" class="secondary-input" min="-50000" max="1000" required>
                             <input type="hidden" id="participant-id" value="${data.participantId}" required>
                         </div>
                         <button type="submit" id="submit-points-btn" class="submit-button" >SUBMIT</button>
                     </form>
                 </div>`;
+                // Set Last Participant ID
+                LastParticipantId = data.participantId;
+
                 // Add button listeners
                 document.getElementById("back-btn").addEventListener("click", function(){window.history.replaceState(null, '', window.location.pathname);loadBibleBucksApp();});
                 document.getElementById("points-form").addEventListener("submit", function(){submitFormListener();});
@@ -228,7 +233,7 @@ var bb_participantSelection=`<div id="biblebucks-participantearnselect">
 <div id="content-card">
     <div id="reader"></div>
     <form id="participant-form"><div class="input-field"><input type="number" id="participant-id" class="primary-input" min="1" max="999999"><div id="qr-reader" onclick="startQrScanner();">${cameraEmoji}</div></div>
-    <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button></form>
+    <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button>${(function (){if(LastParticipantId>0){return `<i class="fa-solid fa-arrows-rotate" aria-hidden="true" onclick="submitParticipantListener(${LastParticipantId},'Participant_ID')"></i>`;}})}</form>
 </div>
 <div id="message"></div>
 </div>`;
