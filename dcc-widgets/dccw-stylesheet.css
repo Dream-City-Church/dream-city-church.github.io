@@ -182,7 +182,8 @@ button#loadMorePrayers {
   margin: 2rem auto;
 }
 #reload-prayer-wall {
-  float: right;
+  width: 100%;
+  text-align: right;
   margin-bottom: 1rem;
   cursor: pointer;
   font-size: 0.9rem;
