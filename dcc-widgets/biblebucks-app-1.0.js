@@ -110,7 +110,7 @@ function participantLookup(IdNumber,IdType){
                     </form>
                 </div>`;
                 // Set Last Participant ID
-                LastParticipantId = data.participantId;
+                LastParticipantId = IdNumber;
 
                 // Add button listeners
                 document.getElementById("back-btn").addEventListener("click", function(){window.history.replaceState(null, '', window.location.pathname);loadBibleBucksApp();});
