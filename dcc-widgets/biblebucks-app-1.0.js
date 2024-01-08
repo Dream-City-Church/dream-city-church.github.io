@@ -111,6 +111,7 @@ function participantLookup(IdNumber,IdType){
                 </div>`;
                 // Set Last Participant ID
                 LastParticipantId = IdNumber;
+                console.log('LastParticipantId set to '+LastParticipantId);
 
                 // Add button listeners
                 document.getElementById("back-btn").addEventListener("click", function(){window.history.replaceState(null, '', window.location.pathname);loadBibleBucksApp();});
