@@ -250,7 +250,7 @@ var bb_participantSelectionRecall=`<div id="biblebucks-participantearnselect">
 <div id="content-card">
     <div id="reader"></div>
     <form id="participant-form"><div class="input-field"><input type="number" id="participant-id" class="primary-input" min="1" max="999999"><div id="qr-reader" onclick="startQrScanner();">${cameraEmoji}</div></div>
-    <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button> <a class="reload-button" onclick="submitParticipantListener('${LastParticipantId}','Participant_ID')"></a></form>
+    <button id="submit-participant-earn-btn" class="submit-button">SUBMIT</button> <a class="reload-button" onclick="submitParticipantListener('${LastParticipantId}','Participant_ID')">${reloadEmoji}</a></form>
 </div>
 <div id="message"></div>
 </div>`;
