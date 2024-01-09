@@ -15,16 +15,14 @@ function getUrlVars() {
 
 /* Function for downloading file */
 function downloadFile() {
-    var urlVars = getUrlVars();
-    var fileGuid = urlVars["fileguid"];
+    var fileGuid = getUrlVars()["fileguid"];
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
     window.location.href = fileUrl;
 }
 
 /* Function for checking if the file GUID is valid */
 function isValidFileGuid() {
-    var urlVars = getUrlVars();
-    var fileGuid = urlVars["fileguid"];
+    var fileGuid = getUrlVars()["fileguid"];
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
     var request = new XMLHttpRequest();
     request.open('HEAD', fileUrl, false);
@@ -34,8 +32,7 @@ function isValidFileGuid() {
 
 /* Function for returning the file name */
 function getFileName() {
-    var urlVars = getUrlVars();
-    var fileGuid = urlVars["fileguid"];
+    var fileGuid = getUrlVars()["fileguid"];
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
     var request = new XMLHttpRequest();
     request.open('HEAD', fileUrl, false);
@@ -45,6 +42,7 @@ function getFileName() {
 
 /* Function for starting the file download widget */
 function startFileDownload() {
+    var fileGuid = getUrlVars()["fileguid"];
     /* If the file GUID is not valid, load the invalid file HTML */
     if (!isValidFileGuid()) {
         console.log("Unable to find file for GUID "+fileGuid);
