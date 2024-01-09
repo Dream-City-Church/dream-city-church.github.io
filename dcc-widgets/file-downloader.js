@@ -20,6 +20,7 @@ function isValidFileGuid() {
     // Use fetch() to check if the file exists
     fetch(fileUrl, {method: 'GET'});
     // If the file exists, return true
+    console.log("File status: "+fetch.status);
     if (fetch.status == 200) {
         return true;
     }
@@ -39,14 +40,14 @@ function getFileName() {
 function startFileDownload() {
     var fileGuid = getUrlVars()["fileguid"];
     /* If the file GUID is not valid, load the invalid file HTML */
-    if (!isValidFileGuid()) {
+    if (!isValidFileGuid() && 1 == 0) {
         console.log("Unable to find file for GUID "+fileGuid);
         var invalidFileGuidHtml = `<div id="file-downloader">
             <div id="file-downloader-header">Invalid File URL</div>
             <div id="file-downloader-subheader">This does not appear to be a valid file URL. Please check your link and try again.</div>
             </div>`;
         document.getElementsByTagName(widgetTagName)[0].innerHTML = invalidFileGuidHtml;
-    }else {
+    } else {
         /* Otherwise, start the file download */
         console.log("Starting file download for file GUID "+fileGuid);
         var downloadFileHtml = `<div id="file-downloader">
