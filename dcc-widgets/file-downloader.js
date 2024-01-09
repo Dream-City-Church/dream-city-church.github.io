@@ -20,12 +20,12 @@ function isValidFileGuid() {
     // Use fetch() to check if the file exists
     fetch(fileUrl, {method: 'GET'})
     .then(function(response) {
+        console.log("URL Status: "+response.status);
         if (response.status == 200) {
             return true;
         } else {
             return false;
         }
-        console.log("URL Status: "+response.status);
     });
 }
 
@@ -36,7 +36,8 @@ function getFileName() {
     // Use fetch() to get the file name
     fetch(fileUrl, {method: 'GET'});
     // extract the file name
-    var fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
+    console.log("Fetch heades: "+fetch.headers.get('Content-Disposition'));
+    var fileName = fetch.headers.get('Content-Disposition').split('filename=')[0];
     // return the file name
     console.log("File name: "+fileName)
     return fileName;
@@ -56,9 +57,10 @@ function startFileDownload() {
     } else {
         /* Otherwise, start the file download */
         var fileName = getFileName();
+        console.log("File name: "+fileName);
         console.log("Starting file download for file GUID "+fileGuid);
         var downloadFileHtml = `<div id="file-downloader">
-            <div id="file-downloader-header">Downloading ${fileName}...</div>
+            <div id="file-downloader-header">Downloading File...</div>
             <div id="file-downloader-subheader">Or <a id="file-download-link" href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" target="_blank">Click here</a> if the download does not begin automatically.</div>
             </div>`;
         document.getElementsByTagName(widgetTagName)[0].innerHTML = downloadFileHtml;
