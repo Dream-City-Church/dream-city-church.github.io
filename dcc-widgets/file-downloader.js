@@ -49,9 +49,10 @@ function startFileDownload() {
         document.getElementsByTagName(widgetTagName)[0].innerHTML = invalidFileGuidHtml;
     } else {
         /* Otherwise, start the file download */
+        var fileName = getFileName();
         console.log("Starting file download for file GUID "+fileGuid);
         var downloadFileHtml = `<div id="file-downloader">
-            <div id="file-downloader-header">Downloading ${getFileName}...</div>
+            <div id="file-downloader-header">Downloading ${fileName}...</div>
             <div id="file-downloader-subheader">Or <a id="file-download-link" href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" target="_blank">Click here</a> if the download does not begin automatically.</div>
             </div>`;
         document.getElementsByTagName(widgetTagName)[0].innerHTML = downloadFileHtml;
