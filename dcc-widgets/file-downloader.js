@@ -33,25 +33,26 @@ function isValidFileGuid() {
 function getFileName() {
     var fileGuid = getUrlVars()["fileguid"];
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
+    var fileName = "File";
     // Use fetch() to get the file name
-    fetch(fileUrl, {method: 'GET'});
-    // extract the file name if it
-    if (!fetch.headers.get('Content-Disposition')) {
-        return false;
-    }
+    fetch(fileUrl, {method: 'GET'})
+    .then(function(response) {
+        if(response.headers.get('Content-Disposition').split('filename=')[1]){
+            var fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
+        }
+    });
     // return the file name
-    var fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
     console.log("File name: "+fileName)
     return fileName;
 }
 
 function invalidFileGuid(fileGuid) {
-        console.log("Unable to find file for GUID "+fileGuid);
-        var invalidFileGuidHtml = `<div id="file-downloader">
-            <div id="file-downloader-header">Invalid File URL</div>
-            <div id="file-downloader-subheader">This does not appear to be a valid file URL. Please check your link and try again.</div>
-            </div>`;
-        document.getElementsByTagName(widgetTagName)[0].innerHTML = invalidFileGuidHtml;
+    console.log("Unable to find file for GUID "+fileGuid);
+    var invalidFileGuidHtml = `<div id="file-downloader">
+        <div id="file-downloader-header">Invalid File URL</div>
+        <div id="file-downloader-subheader">This does not appear to be a valid file URL. Please check your link and try again.</div>
+        </div>`;
+    document.getElementsByTagName(widgetTagName)[0].innerHTML = invalidFileGuidHtml;
 } 
 
 function validFileGuid(fileGuid) {
