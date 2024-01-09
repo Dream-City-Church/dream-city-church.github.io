@@ -1,7 +1,7 @@
 /* This javascript will get the file GUID from the URL and then download the file */
 const versionNumber = '1.0.0';
 const widgetTagName = 'dcc-filedownloader';
-const loadingSpinner = '<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
+const loadingSpinner = '<div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
 
 console.log("Loading DCC File Downloader Widget v"+versionNumber);
 
