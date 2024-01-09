@@ -36,7 +36,7 @@ function getFileName(fileGuid) {
     // Use fetch() to get the file name
     fetch(fileUrl, {method: 'GET'})
     .then(function(response) {
-        if(response.headers.get('Content-Disposition').split('filename=')[1]){
+        if(response.headers.get('Content-Disposition').contains('filename=')){
             fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
             validFileGuid(fileGuid,fileName);
         } else {
