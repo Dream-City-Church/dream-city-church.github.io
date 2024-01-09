@@ -431,6 +431,19 @@ dcc-emailVerification {
   font-weight: bold;
 }
 
+/* File Downloader */
+dcc-filedownloader {
+  text-align: center;
+  font-size: 1.25rem;
+  margin: 2rem 0 4rem 0;
+}
+
+#file-downloader-header {
+  font-weight: bold;
+  font-size: 1.25em;
+  line-height: 2em;
+}
+
 /* Print Styling */
 @media print {
   dcc-eventsignin, dcc-groupsignin {

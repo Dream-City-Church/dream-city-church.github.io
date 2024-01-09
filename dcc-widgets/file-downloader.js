@@ -38,6 +38,7 @@ function getFileName(fileGuid) {
     // Use fetch() to get the file name
     fetch(fileUrl, {method: 'GET'})
     .then(function(response) {
+        console.log(response.headers);
         if(response.headers.get('Content-Disposition')){
             fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
             validFileGuid(fileGuid,fileName);
@@ -62,7 +63,7 @@ function invalidFileGuid(fileGuid) {
 function validFileGuid(fileGuid,fileName) {
     var downloadFileHtml = `<div id="file-downloader">
         <div id="file-downloader-header">Downloading ${fileName}...</div>
-        <div id="file-downloader-subheader">Or <a id="file-download-link" href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" target="_blank">Click here</a> if the download does not begin automatically.</div>
+        <div id="file-downloader-subheader">or <a id="file-download-link" href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" target="_blank">CLICK HERE</a> if the download does not begin automatically</div>
         </div>`;
     document.getElementsByTagName(widgetTagName)[0].innerHTML = downloadFileHtml;
     document.getElementById("file-download-link").click();
