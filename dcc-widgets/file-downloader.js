@@ -21,7 +21,7 @@ function isValidFileGuid() {
     fetch(fileUrl, {method: 'GET'})
     .then(function(response) {
         console.log("URL Status: "+response.status);
-        if (response.status == 200) {
+        if (response.status === 200) {
             return true;
         } else {
             return false;
