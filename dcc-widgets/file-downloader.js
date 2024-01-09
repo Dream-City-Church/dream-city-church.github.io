@@ -32,6 +32,17 @@ function isValidFileGuid() {
     return request.status != 404;
 }
 
+/* Function for returning the file name */
+function getFileName() {
+    var urlVars = getUrlVars();
+    var fileGuid = urlVars["fileguid"];
+    var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
+    var request = new XMLHttpRequest();
+    request.open('HEAD', fileUrl, false);
+    request.send();
+    return request.getResponseHeader('Content-Disposition').split('filename=')[1];
+}
+
 /* Function for starting the file download widget */
 function startFileDownload() {
     /* If the file GUID is not valid, load the invalid file HTML */
@@ -46,8 +57,8 @@ function startFileDownload() {
         /* Otherwise, start the file download */
         console.log("Starting file download for file GUID "+fileGuid);
         var downloadFileHtml = `<div id="file-downloader">
-            <div id="file-downloader-header">Your download will begin in a moment...</div>
-            <div id="file-downloader-subheader">Or <a href="" target="_blank">Click here</a> if the download does not begin automatically.</div>
+            <div id="file-downloader-header">Downloading ${getFileName}...</div>
+            <div id="file-downloader-subheader">Or <a href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" target="_blank">Click here</a> if the download does not begin automatically.</div>
             </div>`;
         document.getElementsByTagName(widgetTagName)[0].innerHTML = downloadFileHtml;
         downloadFile();
