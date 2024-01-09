@@ -1,6 +1,7 @@
 /* This javascript will get the file GUID from the URL and then download the file */
 const versionNumber = '1.0.0';
 const widgetTagName = 'dcc-filedownloader';
+const loadingSpinner = '<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
 
 console.log("Loading DCC File Downloader Widget v"+versionNumber);
 
@@ -17,6 +18,7 @@ function getUrlVars() {
 function isValidFileGuid() {
     var fileGuid = getUrlVars()["fileguid"];
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
+    document.getElementsByTagName(widgetTagName)[0].innerHTML = loadingSpinner;
     // Use fetch() to check if the file exists
     fetch(fileUrl, {method: 'GET'})
     .then(function(response) {
