@@ -22,9 +22,9 @@ function isValidFileGuid() {
     .then(function(response) {
         console.log("URL Status: "+response.status);
         if (response.status === 200) {
-            return true;
+            validFileGuid(fileGuid);
         } else {
-            return false;
+            invalidFileGuid(fileGuid);
         }
     });
 }
@@ -45,35 +45,31 @@ function getFileName() {
     return fileName;
 }
 
-/* Function for starting the file download widget */
-function startFileDownload() {
-    var fileGuid = getUrlVars()["fileguid"];
-    /* If the file GUID is not valid, load the invalid file HTML */
-    if (!isValidFileGuid()) {
+function invalidFileGuid(fileGuid) {
         console.log("Unable to find file for GUID "+fileGuid);
         var invalidFileGuidHtml = `<div id="file-downloader">
             <div id="file-downloader-header">Invalid File URL</div>
             <div id="file-downloader-subheader">This does not appear to be a valid file URL. Please check your link and try again.</div>
             </div>`;
         document.getElementsByTagName(widgetTagName)[0].innerHTML = invalidFileGuidHtml;
-    } else {
-        /* Otherwise, start the file download */
-        var fileName = getFileName();
-        if(!fileName) {
-            fileName = "File";
-        }
-        console.log("File name: "+fileName);
-        console.log("Starting file download for file GUID "+fileGuid);
-        var downloadFileHtml = `<div id="file-downloader">
-            <div id="file-downloader-header">Downloading ${fileName}...</div>
-            <div id="file-downloader-subheader">Or <a id="file-download-link" href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" target="_blank">Click here</a> if the download does not begin automatically.</div>
-            </div>`;
-        document.getElementsByTagName(widgetTagName)[0].innerHTML = downloadFileHtml;
-        document.getElementById("file-download-link").click();
+} 
+
+function validFileGuid(fileGuid) {
+    var fileName = getFileName();
+    if(!fileName) {
+        fileName = "File";
     }
+    console.log("File name: "+fileName);
+    console.log("Starting file download for file GUID "+fileGuid);
+    var downloadFileHtml = `<div id="file-downloader">
+        <div id="file-downloader-header">Downloading ${fileName}...</div>
+        <div id="file-downloader-subheader">Or <a id="file-download-link" href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" target="_blank">Click here</a> if the download does not begin automatically.</div>
+        </div>`;
+    document.getElementsByTagName(widgetTagName)[0].innerHTML = downloadFileHtml;
+    document.getElementById("file-download-link").click();
 }
 
 /* Load this widget after the page loads */
 window.addEventListener('load', function() {
-    startFileDownload();
+    isValidFileGuid();
 });
