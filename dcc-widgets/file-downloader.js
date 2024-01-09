@@ -18,7 +18,7 @@ function isValidFileGuid() {
     var fileGuid = getUrlVars()["fileguid"];
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
     var request = new XMLHttpRequest();
-    request.open('HEAD', fileUrl, false);
+    request.open('GET', fileUrl, false);
     request.send();
     return request.status != 405;
 }
@@ -28,7 +28,7 @@ function getFileName() {
     var fileGuid = getUrlVars()["fileguid"];
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
     var request = new XMLHttpRequest();
-    request.open('HEAD', fileUrl, false);
+    request.open('GET', fileUrl, false);
     request.send();
     return request.getResponseHeader('Content-Disposition').split('filename=')[1];
 }
