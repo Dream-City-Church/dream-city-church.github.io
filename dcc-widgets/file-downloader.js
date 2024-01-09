@@ -13,13 +13,6 @@ function getUrlVars() {
     return urlVars;
 }
 
-/* Function for downloading file */
-function downloadFile() {
-    var fileGuid = getUrlVars()["fileguid"];
-    var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
-    window.location.href = fileUrl;
-}
-
 /* Function for checking if the file GUID is valid */
 function isValidFileGuid() {
     var fileGuid = getUrlVars()["fileguid"];
@@ -56,10 +49,10 @@ function startFileDownload() {
         console.log("Starting file download for file GUID "+fileGuid);
         var downloadFileHtml = `<div id="file-downloader">
             <div id="file-downloader-header">Downloading ${getFileName}...</div>
-            <div id="file-downloader-subheader">Or <a href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" target="_blank">Click here</a> if the download does not begin automatically.</div>
+            <div id="file-downloader-subheader">Or <a id="file-download-link" href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" download>Click here</a> if the download does not begin automatically.</div>
             </div>`;
         document.getElementsByTagName(widgetTagName)[0].innerHTML = downloadFileHtml;
-        downloadFile();
+        document.getElementById("file-download-link").click();
     }
 }
 
