@@ -36,7 +36,6 @@ function getFileName() {
     // Use fetch() to get the file name
     fetch(fileUrl, {method: 'GET'});
     // extract the file name
-    console.log("Fetch heades: "+fetch.headers.get('Content-Disposition'));
     var fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
     // return the file name
     console.log("File name: "+fileName)
@@ -47,7 +46,7 @@ function getFileName() {
 function startFileDownload() {
     var fileGuid = getUrlVars()["fileguid"];
     /* If the file GUID is not valid, load the invalid file HTML */
-    if (!isValidFileGuid() && 1 == 0) {
+    if (!isValidFileGuid()) {
         console.log("Unable to find file for GUID "+fileGuid);
         var invalidFileGuidHtml = `<div id="file-downloader">
             <div id="file-downloader-header">Invalid File URL</div>
