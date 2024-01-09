@@ -22,7 +22,7 @@ function isValidFileGuid() {
     .then(function(response) {
         console.log("URL Status: "+response.status);
         if (response.status === 200) {
-            validFileGuid(fileGuid);
+            getFileName(fileGuid);
         } else {
             invalidFileGuid(fileGuid);
         }
@@ -30,15 +30,17 @@ function isValidFileGuid() {
 }
 
 /* Function for returning the file name */
-function getFileName() {
-    var fileGuid = getUrlVars()["fileguid"];
+function getFileName(fileGuid) {
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
     var fileName = "File";
     // Use fetch() to get the file name
     fetch(fileUrl, {method: 'GET'})
     .then(function(response) {
         if(response.headers.get('Content-Disposition').split('filename=')[1]){
-            var fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
+            fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
+            validFileGuid(fileGuid,fileName);
+        } else {
+            validFileGuid(fileGuid,fileName)
         }
     });
     // return the file name
@@ -55,13 +57,7 @@ function invalidFileGuid(fileGuid) {
     document.getElementsByTagName(widgetTagName)[0].innerHTML = invalidFileGuidHtml;
 } 
 
-function validFileGuid(fileGuid) {
-    var fileName = getFileName();
-    if(!fileName) {
-        fileName = "File";
-    }
-    console.log("File name: "+fileName);
-    console.log("Starting file download for file GUID "+fileGuid);
+function validFileGuid(fileGuid,fileName) {
     var downloadFileHtml = `<div id="file-downloader">
         <div id="file-downloader-header">Downloading ${fileName}...</div>
         <div id="file-downloader-subheader">Or <a id="file-download-link" href="https://my.dreamcitychurch.us/ministryplatformapi/files/${fileGuid}" target="_blank">Click here</a> if the download does not begin automatically.</div>
