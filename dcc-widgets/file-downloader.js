@@ -36,16 +36,16 @@ function getFileName(fileGuid) {
     // Use fetch() to get the file name
     fetch(fileUrl, {method: 'GET'})
     .then(function(response) {
-        if(response.headers.get('Content-Disposition').contains('filename=')){
+        if(response.headers.get('Content-Disposition')){
             fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
             validFileGuid(fileGuid,fileName);
         } else {
             validFileGuid(fileGuid,fileName)
         }
+    })
+    .catch(function(error) {
+        validFileGuid(fileGuid,fileName);
     });
-    // return the file name
-    console.log("File name: "+fileName)
-    return fileName;
 }
 
 function invalidFileGuid(fileGuid) {
