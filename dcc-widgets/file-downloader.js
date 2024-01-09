@@ -20,7 +20,8 @@ function isValidFileGuid() {
     var request = new XMLHttpRequest();
     request.open('HEAD', fileUrl, false);
     request.send();
-    return request.status != 404;
+    // Check if the returned XML contains an Error tag
+    return !request.responseText.includes("<Error>");
 }
 
 /* Function for returning the file name */
