@@ -439,6 +439,7 @@ dcc-filedownloader {
 }
 
 #file-downloader-header {
+  display: block;
   font-weight: bold;
   font-size: 1.25em;
   line-height: 2em;
