@@ -20,7 +20,7 @@ function isValidFileGuid() {
     // Use fetch() to check if the file exists
     fetch(fileUrl, {method: 'GET'});
     // If the file exists, return true
-    if (fetch.status != 405) {
+    if (fetch.status == 200) {
         return true;
     }
 }
