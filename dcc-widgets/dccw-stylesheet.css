@@ -433,13 +433,13 @@ dcc-emailVerification {
 
 /* File Downloader */
 dcc-filedownloader {
+  display: block;
   text-align: center;
   font-size: 1.25rem;
   margin: 2rem 0 4rem 0;
 }
 
 #file-downloader-header {
-  display: block;
   font-weight: bold;
   font-size: 1.25em;
   line-height: 2em;
