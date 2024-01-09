@@ -35,9 +35,12 @@ function getFileName() {
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
     // Use fetch() to get the file name
     fetch(fileUrl, {method: 'GET'});
-    // extract the file name
-    var fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
+    // extract the file name if it
+    if (!fetch.headers.get('Content-Disposition')) {
+        return false;
+    }
     // return the file name
+    var fileName = fetch.headers.get('Content-Disposition').split('filename=')[1];
     console.log("File name: "+fileName)
     return fileName;
 }
