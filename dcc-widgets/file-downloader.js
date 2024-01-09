@@ -17,20 +17,22 @@ function getUrlVars() {
 function isValidFileGuid() {
     var fileGuid = getUrlVars()["fileguid"];
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
-    var request = new XMLHttpRequest();
-    request.open('GET', fileUrl, false);
-    request.send();
-    return request.status != 405;
+    // Use fetch() to check if the file exists
+    fetch(fileUrl, {method: 'GET'});
+    // If the file exists, return true
+    if (fetch.status != 405) {
+        return true;
+    }
 }
 
 /* Function for returning the file name */
 function getFileName() {
     var fileGuid = getUrlVars()["fileguid"];
     var fileUrl = "https://my.dreamcitychurch.us/ministryplatformapi/files/" + fileGuid;
-    var request = new XMLHttpRequest();
-    request.open('GET', fileUrl, false);
-    request.send();
-    return request.getResponseHeader('Content-Disposition').split('filename=')[1];
+    // Use fetch() to get the file name
+    fetch(fileUrl, {method: 'GET'});
+    // Return the file name
+    return fetch.name;
 }
 
 /* Function for starting the file download widget */
