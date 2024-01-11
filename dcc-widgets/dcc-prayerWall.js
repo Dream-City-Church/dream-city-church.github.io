@@ -118,7 +118,7 @@ function loadPrayerWall() {
     divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div><div id="reload-prayer-wall" onclick="reloadPrayerWall()">Refresh <i class="fa-solid fa-arrows-rotate"></i></div></div>`;
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
     loadPrayers();
-    setInterval(checkForNewPrayers, 60*1000);
+    setInterval(checkForNewPrayers, 120*1000);
 }
 
 /* Function for loading prayers */
