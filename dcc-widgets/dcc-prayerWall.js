@@ -208,7 +208,10 @@ function loadPrayers() {
                 )
 
                 /* select the max prayer ID number then update variable */
-                maxPrayerId = Math.max.apply(Math, data.prayers[0].map(function(o) { return o.PrayerID; }));
+                returnedMaxPrayerId = Math.max.apply(Math, data.prayers[0].map(function(o) { return o.PrayerID; }));
+                if(returnedMaxPrayerId > maxPrayerId){
+                    maxPrayerId = returnedMaxPrayerId;
+                }
                 
                 document.querySelector(".dccw-spinnercontainer").remove();
                 if (pageNum < 4) {
