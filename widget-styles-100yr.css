@@ -327,6 +327,15 @@ h4.mpp-card--subtitle:nth-child(1) {
     text-decoration: underline;
 }
 
+@media screen and (max-width: 800px) {
+    #addPromoCodeButton {
+        max-width: 100%;
+        width: 100%;
+        margin: 1rem auto;
+    }
+    
+}
+
 
 /*********************/
 /* Inner Page Styles */
@@ -538,8 +547,26 @@ h2#responseFormTitle {
     max-width: 150px;
 }
 
+.promo-code-text {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
 .mppw-product-description {
     font-weight: initial;
+}
+
+@media screen and (max-width: 800px) {
+    #promoCodeContainer h3 {
+        width: 100%;
+    }
+
+    #promoCodeText {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+    }
+    
 }
 
 /****************/
