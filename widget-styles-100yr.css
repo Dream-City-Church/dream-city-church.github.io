@@ -316,6 +316,17 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-top: 1rem;
 }
 
+#addPromoCodeButton {
+    max-width: 200px;
+    background-color: white;
+    color: var(--brand-primary);
+    border: 1px solid var(--brand-primary);
+}
+
+#addPromoCodeButton:hover {
+    text-decoration: underline;
+}
+
 
 /*********************/
 /* Inner Page Styles */
@@ -507,6 +518,24 @@ h2#responseFormTitle {
 
 #registrationForm {
     clear: both;
+}
+
+#promoCodeContainer {
+    border: none;
+}
+
+#promoCodeText {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5rem;
+    background-color: #FAFAFA;
+    border: 1px solid #CCC;
+    border-radius: var(--form-field-borderradius);
+    font-family: monospace;
+    letter-spacing: 0.2rem;
+    max-width: 150px;
 }
 
 .mppw-product-description {
