@@ -316,19 +316,19 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-top: 1rem;
 }
 
-#addPromoCodeButton {
+#promoCodeContainer #addPromoCodeButton {
     max-width: 200px;
     background-color: white;
     color: var(--brand-primary);
     border: 1px solid var(--brand-primary);
 }
 
-#addPromoCodeButton:hover {
+#promoCodeContainer #addPromoCodeButton:hover {
     text-decoration: underline;
 }
 
 @media screen and (max-width: 800px) {
-    #addPromoCodeButton {
+    #promoCodeContainer #addPromoCodeButton {
         max-width: 100%;
         width: 100%;
         margin: 1rem auto;
@@ -529,6 +529,12 @@ h2#responseFormTitle {
     clear: both;
 }
 
+#registrationTotalValue {
+    font-weight: bold;
+    font-family: var(--header-font-face);
+    margin-left: 1rem;
+}
+
 #promoCodeContainer {
     border: none;
 }
@@ -554,6 +560,22 @@ h2#responseFormTitle {
 
 .mppw-product-description {
     font-weight: initial;
+}
+
+table.mppw-invoice td, th {
+    padding: 10px 0;
+}
+
+td.mppw-invoice-total {
+    border: none;
+}
+
+.mppw-invoice-summary-label {
+    font-weight: normal;
+}
+
+#balanceDueLabel {
+    font-weight: bold;
 }
 
 @media screen and (max-width: 800px) {
