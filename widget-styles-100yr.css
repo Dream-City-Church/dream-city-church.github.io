@@ -44,6 +44,7 @@
     --innerPage-primaryColor: var(--primary);
     --innerPage-linkHoverColor: var(--secondary);
     --innerPage-linkColor: var(--primary);
+    --innerPage-buttonHoverBgColor: var(--secondary);
     --innerPage-fontSize: 1.1rem;
     --innerPage-lineHeight: 1.6rem;
     --alt-text-color: #777777;
@@ -325,6 +326,13 @@ h4.mpp-card--subtitle:nth-child(1) {
 
 #promoCodeContainer #addPromoCodeButton:hover {
     text-decoration: underline;
+}
+
+a.mppw-btn.mpp-innerpage--button.primary.mb-medium {
+    float: right;
+    clear: both;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 800px) {
