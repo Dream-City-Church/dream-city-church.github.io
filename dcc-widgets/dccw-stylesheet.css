@@ -429,6 +429,10 @@ div#checkboxInstructions {
     filter: brightness(.8) contrast(1.2);
   }
 
+  #dcc-signinform label {
+    color: #bcbcbc;
+  }
+
   #dcc-signinform .form-group input {
     color: #efefef;
     background-color: #444;
