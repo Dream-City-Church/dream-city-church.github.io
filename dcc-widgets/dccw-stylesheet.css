@@ -423,6 +423,29 @@ div#checkboxInstructions {
   transition: border 0.25s ease, background-color 0.25s ease;
 }
 
+/* Dark Mode styling for Sign In Forms */
+@media (prefers-color-scheme: dark) {
+  dcc-eventsignin img, dcc-groupsignin img {
+    filter: brightness(.8) contrast(1.2);
+  }
+
+  #dcc-signinform .form-group input {
+    color: #fafafa;
+    background-color: #444;
+  }
+
+  .checkbox label {
+    background-color: #0f0f0f;
+    border-color: #222;
+  }
+
+  .checkbox label:has(input:checked) {
+    background-color: #444;
+    color: #fafafa;
+    border-color: green;
+  }
+}
+
 /* Email Verification */
 dcc-emailVerification {
   text-align: center;
