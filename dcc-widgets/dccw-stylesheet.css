@@ -430,8 +430,14 @@ div#checkboxInstructions {
   }
 
   #dcc-signinform .form-group input {
-    color: #fafafa;
+    color: #efefef;
     background-color: #444;
+    border-color: #0c0c0c;
+  }
+
+  #dcc-signinform .form-group input:focus {
+    color: #fafafa;
+    border-color: var(--brand-primary);
   }
 
   .checkbox label {
