@@ -425,7 +425,7 @@ div#checkboxInstructions {
 
 /* Dark Mode styling for Sign In Forms */
 @media (prefers-color-scheme: dark) {
-  dcc-eventsignin img, dcc-groupsignin img {
+  dcc-eventsignin #header-image, dcc-groupsignin #header-image {
     filter: brightness(.8) contrast(1.2);
   }
 
