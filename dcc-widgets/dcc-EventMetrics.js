@@ -52,23 +52,36 @@ function getCurrentEvents() {
                 divHTML = `<div id="dcc-eventmetrics">`;
 
                 for (var i = 0; i < data.Events.length; i++) {
-                    if(data.Events[i].File_GUID == '' || data.Events[i].File_GUID == null) {
                         divHTML += `<div class="dcc-eventmetrics-event">
-                        <div class="event-thumbnail empty"></div>
-                        <div class="event-description">
+                        <div class="event-thumbnail" style="background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.Events[i].File_GUID});"></div>
+                        <div class="event-description" style="background-image:">
                             <h3>${data.Events[i].Event_Title}</h3>
                             <div class="date">${data.Events[i].Event_Start_Date}</div>
-                        </div>
                         </div>`;
-                    } else {
-                        divHTML += `<div class="dcc-eventmetrics-event">
-                        <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/${data.Events[i].File_GUID}" alt="${data.Events[i].Event_Title}" class="event-thumbnail" />
-                        <div class="event-description">
-                            <h3>${data.Events[i].Event_Title}</h3>
-                            <div class="date">${data.Events[i].Event_Start_Date}</div>
-                        </div>
-                        </div>`;
-                    }
+                        if (data.Events[i].Event_Metrics.length > 0){
+                            divHTML += `<div class="event-metrics">`;
+                            for (var j = 0; j < data.Events[i].Event_Metrics.length; j++) {
+                                divHTML += `<div class="metric">
+                                    <div class="event-metric">${data.Events[i].Event_Metrics[j].Metric_Title}: ${data.Events[i].Event_Metrics[j].Numerical_Value}</div>
+                                </div>`;
+                            }
+                            divHTML += `</div>`;
+                        }
+                        /* Add form with dropdown for selecting a Metric and an input for the metric value */
+                        divHTML += `
+                        <div class="event-metric-form">
+                            <form id="event-metric-form-${i}">
+                                <select name="metric" id="metric-${i}">
+                                    <option value="0">Select a Metric</option>`;
+                                    for (var k = 0; k < data.Metrics.length; k++) {
+                                        divHTML += `<option value="${data.Metrics[k].Metric_ID}">${data.Metrics[k].Metric_Title}</option>`;
+                                    }
+                                    divHTML += `
+                                </select>
+                                <input type="number" id="metric-value-${i}" name="metric-value" placeholder="Enter Value">
+                                <button type="button" onclick="submitMetric(${i}, ${data.Events[i].Event_ID})">Submit</button>
+                            </form>
+                        </div></div>`;
                 }
 
                 document.getElementsByTagName("dcc-EventMetrics")[0].innerHTML = divHTML;
@@ -78,9 +91,10 @@ function getCurrentEvents() {
             }
         })
         .catch(function (error) {
+            console.log(error);
             divHTML = `<div id="dcc-eventmetrics"><div id="tatus-text"><p>Uh oh, something went wrong.<br /><br />We're having trouble communicating with our services. Please try again later.</p></div></div>`;
                 document.getElementsByTagName("dcc-EventMetrics")[0].innerHTML = divHTML;
-        });
+        })
     }
 
 window.onload = setTimeout(getCurrentEvents, 500);

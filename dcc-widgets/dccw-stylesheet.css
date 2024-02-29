@@ -1,6 +1,8 @@
 :root {
   --brand-primary: #bc204b;
   --brand-secondary: #e07e3c;
+  --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
+  --header-font-face: 'termina',Helvetica,Arial,Lucida,sans-serif;
 }
 
 /* Event Details */
@@ -508,6 +510,7 @@ dcc-filedownloader {
 
 /* Event Metrics */
 div#dcc-eventmetrics {
+  font-family: var(--root-font-face);
   width: 100%;
   max-width: 700px;
   margin: auto;
@@ -515,6 +518,7 @@ div#dcc-eventmetrics {
 
 #dcc-eventmetrics h3 {
   margin: 0;
+  font-family: var(--header-font-face);
 }
 
 .dcc-eventmetrics-event {
@@ -526,18 +530,57 @@ div#dcc-eventmetrics {
   display: grid;
   align-items: center;
   grid-template-columns: 25% 75%;
+  cursor: pointer;
+}
+
+.dcc-eventmetrics-event .selected {
+  position: absolute;
+  top: 0;
+  max-width: 700px;
+  z-index: 100;
+}
+
+.dcc-eventmetrics-event:hover {
+  filter: brightness(0.98);
 }
 
 .event-thumbnail {
   width: 100%;
   height: 100px;
   background-color: #efefef;
+  background-size: contain;
+  background-position: center;
 }
 
 .event-description {
   display: inline-block;
   padding: 0 2rem;
   margin: 0;
+}
+
+.event-metrics {
+  grid-column-start: 2;
+  padding: 0 2rem;
+}
+
+.metric {
+  padding: 0.5rem 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  dcc-eventmetrics {
+    background-color: #121212;
+    color: #efefef;
+  }
+
+  dcc-eventmetrics img, .event-thumbnail {
+    filter: brightness(.8) contrast(1.2);
+    background-color: #222;
+  }
+
+  .dcc-eventmetrics-event {
+    background-color: #333;
+  }
 }
 
 /* Loading Spinner */
