@@ -546,6 +546,7 @@ div#dcc-eventmetrics {
 
 .open {
   position: absolute;
+  /* display: inline-block; */
   top: 4rem;
   max-width: 700px;
   z-index: 100;
@@ -587,6 +588,10 @@ div#dcc-eventmetrics {
   text-transform: uppercase;
 }
 
+.metric:first-child {
+  margin-top: 1.5rem;
+}
+
 .event-metric-form {
   grid-column-start: 2;
   padding: 1rem  2rem;
@@ -594,6 +599,7 @@ div#dcc-eventmetrics {
   margin-top: 0.5rem;
   display: none;
   border-top: 1px dashed lightgray;
+  text-align: center;
 }
 
 .event-metric-form select, .event-metric-form input, .event-metric-form textarea {
@@ -613,14 +619,14 @@ div#dcc-eventmetrics {
 }
 
 .event-metric-form button {
-  width: 100%;
   font-size: 1.1rem;
-  padding: 0.5rem;
+  padding: 0.75rem 3rem;
   margin-top: 1rem;
   background-color: var(--brand-primary);
   color: white;
   font-weight: bold;
   border: 0;
+  border-radius: 2rem;
   text-transform: uppercase;
 }
 
@@ -642,6 +648,7 @@ div#dcc-eventmetrics {
 
 .open .event-metrics, .open > .event-metric-form, .open > .close-event-metrics {
   display: block;
+  grid-column: span 2;
 }
 
 @media (prefers-color-scheme: dark) {
