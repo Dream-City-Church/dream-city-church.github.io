@@ -670,6 +670,10 @@ div#dcc-eventmetrics {
     background-color: #333;
   }
 
+  .open {
+    border: 1px solid #333;
+  }
+
   .event-metric-form select, .event-metric-form input, .event-metric-form textarea {
     background-color: #999;
     color: #efefef;
