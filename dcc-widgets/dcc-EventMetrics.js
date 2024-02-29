@@ -1,6 +1,6 @@
 // Set current version
-var dccGroupMetricsVersion = "0.1";
-console.log('dcc-EventMetrics version ' + dccGroupMetricsVersion + ' loaded.');
+var dccGroupMetricsVersion = "1.0";
+console.log('Event Metrics version ' + dccGroupMetricsVersion + ' loaded.');
 
 // Set Global Variables
 var userId = getUrlVars()["userId"];
@@ -38,7 +38,6 @@ function getCurrentEvents() {
     };
     fetch('https://prod-09.westus2.logic.azure.com:443/workflows/9eefa5638fea445eb416b637d6219948/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XXM1wj0RI6c_hdR4Lw5PGeFs_CtmtmsMGyuTZ4JTdCw', options)
         .then(function (response) {
-            console.log(response.status);
             /* If status code 200 */
             if (response.status == 200) {
                 return response.json();
@@ -101,7 +100,6 @@ function getCurrentEvents() {
     }
 
 function submitMetric(Form_ID,Event_ID) {
-    console.log('submitting metric');
     /* Get Metric and Value from Form */
     var metricForm = document.getElementById('event-metric-form-'+Form_ID);
     var metricId = document.getElementById('metric-'+Form_ID).value;
@@ -136,7 +134,6 @@ function submitMetric(Form_ID,Event_ID) {
     };
     fetch('https://prod-12.westus2.logic.azure.com:443/workflows/835aa031af4d4836ae7e3ba8d5f43586/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PvI4ZCT-K8otlzUMFjHjSkl1VICiC8Aug6zK2NGdv1E', options)
         .then(function (response) {
-            console.log(response.status);
             /* If status code 200 */
             if (response.status == 200) {
                 return;
@@ -168,14 +165,11 @@ function submitMetric(Form_ID,Event_ID) {
 }
 
 function toggleEventMetrics(eventId, action, source) {
-    console.log('toggling event metrics from '+source)
     if (action == "close") {
-        console.log('closing event metrics ' + eventId)
         document.getElementById('eventmetrics-event-'+eventId).classList.remove('open');
         document.getElementById('overlay').classList.remove('overlay-active');
         document.getElementById('overlay').setAttribute('onclick', 'return();');
     } else if (action == "open") {
-        console.log('opening event metrics ' + eventId)
         document.getElementById('eventmetrics-event-'+eventId).classList.add('open');
         document.getElementById('overlay').classList.add('overlay-active');
         document.getElementById('overlay').setAttribute('onclick', 'toggleEventMetrics('+eventId+',\'close\',\'overlay\')');
