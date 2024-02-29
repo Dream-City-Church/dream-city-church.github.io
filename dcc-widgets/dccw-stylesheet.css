@@ -516,6 +516,17 @@ div#dcc-eventmetrics {
   margin: auto;
 }
 
+.overlay-active {
+  position: absolute;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0 0 0 / 0.5);
+  backdrop-filter: blur(1px);
+  left: 0;
+  top: 0;
+}
+
 #dcc-eventmetrics h3 {
   margin: 0;
   font-family: var(--header-font-face);
@@ -533,44 +544,114 @@ div#dcc-eventmetrics {
   cursor: pointer;
 }
 
-.dcc-eventmetrics-event .selected {
+.open {
   position: absolute;
-  top: 0;
+  top: 4rem;
   max-width: 700px;
   z-index: 100;
+  cursor: default;
+  box-shadow: 0 0 3rem 0 rgba(0 0 0 / 0.3);
 }
 
 .dcc-eventmetrics-event:hover {
   filter: brightness(0.98);
 }
 
+.open:hover {
+  filter: none;
+}
+
 .event-thumbnail {
   width: 100%;
   height: 100px;
   background-color: #efefef;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
 }
 
 .event-description {
   display: inline-block;
-  padding: 0 2rem;
+  padding: 1.5rem 2rem;
   margin: 0;
 }
 
 .event-metrics {
   grid-column-start: 2;
   padding: 0 2rem;
+  display: none;
 }
 
 .metric {
   padding: 0.5rem 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.event-metric-form {
+  grid-column-start: 2;
+  padding: 1rem  2rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  display: none;
+  border-top: 1px dashed lightgray;
+}
+
+.event-metric-form select, .event-metric-form input, .event-metric-form textarea {
+  font-family: var(--root-font-face);
+  width: 90%;
+  font-size: 1.1rem;
+  padding: 0.5rem 5%;
+  margin-bottom: 0.5rem;
+  border: 0;
+  box-sizing: content-box;
+  text-transform: uppercase;
+}
+
+.event-metric-form textarea {
+  margin-top: 1rem;
+  text-transform: none;
+}
+
+.event-metric-form button {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  background-color: var(--brand-primary);
+  color: white;
+  font-weight: bold;
+  border: 0;
+  text-transform: uppercase;
+}
+
+.close-event-metrics {
+  display: inline;
+  text-align: center;
+  background-color: #efefef;
+  grid-column: 2;
+  padding: 0.5rem 0;
+  margin-top: 2rem;
+  font-style: italic;
+  cursor: pointer;
+  display: none;
+}
+
+.close-event-metrics:hover {
+  background-color: #dfdfdf;
+}
+
+.open .event-metrics, .open > .event-metric-form, .open > .close-event-metrics {
+  display: block;
 }
 
 @media (prefers-color-scheme: dark) {
   dcc-eventmetrics {
     background-color: #121212;
     color: #efefef;
+  }
+
+  .overlay-active {
+    background: rgba(0 0 0 / 0.9);
   }
 
   dcc-eventmetrics img, .event-thumbnail {
@@ -580,6 +661,15 @@ div#dcc-eventmetrics {
 
   .dcc-eventmetrics-event {
     background-color: #333;
+  }
+
+  .event-metric-form select, .event-metric-form input, .event-metric-form textarea {
+    background-color: #999;
+    color: #efefef;
+  }
+
+  .close-event-metrics {
+    background-color: #222;
   }
 }
 
