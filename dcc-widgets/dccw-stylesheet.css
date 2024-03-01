@@ -182,6 +182,7 @@ dcc-householdprf h3 {
   cursor: pointer;
   background-color: var(--brand-primary);
   border: none;
+  border-radius: 2rem;
 }
 button#loadMorePrayers {
   margin: 2rem auto;
