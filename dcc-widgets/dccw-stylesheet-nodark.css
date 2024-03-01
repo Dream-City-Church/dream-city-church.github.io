@@ -77,7 +77,8 @@ dcc-householdprf h3 {
   flex-wrap: wrap;
   align-items: flex-start;
   align-content: space-between;
-  gap: 1% 1%
+  gap: 1% 1%;
+  background-color: transparent;
 }
 .prayer-card {
   background-color: #ffffff;
@@ -104,6 +105,7 @@ dcc-householdprf h3 {
   font-weight: bold;
   float: left;
   width: 60%;
+  color: #333;
 }
 .prayer-date {
   font-family: 'termina test heavy',Helvetica,Arial,Lucida,sans-serif;
@@ -111,6 +113,7 @@ dcc-householdprf h3 {
   float: right;
   width: 40%;
   text-align: right;
+  color: #333;
 }
 .prayer-description {
   position: relative;
@@ -123,6 +126,7 @@ dcc-householdprf h3 {
   -webkit-box-pack: end;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
+  color: #333;
 }
 @media screen and (max-width: 800px) {
   .prayer-description {
