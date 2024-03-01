@@ -262,6 +262,15 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
     background-color: #222;
     box-shadow: 0.15em 0.25em 0.15em rgb(0 0 0 / 0.3);
   }
+  .prayer-card.praise-report {
+    background-image: none;
+    background-color: #252520;
+  }
+  @media screen and (max-width: 1000px){
+    .prayer-card {
+      background-image: none;
+    }
+  }
   .prayer-name {
     color: #efefef;
   }
@@ -273,6 +282,10 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
   }
   .prayer-read-more {
     color: #efefef;
+    background-image: linear-gradient(179deg, transparent 5%, #222 70%);
+  }
+  .praise-report .prayer-read-more {
+    background-image: linear-gradient(178deg, transparent 10%, #252520 70%);
   }
   .prayer-counter {
     color: #777;
