@@ -72,12 +72,27 @@ dcc-householdprf h3 {
 
 /* Prayer Wall */
 #prayer-wall {
-  width: 100%;
+  width: 96%;
+  padding: 0 2%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   align-content: space-between;
   gap: 1% 1%
+}
+#submit-prayer-container {
+  text-align: center;
+}
+button#submit-prayer-button {
+  border: none;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--brand-primary);
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
 }
 .prayer-card {
   background-color: #ffffff;
