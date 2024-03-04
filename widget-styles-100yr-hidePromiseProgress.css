@@ -12,6 +12,10 @@
     min-height: 80px;
 }
 
-#Frequency, #Frequency+.mppw-form-field__label, #FirstInstallmentDate, #LastInstallmentDate {
+#Frequency, #Frequency+.mppw-form-field__label {
     display: none;
-  }
+}
+
+#FirstInstallmentDate, #LastInstallmentDate {
+    display: none;
+}
