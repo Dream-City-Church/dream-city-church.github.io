@@ -623,7 +623,7 @@ div#dcc-eventmetrics {
   cursor: pointer;
 }
 
-.open {
+.open-event-metric {
   position: absolute;
   /* display: inline-block; */
   top: 4rem;
@@ -637,7 +637,7 @@ div#dcc-eventmetrics {
   filter: brightness(0.98);
 }
 
-.open:hover {
+.open-event-metric:hover {
   filter: none;
 }
 
@@ -725,7 +725,7 @@ div#dcc-eventmetrics {
   background-color: #dfdfdf;
 }
 
-.open .event-metrics, .open > .event-metric-form, .open > .close-event-metrics {
+.open-event-metric .event-metrics, .open-event-metric > .event-metric-form, .open-event-metric > .close-event-metrics {
   display: block;
   grid-column: span 2;
 }
@@ -749,7 +749,7 @@ div#dcc-eventmetrics {
     background-color: #333;
   }
 
-  .open {
+  .open-event-metric {
     border: 1px solid #333;
   }
 

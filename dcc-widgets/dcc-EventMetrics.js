@@ -166,11 +166,11 @@ function submitMetric(Form_ID,Event_ID) {
 
 function toggleEventMetrics(eventId, action, source) {
     if (action == "close") {
-        document.getElementById('eventmetrics-event-'+eventId).classList.remove('open');
+        document.getElementById('eventmetrics-event-'+eventId).classList.remove('open-event-metric');
         document.getElementById('overlay').classList.remove('overlay-active');
         document.getElementById('overlay').setAttribute('onclick', 'return();');
     } else if (action == "open") {
-        document.getElementById('eventmetrics-event-'+eventId).classList.add('open');
+        document.getElementById('eventmetrics-event-'+eventId).classList.add('open-event-metric');
         document.getElementById('overlay').classList.add('overlay-active');
         document.getElementById('overlay').setAttribute('onclick', 'toggleEventMetrics('+eventId+',\'close\',\'overlay\')');
     }
