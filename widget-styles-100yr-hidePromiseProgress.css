@@ -9,13 +9,9 @@
 }
 
 .mppw-form-field__static-container {
-    min-height: 80px;
+    min-height: 0;
 }
 
 #Frequency, #Frequency+.mppw-form-field__label, .custom-date-input {
     display: none;
-}
-
-.mppw-form-field__static-container {
-    min-height: 0;
 }
