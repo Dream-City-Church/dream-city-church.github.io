@@ -17,5 +17,5 @@
 }
 
 .mppw-form-field__static-container {
-    min-height: none;
+    min-height: 0;
 }
