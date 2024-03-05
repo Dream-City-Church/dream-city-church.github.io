@@ -15,3 +15,21 @@
 #Frequency, #Frequency+.mppw-form-field__label, .custom-date-input {
     display: none;
 }
+
+#TotalPledgeValue {
+    font-weight: bold;
+}
+
+.mppw-btn.secondary {
+    background: var(--brand-cloud);
+}
+
+.mppw-btn.secondary:hover {
+    background: var(--brand-cloud);
+    text-decoration: underline;
+}
+
+.secondary:not(:disabled):not(.disabled).active {
+    background: var(--form-btn-primary-bgcolor);
+    border: none;
+}
