@@ -4,6 +4,7 @@ console.log('Event Metrics version ' + dccGroupMetricsVersion + ' loaded.');
 
 // Set Global Variables
 var userId = getUrlVars()["userId"];
+var contactGuid = getUrlVars()["contactGuid"];
 
 // Get URL Params Function
 function getUrlVars() {
@@ -21,7 +22,7 @@ function getCurrentEvents() {
     document.getElementsByTagName("dcc-EventMetrics")[0].innerHTML = divHTML;
 
     /* Check if User ID is present */
-    if (userId == null) {
+    if (contactGuid == null) {
         divHTML = `<div id="dcc-eventmetrics"><div id="status-text"><p>You are not authorized to view this page.</p></div></div>`;
         document.getElementsByTagName("dcc-EventMetrics")[0].innerHTML = divHTML;
         stop;
@@ -29,7 +30,7 @@ function getCurrentEvents() {
 
     /* Call Event Metrics Load API */
     const params = {
-        "User_ID": userId
+        "Contact_GUID": contactGuid
     };
     const options = {
         method: 'POST',
@@ -121,7 +122,7 @@ function submitMetric(Form_ID,Event_ID) {
     }
 
     const params = {
-        "User_ID": userId,
+        "Contact_GUID": contactGuid,
         "Event_ID": Event_ID,
         "Metric_ID": metricId,
         "Metric_Value": metricValue,
