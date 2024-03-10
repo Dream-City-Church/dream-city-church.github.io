@@ -1,0 +1,64 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/rdy7str.css">
+  <style>
+* { font-family: neue-haas-grotesk-display, sans-serif; font-size: 7pt; }
+body { padding:0; margin:0; font-family: neue-haas-grotesk-display, sans-serif; font-size: 7pt; }
+table#plan { width: 100%; border-collapse: collapse; margin-top:5px; }
+table#plan th { font-family: neue-haas-grotesk-display, sans-serif; font-weight: 700; background-color: black; color: white; font-size: 8pt; line-height: 14pt; padding; 4px !important; }
+table#plan td { font-family: neue-haas-grotesk-display, sans-serif; text-align: left; font-size: 7pt; line-height: 9pt }
+table#plan tbody, #plan thead { border: solid 1px black; }
+table#plan thead { display: table-header-group; background-color: #888888; color: white; font-size: 8pt; padding; 4px !important; }
+table#plan thead tr { font-size: 10pt; color: White; border-top: 1px solid black; border-bottom: 1px solid black; background-color: #ffffff !important; }
+table#plan tbody td { border: solid 1pt black; padding: 5px; vertical-align: top; }
+table#plan tr .header { font-family: termina, sans-serif; text-align: left; font-weight: bold; font-size: 8pt; background-color: #888888; color: White; padding: 4px; text-transform: uppercase; }
+table#plan tr .headerright { float: right; font-size: 8pt; color: white; font-family: termina, sans-serif; }
+table#plan .preservice { background-color: #ffffff; }
+table#plan .time { width: 70px; text-align: left; vertical-align: top; }
+table#plan .length { font-size: 7pt; width: 55px; text-align: left; vertical-align: top; }
+table#plan .lights { width: 55px; text-align: center; vertical-align: middle; }
+table#plan .note { text-align: left; font-size: 7pt; vertical-align: top; font-family: neue-haas-grotesk-display, sans-serif; font-weight: normal; }
+table#plan .element { text-align: left; font-family: neue-haas-grotesk-display, sans-serif; font-weight: normal; font-size: 7pt; height: 20px; width: 30%; }
+table#plan .person { text-align: left; font-family: neue-haas-grotesk-display, sans-serif; font-weight: bold; font-size: 7pt; height: 20px; width: 30%; }
+table#plan .element pre { font-weight: normal; font-size: 7pt }
+table#plan .odd { background-color: white; }
+table#plan .song { color: #178BD2; }
+table#plan .media { color: #F43B3B; }
+table#plan .footer { text-align: center; font-family: Arial; font-size: 7.5pt; vertical-align: middle; border: solid 1px black; padding: 3px; }
+
+table#header { width: 100%; border: none; padding: 4px; border-collapse: collapse; border: solid 1px black;}
+table#header td { padding: 2px; vertical-align: top; }
+
+H1 { text-align: center; padding: 0; padding-top: 0px; margin-bottom: 5px; font-size: 20pt; line-height: 20pt; font-family: termina, sans-serif; font-weight: bold; color:#bc204b; }
+H2 { text-align: center; padding: 0; margin: 0; font-size: 18pt; font-family: termina, sans-serif; font-weight: bold; font-style: italic; font-family: Arial; font-weight: normal; }
+H3 { text-align: center; padding: 0; margin: 0; font-size: 8pt; font-family: neue-haas-grotesk-display, sans-serif; font-weight: bold; line-height:10pt; }
+H4 { text-align: center; padding: 10px 0 0 0; margin: 0; font-size: 10pt; font-family: termina, sans-serif; font-weight: normal; }
+PRE { margin: 0; padding: 0; white-space: pre-wrap; }
+.title_header { width: 100%;}
+.logo {float: left; }
+.series {float: right; }
+.pagebreak { page-break-before: always; }
+
+.production_team { border: solid 1px black; width: 350px; border-collapse: collapse; margin: 5px auto; font-family: neue-haas-grotesk-display, sans-serif; font-weight: bold; }
+.production_team TH { font-size: 10pt; background-color: #eee; border-right: solid 1px black; text-align: right; padding-right: 6px; width: 140; padding-top: 0px; padding-bottom: 0px; font-family: neue-haas-grotesk-display, sans-serif; font-weight: bold; }
+.production_team TD { font-size: 10pt; padding-left: 6px; font-family: neue-haas-grotesk-display, sans-serif; font-weight: bold; }
+.times TD { font-size: 10pt; vertical-align: top; padding: 0px; }
+.times TH { font-weight: normal; font-size: 10pt; text-align: left; text-decoration: underline; padding: 0px; }
+.times_section { padding: 0px; width: 200px; vertical-align: top; }
+.time_heading { clear: both; padding-top: 10px; font-weight: bold; font-size: 10pt; color: white; background-color: black; padding: 5px; text-transform: uppercase; }
+.time { padding: 5px; }
+
+.people { width: 99%; border-collapse: collapse; padding: 3px; vertical-align: top; font-family: neue-haas-grotesk-display, sans-serif; font-weight: normal; font-size: 8pt; }
+.people th { color: white; background-color: black; font-size: 10pt; text-align: center; padding: 3px; vertical-align: center; border: solid 1px black; font-family: neue-haas-grotesk-display, sans-serif; font-weight: bold; text-transform: uppercase; }
+.people td { vertical-align: top; border: solid 1px black; padding: 3px; font-family: neue-haas-grotesk-display, sans-serif; font-weight: normal; font-size: 8pt; }
+.people tr { vertical-align: top; border: solid 1px black; padding: 3px; font-family: neue-haas-grotesk-display, sans-serif; font-weight: normal; font-size: 8pt; }
+.thumbnail { padding: 0; width:40px; height:40px; }
+    
+.header { width: 99%; border-collapse: collapse; margin: 5px auto; padding: 10px; }			
+.ministry_title { font-size: 28pt; font-weight: bold; text-align: center; border-bottom: dashed 1px black;}
+.plan_dates { text-align: center; font-weight: bold; font-size: 14pt; }
+.series_title { text-align: right; }
+   
+</style>
