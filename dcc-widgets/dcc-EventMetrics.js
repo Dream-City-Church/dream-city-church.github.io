@@ -63,7 +63,7 @@ function getCurrentEvents() {
                         if (data.Events[i].Event_Metrics.length > 0){
                             for (var j = 0; j < data.Events[i].Event_Metrics.length; j++) {
                                 divHTML += `<div class="metric">
-                                    <div class="event-metric">${data.Events[i].Event_Metrics[j].Metric_Title}: ${data.Events[i].Event_Metrics[j].Numerical_Value}</div>
+                                    <div class="event-metric"><i class="fa-solid fa-note"></i> ${data.Events[i].Event_Metrics[j].Metric_Title}: ${data.Events[i].Event_Metrics[j].Numerical_Value}</div>
                                 </div>`;
                             }
                         }
@@ -146,7 +146,7 @@ function submitMetric(Form_ID,Event_ID) {
         .then(function (data) {
             divHTML = document.getElementById('event-'+Event_ID+'-metrics').innerHTML;
             divHTML += `<div class="metric">
-                <div class="event-metric">${metricText}: ${metricValue}</div>`;
+                <div class="event-metric"><i class="fa-solid fa-note"></i> ${metricText}: ${metricValue}</div>`;
 
             document.getElementById('event-'+Event_ID+'-metrics').innerHTML = divHTML;
 
