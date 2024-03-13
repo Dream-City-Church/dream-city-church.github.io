@@ -609,6 +609,8 @@ div#dcc-eventmetrics {
 #dcc-eventmetrics h3 {
   margin: 0;
   font-family: var(--header-font-face);
+  line-height: 1.25rem;
+  padding-bottom: 0.5rem;
 }
 
 .dcc-eventmetrics-event {
@@ -621,6 +623,7 @@ div#dcc-eventmetrics {
   align-items: center;
   grid-template-columns: 25% 75%;
   cursor: pointer;
+  line-height: 1.25rem;
 }
 
 .open-event-metric {
