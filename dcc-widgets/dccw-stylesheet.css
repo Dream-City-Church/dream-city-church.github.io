@@ -596,7 +596,7 @@ div#dcc-eventmetrics {
 }
 
 .overlay-active {
-  position: absolute;
+  position: fixed;
   z-index: 5;
   width: 100vw;
   height: 100vh;
@@ -624,8 +624,7 @@ div#dcc-eventmetrics {
 }
 
 .open-event-metric {
-  position: absolute;
-  /* display: inline-block; */
+  position: fixed;
   top: 4rem;
   max-width: 700px;
   z-index: 100;
@@ -651,7 +650,7 @@ div#dcc-eventmetrics {
 
 .event-description {
   display: inline-block;
-  padding: 1.5rem 2rem;
+  padding: 0.25rem 1rem;
   margin: 0;
 }
 

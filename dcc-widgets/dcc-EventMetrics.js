@@ -56,7 +56,8 @@ function getCurrentEvents() {
                         <div class="event-thumbnail" style="background-image: url(https://my.dreamcitychurch.us/ministryplatformapi/files/${data.Events[i].File_GUID});" onclick="toggleEventMetrics(${data.Events[i].Event_ID},'open','thumbnail')"></div>
                         <div class="event-description"  onclick="toggleEventMetrics(${data.Events[i].Event_ID},'open','description')">
                             <h3>${data.Events[i].Event_Title}</h3>
-                            <div class="date">${data.Events[i].Event_Start_Date}</div>
+                            <div class="location"><i class="fa-solid fa-location-pin"></i> ${data.Events[i].Location}</div>
+                            <div class="date"><i class="fa-regular fa-calendar-days"></i> ${data.Events[i].Event_Start_Date}</div>
                         </div>
                         <div class="event-metrics" id="event-${data.Events[i].Event_ID}-metrics">`;
                         if (data.Events[i].Event_Metrics.length > 0){
