@@ -657,6 +657,17 @@ div#dcc-eventmetrics {
   margin: 0;
 }
 
+.event-description i.fa-solid, .event-description i.fa-regular {
+  width: 20px;
+  text-align: center;
+}
+
+.event-description .location, .event-description .date {
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .event-metrics {
   grid-column-start: 2;
   padding: 0 2rem;
