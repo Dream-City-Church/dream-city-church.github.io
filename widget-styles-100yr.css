@@ -542,6 +542,10 @@ h2#responseFormTitle {
     border: none;
 }
 
+.mppw-event-gray-out .product-selection-container::after {
+    content: " (Sold Out)";
+}
+
 #registrationForm {
     clear: both;
 }
