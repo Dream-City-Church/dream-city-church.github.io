@@ -533,6 +533,15 @@ h2#responseFormTitle {
     padding-top: 2rem;
 }
 
+.mppw-event-gray-out {
+    font-style: italic;
+}
+
+.mppw-radio-gray-out, .mppw-checkbox-gray-out {
+    background-color: transparent;
+    border: none;
+}
+
 #registrationForm {
     clear: both;
 }
