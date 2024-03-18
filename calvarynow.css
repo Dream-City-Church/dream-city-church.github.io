@@ -469,12 +469,17 @@ h4.mpp-card--subtitle:nth-child(1) {
 
 /*--------------------------------------------*/
 /* Adding code from Nicole Godbey on 3/3/22   */
+/* Updated 3/18/24                            */
 /*--------------------------------------------*/
 
 .option-name,
 .option-price,
 .option-qty {
-    color:  var(--alt-text-color) !important;
+    /* color: var(--alt-text-color); */
+}
+
+.product-form th {
+    color: var(--alt-text-color);
 }
 
 .mppw-form-field__alt-label,
@@ -483,6 +488,16 @@ h4.mpp-card--subtitle:nth-child(1) {
  {
     color:  var(--alt-text-color) !important;
     font-size: 14px !important;
+}
+
+/* Update for unavailable registration options */ 
+.mppw-event-gray-out {
+    font-style: italic;
+}
+
+.mppw-radio-gray-out, .mppw-checkbox-gray-out {
+    background-color: transparent;
+    border: none;
 }
 
 /*--------------------------------------------*/
