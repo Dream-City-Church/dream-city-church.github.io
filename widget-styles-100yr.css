@@ -259,7 +259,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
-    font: var(--fa-font-solid);
+    font: var(--fa-font-solid) !important;
 }
 
 .group-capacity:before {
