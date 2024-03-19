@@ -657,7 +657,7 @@ td.mppw-invoice-total {
 }
 
 .mppw-icon-unlock:before {
-    content: "\f502";
+    content: "\f007";
     font-family: 'FontAwesome';
     color: white;
 }
