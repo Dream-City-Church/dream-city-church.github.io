@@ -244,6 +244,10 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-right: 7px;
     content: "\f073";
     color: var(--primary);
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 .event-location:before, .group-location:before, .opportunity-location:before {
@@ -252,6 +256,10 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-left: 1px;
     content: "\f3c5";
     color: var(--primary);
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 .group-capacity:before {
@@ -259,6 +267,10 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-right: 7px;
     content: "\f0c0";
     color: var(--primary);
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 .group-start-date:before {
@@ -266,6 +278,10 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-right: 7px;
     content: "\f017";
     color: var(--primary);
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 .mpp-card--footer {
@@ -660,6 +676,10 @@ td.mppw-invoice-total {
     content: "\f007";
     font-family: 'FontAwesome';
     color: white;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 
@@ -702,6 +722,10 @@ h2#householdName:after {
     content: "\f51d";
     font-family: 'FontAwesome';
     padding-right: 0.75em;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 .mpp-household .mpp-household--header-wrapper {
@@ -724,6 +748,10 @@ a#editHouseholdName:before {
     font-family: 'FontAwesome';
     content: "\f044";
     padding-right: 0.75em;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 img.mpp-icon--household {
@@ -734,6 +762,10 @@ a#addNewMember:before {
     font-family: 'FontAwesome';
     content: "\f234";
     padding-right: 1em;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 img.mpp-icon--household {
