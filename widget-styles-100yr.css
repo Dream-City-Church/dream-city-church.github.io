@@ -429,12 +429,11 @@ div[data-id="mp_customform_2389"]{
 }
 
 .mpp-innerpage--name-has-email::after {
-    display: none;
+    display: inline-block;
     content: '\f0e0';
     font: var(--fa-font-solid);
     font-family: 'FontAwesome';
     padding-left: 0.5rem;
-    
 }
 
 .mpp-innerpage--name {
