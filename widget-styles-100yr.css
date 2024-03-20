@@ -149,6 +149,10 @@ h1, h2, h3 {
 .mpp-card--badge::after {
     content: "\f559";
     font-family: 'FontAwesome';
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
     top: 0px;
     border-radius: 0 0.5rem 0 0;
     position: absolute;
@@ -293,7 +297,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 /***********/
 
 .mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton, #payInvoice {
-    font-family: 'Open Sans', sans-serif, 'FontAwesome';
+    font-family: 'Open Sans', sans-serif, "Font Awesome 6 Pro";
     box-shadow: none;
     padding: 0.5rem 2rem;
     border-radius: 2rem;
@@ -301,7 +305,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mpp-about-me--cancel-button {
-    font-family: 'Open Sans', sans-serif, 'FontAwesome';
+    font-family: 'Open Sans', sans-serif, "Font Awesome 6 Pro";
     box-shadow: none;
     padding: 0.5rem 2rem;
     border-radius: 2rem;
