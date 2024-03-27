@@ -459,6 +459,12 @@ div#mapContainer {
     line-height:1.5rem;
 }
 
+.mppw-component-container > div:has(.mpp-innerpage--button) {
+    width: 62%;
+    clear: right;
+    float: right;
+}
+
 #registrationFormContainer {
     width: 62%;
     float: right;
@@ -508,6 +514,11 @@ div#mapContainer {
     }
 
     .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container, div#mapContainer, #registrationFormContainer {
+        width: 100%;
+        float: none;
+    }
+
+    .mppw-component-container > div:has(.mpp-innerpage--button) {
         width: 100%;
         float: none;
     }
