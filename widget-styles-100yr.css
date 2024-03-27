@@ -445,9 +445,28 @@ div[data-id="mp_customform_2389"]{
 }
 
 div#mapContainer {
-    clear: both;
-    padding-top: 2rem;
+    float: left;
+    clear: left;
+    width: 33%;
+    padding-top: 1rem;
     background-color: white;
+}
+
+.mpp-innerpage--map-info {
+    padding-left: 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height:1.5rem;
+}
+
+#registrationFormContainer {
+    width: 62%;
+    float: right;
+    clear: right;
+}
+
+#registrationFormContainer .titleContainer {
+    display: none;
 }
 
 #inquiryContainer, #signupContainer {
@@ -488,9 +507,13 @@ div#mapContainer {
         margin-top: 1rem;
     }
 
-    .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container {
+    .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container, div#mapContainer, #registrationFormContainer {
         width: 100%;
         float: none;
+    }
+
+    .mppw-col {
+        flex: 100%;
     }
 
     .mpp-innerpage--special, .mpp-innerpage--capacity {
