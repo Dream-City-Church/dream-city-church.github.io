@@ -465,7 +465,7 @@ div#mapContainer {
     float: right;
 }
 
-#singlePriceContainer {
+div#registrationTotalContainer, #singlePriceContainer {
     display: none;
 }
 
