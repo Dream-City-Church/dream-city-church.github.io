@@ -469,7 +469,7 @@ div#mapContainer {
     display: none;
 }
 
-div#registrationTotalContainer, #registrationFormContainer {
+#registrationFormContainer {
     width: 62%;
     float: right;
     clear: right;
