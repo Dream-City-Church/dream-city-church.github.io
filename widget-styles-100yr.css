@@ -465,6 +465,10 @@ div#mapContainer {
     float: right;
 }
 
+#singlePriceContainer {
+    display: none;
+}
+
 #registrationFormContainer {
     width: 62%;
     float: right;
