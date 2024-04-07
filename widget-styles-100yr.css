@@ -465,8 +465,12 @@ div#mapContainer {
     float: right;
 }
 
-div#registrationTotalContainer, #singlePriceContainer {
+#singlePriceContainer {
     display: none;
+}
+
+div#registrationTotalContainer {
+    display: block !important;
 }
 
 #registrationFormContainer {
