@@ -616,6 +616,15 @@ h2#responseFormTitle {
     content: " (Sold Out)";
 }
 
+.product-form h3 {
+    margin: 0.5rem 0 0 0;
+    padding: 0 0 0 0.75rem;
+}
+
+.product-form__control {
+    padding: 0 1rem 1rem 0.75rem;
+}
+
 #registrationForm {
     clear: both;
 }
