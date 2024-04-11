@@ -946,6 +946,7 @@ div#mobileUnlistedCheck {
 #userAttributesEditMode .mpp-about-me--attribute {
     background-color: white;
     color: black;
+    width: 32%;
 }
 
 #userAttributesEditMode {
@@ -964,6 +965,18 @@ div#mobileUnlistedCheck {
 
 .mpp-about-me--checkbox-container input[type="checkbox"]::before {
     box-shadow: inset 1em 1em var(--brand-primary);
+}
+
+@media only screen and (max-width: 999px) {
+    #userAttributesEditMode .mpp-about-me--attribute {
+        width: 48%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #userAttributesEditMode .mpp-about-me--attribute {
+        width: 100%;
+    }
 }
 
 /***************************/
