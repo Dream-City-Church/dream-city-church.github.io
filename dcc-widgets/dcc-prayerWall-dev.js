@@ -123,7 +123,20 @@ function loadPrayerWall() {
 
 /* Function for loading prayers */
 function loadPrayers() {
-    divHTML = `<div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+    divHTML = `
+        <div class="prayer-card">
+            <div class="prayer-name"><sl-skeleton effect="sheen"></sl-skeleton></div>
+            <div class="prayer-date"><sl-skeleton effect="sheen"></sl-skeleton></div>
+            <div class="prayer-description">
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+            </div>
+            <div class="prayer-action">
+                <sl-skeleton effect="sheen"></sl-skeleton>
+            </div>
+        </div>
+    `;
     document.querySelector("#prayer-wall").innerHTML += divHTML;
 
     /*Initialize local storage for prayed-for prayers*/
