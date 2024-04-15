@@ -1,5 +1,5 @@
 /* Set starting variables */
-const versionNumber = '1.240108.1';
+const versionNumber = '1.240415';
 var pageNum = 1;
 var maxPrayerId = 0;
 
@@ -118,7 +118,7 @@ function loadPrayerWall() {
     divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div><div id="reload-prayer-wall" onclick="reloadPrayerWall()">Refresh <i class="fa-solid fa-arrows-rotate"></i></div></div>`;
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
     loadPrayers();
-    setInterval(checkForNewPrayers, 60*1000);
+    setInterval(checkForNewPrayers, 120*1000);
 }
 
 /* Function for loading prayers */
@@ -208,7 +208,10 @@ function loadPrayers() {
                 )
 
                 /* select the max prayer ID number then update variable */
-                maxPrayerId = Math.max.apply(Math, data.prayers[0].map(function(o) { return o.PrayerID; }));
+                returnedMaxPrayerId = Math.max.apply(Math, data.prayers[0].map(function(o) { return o.PrayerID; }));
+                if(returnedMaxPrayerId > maxPrayerId){
+                    maxPrayerId = returnedMaxPrayerId;
+                }
                 
                 document.querySelector(".dccw-spinnercontainer").remove();
                 if (pageNum < 4) {
