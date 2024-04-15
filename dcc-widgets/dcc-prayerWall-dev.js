@@ -124,7 +124,7 @@ function loadPrayerWall() {
 /* Function for loading prayers */
 function loadPrayers() {
     divHTML = `
-        <div class="prayer-card">
+        <div class="prayer-card prayer-wall-skeleton">
             <div class="prayer-name"><sl-skeleton effect="sheen"></sl-skeleton></div>
             <div class="prayer-date"><sl-skeleton effect="sheen"></sl-skeleton></div>
             <div class="prayer-description">
@@ -226,7 +226,7 @@ function loadPrayers() {
                     maxPrayerId = returnedMaxPrayerId;
                 }
                 
-                document.querySelector(".dccw-spinnercontainer").remove();
+                document.querySelector(".prayer-wall-skeleton").remove();
                 if (pageNum < 4) {
                     /*Add Load More button if there are less than 4 pages already loaded*/
                     divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button" onclick="loadMorePrayers()">Load More Prayers</button></div>`;
