@@ -226,7 +226,8 @@ function loadPrayers() {
                     maxPrayerId = returnedMaxPrayerId;
                 }
                 
-                document.querySelector(".prayer-wall-skeleton").remove();
+                /* document.querySelector(".prayer-wall-skeleton").remove(); temp removed for style testing */
+
                 if (pageNum < 4) {
                     /*Add Load More button if there are less than 4 pages already loaded*/
                     divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button" onclick="loadMorePrayers()">Load More Prayers</button></div>`;
