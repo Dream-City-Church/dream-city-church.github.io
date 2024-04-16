@@ -266,16 +266,16 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
 }
 
 /* Prayer Wall Skeleton Loading */
-#prayer-wall .prayer-wall-skeleton:nth-child(1) {
-  opacity: 0.2;
+#prayer-wall div:nth-child(1 of .prayer-wall-skeleton) {
+  opacity: 0.9;
 }
 
-#prayer-wall .prayer-wall-skeleton:nth-child(2) {
+#prayer-wall div:nth-child(2 of .prayer-wall-skeleton) {
   opacity: 0.5;
 }
 
-#prayer-wall .prayer-wall-skeleton:nth-child(3) {
-  opacity: 0.9;
+#prayer-wall div:nth-child(3 of .prayer-wall-skeleton) {
+  opacity: 0.2;
 }
 
 .prayer-name sl-skeleton {
