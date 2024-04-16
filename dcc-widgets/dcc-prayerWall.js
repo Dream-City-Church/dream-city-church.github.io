@@ -137,6 +137,32 @@ function loadPrayers() {
                 <sl-skeleton effect="pulse"></sl-skeleton>
             </div>
         </div>
+        <div class="prayer-card prayer-wall-skeleton">
+            <div class="prayer-name"><sl-skeleton effect="sheen"></sl-skeleton></div>
+            <div class="prayer-date"><sl-skeleton effect="sheen"></sl-skeleton></div>
+            <div class="prayer-description">
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+            </div>
+            <div class="prayer-action">
+                <sl-skeleton effect="pulse"></sl-skeleton>
+            </div>
+        </div>
+        <div class="prayer-card prayer-wall-skeleton">
+            <div class="prayer-name"><sl-skeleton effect="sheen"></sl-skeleton></div>
+            <div class="prayer-date"><sl-skeleton effect="sheen"></sl-skeleton></div>
+            <div class="prayer-description">
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+            </div>
+            <div class="prayer-action">
+                <sl-skeleton effect="pulse"></sl-skeleton>
+            </div>
+        </div>
     `;
     document.querySelector("#prayer-wall").innerHTML += divHTML;
 
