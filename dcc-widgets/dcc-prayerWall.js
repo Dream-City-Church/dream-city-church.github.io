@@ -253,7 +253,7 @@ function loadPrayers() {
                     maxPrayerId = returnedMaxPrayerId;
                 }
                 
-                document.querySelector(".prayer-wall-skeleton").remove();
+                document.querySelectorAll(".prayer-wall-skeleton").forEach(e => e.remove());
 
                 if (pageNum < 4) {
                     /*Add Load More button if there are less than 4 pages already loaded*/
