@@ -272,11 +272,9 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
 }
 
 .prayer-date sl-skeleton {
-  width: 125px;
+  width: 100px;
   height: 1.25rem;
-  position: absolute;
-  right: 0;
-  padding-right: 1em;
+  float: right;
 }
 
 .prayer-description sl-skeleton:nth-child(1) {
@@ -286,20 +284,24 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
 }
 
 .prayer-description sl-skeleton:nth-child(2) {
-  width: 87%;
+  width: 99%;
   margin-bottom: 5px;
 }
 
 .prayer-description sl-skeleton:nth-child(3) {
-  width: 92%;
+  width: 97%;
+  margin-bottom: 5px;
+}
+
+.prayer-description sl-skeleton:nth-child(4) {
+  width: 66%;
   margin-bottom: 5px;
 }
 
 .prayer-action sl-skeleton {
-  width: 140px;
-  position: absolute;
-  right: 1em;
-  height: 40px;
+  width: 145px;
+  float: right;
+  height: 42px;
 }
 
 
