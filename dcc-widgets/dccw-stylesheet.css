@@ -271,11 +271,11 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
 }
 
 #prayer-wall div:nth-child(2 of .prayer-wall-skeleton) {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 #prayer-wall div:nth-child(3 of .prayer-wall-skeleton) {
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 .prayer-name sl-skeleton {
