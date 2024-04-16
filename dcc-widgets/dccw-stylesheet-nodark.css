@@ -255,6 +255,45 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
   transition: opacity 0.5s ease, padding 0.5s ease;
 }
 
+/* Prayer Wall Skeleton Loading */
+.prayer-name sl-skeleton {
+  width: 200px;
+  height: 1.25rem;
+}
+
+.prayer-date sl-skeleton {
+  width: 100px;
+  height: 1.25rem;
+  float: right;
+}
+
+.prayer-description sl-skeleton:nth-child(1) {
+  width: 95%;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.prayer-description sl-skeleton:nth-child(2) {
+  width: 99%;
+  margin-bottom: 5px;
+}
+
+.prayer-description sl-skeleton:nth-child(3) {
+  width: 97%;
+  margin-bottom: 5px;
+}
+
+.prayer-description sl-skeleton:nth-child(4) {
+  width: 66%;
+  margin-bottom: 5px;
+}
+
+.prayer-action sl-skeleton {
+  width: 145px;
+  float: right;
+  height: 42px;
+}
+
 /* Event Participants Cards */
 .event-title h2 {
   text-align: center;
@@ -497,6 +536,7 @@ div#dcc-eventmetrics {
   height: 100vh;
   background: rgba(0 0 0 / 0.5);
   backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
   left: 0;
   top: 0;
 }

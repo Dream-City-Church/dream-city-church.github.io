@@ -125,12 +125,12 @@ function loadPrayerWall() {
 function loadPrayers() {
     divHTML = `
         <div class="prayer-card prayer-wall-skeleton">
-            <div class="prayer-name"><sl-skeleton effect="pulse"></sl-skeleton></div>
+            <div class="prayer-name"><sl-skeleton effect="sheen"></sl-skeleton></div>
             <div class="prayer-date"><sl-skeleton effect="sheen"></sl-skeleton></div>
             <div class="prayer-description">
-                <sl-skeleton effect="pulse"></sl-skeleton>
                 <sl-skeleton effect="sheen"></sl-skeleton>
-                <sl-skeleton effect="pulse"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
                 <sl-skeleton effect="sheen"></sl-skeleton>
             </div>
             <div class="prayer-action">
