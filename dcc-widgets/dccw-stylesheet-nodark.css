@@ -265,7 +265,7 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
 }
 
 #prayer-wall div:nth-child(3 of .prayer-wall-skeleton) {
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 .prayer-name sl-skeleton {
