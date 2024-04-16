@@ -227,7 +227,7 @@ function loadPrayers() {
                     maxPrayerId = returnedMaxPrayerId;
                 }
                 
-                /* document.querySelector(".prayer-wall-skeleton").remove(); temp removed for style testing */
+                document.querySelector(".prayer-wall-skeleton").remove();
 
                 if (pageNum < 4) {
                     /*Add Load More button if there are less than 4 pages already loaded*/

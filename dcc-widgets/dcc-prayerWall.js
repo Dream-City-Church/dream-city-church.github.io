@@ -1,5 +1,5 @@
 /* Set starting variables */
-const versionNumber = '1.240108';
+const versionNumber = '1.240415';
 var pageNum = 1;
 var maxPrayerId = 0;
 
@@ -123,7 +123,21 @@ function loadPrayerWall() {
 
 /* Function for loading prayers */
 function loadPrayers() {
-    divHTML = `<div class="dccw-spinnercontainer"><div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+    divHTML = `
+        <div class="prayer-card prayer-wall-skeleton">
+            <div class="prayer-name"><sl-skeleton effect="sheen"></sl-skeleton></div>
+            <div class="prayer-date"><sl-skeleton effect="sheen"></sl-skeleton></div>
+            <div class="prayer-description">
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+                <sl-skeleton effect="sheen"></sl-skeleton>
+            </div>
+            <div class="prayer-action">
+                <sl-skeleton effect="pulse"></sl-skeleton>
+            </div>
+        </div>
+    `;
     document.querySelector("#prayer-wall").innerHTML += divHTML;
 
     /*Initialize local storage for prayed-for prayers*/
@@ -213,7 +227,8 @@ function loadPrayers() {
                     maxPrayerId = returnedMaxPrayerId;
                 }
                 
-                document.querySelector(".dccw-spinnercontainer").remove();
+                document.querySelector(".prayer-wall-skeleton").remove();
+
                 if (pageNum < 4) {
                     /*Add Load More button if there are less than 4 pages already loaded*/
                     divHTML = divHTML+`<button id="loadMorePrayers" class="prayer-button" onclick="loadMorePrayers()">Load More Prayers</button></div>`;
