@@ -620,7 +620,7 @@ dcc-filedownloader {
     transform: rotate(180deg);
   }
   dcc-eventsignin #header-image, dcc-groupsignin #header-image {
-    display: none !important;
+    /* display: none !important; */
   }
   dcc-eventsignin #qr-image, dcc-groupsignin #qr-image {
     display: block !important;
@@ -628,13 +628,17 @@ dcc-filedownloader {
   dcc-eventsignin #sign-in-form, dcc-groupsignin #sign-in-form {
     display: none !important;
   }
+  #div#dcc-signinform {
+    position: relative;
+    top: -100%;
+  }
   #dcc-signinform #form-description-text {
     font-size: 22pt;
     line-height: 26pt;
     text-align: left;
   }
   #dcc-signinform .datapoint {
-    display: block;
+    /* display: block; */
   }
 }
 
