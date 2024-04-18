@@ -614,9 +614,9 @@ dcc-filedownloader {
   dcc-eventsignin, dcc-groupsignin {
     max-width:100%;
     padding: 5%;
-    margin-top: -1.25in;
+    margin-top: 0.5in;
     display: grid;
-    grid-template-columns: 45% 45%;
+    grid-template-columns: 63.3%;
     grid-column-gap: 5%;
     transform: rotate(180deg);
   }
@@ -632,12 +632,11 @@ dcc-filedownloader {
     display: none !important;
   }
   div#dcc-signinform {
-    position: relative;
-    top: -100%;
+    grid-column: span 2;
   }
   #dcc-signinform #form-description-text {
-    font-size: 18pt;
-    line-height: 24pt;
+    font-size: 22pt;
+    line-height: 26pt;
     text-align: left;
   }
   #dcc-signinform .datapoint {
