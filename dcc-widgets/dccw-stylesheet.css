@@ -197,6 +197,7 @@ button#submit-prayer-button {
   font-weight: bold;
   cursor: pointer;
   background-color: var(--brand-primary);
+  -webkit-tap-highlight-color: transparent;
   border: none;
   border-radius: 2rem;
 }
@@ -222,6 +223,7 @@ button#loadMorePrayers {
 }
 .praise-report .prayer-button {
   background-color: var(--brand-secondary);
+  -webkit-tap-highlight-color: transparent;
 }
 .prayer-is-praying {
   background-color: transparent;
