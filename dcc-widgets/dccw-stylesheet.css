@@ -619,7 +619,7 @@ dcc-filedownloader {
   dcc-eventsignin, dcc-groupsignin {
     max-width:100%;
     padding: 5%;
-    margin-top: 0.5in;
+    margin-top: 0.4in;
     display: grid;
     grid-template-columns: 63.3%;
     grid-column-gap: 5%;
