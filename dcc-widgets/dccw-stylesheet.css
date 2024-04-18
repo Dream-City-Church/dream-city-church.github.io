@@ -621,6 +621,8 @@ dcc-filedownloader {
   }
   dcc-eventsignin #header-image, dcc-groupsignin #header-image {
     /* display: none !important; */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
   dcc-eventsignin #qr-image, dcc-groupsignin #qr-image {
     display: block !important;
