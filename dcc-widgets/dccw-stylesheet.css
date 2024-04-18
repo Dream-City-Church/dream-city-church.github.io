@@ -628,7 +628,7 @@ dcc-filedownloader {
   dcc-eventsignin #sign-in-form, dcc-groupsignin #sign-in-form {
     display: none !important;
   }
-  #div#dcc-signinform {
+  div#dcc-signinform {
     position: relative;
     top: -100%;
   }
