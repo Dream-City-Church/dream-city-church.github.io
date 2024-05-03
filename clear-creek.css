@@ -82,6 +82,18 @@ h1, h2, h3 {
     --card-labelBgColor: #fff;
 }
 
+#searchForm {
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary);
+    border-radius: 1rem;
+}
+
+#searchForm .mppw-form-field .mppw-form-field__static-container {
+    width: 47.5%;
+    margin: 0 1.25%;
+    display: inline-block;
+}
+
 .mppw-card--grid {
     grid-template-columns: 31% 31% 31%;
     grid-gap: 2rem 3.5%;
@@ -93,8 +105,12 @@ h1, h2, h3 {
     transition: scale 0.5s ease-out;
     scale: 100%;
     border-radius: 0;
-    border: 1px solid #efefef;
+    border: none;
     box-shadow: none;
+}
+
+.mpp-card--body {
+    padding: 0.5rem 0;
 }
 
 .mpp-card:hover {
@@ -104,6 +120,7 @@ h1, h2, h3 {
 
 .mpp-card--header, .mpp-card--image {
     height:195px;
+    background-color: var(--secondary);
 }
 
 .mpp-card h3, .mpp-card h4, .mpp-card p {
