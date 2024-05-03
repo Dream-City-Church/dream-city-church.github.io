@@ -90,34 +90,47 @@ h1, h2, h3 {
 
 .mpp-card {
     cursor: pointer;
-    transition: scale 0.25s ease-out;
+    transition: scale 0.5s ease-out;
     scale: 100%;
+    border-radius: 0;
+    border: 1px solid #efefef;
+    box-shadow: none;
 }
 
 .mpp-card:hover {
-    transition: scale 0.5s ease-out;
-    scale: 105%;
+    transition: scale 0.25s ease-out;
+    scale: 103%;
 }
 
-.mpp-card--header {
+.mpp-card--header, .mpp-card--image {
     height:195px;
 }
 
 .mpp-card h3, .mpp-card h4, .mpp-card p {
     font-weight: normal;
+    line-height: 1.5rem;
 }
 
 .mpp-card--title {
     font-size: 1.2rem;
 }
 
-.mpp-card--subtitle .event-location {
-    background-color: #bcbcbc;
-    color: white;
-    font-weight: bold;
+.event-location {
     font-size: 0.75rem;
     text-transform: uppercase;
-    width: max-content;
+    background-color: var(--tertiary);
+    color: #555;
+    margin-top: 0.5rem;
+    font-weight: bold;
     padding: 0.1rem 0.5rem;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
+    width: max-content;
+}
+
+.mpp-card--description {
+    display: none;
+}
+
+.mpp-card--footer {
+    display: none;
 }
