@@ -1,0 +1,123 @@
+/*********************/
+/* CSS Global Styles */
+/*********************/
+:host {
+    --root-text-color: #333;
+    --root-font-size: 1.25rem;
+    --root-line-height: 1.25rem;
+    --primary: #FA2423;
+    --secondary: #26313B;
+    --tertiary: #DEDAC9;
+    --form-field-color: var(--root-text-color);
+    --form-field-bgcolor: #f9f9f9;
+    --form-field-bgcolor--active: #fff;
+    --form-field-border: var(--secondary);
+    --form-field-border--active: #e07e3c;
+    --form-field-borderradius: 0.5rem;
+    --form-field-boxshadow--active: 0 0 0.2rem 0.05rem var(--primary);
+    --form-valid: #42bc34;
+    --form-invalid: #dc3545;
+    --form-btn-primary-text: #fff;
+    --form-btn-primary-bgcolor: var(--primary);
+    --form-btn-primary-hover: var(--primary);
+    --form-btn-primary-active: var(--primary);
+    --form-btn-secondary-text: #fff;
+    --form-btn-secondary-bgcolor: var(--secondary);
+    --form-btn-secondary-hover: var(--secondary);
+    --form-btn-secondary-active: var(--secondary);
+    --form-btn-disabled: var(--tertiary);
+    --card-bgcolor: #fff;
+    --card-title-color: var(--primary);
+    --card-header-bgcolor: #ffffff;
+    --box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.35);
+    --progress-pledged: var(--secondary);
+    --progress-received: var(--primary);
+    --root-font-face: proxima-nova,sans-serif;
+    --header-font-face: proxima-nova,sans-serif;
+    --innerPage-h1fontFamily: var(--header-font-face);
+    --innerPage-primaryColor: var(--primary);
+    --innerPage-linkHoverColor: var(--secondary);
+    --innerPage-linkColor: var(--primary);
+    --innerPage-buttonHoverBgColor: var(--secondary);
+    --innerPage-fontSize: 1.1rem;
+    --innerPage-lineHeight: 1.6rem;
+    --alt-text-color: #777777;
+}
+
+* {
+    font-family: var(--root-font-face);
+}
+
+h1, h2, h3 {
+    font-family: var(--header-font-face);
+}
+
+/***************/
+/* Card Styles */
+/***************/
+
+:host {
+    --card-title-color: #333333;
+    --card-textColor: #333333;
+    --card-borderRadius: 0.5rem;
+    --card-boxShadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.15);
+    --card-primaryColor: var(--primary);
+    --card-badgeBgColor: var(--primary);
+    --card-headerBgColor: #ffffff;
+    --card-badge-highlightColor: #fff;
+    --card-badgeStatusActiveColor: var(--card-primaryColor);
+    --card-badgeStatusPendingColor: var(--tertiary);
+    --card-badgeStatusDiscontinuedColor: var(--tertiary);
+    --card-badgeStatusCompleteColor: var(--secondary);
+    --card-fontSize: 1rem;
+    --card-lineHeight: 0.75rem;
+    --card-fontSizeHeader: 1.5rem;
+    --card-lineHeightHeader: 1.5rem;
+    --card-progressBarColor: var(--secondary);
+    --card-progressBarActiveColor: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    --card-progressBarRemainingColor: white;
+    --card-progressBarCompleteColor: #77be43;
+    --card-imageBgColor: #bcbcbc;
+    --card-checkboxDefaultColor: #bcbcbc;
+    --card-labelBgColor: #fff;
+}
+
+.mppw-card--grid {
+    grid-template-columns: 31% 31% 31%;
+    grid-gap: 2rem 3.5%;
+    margin-top: 2rem;
+}
+
+.mpp-card {
+    cursor: pointer;
+    transition: scale 0.25s ease-out;
+    scale: 100%;
+}
+
+.mpp-card:hover {
+    transition: scale 0.5s ease-out;
+    scale: 105%;
+}
+
+.mpp-card--header {
+    height:195px;
+}
+
+.mpp-card h3, .mpp-card h4, .mpp-card p {
+    font-weight: normal;
+}
+
+.mpp-card--title {
+    font-size: 1.2rem;
+}
+
+.mpp-card--subtitle .event-location {
+    background-color: #bcbcbc;
+    color: white;
+    font-weight: bold;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    width: max-content;
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.25rem;
+}
