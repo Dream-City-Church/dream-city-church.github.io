@@ -86,12 +86,30 @@ h1, h2, h3 {
     padding: 0.5rem 1rem;
     background-color: var(--secondary);
     border-radius: 1rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 49% 49%;
+    grid-gap: 2%;
 }
 
 #searchForm .mppw-form-field .mppw-form-field__static-container {
     width: 47.5%;
     margin: 0 1.25%;
     display: inline-block;
+}
+
+.mppw-right {
+    display: none;
+}
+
+#advancedSearchSection {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+#advancedSearchSection .mppw-form-field .mppw-form-field__static-container {
+    flex: 1;
 }
 
 .mppw-card--grid {
@@ -105,7 +123,7 @@ h1, h2, h3 {
     transition: scale 0.5s ease-out;
     scale: 100%;
     border-radius: 0;
-    border: none;
+    border: 1px solid white;
     box-shadow: none;
 }
 
