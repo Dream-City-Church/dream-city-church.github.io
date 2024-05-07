@@ -39,7 +39,7 @@
     --progress-pledged: var(--secondary);
     --progress-received: var(--primary);
     --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
-    --header-font-face: 'termina',Helvetica,Arial,Lucida,sans-serif;
+    --header-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
     --innerPage-h1fontFamily: var(--header-font-face);
     --innerPage-primaryColor: var(--primary);
     --innerPage-linkHoverColor: var(--secondary);
