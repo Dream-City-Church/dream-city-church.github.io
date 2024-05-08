@@ -88,8 +88,16 @@ h1, h2, h3 {
     border-radius: 1rem;
     display: grid;
     align-items: center;
-    grid-template-columns: 49% 49%;
-    grid-gap: 2%;
+    grid-template-columns: 24.25% 24.25% 24.25% 24.25%;
+    grid-gap: 1%;
+}
+
+#searchForm .mppw-form-field:nth-child(1) {
+    grid-column-start: 1;
+}
+
+#searchForm .mppw-form-field:nth-child(2) {
+    grid-column-start: 3 span;
 }
 
 #searchForm .mppw-form-field .mppw-form-field__static-container {
@@ -103,13 +111,23 @@ h1, h2, h3 {
 }
 
 #advancedSearchSection {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
+    display: inline-block !important;
+    grid-row-start: 1;
+    grid-column-start: 2;
+}
+
+#advancedSearchSection .mppw-form-field::not(:first-child) {
+    display: none;
 }
 
 #advancedSearchSection .mppw-form-field .mppw-form-field__static-container {
     flex: 1;
+}
+
+.mppw-centered {
+    grid-column-start: 3;
+    grid-column-end: span 2;
+
 }
 
 .mppw-card--grid {
@@ -141,6 +159,10 @@ h1, h2, h3 {
     background-color: var(--secondary);
 }
 
+.mpp-card--image {
+    background-color: white;
+}
+
 .mpp-card h3, .mpp-card h4, .mpp-card p {
     font-weight: normal;
     line-height: 1.5rem;
@@ -168,4 +190,19 @@ h1, h2, h3 {
 
 .mpp-card--footer {
     display: none;
+}
+
+.mppw-form-field__control {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.mppw-form-field__label {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+
+.mppw-form-field__control option {
+    font-size: 1rem;
 }
