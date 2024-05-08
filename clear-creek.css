@@ -206,7 +206,7 @@ h1, h2, h3 {
     }
 
     #searchForm > .mppw-form-field:nth-of-type(2) {
-        grid-column-end: 2 span;
+        grid-column-end: initial;
     }
 
     #searchForm .mppw-form-field .mppw-form-field__static-container {
@@ -215,17 +215,24 @@ h1, h2, h3 {
     }
 
     #advancedSearchSection {
-        display: none;
+        grid-row-start: 2;
+        grid-column-start: 1;
     }
 
     .mppw-centered {
         grid-column-start: 1;
         grid-column-end: 2;
+        margin: 1rem;
     }
 
     .mppw-card--grid {
         grid-template-columns: 100%;
         grid-gap: 2rem 0;
+    }
+
+    .mpp-card {
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 1.5rem;
     }
 }
 
