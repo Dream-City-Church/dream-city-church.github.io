@@ -245,7 +245,7 @@ h1, h2, h3 {
     margin: auto;
 }
 
-.mpp-innerpage--fixed-img {
+#detailsContainer .mpp-innerpage--fixed-img {
     background-size: contain;
     background-position: center;
     width: 100%;
@@ -254,23 +254,23 @@ h1, h2, h3 {
     margin-bottom: 2rem;
 }
 
-.mpp-innerpage--datetime {
+#detailsContainer .mpp-innerpage--datetime {
     font-size: 1.5rem;
 }
 
-.mpp-innerpage p, .mpp-innerpage h1, .mpp-innerpage h2, .mpp-innerpage h3, .mpp-innerpage h4 {
+#detailsContainer .mpp-innerpage p, .mpp-innerpage h1, .mpp-innerpage h2, .mpp-innerpage h3, .mpp-innerpage h4 {
     margin: 0 0 24px;
     font-size: 1.5rem;
     line-height: 2.25rem;
 }
 
-.mpp-innerpage--special {
+#detailsContainer .mpp-innerpage--special {
     background-color: #fafafa;
     padding: 1rem 2rem;
     border-left: 2px solid var(--primary);
 }
 
-.mpp-innerpage--special-title {
+#detailsContainer .mpp-innerpage--special-title {
     font-size: 18px;
     color: black;
     font-weight: 600;
@@ -278,7 +278,7 @@ h1, h2, h3 {
     padding-bottom: 10px;
 }
 
-.mpp-innerpage--contact {
+#detailsContainer .mpp-innerpage--contact {
     background: var(--innerPage-labelBgColor);
     border-radius: 32px;
     font-size: 14px;
@@ -288,6 +288,87 @@ h1, h2, h3 {
     margin-right: 8px;
     padding: 8px;
     height: 64px;
+}
+
+#registrationForm {
+    max-width: 900px;
+    margin: auto;
+    background-color: #fafafa;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+#detailsContainer .titleContainer h1 {
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0;
+}
+
+#singlePriceContainer {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+#detailsContainer .mppw-row {
+    margin-bottom: 2rem;
+}
+
+#detailsContainer .mppw-form-field {
+    margin-bottom: var(--form-field-margin);
+    margin-top: var(--form-field-margin);
+    position: relative;
+    border-radius: 0;
+    background: transparent;
+}
+
+#detailsContainer .mppw-form-field__control {
+    border: 1px solid var(--form-field-border);
+}
+
+#detailsContainer .mppw-form-field__control {
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0;
+    background: transparent;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+#detailsContainer .mppw-form-field--is-valid .mppw-form-field__control, #detailsContainer .mppw-form-field--is-invalid .mppw-form-field__control, #detailsContainer .mppw-form-field__static-container .mppw-form-field__control {
+    padding: initial;
+}
+
+#detailsContainer .mppw-form-field--is-valid .mppw-form-field__control {
+    background: initial;
+    background: #fafafa;
+}
+
+#detailsContainer .mppw-form-field--is-valid .mppw-form-field__label, #detailsContainer .mppw-form-field--is-invalid .mppw-form-field__label, #detailsContainer .mppw-form-field__static-container .mppw-form-field__label, #detailsContainer .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, #detailsContainer .mppw-form-field__control:focus + .mppw-form-field__label {
+    padding: 0;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: normal;
+    top: -25px;
+    left: 0;
+}
+
+#detailsContainer .mppw-form .mppw-btn {
+    display: inline-block;
+    margin-bottom: var(--form-field-margin);
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    box-shadow: none;
+    margin-bottom: 2rem;
+    min-width: 50%;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+}
+
+#addAnotherButton {
+    background-color: transparent;
+    color: #777;
+    font-weight: normal;
+    border: 1px solid #777;
 }
 
 
@@ -306,86 +387,4 @@ h1, h2, h3 {
 
 .mppw-form-field__control option {
     font-size: 1rem;
-}
-
-
-#registrationForm {
-    max-width: 900px;
-    margin: auto;
-    background-color: #fafafa;
-    padding: 2rem;
-    border-radius: 2rem;
-}
-
-.titleContainer h1 {
-    font-size: 3rem;
-    font-weight: normal;
-    margin: 0;
-}
-
-#singlePriceContainer {
-    font-size: 2rem;
-    font-weight: normal;
-}
-
-.mppw-row {
-    margin-bottom: 2rem;
-}
-
-.mppw-form-field {
-    margin-bottom: var(--form-field-margin);
-    margin-top: var(--form-field-margin);
-    position: relative;
-    border-radius: 0;
-    background: transparent;
-}
-
-.mppw-form-field__control {
-    border: 1px solid var(--form-field-border);
-}
-
-.mppw-form-field__control {
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 0;
-    background: transparent;
-    font-size: 1.5rem;
-    font-weight: normal;
-}
-
-.mppw-form-field--is-valid .mppw-form-field__control, .mppw-form-field--is-invalid .mppw-form-field__control, .mppw-form-field__static-container .mppw-form-field__control {
-    padding: initial;
-}
-
-.mppw-form-field--is-valid .mppw-form-field__control {
-    background: initial;
-    background: #fafafa;
-}
-
-.mppw-form-field--is-valid .mppw-form-field__label, .mppw-form-field--is-invalid .mppw-form-field__label, .mppw-form-field__static-container .mppw-form-field__label, .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
-    padding: 0;
-    background: transparent;
-    font-size: 1rem;
-    font-weight: normal;
-    top: -25px;
-    left: 0;
-}
-
-.mppw-form .mppw-btn {
-    display: inline-block;
-    margin-bottom: var(--form-field-margin);
-    font-size: 1.5rem;
-    border-radius: 2rem;
-    box-shadow: none;
-    margin-bottom: 2rem;
-    min-width: 50%;
-    padding: 1rem 3rem;
-    text-transform: uppercase;
-}
-
-#addAnotherButton {
-    background-color: transparent;
-    color: #777;
-    font-weight: normal;
-    border: 1px solid #777;
 }
