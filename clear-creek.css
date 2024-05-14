@@ -240,7 +240,7 @@ h1, h2, h3 {
 
 /* Details Widget*/
 
-#detailsContainer {
+#detailsContainer, #mapContainer {
     max-width: 900px;
     margin: auto;
 }
@@ -254,28 +254,35 @@ h1, h2, h3 {
     margin-bottom: 2rem;
 }
 
-#detailsContainer .mpp-innerpage--datetime {
-    font-size: 1.5rem;
+.mpp-innerpage .mpp-innerpage--labels {
+    margin: 0;
 }
 
-#detailsContainer .mpp-innerpage p, .mpp-innerpage h1, .mpp-innerpage h2, .mpp-innerpage h3, .mpp-innerpage h4 {
+#detailsContainer .mpp-innerpage--datetime {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#detailsContainer .mpp-innerpage p {
     margin: 0 0 24px;
     font-size: 1.5rem;
     line-height: 2.25rem;
 }
 
-#detailsContainer .mpp-innerpage--special {
+#detailsContainer .mpp-innerpage--contacts-wrapper {
     background-color: #fafafa;
     padding: 1rem 2rem;
     border-left: 2px solid var(--primary);
+    margin-bottom: 2rem;
 }
 
 #detailsContainer .mpp-innerpage--special-title {
-    font-size: 18px;
-    color: black;
-    font-weight: 600;
-    line-height: normal;
-    padding-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+#detailsContainer .mpp-innerpage--special-content {
+    font-size: 1.25rem;
+    padding: 0;
 }
 
 #detailsContainer .mpp-innerpage--contact {
@@ -290,6 +297,26 @@ h1, h2, h3 {
     height: 64px;
 }
 
+.mpp-innerpage--name {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    text-decoration: none;
+}
+
+#mapContainer {
+    background: transparent;
+}
+
+.mpp-innerpage--map {
+    display: none;
+}
+
+.mpp-innerpage--map-info, .mpp-innerpage--map-info a {
+    font-size: 1.25rem;
+    padding: 0;
+    color: #666;
+}
+
 #registrationForm {
     max-width: 900px;
     margin: auto;
@@ -298,22 +325,22 @@ h1, h2, h3 {
     border-radius: 2rem;
 }
 
-#detailsContainer .titleContainer h1 {
-    font-size: 3rem;
+#registrationForm .titleContainer h1 {
+    font-size: 2.5rem;
     font-weight: normal;
     margin: 0;
 }
 
 #singlePriceContainer {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: normal;
 }
 
-#detailsContainer .mppw-row {
+#registrationForm .mppw-row {
     margin-bottom: 2rem;
 }
 
-#detailsContainer .mppw-form-field {
+#registrationForm .mppw-form-field {
     margin-bottom: var(--form-field-margin);
     margin-top: var(--form-field-margin);
     position: relative;
@@ -321,11 +348,11 @@ h1, h2, h3 {
     background: transparent;
 }
 
-#detailsContainer .mppw-form-field__control {
+#registrationForm .mppw-form-field__control {
     border: 1px solid var(--form-field-border);
 }
 
-#detailsContainer .mppw-form-field__control {
+#registrationForm .mppw-form-field__control {
     font-size: 1rem;
     font-weight: bold;
     border-radius: 0;
@@ -334,16 +361,16 @@ h1, h2, h3 {
     font-weight: normal;
 }
 
-#detailsContainer .mppw-form-field--is-valid .mppw-form-field__control, #detailsContainer .mppw-form-field--is-invalid .mppw-form-field__control, #detailsContainer .mppw-form-field__static-container .mppw-form-field__control {
+#registrationForm .mppw-form-field--is-valid .mppw-form-field__control, #registrationForm .mppw-form-field--is-invalid .mppw-form-field__control, #registrationForm .mppw-form-field__static-container .mppw-form-field__control {
     padding: initial;
 }
 
-#detailsContainer .mppw-form-field--is-valid .mppw-form-field__control {
+#registrationForm .mppw-form-field--is-valid .mppw-form-field__control {
     background: initial;
     background: #fafafa;
 }
 
-#detailsContainer .mppw-form-field--is-valid .mppw-form-field__label, #detailsContainer .mppw-form-field--is-invalid .mppw-form-field__label, #detailsContainer .mppw-form-field__static-container .mppw-form-field__label, #detailsContainer .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, #detailsContainer .mppw-form-field__control:focus + .mppw-form-field__label {
+#registrationForm .mppw-form-field--is-valid .mppw-form-field__label, #registrationForm .mppw-form-field--is-invalid .mppw-form-field__label, #registrationForm .mppw-form-field__static-container .mppw-form-field__label, #registrationForm .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, #registrationForm .mppw-form-field__control:focus + .mppw-form-field__label {
     padding: 0;
     background: transparent;
     font-size: 1rem;
@@ -352,7 +379,7 @@ h1, h2, h3 {
     left: 0;
 }
 
-#detailsContainer .mppw-form .mppw-btn {
+#registrationForm .mppw-form .mppw-btn {
     display: inline-block;
     margin-bottom: var(--form-field-margin);
     font-size: 1.5rem;
