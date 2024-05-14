@@ -388,7 +388,7 @@ h1, h2, h3 {
 #registrationForm .mppw-btn {
     display: inline-block;
     margin-bottom: var(--form-field-margin);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     border-radius: 2rem;
     box-shadow: none;
     margin-bottom: 2rem;
@@ -402,6 +402,33 @@ h1, h2, h3 {
     color: #777;
     font-weight: normal;
     border: 1px solid #777;
+}
+
+@media screen and (max-width: 768px) {
+    #registrationForm .titleContainer h1, #singlePriceContainer {
+        text-align: center;
+    }
+
+    #contactInfoForm .mppw-col {
+        margin-bottom: 2rem;
+    }
+
+    #contactInfoForm .mppw-row {
+        margin-bottom: 0;
+    }
+
+    #addressFormWrapper .mpp-customform-col-4 {
+        width: 100% important;
+        margin-bottom: 2rem;
+    }
+
+    #addressFormWrapper h3 {
+        display: none;
+    }
+
+    #registrationForm .mppw-btn {
+        font-size: 1rem;
+    }
 }
 
 
