@@ -254,6 +254,10 @@ h1, h2, h3 {
     margin-bottom: 2rem;
 }
 
+.mpp-innerpage h1 {
+    margin: 0;
+}
+
 .mpp-innerpage .mpp-innerpage--labels {
     margin: 0;
 }
@@ -305,6 +309,8 @@ h1, h2, h3 {
 
 #mapContainer {
     background: transparent;
+    margin-top: -2rem;
+    margin-bottom: 4rem;
 }
 
 .mpp-innerpage--map {
@@ -325,7 +331,7 @@ h1, h2, h3 {
     border-radius: 2rem;
 }
 
-#registrationForm .titleContainer h1 {
+#registrationForm .titleContainer, #registrationForm .titleContainer h1 {
     font-size: 2.5rem;
     font-weight: normal;
     margin: 0;
@@ -334,6 +340,8 @@ h1, h2, h3 {
 #singlePriceContainer {
     font-size: 1.5rem;
     font-weight: normal;
+    margin: 0;
+    margin-bottom: 3rem;
 }
 
 #registrationForm .mppw-row {
@@ -350,19 +358,17 @@ h1, h2, h3 {
 
 #registrationForm .mppw-form-field__control {
     border: 1px solid var(--form-field-border);
-}
-
-#registrationForm .mppw-form-field__control {
     font-size: 1rem;
     font-weight: bold;
     border-radius: 0;
     background: transparent;
     font-size: 1.5rem;
     font-weight: normal;
+    padding: 1.25rem;
 }
 
 #registrationForm .mppw-form-field--is-valid .mppw-form-field__control, #registrationForm .mppw-form-field--is-invalid .mppw-form-field__control, #registrationForm .mppw-form-field__static-container .mppw-form-field__control {
-    padding: initial;
+    padding: 1.25rem;
 }
 
 #registrationForm .mppw-form-field--is-valid .mppw-form-field__control {
@@ -379,7 +385,7 @@ h1, h2, h3 {
     left: 0;
 }
 
-#registrationForm .mppw-form .mppw-btn {
+#registrationForm .mppw-btn {
     display: inline-block;
     margin-bottom: var(--form-field-margin);
     font-size: 1.5rem;
