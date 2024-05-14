@@ -621,7 +621,7 @@ h2#responseFormTitle {
     padding: 0 0 0 0.75rem;
 }
 
-.product-form__control {
+.product-form__control, .mppw-form-field--is-valid .product-form__control {
     padding: 0 1rem 1rem 0.75rem;
 }
 
