@@ -262,6 +262,17 @@ h1, h2, h3 {
     margin: 0;
 }
 
+.mpp-innerpage--button, .mpp-innerpage--button {
+    font-size: 1.25rem;
+    border-radius: 2rem;
+    padding: 1rem 3rem;
+    box-shadow: none;
+}
+
+.mpp-innerpage--button:hover, .mpp-innerpage--button:focus {
+    filter: brightness(1.25);
+}
+
 #detailsContainer .mpp-innerpage--datetime {
     font-size: 1.5rem;
     font-weight: bold;
@@ -299,6 +310,10 @@ h1, h2, h3 {
     margin-right: 8px;
     padding: 8px;
     height: 64px;
+}
+
+#detailsContainer .mpp-innerpage--contact:hover {
+    filter: brightness(1.1);
 }
 
 .mpp-innerpage--name {
@@ -371,7 +386,7 @@ h1, h2, h3 {
     margin-bottom: 3rem;
 }
 
-#registrationForm .mppw-form-field__control {
+#registrationForm .mppw-form-field__control, #registrationForm .mppw-form-field_alt-control {
     border: 1px solid var(--form-field-border);
     font-size: 1rem;
     font-weight: bold;
@@ -380,6 +395,8 @@ h1, h2, h3 {
     font-size: 1.5rem;
     font-weight: normal;
     padding: 1.25rem !important;
+    background-color: transparent !important;
+    line-height: 1.75rem;
 }
 
 #registrationForm .mppw-form-field--is-valid .mppw-form-field__control, #registrationForm .mppw-form-field--is-invalid .mppw-form-field__control, #registrationForm .mppw-form-field__static-container .mppw-form-field__control {
@@ -435,7 +452,7 @@ h1, h2, h3 {
     width: 100%;
 }
 
-#promoCodeText {
+#promoCodeContainer #promoCodeText {
     display: inline-block;
     padding: 1rem;
     margin-bottom: 2rem;
@@ -465,25 +482,32 @@ h1, h2, h3 {
 }
 
 @media screen and (max-width: 768px) {
+    #detailsContainer > a {
+        color: #666;
+        line-height: 3rem;
+    }
     #registrationForm .titleContainer h1, #singlePriceContainer {
         text-align: center;
     }
 
-    #contactInfoForm .mppw-col {
+    #contactInfoForm .mppw-col, #attendeeInfoForm .mppw-col, #parentInfoForm .mppw-col {
         margin-bottom: 2rem;
     }
 
-    #contactInfoForm .mppw-row {
+    #contactInfoForm .mppw-row, #attendeeInfoForm .mppw-row, #parentInfoForm .mppw-row {
         margin-bottom: 0;
     }
 
     #addressFormWrapper .mpp-customform-col-4 {
-        width: 100% important;
+        width: 100% !important;
         margin-bottom: 2rem;
     }
 
     #registrationForm .mppw-btn {
         font-size: 1rem;
+    }
+    #promoCodeContainer #addPromoCodeButton {
+        max-width: 100%;
     }
 }
 
@@ -534,4 +558,10 @@ h1, h2, h3 {
 
 .product-form__control label:hover input ~ .mppw-radio, .product-form__control label input:checked ~ .mppw-radio {
     background-color: var(--secondary);
+}
+
+.promo-code-table {
+    font-size: 1rem;
+    line-height: 2rem;
+    padding: 0;
 }
