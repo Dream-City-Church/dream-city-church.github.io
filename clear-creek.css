@@ -267,10 +267,10 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
-#detailsContainer .mpp-innerpage p {
+#detailsContainer .mpp-innerpage p, .product-form p {
     margin: 0 0 24px;
-    font-size: 1.5rem;
-    line-height: 2.25rem;
+    font-size: 1.25rem;
+    line-height: 20rem;
 }
 
 #detailsContainer .mpp-innerpage--contacts-wrapper {
@@ -331,6 +331,11 @@ h1, h2, h3 {
     border-radius: 2rem;
 }
 
+#addressFormWrapper h3, #attendeeInforForm h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
 #registrationForm .titleContainer, #registrationForm .titleContainer h1 {
     font-size: 2.5rem;
     font-weight: normal;
@@ -348,12 +353,17 @@ h1, h2, h3 {
     margin-bottom: 2rem;
 }
 
-#registrationForm .mppw-form-field {
+#registrationForm .mppw-form-field, #registrationForm .mppw-form-field-alt {
     margin-bottom: var(--form-field-margin);
     margin-top: var(--form-field-margin);
     position: relative;
     border-radius: 0;
     background: transparent;
+}
+
+#registrationForm .mppw-form-field-alt {
+    border:none;
+    padding: 0;
 }
 
 #registrationForm .mppw-form-field__control {
@@ -376,13 +386,24 @@ h1, h2, h3 {
     background: #fafafa;
 }
 
-#registrationForm .mppw-form-field--is-valid .mppw-form-field__label, #registrationForm .mppw-form-field--is-invalid .mppw-form-field__label, #registrationForm .mppw-form-field__static-container .mppw-form-field__label, #registrationForm .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, #registrationForm .mppw-form-field__control:focus + .mppw-form-field__label {
+#registrationForm .mppw-form-field--is-valid .mppw-form-field__label, #registrationForm .mppw-form-field--is-invalid .mppw-form-field__label, #registrationForm .mppw-form-field__static-container .mppw-form-field__label, #registrationForm .mppw-form-field__control:not([value=""]) + .mppw-form-field__label, #registrationForm .mppw-form-field__control:focus + .mppw-form-field__label, #registrationForm .mppw-form-field__alt-label {
     padding: 0;
     background: transparent;
     font-size: 1rem;
     font-weight: normal;
     top: -25px;
     left: 0;
+}
+
+#registrationForm .mppw-form-field__alt-label {
+    top: -10px;
+    margin: 0;
+    margin-bottom: 4rem;
+}
+
+
+#registrationForm .mppw-form-field-alt[data-id="attendeeDateOfBirth"] {
+    margin-bottom: 2rem;
 }
 
 #registrationForm .mppw-btn {
@@ -422,10 +443,6 @@ h1, h2, h3 {
         margin-bottom: 2rem;
     }
 
-    #addressFormWrapper h3 {
-        display: none;
-    }
-
     #registrationForm .mppw-btn {
         font-size: 1rem;
     }
@@ -439,7 +456,7 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
-.mppw-form-field__label {
+.mppw-form-field__label, .mppw-form-field__alt-label {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.7rem;
@@ -447,4 +464,17 @@ h1, h2, h3 {
 
 .mppw-form-field__control option {
     font-size: 1rem;
+}
+
+.mppw-product-options {
+    font-size: 1rem;
+    line-height: 2rem;
+}
+
+.product-form .option-name {
+    font-weight: bold;
+}
+
+.product-form .option-name th {
+    font-size: 1.25em;
 }
