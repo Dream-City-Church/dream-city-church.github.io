@@ -463,6 +463,7 @@ h1, h2, h3 {
     display: inline-block;
     max-width: 100%;
     width: 100%;
+    margin-bottom: 2rem;
     letter-spacing: 10px;
     font-family: monospace;
 }
@@ -566,4 +567,8 @@ h1, h2, h3 {
     font-size: 1rem;
     line-height: 2rem;
     padding: 0;
+}
+
+.mppw-btn.primary {
+    margin-left: 0;
 }
