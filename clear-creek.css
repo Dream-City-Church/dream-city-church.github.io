@@ -263,7 +263,7 @@ h1, h2, h3 {
     margin: 0;
 }
 
-.mpp-innerpage--button, .mpp-innerpage--button {
+.mpp-innerpage--button, .mpp-innerpage--button, a.mppw-btn {
     font-size: 1.25rem;
     border-radius: 2rem;
     padding: 1rem 3rem;
@@ -271,7 +271,11 @@ h1, h2, h3 {
     box-shadow: none;
 }
 
-.mpp-innerpage--button:hover, .mpp-innerpage--button:focus {
+.mppw-component-container > div:has(a.mppw-btn) {
+    text-align: center;
+}
+
+.mpp-innerpage--button:hover, .mpp-innerpage--button:focus, a.mppw-btn:hover, a.mppw-btn:focus {
     filter: brightness(1.25);
 }
 
