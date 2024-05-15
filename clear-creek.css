@@ -40,6 +40,7 @@
     --innerPage-primaryColor: var(--primary);
     --innerPage-linkHoverColor: var(--secondary);
     --innerPage-linkColor: var(--primary);
+    --innerPage-buttonBgColor: var(--secondary);
     --innerPage-buttonHoverBgColor: var(--secondary);
     --innerPage-fontSize: 1.1rem;
     --innerPage-lineHeight: 1.6rem;
@@ -266,6 +267,7 @@ h1, h2, h3 {
     font-size: 1.25rem;
     border-radius: 2rem;
     padding: 1rem 3rem;
+    margin-bottom: 2rem;
     box-shadow: none;
 }
 
@@ -386,7 +388,7 @@ h1, h2, h3 {
     margin-bottom: 3rem;
 }
 
-#registrationForm .mppw-form-field__control, #registrationForm .mppw-form-field_alt-control {
+#registrationForm .mppw-form-field__control, #registrationForm .mppw-form-field_alt-control, #promoCodeContainer #promoCodeText {
     border: 1px solid var(--form-field-border);
     font-size: 1rem;
     font-weight: bold;
@@ -442,6 +444,7 @@ h1, h2, h3 {
 
 #promoCodeContainer {
     border: none;
+    padding: 0;
 }
 
 #promoCodeContainer h3 {
@@ -454,15 +457,10 @@ h1, h2, h3 {
 
 #promoCodeContainer #promoCodeText {
     display: inline-block;
-    padding: 1rem;
-    margin-bottom: 2rem;
     max-width: 100%;
     width: 100%;
-    font-size: 1.25rem;
-    text-transform: uppercase;
     letter-spacing: 10px;
     font-family: monospace;
-    background: transparent;
 }
 
 #promoCodeText:focus {
