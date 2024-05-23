@@ -172,6 +172,7 @@ h1, h2, h3 {
 .mpp-card--body {
     padding: 0.5rem 0;
     height: 100%;
+    min-height: 120px;
 }
 
 .mpp-card--title {
@@ -200,8 +201,13 @@ h1, h2, h3 {
     background-color: var(--secondary);
 }
 
+.mpp-card--header {
+    min-height: 195px;
+}
+
 .mpp-card--image {
-    background-color: white;
+    background-color: transparent;
+    background-size: contain;
 }
 
 .mpp-card h3, .mpp-card h4, .mpp-card p {
@@ -218,7 +224,7 @@ h1, h2, h3 {
     text-transform: uppercase;
     background-color: var(--lightGray);
     color: #555;
-    margin-top: 0.5rem;
+    margin: 0.5rem auto !important;
     font-weight: bold;
     padding: 0.1rem 0.5rem;
     border-radius: 0.5rem;
