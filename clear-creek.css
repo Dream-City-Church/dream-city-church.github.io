@@ -63,10 +63,10 @@ h1, h2, h3 {
 :host {
     --card-title-color: #333333;
     --card-textColor: #333333;
-    --card-borderRadius: 0.5rem;
+    --card-borderRadius: 0;
     --card-boxShadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.15);
     --card-primaryColor: var(--primary);
-    --card-badgeBgColor: var(--primary);
+    --card-badgeBgColor: var(--tertiary);
     --card-headerBgColor: #ffffff;
     --card-badge-highlightColor: #fff;
     --card-badgeStatusActiveColor: var(--card-primaryColor);
@@ -87,6 +87,10 @@ h1, h2, h3 {
 }
 
 /* FINDER STYLES */
+
+.mpp-card--badge {
+    background: var(--card-badgeBgColor);
+}
 
 #searchForm {
     padding: 0.5rem 1rem;
