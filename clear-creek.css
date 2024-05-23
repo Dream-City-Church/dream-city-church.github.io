@@ -97,7 +97,7 @@ h1, h2, h3 {
 #searchForm {
     padding: 0.5rem 1rem;
     background-color: var(--lightGray);
-    border-radius: 1rem;
+    border-radius: 2.5rem;
     display: grid;
     align-items: center;
     grid-template-columns: 24.25% 24.25% 24.25% 24.25%;
@@ -455,7 +455,7 @@ h1, h2, h3 {
     background: transparent;
     font-size: 1rem;
     font-weight: normal;
-    top: -25px;
+    top: -30px;
     left: 0;
 }
 
@@ -553,7 +553,7 @@ h1, h2, h3 {
 
 /* FORM STYLES */
 
-select.mppw-form-field__control {
+.mppw-form-field__control {
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
