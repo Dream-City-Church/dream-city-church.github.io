@@ -90,6 +90,8 @@ h1, h2, h3 {
 
 .mpp-card--badge {
     background: var(--card-badgeBgColor);
+    opacity: 0.85;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
 }
 
 #searchForm {
@@ -169,6 +171,23 @@ h1, h2, h3 {
 
 .mpp-card--body {
     padding: 0.5rem 0;
+    height: 100%;
+}
+
+.mpp-card--title {
+    text-wrap: pretty;
+}
+
+.mpp-card--subtitle {
+    text-wrap: balance;
+}
+
+.mpp-card--body .text--container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .mpp-card:hover {
