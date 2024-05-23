@@ -330,6 +330,7 @@ h1, h2, h3 {
 #detailsContainer .mpp-innerpage--datetime {
     font-size: 1.5rem;
     font-weight: bold;
+    text-wrap: balance;
 }
 
 #detailsContainer .mpp-innerpage p, .product-form p {
