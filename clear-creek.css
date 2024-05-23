@@ -553,11 +553,14 @@ h1, h2, h3 {
 
 /* FORM STYLES */
 
-.mppw-form-field__control {
+select.mppw-form-field__control {
     font-size: 1rem;
     font-weight: bold;
-    background-position: calc(100% - 20px) calc(100% - 15px) !important;
     text-align: center;
+}
+
+select.mppw-form-field__control {
+    background-position: calc(100% - 20px) calc(100% - 15px) !important;
 }
 
 .mppw-form-field__label, .mppw-form-field__alt-label {
