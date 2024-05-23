@@ -534,6 +534,7 @@ h1, h2, h3 {
     font-size: 1rem;
     font-weight: bold;
     background-position: calc(100% - 20px) calc(100% - 15px) !important;
+    text-align: center;
 }
 
 .mppw-form-field__label, .mppw-form-field__alt-label {
