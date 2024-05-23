@@ -114,6 +114,7 @@ h1, h2, h3 {
     border-radius: 2rem;
     outline: none;
     border: none;
+    text-align: center;
 }
 
 #searchForm > .mppw-form-field:nth-of-type(1) {
@@ -299,6 +300,11 @@ h1, h2, h3 {
 
 .mpp-innerpage h1 {
     margin: 0;
+    border-bottom: 1px solid var(--primary);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1em;
+    text-wrap: balance;
 }
 
 .mpp-innerpage .mpp-innerpage--labels {
@@ -562,7 +568,6 @@ h1, h2, h3 {
 .mppw-form-field__control {
     font-size: 1rem;
     font-weight: bold;
-    text-align: center;
 }
 
 select.mppw-form-field__control {
