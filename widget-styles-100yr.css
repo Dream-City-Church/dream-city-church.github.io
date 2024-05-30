@@ -678,6 +678,14 @@ td.mppw-invoice-total {
     font-weight: bold;
 }
 
+.mppw-form-field:has(#mobilePhone):after {
+    display: inline-block;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    margin: 0.5rem;
+    content: "By providing your phone number, you agree to receive text messages from Dream City Church. Reply STOP to cancel. Msg rates may apply.";
+}
+
 @media screen and (max-width: 800px) {
     #promoCodeContainer h3 {
         width: 100%;
