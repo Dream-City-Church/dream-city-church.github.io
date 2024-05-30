@@ -699,6 +699,14 @@ td.mppw-invoice-total {
     
 }
 
+/*************************/
+/* Custom Form Overrides */
+/*************************/
+div[data-id="mp_customform_2700"] {
+    display: none;
+}
+
+
 /****************/
 /* Login Widget */
 /****************/
