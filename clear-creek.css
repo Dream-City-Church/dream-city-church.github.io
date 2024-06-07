@@ -8,7 +8,7 @@
     --primary: #58BABB;
     --secondary: #57585A;
     --tertiary: #14334D;
-    --lightGray: #efefef;
+    --lightGray: rgb(0, 0, 0 / 25%);
     --form-field-color: var(--root-text-color);
     --form-field-bgcolor: #f9f9f9;
     --form-field-bgcolor--active: #fff;
@@ -131,6 +131,15 @@ h1, h2, h3 {
     display: inline-block;
 }
 
+#searchForm #congregationId, #searchForm #monthId {
+    padding: 20px 13px 20px 13px;
+}
+
+#congregationId .mppw-form-field__label, #monthId .mppw-form-field__label {
+    display: none;
+
+}
+
 .mppw-right {
     display: none;
 }
@@ -198,17 +207,14 @@ h1, h2, h3 {
 }
 
 .mpp-card--header, .mpp-card--image {
-    height:195px;
+    aspect-ratio: 16 / 9;
     background-color: var(--secondary);
-}
-
-.mpp-card--header {
-    min-height: 195px;
 }
 
 .mpp-card--image {
     background-color: transparent;
     background-size: contain;
+    object-fit: contain;
 }
 
 .mpp-card h3, .mpp-card h4, .mpp-card p {
@@ -220,12 +226,17 @@ h1, h2, h3 {
     font-size: 1.2rem;
 }
 
+.event-date-range {
+    font-size: 0.9rem;
+    line-height: 1rem;
+}
+
 .event-location {
     font-size: 0.75rem;
     text-transform: uppercase;
     background-color: var(--lightGray);
     color: #555;
-    margin: 0.5rem auto !important;
+    margin: 0.5rem 0 !important;
     font-weight: bold;
     padding: 0.1rem 0.5rem;
     border-radius: 0.5rem;
@@ -320,7 +331,7 @@ h1, h2, h3 {
 }
 
 .mppw-component-container > div:has(a.mppw-btn) {
-    text-align: center;
+    text-align: left;
 }
 
 .mpp-innerpage--button:hover, .mpp-innerpage--button:focus, a.mppw-btn:hover, a.mppw-btn:focus {
@@ -572,7 +583,7 @@ h1, h2, h3 {
 }
 
 select.mppw-form-field__control {
-    background-position: calc(100% - 20px) calc(100% - 15px) !important;
+    background-position: calc(100% - 20px) calc(100% - 21px) !important;
 }
 
 .mppw-form-field__label, .mppw-form-field__alt-label {
