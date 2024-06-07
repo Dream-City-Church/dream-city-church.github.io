@@ -217,10 +217,10 @@ h1, h2, h3 {
 .mpp-card--image {
     background-color: transparent;
     background-size: contain;
+    object-fit: cover;
     margin: 0 !important;
     height: 100% !important;
     width: 100% !important;
-    object-fit: fill;
 }
 
 .mpp-card h3, .mpp-card h4, .mpp-card p {
