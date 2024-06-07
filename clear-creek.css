@@ -99,7 +99,7 @@ h1, h2, h3 {
     border-radius: 2.5rem;
     display: grid;
     align-items: center;
-    grid-template-columns: 24.25% 24.25% 24.25% 24.25%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-gap: 1%;
     text-align: center;
 }
@@ -159,7 +159,7 @@ h1, h2, h3 {
 }
 
 .mppw-centered {
-    grid-column-start: 3;
+    grid-column-start: 2;
     grid-column-end: span 2;
 
 }
