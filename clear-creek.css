@@ -207,9 +207,12 @@ h1, h2, h3 {
     scale: 103%;
 }
 
-.mpp-card--header, .mpp-card--image {
+.mpp-card--header {
     aspect-ratio: 16 / 9;
     height: auto;
+}
+
+.mpp-card--header, .mpp-card--image {
     background-color: var(--secondary);
     border-radius: 0.25rem;
 }
