@@ -165,8 +165,8 @@ h1, h2, h3 {
 }
 
 .mppw-card--grid {
-    grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
-    grid-gap: 2rem 3.5%;
+    grid-template-columns: repeat( auto-fit, minmax(275px, 1fr) );
+    grid-gap: 1.75rem 3%;
     margin-top: 2rem;
 }
 
