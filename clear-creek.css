@@ -209,6 +209,7 @@ h1, h2, h3 {
 .mpp-card--header, .mpp-card--image {
     aspect-ratio: 16 / 9;
     background-color: var(--secondary);
+    border-radius: 0.25rem;
 }
 
 .mpp-card--image {
@@ -288,7 +289,6 @@ h1, h2, h3 {
     }
 
     .mpp-card {
-        border-bottom: 1px solid var(--primary);
         padding-bottom: 1.5rem;
     }
 }
