@@ -45,7 +45,7 @@
     font-size: 0.95rem;
 }
 
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 1299px) {
     .mppw-form-wrapper {
         width: auto;
         margin-left: 0;
