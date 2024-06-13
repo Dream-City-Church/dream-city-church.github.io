@@ -435,7 +435,7 @@ div[data-id="mp_customform_2389"]{
 
 .mpp-innerpage--contacts {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: auto auto;
 }
 
 .mpp-innerpage--contact {
@@ -481,6 +481,7 @@ div#mapContainer {
 
 div#registrationTotalContainer {
     display: block !important;
+    font-size: 1.5rem;
 }
 
 #registrationFormContainer {
@@ -521,6 +522,10 @@ div#registrationTotalContainer {
 }
 
 @media only screen and (max-width: 800px) {
+    .mpp-innerpage p {
+        font-size: var(--innerPage-fontSize);
+    }
+
     .mpp-innerpage--fixed-img, .mpp-innerpage--fixed-imgplaceholder {
         float: none;
         width: 100%;
@@ -583,7 +588,7 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 
 select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-field__label, .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
     background: transparent;
-    background-color: #fafafa !important;
+
 }
 
 .mppw-form-field__control:focus + label {
@@ -627,12 +632,37 @@ h2#responseFormTitle {
 }
 
 .product-form h3 {
-    margin: 0.5rem 0 0 0;
-    padding: 0 0 0 0.75rem;
+    margin: 0;
+    padding: 0;
+}
+
+.product-form p {
+    margin: 0;
+    padding: 0.5rem 0;
 }
 
 .product-form__control, .mppw-form-field--is-valid .product-form__control {
-    padding: 0 1rem 1rem 0.75rem;
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+.product-form th {
+    color: var(--primary);
+    font-weight: normal;
+    font-style: italic;
+}
+
+#productOptionsTitle {
+    color: var(--primary);
+    margin-top: 4rem;
+    line-height: 0;
+    font-size: 1.5rem;
+}
+
+#productOptionsContainer .mppw-form-field-alt {
+    border: none;
+    margin: 0;
+    padding: 1.5rem 0;
 }
 
 #registrationForm {
@@ -647,6 +677,7 @@ h2#responseFormTitle {
 
 #promoCodeContainer {
     border: none;
+    padding: 2px 0;
 }
 
 #promoCodeText {
@@ -661,6 +692,14 @@ h2#responseFormTitle {
     font-family: monospace;
     letter-spacing: 0.2rem;
     max-width: 150px;
+}
+
+#promoCodeContainer #promoCodeText {
+    max-width: none;
+}
+
+#promoCodeContainer h3 {
+    padding-top: 5px;
 }
 
 .promo-code-text {
@@ -694,6 +733,10 @@ td.mppw-invoice-total {
     line-height: 1rem;
     margin: 0.5rem;
     content: "By providing your phone number, you agree to receive text messages from Dream City Church. Reply STOP to cancel. Msg rates may apply.";
+}
+
+.mppw-btn.primary {
+    margin-right: 1rem;
 }
 
 @media screen and (max-width: 800px) {

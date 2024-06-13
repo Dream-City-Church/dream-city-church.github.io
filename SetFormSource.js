@@ -28,9 +28,12 @@ function waitForSourceField(timeToWait,currentRun,maxRun) {
 
 function updateSourceField(){
     var source = getUrlVars()["source"];
-    var SourceField = document.querySelector('mpp-custom-form').shadowRoot.querySelector('#mp_customform_2700');
-    SourceField.value = source;
-    console.log('Updated source field with value: '+source);
+    // If source is not undefined
+    if (source) {
+        var SourceField = document.querySelector('mpp-custom-form').shadowRoot.querySelector('#mp_customform_2700');
+        SourceField.value = source;
+        console.log('Updated source field with value: '+source);
+    }
 }
 
 window.onload=waitForShadow(100,1,40);
