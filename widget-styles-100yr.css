@@ -9,6 +9,7 @@
     --secondary: #e07e3c;
     --tertiary: #bcbcbc;
     --brand-gradient: linear-gradient(-170deg, var(--primary) 0%, var(--secondary) 100%);
+    --brand-gradient-rot: linear-gradient(-20deg, var(--primary) 0%, var(--secondary) 100%);
     --brand-charcoal: #3f4444;
     --brand-cloud: #bcbcbc;
     --brand-sunshine: #ffaa4d;
@@ -99,7 +100,7 @@ h1, h2, h3 {
     border-radius: 0;
     display: inline-block;
     position: relative;
-    max-height: 170px;
+    height: 170px;
     overflow: visible;
     border: 1px solid #efefef;
     box-shadow: var(--card-boxShadow);
@@ -199,6 +200,8 @@ h1, h2, h3 {
 
 .mpp-card--image[src="https://my.dreamcitychurch.us/widgets/Content/icons/icon-event.svg"] {
     object-fit: contain;
+    background-color: var(--brand-charcoal);
+    padding: 2rem;
 }
 
 .mpp-card--body {

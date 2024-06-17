@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <title>Update Your Profile</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        rel="stylesheet"
+        media="(prefers-color-scheme:light)"
+        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css"
+    />
+    <link
+        rel="stylesheet"
+        media="(prefers-color-scheme:dark)"
+        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/dark.css"
+        onload="document.documentElement.classList.add('sl-theme-dark');"
+    />
+    <!-- Import JS files -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
+
+</head>
+<body>
+    
+    <sl-avatar label="User Picture"></sl-avatar>
+    <sl-select label="Prefix" clearable>
+            <sl-option value="1">Mr.</sl-option>
+            <sl-option value="2">Mrs.</sl-option>
+            <sl-option value="6">Ms.</sl-option>
+            <sl-option value="3">Miss</sl-option>
+            <sl-option value="4">Rev.</sl-option>
+            <sl-option value="5">Dr.</sl-option>
+    </sl-select>
+    <sl-input label="First Name"></sl-input>
+    <sl-input label="Middle Name"></sl-input>
+    <sl-input label="Last Name"></sl-input>
+    <sl-select label="Suffix" clearable>
+        <sl-option value="1">Jr.</sl-option>
+        <sl-option value="2">Sr.</sl-option>
+        <sl-option value="4">II</sl-option>
+        <sl-option value="3">III</sl-option>
+        <sl-option value="7">IV</sl-option>
+        <sl-option value="8">V</sl-option>
+        <sl-option value="8">CPA</sl-option>
+        <sl-option value="6">DDS</sl-option>
+    </sl-select>
+    <sl-input type="email" label="Email"></sl-input>
+    <sl-input label="Phone" noSpinButtons help-text="By providing your phone number, you agree to receive text messages from Dream City Church. Reply STOP to unsubscribe at any time. Data & Msg rates may apply."></sl-input>
+    <sl-input type="date" label="Birthday"></sl-input>
+    <sl-select label="Gender" clearable>
+        <sl-option value="1">Male</sl-option>
+        <sl-option value="2">Female</sl-option>
+    </sl-select>
+    
+</body>
+</html>
