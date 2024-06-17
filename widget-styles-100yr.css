@@ -1089,6 +1089,7 @@ div#mobileUnlistedCheck {
     /* TABLET SIZE */
     .mpp-card {
         max-height:none;
+        height: auto;
     }
     .mpp-card--header {
         max-width: 214px;
