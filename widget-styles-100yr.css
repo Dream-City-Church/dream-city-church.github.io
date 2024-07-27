@@ -88,7 +88,7 @@ h1, h2, h3 {
     --card-checkboxDefaultColor: #bcbcbc;
     --card-labelBgColor: #fff;
 }
-
+ 
 .mppw-card--grid, #subscriptionsBody {
     display: grid;
     grid-template-columns: 100%;
