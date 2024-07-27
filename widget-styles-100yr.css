@@ -114,8 +114,6 @@ h1, h2, h3 {
 .mpp-card:hover {
     cursor: pointer;
     background-color: rgb(240 240 240 / 1);
-    box-shadow: var(--card-boxShadow);
-    transition: border 400ms ease, box-shadow 400ms ease;
 }
 
 .mpp-card--household {
