@@ -87,7 +87,6 @@ h1, h2, h3 {
     --card-imageBgColor: #bcbcbc;
     --card-checkboxDefaultColor: #bcbcbc;
     --card-labelBgColor: #fff;
-    --border-radius: 20px;
 }
 
 .mppw-card--grid, #subscriptionsBody {
@@ -98,7 +97,7 @@ h1, h2, h3 {
 }
 
 .mpp-card, #subscriptionsBody .mpp-card-multiselect {
-    border-radius: 0;
+    border-radius: 20px;
     display: inline-block;
     position: relative;
     height: 170px;
