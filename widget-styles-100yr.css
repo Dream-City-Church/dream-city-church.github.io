@@ -202,7 +202,7 @@ h1, h2, h3 {
 
 .mpp-card--image[src="https://my.dreamcitychurch.us/widgets/Content/icons/icon-event.svg"] {
     object-fit: contain;
-    background-color: var(--brand-charcoal);
+    background-color: rgb(0 0 0 / 0%);
     padding: 2rem;
 }
 
