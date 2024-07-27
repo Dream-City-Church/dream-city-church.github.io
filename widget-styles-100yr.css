@@ -196,6 +196,8 @@ h1, h2, h3 {
     aspect-ratio: 16 / 9;
     margin: 0 !important;
     object-fit: cover;
+    border-top-left-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
 }
 
 .mpp-card--image[src="https://my.dreamcitychurch.us/widgets/Content/icons/icon-event.svg"] {
