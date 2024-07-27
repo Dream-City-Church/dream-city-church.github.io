@@ -113,7 +113,7 @@ h1, h2, h3 {
 
 .mpp-card:hover {
     cursor: pointer;
-    background-color: rgb(255 255 255 / 1);
+    background-color: rgb(240 240 240 / 1);
     border: 0.25px solid #253746;
     box-shadow: var(--card-boxShadow);
     transition: border 400ms ease, box-shadow 400ms ease;
