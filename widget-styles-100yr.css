@@ -8,8 +8,8 @@ ndary/*********************/
     --primary: #bc204b;
     --secondary: #e07e3c;
     --tertiary: #bcbcbc;
-    --brand-gradient: linear-gradient(-170deg, var(--secondary) 0%, var(--primary) 100%);
-    --brand-gradient-rot: linear-gradient(-20deg, var(--secondary) 0%, var(--primary) 100%);
+    --brand-gradient: linear-gradient(-170deg, var(--primary) 0%, var(--secondary) 100%);
+    --brand-gradient-rot: linear-gradient(-20deg, var(--primary) 0%, var(--secondary) 100%);
     --brand-charcoal: #3f4444;
     --brand-cloud: #bcbcbc;
     --brand-sunshine: #ffaa4d;
