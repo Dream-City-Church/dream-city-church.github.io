@@ -49,7 +49,6 @@
     --innerPage-fontSize: 1.1rem;
     --innerPage-lineHeight: 1.6rem;
     --alt-text-color: #777777;
-    --border-radius: 20px;
 }
 
 * {
@@ -88,6 +87,7 @@ h1, h2, h3 {
     --card-imageBgColor: #bcbcbc;
     --card-checkboxDefaultColor: #bcbcbc;
     --card-labelBgColor: #fff;
+    --border-radius: 20px;
 }
 
 .mppw-card--grid, #subscriptionsBody {
