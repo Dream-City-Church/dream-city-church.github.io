@@ -49,6 +49,7 @@
     --innerPage-fontSize: 1.1rem;
     --innerPage-lineHeight: 1.6rem;
     --alt-text-color: #777777;
+    --border-radius: 20px;
 }
 
 * {
