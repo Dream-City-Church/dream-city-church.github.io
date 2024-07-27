@@ -35,7 +35,7 @@
     --form-btn-disabled: var(--brand-cloud);
     --card-bgcolor: #fff;
     --card-title-color: var(--brand-dusk);
-    --card-header-bgcolor: rgb(0 0 0 / 0%) !important;
+    --card-header-bgcolor: rgba(0, 0, 0, 0) !important;
     --box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.35);
     --progress-pledged: var(--secondary);
     --progress-received: var(--primary);
@@ -70,7 +70,7 @@ h1, h2, h3 {
     --card-boxShadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.05);
     --card-primaryColor: var(--primary);
     --card-badgeBgColor: var(--brand-sunshine);
-    --card-headerBgColor: rgb(0 0 0 / 0%) !important;
+    --card-headerBgColor: rgba(0, 0, 0, 0) !important;
     --card-badge-highlightColor: #fff;
     --card-badgeStatusActiveColor: var(--card-primaryColor);
     --card-badgeStatusPendingColor: var(--brand-dusk);
@@ -84,7 +84,7 @@ h1, h2, h3 {
     --card-progressBarActiveColor: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
     --card-progressBarRemainingColor: white;
     --card-progressBarCompleteColor: #77be43;
-    --card-imageBgColor: rgb(0 0 0 / 0%) !important;
+    --card-imageBgColor: rgba(0, 0, 0, 0) !important;
     --card-checkboxDefaultColor: #bcbcbc;
     --card-labelBgColor: #fff;
 }
