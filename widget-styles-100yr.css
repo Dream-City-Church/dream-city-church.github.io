@@ -84,7 +84,7 @@ h1, h2, h3 {
     --card-progressBarActiveColor: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
     --card-progressBarRemainingColor: white;
     --card-progressBarCompleteColor: #77be43;
-    --card-imageBgColor: transparent;
+    --card-imageBgColor: transparent !important;
     --card-checkboxDefaultColor: #bcbcbc;
     --card-labelBgColor: #fff;
 }
