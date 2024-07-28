@@ -67,7 +67,7 @@ h1, h2, h3 {
     --card-title-color: #333333;
     --card-textColor: #333333;
     --card-borderRadius: 0.5rem;
-
+    --card-boxshadow: none;
     --card-primaryColor: var(--primary);
     --card-badgeBgColor: var(--brand-sunshine);
     --card-headerBgColor: rgba(0, 0, 0, 0) !important;
