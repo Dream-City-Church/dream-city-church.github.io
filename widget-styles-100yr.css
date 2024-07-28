@@ -97,7 +97,7 @@ h1, h2, h3 {
 }
 
 .mpp-card, #subscriptionsBody .mpp-card-multiselect {
-    border-radius: 20px !important;
+    border-radius: 10px !important;
     display: inline-block;
     position: relative;
     height: 170px;
@@ -193,8 +193,8 @@ h1, h2, h3 {
     aspect-ratio: 16 / 9;
     margin: 0 !important;
     object-fit: cover;
-    border-top-left-radius: 20px !important;
-    border-bottom-left-radius: 20px !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
 }
 
 .mpp-card--image[src="https://dreamcitychurch.us/wp-content/uploads/2024/07/D.png"] {
