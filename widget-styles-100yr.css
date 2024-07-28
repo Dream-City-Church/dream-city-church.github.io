@@ -103,6 +103,7 @@ h1, h2, h3 {
     height: 170px;
     overflow: visible;
     border: 1px solid #efefef;
+    box-shadow: none !important;
     transition: border 250ms ease, box-shadow 250ms ease; 
 }
 
