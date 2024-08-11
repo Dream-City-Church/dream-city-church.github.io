@@ -8,8 +8,8 @@
     --primary: #bc204b;
     --secondary: #e07e3c;
     --tertiary: #bcbcbc;
-    --brand-gradient: linear-gradient(-170deg, var(--primary) 0%, var(--secondary) 100%);
-    --brand-gradient-rot: linear-gradient(-20deg, var(--primary) 0%, var(--secondary) 100%);
+    --brand-gradient: linear-gradient(-170deg, var(--secondary) 0%, var(--primary) 100%);
+    --brand-gradient-rot: linear-gradient(-20deg, var(--secondary) 0%, var(--primary) 100%);
     --brand-charcoal: #3f4444;
     --brand-cloud: #bcbcbc;
     --brand-sunshine: #ffaa4d;
@@ -35,7 +35,7 @@
     --form-btn-disabled: var(--brand-cloud);
     --card-bgcolor: #fff;
     --card-title-color: var(--brand-dusk);
-    --card-header-bgcolor: #ffffff;
+    --card-header-bgcolor: rgba(0, 0, 0, 0) !important;
     --box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.35);
     --progress-pledged: var(--secondary);
     --progress-received: var(--primary);
@@ -67,10 +67,10 @@ h1, h2, h3 {
     --card-title-color: #333333;
     --card-textColor: #333333;
     --card-borderRadius: 0.5rem;
-    --card-boxShadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.05);
+    --card-boxshadow: none !important;
     --card-primaryColor: var(--primary);
     --card-badgeBgColor: var(--brand-sunshine);
-    --card-headerBgColor: var(--brand-cloud);
+    --card-headerBgColor: rgba(0, 0, 0, 0) !important;
     --card-badge-highlightColor: #fff;
     --card-badgeStatusActiveColor: var(--card-primaryColor);
     --card-badgeStatusPendingColor: var(--brand-dusk);
@@ -84,26 +84,26 @@ h1, h2, h3 {
     --card-progressBarActiveColor: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
     --card-progressBarRemainingColor: white;
     --card-progressBarCompleteColor: #77be43;
-    --card-imageBgColor: #bcbcbc;
+    --card-imageBgColor: rgba(0, 0, 0, 0) !important;
     --card-checkboxDefaultColor: #bcbcbc;
     --card-labelBgColor: #fff;
 }
-
+ 
 .mppw-card--grid, #subscriptionsBody {
     display: grid;
     grid-template-columns: 100%;
-    grid-gap: 2rem;
+    grid-gap: 1rem;
     margin-top: 1em;
 }
 
 .mpp-card, #subscriptionsBody .mpp-card-multiselect {
-    border-radius: 0;
+    border-radius: 10px !important;
     display: inline-block;
     position: relative;
     height: 170px;
     overflow: visible;
-    border: 1px solid #efefef;
-    box-shadow: var(--card-boxShadow);
+    border: 1px solid #d0d0d0;
+    box-shadow: none !important;
     transition: border 250ms ease, box-shadow 250ms ease; 
 }
 
@@ -113,10 +113,7 @@ h1, h2, h3 {
 
 .mpp-card:hover {
     cursor: pointer;
-    background-color: rgb(255 255 255 / 1);
-    border: 0.25px solid #253746;
-    box-shadow: var(--card-boxShadow);
-    transition: border 400ms ease, box-shadow 400ms ease;
+    background-color: rgb(240 240 240 / 1);
 }
 
 .mpp-card--household {
@@ -196,11 +193,13 @@ h1, h2, h3 {
     aspect-ratio: 16 / 9;
     margin: 0 !important;
     object-fit: cover;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
 }
 
-.mpp-card--image[src="https://my.dreamcitychurch.us/widgets/Content/icons/icon-event.svg"] {
+.mpp-card--image[src="https://dreamcitychurch.us/wp-content/uploads/2024/07/D.png"] {
     object-fit: contain;
-    background-color: var(--brand-charcoal);
+    background-color: transparent !important;
     padding: 2rem;
 }
 
