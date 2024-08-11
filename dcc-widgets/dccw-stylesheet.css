@@ -3,6 +3,8 @@
   --brand-secondary: #e07e3c;
   --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
   --header-font-face: 'termina',Helvetica,Arial,Lucida,sans-serif;
+  --wa-color-focus: #bc204b !important;
+  --wa-form-control-activated-color: #bc204b !important;
 }
 
 /* Event Details */
@@ -443,6 +445,97 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
   .participant-card {
     display: inline-block;
   }
+}
+
+/* Prayer Submission Form */
+#prayer-request-form {
+  margin: 2rem;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#prayer-request-form wa-radio-group.type-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.PrayerRequestButton {
+  --indicator-color:#bc204b; 
+  --border-radius: 2rem;
+  --border-color: #bc204b;
+  --label-color: #bc204b;
+  --background-color-hover: transparent;
+}
+
+.PrayerRequestButton::part(button--checked) {
+  border-color: #bc204b;
+  background-color:rgba(188,32,75,0.95);
+  color: white;
+}
+
+.PraiseReportButton {
+  --indicator-color:#e07e3c; 
+  --border-radius: 2rem;
+  --border-color: #e07e3c;
+  --label-color: #e07e3c;
+  --background-color-hover: transparent;
+}
+
+.PraiseReportButton::part(button--checked) {
+  border-color: #e07e3c;
+  background-color:rgba(224,126,60,0.95);
+  color: white;
+}
+
+#prayer-request-form wa-input.input-field {
+  margin-bottom: 1.5rem;
+}
+
+wa-textarea.request-text-box.textarea--focused {
+  border-color: #bc204b !important;
+}
+
+wa-textarea.request-text-box {
+  margin-bottom: 2rem;
+}
+#char-count {
+  margin-top: 0.5rem;
+  text-align: right;
+  display: inline-block;
+  width: 100%;
+}
+
+wa-radio-group.visibility-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.VisibilityPublic, .VisibilityPrivate  {
+  --indicator-color:#bcbcbc; 
+  --border-radius: 2rem;
+  --border-color: #bcbcbc;
+  --label-color: #bcbcbc;
+  --background-color-hover: transparent;
+}
+
+.VisibilityPublic::part(button--checked), .VisibilityPrivate::part(button--checked){
+  border-color: #253746;
+  background-color:#253746;
+  color: white;
+  --indicator-width: 0;
+}
+
+#prayer-disclaimer {
+  text-align: center;
+}
+
+.submit-container {
+  text-align: center;
+}
+
+.submit-container wa-button {
+  min-width: 150px;
 }
 
 
