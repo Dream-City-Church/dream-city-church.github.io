@@ -15,7 +15,7 @@ function verifyEmailAddress() {
     document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
         <div class="container">
             <h1>Email Verification</h1>
-            <p><i class="fa-solid fa-circle-envelope fa-beat-fade"></i> Verifying your email address. Please wait just a moment...</p>
+            <p><i class="fa-solid fa-circle-envelope fa-beat-fade" fa-5x></i><br />Verifying your email address. Please wait just a moment...</p>
         </div>
     `;
 
@@ -27,7 +27,7 @@ function verifyEmailAddress() {
         document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
             <div class="container">
                 <h1>Email Verification</h1>
-                <p><i class="fa-sharp fa-solid fa-hexagon-exclamation"></i> Unable to verify your email.<br />Please check your link and try again.</p>
+                <p><i class="fa-sharp fa-solid fa-hexagon-exclamation" fa-5x></i><br />Unable to verify your email.<br />Please check your link and try again.</p>
             </div>
         `;
         return;
@@ -47,14 +47,14 @@ function verifyEmailAddress() {
             if (response.ok) {
                 return response.json();
             } else {
-                throw new Error("There was an error verifying your email address.<br />Check your link and try again later.");
+                throw new Error("There was an error verifying your email address.<br />Please check your link and try again later.");
             }
         })
         .then((data) => {
             document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
                 <div class="container">
                     <h1>Email Verification</h1>
-                    <p><i class="fa-sharp fa-solid fa-envelope-circle-check"></i> Your email address has been verified successfully! You may now close this window.</p>
+                    <p><i class="fa-sharp fa-solid fa-envelope-circle-check" fa-5x></i><br />Your email address has been verified successfully! You may now close this window.</p>
                 </div>
             `;
         })
@@ -62,7 +62,7 @@ function verifyEmailAddress() {
             document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
                 <div class="container">
                     <h1>Email Verification</h1>
-                    <p><i class="fa-sharp fa-solid fa-hexagon-exclamation"></i>  ${error.message}</p>
+                    <p><i class="fa-sharp fa-solid fa-hexagon-exclamation" fa-5x></i><br />${error.message}</p>
                 </div>
             `;
         });
