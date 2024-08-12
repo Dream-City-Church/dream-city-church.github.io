@@ -23,7 +23,7 @@ function verifyEmailAddress() {
     const token = getUrlVars()["token"];
 
     // If the token is not present, display an error message
-    if (!token) {
+    if (!token || token === "") {
         document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
             <div class="container">
                 <h1>Email Verification</h1>
