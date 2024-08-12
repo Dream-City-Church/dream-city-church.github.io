@@ -30,6 +30,7 @@ function verifyEmailAddress() {
                 <p><i class="fa-sharp fa-solid fa-hexagon-exclamation"></i> Unable to verify your email.<br />Please check your link and try again.</p>
             </div>
         `;
+        return;
     }
 
     // POST the token to the API for verification
