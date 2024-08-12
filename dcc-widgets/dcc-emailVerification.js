@@ -14,7 +14,7 @@ function verifyEmailAddress() {
     // Set the HTML container for this target to the <dcc-emailVerification> tag with a loading message
     document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
         <div class="container">
-            <p><i class="fa-solid fa-circle-envelope fa-beat-fade fa-3x"></i><br />Verifying your email address. Please wait just a moment...</p>
+            <p><i class="fa-solid fa-circle-envelope fa-beat-fade fa-3x"></i></p><p>Verifying your email address. Please wait just a moment...</p>
         </div>
     `;
 
@@ -25,7 +25,7 @@ function verifyEmailAddress() {
     if (!token || token === "") {
         document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
             <div class="container">
-                <p><i class="fa-sharp fa-solid fa-hexagon-exclamation fa-3x"></i><br />Unable to verify your email.<br />Please check your link and try again.</p>
+                <p><i class="fa-sharp fa-solid fa-hexagon-exclamation fa-3x"></i></p><p>Unable to verify your email.<br />Please check your link and try again.</p>
             </div>
         `;
         return;
@@ -51,14 +51,14 @@ function verifyEmailAddress() {
         .then((data) => {
             document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
                 <div class="container">
-                    <p><i class="fa-sharp fa-solid fa-envelope-circle-check fa-3x"></i><br />Your email address has been verified successfully!<br />You may now close this window.</p>
+                    <p><i class="fa-sharp fa-solid fa-envelope-circle-check fa-3x"></i></p><p>Your email address has been successfully verified!<br />You may now close this window.</p>
                 </div>
             `;
         })
         .catch((error) => {
             document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
                 <div class="container">
-                    <p><i class="fa-sharp fa-solid fa-hexagon-exclamation fa-3x"></i><br />${error.message}</p>
+                    <p><i class="fa-sharp fa-solid fa-hexagon-exclamation fa-3x"></i></p><p>${error.message}</p>
                 </div>
             `;
         });
