@@ -15,7 +15,7 @@ function verifyEmailAddress() {
     document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
         <div class="container">
             <h1>Email Verification</h1>
-            <p>Verifying your email address...</p>
+            <p><i class="fa-solid fa-circle-envelope fa-beat-fade"></i> Verifying your email address. Please wait just a moment...</p>
         </div>
     `;
 
@@ -27,7 +27,7 @@ function verifyEmailAddress() {
         document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
             <div class="container">
                 <h1>Email Verification</h1>
-                <p>There was an error verifying your email address. The link provided is not complete. Please try again later.</p>
+                <p><i class="fa-sharp fa-solid fa-hexagon-exclamation"></i> Unable to verify your email. Please check your link and try again.</p>
             </div>
         `;
     }
@@ -46,14 +46,14 @@ function verifyEmailAddress() {
             if (response.ok) {
                 return response.json();
             } else {
-                throw new Error("There was an error verifying your email address. Please try again later.");
+                throw new Error("There was an error verifying your email address. Check your link and try again later.");
             }
         })
         .then((data) => {
             document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
                 <div class="container">
                     <h1>Email Verification</h1>
-                    <p>Your email address has been verified successfully! You may now close this window.</p>
+                    <p><i class="fa-sharp fa-solid fa-envelope-circle-check"></i> Your email address has been verified successfully! You may now close this window.</p>
                 </div>
             `;
         })
@@ -61,7 +61,7 @@ function verifyEmailAddress() {
             document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
                 <div class="container">
                     <h1>Email Verification</h1>
-                    <p>${error.message}</p>
+                    <p><i class="fa-sharp fa-solid fa-hexagon-exclamation"></i>  ${error.message}</p>
                 </div>
             `;
         });
