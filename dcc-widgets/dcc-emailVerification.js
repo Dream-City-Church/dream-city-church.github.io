@@ -27,7 +27,7 @@ function verifyEmailAddress() {
         document.getElementsByTagName("dcc-emailVerification")[0].innerHTML = `
             <div class="container">
                 <h1>Email Verification</h1>
-                <p><i class="fa-sharp fa-solid fa-hexagon-exclamation"></i> Unable to verify your email. Please check your link and try again.</p>
+                <p><i class="fa-sharp fa-solid fa-hexagon-exclamation"></i> Unable to verify your email.<br />Please check your link and try again.</p>
             </div>
         `;
     }
@@ -46,7 +46,7 @@ function verifyEmailAddress() {
             if (response.ok) {
                 return response.json();
             } else {
-                throw new Error("There was an error verifying your email address. Check your link and try again later.");
+                throw new Error("There was an error verifying your email address.<br />Check your link and try again later.");
             }
         })
         .then((data) => {
