@@ -18,7 +18,7 @@ function loadPrayerRequestForm() {
 
     requestFormHTML = `
         <div id="prayer-request-form">
-            <form>
+            <form onsubmit="">
                 <wa-radio-group name="type" value="1" class="type-container" required>
                     <wa-radio-button value="1" class="PrayerRequestButton">
                         <wa-icon slot="prefix" name="hands-praying" variant="solid"></wa-icon>
@@ -64,6 +64,34 @@ function loadPrayerRequestForm() {
     `;
     document.getElementsByTagName("dcc-PrayerRequestForm")[0].innerHTML = requestFormHTML;
 }
+
+// When the form is submitted, validate the data entered then submit to api //
+document.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const url = "https://api.webhookinbox.com/i/bqflU0qE/in/";
+
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Object.fromEntries(formData)),
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        form.reset();
+        alert("Your prayer request has been submitted successfully!");
+    } else {
+        alert("There was an error submitting your request. Please try again later.");
+    }
+});
+
+
+
 
 document.addEventListener("DOMContentLoaded", async () => {
     await customElements.whenDefined("wa-textarea");
