@@ -4,7 +4,7 @@ function loadPrayerRequestForm() {
     // get device screen width
     var screenWidth = window.innerWidth;
     var buttonSize = "medium";
-    if (screenWidth < 400) {
+    if (screenWidth <= 425) {
         buttonSize = "small";
     }
 
