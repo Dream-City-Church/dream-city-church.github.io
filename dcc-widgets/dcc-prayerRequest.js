@@ -134,16 +134,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }
                 })
                 .then((data) => {
-                    submitButton.textContent = "Submitted!";
+                    submitButton.textContent = 'Submitted! <i class="fa-solid fa-comment-check fa-bounce fa-xl"></i>';
                     form.reset();
                     // Clear all parameters from the URL
                     window.history.replaceState({}, document.title, window.location.pathname);
                     // Add back the CID and UID if they exist
-                    if (cid.value) {
-                        window.history.pushState({}, document.title, `?cid=${cid.value}`);
-                    }
-                    if (uid.value) {
-                        window.history.pushState({}, document.title, `?uid=${uid.value}`);
+                    if (contactGuid && !userGuid) {
+                        window.history.pushState({}, document.title, `?cid=${contactGuid}`);
+                    } else if (!contactGuid && userGuid) {
+                        window.history.pushState({}, document.title, `?uid=${userGuid}`);
+                    } elseif (contactGuid && userGuid) {
+                        window.history.pushState({}, document.title, `?uid=${userGuid}&cid=${contactGuid}`);
                     }
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
