@@ -42,7 +42,7 @@ function loadPrayerRequestForm() {
                         <wa-icon slot="prefix" name="hands-praying" variant="solid"></wa-icon>
                         Prayer Request
                     </wa-radio-button>
-                    <wa-radio-button value="2" class="PraiseReportButton">
+                    <wa-radio-button value="2" class="PraiseReportButton" size="${buttonSize}">
                         Praise Report
                         <wa-icon slot="suffix" name="hands-clapping" variant="solid"></wa-icon>
                     </wa-radio-button>
