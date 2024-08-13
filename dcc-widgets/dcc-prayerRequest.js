@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     lastName: lastName.value,
                     email: email.value,
                     phone: phone.value || "",
-                    request: request.value,
+                    requestText: request.value,
                     type: type.value,
                     visibility: visibility.value,
                     uid: uid.value || "",
