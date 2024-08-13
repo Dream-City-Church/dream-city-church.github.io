@@ -151,8 +151,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
                         submitButton.disabled = false;
-                        document.getElementById("submit-status").innerHTML = '';
                     }, 5000);
+                    setTimeout(() => {
+                        document.getElementById("submit-status").innerHTML = '';
+                    }, 10000);
                 })
                 .catch((error) => {
                     submitButton.textContent = "Error!";
@@ -160,6 +162,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
                         submitButton.disabled = false;
+                    }, 5000);
+                    setTimeout(() => {
                         document.getElementById("submit-status").innerHTML = '';
                     }, 5000);
                 });
