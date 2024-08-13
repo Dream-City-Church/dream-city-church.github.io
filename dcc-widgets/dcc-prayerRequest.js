@@ -37,7 +37,7 @@ function loadPrayerRequestForm() {
         ${greetingHtml}
         <div id="prayer-request-form">
             <form id="request-form">
-                <wa-radio-group name="type" value="1" class="type-container" required>
+                <wa-radio-group name="type" value="1" class="type-container" size="${buttonSize}" required>
                     <wa-radio-button value="1" class="PrayerRequestButton" size="${buttonSize}">
                         <wa-icon slot="prefix" name="hands-praying" variant="solid"></wa-icon>
                         Prayer Request
