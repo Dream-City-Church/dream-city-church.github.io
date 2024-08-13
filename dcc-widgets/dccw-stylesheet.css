@@ -492,6 +492,12 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
   margin-bottom: 1.5rem;
 }
 
+#help-text {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-style: italic;
+}
+
 wa-textarea.request-text-box.textarea--focused {
   border-color: #bc204b !important;
 }

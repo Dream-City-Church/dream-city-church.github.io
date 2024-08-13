@@ -64,6 +64,7 @@ function loadPrayerRequestForm() {
                 <div class="submit-container">
                     <wa-button style="--background-color: #bc204b; --border-radius: 2rem;" type="submit" class="submit-button" id="prayer-request-submit-button">Submit</wa-button>
                 </div>
+                <div id="submit-status"></div>
             </form>
         </div>
     `;
@@ -135,6 +136,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 })
                 .then((data) => {
                     submitButton.textContent = 'Submitted!';
+                    document.getElementById("submit-status").innerHTML = 'Your request has been submitted. Thank you! <i class="fa-solid fa-comment-check fa-bounce"></i>';
                     form.reset();
                     // Clear all parameters from the URL
                     window.history.replaceState({}, document.title, window.location.pathname);
@@ -149,13 +151,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
                         submitButton.disabled = false;
+                        document.getElementById("submit-status").innerHTML = '';
                     }, 5000);
                 })
                 .catch((error) => {
                     submitButton.textContent = "Error!";
+                    document.getElementById("submit-status").innerHTML = 'Sorry, something went wrong. Try again later. <i class="fa-solid fa-comment-xmark fa-shake"></i>';
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
                         submitButton.disabled = false;
+                        document.getElementById("submit-status").innerHTML = '';
                     }, 5000);
                 });
         }
