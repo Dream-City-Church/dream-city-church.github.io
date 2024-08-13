@@ -14,10 +14,10 @@ function loadPrayerRequestForm() {
 
     if (userGuid || contactGuid) {
         submitterInfo = `
-            <input id="firstNameField" name="first-name" class="input-field" placeholder="First Name" minlength=3 max-length=20 autocapitalize="words" autocomplete="given-name" inputmode="text" hidden></input>
-            <input id="lastNameField" name="last-name" class="input-field" placeholder="Last Name" minlength=3 max-length=20 autocapitalize="words" autocomplete="family-name" inputmode="text" hidden></input>
-            <input id="emailAddressField" name="email" class="input-field" placeholder="Email Address" minlength=5 max-length=30 type="email" inputmode="email" autocomplete="email" hidden></input>
-            <input id="phoneNumberField" name="phone" class="input-field" placeholder="Mobile Phone" minlength=10 max-length=13 type="tel" inputmode="tel" autocomplete="mobile" help-text="Optional. By providing your phone number to Dream City Church, you're opting in to receive text messages from us. Data & Msg rates may apply. Reply STOP to cancel." hidden></input>
+            <input id="firstNameField" name="first-name" class="input-field input-hidden" inputmode="text" hidden></input>
+            <input id="lastNameField" name="last-name" class="input-field input-hidden" inputmode="text" hidden></input>
+            <input id="emailAddressField" name="email" class="input-field input-hidden" hidden></input>
+            <input id="phoneNumberField" name="phone" class="input-field input-hidden" hidden></input>
         `;
     }
 
@@ -136,6 +136,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 .then((data) => {
                     submitButton.textContent = "Submitted!";
                     form.reset();
+                    // Clear all parameters from the URL
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                    // Add back the CID and UID if they exist
+                    if (cid.value) {
+                        window.history.pushState({}, document.title, `?cid=${cid.value}`);
+                    }
+                    if (uid.value) {
+                        window.history.pushState({}, document.title, `?uid=${uid.value}`);
+                    }
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
                         submitButton.disabled = false;
