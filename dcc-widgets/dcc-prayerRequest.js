@@ -65,12 +65,19 @@ function loadPrayerRequestForm() {
     document.getElementsByTagName("dcc-PrayerRequestForm")[0].innerHTML = requestFormHTML;
 }
 
-//Function for phoneNumberField to not allow non-numbers, limit to 10 numbers, and format as xxx-xxx-xxxx
+//Function for phoneNumberField to not allow non-numbers, limit to 10 numbers, and format as xxx-xxx-xxxx.
+// Insert the dashes to the phone number as it is being typed.
 document.addEventListener("DOMContentLoaded", async () => {
     await customElements.whenDefined("wa-input");
-    const phoneField = document.querySelector("#phoneNumberField");
-    phoneField.addEventListener("input", () => {
-        phoneField.value = phoneField.value.replace(/\D/g, "").substring(0,10).replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+    const phone = document.querySelector("#phoneNumberField");
+    phone.addEventListener("input", () => {
+        phone.value = phone.value.replace(/\D/g, "").substring(0, 10);
+        const value = phone.value.replace(/\D/g, "");
+        if (value.length > 3 && value.length < 7) {
+            phone.value = `${value.slice(0, 3)}-${value.slice(3)}`;
+        } else if (value.length >= 7) {
+            phone.value = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6)}`;
+        }
     });
 });
 

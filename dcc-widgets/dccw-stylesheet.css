@@ -528,6 +528,8 @@ wa-radio-group.visibility-container {
 
 #prayer-disclaimer {
   text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
 }
 
 .submit-container {
