@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }
                 })
                 .then((data) => {
-                    submitButton.textContent = 'Submitted! <i class="fa-solid fa-comment-check fa-bounce fa-xl"></i>';
+                    submitButton.textContent = 'Submitted!';
                     form.reset();
                     // Clear all parameters from the URL
                     window.history.replaceState({}, document.title, window.location.pathname);
