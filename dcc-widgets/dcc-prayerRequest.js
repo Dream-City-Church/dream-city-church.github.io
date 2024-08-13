@@ -18,7 +18,7 @@ function loadPrayerRequestForm() {
 
     requestFormHTML = `
         <div id="prayer-request-form">
-            <form onsubmit="">
+            <form id="request-form">
                 <wa-radio-group name="type" value="1" class="type-container" required>
                     <wa-radio-button value="1" class="PrayerRequestButton">
                         <wa-icon slot="prefix" name="hands-praying" variant="solid"></wa-icon>
@@ -57,7 +57,7 @@ function loadPrayerRequestForm() {
                 <input type="hidden" id="prayer-form-rid" name="rid" value="${relatedGuid}">
 
                 <div class="submit-container">
-                    <wa-button style="--background-color: #bc204b; --border-radius: 2rem;" type="submit" class="submit-button">Submit</wa-button>
+                    <wa-button style="--background-color: #bc204b; --border-radius: 2rem;" type="submit" class="submit-button" id="prayer-request-submit-button">Submit</wa-button>
                 </div>
             </form>
         </div>
@@ -66,30 +66,72 @@ function loadPrayerRequestForm() {
 }
 
 // When the form is submitted, validate the data entered then submit to api //
-document.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-    const url = "https://prod-10.westus2.logic.azure.com:443/workflows/5562f39e49bb451e8cd39699645d8e75/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ynLuDLIn08dTCFuqdKn-VL71bCNuijKeX2MhMSUDIgU";
+document.addEventListener("DOMContentLoaded", async () => {
+    await customElements.whenDefined("wa-button");
+    const form = document.querySelector("#request-form");
+    const submitButton = document.querySelector("#prayer-request-submit-button");
+    const firstName = document.querySelector("#firstNameField");
+    const lastName = document.querySelector("#lastNameField");
+    const email = document.querySelector("#emailAddressField");
+    const phone = document.querySelector("#phoneNumberField");
+    const request = document.querySelector("#request-text-box");
+    const type = document.querySelector(".type-container");
+    const visibility = document.querySelector(".visibility-container");
+    const uid = document.querySelector("#prayer-form-uid");
+    const cid = document.querySelector("#prayer-form-cid");
+    const rid = document.querySelector("#prayer-form-rid");
 
-    const response = await fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(Object.fromEntries(formData)),
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+
+        if (firstName.checkValidity() && lastName.checkValidity() && email.checkValidity() && request.checkValidity() && type.checkValidity() && visibility.checkValidity()) {
+            fetch("https://prod-10.westus2.logic.azure.com:443/workflows/5562f39e49bb451e8cd39699645d8e75/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ynLuDLIn08dTCFuqdKn-VL71bCNuijKeX2MhMSUDIgU", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    email: email.value,
+                    phone: phone.value,
+                    request: request.value,
+                    type: type.value,
+                    visibility: visibility.value,
+                    uid: uid.value,
+                    cid: cid.value,
+                    rid: rid.value,
+                }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("There was an error submitting your request.<br />Please try again later.");
+                    }
+                })
+                .then((data) => {
+                    submitButton.textContent = "Submitted!";
+                    setTimeout(() => {
+                        submitButton.textContent = "Submit";
+                        submitButton.disabled = false;
+                    }, 5000);
+                })
+                .catch((error) => {
+                    submitButton.textContent = "Error!";
+                    setTimeout(() => {
+                        submitButton.textContent = "Submit";
+                        submitButton.disabled = false;
+                    }, 5000);
+                });
+        }
     });
-
-    if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        form.reset();
-        alert("Your prayer request has been submitted successfully!");
-    } else {
-        alert("There was an error submitting your request. Please try again later.");
-    }
 });
+                
 
+// When the user types in the textarea, update the character count //
 document.addEventListener("DOMContentLoaded", async () => {
     await customElements.whenDefined("wa-textarea");
   
