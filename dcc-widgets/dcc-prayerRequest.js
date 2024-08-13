@@ -21,7 +21,13 @@ function loadPrayerRequestForm() {
         `;
     }
 
+    greetingHtml = ``;
+    if (userGuid || contactGuid) {
+        greetingHtml = `<h3>Welcome back! Please enter your prayer request or praise report below.</h3>`;
+    }
+
     requestFormHTML = `
+        ${greetingHtml}
         <div id="prayer-request-form">
             <form id="request-form">
                 <wa-radio-group name="type" value="1" class="type-container" required>
