@@ -23,7 +23,7 @@ function loadPrayerRequestForm() {
 
     greetingHtml = ``;
     if (userGuid || contactGuid) {
-        greetingHtml = `<h3>Welcome back! Please enter your prayer request or praise report below.</h3>`;
+        greetingHtml = `<p style="text-align:center;padding:0;">Welcome back!<br />Please enter your prayer request or praise report below.</p>`;
     }
 
     requestFormHTML = `

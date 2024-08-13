@@ -503,7 +503,7 @@ wa-textarea.request-text-box.textarea--focused {
 }
 
 wa-textarea.request-text-box {
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 #char-count {
   margin-top: 0.5rem;
