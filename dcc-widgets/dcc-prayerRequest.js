@@ -96,13 +96,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                     firstName: firstName.value,
                     lastName: lastName.value,
                     email: email.value,
-                    phone: phone.value,
+                    phone: phone.value || "",
                     request: request.value,
                     type: type.value,
                     visibility: visibility.value,
-                    uid: uid.value,
-                    cid: cid.value,
-                    rid: rid.value,
+                    uid: uid.value || "",
+                    cid: cid.value || "",
+                    rid: rid.value || "",
                 }),
             })
                 .then((response) => {
