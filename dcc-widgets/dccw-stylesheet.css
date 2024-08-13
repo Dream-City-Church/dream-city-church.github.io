@@ -546,6 +546,12 @@ wa-radio-group.visibility-container {
   min-width: 150px;
 }
 
+#submit-status {
+  text-align: center;
+  margin: 1rem;
+  color: var(--brand-primary);
+}
+
 
 /* Quick Sign In Forms - Events and Groups */
 dcc-eventsignin, dcc-groupsignin {

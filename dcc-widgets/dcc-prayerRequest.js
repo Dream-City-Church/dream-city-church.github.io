@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 })
                 .then((data) => {
                     submitButton.textContent = 'Submitted!';
-                    document.getElementById("submit-status").innerHTML = 'Your request has been submitted. Thank you! <i class="fa-solid fa-comment-check fa-bounce"></i>';
+                    document.getElementById("submit-status").innerHTML = 'Your request has been submitted. Thank you! <i class="fa-solid fa-comment-check fa-bounce fa-xl"></i>';
                     form.reset();
                     // Clear all parameters from the URL
                     window.history.replaceState({}, document.title, window.location.pathname);
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 })
                 .catch((error) => {
                     submitButton.textContent = "Error!";
-                    document.getElementById("submit-status").innerHTML = 'Sorry, something went wrong. Try again later. <i class="fa-solid fa-comment-xmark fa-shake"></i>';
+                    document.getElementById("submit-status").innerHTML = 'Sorry, something went wrong. Try again later. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i>';
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
                         submitButton.disabled = false;
