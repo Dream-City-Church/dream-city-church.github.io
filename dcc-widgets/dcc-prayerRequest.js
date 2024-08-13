@@ -39,17 +39,17 @@ function loadPrayerRequestForm() {
                 <wa-radio-group name="visibility" value="4" class="visibility-container" required>
                     <wa-radio-button value="4" class="VisibilityPublic">
                         <wa-icon slot="prefix" name="eye" variant="solid"></wa-icon>
-                        Public: Post under my initials
+                        Public
                     </wa-radio-button>
                     <wa-radio-button value="2" class="VisibilityPrivate">
                         <wa-icon slot="prefix" name="eye-slash" variant="solid"></wa-icon>
-                        Private: Only share with the prayer team
+                        Private
                     </wa-radio-button>
                 </wa-radio-group>
 
                 <div id="prayer-disclaimer">
                     <p>If you are having an urgent emergency, please call 911. If you are having suicidal thoughts or thoughts of self-harm, please call the Suicide & Crisis Lifeline at 988.</p>
-                    <p>Email verification and manual review may be required before your post will visible on the public prayer wall. Links, URL's, self-promotion, and personally identifiable information may be removed from posts.</p>
+                    <p>Email verification and manual review may be required before your post will visible on the public prayer wall. Links, URL's, self-promotion, and personally identifiable information may be removed from posts.<br /></p>
                 </div>
 
                 <input type="hidden" id="prayer-form-uid" name="uid" value="${userGuid}">
@@ -70,7 +70,7 @@ document.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
-    const url = "https://api.webhookinbox.com/i/bqflU0qE/in/";
+    const url = "https://prod-10.westus2.logic.azure.com:443/workflows/5562f39e49bb451e8cd39699645d8e75/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ynLuDLIn08dTCFuqdKn-VL71bCNuijKeX2MhMSUDIgU";
 
     const response = await fetch(url, {
         method: "POST",
@@ -89,9 +89,6 @@ document.addEventListener("submit", async (event) => {
         alert("There was an error submitting your request. Please try again later.");
     }
 });
-
-
-
 
 document.addEventListener("DOMContentLoaded", async () => {
     await customElements.whenDefined("wa-textarea");
