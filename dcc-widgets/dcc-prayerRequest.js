@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         window.history.pushState({}, document.title, `?cid=${contactGuid}`);
                     } else if (!contactGuid && userGuid) {
                         window.history.pushState({}, document.title, `?uid=${userGuid}`);
-                    } elseif (contactGuid && userGuid) {
+                    } else if (contactGuid && userGuid) {
                         window.history.pushState({}, document.title, `?uid=${userGuid}&cid=${contactGuid}`);
                     }
                     setTimeout(() => {
