@@ -130,6 +130,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 })
                 .then((data) => {
                     submitButton.textContent = "Submitted!";
+                    form.reset();
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
                         submitButton.disabled = false;
