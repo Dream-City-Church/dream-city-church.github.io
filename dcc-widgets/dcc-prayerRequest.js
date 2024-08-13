@@ -54,7 +54,7 @@ function loadPrayerRequestForm() {
 
                 <div id="prayer-disclaimer">
                     <p>If you are having an urgent emergency, please call 911. If you are having suicidal thoughts or thoughts of self-harm, please call the Suicide & Crisis Lifeline at 988.</p>
-                    <p>Email verification and manual review may be required before your post will visible on the public prayer wall. Links, URL's, self-promotion, and personally identifiable information may be removed from posts.<br /></p>
+                    <p>Email verification and manual approval may be required before your post will visible on the public prayer wall. Links, URL's, self-promotion, and personally identifiable information may be removed from posts.<br /></p>
                 </div>
 
                 <input type="hidden" id="prayer-form-uid" name="uid" value="${userGuid}">
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 })
                 .then((data) => {
                     submitButton.textContent = 'Submitted!';
-                    document.getElementById("submit-status").innerHTML = 'Your request has been submitted. Thank you! <i class="fa-solid fa-comment-check fa-bounce fa-xl"></i>';
+                    document.getElementById("submit-status").innerHTML = '<p>Your request has been submitted. Thank you! <i class="fa-solid fa-comment-check fa-bounce fa-xl"></i></p><p>Please check your email for updates on your request.</p>';
                     form.reset();
                     // Clear all parameters from the URL
                     window.history.replaceState({}, document.title, window.location.pathname);
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 })
                 .catch((error) => {
                     submitButton.textContent = "Error!";
-                    document.getElementById("submit-status").innerHTML = 'Sorry, something went wrong. Try again later. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i>';
+                    document.getElementById("submit-status").innerHTML = '<p>Sorry, something went wrong. Try again later. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i></p>';
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
                         submitButton.disabled = false;
