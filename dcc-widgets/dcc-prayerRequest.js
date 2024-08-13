@@ -1,6 +1,13 @@
 /* Web Component that will be used to display the prayer request form */
 
 function loadPrayerRequestForm() {
+    // get device screen width
+    var screenWidth = window.innerWidth;
+    var buttonSize = "medium";
+    if (screenWidth < 400) {
+        buttonSize = "small";
+    }
+
     submitterInfo = `
         <wa-input id="firstNameField" name="first-name" class="input-field" placeholder="First Name" minlength=3 max-length=20 autocapitalize="words" autocomplete="given-name" inputmode="text" required></wa-input>
         <wa-input id="lastNameField" name="last-name" class="input-field" placeholder="Last Name" minlength=3 max-length=20 autocapitalize="words" autocomplete="family-name" inputmode="text" required></wa-input>
@@ -31,7 +38,7 @@ function loadPrayerRequestForm() {
         <div id="prayer-request-form">
             <form id="request-form">
                 <wa-radio-group name="type" value="1" class="type-container" required>
-                    <wa-radio-button value="1" class="PrayerRequestButton">
+                    <wa-radio-button value="1" class="PrayerRequestButton" size="${buttonSize}">
                         <wa-icon slot="prefix" name="hands-praying" variant="solid"></wa-icon>
                         Prayer Request
                     </wa-radio-button>
