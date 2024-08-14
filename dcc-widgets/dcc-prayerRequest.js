@@ -88,7 +88,7 @@ function loadPrayerRequestForm() {
 document.addEventListener("DOMContentLoaded", async () => {
     await customElements.whenDefined("wa-radio-group");
     const visibility = document.querySelector(".visibility-container");
-    const helpText = visibility.querySelector("span");
+    const helpText = visibility.querySelector('[name="help-text"]');
 
     visibility.addEventListener("wa-change", (e) => {
         if (e.target.value === "4") {
