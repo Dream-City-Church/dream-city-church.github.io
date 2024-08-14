@@ -149,7 +149,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 })
                 .then((data) => {
                     submitButton.textContent = 'Submitted!';
-                    document.getElementById("submit-status").innerHTML = '<p>Your request has been submitted. Thank you! <i class="fa-solid fa-comment-check fa-bounce fa-xl"></i></p><p>Please check your email for updates on your request.</p>';
+
+                    if(data.verification_needed === true) {
+                        document.getElementById("submit-status").innerHTML = '<p>Your request has been submitted.<i class="fa-solid fa-comment-exclamation fa-beat fa-xl"></i></p><p>Please check your email and follow the verification link.</p>';
+                    } else {
+                        document.getElementById("submit-status").innerHTML = '<p>Your request has been submitted. Thank you!<i class="fa-solid fa-comment-check fa-bounce fa-xl"></i></p><p>Check your email for updates regarding your post.</p>';
+                    }
+
                     form.reset();
                     // Clear all parameters from the URL
                     window.history.replaceState({}, document.title, window.location.pathname);
