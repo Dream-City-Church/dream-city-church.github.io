@@ -54,14 +54,14 @@ function loadPrayerRequestForm() {
                     <span slot="help-text" id="char-count">0/1000</span>
                 </wa-textarea>
 
-                <wa-radio-group name="visibility" value="4" class="visibility-container" size="${buttonSize}" required>
+                <wa-radio-group name="visibility" value="4" class="visibility-container" size="${buttonSize}" help-text="Private will post under your initials.<br />Private will be visible to only the prayer team." required>
                     <wa-radio-button value="4" class="VisibilityPublic" size="${buttonSize}">
                         <wa-icon slot="prefix" name="eye" variant="solid"></wa-icon>
-                        Post under my initials
+                        Public
                     </wa-radio-button>
                     <wa-radio-button value="2" class="VisibilityPrivate" size="${buttonSize}">
                         <wa-icon slot="prefix" name="eye-slash" variant="solid"></wa-icon>
-                        Prayer team only
+                        Private
                     </wa-radio-button>
                 </wa-radio-group>
 
