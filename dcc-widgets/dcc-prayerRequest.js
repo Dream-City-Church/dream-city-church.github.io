@@ -54,7 +54,7 @@ function loadPrayerRequestForm() {
                     <span slot="help-text" id="char-count">0/1000</span>
                 </wa-textarea>
 
-                <wa-radio-group name="visibility" value="4" class="visibility-container" size="${buttonSize}" help-text="Post under your initials" required>
+                <wa-radio-group name="visibility" value="4" class="visibility-container" size="${buttonSize}" required>
                     <wa-radio-button value="4" class="VisibilityPublic" size="${buttonSize}">
                         <wa-icon slot="prefix" name="eye" variant="solid"></wa-icon>
                         Public
@@ -83,21 +83,6 @@ function loadPrayerRequestForm() {
     `;
     document.getElementsByTagName("dcc-PrayerRequestForm")[0].innerHTML = requestFormHTML;
 }
-
-// Update the help text for the visibility radio group depending on what button is selected.
-document.addEventListener("DOMContentLoaded", async () => {
-    await customElements.whenDefined("wa-radio-group");
-    const visibility = document.querySelector(".visibility-container");
-    const helpText = visibility.querySelector('[name="help-text"]');
-
-    visibility.addEventListener("wa-change", (e) => {
-        if (e.target.value === "4") {
-            helpText.textContent = "Post under your initials";
-        } else {
-            helpText.textContent = "Visible only to the prayer team.";
-        }
-    });
-});
 
 //Function for phoneNumberField to not allow non-numbers, limit to 10 numbers, and format as xxx-xxx-xxxx.
 // Insert the dashes to the phone number as it is being typed.
