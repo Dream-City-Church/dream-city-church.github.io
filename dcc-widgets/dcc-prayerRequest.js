@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     submitButton.textContent = 'Submitted!';
 
                     if(data.verification_needed === true) {
-                        document.getElementById("submit-status").innerHTML = '<p>Your post needs verification. <i class="fa-solid fa-comment-exclamation fa-beat fa-xl"></i></p><p>Please check your email and follow the verification link.</p>';
+                        document.getElementById("submit-status").innerHTML = '<p>Your post needs verification. <i class="fa-solid fa-comment-exclamation fa-beat fa-xl"></i></p><p>Please check your email and click the verification link.</p>';
                     } else {
                         document.getElementById("submit-status").innerHTML = '<p>Your post has been submitted. Thank you! <i class="fa-solid fa-comment-check fa-bounce fa-xl"></i></p><p>Check your email for updates regarding your post.</p>';
                     }
