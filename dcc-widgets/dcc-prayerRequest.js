@@ -155,14 +155,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                             email.reportValidity();
                             submitButton.textContent = "Error!";
                             document.getElementById("submit-status").innerHTML = '<p>Please enter a valid email address. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i></p>';
-                            setTimeout(() => {
+                            
+                            // add event listener on email field to clear the custom validity when the user types in the field
+                            email.addEventListener("input", () => {
+                                email.setCustomValidity("");
                                 submitButton.textContent = "Submit";
                                 submitButton.disabled = false;
-                            }, 5000);
-                            setTimeout(() => {
                                 document.getElementById("submit-status").innerHTML = '';
-                            }, 5000);
-                                });
+                            });
+
+                        });
                     } else {
                         throw new Error("There was an error submitting your post.<br />Please try again later.");
                     }                    
