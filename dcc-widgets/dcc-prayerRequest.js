@@ -164,10 +164,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 document.getElementById("submit-status").innerHTML = '';
                             });
                             // Exit the promise chain
-                            throw new Error("Invalid email address detected.");
+                            throw new Error("Invalid Email Address");
                         });
                     } else {
-                        throw new Error("There was an error submitting your post.<br />Please try again later.");
+                        throw new Error("Server Error");
                     }                    
                 })
                 .then((data) => {
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }, 10000);
                 })
                 .catch((error) => {
-                    if (response.status!==400) {
+                    if (error.message !== "Invalid Email Address") {
                         submitButton.textContent = "Error!";
                         document.getElementById("submit-status").innerHTML = '<p>Sorry, something went wrong. Try again later. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i></p>';
                         setTimeout(() => {
