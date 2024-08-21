@@ -492,9 +492,8 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
   margin-bottom: 1.5rem;
 }
 
-#help-text {
-  font-size: 0.75rem;
-  line-height: 1rem;
+div#help-text, .form-control--has-help-text.form-control--medium .form-control__help-text {
+  font-size: 0.8rem;
   font-style: italic;
 }
 
