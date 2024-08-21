@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             email.reportValidity();
                             submitButton.textContent = "Error!";
                             document.getElementById("submit-status").innerHTML = '<p>Please enter a valid email address. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i></p>';
-                            
+
                             // add event listener on email field to clear the custom validity when the user types in the field
                             email.addEventListener("input", () => {
                                 email.setCustomValidity("");
@@ -198,15 +198,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }, 10000);
                 })
                 .catch((error) => {
-                    submitButton.textContent = "Error!";
-                    document.getElementById("submit-status").innerHTML = '<p>Sorry, something went wrong. Try again later. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i></p>';
-                    setTimeout(() => {
-                        submitButton.textContent = "Submit";
-                        submitButton.disabled = false;
-                    }, 5000);
-                    setTimeout(() => {
-                        document.getElementById("submit-status").innerHTML = '';
-                    }, 5000);
+                    if (response.status!==400) {
+                        submitButton.textContent = "Error!";
+                        document.getElementById("submit-status").innerHTML = '<p>Sorry, something went wrong. Try again later. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i></p>';
+                        setTimeout(() => {
+                            submitButton.textContent = "Submit";
+                            submitButton.disabled = false;
+                        }, 5000);
+                        setTimeout(() => {
+                            document.getElementById("submit-status").innerHTML = '';
+                        }, 5000);
+                    }
                 });
         }
     });
