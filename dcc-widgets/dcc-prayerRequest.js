@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         return response.json().then((data) => {
                             // Check if the data.suggestion value exists. If it does, display the suggestion. If not, display the message.
                             if (data.suggestion) {
-                                email.setCustomValidity(data.message + " Did you mean " + data.suggestion);
+                                email.setCustomValidity(data.message + " Did you mean " + data.suggestion + '?');
                             } else {
                                 email.setCustomValidity(data.message);
                             }
@@ -163,7 +163,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 submitButton.disabled = false;
                                 document.getElementById("submit-status").innerHTML = '';
                             });
-
+                            // Exit the promise chain
+                            throw new Error("Invalid email address detected.");
                         });
                     } else {
                         throw new Error("There was an error submitting your post.<br />Please try again later.");
