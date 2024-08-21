@@ -141,11 +141,31 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }),
             })
                 .then((response) => {
-                    if (response.ok) {
+                    // Check what the status code is. If 200, then return the response.json(). If 400, display email address validation error. If other error, display generic error.
+                    if (response.status === 200) {
                         return response.json();
+                    } else if (response.status === 400) {
+                        return response.json().then((data) => {
+                            // Check if the data.suggestion value exists. If it does, display the suggestion. If not, display the message.
+                            if (data.suggestion) {
+                                email.setCustomValidity(data.message + " Did you mean " + data.suggestion);
+                            } else {
+                                email.setCustomValidity(data.message);
+                            }
+                            email.reportValidity();
+                            submitButton.textContent = "Error!";
+                            document.getElementById("submit-status").innerHTML = '<p>Please enter a valid email address. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i></p>';
+                            setTimeout(() => {
+                                submitButton.textContent = "Submit";
+                                submitButton.disabled = false;
+                            }, 5000);
+                            setTimeout(() => {
+                                document.getElementById("submit-status").innerHTML = '';
+                            }, 5000);
+                                });
                     } else {
                         throw new Error("There was an error submitting your post.<br />Please try again later.");
-                    }
+                    }                    
                 })
                 .then((data) => {
                     submitButton.textContent = 'Submitted!';
