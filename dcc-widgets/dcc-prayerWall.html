@@ -34,6 +34,8 @@
     </head>
     <body>
         <div id="submit-prayer-container"><a href="dreamcitychurch://feedback_form"><button id="submit-prayer-button">Submit a Prayer Request</button></a></div>
+        
+        <div id="debug"></div>
         <script type="text/javascript">
             // Display any URL parameters and their values in the #debug container
             const urlParams = new URLSearchParams(window.location.search);
@@ -41,9 +43,9 @@
             for (const [key, value] of urlParams) {
                 debug.innerHTML += `${key}: ${value}<br>`;
             }
-            
+
         </script>
-        <div id="debug"></div>
+        
         <dcc-PrayerWall>
         </dcc-PrayerWall>
     </body>
