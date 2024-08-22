@@ -33,17 +33,14 @@
         
     </head>
     <body>
-        <div id="submit-prayer-container"><a href="dreamcitychurch://feedback_form"><button id="submit-prayer-button">Submit a Prayer Request</button></a></div>
-        
-        <div id="debug"></div>
-        <script type="text/javascript">
-            // Display any URL parameters and their values in the #debug container
-            const urlParams = new URLSearchParams(window.location.search);
-            const debug = document.getElementById('debug');
-            for (const [key, value] of urlParams) {
-                debug.innerHTML += `${key}: ${value}<br>`;
-            }
+        <div id="submit-prayer-container"><a href="dcc-prayerRequest.html><button id="submit-prayer-button">Submit a Prayer Request</button></a></div>
 
+        <script type="text/javascript">
+            // Get the value for "UG" parameter from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const ug = urlParams.get('UG');
+            // Append the value of UG to the URL of the "Submit a Prayer Request" button
+            document.getElementById("submit-prayer-button").href = "dcc-prayerRequest.html?UG=" + ug;
         </script>
         
         <dcc-PrayerWall>
