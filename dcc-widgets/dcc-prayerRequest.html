@@ -23,6 +23,12 @@
         <script type="text/javascript" src="dcc-prayerRequest.js"></script>
     </head>
     <body>
+        <script typle="text/javascript">
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // dark mode
+                document.documentElement.classList.add('wa-theme-default-dark');
+            }
+        </script>
         <dcc-PrayerRequestForm style="max-width:600px;margin-right:auto;margin-left:auto;">
         </dcc-PrayerRequestForm>
     </body>

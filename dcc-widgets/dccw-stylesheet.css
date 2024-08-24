@@ -449,7 +449,7 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
 
 /* Prayer Submission Form */
 #prayer-request-form {
-  margin: 2rem;
+  padding: 2rem;
   max-width: 600px;
   margin-right: auto;
   margin-left: auto;
@@ -549,6 +549,13 @@ wa-radio-group.visibility-container {
   text-align: center;
   margin: 1rem;
   color: var(--brand-primary);
+}
+
+/* Dark Mode */
+@media(prefers-color-scheme: dark) {
+  #prayer-disclaimer {
+    color: #9194a2;
+  }
 }
 
 
