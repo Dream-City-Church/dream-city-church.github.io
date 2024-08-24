@@ -15,7 +15,7 @@ function loadPrayerRequestForm() {
         <wa-input id="phoneNumberField" name="phone" class="input-field" placeholder="Mobile Phone" minlength=10 max-length=13 type="tel" inputmode="tel" autocomplete="mobile" help-text="Optional. By providing your phone number to Dream City Church, you're opting in to receive text messages from us. Data & Msg rates may apply. Reply STOP to cancel."></wa-input>
     `;
 
-    userGuid = getUrlVars()["UG"];
+    userGuid = getUrlVars()["uid"];
     contactGuid = getUrlVars()["cid"];
     relatedGuid = getUrlVars()["rid"];
 
