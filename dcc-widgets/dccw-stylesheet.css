@@ -559,7 +559,8 @@ wa-radio-group.visibility-container {
 }
 
 #prayer-greeting {
-  padding: 0 2rem;
+  margin: 0;
+  padding: 0 1rem;
 }
 
 /* Dark Mode */
