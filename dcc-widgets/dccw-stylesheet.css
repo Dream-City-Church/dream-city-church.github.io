@@ -554,13 +554,15 @@ wa-radio-group.visibility-container {
 #prayer-request-back-button {
   color: var(--brand-primary);
   padding: 2rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-align: center;
 }
 
 #prayer-greeting {
+  font-size: 1.2rem;
+  font-weight: bold;
   margin: 0;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
 /* Dark Mode */
