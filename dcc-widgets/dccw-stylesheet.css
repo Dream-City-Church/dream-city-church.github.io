@@ -551,6 +551,11 @@ wa-radio-group.visibility-container {
   color: var(--brand-primary);
 }
 
+#prayer-request-back-button {
+  color: var(--brand-primary);
+  padding: 2rem;
+}
+
 /* Dark Mode */
 @media(prefers-color-scheme: dark) {
   #prayer-disclaimer {

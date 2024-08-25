@@ -32,7 +32,7 @@
         <script type="text/javascript" src="dcc-prayerWall.js"></script>
     </head>
     <body>
-        <div id="submit-prayer-container"><a href="dcc-prayerRequest.html"><button id="submit-prayer-button">Submit a Prayer Request</button></a></div>
+        <div id="submit-prayer-container"><a id="submit-prayer-link" href="dcc-prayerRequest.html"><button id="submit-prayer-button">Submit a Prayer Request</button></a></div>
 
         <script type="text/javascript">
             function getUrlVars() {
@@ -44,7 +44,7 @@
             }
             ug = getUrlVars()["UG"];
             if (ug) {
-                document.getElementById("submit-prayer-button").href = "dcc-prayerRequest.html?uid=" + ug;
+                document.getElementById("submit-prayer-link").href = "dcc-prayerRequest.html?uid=" + ug;
             };
         </script>
         
