@@ -30,13 +30,13 @@ function loadPrayerRequestForm() {
 
     greetingHtml = ``;
     if (userGuid || contactGuid) {
-        greetingHtml = `<p style="text-align:center;" id="prayer-greeting">&nbsp<br />Please enter your prayer request or praise report below.</p>`;
+        greetingHtml = `<div id="prayer-greeting"><p>&nbsp</p><p>Please enter your prayer request or praise report below.</p></div>`;
         // Get the user's first name and last name from API
         fetch(`https://prod-10.westus2.logic.azure.com:443/workflows/d910b8466b9f43dc93c10f23ab50fb78/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nbpbVKt37ObPXwptvbA-mjdkyzJsugJ-Xk4dyDcArE8&uid=${userGuid}&cid=${contactGuid}`)
             .then((response) => response.json())
             .then((data) => {
                 if (data.firstName) {
-                    greetingHtml = `<p style="text-align:center;" id="prayer-greeting">Hi, ${data.firstName}!<br />Please enter your prayer request or praise report below.</p>`;
+                    greetingHtml = `<div id="prayer-greeting"><p>Hi, ${data.firstName}!</p><p>Please enter your prayer request or praise report below.</p></div>`;
                     document.getElementById("prayer-greeting").innerHTML = greetingHtml;
                     console.log(data.firstName);
                 }
