@@ -1,5 +1,5 @@
 /* Set starting variables */
-const versionNumber = '1.240415';
+const versionNumber = '1.240826';
 var pageNum = 1;
 var maxPrayerId = 0;
 
