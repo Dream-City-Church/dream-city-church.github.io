@@ -1,6 +1,6 @@
 /* Web Component that will be used to display the prayer request form */
-const versionNumber = '1.240826';
-console.log(`Prayer Request Form Version: ${versionNumber}`);
+const prayerRequestVersionNumber = '1.240826';
+console.log(`Prayer Request Form Version: ${prayerRequestVersionNumber}`);
 
 function loadPrayerRequestForm() {
     // get device screen width

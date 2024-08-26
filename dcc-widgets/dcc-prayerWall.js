@@ -1,5 +1,5 @@
 /* Set starting variables */
-const versionNumber = '1.240826';
+const prayerWallVersionNumber = '1.240826';
 var pageNum = 1;
 var maxPrayerId = 0;
 
@@ -133,7 +133,7 @@ function loadMorePrayers() {
 
 /* Function for initial loading of prayer wall */
 function loadPrayerWall() {
-    console.log('Prayer Wall v'+versionNumber);
+    console.log('Prayer Wall v'+prayerWallVersionNumber);
     divHTML = `<div id="prayer-wall"><div id="prayer-wall-status-message"></div><div id="reload-prayer-wall" onclick="reloadPrayerWall()">Refresh <i class="fa-solid fa-arrows-rotate"></i></div></div>`;
     document.getElementsByTagName("dcc-PrayerWall")[0].innerHTML = divHTML;
     loadPrayers();
