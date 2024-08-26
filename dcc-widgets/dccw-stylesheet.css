@@ -553,7 +553,8 @@ wa-radio-group.visibility-container {
 
 #prayer-request-back-button {
   color: var(--brand-primary);
-  padding: 2rem;
+  display: inline-block;
+  padding-top: 2rem;
   font-size: 1rem;
   text-align: center;
 }
@@ -575,6 +576,9 @@ wa-radio-group.visibility-container {
 @media(prefers-color-scheme: dark) {
   #prayer-disclaimer {
     color: #9194a2;
+  }
+  .submit-container wa-button {
+    --label-color: white;
   }
 }
 

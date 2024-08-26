@@ -29,6 +29,17 @@
                 // dark mode
                 document.documentElement.classList.add('wa-theme-default-dark');
             }
+            function getUrlVars() {
+                var urlVars = {};
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                    urlVars[key] = value;
+                });
+                return urlVars;
+            }
+            ug = getUrlVars()["uid"];
+            if (ug) {
+                document.getElementById("submit-prayer-link").href = "dcc-prayerWall.html?UG=" + ug;
+            };
         </script>
         <a href="dcc-prayerWall.html" id="prayer-request-back-button"><i class="fas fa-arrow-left" style="vertical-align:middle;"></i> Back to Prayer Wall</a>
         <dcc-PrayerRequestForm style="max-width:600px;margin-right:auto;margin-left:auto;">
