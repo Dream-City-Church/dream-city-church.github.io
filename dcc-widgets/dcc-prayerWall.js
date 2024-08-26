@@ -80,6 +80,7 @@ function addPrayerFromUrl() {
                 }
             }
             window.history.replaceState({}, document.title, newUrl);
+        }
     }
 }
 
