@@ -7,6 +7,10 @@
   --wa-form-control-activated-color: #bc204b !important;
 }
 
+input, textarea, button, select, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Event Details */
 #Download-ICS {
   display: none;

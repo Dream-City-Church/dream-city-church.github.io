@@ -62,6 +62,24 @@ function addPrayerFromUrl() {
         });
         document.getElementById("prayer-wall-status-message").innerHTML="Thank you for praying!";
         document.getElementById("prayer-wall-status-message").className = "prayerStatusSuccess";
+        // Remove "prayers" from URL
+        var url = window.location.href;
+        var urlParts = url.split('?');
+        if (urlParts.length > 1) {
+            var baseUrl = urlParts[0];
+            var params = urlParts[1].split('&');
+            var newUrl = baseUrl;
+            for (var i = 0; i < params.length; i++) {
+                var parameter = params[i].split('=');
+                if (parameter[0] != 'prayers') {
+                    if (newUrl.indexOf('?') == -1) {
+                        newUrl += '?' + params[i];
+                    } else {
+                        newUrl += '&' + params[i];
+                    }
+                }
+            }
+            window.history.replaceState({}, document.title, newUrl);
     }
 }
 
