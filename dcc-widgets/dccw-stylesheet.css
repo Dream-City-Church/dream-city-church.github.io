@@ -596,8 +596,7 @@ dcc-eventsignin, dcc-groupsignin {
 }
 
 dcc-eventsignin #header-image, dcc-groupsignin #header-image {
-  height: 0;
-  padding-bottom: 50%;
+  aspect-ratio: 16 / 9;
   width: 105%;
   margin-left: -2.5%;
   background-size: cover;
