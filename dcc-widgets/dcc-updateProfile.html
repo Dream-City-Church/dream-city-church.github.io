@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Dream City Church Update Profile</title>
+    <head>
+        <style>
+            body, html {
+                    padding: 0;
+                    margin: 0;
+                }
+            @media (prefers-color-scheme: dark) {
+                body, html {
+                    background-color: #121212;
+                }
+            }
+        </style>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+        <link rel="stylesheet" href="dccw-stylesheet.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+        <script src="https://kit.fontawesome.com/a6a26322af.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/themes/default.css" />
+        <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/webawesome.loader.js"></script>
+
+    </head>
+    <body style="text-align: center;">
+        <script typle="text/javascript">
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // dark mode
+                document.documentElement.classList.add('wa-theme-default-dark');
+            }
+        </script>
+
+        <dcc-updateProfile style="display:inline-block;max-width:600px;margin-right:auto;margin-left:auto;">
+            <wa-tab-group>
+                <wa-tab slot="nav" panel="general">General</wa-tab>
+                <wa-tab slot="nav" panel="skills">Skills</wa-tab>
+                <wa-tab slot="nav" panel="interests">Interests</wa-tab>
+                <wa-tab slot="nav" panel="gifts">Gifts</wa-tab>
+                <wa-tab-panel name="general">
+                    <wa-avatar initials="SS" label="Profile Picture" image="https://my.dreamcitychurch.us/ministryplatformapi/files/453B265E-F188-4D31-94B5-E4711A431EF2"></wa-avatar>
+                    <wa-input name="First_Name" type="text" label="First Name" value="Stephan" data-table="Contacts" required></wa-input>
+                    <wa-input name="Last_Name" type="text" label="Last Name" value="Swinford" data-table="Contacts" required></wa-input>
+                    <wa-input name="Email_Address" type="email" label="Email Address" data-table="Contacts" value="sswinford@dreamcitychurch.us"></wa-input>
+                    <wa-input name="Mobile_Phone" type="telephone" label="Phone" data-table="Contacts" value="928-925-6190"></wa-input>
+                    <wa-input name="Date_of_Birth" type="date" label="Birthday" data-table="Contacts" value="1989-11-13" max="2024-08-28"></wa-input>
+                    <wa-radio-group name="Gender_ID" label="Gender" data-table="Contacts" value="1">
+                        <wa-radio-button value="1" checked>Male</wa-radio-button>
+                        <wa-radio-button value="0"></wa-radio-button>
+                        <wa-radio-button value="2">Female</wa-radio-button>
+                    </wa-radio-group>
+                    <wa-select name="Marital_Status_ID" label="Marital Status" data-table="Contacts" value="3">
+                        <wa-option value="1">Single</wa-option>
+                        <wa-option value="2">Engaged</wa-option>
+                        <wa-option value="3">Married</wa-option>
+                        <wa-option value="4">Seperated</wa-option>
+                        <wa-option value="5">Divorced</wa-option>
+                        <wa-option value="6">Widowed</wa-option>
+                    </wa-select>
+                    <wa-input name="Address_Line_1" type="text" label="Address" data-table="Addresses" value="2419 W Paradise Dr"></wa-input>
+                    <wa-input name="City" type="text" label="City" data-table="Addresses" value="Phoenix"></wa-input>
+                    <wa-input name="State" type="text" label="State" data-table="Addresses" maxlength=2 value="AZ"></wa-input>
+                    <wa-input name="Zip" type="text" label="Zip" data-table="Addresses" value="85029"></wa-input>
+                </wa-tab-panel>
+                <wa-tab-panel name="skills">
+                    <wa-input name="Occupation" type="text" label="Occupation" value="Systems Administrator"></wa-input>
+                    <wa-input name="Industry" type="text" label="Industry" value="Church/Religious"></wa-input>
+                </wa-tab-panel>
+                <wa-tab-panel name="interests">
+
+                </wa-tab-panel>
+                <wa-tab-panel name="gifts">
+                    Not sure what spiritual gifts you have?<br />Take this <a target="_blank" href="https://gifts.churchgrowth.org/spiritual-gifts-survey/">Spiritual Gifts Survey</a> to find out!
+                </wa-tab-panel>
+            </wa-tab-group>
+        </dcc-updateProfile>
+    </body>
+</html>
