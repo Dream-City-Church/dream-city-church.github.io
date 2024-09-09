@@ -14,8 +14,11 @@ function getUrlVars() {
 
 /* Function for prayer as prayed for */
 function addPrayer(prayerID,TypeID) {
-    document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
-    document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
+    // Check if element with prayer ID is rendered
+    if (document.getElementById("prayer-id-"+prayerID)) {
+        document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
+        document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
+    }
     const params = {
         "prayerID": prayerID,
     };
@@ -27,7 +30,7 @@ function addPrayer(prayerID,TypeID) {
     fetch( 'https://prod-24.westus2.logic.azure.com:443/workflows/434c7064b3204e948e1dcc7a96dfe540/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0imIlONgjS1gpDOm9g2DG-dv4_iZzO5H-KnRn6IYGAc', options )
         .then(function (response) {return response.json();})
         .then(function (data) {
-            if(data.status=="success"){
+            if(data.status=="success" && document.getElementById("prayer-id-"+prayerID)){
                 /*Get local storage, append new prayerID, then store back to local*/
                 var prayedForPrayers = JSON.parse(localStorage.getItem("prayedForPrayers"));
                 prayedForPrayers.push(prayerID);
@@ -40,15 +43,19 @@ function addPrayer(prayerID,TypeID) {
                 else if(TypeID==2){
                     document.getElementById("prayer-id-"+prayerID).innerHTML="I'm Celebrating!";}
             }else{
-                document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
-                if(TypeID==1){document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';}
-                else if(TypeID==2){document.getElementById("prayer-id-"+prayerID).innerHTML='Celebrate! <i class="fa-solid fa-hands-praying"></i> ';}
+                if(document.getElementById("prayer-id-"+prayerID)) {
+                    document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
+                    if(TypeID==1){document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';}
+                    else if(TypeID==2){document.getElementById("prayer-id-"+prayerID).innerHTML='Celebrate! <i class="fa-solid fa-hands-praying"></i> ';}
+                }
             };
         })
         .catch(function(fail){
-            document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
-            if(TypeID==1){document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';}
-            else if(TypeID==2){document.getElementById("prayer-id-"+prayerID).innerHTML='Celebrate! <i class="fa-solid fa-hands-praying"></i> ';}
+            if(document.getElementById("prayer-id-"+prayerID)) {
+                document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
+                if(TypeID==1){document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';}
+                else if(TypeID==2){document.getElementById("prayer-id-"+prayerID).innerHTML='Celebrate! <i class="fa-solid fa-hands-praying"></i> ';}
+            }
         })
 }
 
