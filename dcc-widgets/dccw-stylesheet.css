@@ -771,6 +771,7 @@ dcc-filedownloader {
     /* display: none !important; */
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    margin-left: -5%;
     background-repeat: no-repeat;
     background-size: contain;
     height: 85%;
@@ -783,6 +784,7 @@ dcc-filedownloader {
   }
   div#dcc-signinform {
     grid-column: span 2;
+    padding-left: 2rem;
   }
   #dcc-signinform #form-description-text {
     font-size: 22pt;
