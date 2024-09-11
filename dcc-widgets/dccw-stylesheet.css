@@ -771,8 +771,9 @@ dcc-filedownloader {
     /* display: none !important; */
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    max-height: 500px;
-    width: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 85%;
   }
   dcc-eventsignin #qr-image, dcc-groupsignin #qr-image {
     display: block !important;
