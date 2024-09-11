@@ -33,11 +33,11 @@
                 flex-grow: 1;
                 max-width: 50%;
             }
-            #dcc-signinsheet-group-image {
+            #dcc-signinsheet-group-image-container {
                 margin: 0;
                 padding: 0;
             }
-            #dcc-signinsheet-group-image img {
+            #dcc-signinsheet-group-image {
                 height: 100px;
                 object-fit: contain;
             }
@@ -51,7 +51,7 @@
             #dcc-signinsheet-greeting p {
                 margin-top: 0.5rem;
             }
-            #dcc-signinsheet-qr-code {
+            #dcc-signinsheet-qr-code-container {
                 height: 100%;
                 margin: 0;
                 padding: 0;
@@ -86,8 +86,10 @@
                 padding: 14pt;
             }
             #dcc-signinsheet-footer {
-                width: 100%;
+                width: 75%;
                 margin: 0;
+                margin-right: auto;
+                margin-left: auto;
                 padding: 0;
                 margin-top: 1rem;
                 font-size: 0.8rem;
@@ -102,6 +104,8 @@
                 height: 50px;
                 margin: 0;
                 padding: 0;
+                float: right;
+                padding-left: 1rem;
             }
             @media print {
                 html, body {
@@ -115,14 +119,52 @@
                 }
             }
         </style>
-        
+        <script>
+            function getUrlVars() {
+                var urlVars = {};
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                    urlVars[key] = value;
+                });
+                return urlVars;
+            }
+            function getGroupInfo() {
+                var groupID = getUrlVars()["id"];
+                var groupInfo = {};
+                var qrGeneratorUrl = "https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://dreamcitychurch.us/mydcc/my-groups/group-sign-in/?id=" + groupID;
+                // Fetch group info from API POST
+                fetch("https://prod-17.westus2.logic.azure.com:443/workflows/e879a39b992546ac9ec00a611065f655/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BCtOg6wyG_cz3RUaTxr8Rc7zzGT7UQOaAyIIFttOO3w", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "Group_ID": groupID
+                }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status=="success"){
+                        groupInfo = data;
+                        document.getElementById("group-name").innerHTML = groupInfo.Group_Name;
+                        document.getElementById("dcc-signinsheet-group-image").src = "https://my.dreamcitychurch.us/ministryplatformapi/files/"+groupInfo.File_GUID;
+                        document.getElementById("dcc-signinsheet-qr-code").src = qrGeneratorUrl;
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+            }
+            window.onload = function() {
+                getGroupInfo();
+            }
+        </script>
     </head>
     <body>
         <dcc-GroupSignInSheet>
             <div id="dcc-signinsheet-container">
                 <div id="dcc-signinsheet-header">
-                    <div id="dcc-signinsheet-group-name"><div id="dcc-signinsheet-group-image"><img id="dcc-signinsheet-group-image" src="https://my.dreamcitychurch.us/ministryplatformapi/files/f5a4be2e-a09d-4a1f-b147-ff4fbec3d49d"></div>Dave's Weekly Small Group With a Long Title</div>   
-                    <div id="dcc-signinsheet-greeting"><div id="dcc-signinsheet-qr-code"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://my.dreamcitychurch.us/Group/GroupDetail/1"></div><p>Scan this QR code to sign in on your phone<br />or sign in below.</p></div>
+                    <div id="dcc-signinsheet-group-name"><div id="dcc-signinsheet-group-image-container"><img id="dcc-signinsheet-group-image" src=""></div><div id="group-name"></div></div>   
+                    <div id="dcc-signinsheet-greeting"><div id="dcc-signinsheet-qr-code-container"><img id="dcc-signinsheet-qr-code" src=""></div><p>Scan this QR code to sign in on your phone<br />or sign in below.</p></div>
                 </div>
                 <div id="dcc-signinsheet-table">
                     <table>
@@ -219,8 +261,7 @@
                     </table>
                 </div>
                 <div id="dcc-signinsheet-footer">
-                    <p>Group Leaders, submit attendance in the Dream City App or the Group Life portal at this QR code:</p>
-                    <img id="dcc-signinsheet-GLQR" src="https://api.qrserver.com/v1/create-qr-code/?size=50x50&data=https://dreamcitychurch.cloudapps.ministryplatform.cloud/apps/grouplife/1219">
+                    <p>Group Leaders, submit attendance in the Dream City Church App<br />or My Groups at https://dreamcitychurch.us/mydcc/my-groups</p>
                 </div>
             </div>
         </dcc-GroupSignInSheet>
