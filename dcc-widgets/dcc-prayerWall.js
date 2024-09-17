@@ -17,7 +17,7 @@ function addPrayer(prayerID,TypeID) {
     // Check if element with prayer ID is rendered
     if (document.getElementById("prayer-id-"+prayerID)) {
         // document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
-        document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
+        document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div style="background:#BCBCBC;"></div><div style="background:#BCBCBC;"></div><div style="background:#BCBCBC;"></div><div style="background:#BCBCBC;"></div></div>';
     }
     const params = {
         "prayerID": prayerID,
