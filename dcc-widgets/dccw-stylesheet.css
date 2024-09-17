@@ -190,6 +190,11 @@ button#submit-prayer-button {
 .prayer-action {
   text-align: right;
 }
+
+.prayer-action i {
+  font-family: 'Font Awesome 6 Pro','FontAwesome';
+}
+
 @media (max-width: 690px) {
     .prayer-action {
         /*width: 100%;*/        
@@ -1093,6 +1098,9 @@ div#dcc-eventmetrics {
     border-radius: 50%;
     background: var(--brand-primary);
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .prayer-action .lds-ellipsis div {
+    background: #FFFFFF;
   }
   .lds-ellipsis div:nth-child(1) {
     left: 8px;
