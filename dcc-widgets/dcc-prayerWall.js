@@ -16,7 +16,7 @@ function getUrlVars() {
 function addPrayer(prayerID,TypeID) {
     // Check if element with prayer ID is rendered
     if (document.getElementById("prayer-id-"+prayerID)) {
-        document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
+        // document.getElementById("prayer-id-"+prayerID).classList.add("prayer-is-praying");
         document.getElementById("prayer-id-"+prayerID).innerHTML='<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
     }
     const params = {
@@ -52,7 +52,7 @@ function addPrayer(prayerID,TypeID) {
         })
         .catch(function(fail){
             if(document.getElementById("prayer-id-"+prayerID)) {
-                document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
+                // document.getElementById("prayer-id-"+prayerID).classList.remove("prayer-is-praying");
                 if(TypeID==1){document.getElementById("prayer-id-"+prayerID).innerHTML='I Will Pray <i class="fa-solid fa-hands-praying"></i> ';}
                 else if(TypeID==2){document.getElementById("prayer-id-"+prayerID).innerHTML='Celebrate! <i class="fa-solid fa-hands-praying"></i> ';}
             }
