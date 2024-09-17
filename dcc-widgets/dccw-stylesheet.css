@@ -1093,8 +1093,8 @@ div#dcc-eventmetrics {
   .lds-ellipsis {
     display: inline-block;
     position: relative;
-    width: 87px;
-    right: -8px;
+    width: 85px;
+    right: -7px;
   }
   .lds-ellipsis div {
     position: absolute;
