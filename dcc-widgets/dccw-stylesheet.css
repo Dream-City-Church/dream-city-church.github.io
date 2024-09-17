@@ -211,6 +211,7 @@ button#submit-prayer-button {
   -webkit-tap-highlight-color: transparent;
   border: none;
   border-radius: 2rem;
+  transition: background-color .45s cubic-bezier(0.25,1,0.33,1);
 }
 button#loadMorePrayers {
   margin: 2rem auto;
@@ -242,12 +243,14 @@ button#loadMorePrayers {
   cursor: initial;
   color: var(--brand-primary);
   background-color: white;
+  transition: background-color .45s cubic-bezier(0.25,1,0.33,1);
 }
 .praise-report .prayer-button.prayer-is-praying {
   color: var(--brand-secondary);
   color: var(--brand-secondary);
   background-color: transparent;
   border-color: var(--brand-secondary);
+  transition: background-color .45s cubic-bezier(0.25,1,0.33,1);
 }
 
 div#prayerStatusDialog, div#prayer-wall-status-message {
@@ -377,10 +380,12 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
     color: var(--brand-primary);
     background-color: rgba(0 0 0 / 0.25);
     border-color: var(--brand-primary);
+    transition: background-color .45s cubic-bezier(0.25,1,0.33,1);
   }
   .praise-report .prayer-button.prayer-is-praying {
     border-color: var(--brand-secondary);
     background-color: rgba(0 0 0 / 0.25);
+    transition: background-color .45s cubic-bezier(0.25,1,0.33,1);
   }
   .prayerStatusSuccess{
     background-color: #222;
