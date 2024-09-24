@@ -21,6 +21,64 @@
         <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/themes/default.css" />
         <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/webawesome.loader.js"></script>
 
+        <style>
+            * {
+                font-family: var(--root-font-face);
+            }
+            wa-tab {
+                width: 25%;
+            }
+            wa-avatar {
+                margin-bottom: 1rem;
+            }
+            wa-input {
+                padding: 5px;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            wa-radio-group {
+                padding: 5px;
+                margin-bottom: 1rem;
+            }
+            wa-button-group {
+                width: 100%;
+                padding: 5px;
+                margin-bottom: 1rem;
+            }
+            wa-select {
+                padding: 5px;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            .attributes_container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .attributes_container input[type="checkbox"] {
+                display: none;
+            }
+            .attributes_container label {
+                display: block;
+                padding: 10px;
+                margin: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                cursor: pointer;
+                text-align: center;
+            }
+            .attributes_container input[type="checkbox"] + label:hover {
+                background-color: var(--brand-secondary);
+                color: white;
+            }
+            .attributes_container input[type="checkbox"]:checked + label {
+                background-color: var(--brand-primary);
+                color: white;
+            }
+            
+
+        </style>
+
     </head>
     <body style="text-align: center;">
         <script typle="text/javascript">
@@ -30,12 +88,12 @@
             }
         </script>
 
-        <dcc-updateProfile style="display:inline-block;max-width:600px;margin-right:auto;margin-left:auto;">
+        <dcc-updateProfile style="display:inline-block;width: 100%; max-width:600px;margin-right:auto;margin-left:auto;">
             <wa-tab-group>
                 <wa-tab slot="nav" panel="general">General</wa-tab>
                 <wa-tab slot="nav" panel="skills">Skills</wa-tab>
                 <wa-tab slot="nav" panel="interests">Interests</wa-tab>
-                <wa-tab slot="nav" panel="gifts">Gifts</wa-tab>
+                <wa-tab slot="nav" panel="gifts">Growth</wa-tab>
                 <wa-tab-panel name="general">
                     <wa-avatar initials="SS" label="Profile Picture" image="https://my.dreamcitychurch.us/ministryplatformapi/files/453B265E-F188-4D31-94B5-E4711A431EF2"></wa-avatar>
                     <wa-input name="First_Name" type="text" label="First Name" value="Stephan" data-table="Contacts" required></wa-input>
@@ -44,9 +102,9 @@
                     <wa-input name="Mobile_Phone" type="telephone" label="Phone" data-table="Contacts" value="928-925-6190"></wa-input>
                     <wa-input name="Date_of_Birth" type="date" label="Birthday" data-table="Contacts" value="1989-11-13" max="2024-08-28"></wa-input>
                     <wa-radio-group name="Gender_ID" label="Gender" data-table="Contacts" value="1">
-                        <wa-radio-button value="1" checked>Male</wa-radio-button>
-                        <wa-radio-button value="0"></wa-radio-button>
-                        <wa-radio-button value="2">Female</wa-radio-button>
+                        <wa-radio-button value="1" style="width:33%;">Male</wa-radio-button>
+                        <wa-radio-button value="0" style="width:33%;">&nbsp;</wa-radio-button>
+                        <wa-radio-button value="2" style="width:33%;">Female</wa-radio-button>
                     </wa-radio-group>
                     <wa-select name="Marital_Status_ID" label="Marital Status" data-table="Contacts" value="3">
                         <wa-option value="1">Single</wa-option>
@@ -64,6 +122,32 @@
                 <wa-tab-panel name="skills">
                     <wa-input name="Occupation" type="text" label="Occupation" value="Systems Administrator"></wa-input>
                     <wa-input name="Industry" type="text" label="Industry" value="Church/Religious"></wa-input>
+                    <h3>Select Your Skills</h3>
+                    <div id="skills_checkboxes" class="attributes_container">
+                        <!-- List of skills as regular HTML form checkboxes. Checkbox will be hidden and label will appear as a button -->
+                            <input type="checkbox" name="skills[]" id="skill1" value="1" />
+                            <label for="skill1">Accounting</label>
+                            <input type="checkbox" name="skills[]" id="skill2" value="2" />
+                            <label for="skill2">Arts and Crafts</label>
+                            <input type="checkbox" name="skills[]" id="skill3" value="3" />
+                            <label for="skill3">Audio/Visual</label>
+                            <input type="checkbox" name="skills[]" id="skill4" value="4" />
+                            <label for="skill4">Building Maintenance</label>
+                            <input type="checkbox" name="skills[]" id="skill5" value="5" />
+                            <label for="skill5">Carpentry</label>
+                            <input type="checkbox" name="skills[]" id="skill6" value="6" />
+                            <label for="skill6">Computer Programming</label>
+                            <input type="checkbox" name="skills[]" id="skill7" value="7" />
+                            <label for="skill7">Cooking</label>
+                            <input type="checkbox" name="skills[]" id="skill8" value="8" />
+                            <label for="skill8">Data Entry</label>
+                            <input type="checkbox" name="skills[]" id="skill9" value="9" />
+                            <label for="skill9">Electrical</label>
+                            <input type="checkbox" name="skills[]" id="skill10" value="10" />
+                            <label for="skill10">Event Planning</label>
+                            
+                    </div>
+
                 </wa-tab-panel>
                 <wa-tab-panel name="interests">
 
