@@ -1,5 +1,5 @@
 /* Web Component that will be used to display the prayer request form */
-const prayerRequestVersionNumber = '1.240826';
+const prayerRequestVersionNumber = '1.2410203';
 console.log(`Prayer Request Form Version: ${prayerRequestVersionNumber}`);
 
 function loadPrayerRequestForm() {
@@ -79,7 +79,8 @@ function loadPrayerRequestForm() {
 
                 <div id="prayer-disclaimer">
                     <p>If you are having an urgent emergency, please call 911. If you are having suicidal thoughts or thoughts of self-harm, please call the Suicide & Crisis Lifeline at 988.</p>
-                    <p>Email verification and manual approval may be required before your post will visible on the public prayer wall. Links, URL's, self-promotion, and personally identifiable information may be removed from posts.<br /></p>
+                    <p>Email verification and manual approval may be required before your post will visible on the public prayer wall. Links, URL's, self-promotion, and personally identifiable information may be removed from posts.
+                    <p>To ensure fairness and visibility for all, we request only one public prayer request per person every 3 days. Thank you for your understanding.<br /></p>
                 </div>
 
                 <input type="hidden" id="prayer-form-uid" name="uid" value="${userGuid}">
