@@ -1,0 +1,523 @@
+/*--------------------------------------------*/
+/* CSS Color Variables                        */
+/*--------------------------------------------*/
+:host {
+    --root-text-color: #373a36;
+    --root-font-size: 17px;
+    --root-line-height: 24px;
+    --primary: #373a36;
+    --secondary: #c6aa76;
+    --form-field-bgcolor: #ffffff;
+    --form-field-border: var(--primary);
+    --form-field-border--active: var(--secondary);
+    --form-valid: #42bc34;
+    --form-invalid: #dc3545;
+    --form-btn-primary-text: #ffffff;
+    --form-btn-primary-bgcolor: var(--primary);
+    --form-btn-primary-hover: var(--secondary);
+    --form-btn-primary-active: var(--secondary);
+    --form-btn-secondary-text: var(--primary);
+    --form-btn-secondary-bgcolor: #ffffff;
+    --form-btn-secondary-hover: var(--secondary);
+    --form-btn-secondary-active: var(--secondary)
+    --form-btn-disabled: #999999;
+	--form-btn-radius: 2rem;
+	--form-btn-padding: 1rem 2rem;
+    --card-bgcolor: #fffff;
+    --card-title-color: var(--primary);
+    --card-header-bgcolor: #ffffff;
+    --box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+    --progress-pledged: var(--secondary);
+    --progress-received: var(--primary);
+    --root-font-face: 'Avenir Medium', 'Nunito', Helvetica, Arial, sans-serif;
+    --alt-text-color: #474954;
+}
+
+
+/*--------------------------------------------*/
+/* Card                                       */
+/*--------------------------------------------*/
+:host {
+    --card-title-color: var(--primary);
+    --card-textColor: var(--primary);
+    --card-borderRadius: 4px;
+    --card-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+    --card-primaryColor: var(--primary);
+    --card-badgeBgColor: var(--card-textColor);
+    --card-headerBgColor: var(--primary);
+    --card-badge-highlightColor: var(--secondary);
+    --card-badgeStatusActiveColor: var(--card-primaryColor);
+    --card-badgeStatusPendingColor: #f0d030;
+    --card-badgeStatusDiscontinuedColor: #ededed;
+    --card-badgeStatusCompleteColor: #77be43;
+    --card-fontSize: 14px;
+    --card-fontSizeHeader: 18px;
+    --card-lineHeight: 24px;
+    --card-progressBarColor: #1b88b0;
+    --card-progressBarActiveColor: linear-gradient(90deg, #1b88b0 0%, #1fb5ac 100%);
+    --card-progressBarRemainingColor: #efefef;
+    --card-progressBarCompleteColor: #77be43;
+    --card-imageBgColor: var(--primary);
+    --card-checkboxDefaultColor: var(--primary);
+    --card-labelBgColor: var(--secondary);
+}
+
+.mppw-card--grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 2rem;
+    margin-top: 1em;
+}
+
+.mpp-card {
+    border-radius: 0;
+    display: inline-block;
+    position: relative;
+    max-height: 170px;
+    overflow: visible;
+    border: 1px solid rgb(0 0 0 / 0.15);
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.03);
+    transition: border 250ms ease, box-shadow 250ms ease; 
+}
+
+.mpp-card:hover {
+    cursor: pointer;
+    background-color: rgb(255 255 255 / 1);
+    border: 0.25px solid rgb(0 118 169 / 0.15);
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.1);
+    transition: border 400ms ease, box-shadow 400ms ease;
+}
+
+.mpp-card--header {
+    height: 100%;
+    width:302px;
+    float: left;
+    overflow: visible;
+}
+
+.mpp-card--badge {
+    border-radius: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding-left: 0.75rem;
+    z-index: -1;
+    background-color: #f4be49;
+    color: white;
+    left: -63px;
+    top: 83px;
+    transform: rotate(270deg);
+}
+
+.mpp-card--badge::after {
+    content: "\f559";
+    font-family: 'FontAwesome';
+    top: 0px;
+    border-radius: 0 0.5rem 0 0;
+    position: absolute;
+    background-color: #f4be49;
+    padding: 0.5rem 0.75rem;
+}
+
+.mpp-card--badge.Meets.Online {
+    background-color: var(--primary);
+    left: -77px;
+    top:70px;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.mpp-card--badge.Meets.Online::after {
+    display: none;
+}
+
+.mpp-card--badge.Completed {
+    background: linear-gradient(160deg, #c7c9c8aa 33%, #c7c9c866 100%);
+}
+
+.mpp-card--badge.full {
+    background-color: var(--card-badgeStatusDiscontinuedColor);
+    color: var(--alt-text-color);
+    border-radius: 0.5rem 0.5rem 0 0;
+    left: -43px;
+}
+
+.mpp-card--badge.full::after {
+    display: none;
+}
+
+.mpp-card--image {
+    height: 100%;
+    aspect-ratio: 16/9;
+}
+
+.mpp-card--body {
+    width: calc(100% - 305px);
+    float: left;
+    padding: 0.5rem 1.5rem;
+    max-height: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mpp-card--title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: var(--innerPage-h1fontFamily);
+    font-weight: 800;
+    color: var(--card-title-color);
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.mpp-card--description {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    height: 5.1rem;
+    clear: both;
+    line-height: 1.6rem;
+    padding-top: 0.5rem;
+    color: var(--root-text-color);
+}
+
+.mpp-card--description p {
+    display: inline;
+}
+
+.mpp-card--subtitle {
+    font-family: var(--innerPage-h2fontFamily);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--root-text-color);
+    text-align: left;
+    float: left;
+    padding-top: 0.5rem;
+    margin-right: 4% !important;
+}
+
+h4.mpp-card--subtitle:nth-child(1) {
+    margin-top: 0.5em;
+}
+
+.event-date-range:before, .group-meeting-day:before, .opportunity-start-date:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f073";
+    color: var(--secondary);
+}
+
+.event-location:before, .group-location:before, .opportunity-location:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    padding-left: 1px;
+    content: "\f3c5";
+    color: var(--secondary);
+}
+
+.group-capacity:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f0c0";
+    color: var(--secondary);
+}
+
+.group-start-date:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f017";
+    color: var(--secondary);
+}
+
+.mpp-card--footer {
+    display: none;
+}
+
+@media only screen and (max-width: 999px) {
+    .mpp-card {
+        max-height:none;
+    }
+    .mpp-card--header {
+        max-width: 214px;
+    }
+    .mpp-card--body {
+        width: calc(100% - 215px);
+    }
+    .mpp-card--description {
+        display:none;
+    }
+    .mpp-card--badge {
+        left: -37px;
+        top: 15px;
+        transform: none;
+        line-height: 1.5rem;
+        padding: 0;
+        font-size: 0;
+    }
+    .mpp-card--badge::after {
+        top: 0px;
+        border-radius: 0.5rem 0 0 0.5rem;
+        position: absolute;
+        background-color: #f4be49;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .mppw-card--grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 0;
+    }
+    .mpp-card {
+        padding-top: 1em;
+        padding-bottom: 1rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        width: 100vw;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        border-bottom: 0.25px solid rgb(0 118 169 / 0.15);;
+        border-radius: 0;
+    }
+    .mpp-card--body {
+        width: 75%;
+        padding: 0 0.5rem 0.5rem 1rem;
+    }
+    .mpp-card--header {
+        height: 100%;
+        width: 25%;
+        max-height: 70px;
+    }
+    .mpp-card--badge::after {
+        font-size: 0;
+    }
+    .mpp-card--subtitle {
+        padding: 0;
+        font-size: 0.75rem;
+        line-height: 1.2rem;
+        letter-spacing: -0.25px;
+        float: none;
+    }
+    .mpp-card--description {
+        display: none;
+        width: initial;
+    }
+    .mpp-card--title {
+        line-height: 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+/*--------------------------------------------*/
+/* Form                                       */
+/*--------------------------------------------*/
+:host {
+    --form-field-color: var(--primary);
+    --form-field-fontFamily: var(--root-font-face);
+    --form-field-margin: 8px;
+    --form-field-borderradius: 4px;
+    --form-field-padding: 20px 13px;
+    --form-field-bgcolor: #ffffff;
+    --form-field-bgcolor--active: #ffffff;
+    --form-field-border: var(--primary);
+    --form-field-border--active: var(--secondary);
+    --form-field-boxshadow--active: 0 0 0 0.2rem rgba(0, 0, 0, .0);
+    --form-field-boxshadow--valid: 0 0 0 0.2rem rgba(40, 167, 69, .25);
+    --form-field-boxshadow--invalid: 0 0 0 0.2rem rgba(220, 53, 69, .25);
+    --form-valid: #28a745;
+    --form-invalid: #dc3545;
+    --form-field-disabled: #ebebe4;
+}
+
+/*--------------------------------------------*/
+/* Inner Page Details                         */
+/* 3/14/22 Updated innerPage-PrimaryColor     */
+/* 3/14/22 Updated innerPage-linkColor        */
+/* 3/14/22 Updated innerPage-linkHoverColor   */
+/*--------------------------------------------*/
+:host {
+    --innerPage-bgColor: #efefef;
+    --innerPage-textColor: var(--primary);
+    --innerPage-fontSize: 18px;
+    --innerPage-lineHeight: 34px;
+    --innerPage-primaryColor: var(--secondary);
+    --innerPage-boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+    --innerPage-borderRadius: 4px;
+    /* headers */
+    --innerPage-h1fontSize: 45px;
+    --innerPage-h1lineHeight: 60px;
+    --innerPage-h2fontSize: 24px;
+    --innerPage-h2lineHeight: 34px;
+    --innerPage-h3fontSize: 20px;
+    --innerPage-h3lineHeight: 28px;
+    --innerPage-h3color: var(--primary);
+    --innerPage-h4fontSize: 18px;
+    --innerPage-h4lineHeight: 24px;
+    --innerPage-dateTimeFontSize: 28px;
+    --innerPage-buttonBgColor: var(--innerPage-primaryColor);
+    --innerPage-buttonHoverBgColor: var(--form-btn-primary-hover);
+    --innerPage-buttonActiveBgColor:var(--form-btn-primary-bgcolor);
+    --innerPage-progressBarColor: var(--card-progressBarColor);
+    --innerPage-progressBarActiveColor: var(--card-progressBarActiveColor);
+    --innerPage-progressBarRemainingColor: var(--card-progressBarRemainingColor);
+    --innerPage-progressBarCompleteColor: var(--card-progressBarCompleteColor);
+    --innerPage-labelBgColor: #efefef;
+    --innerPage-linkColor: var(--secondary);
+    --innerPage-linkHoverColor: var(--secondary);
+    --innerPage-linkActiveColor: var(--secondary);
+    --innerPage-imageBgColor: #efefef;
+    --innerPage-mapBgColor: #efefef;
+}
+
+.mpp-innerpage--placeholder {
+    display: none;
+}
+
+.mpp-innerpage--image {
+    width: 30%;
+    float: right;
+    margin: 0 0 1em 2em;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+}
+
+.mpp-innerpage--fixed-img {
+    width: 30%;
+    float: right;
+    background-position: center;
+    margin: 0 0 1rem 2rem;
+}
+
+@media only screen and (max-width: 999px) {
+    .mpp-innerpage h1 {
+        margin-top: 0.25em;
+        text-align:center;
+    }
+    .mpp-innerpage--labels {
+        text-align: center;
+    }
+    .mpp-innerpage--datetime {
+        text-align: center;
+        font-size: 0.75rem;
+    }
+    .mpp-innerpage--image {
+        width: 100vw;
+        float: none;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        background-size: cover !important;
+    }
+    .mpp-innerpage--fixed-img {
+        width: 100vw;
+        float: none;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        background-size: cover !important;
+    }
+    #detailsContainer > strong > a {
+        float: left;
+        border: 1px solid var(--primary);
+        padding: 0.5em;
+        margin-bottom: 1rem;
+        border-radius: var(--card-borderRadius);
+        color: var(--primary);
+        text-decoration: none;
+    }
+    .mppw-ics-link {
+        float: right;
+        border: 1px solid var(--primary);
+        padding: 0.5em;
+        border-radius: var(--card-borderRadius);
+        color: var(--primary);
+        text-decoration: none;
+    }
+    #registrationFormContainer {
+        clear: both;
+        overflow: auto;
+    }
+}
+
+/*--------------------------------------------*/
+/* Login                                      */
+/*--------------------------------------------*/
+:host {
+    --component-bgColor: #657783;
+}
+
+/*--------------------------------------------*/
+/* COMPONENT CONTAINER                        */
+/*--------------------------------------------*/
+.mppw-component-container {
+    font-family: var(--root-font-face);
+    color: var(--root-text-color);
+    line-height: initial;
+}
+
+/*--------------------------------------------*/
+/* Wildcard Font CSS                          */
+/*--------------------------------------------*/
+* {
+    box-sizing: border-box;
+    font-family: var(--root-font-face);
+}
+
+/*--------------------------------------------*/
+/* Adding code from Nicole Godbey on 3/3/22   */
+/* Updated 3/18/24                            */
+/*--------------------------------------------*/
+
+.option-name,
+.option-price,
+.option-qty {
+    /* color: var(--alt-text-color); */
+}
+
+.product-form th {
+    color: var(--alt-text-color);
+}
+
+.mppw-form-field__alt-label,
+.mppw-form-field__label,
+.mppw-form-field__control
+ {
+    color:  var(--alt-text-color) !important;
+    font-size: 14px !important;
+}
+
+/* Update for unavailable registration options */ 
+.mppw-event-gray-out {
+    font-style: italic;
+}
+
+.mppw-radio-gray-out, .mppw-checkbox-gray-out {
+    background-color: transparent;
+    border: none;
+}
+
+/*--------------------------------------------*/
+/* Changing colors on Login page              */
+/* Login link, Edit, Add Household member, icon colors */
+/*--------------------------------------------*/
+
+.mppw-login--container {
+    color: var(--alt-text-color) !important;
+    font-family: var(--root-font-face);
+    
+}
+
+.mpp-household .mpp-household--header-wrapper {
+    color:  var(--alt-text-color) !important;
+  
+}
+
+.mpp-household .mpp-icon--household {
+    color: var(--alt-text-color) !important;
+}
+
+.mpp-innerpage--button {
+    background: var(--form-btn-primary-bgcolor) !important;
+}

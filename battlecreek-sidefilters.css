@@ -1,0 +1,53 @@
+@import url("battlecreek.css");
+
+.mppw-form-wrapper {
+    width: 30%;
+    margin-left: 3%;
+    margin-top: -0.4rem;
+    float: right;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2rem;
+}
+
+.mppw-form-wrapper h1 {
+    display: none;
+}
+
+.mppw-right {
+    display: none;
+}
+
+#advancedSearchSection {
+    display: block !important;
+}
+
+.mpp-card--subtitle {
+    font-size: 0.95rem;
+}
+
+@media only screen and (max-width: 1199px) {
+    .mppw-form-wrapper {
+        width: auto;
+        margin-left: 0;
+        margin-top: 0;
+        float: none;
+        position: static;
+    }
+    
+    .mppw-right {
+        display: revert;
+    }
+    
+    #advancedSearchSection[style="display: none;"] {
+        display: none !important;
+    }
+
+    #advancedSearchSection[style="display: none"] {
+        display: none !important;
+    }
+
+    #advancedSearchSection[style="display: block;"] {
+        display: block !important;
+    }
+}
