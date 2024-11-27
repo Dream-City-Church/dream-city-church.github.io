@@ -30,6 +30,9 @@
                 <div class='DayCard'>
                     <h2 class='DayHeading'>{{days.FormattedDate}}</h2>
                     {% assign day_events = DataSet2 | where: "DayNumber", days.DayNumber %}
+                    {% if day_events.size == 0 %}
+                        <div class='NoEvents'>Nothing scheduled for this day.</div>
+                    {% endif %}
                     {% for event in day_events %}
                         <div class='DayEvent'>
                             <div class='EventHeader'>{{event.Event_Start_Date}} {{event.Event_Title}}</div>

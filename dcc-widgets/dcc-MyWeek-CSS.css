@@ -31,6 +31,10 @@ h2.DayHeading {
     padding-left: 1rem;  
     font-style: italic;
 }
+.NoEvents {
+    font-style: italic;
+    color: #888;
+}
 
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
