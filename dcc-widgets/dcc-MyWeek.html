@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>My Week</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes, minimal-ui">
+    <link rel="stylesheet" href="dccw-stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+    <script src="https://kit.fontawesome.com/a6a26322af.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="dcc-MyWeek-CSS.css">
+    <script
+        type="text/javascript"
+        src="https://mpweb.azureedge.net/cdn/customWidget.js"
+    ></script>
+</head>
+<body>
+    <div
+    id="MyWeekWidget"
+    data-component="CustomWidget"
+    data-sp="api_custom_MyWeekWidget"
+    data-params="@UserGUID=e549f2ac-f4d4-48e6-86d9-4ca8556cec7d"
+    data-templateId="MyWeekWidget-Template"
+    data-requireUser="false"
+    data-cache="false"
+    data-debug="true"
+    data-host="dreamcitychurch"
+    ></div>
+
+    <script id="MyWeekWidget-Template" type="text/template">
+        <div>
+            {% for days in DataSet1 %}
+                <div class='DayCard'>
+                    <h2 class='DayHeading'>{{days.FormattedDate}}</h2>
+                    {% assign day_events = DataSet2 | where: "DayNumber", days.DayNumber %}
+                    {% for event in day_events %}
+                        <div class='DayEvent'>
+                            <div class='EventHeader'>{{event.Event_Start_Date}} {{event.Event_Title}}</div>
+                            <div class='EventParticipants'>{{event.Participants}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </script>
+</body>
+</html>
