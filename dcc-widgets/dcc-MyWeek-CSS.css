@@ -21,9 +21,11 @@ h2.DayHeading {
 }
 .ChurchEvent {
     text-align: center;
-    line-height: 3rem;
     font-size: 1.25rem;
-    margin-top: -0.5rem;
+    line-height: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-wrap-style: balance;
 }
 .ParticipantEvent {
     background-color: #efefef;
