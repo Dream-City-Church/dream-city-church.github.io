@@ -9,23 +9,33 @@
     width: 90%;
     padding: 0% 5%;
     border-radius: inherit;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 h2.DayHeading {
     font-size: 1.5rem;
     line-height: 2rem;
     padding: 0;
     margin: 0;
+    margin-bottom: 0.5rem;
     border-bottom: 1px solid black;
 }
-.DayEvent {
-    margin-top: 0.5rem;
+.ChurchEvent {
+    text-align: center;
+    line-height: 3rem;
+    font-size: 1.25rem;
+    margin-top: -0.5rem;
+}
+.ParticipantEvent {
     background-color: #efefef;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
 }
 .EventHeader {
     font-weight: bold;
+}
+.ChurchEvent .EventHeader {
+    font-weight: normal;
 }
 .EventParticipants {
     padding-left: 1rem;  
@@ -34,6 +44,9 @@ h2.DayHeading {
 .NoEvents {
     font-style: italic;
     color: #888;
+    line-height: 2rem;
+    margin-top: -0.5rem;
+    text-align: center;
 }
 
 /* Dark Mode */
