@@ -58,7 +58,7 @@ h2.DayHeading {
     h2.DayHeading {
         border-color: #444;
     }
-    .DayEvent {
+    .ParticipantEvent {
         background-color: #333;
     }
 }
