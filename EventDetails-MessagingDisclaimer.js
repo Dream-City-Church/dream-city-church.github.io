@@ -25,13 +25,12 @@ function insertSmsDisclaimer(){
 
     // Check if #messaging-disclaimer doesn't already exist inside #contactInfoForm
     if(!ContactInfoForm.querySelector('#messaging-disclaimer')){
-        ContactInfoForm.insertAdjacentHTML('beforebegin',smsDisclaimer);
+        ContactInfoForm.insertAdjacentHTML('beforeend',smsDisclaimer);
     }
     // Check if #messaging-disclaimer doesn't already exist inside #parentInfoForm
     if(!ParentInfoForm.querySelector('#messaging-disclaimer')){
-        ParentInfoForm.insertAdjacentHTML('beforebegin',smsDisclaimer);
+        ParentInfoForm.insertAdjacentHTML('beforeend',smsDisclaimer);
     }
-
 }
 
 window.onload=waitForShadow(100,1,40);
