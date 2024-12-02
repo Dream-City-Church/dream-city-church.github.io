@@ -32,6 +32,10 @@ function insertSmsDisclaimer(){
     if (!ContactInfoForm) {
         ContactInfoForm = document.querySelector('mpp-event-details').shadowRoot.querySelector('#contactInfoForm');
     }
+    // Check if #messaging-disclaimer has already been inserted
+    if (ContactInfoForm.querySelector('#messaging-disclaimer')) {
+        return;
+    }
     // insert disclaimer at end of ContactInfoForm container
     ContactInfoForm.insertAdjacentHTML('beforeend',smsDisclaimer);    
 }
