@@ -19,11 +19,7 @@ function waitForContactInfoForm(timeToWait,currentRun,maxRun) {
 }
 
 function insertSmsDisclaimer(){
-    var smsDisclaimer = `<div id="messaging-disclaimer" style="
-        font-size: 0.75rem;
-        margin-top: 0.5rem;
-        line-height: 1rem;
-        ">By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</div>`;
+    var smsDisclaimer = `<div id="messaging-disclaimer">By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href="/sms-tos/">Terms of Service</a> and <a href="/privacy-policy/">Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</div>`;
     var ContactInfoForm = document.querySelector('mpp-event-details').shadowRoot.querySelector('#parentInfoForm');
 
     // Check if #parentInfoForm has inline style of display:none, try a different selector
