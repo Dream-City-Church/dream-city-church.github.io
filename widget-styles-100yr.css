@@ -729,12 +729,20 @@ td.mppw-invoice-total {
     font-weight: bold;
 }
 
-.mppw-form-field:has(#mobilePhone):after {
+/*.mppw-form-field:has(#mobilePhone):after {
     display: inline-block;
     font-size: 0.7rem;
     line-height: 1rem;
     margin: 0.5rem;
     content: "By providing your phone number, you agree to receive text messages from Dream City Church. Reply STOP to cancel. Msg rates may apply.";
+}*/
+
+#messaging-disclaimer {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    line-height: 1rem;
+    width: 48%;
+    margin-left: auto;
 }
 
 .mppw-btn.primary {
@@ -750,6 +758,10 @@ td.mppw-invoice-total {
         max-width: 100%;
         width: 100%;
         margin: 0;
+    }
+
+    #messaging-disclaimer {
+        width: 100%;
     }
     
 }
