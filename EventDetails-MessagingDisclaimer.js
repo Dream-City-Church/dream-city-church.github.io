@@ -19,21 +19,13 @@ function waitForContactInfoForm(timeToWait,currentRun,maxRun) {
 }
 
 function insertSmsDisclaimer(){
-    var smsDisclaimer = `<div id="messaging-disclaimer">By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href="/sms-tos/">Terms of Service</a> and <a href="/privacy-policy/">Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</div>`;
-    var ContactInfoForm = document.querySelector('mpp-event-details').shadowRoot.querySelector('#parentInfoForm');
+    var smsDisclaimer = `<div id="messaging-disclaimer">By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href="/sms-tos/" target="_blank">Terms of Service</a> and <a href="/privacy-policy/" target="_blank">Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</div>`;
+    var ContactInfoForm = document.querySelector('mpp-event-details').shadowRoot.querySelector('#contactInfoForm');
+    var ParentInfoForm = document.querySelector('mpp-event-details').shadowRoot.querySelector('#parentInfoForm');
 
-    // Check if #parentInfoForm has inline style of display:none, try a different selector
-    if (ContactInfoForm.style.display == 'none') {
-        ContactInfoForm = document.querySelector('mpp-event-details').shadowRoot.querySelector('#contactInfoForm');
-    }
-    
-    // Check if #messaging-disclaimer has already been inserted
-    if (ContactInfoForm.querySelector('#messaging-disclaimer')) {
-        return;
-    }
-
-    // insert disclaimer at end of ContactInfoForm container
-    ContactInfoForm.insertAdjacentHTML('beforeend',smsDisclaimer);    
+    // insert disclaimer at end of ContactInfoForm and ParentInfoForm containers
+    ContactInfoForm.insertAdjacentHTML('beforeend',smsDisclaimer);
+    ParentInfoForm.insertAdjacentHTML('beforeend',smsDisclaimer);  
 }
 
 window.onload=waitForShadow(100,1,40);
