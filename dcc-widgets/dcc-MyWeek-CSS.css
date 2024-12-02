@@ -54,7 +54,7 @@ h2.DayHeading {
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #111;
+        background-color: #000;
         color: #efefef;
     }
     h2.DayHeading {
