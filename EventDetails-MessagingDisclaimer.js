@@ -23,9 +23,15 @@ function insertSmsDisclaimer(){
     var ContactInfoForm = document.querySelector('mpp-event-details').shadowRoot.querySelector('#contactInfoForm');
     var ParentInfoForm = document.querySelector('mpp-event-details').shadowRoot.querySelector('#parentInfoForm');
 
-    // insert disclaimer at end of ContactInfoForm and ParentInfoForm containers
-    ContactInfoForm.insertAdjacentHTML('beforeend',smsDisclaimer);
-    ParentInfoForm.insertAdjacentHTML('beforeend',smsDisclaimer);  
+    // Check if #messaging-disclaimer doesn't already exist inside #contactInfoForm
+    if(!ContactInfoForm.querySelector('#messaging-disclaimer')){
+        ContactInfoForm.insertAdjacentHTML('beforebegin',smsDisclaimer);
+    }
+    // Check if #messaging-disclaimer doesn't already exist inside #parentInfoForm
+    if(!ParentInfoForm.querySelector('#messaging-disclaimer')){
+        ParentInfoForm.insertAdjacentHTML('beforebegin',smsDisclaimer);
+    }
+
 }
 
 window.onload=waitForShadow(100,1,40);
