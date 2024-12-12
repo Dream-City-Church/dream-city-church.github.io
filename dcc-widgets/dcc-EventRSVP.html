@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title>RSVP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes, minimal-ui">
+    <style>
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #101010;
+                color: #efefef;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="dccw-stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+    <script src="https://kit.fontawesome.com/a6a26322af.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="dcc-EventRSVP-CSS.css">
+    <script
+        type="text/javascript"
+        src="https://mpweb.azureedge.net/cdn/customWidgetV1.js"
+    ></script>
+</head>
+<body>
+    <div
+    id="EventRSVPWidget"
+    data-component="CustomWidget"
+    data-sp="api_custom_EventRSVP"
+    data-params="@EventID=[id]&@UserGUID=[ug]"
+    data-templateId="EventRSVPWidget-Template"
+    data-requireUser="false"
+    data-cache="false"
+    data-debug="true"
+    data-host="dreamcitychurch"
+    ></div>
+
+    <script id="EventRSVPWidget-Template" type="text/template">
+        <div>
+            {% for event in DataSet1 %}
+               <div id="event">
+                    <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{event.Image_GUID}}" id="event-img-header">
+                    <h1 id="event-title">{{event.Event_Title}}</h1>
+                    <h2 id="event-start-date">{{event.Event_Start_Date | date: "%A, %B %e, %l:%M%P" }}</h2>
+                    <p id="event-description">{{event.Description}}</p>
+                    <p id="event-instructions">{{event.Meeting_Instructions}}</p>
+                </div>
+            {% endfor %}
+            <div id="participants">
+                {% for person in DataSet2 %}
+                    <div id="person">
+                        <input type="checkbox" id="rsvp-checkbox" {% if person.RSVP_Status_ID == 1 %} checked {% endif %}>
+                        <div id="person-name">{{person.First_Name}} {{person.Last_Name}}</div>
+                        <div id="person-form">
+                            {% assign participant_form = DataSet3 | where: "Contact_ID", person.Contact_ID %}
+                            {% for formitem in participant_form %}
+                                <div id="form-field">
+                                    <label for="{{formitem.Form_Field_ID}}">{{formitem.Field_Label}}</label>
+                                    <input type="{{formitem.Field_Type}}" id="{{formitem.Form_Field_ID}}" value="{{formitem.Response}}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </script>
+</body>
+</html>
