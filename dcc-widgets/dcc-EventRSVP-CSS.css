@@ -1,23 +1,205 @@
+:root {
+    --primary-color: #bc204b;
+    --secondary-color: #e07e3c;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --gray-color: #6c757d;
+    --light-gray-color: #efefef;
+}
+
 #EventRSVPWidget {
     font-family: 'Open Sans',sans-serif;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
+    margin: 0;
     margin-left: auto;
     margin-right: auto;
 }
-#person {
-    border: 1px solid;
-    padding: 1rem;
+#event {
+    width: 100%;
+}
+#event-img-header {
+    width: 100%;
+}
+#event-title {
+    text-align: center;
+}
+#event-start-date {
+    text-align: center;
+}
+#event-description {
+    text-align: justify;
+}
+#event-instructions {
+    text-align: justify;
+}
+/* format the #rsvp-yes, #rsvp-maybe, and #rsvp-no radio buttons inside the #rsvp-status div as horizontal buttons */
+#rsvp-status {
+    display: flex;
+    justify-content: space-around;
     margin: 1rem;
 }
-#person-name {
+#rsvp-status input[type="radio"] {
+    display: none;
+}
+#rsvp-status input[type="radio"] + label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 30%;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: 1px solid var(--gray-color);
+    color: var(--gray-color);
+    text-align: center;
+}
+#rsvp-status input[type="radio"]:checked + label {
+    color: var(--light-color);
+    border: none;
+}
+#rsvp-yes:checked + label {
+    background-color: var(--success-color);
+}
+#rsvp-maybe:checked + label {
+    background-color: var(--secondary-color);
+}
+#rsvp-no:checked + label {
+    background-color: var(--danger-color);
+}
+#rsvp-instructions {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    font-style: italic;
+}
+/* if #rsvp-yes is not checked, hide #participants div. #participants is a sibling of #rsvp-status, which is the parent of #rsvp-yes */
+#participants {
+    display: none;
+    width: 100%;
+}
+.person {
+    border-radius: 0.5rem;
+    background-color: var(--light-gray-color);
+    padding: 1rem;
+    margin: 1rem 5%;
+    width: 85%;
+}
+.person-name {
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 2rem;
+    color: #333;
+}
+.rsvp-checkbox {
+    width: 1.75rem;
+    height: 1.75rem;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 1rem;
+}
+.rsvp-checkbox:not(:checked) ~ .person-form {
+    display: none;
+}
+.rsvp-checkbox:not(:checked) ~ .person-name {
+    color: #999;
+}
+.rsvp-checkbox:checked {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    appearance: none;
+}
+.rsvp-checkbox:checked::after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 0.4rem;
+    height: 1.15rem;
+    border: solid var(--light-color);
+    border-width: 0 0.35rem 0.35rem 0;
+    transform: rotate(45deg);
+    right: -8px;
+}
+.person-name {
     display:inline;
 }
+.person-form {
+    margin: 1rem;
+    margin-top: 0;
+}
+.form-field {
+
+}
+.form-field-label {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+/* if the input is required, add a red asterisk */
+.form-field-label.required::after {
+    content: " *";
+    color: var(--danger-color);
+}
+.form-field label {
+    display: block;
+    margin-top: 1rem;
+    margin-left: 5%;
+}
+.form-field input {
+    width: 90%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+    margin-left: 5%;
+}
+/* if the input type is of type radio, style it like a button */
+.form-field input[type="radio"] {
+    display: none;
+}
+.form-field input[type="radio"] + label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 90%;
+    box-sizing: border-box;
+    font-weight: bold;
+    border: 1px solid var(--gray-color);
+    color: var(--gray-color);
+}
+.form-field input[type="radio"]:checked + label {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: 1px solid var(--primary-color);
+}
+#submit {
+    width: 100%;
+    text-align: center;
+}
+#submit-button {
+    font-size: 1.5rem;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    margin: 2rem 0 1rem 0;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #101010;
-        color: #efefef;
+        background-color: var(--dark-color);
+        color: var(--light-color);
     }
 }
