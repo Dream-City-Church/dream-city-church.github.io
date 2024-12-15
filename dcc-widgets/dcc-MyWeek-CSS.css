@@ -83,4 +83,7 @@ h2.day-heading {
     .participant-event, .group-event, .volunteer-event {
         background-color: #333;
     }
+    .participant-event::after, .group-event::after, .volunteer-event::after {
+        color: rgba(255, 255, 255, 0.05);
+    }
 }
