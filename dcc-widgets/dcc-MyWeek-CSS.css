@@ -51,7 +51,8 @@ h2.day-heading {
     text-align: center;
 }
 .participant-event::after, .group-event::after, .volunteer-event::after {
-    font-family: 'FontAwesome';
+    font-family: 'Font Awesome 6 Pro';
+    font-weight: bold;
     position: relative;
     float: right;
     top: -40px;
