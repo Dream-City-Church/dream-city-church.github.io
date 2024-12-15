@@ -50,6 +50,23 @@ h2.day-heading {
     margin-top: -0.5rem;
     text-align: center;
 }
+.participant-event::after, .group-event::after, .volunteer-event::after {
+    font-family: 'FontAwesome';
+    position: relative;
+    float: right;
+    top: -40px;
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.05);
+}
+.participant-event::after {
+    content: '\f073';
+}
+.group-event::after {
+    content: '\e533';
+}
+.volunteer-event::after {
+    content: '\f4c4';
+}
 
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
