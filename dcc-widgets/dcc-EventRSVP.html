@@ -46,13 +46,13 @@
             {% assign rsvp_status_yes = DataSet2 | where: "RSVP_Status_ID", 1 %}
             {% assign rsvp_status_no = DataSet2 | where: "RSVP_Status_ID", 2 %}
             <div id="rsvp-status">
-                <input type="radio" id="rsvp-yes" name="rsvp" {% if rsvp_status_yes.length > 0 %} checked {% endif %} required >
+                <input type="radio" id="rsvp-yes" class="rsvp-button" name="rsvp" {% if rsvp_status_yes.length > 0 %} checked {% endif %} required >
                 <label for="rsvp-yes">Yes</label>
 
-                <input type="radio" id="rsvp-maybe" name="rsvp" {% if rsvp_status_no.length == 0 and rsvp_status_yes.length == 0%} checked {% endif %} required >
+                <input type="radio" id="rsvp-maybe" class="rsvp-button" name="rsvp" {% if rsvp_status_no.length == 0 and rsvp_status_yes.length == 0%} checked {% endif %} required >
                 <label for="rsvp-maybe">Maybe</label>
 
-                <input type="radio" id="rsvp-no" name="rsvp" {% if rsvp_status_no.length > 0 and rsvp_status_yes.length == 0 %} checked {% endif %} required >
+                <input type="radio" id="rsvp-no" class="rsvp-button" name="rsvp" {% if rsvp_status_no.length > 0 and rsvp_status_yes.length == 0 %} checked {% endif %} required >
                 <label for="rsvp-no">No</label>
             </div>
             
@@ -139,21 +139,26 @@
                     var participants = document.getElementById('participants');
 
                     if (rsvpYes.checked) {
-                        participants.style.display = 'inline-block';
+                        participants.classList.remove('hidden');
+                        participants.classList.add('visible');
                     } else {
-                        participants.style.display = 'none';
+                        participants.classList.add('hidden');
+                        participants.classList.remove('visible');
                     }
 
                     rsvpYes.addEventListener('click', function() {
-                        participants.style.display = 'inline-block';
+                        participants.classList.remove('hidden');
+                        participants.classList.add('visible');
                     });
 
                     rsvpMaybe.addEventListener('click', function() {
-                        participants.style.display = 'none';
+                        participants.classList.add('hidden');
+                        participants.classList.remove('visible');
                     });
 
                     rsvpNo.addEventListener('click', function() {
-                        participants.style.display = 'none';
+                        participants.classList.add('hidden');
+                        participants.classList.remove('visible');
                     });
                 }
             });

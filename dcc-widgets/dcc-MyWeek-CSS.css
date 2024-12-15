@@ -5,13 +5,13 @@
     margin-left: auto;
     margin-right: auto;
 }
-.DayCard {
+.day-card {
     width: 90%;
     padding: 0% 5%;
     border-radius: inherit;
     margin-bottom: 1.5rem;
 }
-h2.DayHeading {
+h2.day-heading {
     font-size: 1.5rem;
     line-height: 2rem;
     padding: 0;
@@ -19,7 +19,7 @@ h2.DayHeading {
     margin-bottom: 0.5rem;
     border-bottom: 1px solid black;
 }
-.ChurchEvent {
+.featured-event {
     text-align: center;
     font-size: 1.25rem;
     line-height: 1.25rem;
@@ -27,23 +27,23 @@ h2.DayHeading {
     margin-bottom: 1rem;
     text-wrap-style: balance;
 }
-.ParticipantEvent {
+.participant-event, .group-event, .volunteer-event {
     background-color: #efefef;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
     margin-bottom: 0.5rem;
 }
-.EventHeader {
+.event-header {
     font-weight: bold;
 }
-.ChurchEvent .EventHeader {
+.featured-event .event-header {
     font-weight: normal;
 }
-.EventParticipants {
+.event-participants {
     padding-left: 1rem;  
     font-style: italic;
 }
-.NoEvents {
+.no-event {
     font-style: italic;
     color: #ccc;
     line-height: 2rem;
@@ -57,13 +57,13 @@ h2.DayHeading {
         background-color: #101010;
         color: #efefef;
     }
-    h2.DayHeading {
+    h2.day-heading {
         border-color: #444;
     }
-    .NoEvents{
+    .no-event {
         color: #444;
     }
-    .ParticipantEvent {
+    .participant-event, .group-event, .volunteer-event {
         background-color: #333;
     }
 }

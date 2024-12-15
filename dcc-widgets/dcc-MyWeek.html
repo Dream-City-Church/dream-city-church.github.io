@@ -34,27 +34,36 @@
 
     <script id="MyWeekWidget-Template" type="text/template">
         <div>
+
             {% for days in DataSet1 %}
-                <div class='DayCard'>
-                    <h2 class='DayHeading'>{{days.FormattedDate}}</h2>
-                    {% assign church_events = DataSet3 | where: "DayNumber", days.DayNumber %}
+
+                <div class='day-card'>
+
+                    <h2 class='day-heading'>{{days.FormattedDate}}</h2>
+                    {% assign featured_events = DataSet3 | where: "DayNumber", days.DayNumber %}
                     {% assign participant_events = DataSet2 | where: "DayNumber", days.DayNumber %}
-                    {% if church_events.size == 0 and participant_events.size == 0 %}
-                        <div class='NoEvents'>Nothing scheduled for this day.</div>
+                    {% if featured_events.size == 0 and participant_events.size == 0 %}
+
+                        <div class='no-event'>Nothing scheduled for this day.</div>
+
                     {% endif %}
-                    {% for event in church_events %}
-                        <div class='ChurchEvent'>
-                            <div class='EventHeader'>{{event.Event_Title}}</div>
+
+                    {% for event in featured_events %}
+                        <div class='{{event.Event_Type}}'>
+                            <div class='event-header'>{{event.Event_Title}}</div>
                         </div>
                     {% endfor %}
+
                     {% for event in participant_events %}
-                        <div class='ParticipantEvent'>
-                            <div class='EventHeader'>{{event.Event_Start_Date | date: "%l:%M %P"}} {{event.Event_Title}}</div>
-                            <div class='EventParticipants'>{{event.Participants}}</div>
+                        <div class='{{event.Event_Type}}'>
+                            <div class='event-header'>{{event.Event_Start_Date | date: "%l:%M %P"}} {{event.Event_Title}}</div>
+                            <div class='event-participants'>{{event.Participants}}</div>
                         </div>
                     {% endfor %}
                 </div>
+
             {% endfor %}
+
         </div>
     </script>
 </body>
