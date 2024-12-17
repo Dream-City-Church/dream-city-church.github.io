@@ -10,6 +10,8 @@
     padding: 0% 5%;
     border-radius: inherit;
     margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 h2.day-heading {
     font-size: 1.5rem;
