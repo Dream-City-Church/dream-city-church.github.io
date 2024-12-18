@@ -2,16 +2,6 @@
 const prayerRequestVersionNumber = '1.241217';
 console.log(`Prayer Request Form Version: ${prayerRequestVersionNumber}`);
 
-//Import Mixpanel SDK
-import mixpanel from "mixpanel-browser";
-            
-// Near entry of your product, init Mixpanel
-mixpanel.init("d47b14df0290d40162cd347cb5702b9a", {
-debug: true,
-track_pageview: true,
-persistence: "localStorage",
-});
-
 function loadPrayerRequestForm() {
     // get device screen width
     var screenWidth = window.innerWidth;
@@ -52,18 +42,6 @@ function loadPrayerRequestForm() {
                     document.getElementById("prayer-greeting").innerHTML = greetingHtml;
                 }
             });
-            mixpanel.identify(data.contactGUID);
-            mixpanel.people.set({
-                "$email": data.emailAddress,
-                "$first_name": data.firstName,
-                "$last_name": data.lastName,
-                "$phone": data.mobilePhone
-            });
-
-            mixpanel.track('Page View', {
-                'Page Name': 'Prayer Request Form',
-                'Referrer URL Path': document.referrer
-              })
     }
 
     requestFormHTML = `
