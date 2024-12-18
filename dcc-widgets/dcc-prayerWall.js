@@ -3,6 +3,16 @@ const prayerWallVersionNumber = '1.240826';
 var pageNum = 1;
 var maxPrayerId = 0;
 
+//Import Mixpanel SDK
+import mixpanel from "mixpanel-browser";
+            
+// Near entry of your product, init Mixpanel
+mixpanel.init("d47b14df0290d40162cd347cb5702b9a", {
+debug: true,
+track_pageview: true,
+persistence: "localStorage",
+});
+
 /* Function for getting URL variables */
 function getUrlVars() {
     var urlVars = {};
