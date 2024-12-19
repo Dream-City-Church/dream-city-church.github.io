@@ -65,7 +65,7 @@ h2.day-heading {
     content: '\f073';
 }
 .group-event::after {
-    content: '\e533';
+    content: '\f0c0';
 }
 .volunteer-event::after {
     content: '\f4c4';

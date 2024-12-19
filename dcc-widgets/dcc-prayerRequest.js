@@ -255,4 +255,3 @@ function getUrlVars() {
 }
 
 window.onload = setTimeout(loadPrayerRequestForm, 500);
-
