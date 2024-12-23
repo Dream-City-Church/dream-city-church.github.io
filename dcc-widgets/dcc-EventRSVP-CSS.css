@@ -107,6 +107,24 @@
     font-size: 2rem;
     line-height: 2rem;
     color: #333;
+    display: inline;
+}
+.person-form {
+    margin: 1rem;
+    margin-top: 0;
+}
+.form-field input {
+    width: 90%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+    margin-left: 5%;
+}
+.new-person > .form-field-label {
+    padding-left: 1rem;
+}
+.new-person > .form-field {
+    padding: 0.5rem 1rem;
 }
 .rsvp-checkbox {
     width: 1.75rem;
@@ -114,6 +132,9 @@
     display: inline-block;
     vertical-align: text-bottom;
     margin-right: 1rem;
+}
+.new-person > .rsvp-checkbox {
+    display: none;
 }
 /* animate person-form when checked and unchecked */
 .rsvp-checkbox:not(:checked) ~ .person-form {
@@ -138,16 +159,6 @@
     transform: rotate(45deg);
     right: -8px;
 }
-.person-name {
-    display:inline;
-}
-.person-form {
-    margin: 1rem;
-    margin-top: 0;
-}
-.form-field {
-
-}
 .form-field-label {
     font-weight: bold;
     margin-top: 1rem;
@@ -160,13 +171,6 @@
 .form-field label {
     display: block;
     margin-top: 1rem;
-    margin-left: 5%;
-}
-.form-field input {
-    width: 90%;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    box-sizing: border-box;
     margin-left: 5%;
 }
 /* if the input type is of type radio, style it like a button */
@@ -190,9 +194,17 @@
     color: var(--light-color);
     border: 1px solid var(--primary-color);
 }
-#submit {
+#add-person,#submit {
     width: 100%;
     text-align: center;
+}
+#add-person-button {
+    font-size: 1.25rem;
+    color: var(--gray-color);
+    padding: 1rem 2rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 #submit-button {
     font-size: 1.5rem;
@@ -204,13 +216,4 @@
     padding: 1rem 2rem;
     font-weight: bold;
     cursor: pointer;
-}
-
-
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: var(--dark-color);
-        color: var(--light-color);
-    }
 }

@@ -33,6 +33,10 @@
     ></div>
 
     <script id="EventRSVPWidget-Template" type="text/template">
+        <!-- DataSet1 contains basic information about the event -->
+        <!-- DataSetw contains any form fields for the event -->
+        <!-- DataSet3 contains information about the user's family, if a user GUID was provided -->
+        <!-- DataSet4 contains the user's family form responses, if they exist -->
         <div id="event">
             {% for event in DataSet1 %}
                 <div id="event-header">
@@ -43,8 +47,8 @@
                     <p id="event-instructions">{{event.Meeting_Instructions}}</p>
                 </div>
             {% endfor %}
-            {% assign rsvp_status_yes = DataSet2 | where: "RSVP_Status_ID", 1 %}
-            {% assign rsvp_status_no = DataSet2 | where: "RSVP_Status_ID", 2 %}
+            {% assign rsvp_status_yes = DataSet3 | where: "RSVP_Status_ID", 1 %}
+            {% assign rsvp_status_no = DataSet3 | where: "RSVP_Status_ID", 2 %}
             <div id="rsvp-status">
                 <input type="radio" id="rsvp-yes" class="rsvp-button" name="rsvp" {% if rsvp_status_yes.length > 0 %} checked {% endif %} required >
                 <label for="rsvp-yes">Yes</label>
@@ -57,42 +61,85 @@
             </div>
             
             <div id="participants">
-                <p id="rsvp-instructions">Please select who is coming:</p>
-                {% for person in DataSet2 %}
 
-                    <div class="person" data-pid="{{ person.Participant_ID}}" {% if person.Event_Participant_ID > 0 %} data-epid="{{ person.Event_Participant_ID }}" {% endif %}>
+                {% if DataSet3.length > 0 %}
 
-                        <input type="checkbox" class="rsvp-checkbox" {% if person.RSVP_Status_ID == 1 %} checked {% endif %}>
+                    <p id="rsvp-instructions">Please select who is coming:</p>
+                    {% for person in DataSet3 %}
 
-                        <div class="person-name">{{person.First_Name}} {{person.Last_Name}}</div>
+                        <div class="person" data-pid="{{ person.Participant_ID}}" {% if person.Event_Participant_ID > 0 %} data-epid="{{ person.Event_Participant_ID }}" {% endif %}>
 
-                        <div class="person-form">
-                            {% assign participant_form = DataSet3 | where: "Contact_ID", person.Contact_ID %}
+                            <input type="checkbox" class="rsvp-checkbox" {% if person.RSVP_Status_ID == 1 %} checked {% endif %}>
 
-                            {% for formitem in participant_form %}
+                            <div class="person-name">{{person.First_Name}} {{person.Last_Name}}</div>
 
-                                <div class="form-field">
-                                    <div class="form-field-label{% if formitem.Required == true %} required{% endif %}">{{formitem.Field_Label}}</div>
-                                    <!-- If field type is radio, break the Field_Value into an array from newlines \n and iterate into the form -->
-                                    {% if formitem.Field_Type == 'radio' %}
+                            <div class="person-form">
+                                {% assign participant_form = DataSet4 | where: "Contact_ID", person.Contact_ID %}
 
-                                        {% assign radio_values = formitem.Field_Values | split: '\n' %}
-                                        
-                                        {% for radio_value in radio_values %}
+                                {% for formitem in participant_form %}
 
-                                            <input type="radio" id="{{formitem.Form_Field_ID}}-{{person.Contact_ID}}-{{forloop.index}}" name="{{formitem.Form_Field_ID}}-{{person.Contact_ID}}" value="{{radio_value}}" {% if formitem.Response == radio_value %} checked {% endif %} {% if formitem.Required == true %} required {% endif %}>
-                                            <label for="{{formitem.Form_Field_ID}}-{{person.Contact_ID}}-{{forloop.index}}">{{radio_value}}</label>
+                                    <div class="form-field">
+                                        <div class="form-field-label{% if formitem.Required == true %} required{% endif %}">{{formitem.Field_Label}}</div>
+                                        {% if formitem.Field_Type == 'radio' %}
 
-                                        {% endfor %}
-                                    {% else %}
-                                        <input type="{{formitem.Field_Type}}" id="{{formitem.Form_Field_ID}}-{{person.Contact_ID}}" value="{{formitem.Response}}">
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
+                                            {% assign radio_values = formitem.Field_Values | split: '\n' %}
+                                            
+                                            {% for radio_value in radio_values %}
+
+                                                <input type="radio" id="{{formitem.Form_Field_ID}}-{{person.Contact_ID}}-{{forloop.index}}" name="{{formitem.Form_Field_ID}}-{{person.Contact_ID}}" value="{{radio_value}}" {% if formitem.Response == radio_value %} checked {% endif %} {% if formitem.Required == true %} required {% endif %}>
+                                                <label for="{{formitem.Form_Field_ID}}-{{person.Contact_ID}}-{{forloop.index}}">{{radio_value}}</label>
+
+                                            {% endfor %}
+                                        {% else %}
+                                            <input type="{{formitem.Field_Type}}" id="{{formitem.Form_Field_ID}}-{{person.Contact_ID}}" value="{{formitem.Response}}">
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %} 
+
+                {% else %}
+
+                        <div class="person new-person">
+                            <input type="checkbox" class="rsvp-checkbox" checked>
+                            <div class="form-field-label required">Your Information</div>
+                            <div class="form-field"><input type="text" id="first-name" placeholder="First Name" required></div>
+                            <div class="form-field"><input type="text" id="last-name" placeholder="Last Name" required></div>
+                            <div class="form-field"><input type="email" id="email" placeholder="Email" required></div>
+                            <div class="form-field"><input type="tel" id="phone" placeholder="Phone"></div>
+
+                            <div class="person-form">
+                                {% for formitem in DataSet2 %}
+                                    <div class="form-field">
+                                        <div class="form-field-label{% if formitem.Required == true %} required{% endif %}">{{formitem.Field_Label}}</div>
+                                        {% if formitem.Field_Type == 'radio' %}
+
+                                            {% assign radio_values = formitem.Field_Values | split: '\n' %}
+                                            
+                                            {% for radio_value in radio_values %}
+
+                                                <input type="radio" id="{{formitem.Form_Field_ID}}-{{forloop.index}}" name="{{formitem.Form_Field_ID}}" value="{{radio_value}}" {% if formitem.Required == true %} required {% endif %}>
+                                                <label for="{{formitem.Form_Field_ID}}-{{forloop.index}}">{{radio_value}}</label>
+
+                                            {% endfor %}
+                                        {% else %}
+                                            <input type="{{formitem.Field_Type}}" id="{{formitem.Form_Field_ID}}" {% if formitem.Required == true %} required {% endif %}>
+                                        {% endif %}
+                                {% endfor %}
+                                    </div>
+                            </div>
                         </div>
                     </div>
-                {% endfor %}
+
+                {% endif %}
+                
             </div>
+            {% if DataSet3 == null %}
+            <div id="add-person">
+                <button id="add-person-button" onclick='AddNewPerson()'><i class="fa-solid fa-user-plus"></i> Add Another Person</button>
+            </div>
+            {% endif %}
             <div id="submit">
                 <button id="submit-button">Submit RSVP</button>
             </div>
@@ -100,70 +147,98 @@
         
     </script>
 
-    <!-- Javascript - Observe changes to rsvp radio buttons. If rsvp-yes is checked on load or click, set #participants display:inline-block. If not rsvp-yes, clear display:block -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM Loaded');
-            var rsvpYes = document.getElementById('rsvp-yes');
-            var rsvpMaybe = document.getElementById('rsvp-maybe');
-            var rsvpNo = document.getElementById('rsvp-no');
-            var participants = document.getElementById('participants');
+    <!-- Javascript - When the add-person-button is clicked, add a copy of the .person .new-person div to the end of the #participants div with cleared form fields -->
+    <script type="text/javascript">
+        function AddNewPerson() {
+                var addPersonButton = document.getElementById('add-person-button');
+                var participants = document.getElementById('participants');
+                var newPerson = document.querySelector('.person.new-person');
+                var newPersonClone = newPerson.cloneNode(true);
+                participants.appendChild(newPersonClone);
+                /* add a button inside the newly created newPersonClone to remove the new person */
+                var removePersonButton = document.createElement('button');
+                removePersonButton.innerHTML = '<i class="fa-solid fa-user-minus"></i> Remove Person';
+                removePersonButton.onclick = function() {
+                    newPersonClone.remove();
+                };
+                newPersonClone.appendChild(removePersonButton);
+                
+            };
+    </script>
 
-            if (rsvpYes.checked) {
-                participants.style.display = 'inline-block';
-            } else {
-                participants.style.display = 'none';
-            }
-
-            rsvpYes.addEventListener('click', function() {
-                participants.style.display = 'inline-block';
-            });
-
-            rsvpMaybe.addEventListener('click', function() {
-                participants.style.display = 'none';
-            });
-
-            rsvpNo.addEventListener('click', function() {
-                participants.style.display = 'none';
-            });
-        });
+    <script type="text/javascript">
+        
         /* Add a mutation observer on EventRSVPWidget and fire listener when the widget is added to the DOM */
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
-                console.log('Mutation observed');
                 if (mutation.addedNodes.length > 0) {
                     console.log('Widget added to DOM');
                     var rsvpYes = document.getElementById('rsvp-yes');
                     var rsvpMaybe = document.getElementById('rsvp-maybe');
                     var rsvpNo = document.getElementById('rsvp-no');
                     var participants = document.getElementById('participants');
-
-                    if (rsvpYes.checked) {
-                        participants.classList.remove('hidden');
-                        participants.classList.add('visible');
-                    } else {
-                        participants.classList.add('hidden');
-                        participants.classList.remove('visible');
-                    }
+                    var rsvpCheckboxes = document.querySelectorAll('.rsvp-checkbox');
+                    var personForms = document.querySelectorAll('.person-form');
 
                     rsvpYes.addEventListener('click', function() {
-                        participants.classList.remove('hidden');
-                        participants.classList.add('visible');
+                        /* Enable rsvp-checkbox inputs */
+                        rsvpCheckboxes.forEach(function(checkbox) {
+                            checkbox.disabled = false;
+                        });
+                        personForms.forEach(function(form) {
+                            form.style.display = 'block';
+                        });
+                        document.getElementById('add-person').style.display = 'block';
+                        document.getElementById('rsvp-instructions').style.display = 'block';
                     });
 
                     rsvpMaybe.addEventListener('click', function() {
-                        participants.classList.add('hidden');
-                        participants.classList.remove('visible');
+                        /* Uncheck and disable rsvp-checkbox inputs */
+                        rsvpCheckboxes.forEach(function(checkbox) {
+                            checkbox.checked = false;
+                            checkbox.disabled = true;
+                        });
+                        personForms.forEach(function(form) {
+                            form.style.display = 'none';
+                        });
+                        document.getElementById('add-person').style.display = 'none';
+                        document.getElementById('rsvp-instructions').style.display = 'none';
                     });
 
                     rsvpNo.addEventListener('click', function() {
-                        participants.classList.add('hidden');
-                        participants.classList.remove('visible');
+                        /* Uncheck and disable rsvp-checkbox inputs */
+                        rsvpCheckboxes.forEach(function(checkbox) {
+                            checkbox.checked = false;
+                            checkbox.disabled = true;
+                        });
+                        personForms.forEach(function(form) {
+                            form.style.display = 'none';
+                        });
+                        document.getElementById('add-person').style.display = 'none';
+                        document.getElementById('rsvp-instructions').style.display = 'none';
                     });
                 }
             });
         });
+       
+
+        /* Add listener for when the widget finishes loading. If rsvp-maybe or rsvp-no is selected, hide the person-forms */
+        window.addEventListener('widgetLoaded', function(event) {
+            var rsvpMaybe = document.getElementById('rsvp-maybe');
+            var rsvpNo = document.getElementById('rsvp-no');
+            var personForms = document.querySelectorAll('.person-form');
+            var addPerson = document.getElementById('add-person');
+
+            if (rsvpMaybe.checked || rsvpNo.checked) {
+                personForms.forEach(function(form) {
+                    form.style.display = 'none';
+                });
+                addPerson.style.display = 'none';
+            }
+        });
+
         observer.observe(document.getElementById('EventRSVPWidget'), { childList: true });
+        
     </script>
 </body>
 </html>
