@@ -147,8 +147,14 @@
         
     </script>
 
+    <script type="text/javascript">
+        /* Send all fired events to the console for degubbing */ 
+        monitorEvents(document);
+    </script>
+
     <!-- Javascript - When the add-person-button is clicked, add a copy of the .person .new-person div to the end of the #participants div with cleared form fields -->
     <script type="text/javascript">
+
         function AddNewPerson() {
                 var addPersonButton = document.getElementById('add-person-button');
                 var participants = document.getElementById('participants');
@@ -162,7 +168,7 @@
                     newPersonClone.remove();
                 };
                 newPersonClone.appendChild(removePersonButton);
-                
+
             };
     </script>
 
@@ -186,7 +192,8 @@
                             checkbox.disabled = false;
                         });
                         personForms.forEach(function(form) {
-                            form.style.display = 'block';
+                            // remove inline styles
+                            form.removeAttribute('style');
                         });
                         document.getElementById('add-person').style.display = 'block';
                         document.getElementById('rsvp-instructions').style.display = 'block';
@@ -238,6 +245,10 @@
         });
 
         observer.observe(document.getElementById('EventRSVPWidget'), { childList: true });
+
+        window.addEventListener('widgetLoaded', function(event) {
+  console.log('|||===> widgetLoaded Event Fired for: ' + event.detail.widgetId);
+});
         
     </script>
 </body>
