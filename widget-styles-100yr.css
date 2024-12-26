@@ -437,7 +437,8 @@ div[data-id="mp_customform_2389"]{
 
 .mpp-innerpage--contacts {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
+    padding: 0 !important;
 }
 
 .mpp-innerpage--contact {
@@ -508,6 +509,7 @@ div#registrationTotalContainer {
     text-align: left;
     width: 100%;
     justify-content: normal;
+    text-wrap: balance;
 }
 
 .mpp-innerpage--mapinfo a, .mppw-ics-link, #detailsContainer > strong > a {
