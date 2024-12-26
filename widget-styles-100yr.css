@@ -575,6 +575,7 @@ div#registrationTotalContainer {
 
 .mppw-form-field__control > label {
     padding-bottom: 1rem;
+    line-height: 1.3rem;
 }
 
 .mppw-form-field__control:focus-visible {
