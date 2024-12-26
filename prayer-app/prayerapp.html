@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Prayer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes, minimal-ui">
+    <style>
+        @media (prefers-color-scheme: dark) {
+            html, body {
+                background-color: #101010;
+                color: #efefef;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.5/dist/themes/default.css" />
+    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.5/dist/webawesome.loader.js"></script>
+    <link rel="stylesheet" href="prayerapp.css">
+    <link rel="stylesheet" href="https://dream-city-church.github.io/dcc-widgets/dccw-stylesheet.css">
+    <script type="text/javascript" src="https://dream-city-church.github.io/dcc-widgets/dcc-prayerRequest.js"></script>
+    <script src="prayerapp.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+    <script src="https://kit.fontawesome.com/a6a26322af.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <script typle="text/javascript">
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // dark mode
+            document.documentElement.classList.add('wa-theme-default-dark');
+        }
+    </script>
+
+    <div id="top-drawer">
+        
+        <div class="drawer">
+            <input type="checkbox" id="drawer-toggle" class="drawer-toggle">
+            <label for="drawer-toggle" class="drawer-label">
+                <span class="arrow"></span>
+            </label>
+            <div class="drawer-content">
+                <dcc-PrayerRequestForm style="max-width:600px;margin-right:auto;margin-left:auto;">
+                </dcc-PrayerRequestForm>
+            </div>
+        </div>
+    </div>
+
+    <div id="prayerapp">
+        <div id="card-container">
+            <div class="card visible prayer-request" data-feedback-guid="abcd-1234-edfg-5678">
+                <div class="title">Prayer Request from M.W.</div>
+                <div class="date">12/26/2024</div>
+                <div class="content">Please pray for my family. We are going through a difficult time and need God's help.</div>
+            </div>
+            <div class='card loaded'>
+            </div>
+            <div class='card loaded'>
+            </div>
+            <div class='card loaded'>
+            </div>
+            <div class='card loaded'>
+            </div>
+            <div class='card loaded'>
+            </div>
+        </div>
+        <div id="dismiss-button">
+            <i class="fa-solid fa-x"></i>
+        </div> 
+        <div id="action-button">
+            <i class="fa-solid fa-hands-praying"></i>
+        </div>
+        <div id="action-message">
+            I'm praying <i class="fa-solid fa-hands-praying"></i>
+        </div>       
+    </div>
+</body>
+</html>

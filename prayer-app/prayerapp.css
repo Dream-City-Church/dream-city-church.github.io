@@ -1,0 +1,176 @@
+body, html {
+    margin:0;
+    padding:0;
+    font-family: 'Open Sans',sans-serif;
+}
+
+#top-drawer {
+  position: absolute;
+  top: -2px;
+  width: 100%;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.drawer {
+    position: relative;
+    width: 100%;
+}
+
+.drawer-toggle {
+    display: none;
+}
+
+.drawer-label {
+    font-size: 0.8rem;
+    display: block;
+    background-color: #555;
+    color: white;
+    padding: 10px 0;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+
+.drawer-label .arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    transition: transform 0.2s ease;
+}
+
+.drawer-toggle:checked + .drawer-label .arrow {
+    transform: rotate(180deg);
+}
+
+.drawer-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease;
+    background-color: #f1f1f1;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.drawer-toggle:checked ~ .drawer-content {
+     /* Adjust based on content */
+     padding: 3rem 0;
+     max-height: 120vh;
+}
+
+#prayerapp {
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+    display: inline-block;
+    width: 100%;
+}
+
+#card-container {
+  height: calc(100vh - 80px);
+  overflow: hidden;
+  position: relative;
+}
+
+.card {
+  display: block;
+  width: 90%;
+  height: 100%;
+  padding: 0 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.4s ease, transform 0.7s ease, background-color 0.5s ease;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.card.dismissed {
+  opacity: 0;
+  transform: translateX(-100%);
+  background-color: gray;
+}
+
+.card.loaded {
+  opacity: 0;
+  transform: translateX(100%);
+  background-color: yellow;
+}
+
+.card .title {
+
+font-weight: bold;
+
+font-size: 1.35rem;
+
+text-align: center;
+}
+
+.card .date {
+
+font-size: 1rem;
+
+font-weight: bold;
+
+text-align: center;
+}
+
+.card .content {
+
+margin-top: 2rem;
+
+font-size: 1.2rem;
+
+line-height: 2rem;
+}
+
+#action-button {
+    position: fixed;
+    left: calc(100vw - 120px);
+    top: calc(100vh - 120px);
+    font-size: 2rem;
+    background-color: #bc204b;
+    color: white;
+    padding: 1rem;
+    border-radius: 4rem;
+    cursor: pointer;
+}
+
+#dismiss-button {
+    position: fixed;
+    right: calc(100vw - 120px);
+    top: calc(100vh - 120px);
+    font-size: 2rem;
+    background-color: transparent;
+    border: 2px solid #ccc;
+    color: #ccc;
+    padding: 1rem;
+    border-radius: 4rem;
+    cursor: pointer;
+}
+
+#action-message {
+    position: fixed;
+    top: calc(100vh - 200px);
+    width: 40%;
+    text-align: center;
+    left: calc(50% - 20%);
+    font-size: 1rem;
+    background-color: rgba(0,0,0,0.2);
+    color: white;
+    padding: 1rem 0;
+    border-radius: 4rem;
+}
