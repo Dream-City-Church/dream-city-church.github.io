@@ -101,7 +101,14 @@ wa-button-group .button-group {
   left: 0;
   opacity: 0;
   transform: translateX(100%);
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
   transition: opacity 0.4s ease, transform 0.7s ease, background-color 0.5s ease;
+}
+
+.card::-webkit-scrollbar {
+  background: transparent; /* Chrome/Safari/Webkit */
+  width: 0px;
 }
 
 .card.visible {
@@ -122,67 +129,89 @@ wa-button-group .button-group {
 }
 
 .card .title {
-
-font-weight: bold;
-
-font-size: 1.35rem;
-
-text-align: center;
+  font-weight: bold;
+  font-size: 1.35rem;
+  text-align: center;
 }
 
 .card .date {
-
-font-size: 1rem;
-
-font-weight: bold;
-
-text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 .card .content {
-
-margin-top: 2rem;
-
-font-size: 1.2rem;
-
-line-height: 2rem;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
 }
 
 #action-button, #dismiss-button {
-    position: fixed;
-    z-index: 99;
-    left: calc(100vw - 120px);
-    top: calc(100vh - 120px);
-    font-size: 30px;
-    background-color: #bc204b;
-    color: white;
-    text-align: center;
-    width: 65px;
-    height: 50px;
-    padding-top: 15px;
-    border-radius: 40px;
-    cursor: pointer;
+  position: fixed;
+  z-index: 99;
+  left: calc(100vw - 120px);
+  top: calc(100vh - 120px);
+  font-size: 30px;
+  background-color: #bc204b;
+  color: white;
+  text-align: center;
+  width: 65px;
+  height: 50px;
+  padding-top: 15px;
+  border-radius: 40px;
+  cursor: pointer;
 }
 
 #dismiss-button {
-    left: initial;
-    right: calc(100vw - 120px);
-    top: calc(100vh - 120px);
-    background-color: transparent;
-    border: 2px solid #ccc;
-    color: #ccc;
+  left: initial;
+  right: calc(100vw - 120px);
+  top: calc(100vh - 120px);
+  background-color: transparent;
+  border: 2px solid #ccc;
+  color: #ccc;
 }
 
 #action-message {
-    position: fixed;
-    z-index: 99;
-    top: calc(100vh - 200px);
-    width: 40%;
-    text-align: center;
-    left: calc(50% - 20%);
-    font-size: 1rem;
-    background-color: rgba(0,0,0,0.2);
-    color: white;
-    padding: 1rem 0;
-    border-radius: 4rem;
+  position: fixed;
+  z-index: 99;
+  top: calc(100vh - 200px);
+  width: 40%;
+  text-align: center;
+  left: calc(50% - 20%);
+  font-size: 1rem;
+  background-color: #ccc;
+  color: white;
+  font-weight: bold;
+  padding: 1rem 0;
+  border-radius: 4rem;
+  display: none;
+  opacity: 0;
+}
+
+#action-message.animate {
+  animation: floatMessage 4s ease-out 1;
+  display: block;
+}
+
+@keyframes floatMessage {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  3% {
+    opacity: 1;
+    transform: translateY(-60px);
+  }
+  5% {
+    opacity: 1;
+    transform: translateY(-50px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
 }
