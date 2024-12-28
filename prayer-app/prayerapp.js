@@ -154,7 +154,7 @@ function actionPrayer(actionTypeId) {
                     nextCard.classList.remove('loaded');
 
                     // If current card has class of .praise-report, add class .praise-report to .action-button
-                    if (card.classList.contains('praise-report')) {
+                    if (nextCard.classList.contains('praise-report')) {
                         document.getElementById('action-button').classList.add('praise-report');
                         document.getElementById('action-button').setAttribute('data-action-type-id', 2);
                         document.getElementById('action-button').innerHTML = "<i class='fa-solid fa-party-horn'></i>";

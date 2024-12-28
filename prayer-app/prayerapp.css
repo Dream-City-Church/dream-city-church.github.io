@@ -1,5 +1,6 @@
 :root {
     --primary-color: #bc204b;
+    --brand-second: #e07e3c;
     --secondary-color: #f1f1f1;
     --tertiary-color: #555;
     --quaternary-color: #333;
@@ -137,6 +138,10 @@ wa-button-group .button-group {
   background-color: var(--primary-color);
 }
 
+.card.praise-report {
+  border: 2px solid var(--brand-secondary);
+}
+
 .card .title {
   font-weight: bold;
   font-size: 1.35rem;
@@ -202,6 +207,10 @@ wa-button-group .button-group {
   box-shadow: none;
 }
 
+#action-button.praise-report {
+  background-color: var(--brand-secondary);
+}
+
 #action-button.disabled {
   background-color: var(--tertiary-color);
   border: 1px solid var(--quaternary-color);
@@ -212,7 +221,6 @@ wa-button-group .button-group {
 #dismiss-button {
   left: initial;
   right: calc(100vw - 120px);
-  top: calc(100vh - 120px);
   background-color: var(--secondary-color);
   border: 1px solid #ccc;
   color: var(--tertiary-color);
