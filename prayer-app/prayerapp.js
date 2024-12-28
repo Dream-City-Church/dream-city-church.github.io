@@ -3,12 +3,12 @@
 function getUrlVars() {
     var urlVars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        urlVars[key] = value;
+        urlVars[key.toLowerCase()] = value;
     });
     return urlVars;
 }
 
-var userGUID = getUrlVars()["ug"];
+var userGUID = getUrlVars()["uid"];
 
 function loadPrayers() {
     // Get the number of .card elements in #card-container with class of .loaded
@@ -27,7 +27,7 @@ function loadPrayers() {
     // If less than 4 cards are loaded, fetch more prayers
     if (cardsLoaded.length < cardsMinimum) {
         const params = {
-            "User_GUID": getUrlVars()["ug"],
+            "User_GUID": getUrlVars()["uid"],
             "Prayers_Queued": feedbackGUIDs
         };
         const options = {
