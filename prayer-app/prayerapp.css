@@ -155,6 +155,30 @@ wa-button-group .button-group {
   line-height: 2rem;
 }
 
+.read-more {
+  position: sticky;
+  bottom: -25px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  height: 40px;
+  z-index: 9;
+  text-align: center;
+  width: 100%;
+  background-image: linear-gradient(transparent, #f1f1f1 45%);
+  font-weight: bold;
+}
+
+.read-more .arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--quaternary-color);
+}
+
 #action-button, #dismiss-button {
   position: fixed;
   z-index: 99;
@@ -173,10 +197,15 @@ wa-button-group .button-group {
   -webkit-tap-highlight-color: transparent;
 }
 
+#action-button:active, #dismiss-button:active {
+  filter: brightness(0.9);
+  box-shadow: none;
+}
+
 #action-button.disabled {
-  background-color: transparent;
-  border: 2px solid var(--tertiary-color);
-  color: var(--tertiary-color);
+  background-color: var(--tertiary-color);
+  border: 2px solid var(--quaternary-color);
+  color: var(--quaternary-color);
   cursor: not-allowed;
 }
 
@@ -184,14 +213,21 @@ wa-button-group .button-group {
   left: initial;
   right: calc(100vw - 120px);
   top: calc(100vh - 120px);
-  background-color: transparent;
-  border: 2px solid var(--tertiary-color);
+  background-color: var(--secondary-color);
+  border: 1px solid #ccc;
   color: var(--tertiary-color);
 }
 
+#dismiss-button i {
+  left: 3px;
+  top: 2px;
+  position: relative;
+}
+
 #dismiss-button.disabled {
-  border: 2px solid var(--tertiary-color);
-  color: var(--tertiary-color);
+  border: 2px solid var(--quaternary-color);
+  background-color: var(--tertiary-color);
+  color: var(--quaternary-color);
   cursor: not-allowed;
 }
 
@@ -232,13 +268,22 @@ wa-button-group .button-group {
     background-color: #444;
   }
 
+  .read-more {
+    background-image: linear-gradient(transparent, #444 45%);
+  }
+
+  .read-more .arrow {
+    border-top: 10px solid var(--secondary-color);
+  }
+
   #action-button {
     background-color: #bc204b;
   }
 
   #dismiss-button {
-    border: 2px solid #ccc;
-    color: #ccc;
+    border: 2px solid var(--tertiary-color);
+    color: var(--tertiary-color);
+    background-color: var(--quaternary-color);
   }
 
   #action-message {
