@@ -38,10 +38,8 @@ function loadPrayers() {
         fetch( 'https://dcc-apimanagement.azure-api.net/prayerapp/load', options )
             .then(function (response) {return response.json();})
             .then(function (data) {
-                console.log(data);
                 // For each prayer in the data array
                 data.forEach(function(prayer,index) {
-                    console.log('new card. index:', index);
                     // Create a new .card element at the end of #card-container
                     var card = document.createElement('div');                
                     card.classList.add('card');
@@ -131,11 +129,9 @@ function actionPrayer(actionTypeId) {
                         actionMessage = "I'm Celebrating! <i class='fa-solid fa-party-horn'></i>";
                         break;
                     case "3":
-                        actionMessage = "Skipped <i class='fa-solid fa-hand-point-right'></i>";
+                        actionMessage = "Skipped <i class='fa-regular fa-forward'></i>";
                         break;
                 }
-                console.log('actionTypeId:', actionTypeId);
-                console.log(actionMessage);
 
                 // Set the innerHTML of #action-message to actionMessage
                 document.getElementById('action-message').innerHTML = actionMessage;
@@ -181,6 +177,9 @@ function actionPrayer(actionTypeId) {
                 setTimeout(function() {
                     document.getElementById('action-message').classList.remove('animate');
                 }, 3000);
+            } else {
+                // If response code is not 200 OK
+                console.log('Error:', response.status);
             }
         })
         .catch(function (error) {
