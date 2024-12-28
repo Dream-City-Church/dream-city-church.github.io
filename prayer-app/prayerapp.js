@@ -130,9 +130,6 @@ function actionPrayer(actionTypeId) {
                 document.getElementById('action-message').classList.add('animate');
 
                 setTimeout(function() {
-                    // Remove .disabled class from #action-button and #dismiss-button
-                    document.getElementById('action-button').classList.remove('disabled');
-                    document.getElementById('dismiss-button').classList.remove('disabled');
 
                     //// Rotate cards
                     // Get the .card element in #card-container with class of .visible
@@ -155,15 +152,21 @@ function actionPrayer(actionTypeId) {
                         document.getElementById('action-button').classList.remove('praise-report');
                         document.getElementById('action-button').setAttribute('data-action-type-id', 1);
                         document.getElementById('action-button').innerHTML = "<i class='fa-solid fa-hands-praying'></i>";
-                    }   
-                }, 2000);             
+                    }
+                    document.getElementById('dismiss-button').innerHTML='<i class="fa-regular fa-forward"></i>';
+
+                    // Remove .disabled class from #action-button and #dismiss-button
+                    document.getElementById('action-button').classList.remove('disabled');
+                    document.getElementById('dismiss-button').classList.remove('disabled');
+
+                }, 1000);             
 
                 // Call loadPrayers
                 loadPrayers();
 
                 setTimeout(function() {
                     document.getElementById('action-message').classList.remove('animate');
-                }, 2000);
+                }, 3000);
             }
         })
         .catch(function (error) {
@@ -184,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (this.classList.contains('disabled')) {
             return;
         }
+        document.getElementById('action-button').innerHTML='<i class="fa-solid fa-spinner fa-spin-pulse"></i>';
         actionPrayer(document.getElementById('action-button').getAttribute('data-action-type-id'));
     });
 
@@ -193,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (this.classList.contains('disabled')) {
             return;
         }
+        document.getElementById('dismiss-button').innerHTML='<i class="fa-solid fa-spinner fa-spin-pulse"></i>';
         actionPrayer(3);
     });
 });

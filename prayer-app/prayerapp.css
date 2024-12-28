@@ -42,6 +42,7 @@ wa-button-group .button-group {
     color: white;
     padding: 10px 0;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
     text-align: center;
     border-radius: 0;
     position: fixed;
@@ -169,6 +170,14 @@ wa-button-group .button-group {
   padding-top: 15px;
   border-radius: 40px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#action-button.disabled {
+  background-color: transparent;
+  border: 2px solid var(--tertiary-color);
+  color: var(--tertiary-color);
+  cursor: not-allowed;
 }
 
 #dismiss-button {
@@ -178,6 +187,12 @@ wa-button-group .button-group {
   background-color: transparent;
   border: 2px solid var(--tertiary-color);
   color: var(--tertiary-color);
+}
+
+#dismiss-button.disabled {
+  border: 2px solid var(--tertiary-color);
+  color: var(--tertiary-color);
+  cursor: not-allowed;
 }
 
 #action-message {
