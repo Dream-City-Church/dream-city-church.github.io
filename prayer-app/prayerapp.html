@@ -43,42 +43,26 @@
 
     <div id="prayerapp">
         <div id="card-container">
-            <div class="card visible prayer-request" data-feedback-guid="abcd-1234-edfg-5678">
-                <div class="title">Prayer Request from M.W.</div>
-                <div class="date">12/26/2024</div>
-                <div class="content">Please pray for my family. We are going through a difficult time and need God's help. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese.</div>
-            </div>
-            <div class='card loaded'>
-            </div>
-            <div class='card loaded'>
-            </div>
-            <div class='card loaded'>
-            </div>
-            <div class='card loaded'>
-            </div>
-            <div class='card loaded'>
+            <div class="card initial prayer-request" data-feedback-guid="">
+                <div class="title"><wa-skeleton effect="sheen" style="width:80%;height:1.35rem;margin:0.5rem auto"></wa-skeleton></div>
+                <div class="date"><wa-skeleton effect="sheen" style="width:50%;margin:0.5rem auto;"></wa-skeleton></div>
+                <div class="content">
+                    <wa-skeleton effect="sheen" style="width:90%;height:1.2rem;margin-bottom:0.5rem;"></wa-skeleton>
+                    <wa-skeleton effect="sheen" style="width:97%;height:1.2rem;margin-bottom:0.5rem;"></wa-skeleton>
+                    <wa-skeleton effect="sheen" style="width:94%;height:1.2rem;margin-bottom:0.5rem;"></wa-skeleton>
+                    <wa-skeleton effect="sheen" style="width:98%;height:1.2rem;margin-bottom:0.5rem;"></wa-skeleton>
+                    <wa-skeleton effect="sheen" style="width:83%;height:1.2rem;"></wa-skeleton>
+                </div>
             </div>
         </div>
         <div id="dismiss-button">
             <i class="fa-solid fa-x"></i>
         </div> 
-        <div id="action-button">
+        <div id="action-button" data-action-type-id="1">
             <i class="fa-solid fa-hands-praying"></i>
         </div>
         <div id="action-message">
-            I'm praying <i class="fa-solid fa-hands-praying"></i>
         </div>       
     </div>
-
-    <script type="text/javascript">
-        // Listen for a click on the action button. Apply the class .animate to the action-message, then remove it after 5 seconds
-        document.getElementById('action-button').addEventListener('click', function() {
-            document.getElementById('action-message').classList.add('animate');
-            setTimeout(function() {
-                document.getElementById('action-message').classList.remove('animate');
-            }, 4000);
-        });
-
-    </script>
 </body>
 </html>

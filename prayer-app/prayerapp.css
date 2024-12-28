@@ -111,7 +111,7 @@ wa-button-group .button-group {
   width: 0px;
 }
 
-.card.visible {
+.card.visible, .card.initial {
   opacity: 1;
   transform: translateX(0%);
 }
@@ -180,7 +180,7 @@ wa-button-group .button-group {
   left: calc(50% - 20%);
   font-size: 1rem;
   background-color: #ccc;
-  color: white;
+  color: black;
   font-weight: bold;
   padding: 1rem 0;
   border-radius: 4rem;
