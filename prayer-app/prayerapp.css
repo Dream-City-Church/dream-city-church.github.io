@@ -81,6 +81,7 @@ wa-button-group .button-group {
 
 .drawer-toggle:checked ~ .drawer-content {
      max-height: fit-content;
+     min-height: 100vh;
 }
 
 .drawer #divider {
@@ -216,13 +217,6 @@ wa-button-group .button-group {
   background-color: var(--brand-secondary);
 }
 
-#action-button.disabled {
-  background-color: var(--tertiary-color);
-  border: 1px solid var(--quaternary-color);
-  color: var(--quaternary-color);
-  cursor: not-allowed;
-}
-
 #dismiss-button {
   left: initial;
   right: calc(100vw - 120px);
@@ -238,14 +232,14 @@ wa-button-group .button-group {
 }
 
 #dismiss-button i.fa-spinner,#action-button i.fa-spinner {
-  left: 1px;
+  position: relative;
   top: 3px;
 }
 
-#dismiss-button.disabled {
-  border: 1px solid var(--quaternary-color);
-  background-color: var(--tertiary-color);
-  color: var(--quaternary-color);
+#action-button.disabled, #dismiss-button.disabled {
+  border: 1px solid var(--secondary-color);
+  background-color: transparent;
+  color: var(--secondary-color);
   cursor: not-allowed;
 }
 
@@ -302,6 +296,11 @@ wa-button-group .button-group {
     border: 1px solid var(--tertiary-color);
     color: var(--tertiary-color);
     background-color: var(--quaternary-color);
+  }
+
+  #action-button.disabled, #dismiss-button.disabled {
+    border: 1px solid var(--quaternary-color);
+    color: var(--quaternary-color);
   }
 }
 
