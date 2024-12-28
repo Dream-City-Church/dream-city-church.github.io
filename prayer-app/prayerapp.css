@@ -183,7 +183,7 @@ wa-button-group .button-group {
   position: fixed;
   z-index: 99;
   left: calc(100vw - 120px);
-  top: calc(100vh - 120px);
+  top: calc(100vh - 140px);
   font-size: 30px;
   background-color: var(--primary-color);
   box-shadow: var(--box-shadow);
@@ -244,12 +244,12 @@ wa-button-group .button-group {
   text-align: center;
   left: calc(50% - 20%);
   font-size: 0.8rem;
-  background-color: rgba(200,200,200,0.8);
-  color: var(--quaternary-color);
+  background-color: var(--primary-color);
+    box-shadow: var(--box-shadow);
+  color: var(--secondary-color);
   font-weight: bold;
   padding: 0.5rem 0;
   border-radius: 4rem;
-  box-shadow: 0.15rem 0.35rem 0.15rem rgb(0 0 0 / 0.05);
   display: none;
   opacity: 0;
 }
@@ -289,11 +289,6 @@ wa-button-group .button-group {
     border: 1px solid var(--tertiary-color);
     color: var(--tertiary-color);
     background-color: var(--quaternary-color);
-  }
-
-  #action-message {
-    background-color: rgba(100,100,100,0.8);
-    color: #efefef;
   }
 }
 
