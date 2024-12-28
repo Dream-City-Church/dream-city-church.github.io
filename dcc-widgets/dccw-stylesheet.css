@@ -463,7 +463,7 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
 
 /* Prayer Submission Form */
 #prayer-request-form {
-  padding: 2rem;
+  padding: 1rem;
   max-width: 600px;
   margin-right: auto;
   margin-left: auto;

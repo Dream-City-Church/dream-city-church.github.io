@@ -4,7 +4,8 @@
     --secondary-color: #f1f1f1;
     --tertiary-color: #555;
     --quaternary-color: #333;
-    --box-shadow: 0.15rem 0.35rem 0.15rem rgb(0 0 0 / 0.05);
+    --box-shadow: 0.2rem 0.45rem 0.4rem rgb(0 0 0 / 0.1);
+    --box-shadow-dark: 0.1rem 0.2rem 0.25rem rgb(0 0 0 / 0.15);
 }
 
 body, html {
@@ -40,6 +41,7 @@ wa-button-group .button-group {
     font-weight: bold;
     display: block;
     background-color: var(--primary-color);
+    box-shadow: var(--box-shadow);
     color: white;
     padding: 10px 0;
     cursor: pointer;
@@ -79,8 +81,11 @@ wa-button-group .button-group {
 
 .drawer-toggle:checked ~ .drawer-content {
      /* Adjust based on content */
-     padding: 3rem 0;
      max-height: fit-content;
+}
+
+.drawer #divider {
+  height: 3rem;
 }
 
 #prayerapp {
@@ -113,6 +118,7 @@ wa-button-group .button-group {
   transform: translateX(100%);
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE 10+ */
+  box-shadow: var(--box-shadow-dark);
   transition: opacity 0.8s ease, transform 1s ease, background-color 0.8s ease;
 }
 
@@ -188,7 +194,7 @@ wa-button-group .button-group {
   position: fixed;
   z-index: 99;
   left: calc(100vw - 120px);
-  top: calc(100vh - 140px);
+  top: calc(100vh - 130px);
   font-size: 30px;
   background-color: var(--primary-color);
   box-shadow: var(--box-shadow);
@@ -204,7 +210,7 @@ wa-button-group .button-group {
 
 #action-button:active, #dismiss-button:active {
   filter: brightness(0.9);
-  box-shadow: none;
+  box-shadow: var(--box-shadow-dark);
 }
 
 #action-button.praise-report {
