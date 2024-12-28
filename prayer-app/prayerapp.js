@@ -22,6 +22,8 @@ function loadPrayers() {
     var feedbackGUIDs = '';
     document.querySelectorAll('#card-container .card').forEach(function(card) {
         feedbackGUIDs += card.getAttribute('data-feedback-guid') + ',';
+        // Remove the last comma from the string
+        feedbackGUIDs = feedbackGUIDs.slice(0, -1);
     });
 
     // If less than 4 cards are loaded, fetch more prayers
@@ -46,6 +48,9 @@ function loadPrayers() {
                     // If cardsVisible=0 then add class .visible to the first card
                     if (cardsVisible.length === 0 && index === 0) {
                         card.classList.add('visible');
+                        // remove .disabled class from action-button and dismiss-button
+                        document.getElementById('action-button').classList.remove('disabled');
+                        document.getElementById('dismiss-button').classList.remove('disabled');
                     } else {
                         card.classList.add('loaded');
                     }
@@ -94,6 +99,10 @@ function loadPrayers() {
             })
             .catch(function (error) {
                 console.log('Error:', error);
+                // If no cards visible, retry loading prayers
+                if (cardsVisible.length === 0) {
+                    loadPrayers();
+                }
             });
     }
 }
@@ -184,6 +193,19 @@ function actionPrayer(actionTypeId) {
         })
         .catch(function (error) {
             console.log('Error:', error);
+            // Show error message in #action-message
+            document.getElementById('action-message').innerHTML = 'Sorry, something went wrong. Please try again.';
+            // Add class .animate and .error to #action-message
+            document.getElementById('action-message').classList.add('animate');
+            document.getElementById('action-message').classList.add('error');
+            // Remove .disabled class from #action-button and #dismiss-button
+            document.getElementById('action-button').classList.remove('disabled');
+            document.getElementById('dismiss-button').classList.remove('disabled');
+            setTimeout(function() {
+                document.getElementById('action-message').classList.remove('animate');
+                document.getElementById('action-message').classList.remove('error');
+            }, 4000);
+            
         });
 }
 

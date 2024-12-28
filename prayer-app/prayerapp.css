@@ -63,7 +63,7 @@ wa-button-group .button-group {
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid white;
-    transition: transform 0.2s ease;
+    transition: transform 0.5s ease;
 }
 
 .drawer-toggle:checked + .drawer-label .arrow {
@@ -71,17 +71,16 @@ wa-button-group .button-group {
 }
 
 .drawer-content {
-    max-height: 0;
+    height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease;
+    transition: height 0.3s ease;
     background-color: #f1f1f1;
     padding: 0 10px;
     border-radius: 5px;
 }
 
 .drawer-toggle:checked ~ .drawer-content {
-     max-height: fit-content;
-     min-height: 100vh;
+     height: 100vh;
 }
 
 .drawer #divider {
@@ -206,6 +205,7 @@ wa-button-group .button-group {
   border-radius: 40px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 #action-button:active, #dismiss-button:active {
@@ -252,13 +252,17 @@ wa-button-group .button-group {
   left: calc(50% - 20%);
   font-size: 0.8rem;
   background-color: var(--primary-color);
-    box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-dark);
   color: var(--secondary-color);
   font-weight: bold;
   padding: 0.5rem 0;
   border-radius: 4rem;
   display: none;
   opacity: 0;
+}
+
+#action-message.error {
+  background-color: var(--quaternary-color);
 }
 
 /* Dark Mode */
