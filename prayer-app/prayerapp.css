@@ -224,6 +224,11 @@ wa-button-group .button-group {
   position: relative;
 }
 
+#dismiss-button i.fa-spinner,#action-button i.fa-spinner {
+  left: 1px;
+  top: 3px;
+}
+
 #dismiss-button.disabled {
   border: 2px solid var(--quaternary-color);
   background-color: var(--tertiary-color);

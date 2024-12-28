@@ -212,6 +212,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         document.getElementById('dismiss-button').innerHTML='<i class="fa-solid fa-spinner fa-spin-pulse"></i>';
-        actionPrayer(3);
+        actionPrayer("3");
     });
 });
