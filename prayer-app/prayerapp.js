@@ -110,16 +110,18 @@ function actionPrayer(actionTypeId) {
                 // Set action-message based on actionTypeId
                 var actionMessage = '';
                 switch (actionTypeId) {
-                    case 1:
+                    case "1":
                         actionMessage = "I'm Praying! <i class='fa-solid fa-hands-praying'></i>";
                         break;
-                    case 2:
+                    case "2":
                         actionMessage = "I'm Celebrating! <i class='fa-solid fa-party-horn'></i>";
                         break;
-                    case 3:
+                    case "3":
                         actionMessage = "Skipped <i class='fa-solid fa-hand-point-right'></i>";
                         break;
                 }
+                console.log('actionTypeId:', actionTypeId);
+                console.log(actionMessage);
 
                 // Set the innerHTML of #action-message to actionMessage
                 document.getElementById('action-message').innerHTML = actionMessage;

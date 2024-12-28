@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #bc204b;
+    --secondary-color: #f1f1f1;
+    --tertiary-color: #555;
+    --quaternary-color: #333;
+    --box-shadow: 0.15rem 0.35rem 0.15rem rgb(0 0 0 / 0.05);
+}
+
 body, html {
     margin:0;
     padding:0;
@@ -30,7 +38,7 @@ wa-button-group .button-group {
     text-transform: uppercase;
     font-weight: bold;
     display: block;
-    background-color: #555;
+    background-color: var(--primary-color);
     color: white;
     padding: 10px 0;
     cursor: pointer;
@@ -95,7 +103,7 @@ wa-button-group .button-group {
   margin: 5%;
   padding: 5% 5%;
   position: absolute;
-  background-color: #efefef;
+  background-color: var(--secondary-color);
   border-radius: 1rem;
   top: 0;
   left: 0;
@@ -119,13 +127,13 @@ wa-button-group .button-group {
 .card.dismissed {
   opacity: 0;
   transform: translateX(-100%);
-  background-color: gray;
+  background-color: var(--quaternary-color);
 }
 
 .card.loaded {
   opacity: 0;
   transform: translateX(100%);
-  background-color: yellow;
+  background-color: var(--primary-color);
 }
 
 .card .title {
@@ -152,8 +160,9 @@ wa-button-group .button-group {
   left: calc(100vw - 120px);
   top: calc(100vh - 120px);
   font-size: 30px;
-  background-color: #bc204b;
-  color: white;
+  background-color: var(--primary-color);
+  box-shadow: var(--box-shadow);
+  color: var(--secondary-color);
   text-align: center;
   width: 65px;
   height: 50px;
@@ -167,8 +176,8 @@ wa-button-group .button-group {
   right: calc(100vw - 120px);
   top: calc(100vh - 120px);
   background-color: transparent;
-  border: 2px solid #ccc;
-  color: #ccc;
+  border: 2px solid var(--tertiary-color);
+  color: var(--tertiary-color);
 }
 
 #action-message {
@@ -178,12 +187,13 @@ wa-button-group .button-group {
   width: 40%;
   text-align: center;
   left: calc(50% - 20%);
-  font-size: 1rem;
-  background-color: #ccc;
-  color: black;
+  font-size: 0.8rem;
+  background-color: rgba(200,200,200,0.8);
+  color: var(--quaternary-color);
   font-weight: bold;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   border-radius: 4rem;
+  box-shadow: 0.15rem 0.35rem 0.15rem rgb(0 0 0 / 0.05);
   display: none;
   opacity: 0;
 }
@@ -192,11 +202,11 @@ wa-button-group .button-group {
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #111;
-    color: white;
+    color: var(--secondary-color);
   }
 
   .drawer-label {
-    background-color: #444;
+    background-color: var(--primary-color);
   }
 
   .drawer-content {
@@ -217,8 +227,8 @@ wa-button-group .button-group {
   }
 
   #action-message {
-    background-color: #ccc;
-    color: black;
+    background-color: rgba(100,100,100,0.8);
+    color: #efefef;
   }
 }
 
