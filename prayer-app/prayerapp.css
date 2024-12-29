@@ -136,7 +136,7 @@ wa-button-group .button-group {
 .card.dismissed {
   opacity: 0;
   transform: translateX(-100%);
-  background-color: var(--quaternary-color);
+  background-color: transparent;
 }
 
 .card.loaded {
@@ -223,7 +223,6 @@ wa-button-group .button-group {
   left: initial;
   right: calc(100vw - 120px);
   background-color: var(--secondary-color);
-  border: 1px solid #ccc;
   color: var(--tertiary-color);
 }
 
@@ -311,7 +310,6 @@ wa-button-group .button-group {
   }
 
   #dismiss-button {
-    border: 1px solid var(--tertiary-color);
     color: var(--tertiary-color);
     background-color: var(--quaternary-color);
   }
