@@ -8,7 +8,7 @@ function getUrlVars() {
     return urlVars;
 }
 
-var userGUID = getUrlVars()["uid"];
+var contactGUID = getUrlVars()["cid"];
 
 function loadPrayers() {
     // Get the number of .card elements in #card-container with class of .loaded
@@ -29,7 +29,7 @@ function loadPrayers() {
     // If less than 4 cards are loaded, fetch more prayers
     if (cardsLoaded.length < cardsMinimum) {
         const params = {
-            "User_GUID": getUrlVars()["uid"],
+            "Contact_GUID": getUrlVars()["cid"],
             "Prayers_Queued": feedbackGUIDs
         };
         const options = {
@@ -120,7 +120,7 @@ function actionPrayer(actionTypeId) {
     document.getElementById('dismiss-button').classList.add('disabled');
 
     const params = {
-        "User_GUID": userGUID,
+        "Contact_GUID": contactGUID,
         "Feedback_Entry_GUID": document.querySelector('#card-container .card.visible').getAttribute('data-feedback-guid'),
         "Action_ID": actionTypeId
     };
