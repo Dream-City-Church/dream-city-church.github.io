@@ -22,9 +22,9 @@ function loadPrayers() {
     var feedbackGUIDs = '';
     document.querySelectorAll('#card-container .card').forEach(function(card) {
         feedbackGUIDs += card.getAttribute('data-feedback-guid') + ',';
-        // Remove the last comma from the string
-        feedbackGUIDs = feedbackGUIDs.slice(0, -1);
     });
+    // Remove the last comma from the string
+    feedbackGUIDs = feedbackGUIDs.slice(0, -1);
 
     // If less than 4 cards are loaded, fetch more prayers
     if (cardsLoaded.length < cardsMinimum) {
