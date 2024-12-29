@@ -108,7 +108,7 @@ function loadPrayers() {
                 console.log('Prayer Load Error:', error);
                 // If there are no cards loaded, show error message in #card-container
                 if (cardsLoaded.length === 0 && cardsVisible.length === 0) {
-                    document.getElementById('card-container').innerHTML = '<div id="load-failure">Sorry, something went wrong. Please try again.<br /><i class="fa-solid fa-face-sad-sweat"></i><br /><a href="" onclick="loadPrayers();">Reload</a></div>';
+                    document.getElementById('card-container').innerHTML = '<i class="fa-solid fa-face-sad-sweat" style="font-size:2rem;"></i><br /><div id="load-failure">Sorry, something went wrong.<br />Please try again.<br /><br /><a href="" onclick="loadPrayers();">Reload</a></div>';
                 }
             });
     }
