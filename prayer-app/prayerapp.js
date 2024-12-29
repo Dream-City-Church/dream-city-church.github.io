@@ -37,7 +37,7 @@ function loadPrayers() {
             body: JSON.stringify( params ),
             headers: {'Content-Type': 'application/json'}
         };
-        fetch( 'https://dcc-apimanagement.azure-api.net/prayerapp/load', options )
+        fetch( 'https://dcc-apimanagement.azure-api.net/prayerapp/load', options, {timeout: 5000} )
             .then(function (response) {
                 // If response code is 200 OK continue, otherwise catch error
                 if (response.status === 200) {
@@ -129,7 +129,8 @@ function actionPrayer(actionTypeId) {
         body: JSON.stringify( params ),
         headers: {'Content-Type': 'application/json'}
     };
-    fetch( 'https://dcc-apimanagement.azure-api.net/prayerapp/action', options )
+
+    fetch( 'https://dcc-apimanagement.azure-api.net/prayerapp/action', options, {timeout: 5000} )
         .then(function (response) {
             // If response code is 200 OK
             if (response.status === 200) {
