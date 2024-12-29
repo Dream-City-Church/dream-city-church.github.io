@@ -81,7 +81,7 @@ function loadPrayers() {
                     }
                     // Hide the read-more tag when the card has been scrolled to the bottom.
                     card.addEventListener('scroll', function() {
-                        if (this.scrollTop + this.clientHeight >= this.scrollHeight-10) {
+                        if (this.scrollTop + this.clientHeight >= this.scrollHeight-20) {
                             this.querySelector('.read-more').style.display = 'none';
                         } else {
                             this.querySelector('.read-more').style.display = 'block';

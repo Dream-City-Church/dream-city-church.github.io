@@ -72,8 +72,9 @@ wa-button-group .button-group {
 
 .drawer-content {
     height: 0;
+    min-height: 0;
     overflow: hidden;
-    transition: height 0.3s ease;
+    transition: height 0.3s ease, min-height 0.3s ease;
     background-color: #f1f1f1;
     padding: 0 10px;
     border-radius: 5px;
@@ -81,6 +82,7 @@ wa-button-group .button-group {
 
 .drawer-toggle:checked ~ .drawer-content {
      height: 100vh;
+     min-height: fit-content;
 }
 
 .drawer #divider {
@@ -226,8 +228,8 @@ wa-button-group .button-group {
 }
 
 #dismiss-button i {
-  left: 3px;
-  top: 2px;
+  left: 2px;
+  top: 3px;
   position: relative;
 }
 
