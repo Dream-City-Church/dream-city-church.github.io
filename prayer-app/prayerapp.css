@@ -81,8 +81,8 @@ wa-button-group .button-group {
 }
 
 .drawer-toggle:checked ~ .drawer-content {
-     height: 100vh;
-     min-height: fit-content;
+     min-height: 100vh;
+     height: fit-content;
 }
 
 .drawer #divider {
