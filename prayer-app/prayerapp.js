@@ -202,13 +202,15 @@ function actionPrayer(actionTypeId) {
         .catch(function (error) {
             console.log('Prayer Action Error:', error);
             // Show error message in #action-message
-            document.getElementById('action-message').innerHTML = 'Sorry, something went wrong. Please try again.';
+            document.getElementById('action-message').innerHTML = 'Sorry, something went wrong.<br />Please try again.';
             // Add class .animate and .error to #action-message
             document.getElementById('action-message').classList.add('animate');
             document.getElementById('action-message').classList.add('error');
             // Remove .disabled class from #action-button and #dismiss-button
             document.getElementById('action-button').classList.remove('disabled');
             document.getElementById('dismiss-button').classList.remove('disabled');
+            document.getElementById('action-button').innerHTML = "<i class='fa-solid fa-hands-praying'></i>";
+            document.getElementById('dismiss-button').innerHTML='<i class="fa-regular fa-forward"></i>';
             setTimeout(function() {
                 document.getElementById('action-message').classList.remove('animate');
                 document.getElementById('action-message').classList.remove('error');
