@@ -254,7 +254,7 @@ wa-button-group .button-group {
   left: calc(50% - 20%);
   font-size: 0.8rem;
   background-color: var(--primary-color);
-  box-shadow: var(--box-shadow-dark);
+  box-shadow: 0.1rem 0.2rem 0.25rem rgb(0 0 0 / 0.35);
   color: var(--secondary-color);
   font-weight: bold;
   padding: 0.5rem 0;

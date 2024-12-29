@@ -38,7 +38,14 @@ function loadPrayers() {
             headers: {'Content-Type': 'application/json'}
         };
         fetch( 'https://dcc-apimanagement.azure-api.net/prayerapp/load', options )
-            .then(function (response) {return response.json();})
+            .then(function (response) {
+                // If response code is 200 OK continue, otherwise catch error
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    throw new Error('Prayer Load Error:', response.status);
+                }
+            })
             .then(function (data) {
                 // For each prayer in the data array
                 data.forEach(function(prayer,index) {
