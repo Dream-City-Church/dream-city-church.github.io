@@ -267,6 +267,18 @@ wa-button-group .button-group {
   background-color: var(--quaternary-color);
 }
 
+#load-failure {
+  width: 90%;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--quaternary-color);
+}
+
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   body {
@@ -307,6 +319,10 @@ wa-button-group .button-group {
   #action-button.disabled, #dismiss-button.disabled {
     border: 1px solid var(--quaternary-color);
     color: var(--quaternary-color);
+  }
+
+  #load-failure {
+    color: var(--secondary-color);
   }
 }
 

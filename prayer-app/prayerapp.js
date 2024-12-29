@@ -98,10 +98,10 @@ function loadPrayers() {
                 });
             })
             .catch(function (error) {
-                console.log('Error:', error);
-                // If no cards visible, retry loading prayers
-                if (cardsVisible.length === 0) {
-                    loadPrayers();
+                console.log('Prayer Load Error:', error);
+                // If there are no cards loaded, show error message in #card-container
+                if (cardsLoaded.length === 0 && cardsVisible.length === 0) {
+                    document.getElementById('card-container').innerHTML = '<div id="load-failure">Sorry, something went wrong. Please try again.<br /><i class="fa-solid fa-face-sad-sweat"></i><br /><a href="" onclick="loadPrayers();">Reload</a></div>';
                 }
             });
     }
@@ -192,7 +192,7 @@ function actionPrayer(actionTypeId) {
             }
         })
         .catch(function (error) {
-            console.log('Error:', error);
+            console.log('Prayer Action Error:', error);
             // Show error message in #action-message
             document.getElementById('action-message').innerHTML = 'Sorry, something went wrong. Please try again.';
             // Add class .animate and .error to #action-message
