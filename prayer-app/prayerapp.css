@@ -273,9 +273,9 @@ wa-avatar {
   position: fixed;
   z-index: 99;
   top: calc(100vh - 200px);
-  max-width: 80%;
+  width: 50%;
   text-align: center;
-  left: calc(50% - 20%);
+  left: calc(50% - 25%);
   font-size: 0.8rem;
   background-color: var(--primary-color);
   box-shadow: 0.1rem 0.2rem 0.25rem rgb(0 0 0 / 0.35);
