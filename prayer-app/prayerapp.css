@@ -112,6 +112,10 @@ margin-top: 1rem;
   position: relative;
 }
 
+.fa-face-sad-sweat {
+  text-align: center;
+}
+
 .card {
   display: block;
   width: 80%;
