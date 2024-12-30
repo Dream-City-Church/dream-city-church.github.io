@@ -273,6 +273,7 @@ wa-avatar {
   position: fixed;
   z-index: 99;
   top: calc(100vh - 200px);
+  width: fit-content;
   max-width: 60%;
   left: 0;
   right: 0;
