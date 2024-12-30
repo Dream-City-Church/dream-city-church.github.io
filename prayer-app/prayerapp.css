@@ -277,7 +277,6 @@ wa-avatar {
   left: 0;
   right: 0;
   margin: auto auto;
-  width: 50%;
   text-align: center;
   font-size: 0.8rem;
   background-color: var(--primary-color);
