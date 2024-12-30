@@ -86,14 +86,16 @@ function loadPrayers() {
                     }
                     card.classList.add(prayer.Type);
                     card.setAttribute('data-feedback-guid', prayer._Feedback_GUID);
+
                     // Set a hex color code based on the value of prayer.Initials
                     var hash = 0;
+                    var prime = 13;
                     for (var i = 0; i < prayer.Initials.length; i++) {
-                        hash = prayer.Initials.charCodeAt(i) + ((hash << 5) - hash);
+                        hash = Initials.charCodeAt(i)*(prime ** (i+1));
                     }
                     var avatarColor = '#';
                     for (var i = 0; i < 3; i++) {
-                        var value = (hash >> (i * 1)) & 0xFF;
+                        var value = (hash >> (i * 7)) & 0xFF;
                         avatarColor += ('00' + value.toString(16)).substr(-2);
                     }
                     // If the hex is darker than #555, set the text color to white
