@@ -91,7 +91,7 @@ function loadPrayers() {
                     var hash = 0;
                     var prime = 13;
                     for (var i = 0; i < prayer.Initials.length; i++) {
-                        hash = Initials.charCodeAt(i)*(prime ** (i+1));
+                        hash = prayer.Initials.charCodeAt(i)*(prime ** (i+1));
                     }
                     var avatarColor = '#';
                     for (var i = 0; i < 3; i++) {

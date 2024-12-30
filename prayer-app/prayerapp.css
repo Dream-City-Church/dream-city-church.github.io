@@ -27,62 +27,62 @@ wa-button-group .button-group {
 }
 
 .drawer {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .drawer-toggle {
-    display: none;
+  display: none;
 }
 
 .drawer-label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    display: block;
-    background-color: var(--primary-color);
-    box-shadow: var(--box-shadow);
-    color: white;
-    padding: 10px 0;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    text-align: center;
-    border-radius: 0;
-    position: fixed;
-    width: 100%;
-    z-index: 9999;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  background-color: var(--primary-color);
+  box-shadow: var(--box-shadow);
+  color: white;
+  padding: 10px 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  border-radius: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
 }
 
 .drawer-label .arrow {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: 10px;
-    margin-right: 10px;
-    vertical-align: middle;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid white;
-    transition: transform 0.5s ease;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+  transition: transform 0.5s ease;
 }
 
 .drawer-toggle:checked + .drawer-label .arrow {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .drawer-content {
-    height: 0;
-    min-height: 0;
-    overflow: hidden;
-    transition: height 0.3s ease, min-height 0.3s ease;
-    background-color: #f1f1f1;
-    padding: 0 10px;
-    border-radius: 5px;
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease, min-height 0.3s ease;
+  background-color: #f1f1f1;
+  padding: 0 10px;
+  border-radius: 5px;
 }
 
 .drawer-toggle:checked ~ .drawer-content {
-     min-height: 100vh;
-     height: fit-content;
+    min-height: 100vh;
+    height: fit-content;
 }
 
 .drawer #divider {
@@ -90,20 +90,17 @@ wa-button-group .button-group {
 }
 
 #prayerapp {
-    margin: 0;
-    padding: 0;
-    margin-top: 40px;
-    display: inline-block;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+  display: inline-block;
+  width: 100%;
 }
 
 h3#prayer-heading {
-
-text-align: center;
-
-margin: 0;
-
-margin-top: 1rem;
+  text-align: center;
+  margin: 0;
+  margin-top: 1rem;
 }
 
 #card-container {
@@ -112,7 +109,9 @@ margin-top: 1rem;
   position: relative;
 }
 
-.fa-face-sad-sweat {
+#card-container i.fa-solid.fa-face-sad-sweat {
+  width: 100%;
+  margin-top: 6rem;
   text-align: center;
 }
 
