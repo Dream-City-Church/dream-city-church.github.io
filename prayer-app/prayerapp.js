@@ -13,6 +13,8 @@ if (!deviceID) {
 }
 // Get current URL
 var url = window.location.href;
+// Get current page
+var page = window.location.pathname;
 
 //// Function to get URL parameters
 function getUrlVars() {
@@ -49,7 +51,8 @@ function loadPrayers() {
             "Contact_GUID": getUrlVars()["cid"],
             "Device_GUID": deviceID,
             "Prayers_Queued": feedbackGUIDs,
-            "URL": url
+            "URL": url,
+            "Page": page
         };
         const options = {
             method: 'POST',
@@ -158,7 +161,8 @@ function actionPrayer(actionTypeId) {
         "Feedback_Entry_GUID": document.querySelector('#card-container .card.visible').getAttribute('data-feedback-guid'),
         "Action_ID": actionTypeId,
         "Device_GUID": deviceID,
-        "URL": url
+        "URL": url,
+        "Page": page
     };
     const options = {
         method: 'POST',

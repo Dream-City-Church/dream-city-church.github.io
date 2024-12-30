@@ -2,6 +2,18 @@
 const prayerRequestVersionNumber = '1.241217';
 console.log(`Prayer Request Form Version: ${prayerRequestVersionNumber}`);
 
+//// Analytics Tracking
+// Generate a device ID to store as a permanent cookie
+var deviceID = localStorage.getItem('deviceID');
+if (!deviceID) {
+    deviceID = Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('deviceID', deviceID);
+}
+// Get current URL
+var url = window.location.href;
+// Get current page
+var page = window.location.pathname;
+
 function loadPrayerRequestForm() {
     // get device screen width
     var screenWidth = window.innerWidth;
@@ -34,7 +46,7 @@ function loadPrayerRequestForm() {
     if (userGuid || contactGuid) {
         greetingHtml = `<div id="prayer-greeting"><p>&nbsp</p><p>Please enter your prayer request or praise report below.</p></div>`;
         // Get the user's first name and last name from API
-        fetch(`https://prod-10.westus2.logic.azure.com:443/workflows/d910b8466b9f43dc93c10f23ab50fb78/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nbpbVKt37ObPXwptvbA-mjdkyzJsugJ-Xk4dyDcArE8&uid=${userGuid}&cid=${contactGuid}&src=prayer-request-form`)
+        fetch(`https://prod-10.westus2.logic.azure.com:443/workflows/d910b8466b9f43dc93c10f23ab50fb78/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nbpbVKt37ObPXwptvbA-mjdkyzJsugJ-Xk4dyDcArE8&uid=${userGuid}&cid=${contactGuid}&src=${page}&url=${url}&deviceID=${deviceID}`)
             .then((response) => response.json())
             .then((data) => {
                 if (data.firstName) {
