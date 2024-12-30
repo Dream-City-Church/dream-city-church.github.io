@@ -162,6 +162,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     uid: uid.value || "",
                     cid: cid.value || "",
                     rid: rid.value || "",
+                    url: url,
+                    page: page,
+                    deviceID: deviceID
                 }),
             })
                 .then((response) => {
