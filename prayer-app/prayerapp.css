@@ -162,9 +162,7 @@ wa-avatar {
   float: left;
   margin-top: 1px;
   font-weight: 600;
-}
-
-wa-avatar .avatar {
+  border-radius: 2rem;
   box-shadow: var(--box-shadow-dark);
 }
 
