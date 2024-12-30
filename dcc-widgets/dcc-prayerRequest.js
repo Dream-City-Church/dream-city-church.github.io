@@ -10,7 +10,8 @@ if (!deviceID) {
     localStorage.setItem('deviceID', deviceID);
 }
 // Get current URL
-var url = window.location.href;
+var url = window.location.origin;
+var url =+ window.location.pathname;
 // Get current page
 var page = window.location.pathname;
 
