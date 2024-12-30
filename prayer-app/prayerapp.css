@@ -115,7 +115,7 @@ margin-top: 1rem;
 .card {
   display: block;
   width: 80%;
-  max-height: 55vh;
+  max-height: 50vh;
   overflow: scroll;
   margin: 5%;
   padding: 5% 5%;
@@ -215,7 +215,7 @@ wa-avatar {
   position: fixed;
   z-index: 99;
   left: calc(100vw - 120px);
-  top: calc(100vh - 130px);
+  top: calc(100vh - 120px);
   font-size: 30px;
   background-color: var(--primary-color);
   box-shadow: var(--box-shadow);
