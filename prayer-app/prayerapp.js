@@ -238,6 +238,8 @@ function actionPrayer(actionTypeId) {
             } else {
                 // If response code is not 200 OK
                 console.log('Error:', response.status);
+                // exit to catch
+                throw new Error('Prayer Action Error:', response.status);
             }
         })
         .catch(function (error) {
