@@ -187,7 +187,7 @@ function actionPrayer(actionTypeId) {
                         actionMessage = "I'm Celebrating! <i class='fa-solid fa-party-horn'></i>";
                         break;
                     case "3":
-                        actionMessage = "Skipped <i class='fa-regular fa-forward'></i>";
+                        actionMessage = "Skipped <i class='fa-solid fa-forward'></i>";
                         break;
                 }
 
