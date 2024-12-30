@@ -97,6 +97,15 @@ wa-button-group .button-group {
     width: 100%;
 }
 
+h3#prayer-heading {
+
+text-align: center;
+
+margin: 0;
+
+margin-top: 1rem;
+}
+
 #card-container {
   height: calc(100vh - 80px);
   overflow: hidden;
@@ -106,7 +115,7 @@ wa-button-group .button-group {
 .card {
   display: block;
   width: 80%;
-  max-height: 65vh;
+  max-height: 64vh;
   overflow: scroll;
   margin: 5%;
   padding: 5% 5%;
@@ -149,20 +158,32 @@ wa-button-group .button-group {
   border: 2px solid var(--brand-secondary);
 }
 
+wa-avatar {
+  float: left;
+  margin-top: 1px;
+  font-weight: 600;
+}
+
+wa-avatar .avatar {
+  box-shadow: var(--box-shadow-dark);
+}
+
 .card .title {
   font-weight: bold;
   font-size: 1.35rem;
-  text-align: center;
+  text-align: right;
 }
 
 .card .date {
   font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
+  font-weight: normal;
+  font-style: italic;
+  padding-right: 2px;
+  text-align: right;
 }
 
 .card .content {
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-size: 1.2rem;
   line-height: 2rem;
 }
@@ -185,6 +206,7 @@ wa-button-group .button-group {
   display: inline-block;
   width: 0;
   height: 0;
+  margin-top: -3px;
   vertical-align: middle;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;

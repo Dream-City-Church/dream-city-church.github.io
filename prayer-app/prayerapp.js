@@ -1,5 +1,20 @@
-// Use only standard JavaScript in this file
+////
+// Prayer App JavaScript
+// Author: Stephan Swinford, Dream City Church
+// Last Updated: 2024-12-30
+////
 
+//// Analytics Tracking
+// Generate a device ID to store as a permanent cookie
+var deviceID = localStorage.getItem('deviceID');
+if (!deviceID) {
+    deviceID = Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('deviceID', deviceID);
+}
+// Get current URL
+var url = window.location.href;
+
+//// Function to get URL parameters
 function getUrlVars() {
     var urlVars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -8,8 +23,10 @@ function getUrlVars() {
     return urlVars;
 }
 
+//// Get the Contact_GUID from the URL
 var contactGUID = getUrlVars()["cid"];
 
+//// Function to load prayers
 function loadPrayers() {
     // Get the number of .card elements in #card-container with class of .loaded
     var cardsMinimum = 3;
@@ -30,7 +47,9 @@ function loadPrayers() {
     if (cardsLoaded.length < cardsMinimum) {
         const params = {
             "Contact_GUID": getUrlVars()["cid"],
-            "Prayers_Queued": feedbackGUIDs
+            "Device_GUID": deviceID,
+            "Prayers_Queued": feedbackGUIDs,
+            "URL": url
         };
         const options = {
             method: 'POST',
@@ -63,7 +82,21 @@ function loadPrayers() {
                     }
                     card.classList.add(prayer.Type);
                     card.setAttribute('data-feedback-guid', prayer._Feedback_GUID);
+                    // Set a hex color code based on the value of prayer.Initials
+                    var hash = 0;
+                    for (var i = 0; i < prayer.Initials.length; i++) {
+                        hash = prayer.Initials.charCodeAt(i) + ((hash << 5) - hash);
+                    }
+                    var avatarColor = '#';
+                    for (var i = 0; i < 3; i++) {
+                        var value = (hash >> (i * 8)) & 0xFF;
+                        avatarColor += ('00' + value.toString(16)).substr(-2);
+                    }
+                    // If the hex is darker than #555, set the text color to white
+                    var textColor = parseInt(avatarColor.replace('#', ''), 16) > 0xAAAAAA ? '#000' : '#fff';
+
                     card.innerHTML = `
+                        <wa-avatar initials="${prayer.Initials}" label="Avatar with initials: SL" shape="circle" style="--background-color: ${avatarColor}; --content-color: ${textColor};"></wa-avatar>
                         <div class="title">${prayer.Title}</div>
                         <div class="date">${prayer.Date}</div>
                         <div class="content">${prayer.Description}</div>
@@ -114,6 +147,7 @@ function loadPrayers() {
     }
 }
 
+//// Function to send prayer actions
 function actionPrayer(actionTypeId) {
     // Add .disabled class to #action-button and #dismiss-button
     document.getElementById('action-button').classList.add('disabled');
@@ -122,7 +156,9 @@ function actionPrayer(actionTypeId) {
     const params = {
         "Contact_GUID": contactGUID,
         "Feedback_Entry_GUID": document.querySelector('#card-container .card.visible').getAttribute('data-feedback-guid'),
-        "Action_ID": actionTypeId
+        "Action_ID": actionTypeId,
+        "Device_GUID": deviceID,
+        "URL": url
     };
     const options = {
         method: 'POST',
@@ -219,12 +255,12 @@ function actionPrayer(actionTypeId) {
         });
 }
 
-// Call loadPrayers when page has finished loading
+//// Call loadPrayers when page has finished loading
 document.addEventListener('DOMContentLoaded', function() {
     loadPrayers();
 });
 
-// Run after DOMCONTENTLOADED
+//// Run after DOMCONTENTLOADED
 document.addEventListener('DOMContentLoaded', function() {
     // Add event listener to #action-button
     document.getElementById('action-button').addEventListener('click', function() {
