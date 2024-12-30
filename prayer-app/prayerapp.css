@@ -115,7 +115,7 @@ margin-top: 1rem;
 .card {
   display: block;
   width: 80%;
-  max-height: 64vh;
+  max-height: 60vh;
   overflow: scroll;
   margin: 5%;
   padding: 5% 5%;
