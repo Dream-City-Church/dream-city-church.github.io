@@ -99,7 +99,7 @@ function loadPrayers() {
                         avatarColor += ('00' + value.toString(16)).substr(-2);
                     }
                     // If the hex is darker than #555, set the text color to white
-                    var textColor = parseInt(avatarColor.replace('#', ''), 16) > 0xAAAAAA ? '#000' : '#fff';
+                    var textColor = parseInt(avatarColor.replace('#', ''), 16) > 0x999999 ? '#111' : '#f1f1f1';
 
                     card.innerHTML = `
                         <wa-avatar initials="${prayer.Initials}" label="Avatar with initials: SL" shape="circle" style="--background-color: ${avatarColor}; --content-color: ${textColor};"></wa-avatar>
