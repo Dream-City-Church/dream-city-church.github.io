@@ -98,8 +98,11 @@ function loadPrayers() {
                         var value = (hash >> (i * 5)) & 0xFF;
                         avatarColor += ('00' + value.toString(16)).substr(-2);
                     }
-                    // If the hex is darker than #555, set the text color to white
-                    var textColor = parseInt(avatarColor.replace('#', ''), 16) > 0x999999 ? '#111' : '#f1f1f1';
+                    // If the avatarColor is light, set the textColor to dark, otherwise set it to light
+                    var textColor = '#efefef';
+                    if (parseInt(avatarColor.substr(1,2), 16)>175 || parseInt(avatarColor.substr(3,2), 16)>175 || parseInt(avatarColor.substr(5,2), 16)>175 ) {
+                        textColor = '#333';
+                    }
 
                     card.innerHTML = `
                         <wa-avatar initials="${prayer.Initials}" label="Avatar with initials: SL" shape="circle" style="--background-color: ${avatarColor}; --content-color: ${textColor};"></wa-avatar>
