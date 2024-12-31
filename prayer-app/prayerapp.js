@@ -89,8 +89,9 @@ function loadPrayers() {
 
                     // Set a hex color code based on the value of prayer.Initials
                     var hash = 0;
-                    for (var i = 0; i < prayer.Initials.length; i++) {
-                        hash = (prayer.Initials.charCodeAt(i)*(prayer.Initials.charCodeAt(i)*(i+1))) + hash;
+                    var hashInitials = prayer.Initials+prayer.Initials+prayer.Initials;
+                    for (var i = 0; i < hashInitials.length; i++) {
+                        hash += hashInitials.charCodeAt(i)*hashInitials.charCodeAt(i);
                     }
                     var avatarColor = '#';
                     for (var i = 0; i < 3; i++) {
