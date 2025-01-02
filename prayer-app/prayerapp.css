@@ -71,19 +71,16 @@ wa-button-group .button-group {
 }
 
 .drawer-content {
-  height: 0;
-  min-height: 0;
   overflow: hidden;
-  transition: height 0.3s ease, min-height 0.3s ease;
+  max-height: 0vh;
+  min-height: 0;
+  transition: max-height 0.5s ease-out, min-height 0.4s ease-out;
   background-color: #f1f1f1;
   padding: 0 10px;
-  border-radius: 5px;
+  box-shadow: var(--box-shadow-dark);
 }
 
-.drawer-toggle:checked ~ .drawer-content {
-    min-height: 100vh;
-    height: fit-content;
-}
+.drawer-toggle:checked ~ .drawer-content {min-height: 100vh;max-height: 200vh;}
 
 .drawer #divider {
   height: 3rem;

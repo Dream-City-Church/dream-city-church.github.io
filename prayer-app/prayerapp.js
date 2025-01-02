@@ -136,6 +136,10 @@ function loadPrayers() {
                             this.querySelector('.read-more').style.display = 'block';
                         }
                     });
+                    // Smooth scroll 5 lines if the read-more tag is clicked
+                    card.querySelector('.read-more').addEventListener('click', function() {
+                        card.scrollBy({top: card.clientHeight/1.5, behavior: 'smooth'});
+                    });
                 });
             })
             .then(function (cleanup) {
