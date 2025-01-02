@@ -18,6 +18,7 @@
     <script src="prayerapp.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <script src="https://kit.fontawesome.com/a6a26322af.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://mpweb.azureedge.net/cdn/customWidgetV1.js"></script>
 </head>
 <body>
     <script typle="text/javascript">
@@ -28,7 +29,6 @@
     </script>
 
     <div id="top-drawer">
-        
         <div class="drawer">
             <input type="checkbox" id="drawer-toggle" class="drawer-toggle">
             <label for="drawer-toggle" class="drawer-label">
@@ -66,6 +66,48 @@
         </div>
         <div id="action-message">
         </div>       
+    </div>
+
+    <div id="bottom-drawer">
+        <input type="checkbox" id="bottom-drawer-toggle" class="bottom-drawer-toggle">
+        <label for="bottom-drawer-toggle" class="bottom-drawer-label">
+            My <i class="fa-solid fa-chevron-up"></i> Prayer
+        </label>
+        <div class="bottom-drawer-content">
+            <div id="divider"></div>
+            <div
+                id="MyPrayerRequests"
+                data-component="CustomWidget"
+                data-sp="api_custom_MyPrayersWidget"
+                data-params="@ContactGUID=[cid]"
+                data-templateid="MyPrayerRequests-template"
+                data-requireUser="false"
+                data-cache="false"
+                data-debug="true"
+                data-host="dreamcitychurch"
+            ></div>
+            <script id="MyPrayerRequests-template" type="text/template">
+                <div id="prayed-for"><i class="fa-solid fa-hands-praying"></i> prayed for <span class="number-highlight">{{ DataSet1.first.prayed_for }}</span> people</div>
+                <div id="celebrated"><i class="fa-solid fa-party-horn"></i> celebrated with <span class="number-highlight">{{ DataSet2.first.celebrated_with }}</span> people</div>
+                <h3 id="prayer-heading">My Prayer Requests</h3>
+                <div id="users-prayers">
+                    {% for prayer in DataSet3 %}
+                        <div class="user-card {{prayer.Type}}" data-feedback-guid="{{ prayer.GUID }}">
+                            <div class="visibility">
+                                {% if prayer.Visibility == "public" %}
+                                    <i class="fa-solid fa-eye"></i> {{ prayer.PrayerCounter }}
+                                {% else %}
+                                    <i class="fa-solid fa-eye-slash"></i>
+                                {% endif %}
+                            </div>
+                            <div class="title">{{ prayer.Title }}</div>
+                            <div class="date">{{ prayer.Date | date: "%B %e, %Y" }}</div>
+                            <div class="content">{{ prayer.Description }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </script>
+        </div>
     </div>
 </body>
 </html>

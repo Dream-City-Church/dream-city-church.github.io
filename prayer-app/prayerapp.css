@@ -305,6 +305,114 @@ wa-avatar {
   color: var(--quaternary-color);
 }
 
+#bottom-drawer {
+  width:100%;
+  z-index: 99;
+  position: absolute;
+  top: calc(100vh - 35px);
+  background-color: var(--secondary-color);
+  transition: top 0.5s ease, max-height 0.5s ease;
+  overflow: scroll;
+  max-height: 20px;
+}
+
+.bottom-drawer-toggle {
+  display: none;
+}
+
+.bottom-drawer-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  box-shadow: var(--box-shadow);
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  padding: 8px 0;
+  height:20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  border-radius: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  transition: transform 0.5s ease;
+}
+
+.bottom-drawer-toggle:checked + .bottom-drawer-label .fa-chevron-up {
+  transform: rotate(180deg);
+}
+
+#bottom-drawer:has(.bottom-drawer-toggle:checked) {
+  top: 0;
+  max-height: 100vh;
+  z-index: 999;
+}
+
+.bottom-drawer-content #divider {
+  height: 60px;
+}
+
+#prayed-for, #celebrated {
+  width: 100%;
+  text-align:center;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+#prayed-for i.fa-hands-praying {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.number-highlight {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+#celebrated .number-highlight, #celebrated i.fa-party-horn {
+  color: var(--brand-secondary);
+}
+
+#MyPrayerRequests h3 {
+  margin-top: 3rem;
+}
+
+#users-prayers {
+  margin: 1rem;
+}
+
+.user-card {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #e1e1e1;
+  border-radius: 0.5rem;
+}
+
+.user-card .title {
+  font-weight: bold;
+}
+
+.user-card .date {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.user-card .visibility {
+  float: right;
+  text-align: right;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.user-card .content {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   body {
@@ -348,6 +456,19 @@ wa-avatar {
 
   #load-failure {
     color: var(--secondary-color);
+  }
+
+  #bottom-drawer {
+    background-color: #222;
+  }
+
+  .bottom-drawer-label {
+    background-color: var(--quaternary-color);
+    color: var(--secondary-color);
+  }
+
+  .user-card {
+    background-color: #333;
   }
 }
 
