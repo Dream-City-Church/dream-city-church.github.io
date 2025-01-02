@@ -345,7 +345,7 @@ wa-avatar {
 }
 
 .bottom-drawer-label .fa-chevron-up {
-  transition: transform 0.7s ease;
+  transition: transform 0.8s ease;
 }
 
 .bottom-drawer-toggle:checked + .bottom-drawer-label .fa-chevron-up {
@@ -417,6 +417,10 @@ wa-avatar {
   text-align: right;
   font-weight: bold;
   color: var(--primary-color);
+}
+
+.user-card .visibility i {
+  color: var(--tertiary-color);
 }
 
 .user-card .content {

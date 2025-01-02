@@ -244,6 +244,21 @@ function actionPrayer(actionTypeId) {
                 setTimeout(function() {
                     document.getElementById('action-message').classList.remove('animate');
                 }, 3000);
+
+                // Get the current values for #prayed-for .number-highlight and #celebrated .number-highlight
+                var prayedFor = parseInt(document.getElementById('prayed-for').getElementsByClassName('number-highlight')[0].innerHTML);
+                var celebrated = parseInt(document.getElementById('celebrated').getElementsByClassName('number-highlight')[0].innerHTML);
+
+                // Increment the value of #prayed-for .number-highlight if actionTypeId=1
+                if (actionTypeId === "1") {
+                    prayedFor++;
+                    document.getElementById('prayed-for').getElementsByClassName('number-highlight')[0].innerHTML = prayedFor;
+                } else if (actionTypeId === "2") {
+                    celebrated++;
+                    document.getElementById('celebrated').getElementsByClassName('number-highlight')[0].innerHTML = celebrated;
+                };
+
+
             } else {
                 // If response code is not 200 OK
                 console.log('Error:', response.status);
