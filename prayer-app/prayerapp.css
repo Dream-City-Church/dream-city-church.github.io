@@ -340,6 +340,10 @@ wa-avatar {
   transition: transform 0.5s ease;
 }
 
+.bottom-drawer-label .fa-chevron-up {
+  color: var(--tertiary-color)
+}
+
 .bottom-drawer-toggle:checked + .bottom-drawer-label .fa-chevron-up {
   transform: rotate(180deg);
 }
