@@ -109,7 +109,7 @@ function loadPrayers() {
                         <div class="title">${prayer.Title}</div>
                         <div class="date">${prayer.Date}</div>
                         <div class="content">${prayer.Description}</div>
-                        <div class="read-more" style="display:none;">Read More <i class="fa-solid fa-chevrons-down"></i></div>`;
+                        <div class="read-more" style="display:none;">Read More <i class="fa-solid fa-chevrons-down" style="vertical-align:middle"></i></div>`;
                     // If cardsVisible=0 then replace contents of #card-container with card
                     if (cardsVisible.length === 0 && index === 0) {
                         document.getElementById('card-container').innerHTML = '';
