@@ -218,7 +218,7 @@ wa-avatar {
   position: fixed;
   z-index: 99;
   left: calc(100vw - 32vw);
-  top: calc(100vh - 16vh);
+  top: calc(100vh - 17vh);
   font-size: 30px;
   background-color: var(--primary-color);
   box-shadow: var(--box-shadow);
@@ -341,7 +341,8 @@ wa-avatar {
 }
 
 .bottom-drawer-label .fa-chevron-up {
-  color: var(--tertiary-color)
+  color: var(--tertiary-color);
+  padding: 0 0.5rem;
 }
 
 .bottom-drawer-toggle:checked + .bottom-drawer-label .fa-chevron-up {
