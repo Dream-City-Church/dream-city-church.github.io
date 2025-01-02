@@ -337,7 +337,7 @@ wa-avatar {
   width: 100%;
   position: fixed;
   z-index: 999;
-  transition: transform 0.5s ease;
+  transition: transform 0.7s ease;
 }
 
 .bottom-drawer-label .fa-chevron-up {
@@ -361,9 +361,13 @@ wa-avatar {
 #prayed-for, #celebrated {
   width: 100%;
   text-align:center;
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   margin: 1rem 0;
+}
+
+#prayed-for i {
+  padding-right: 1rem;
 }
 
 #prayed-for i.fa-hands-praying {
