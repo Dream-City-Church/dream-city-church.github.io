@@ -71,7 +71,7 @@
     <div id="bottom-drawer">
         <input type="checkbox" id="bottom-drawer-toggle" class="bottom-drawer-toggle">
         <label for="bottom-drawer-toggle" class="bottom-drawer-label">
-            <i class="fa-solid fa-chevron-up"></i> My Prayer <i class="fa-solid fa-chevron-up"></i>
+            <i class="fa-solid fa-chevron-up" style="vertical-align:middle"></i> My Prayer <i class="fa-solid fa-chevron-up" style="vertical-align:middle"></i>
         </label>
         <div class="bottom-drawer-content">
             <div id="divider"></div>
@@ -95,7 +95,7 @@
                         <div class="user-card {{prayer.Type}}" data-feedback-guid="{{ prayer.GUID }}">
                             <div class="visibility">
                                 {% if prayer.Visibility == "public" %}
-                                    <i class="fa-solid fa-eye"></i> {{ prayer.PrayerCounter }}
+                                    <i class="fa-solid fa-eye" style="vertical-align:middle"></i> {{ prayer.PrayerCounter }}
                                 {% else %}
                                     <i class="fa-solid fa-eye-slash"></i>
                                 {% endif %}
