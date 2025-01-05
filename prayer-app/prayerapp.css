@@ -259,6 +259,7 @@ wa-avatar {
   position: relative;
   top: 3px;
   left: 0px;
+  transform-origin: center 49%;
 }
 
 #action-button.disabled, #dismiss-button.disabled {
