@@ -290,6 +290,10 @@ wa-avatar {
   opacity: 0;
 }
 
+#action-message.praise {
+		background-color: var(--brand-second);
+} 
+
 #action-message.error {
   background-color: var(--quaternary-color);
 }
@@ -372,7 +376,7 @@ wa-avatar {
 }
 
 #prayed-for i, #celebrated i {
-  padding-right: 1rem;
+  padding-right: 0.5rem;
 }
 
 #prayed-for i.fa-hands-praying {
