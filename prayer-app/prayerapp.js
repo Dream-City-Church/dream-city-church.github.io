@@ -109,7 +109,7 @@ function loadPrayers() {
                         <div class="title">${prayer.Title}</div>
                         <div class="date">${prayer.Date}</div>
                         <div class="content">${prayer.Description}</div>
-                        <div class="read-more" style="display:none;">Read More <i class="fa-solid fa-chevrons-down" style="vertical-align:middle"></i></div>`;
+                        <div class="read-more" style="opacity:0;">Read More <i class="fa-solid fa-chevrons-down" style="vertical-align:middle"></i></div>`;
                     // If cardsVisible=0 then replace contents of #card-container with card
                     if (cardsVisible.length === 0 && index === 0) {
                         document.getElementById('card-container').innerHTML = '';
@@ -126,14 +126,14 @@ function loadPrayers() {
 
                     // If the content of the card overflows the card, show the read-more tag.
                     if (card.scrollHeight > card.clientHeight) {
-                        card.querySelector('.read-more').style.display = 'block';
+                        card.querySelector('.read-more').style.opacity = '1';
                     }
                     // Hide the read-more tag when the card has been scrolled to the bottom.
                     card.addEventListener('scroll', function() {
                         if (this.scrollTop + this.clientHeight >= this.scrollHeight-20) {
-                            this.querySelector('.read-more').style.display = 'none';
+                            this.querySelector('.read-more').style.opacity = '0';
                         } else {
-                            this.querySelector('.read-more').style.display = 'block';
+                            this.querySelector('.read-more').style.opacity = '1';
                         }
                     });
                     // Smooth scroll 5 lines if the read-more tag is clicked

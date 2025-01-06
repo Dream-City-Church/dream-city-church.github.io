@@ -201,6 +201,7 @@ wa-avatar {
   width: 100%;
   background-image: linear-gradient(transparent, #f1f1f1 45%);
   font-weight: bold;
+  transition: opacity 0.5s ease;
 }
 
 .read-more .arrow {
