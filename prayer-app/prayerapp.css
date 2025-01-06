@@ -132,7 +132,7 @@ h3#prayer-heading {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE 10+ */
   box-shadow: var(--box-shadow-dark);
-  transition: opacity 0.8s ease, transform 1s ease, background-color 0.8s ease;
+  transition: opacity 0.9s ease, transform 1s ease, background-color 0.9s ease;
 }
 
 .card::-webkit-scrollbar {
@@ -147,13 +147,13 @@ h3#prayer-heading {
 
 .card.dismissed {
   opacity: 0;
-  transform: translateX(-100%);
+  transform: translateX(-105%);
   background-color: transparent;
 }
 
 .card.loaded {
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(105%);
   background-color: var(--primary-color);
 }
 

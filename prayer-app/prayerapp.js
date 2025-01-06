@@ -95,7 +95,7 @@ function loadPrayers() {
                     }
                     var avatarColor = '#';
                     for (var i = 0; i < 3; i++) {
-                        var value = (hash >> (i * 5)) & 0xFF;
+                        var value = (hash >> (i * 3)) & 0xFF;
                         avatarColor += ('00' + value.toString(16)).substr(-2);
                     }
                     // If the avatarColor is light, set the textColor to dark, otherwise set it to light
