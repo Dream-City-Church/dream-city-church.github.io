@@ -204,6 +204,7 @@ function actionPrayer(actionTypeId) {
                         break;
                     case "2":
                         actionMessage = "I'm Celebrating! <i class='fa-solid fa-party-horn'></i>";
+                        document.getElementById('action-message').classList.add('praise');
                         break;
                     case "3":
                         actionMessage = "Skipped <i class='fa-solid fa-forward'></i>";
@@ -212,11 +213,6 @@ function actionPrayer(actionTypeId) {
 
                 // Set the innerHTML of #action-message to actionMessage
                 document.getElementById('action-message').innerHTML = actionMessage;
-
-                // If actionTypeId=2, add class .praise to #action-message
-                if (actionTypeId === "2") {
-                    document.getElementById('action-message').classList.add('praise');
-                }
 
                 // Add class .animate to #action-message
                 document.getElementById('action-message').classList.add('animate');

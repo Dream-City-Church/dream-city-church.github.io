@@ -293,7 +293,7 @@ wa-avatar {
 }
 
 #action-message.praise {
-		background-color: var(--brand-second);
+	background-color: var(--brand-second);
 } 
 
 #action-message.error {
