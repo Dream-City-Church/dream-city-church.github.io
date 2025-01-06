@@ -109,7 +109,7 @@ function loadPrayers() {
                         <div class="title">${prayer.Title}</div>
                         <div class="date">${prayer.Date}</div>
                         <div class="content">${prayer.Description}</div>
-                        <div class="read-more" style="opacity:0;">Read More <i class="fa-solid fa-chevrons-down" style="vertical-align:middle"></i></div>`;
+                        <div class="read-more" style="opacity:0;height:0;padding-top:0;">Read More <i class="fa-solid fa-chevrons-down" style="vertical-align:middle"></i></div>`;
                     // If cardsVisible=0 then replace contents of #card-container with card
                     if (cardsVisible.length === 0 && index === 0) {
                         document.getElementById('card-container').innerHTML = '';
@@ -125,16 +125,23 @@ function loadPrayers() {
                     }
 
                     // If the content of the card overflows the card, show the read-more tag.
-                    if (card.scrollHeight > card.clientHeight) {
+                    if (card.scrollHeight > card.clientHeight + 10) {
                         card.querySelector('.read-more').style.opacity = '1';
+                        card.querySelector('.read-more').style.height = 'revert-layer';
+                        card.querySelector('.read-more').style.paddingTop = 'revert-layer';
                     }
                     // Hide the read-more tag when the card has been scrolled to the bottom.
                     card.addEventListener('scroll', function() {
-                        if (this.scrollTop + this.clientHeight >= this.scrollHeight-20) {
+                        if (this.scrollTop + this.clientHeight >= this.scrollHeight - 25) {
                             this.querySelector('.read-more').style.opacity = '0';
+                            card.querySelector('.read-more').style.height = '0';
+                            card.querySelector('.read-more').style.paddingTop = '0';
                         } else {
                             this.querySelector('.read-more').style.opacity = '1';
+                            card.querySelector('.read-more').style.height = 'revert-layer';
+                            card.querySelector('.read-more').style.paddingTop = 'revert-layer';
                         }
+                        
                     });
                     // Smooth scroll 5 lines if the read-more tag is clicked
                     card.querySelector('.read-more').addEventListener('click', function() {
