@@ -203,6 +203,11 @@ function actionPrayer(actionTypeId) {
                 // Set the innerHTML of #action-message to actionMessage
                 document.getElementById('action-message').innerHTML = actionMessage;
 
+                // If actionTypeId=2, add class .praise to #action-message
+                if (actionTypeId === "2") {
+                    document.getElementById('action-message').classList.add('praise');
+                }
+
                 // Add class .animate to #action-message
                 document.getElementById('action-message').classList.add('animate');
 
@@ -256,6 +261,7 @@ function actionPrayer(actionTypeId) {
                 } else if (actionTypeId === "2") {
                     celebrated++;
                     document.getElementById('celebrated').getElementsByClassName('number-highlight')[0].innerHTML = celebrated;
+                    document.getElementById('action-message').classList.remove('praise');
                 };
 
 
