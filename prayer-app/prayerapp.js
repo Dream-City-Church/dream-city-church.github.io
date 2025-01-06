@@ -191,6 +191,9 @@ function actionPrayer(actionTypeId) {
         .then(function (response) {
             // If response code is 200 OK
             if (response.status === 200) {
+                
+                // Reset the animation on #action-message
+                document.getElementById('action-message').classList.remove('animate');
 
                 //// Send feedback actions to user
                 // Set action-message based on actionTypeId
