@@ -132,7 +132,7 @@ function loadPrayers() {
                     }
                     // Hide the read-more tag when the card has been scrolled to the bottom.
                     card.addEventListener('scroll', function() {
-                        if (this.scrollTop + this.clientHeight >= this.scrollHeight - 40) {
+                        if (this.scrollTop + this.clientHeight >= this.scrollHeight - 25) {
                             this.querySelector('.read-more').style.opacity = '0';
                             card.querySelector('.read-more').style.height = '0';
                             card.querySelector('.read-more').style.paddingTop = '0';
@@ -191,7 +191,7 @@ function actionPrayer(actionTypeId) {
         .then(function (response) {
             // If response code is 200 OK
             if (response.status === 200) {
-                
+
                 // Reset the animation on #action-message
                 document.getElementById('action-message').classList.remove('animate');
 
