@@ -1,19 +1,4 @@
-:root {
-    --brand-primary: #bc204b;
-    --brand-secondary: #e07e3c;
-    --brand-tertiary: #3f4444;
-    --brand-quaternary: #bcbcbc;
-    --card-radius: 1rem;
-    --card-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-    --text-dark: #333;
-    --text-light: #efefef;
-}
-
-body, html {
-    margin:0;
-    padding:0;
-    font-family: 'Open Sans',sans-serif;
-}
+@import url('../dcc-appbase.css');
 
 #Reading-Plan {
   width: 100%;
@@ -24,13 +9,7 @@ body, html {
 }
 
 h1#plan-title {
-  
-margin: 1rem 0;
-}
-
-#reading-plan-card {
-  margin: 0 auto;
-  padding: 0 7%;
+  margin: 1rem 0;
 }
 
 #plan-dates {
@@ -48,14 +27,6 @@ margin: 1rem 0;
   padding: 0 7%;
 }
 
-.reading-plan-day {
-  margin-bottom: 1rem;
-  background-color: var(--brand-quaternary);
-  color: var(--text-dark);
-  padding: 1rem;
-  border-radius: var(--card-radius);
-}
-
 .reading-plan-day[data-active="0"] {
   opacity: 0.5;
 }
@@ -65,12 +36,11 @@ margin: 1rem 0;
 }
 
 .day-date {
-  font-style: italic;
+  font-weight: normal;
 }
 
 .day-title {
-  font-size: 1.25rem;
-  font-weight: bold;
+  margin: 0;
 }
 
 .day-button {
@@ -78,33 +48,13 @@ margin: 1rem 0;
   margin-top: 1rem;
 }
 
-.day-button a, #day-passages a {
-  background-color: var(--brand-primary);
-  color: var(--text-light);
-  font-weight: bold;
-  text-align: center;
-  padding: 0.5rem 1rem;
-  display: inline-block;
-  border-radius: 2rem;
-  text-decoration: none;
-}
-
 /* Reading Plan Day Styles */
 a#reading-plan-back-button {
-  color: var(--brand-primary);
-  font-weight: bold;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 0 1rem;
-}
-
-h2#day-title {
-  margin: 1rem 0;
+  margin-top: 1rem;
 }
 
 #day-date {
-  margin: 0;
-  font-weight: 600;
+  margin-top: -1rem;
 }
 
 #day-passages {
@@ -114,25 +64,10 @@ h2#day-title {
 }
 
 #day-devotion {
-  font-size: 1.1rem;
-  line-height: 2rem;
   margin-bottom: 4rem;
-}
-
-#day-devotion h1, #day-devotion h2, #day-devotion h3 {
-  margin: 1rem 0;
-  margin-bottom: -1rem;
 }
 
 #day-devotion ul, #day-devotion ol {
   padding: 0 2rem;
   margin: 0;
-}
-
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #111;
-    color: var(--text-light);
-  }
 }

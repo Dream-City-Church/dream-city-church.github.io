@@ -39,15 +39,15 @@
     ></div>
     <script id="Reading-Plan-Day-template" type="text/template">
         {% for day in DataSet1 %}
-            <a href="reading-plan.html?ReadingPlanID={{ day.Reading_Plan_ID }}" id="reading-plan-back-button"><i class="fas fa-arrow-left"></i> Back to Reading Plan</a>
+            <a href="reading-plan.html?ReadingPlanID={{ day.Reading_Plan_ID }}" id="reading-plan-back-button" class="dcc-wrapper dcc-breadcrumb"><i class="fas fa-arrow-left"></i> Back to Reading Plan</a>
             {% if day.File_GUID != "" and day.File_GUID != null %}
                 <img id="reading-plan-image" src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ day.File_GUID }}" />
             {% endif %}
-            <div id="reading-plan-card">
-                <h2 id="day-title">{{ day.Title }}</h2>
-                <div id="day-date">Day {{ day.Day_Number }} | {{ day.Date }}</div>
-                <div id="day-passages"><a href="dreamcitychurch://reading_plan_day/{{ day.Reading_Plan_Day_ID }}">Read {{ day.Passages | newline_to_br | replace: "<br>", ", "}}</a></div>
-                <div id="day-devotion">{{ day.Devotion | newline_to_br }}</div>
+            <div id="reading-plan-card" class="dcc-wrapper">
+                <h2 id="day-title" class="dcc-heading">{{ day.Title }}</h2>
+                <div id="day-date" class="dcc-subheading">Day {{ day.Day_Number }} - {{ day.Date }}</div>
+                <div id="day-passages"><a href="dreamcitychurch://reading_plan_day/{{ day.Reading_Plan_Day_ID }}" class="dcc-button">Read {{ day.Passages | newline_to_br | replace: "<br>", ", "}}</a></div>
+                <div id="day-devotion" class="dcc-paragraph">{{ day.Devotion | newline_to_br }}</div>
             </div>
         {% endfor %}
     </script>

@@ -1,0 +1,94 @@
+:root {
+    --brand-primary: #bc204b;
+    --brand-secondary: #e07e3c;
+    --brand-tertiary: #3f4444;
+    --brand-quaternary: #bcbcbc;
+    --gray-dark: #333;
+    --gray-med: #555;
+    --gray-light: #efefef;
+    --gray-lightest: #f1f1f1;
+  
+    --card-radius: 1rem;
+  
+    --box-shadow: 0.2rem 0.45rem 0.4rem rgb(0 0 0 / 0.1);
+    --box-shadow-dark: 0.1rem 0.2rem 0.25rem rgb(0 0 0 / 0.15);
+  }
+  
+  body, html {
+    margin:0;
+    padding:0;
+    font-family: 'Open Sans',sans-serif;
+  }
+  
+  .dcc-card {
+    display: block;
+    margin-bottom: 1.5rem;
+    padding: 5% 5%;
+    background-color: var(--gray-lightest);
+    border-radius: var(--card-radius);
+    box-shadow: var(--box-shadow-dark);
+  }
+  
+  .dcc-wrapper {
+    display: block;
+    margin: 0 7%;
+    padding: 0;
+  }
+  
+  .dcc-heading {
+    margin: 1rem 0;
+  }
+  
+  .dcc-subheading {
+    margin: 0;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  a.dcc-button {
+    background-color: var(--brand-primary);
+    color: var(--gray-light);
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 2rem;
+    text-decoration: none;
+  }
+  
+  .dcc-paragraph {
+    font-size: 1.1rem;
+    line-height: 2rem;
+  }
+  
+  .dcc-paragraph-bold {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    font-weight: 600;
+  }
+  
+  .dcc-paragraph ul > br {
+    line-height: 0;
+  }
+  
+  .dcc-paragraph h1, .dcc-paragraph h2, .dcc-paragraph h3 {
+    margin: 1rem 0;
+    margin-bottom: -1rem;
+  }
+  
+  .dcc-breadcrumb {
+    color: var(--brand-primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #111;
+      color: var(--gray-light);
+    }
+    .dcc-card {
+      background-color: #444;
+    }
+  }

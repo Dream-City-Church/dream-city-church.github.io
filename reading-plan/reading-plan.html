@@ -42,19 +42,19 @@
             {% if plan.File_GUID != "" and plan.File_GUID != null %}
                 <img id="reading-plan-image" src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ plan.File_GUID }}" />
             {% endif %}
-            <div id="reading-plan-card">
-                <h1 id="plan-title">{{ plan.Reading_Plan }}</h1>
-                <div id="plan-dates">{{ plan.Start_Date }} through {{ plan.End_Date }}</div>
-                <div id="plan-description">{{ plan.Description | newline_to_br }}</div>
+            <div id="reading-plan-details" class="dcc-wrapper">
+                <h1 id="plan-title" class="dcc-heading">{{ plan.Reading_Plan }}</h1>
+                <div id="plan-dates" class="dcc-subheading">{{ plan.Start_Date }} through {{ plan.End_Date }}</div>
+                <div id="plan-description" class="dcc-paragraph-bold">{{ plan.Description | newline_to_br }}</div>
             </div>
         {% endfor %}
-        <div id="reading-plan-days">
+        <div id="reading-plan-days" class="dcc-wrapper">
         {% for day in DataSet2 %}
-            <div class="reading-plan-day" data-active={{day.Active}}>
-                <div class="day-title">{{ day.Title }}</div>
-                <div class="day-date">{{ day.Date }}</div>
+            <div class="reading-plan-day dcc-card" data-active={{day.Active}}>
+                <h3 class="day-title dcc-heading">{{ day.Title }}</h3>
+                <div class="day-date dcc-subheading">{{ day.Date }}</div>
                 {% if day.Active == 1 %}
-                    <div class="day-button"><a href="reading-plan-day.html?ReadingPlanID={{ day.Reading_Plan_ID }}&ReadingPlanDayID={{ day.Reading_Plan_Day_ID }}">Read This Day</a></div>
+                    <div class="day-button"><a href="reading-plan-day.html?ReadingPlanID={{ day.Reading_Plan_ID }}&ReadingPlanDayID={{ day.Reading_Plan_Day_ID }}" class="dcc-button">Read This Day</a></div>
                 {% endif %}
             </div>
         {% endfor %}
