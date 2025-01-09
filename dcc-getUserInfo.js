@@ -22,7 +22,7 @@ if (!deviceID) {
 }
 // Get current URL
 var url = window.location.origin;
-var url =+ window.location.pathname;
+var url = url + window.location.pathname;
 // Get current page
 var page = window.location.pathname;
 
