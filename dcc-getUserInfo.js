@@ -24,7 +24,7 @@ if (!deviceID) {
 var url = window.location.origin;
 var url = url + window.location.pathname;
 // Get current page
-var page = window.location.pathname;
+var page = window.location.pathname.split("/").pop();
 
 // If cid or uid is found, make a GET API call to the DCC API
 if (userGuid || contactGuid) {

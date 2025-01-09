@@ -13,7 +13,7 @@ if (!deviceID) {
 var url = window.location.origin;
 var url = url + window.location.pathname;
 // Get current page
-var page = window.location.pathname;
+var page = window.location.pathname.split("/").pop();
 
 function loadPrayerRequestForm() {
     // get device screen width
