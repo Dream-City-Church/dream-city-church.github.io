@@ -54,7 +54,7 @@
                 <h3 class="day-title dcc-heading">{{ day.Title }}</h3>
                 <div class="day-date dcc-subheading">{{ day.Date }}</div>
                 {% if day.Active == 1 %}
-                    <div class="day-button"><a href="reading-plan-day.html?ReadingPlanID={{ day.Reading_Plan_ID }}&ReadingPlanDayID={{ day.Reading_Plan_Day_ID }}" class="dcc-button">Read This Day</a></div>
+                    <div class="day-button"><a href="reading-plan-day.html?ReadingPlanID={{ day.Reading_Plan_ID }}&ReadingPlanDayID={{ day.Reading_Plan_Day_ID }}" class="dcc-button">Read Day {{ day.Day_Number }}</a></div>
                 {% endif %}
             </div>
         {% endfor %}
