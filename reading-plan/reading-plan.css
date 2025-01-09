@@ -6,6 +6,8 @@
 
 #Reading-Plan img {
   max-width: 100%;
+  display: block;
+  margin: auto auto;
 }
 
 h1#plan-title {

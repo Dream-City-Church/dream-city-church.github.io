@@ -34,7 +34,7 @@
         data-templateid="Reading-Plan-Day-template"
         data-requireUser="false"
         data-cache="false"
-        data-debug="true"
+        data-debug="false"
         data-host="dreamcitychurch"
     ></div>
     <script id="Reading-Plan-Day-template" type="text/template">
@@ -47,7 +47,7 @@
                 <h2 id="day-title" class="dcc-heading">{{ day.Title }}</h2>
                 <div id="day-date" class="dcc-subheading">Day {{ day.Day_Number }} - {{ day.Date }}</div>
                 <div id="day-passages"><a href="dreamcitychurch://reading_plan_day/{{ day.Reading_Plan_Day_ID }}" class="dcc-button">Read {{ day.Passages | newline_to_br | replace: "<br>", ", "}}</a></div>
-                <div id="day-devotion" class="dcc-paragraph">{{ day.Devotion | newline_to_br }}</div>
+                <div id="day-devotion" class="dcc-paragraph">{{ day.Devotion }}</div>
             </div>
         {% endfor %}
     </script>
