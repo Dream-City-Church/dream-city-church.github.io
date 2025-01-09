@@ -14,6 +14,9 @@ var url = window.location.origin;
 var url = url + window.location.pathname;
 // Get current page
 var page = window.location.pathname.split("/").pop();
+if (page === '') {
+    page = window.location.pathname.split("/").slice(-2)[0];
+}
 
 function loadPrayerRequestForm() {
     // get device screen width

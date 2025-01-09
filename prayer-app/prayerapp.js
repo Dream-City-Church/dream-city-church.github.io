@@ -14,8 +14,11 @@ if (!deviceID) {
 // Get current URL
 var url = window.location.origin;
 var url = url + window.location.pathname;
-// Get current page
+// Get current page name. Account for trailing slahs
 var page = window.location.pathname.split("/").pop();
+if (page === '') {
+    page = window.location.pathname.split("/").slice(-2)[0];
+}
 
 //// Function to get URL parameters
 function getUrlVars() {
