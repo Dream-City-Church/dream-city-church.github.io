@@ -55,6 +55,12 @@
     border-radius: 2rem;
     text-decoration: none;
   }
+
+  a.dcc-button.button-outline {
+    background-color: transparent;
+    color: var(--brand-primary);
+    border: 3px solid var(--brand-primary);
+}
   
   .dcc-paragraph {
     font-size: 1.1rem;
