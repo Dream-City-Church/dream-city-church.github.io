@@ -103,7 +103,7 @@ function loadPrayers() {
                     }
                     // If the avatarColor is light, set the textColor to dark, otherwise set it to light
                     var textColor = '#efefef';
-                    if (parseInt(avatarColor.substr(1,2), 16)>130 || parseInt(avatarColor.substr(3,2), 16)>130 || parseInt(avatarColor.substr(5,2), 16)>175 ) {
+                    if (parseInt(avatarColor.substr(1,2), 16)>130 || parseInt(avatarColor.substr(3,2), 16)>130 || parseInt(avatarColor.substr(5,2), 16)>250 ) {
                         textColor = '#333';
                     }
 
