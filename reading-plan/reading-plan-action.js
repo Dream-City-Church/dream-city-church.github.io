@@ -32,17 +32,17 @@ if (page === '') {
 
 // After the widget has loaded content, send the 'started' action to the Reading Plan API
 window.addEventListener('widgetLoaded', function(event) {
-    var readingPlanApi = 'https://prod-04.westus2.logic.azure.com:443/workflows/3add150e07c446c2812cdd37d0b03575/triggers/HTTP_Request/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FHTTP_Request%2Frun&sv=1.0&sig=wHhlULb0ORefuncrGl4K69_CyJ-EL3yPdaBtxY7VTmA';
-    var readingPlanID = getUrlVars()["readingPlanID"];
-    var readingPlanDayID = getUrlVars()["readingPlanDayID"];
+    var readingPlanApi = 'https://dcc-apimanagement.azure-api.net/readingplan/action';
+    var readingPlanID = Number(getUrlVars()["ReadingPlanID"]);
+    var readingPlanDayID = Number(getUrlVars()["ReadingPlanDayID"]);
     var data = {
-        action: 'started',
-        cid: contactGuid,
-        src: page,
-        url: url,
-        deviceID: deviceID,
-        readingPlanID: readingPlanID,
-        readingPlanDayID: readingPlanDayID
+        ReadingPlanAction: 'started',
+        Contact_GUID: contactGuid,
+        Page: page,
+        URL: url,
+        Device_GUID: deviceID,
+        ReadingPlanID: readingPlanID,
+        ReadingPlanDayID: readingPlanDayID
     };
     fetch(readingPlanApi, {
         method: 'POST',
@@ -68,13 +68,13 @@ window.addEventListener('widgetLoaded', function(event) {
             if (timeElapsed >= timeRequired) {
                 // Send the 'completed' action to the Reading Plan API
                 var data = {
-                    action: 'completed',
-                    cid: contactGuid,
-                    src: page,
-                    url: url,
-                    deviceID: deviceID,
-                    readingPlanID: readingPlanID,
-                    readingPlanDayID: readingPlanDayID
+                    ReadingPlanAction: 'completed',
+                    Contact_GUID: contactGuid,
+                    Page: page,
+                    URL: url,
+                    Device_GUID: deviceID,
+                    ReadingPlanID: readingPlanID,
+                    ReadingPlanDayID: readingPlanDayID
                 };
                 fetch(readingPlanApi, {
                     method: 'POST',
@@ -89,4 +89,8 @@ window.addEventListener('widgetLoaded', function(event) {
             }
         }
     };
+
+    // Add a scroll event listener
+    window.addEventListener('scroll', scrollHandler);
+
 });
