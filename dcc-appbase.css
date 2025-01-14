@@ -20,6 +20,23 @@ body, html {
   font-family: 'Open Sans',sans-serif;
 }
 
+a.dcc-button {
+  background-color: var(--brand-primary);
+  color: var(--gray-light);
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 2rem;
+  text-decoration: none;
+}
+
+a.dcc-button.button-outline {
+  background-color: transparent;
+  color: var(--brand-primary);
+  border: 3px solid var(--brand-primary);
+}
+
 .dcc-card {
   display: block;
   margin-bottom: 1.5rem;
@@ -43,23 +60,6 @@ body, html {
   margin: 0;
   font-weight: 600;
   font-style: italic;
-}
-
-a.dcc-button {
-  background-color: var(--brand-primary);
-  color: var(--gray-light);
-  font-weight: bold;
-  text-align: center;
-  padding: 0.5rem 1rem;
-  display: inline-block;
-  border-radius: 2rem;
-  text-decoration: none;
-}
-
-a.dcc-button.button-outline {
-  background-color: transparent;
-  color: var(--brand-primary);
-  border: 3px solid var(--brand-primary);
 }
 
 i.fa-duotone.fa-solid {
