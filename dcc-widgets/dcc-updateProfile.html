@@ -18,8 +18,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
         <script src="https://kit.fontawesome.com/a6a26322af.js" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/themes/default.css" />
-        <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.2/dist/webawesome.loader.js"></script>
+        <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.8/dist/styles/themes/default.css" />
+        <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.8/dist/webawesome.loader.js"></script>
+
 
         <style>
             * {
@@ -33,8 +34,8 @@
             }
             wa-input {
                 padding: 5px;
-                margin-bottom: 1rem;
                 text-align: center;
+                margin-bottom: 1rem;
             }
             wa-radio-group {
                 padding: 5px;
@@ -50,112 +51,155 @@
                 margin-bottom: 1rem;
                 text-align: center;
             }
+            wa-input::part(label), wa-select::part(form-control-label) {
+                text-align: left;
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+            wa-input[name="Address_Line_1"] {
+                margin-bottom: 0;
+            }
+            wa-checkbox {
+                float: left;
+                margin-top: -0.75rem;
+                margin-left: 0.25rem;
+                margin-bottom: 1rem;
+            }
             .attributes_container {
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: center;
+                justify-content: space-evenly;
             }
             .attributes_container input[type="checkbox"] {
                 display: none;
             }
             .attributes_container label {
                 display: block;
-                padding: 10px;
-                margin: 5px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
+                padding: 1rem 5%;
+                font-weight: bold;
+                margin: 0.5rem;
+                background-color: #efefef;
+                border-radius: 0.5rem;
                 cursor: pointer;
                 text-align: center;
+                flex-grow: 1;
             }
             .attributes_container input[type="checkbox"] + label:hover {
-                background-color: var(--brand-secondary);
-                color: white;
+                background-color: #ccc;
             }
             .attributes_container input[type="checkbox"]:checked + label {
                 background-color: var(--brand-primary);
                 color: white;
+                box-shadow: 0.1rem 0.2rem 0.5rem rgba(0,0,0,0.2);
             }
             
 
         </style>
 
+    <script type="text/javascript" src="https://mpweb.azureedge.net/cdn/customWidgetV1.js"></script>
+
     </head>
     <body style="text-align: center;">
+
+        <div
+        id="UserProfile"
+        data-component="CustomWidget"
+        data-sp="api_custom_UserProfile"
+        data-params="@ContactGUID=151ff322-3822-47cd-8c8d-5b0742d87d6d"
+        data-templateId="UserProfile-Template"
+        data-requireUser="false"
+        data-cache="false"
+        data-debug="false"
+        data-host="dreamcitychurch"
+        ></div>
+
         <script typle="text/javascript">
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 // dark mode
                 document.documentElement.classList.add('wa-theme-default-dark');
             }
         </script>
+        <script type="text/template" id="UserProfile-Template">
+            <dcc-updateProfile style="display:inline-block;width: 100%; max-width:600px;margin-right:auto;margin-left:auto;">
+                <wa-tab-group>
+                    <wa-tab slot="nav" panel="general">General</wa-tab>
+                    <wa-tab slot="nav" panel="skills">Skills</wa-tab>
+                    <wa-tab slot="nav" panel="interests">Interests</wa-tab>
+                    <wa-tab slot="nav" panel="gifts">Growth</wa-tab>
+                    <wa-tab-panel name="general">
+                        <wa-avatar initials="{{ DataSet1.first.Nickname | slice: 0 }}{{ DataSet1.first.Last_Name | slice: 0 }}" label="Profile Picture" image="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ DataSet1.first.Image_GUID }}"></wa-avatar>
+                        <wa-input name="First_Name" type="text" label="First Name" value="{{ DataSet1.first.Nickname }}" data-table="Contacts" required></wa-input>
+                        <wa-input name="Last_Name" type="text" label="Last Name" value="{{ DataSet1.first.Last_Name }}" data-table="Contacts" required></wa-input>
+                        <wa-input name="Email_Address" type="email" label="Email Address" data-table="Contacts" value="{{ DataSet1.first.Email_Address }}" {% if DataSet1.first.Household_Position_ID == 1 %}required{% endif %}></wa-input>
+                        <wa-checkbox {% if DataSet1.first.Bulk_Email_Opt_Out != 1 %}checked{% endif %}>Receive News & Announcement Emails</wa-checkbox>
+                        <wa-input name="Mobile_Phone" type="telephone" label="Phone" data-table="Contacts" value="{{ DataSet1.first.Mobile_Phone }}"></wa-input>
+                        <wa-checkbox {% if DataSet1.first.Do_Not_Text != 1 %}checked{% endif %}>Receive Text Messages</wa-checkbox>
+                        <wa-input name="Date_of_Birth" type="date" label="Birthday" data-table="Contacts" value="{{ DataSet1.first.Date_of_Birth }}" max="{{ 'now' | date: '%Y-%m-%d' }}"></wa-input>
+                        <wa-select name="Gender_ID" label="Gender" value="{{ DataSet1.first.Gender_ID }}">
+                            <wa-option value="1">Male</wa-option>
+                            <wa-option value="2">Female</wa-option>
+                          </wa-select>
+                        <wa-select name="Marital_Status_ID" label="Marital Status" data-table="Contacts" value="{{ DataSet1.first.Marital_Status_ID }}">
+                            <wa-option value="1">Single</wa-option>
+                            <wa-option value="2">Married</wa-option>
+                            <wa-option value="3">Divorced</wa-option>
+                            <wa-option value="4">Widowed</wa-option>
+                            <wa-option value="6">Seperated</wa-option>
+                            <wa-option value="6">Engaged</wa-option>
+                        </wa-select>
+                        {% if DataSet1.first.Gender_ID == 2 and DataSet1.first.Marital_Status_ID == 2 %}
+                            <wa-input name="Maiden_Name" type="text" label="Maiden Name" value="{{ DataSet1.first.Maiden_Name }}" data-table="Contacts"></wa-input>
+                        {% endif %}
+                        {% if DataSet1.first.Household_Position_ID != 1 %}<div id="address-message">Address information can only be updated by heads of household.</div>{% endif %}
+                        <wa-input name="Address_Line_1" type="text" label="Address" data-table="Addresses" value="{{ DataSet1.first.Address_Line_1 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="Address_Line_2" type="text" data-table="Addresses" value="{{ DataSet1.first.Address_Line_2 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="City" type="text" label="City" data-table="Addresses" value="{{ DataSet1.first.City }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="State" type="text" label="State" data-table="Addresses" maxlength=2 value="{{ DataSet1.first.State }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="Zip" type="text" label="Zip" data-table="Addresses" value="{{ DataSet1.first.Postal_Code }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                    </wa-tab-panel>
 
-        <dcc-updateProfile style="display:inline-block;width: 100%; max-width:600px;margin-right:auto;margin-left:auto;">
-            <wa-tab-group>
-                <wa-tab slot="nav" panel="general">General</wa-tab>
-                <wa-tab slot="nav" panel="skills">Skills</wa-tab>
-                <wa-tab slot="nav" panel="interests">Interests</wa-tab>
-                <wa-tab slot="nav" panel="gifts">Growth</wa-tab>
-                <wa-tab-panel name="general">
-                    <wa-avatar initials="SS" label="Profile Picture" image="https://my.dreamcitychurch.us/ministryplatformapi/files/453B265E-F188-4D31-94B5-E4711A431EF2"></wa-avatar>
-                    <wa-input name="First_Name" type="text" label="First Name" value="Stephan" data-table="Contacts" required></wa-input>
-                    <wa-input name="Last_Name" type="text" label="Last Name" value="Swinford" data-table="Contacts" required></wa-input>
-                    <wa-input name="Email_Address" type="email" label="Email Address" data-table="Contacts" value="sswinford@dreamcitychurch.us"></wa-input>
-                    <wa-input name="Mobile_Phone" type="telephone" label="Phone" data-table="Contacts" value="928-925-6190"></wa-input>
-                    <wa-input name="Date_of_Birth" type="date" label="Birthday" data-table="Contacts" value="1989-11-13" max="2024-08-28"></wa-input>
-                    <wa-radio-group name="Gender_ID" label="Gender" data-table="Contacts" value="1">
-                        <wa-radio-button value="1" style="width:33%;">Male</wa-radio-button>
-                        <wa-radio-button value="0" style="width:33%;">&nbsp;</wa-radio-button>
-                        <wa-radio-button value="2" style="width:33%;">Female</wa-radio-button>
-                    </wa-radio-group>
-                    <wa-select name="Marital_Status_ID" label="Marital Status" data-table="Contacts" value="3">
-                        <wa-option value="1">Single</wa-option>
-                        <wa-option value="2">Engaged</wa-option>
-                        <wa-option value="3">Married</wa-option>
-                        <wa-option value="4">Seperated</wa-option>
-                        <wa-option value="5">Divorced</wa-option>
-                        <wa-option value="6">Widowed</wa-option>
-                    </wa-select>
-                    <wa-input name="Address_Line_1" type="text" label="Address" data-table="Addresses" value="2419 W Paradise Dr"></wa-input>
-                    <wa-input name="City" type="text" label="City" data-table="Addresses" value="Phoenix"></wa-input>
-                    <wa-input name="State" type="text" label="State" data-table="Addresses" maxlength=2 value="AZ"></wa-input>
-                    <wa-input name="Zip" type="text" label="Zip" data-table="Addresses" value="85029"></wa-input>
-                </wa-tab-panel>
-                <wa-tab-panel name="skills">
-                    <wa-input name="Occupation" type="text" label="Occupation" value="Systems Administrator"></wa-input>
-                    <wa-input name="Industry" type="text" label="Industry" value="Church/Religious"></wa-input>
-                    <h3>Select Your Skills</h3>
-                    <div id="skills_checkboxes" class="attributes_container">
-                        <!-- List of skills as regular HTML form checkboxes. Checkbox will be hidden and label will appear as a button -->
-                            <input type="checkbox" name="skills[]" id="skill1" value="1" />
-                            <label for="skill1">Accounting</label>
-                            <input type="checkbox" name="skills[]" id="skill2" value="2" />
-                            <label for="skill2">Arts and Crafts</label>
-                            <input type="checkbox" name="skills[]" id="skill3" value="3" />
-                            <label for="skill3">Audio/Visual</label>
-                            <input type="checkbox" name="skills[]" id="skill4" value="4" />
-                            <label for="skill4">Building Maintenance</label>
-                            <input type="checkbox" name="skills[]" id="skill5" value="5" />
-                            <label for="skill5">Carpentry</label>
-                            <input type="checkbox" name="skills[]" id="skill6" value="6" />
-                            <label for="skill6">Computer Programming</label>
-                            <input type="checkbox" name="skills[]" id="skill7" value="7" />
-                            <label for="skill7">Cooking</label>
-                            <input type="checkbox" name="skills[]" id="skill8" value="8" />
-                            <label for="skill8">Data Entry</label>
-                            <input type="checkbox" name="skills[]" id="skill9" value="9" />
-                            <label for="skill9">Electrical</label>
-                            <input type="checkbox" name="skills[]" id="skill10" value="10" />
-                            <label for="skill10">Event Planning</label>
-                            
-                    </div>
+                    <wa-tab-panel name="skills">
+                        We'll use your occupation and skills information to let you know about opportunities to serve in the church where you can use your skills and talents.<br /><br />
+                        <wa-input name="Occupation_Name" type="text" label="Occupation" value="{{ DataSet1.first.Occupation_Name }}"></wa-input>
+                        <wa-input name="Industry_Name" type="text" label="Industry" value="{{ DataSet1.first.Industry_Name }}"></wa-input>
+                        <h3>Select Your Skills</h3>
+                        <div id="skills_checkboxes" class="attributes_container">
+                            <!-- List of skills as regular HTML form checkboxes. Checkbox will be hidden and label will appear as a button -->
+                            {% for skill in DataSet2 %}
+                                <input type="checkbox" name="skill" id="skill-{{ skill.Attribute_ID }}" value="{{ skill.Attribute_ID }}" {{ skill.HasAttribute }} />
+                                <label for="skill-{{ skill.Attribute_ID }}">{{ skill.Attribute_Name }}</label>
+                            {% endfor %}
+                        </div>
 
-                </wa-tab-panel>
-                <wa-tab-panel name="interests">
+                    </wa-tab-panel>
 
-                </wa-tab-panel>
-                <wa-tab-panel name="gifts">
-                    Not sure what spiritual gifts you have?<br />Take this <a target="_blank" href="https://gifts.churchgrowth.org/spiritual-gifts-survey/">Spiritual Gifts Survey</a> to find out!
-                </wa-tab-panel>
-            </wa-tab-group>
-        </dcc-updateProfile>
+                    <wa-tab-panel name="interests">
+                        We'll use your interests and hobbies to let you know about events and groups that you might enjoy and to connect you with people who share your interests.
+                        <h3>Select Your Interests & Hobbies</h3>
+                        <div id="interests_checkboxes" class="attributes_container">
+                            {% for interest in DataSet3 %}
+                                <input type="checkbox" name="interest" id="interest-{{ interest.Attribute_ID }}" value="{{ interest.Attribute_ID }}" {{ interest.HasAttribute }} />
+                                <label for="interest-{{ interest.Attribute_ID }}">{{ interest.Attribute_Name }}</label>
+                            {% endfor %}
+                        </div>
+                    </wa-tab-panel>
+
+                    <wa-tab-panel name="gifts">
+                        Accepted Jesus on: {{ DataSet1.first.Salvation_Date }}<br />
+                        Baptized on: {{ DataSet1.first.Baptism_Date }}<br /><br />
+                        We'll use your spiritual gifts to help you find a place to serve in the church where you can use your gifts and talents.
+                        <br /><br />Not sure what spiritual gifts you have?<br />Take this <a target="_blank" href="https://gifts.churchgrowth.org/spiritual-gifts-survey/">Spiritual Gifts Survey</a> to find out!
+                        <h3>Select Your Spiritual Gifts</h3>
+                        <br /><br />
+                        <div id="gifts_checkboxes" class="attributes_container">
+                            {% for gift in DataSet4 %}
+                                <input type="checkbox" name="gift" id="gift-{{ gift.Attribute_ID }}" value="{{ gift.Attribute_ID }}" {{ gift.HasAttribute }} />
+                                <label for="gift-{{ gift.Attribute_ID }}">{{ gift.Attribute_Name }}</label>
+                            {% endfor %}
+                        </div> 
+                    </wa-tab-panel>
+                </wa-tab-group>
+            </dcc-updateProfile>
+        </div>
     </body>
 </html>
