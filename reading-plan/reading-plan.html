@@ -33,7 +33,7 @@
         data-params="@ContactGUID=[cid]&@ReadingPlanID=[ReadingPlanID]"
         data-templateid="Reading-Plan-template"
         data-requireUser="false"
-        data-cache="true"
+        data-cache="false"
         data-debug="false"
         data-host="dreamcitychurch"
     ></div>
@@ -50,13 +50,17 @@
         {% endfor %}
         <div id="reading-plan-days" class="dcc-wrapper">
         {% for day in DataSet2 %}
-            <div class="reading-plan-day dcc-card" data-active={{day.Active}}>
-                <h3 class="day-title dcc-heading">{{ day.Title }}</h3>
-                <div class="day-date dcc-subheading">{{ day.Date }}</div>
-                {% if day.Active == 1 %}
-                    <div class="day-button"><a href='reading-plan-day.html?ReadingPlanID={{ day.Reading_Plan_ID }}&ReadingPlanDayID={{ day.Reading_Plan_Day_ID }}{% if day.Contact_GUID != "" and day.Contact_GUID != "null" %}&cid={{ day.Contact_GUID }}{% endif %}' class="dcc-button">Read Day {{ day.Day_Number }}</a></div>
-                {% endif %}
+            {% if day.Active == 1 %}
+            <a href='reading-plan-day.html?ReadingPlanID={{ day.Reading_Plan_ID }}&ReadingPlanDayID={{ day.Reading_Plan_Day_ID }}{% if day.Contact_GUID != "" and day.Contact_GUID != "null" %}&cid={{ day.Contact_GUID }}{% endif %}' class="reading-plan-day dcc-card dcc-button" data-active={{day.Active}} data-completed={{day.Completed}}>
+                    <h3 class="day-title dcc-heading">Day {{ day.Day_Number }}: {{ day.Title }}</h3>
+                    <div class="day-passages"><i class="fa-duotone fa-solid fa-book-bible" style="--fa-primary-color: #fff; --fa-secondary-color: var(--gray-med);"></i> {{ day.Passages | newline_to_br | replace: "<br>", ", "}}</div>
+            </a>
+            {% else %}
+            <div class="reading-plan-day dcc-card dcc-button dcc-button-inactive" data-active={{day.Active}}>
+                <h3 class="day-title dcc-heading">Day {{ day.Day_Number }}: {{ day.Title }}</h3>
+                <div class="day-passages"><i class="fa-duotone fa-solid fa-book-bible" style="--fa-primary-color: var(--gray-med); --fa-secondary-color: var(--gray-dark);"></i> {{ day.Passages | newline_to_br | replace: "<br>", ", "}}</div>
             </div>
+            {% endif %}
         {% endfor %}
         </div>
     </script>

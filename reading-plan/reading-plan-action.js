@@ -86,6 +86,15 @@ window.addEventListener('widgetLoaded', function(event) {
 
                 // Remove the scroll event listener
                 window.removeEventListener('scroll', scrollHandler);
+
+                // Check if the #day-completed element already exists. If not, add it to the #reading-plan-card element
+
+                var dayCompletedElement = document.getElementById('day-completed');
+                if (!dayCompletedElement) {
+                    var dayCompletedElement = `<div id="day-completed" class="jello-horizontal-alternate">Day Completed!</div>`;
+                    var readingPlanCard = document.getElementById('reading-plan-card');
+                    readingPlanCard.insertAdjacentHTML('beforeend', dayCompletedElement);
+                }
             }
         }
     };

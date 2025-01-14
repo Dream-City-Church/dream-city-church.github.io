@@ -37,7 +37,7 @@ a.dcc-button.button-outline {
   border: 3px solid var(--brand-primary);
 }
 
-.dcc-card {
+.dcc-card, a.dcc-card {
   display: block;
   margin-bottom: 1.5rem;
   padding: 5% 5%;
