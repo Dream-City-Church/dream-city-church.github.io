@@ -46,7 +46,7 @@
             <div id="reading-plan-card" class="dcc-wrapper">
                 <h2 id="day-title" class="dcc-heading">{{ day.Title }}</h2>
                 <div id="day-date" class="dcc-subheading">Day {{ day.Day_Number }} - {{ day.Date }}</div>
-                <div id="day-passages"><a href="dreamcitychurch://reading_plan_day/{{ day.Reading_Plan_Day_ID }}" class="dcc-button button-outline"><i class="fa-duotone fa-solid fa-book-bible" style="--fa-primary-color: var(--brand-primary); --fa-secondary-color: var(--brand-primary);"></i> {{ day.Passages | newline_to_br | replace: "<br>", ", "}}</a></div>
+                <div id="day-passages"><a href="dreamcitychurch://reading_plan_day/{{ day.Reading_Plan_Day_ID }}" class="dcc-button button-outline"><i class="fa-duotone fa-solid fa-book-bible" style="--fa-primary-color: var(--brand-primary); --fa-secondary-color: var(--brand-primary);"></i> {{ day.Passages | replace: "\n", ", "}}</a></div>
                 <div id="day-devotion" class="dcc-paragraph">{{ day.Devotion }}</div>
                 {% if day.Completed == 1 %}
                     <div id="day-completed">Day Complete</div>
