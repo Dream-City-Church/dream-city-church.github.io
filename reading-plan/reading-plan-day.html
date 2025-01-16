@@ -49,9 +49,9 @@
                 <div id="day-passages"><a href="dreamcitychurch://reading_plan_day/{{ day.Reading_Plan_Day_ID }}" class="dcc-button button-outline"><i class="fa-duotone fa-solid fa-book-bible" style="--fa-primary-color: var(--brand-primary); --fa-secondary-color: var(--brand-primary);"></i> {{ day.Passages | newline_to_br | replace: "<br>", ", "}}</a></div>
                 <div id="day-devotion" class="dcc-paragraph">{{ day.Devotion }}</div>
                 {% if day.Completed == 1 %}
-                    <div id="day-completed" class="jello-horizontal-alternate">Day Completed!</div>
+                    <div id="day-completed">Day Complete</div>
                 {% endif %}
-                <a href='reading-plan.html?ReadingPlanID={{ day.Reading_Plan_ID }}{% if day.Contact_GUID != "" and day.Contact_GUID != "null" %}&cid={{ day.Contact_GUID }}{% endif %}' id="reading-plan-back-button" class="dcc-wrapper dcc-breadcrumb" style="margin-top:2.5rem;margin-bottom:1.5rem;"><i class="fas fa-arrow-left"></i> Back to Reading Plan</a>
+                <a href='reading-plan.html?ReadingPlanID={{ day.Reading_Plan_ID }}{% if day.Contact_GUID != "" and day.Contact_GUID != "null" %}&cid={{ day.Contact_GUID }}{% endif %}' id="reading-plan-back-button" class="dcc-wrapper dcc-breadcrumb" style="margin-top:2rem;margin-bottom:1.5rem;"><i class="fas fa-arrow-left"></i> Back to Reading Plan</a>
             </div>
         {% endfor %}
     </script>

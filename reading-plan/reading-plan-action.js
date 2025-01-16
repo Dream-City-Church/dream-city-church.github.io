@@ -91,7 +91,7 @@ window.addEventListener('widgetLoaded', function(event) {
 
                 var dayCompletedElement = document.getElementById('day-completed');
                 if (!dayCompletedElement) {
-                    var dayCompletedElement = `<div id="day-completed" class="jello-horizontal-alternate">Day Completed!</div>`;
+                    var dayCompletedElement = `<div id="day-completed" class="animation">Day Complete</div>`;
                     var readingPlanCard = document.getElementById('reading-plan-card');
                     readingPlanCard.insertAdjacentHTML('beforeend', dayCompletedElement);
                 }

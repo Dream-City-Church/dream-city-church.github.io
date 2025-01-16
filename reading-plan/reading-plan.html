@@ -10,8 +10,8 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.5/dist/themes/default.css" />
-    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.5/dist/webawesome.loader.js"></script>
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.8/dist/themes/default.css" />
+    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.8/dist/webawesome.loader.js"></script>
     <link rel="stylesheet" href="reading-plan.css">
     <link rel="stylesheet" href="https://dream-city-church.github.io/dcc-widgets/dccw-stylesheet.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
@@ -47,6 +47,7 @@
                 <div id="plan-dates" class="dcc-subheading">{{ plan.Start_Date }} through {{ plan.End_Date }}</div>
                 <div id="plan-description" class="dcc-paragraph-bold">{{ plan.Description | newline_to_br }}</div>
             </div>
+            <wa-progress-bar value="{{ plan.Progress }}"></wa-progress-bar>
         {% endfor %}
         <div id="reading-plan-days" class="dcc-wrapper">
         {% for day in DataSet2 %}
