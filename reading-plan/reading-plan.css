@@ -46,7 +46,7 @@ wa-progress-bar {
 .dcc-card[data-active="1"] {
   background-color: var(--brand-primary);
   background-image: linear-gradient(-10deg, var(--brand-primary) 0%, var(--brand-secondary) 90%);
-  border: 1px solid var(--brand-sunshine);
+  border: 2px solid var(--brand-sunshine);
   color: white;
   text-align: left;
   cursor: pointer;
