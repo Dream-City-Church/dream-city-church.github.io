@@ -59,7 +59,7 @@ window.addEventListener('widgetLoaded', function(event) {
 
     // Check if the user has scrolled to the bottom of the page
     var scrollHandler = function() {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-30) {
             // Stop the timer
             var endTime = new Date().getTime();
             timeElapsed = endTime - startTime;
