@@ -95,6 +95,7 @@ wa-progress-bar {
 /* Reading Plan Day Styles */
 a#reading-plan-back-button {
   margin-top: 1rem;
+  display: inline-block;
 }
 
 #day-date {
@@ -108,7 +109,7 @@ a#reading-plan-back-button {
 }
 
 #day-devotion {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 #day-devotion ul, #day-devotion ol {
@@ -116,13 +117,23 @@ a#reading-plan-back-button {
   margin: 0;
 }
 
-@keyframes day-complete {0% { opacity: 0; height: 0; padding: 0; line-height:0;} 100% { opacity: 1; height: 30px; padding: 1rem; line-height:1rem;} }
+@keyframes day-complete {
+  0% { opacity: 0; height: 0; padding: 0; line-height:0;} 
+  100% { opacity: 1; height: 30px; padding: 1rem; line-height:1rem;}
+}
+
+#day-completed.animation { 
+  opacity: 0;
+  height: 0;
+  line-height: 0;
+  padding: 0;
+  animation: day-complete 2s ease 1s forwards; 
+}
 
 #day-completed {
   text-align: center;
   font-weight: bold;
   font-size: 1.5rem;
-  height: 30px;
   text-transform: uppercase;
   background-image: linear-gradient(-190deg, var(--brand-primary), var(--brand-secondary));
   background-clip: text;
@@ -134,16 +145,11 @@ a#reading-plan-back-button {
   border-style: solid;
   border-right: none;
   border-left: none;
-  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
-}
-
-#day-completed.animation { 
-    opacity: 0;
-    height: 0;
-    line-height: 0;
-    padding: 0;
-    animation: day-complete 2s ease 1s forwards; 
+  opacity: 1;
+  height: 30px;
+  padding: 1rem;
+  line-height: 1rem;
 }
