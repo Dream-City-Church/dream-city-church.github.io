@@ -88,13 +88,18 @@ window.addEventListener('widgetLoaded', function(event) {
                 window.removeEventListener('scroll', scrollHandler);
 
                 // Check if the #day-completed element already exists. If not, add it to the #reading-plan-card element
-
                 var dayCompletedElement = document.getElementById('day-completed');
                 if (!dayCompletedElement) {
                     var dayCompletedElement = `<div id="day-completed" class="animation">Day Complete</div>`;
                     var readingPlanCard = document.getElementById('reading-plan-card');
                     readingPlanCard.insertAdjacentHTML('beforeend', dayCompletedElement);
                 }
+
+                // Smooth scroll to the bottom of the window
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
             }
         }
     };
