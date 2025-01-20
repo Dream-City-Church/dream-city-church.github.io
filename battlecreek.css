@@ -96,19 +96,22 @@
 }
 
 .mpp-card--badge {
-    border-radius: 0.5rem 0 0 0;
+    border-radius: 0.5rem 0.5rem 0 0;
     font-size: 0.9rem;
+    text-align: center;
+    width: 150px;
     font-weight: 600;
-    padding-left: 0.75rem;
     z-index: -1;
     background-color: #f4be49;
     color: white;
-    left: -63px;
-    top: 83px;
+    left: -88px;
+    top: 70px;
     transform: rotate(270deg);
 }
 
 .mpp-card--badge::after {
+    /* Need FontAwesome Integration */
+    display: none; 
     content: "\f559";
     font-family: 'FontAwesome';
     top: 0px;
@@ -201,6 +204,8 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .event-date-range:before, .group-meeting-day:before, .opportunity-start-date:before {
+    /* Needs FontAwesome Integration */
+    display: none;
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f073";
@@ -208,6 +213,8 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .event-location:before, .group-location:before, .opportunity-location:before {
+    /* Needs FontAwesome Integration */
+    display: none;
     font-family: 'FontAwesome';
     padding-right: 7px;
     padding-left: 1px;
@@ -216,6 +223,8 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .group-capacity:before {
+    /* Needs FontAwesome Integration */
+    display: none;
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f0c0";
@@ -223,6 +232,8 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .group-start-date:before {
+    /* Needs FontAwesome Integration */
+    display: none;
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f017";
@@ -446,6 +457,62 @@ h4.mpp-card--subtitle:nth-child(1) {
 /*--------------------------------------------*/
 :host {
     --component-bgColor: #657783;
+}
+
+/****************/
+/* Login Widget */
+/****************/
+
+.mppw-login {
+    float: right;
+}
+
+.mppw-login--dropdown {
+    position: absolute;
+    z-index: 100;
+    width: max-content;
+}
+
+.mppw-component-container.mppw-login {
+    border: none;
+    height: auto;
+    padding-bottom: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.mppw-component-container.mppw-login a {
+    color: var(--secondary);
+}
+
+.mppw-component-container.mppw-login li a {
+    color: var(--brand-dusk);
+}
+
+.mppw-login--list-item a:hover, .mppw-login--list-item a:focus {
+    color: var(--secondary);
+}
+
+.mppw-user-photo {
+    height: 40px;
+    width: 40px;
+}
+
+.mppw-icon-unlock {
+    background: none;
+}
+
+.mppw-icon-unlock:before {
+    /* Need FontAwesome Integration */
+    display: none;
+    content: "\f007";
+    font-family: 'FontAwesome';
+    color: white;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 /*--------------------------------------------*/
