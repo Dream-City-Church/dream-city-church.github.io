@@ -1,5 +1,5 @@
 /* Web Component that will be used to display the prayer request form */
-const prayerRequestVersionNumber = '1.241217';
+const prayerRequestVersionNumber = '1.250122';
 console.log(`Prayer Request Form Version: ${prayerRequestVersionNumber}`);
 
 //// Analytics Tracking
