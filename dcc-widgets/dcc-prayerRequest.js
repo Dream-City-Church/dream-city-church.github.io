@@ -110,6 +110,7 @@ function loadPrayerRequestForm() {
         </div>
     `;
     document.getElementsByTagName("dcc-PrayerRequestForm")[0].innerHTML = requestFormHTML;
+
     turnstile.render('#turnstile-challenge', {
         sitekey: '0x4AAAAAAA6ACv2bbg9fJSl8',
         action: "prayer_request"
@@ -211,9 +212,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     submitButton.textContent = 'Submitted!';
 
                     if(data.verification_needed === true) {
-                        document.getElementById("submit-status").innerHTML = '<p>Your post needs verification. <i class="fa-solid fa-comment-exclamation fa-beat fa-xl"></i></p><p>Please check your email and click the verification link.</p>';
+                        document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-comment-exclamation fa-beat fa-xl"></i><p>Your post needs verification.</p><p>Please check your email and click the verification link.</p>';
                     } else {
-                        document.getElementById("submit-status").innerHTML = '<p>Your post has been submitted. Thank you! <i class="fa-solid fa-comment-check fa-bounce fa-xl"></i></p><p>Check your email for updates regarding your post.</p>';
+                        document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-comment-check fa-bounce fa-xl"></i><p>Your post has been submitted. Thank you!</p><p>Check your email for updates regarding your post.</p>';
                     }
 
                     form.reset();
@@ -238,7 +239,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 .catch((error) => {
                     if (error.message !== "Invalid Email Address") {
                         submitButton.textContent = "Error!";
-                        document.getElementById("submit-status").innerHTML = '<p>Sorry, something went wrong. Try again later. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i></p>';
+                        document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i><p>Sorry, something went wrong. Try again later.</p>';
                         setTimeout(() => {
                             submitButton.textContent = "Submit";
                             submitButton.disabled = false;

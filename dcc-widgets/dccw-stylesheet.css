@@ -562,6 +562,7 @@ wa-radio-group.visibility-container {
 #submit-status {
   text-align: center;
   margin: 1rem;
+  margin-top: 1.5rem;
   color: var(--brand-primary);
 }
 
