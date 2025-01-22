@@ -101,7 +101,7 @@ function loadPrayerRequestForm() {
                 <input type="hidden" id="prayer-form-uid" name="uid" value="${userGuid}">
                 <input type="hidden" id="prayer-form-cid" name="cid" value="${contactGuid}">
                 <input type="hidden" id="prayer-form-rid" name="rid" value="${relatedGuid}">
-                <div class="cf-turnstile" data-sitekey="0x4AAAAAAA6ACv2bbg9fJSl8"></div>
+                <div id="turnstile-challenge" class="cf-turnstile" data-sitekey="0x4AAAAAAA6ACv2bbg9fJSl8"></div>
                 <div class="submit-container">
                     <wa-button style="--background-color: #bc204b; --border-radius: 2rem;" type="submit" class="submit-button" id="prayer-request-submit-button">Submit</wa-button>
                 </div>
@@ -110,6 +110,10 @@ function loadPrayerRequestForm() {
         </div>
     `;
     document.getElementsByTagName("dcc-PrayerRequestForm")[0].innerHTML = requestFormHTML;
+    turnstile.render('#turnstile-challenge', {
+        sitekey: '0x4AAAAAAA6ACv2bbg9fJSl8',
+        action: "prayer_request"
+    });
 }
 
 //Function for phoneNumberField to not allow non-numbers, limit to 10 numbers, and format as xxx-xxx-xxxx.
