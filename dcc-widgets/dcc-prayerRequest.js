@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const uid = document.querySelector("#prayer-form-uid");
     const cid = document.querySelector("#prayer-form-cid");
     const rid = document.querySelector("#prayer-form-rid");
-    const turnstile = document.querySelector(".cf-turnstile-response");
+    const turnstile = document.querySelector('[name="cf-turnstile-response"]');
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     uid: uid.value || "",
                     cid: cid.value || "",
                     rid: rid.value || "",
-                    turnstile: turnstile.value,
+                    turnstile: turnstile.value || "",
                     url: url,
                     page: page,
                     deviceID: deviceID
