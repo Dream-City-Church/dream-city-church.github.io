@@ -155,6 +155,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         submitButton.disabled = true;
         submitButton.textContent = "Submitting...";
 
+        if (!turnstile.value) {
+            submitButton.textContent = "Error!";
+            document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-shield-halved fa-shake fa-xl"></i><p>Security validation failed. Please refresh and try again.</p>';
+            submitButton.textContent = "Error!";
+            return;
+        }
+
+
         if (firstName.checkValidity() && lastName.checkValidity() && email.checkValidity() && request.checkValidity() && type.checkValidity() && visibility.checkValidity()) {
             fetch("https://prod-10.westus2.logic.azure.com:443/workflows/5562f39e49bb451e8cd39699645d8e75/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ynLuDLIn08dTCFuqdKn-VL71bCNuijKeX2MhMSUDIgU", {
                 method: "POST",
@@ -192,7 +200,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                             email.reportValidity();
                             submitButton.textContent = "Error!";
-                            document.getElementById("submit-status").innerHTML = '<p>Please enter a valid email address. <i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i></p>';
+                            document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i><p>Please enter a valid email address.</p>';
 
                             // add event listener on email field to clear the custom validity when the user types in the field
                             email.addEventListener("input", () => {
@@ -204,6 +212,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             // Exit the promise chain
                             throw new Error("Invalid Email Address");
                         });
+                    } else if (response.status === 401) {
+                        
+                        return response.json().then(() => {
+                            submitButton.textContent = "Error!";
+                            document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-shield-halved fa-shake fa-xl"></i><p>Security validation failed. Please refresh and try again.</p>';
+                            // Exit the promise chain
+                            throw new Error("Turnstile Validation Failure");
+                        });
+
                     } else {
                         throw new Error("Server Error");
                     }                    
@@ -237,7 +254,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }, 10000);
                 })
                 .catch((error) => {
-                    if (error.message !== "Invalid Email Address") {
+                    if (error.message !== "Invalid Email Address" || error.message !== "Turnstile Validation Failure") {
                         submitButton.textContent = "Error!";
                         document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i><p>Sorry, something went wrong. Try again later.</p>';
                         setTimeout(() => {
