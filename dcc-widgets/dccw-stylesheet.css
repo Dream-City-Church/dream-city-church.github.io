@@ -502,6 +502,18 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
   color: white;
 }
 
+@media screen and (max-width: 400px) {
+  .PrayerRequestButton,.PraiseReportButton {
+    max-width: 50%;
+  }
+  wa-icon[slot="prefix"] {
+    margin-inline-end: 0.25rem;
+  }
+  wa-icon[slot="suffix"] {
+    margin-inline-start: 0.25rem;
+  }
+}
+
 #prayer-request-form wa-input.input-field {
   margin-bottom: 1.5rem;
 }
