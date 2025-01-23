@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (!turnstile.value) {
             submitButton.textContent = "Error!";
-            document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-shield-halved fa-shake fa-xl"></i><p>Security validation failed. Please refresh and try again.</p>';
+            document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-shield-xmark fa-shake fa-xl"></i><p>Security validation failed.</p><p>Please refresh and try again.</p>';
             submitButton.textContent = "Error!";
             return;
         }
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         
                         return response.json().then(() => {
                             submitButton.textContent = "Error!";
-                            document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-shield-halved fa-shake fa-xl"></i><p>Security validation failed. Please refresh and try again.</p>';
+                            document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-shield-xmark fa-shake fa-xl"></i><p>Security validation failed.</p><p>Please refresh and try again.</p>';
                             // Exit the promise chain
                             throw new Error("Turnstile Validation Failure");
                         });
@@ -252,6 +252,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     setTimeout(() => {
                         document.getElementById("submit-status").innerHTML = '';
                     }, 10000);
+                    turnstile.reset('#turnstile-challenge');
                 })
                 .catch((error) => {
                     if (error.message !== "Invalid Email Address" || error.message !== "Turnstile Validation Failure") {
