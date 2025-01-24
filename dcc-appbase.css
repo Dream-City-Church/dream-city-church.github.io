@@ -47,6 +47,11 @@ a.dcc-button.button-outline {
   box-shadow: var(--box-shadow-dark);
 }
 
+a:active, a:focus, a:hover {
+  outline: none;
+  filter: brightness(0.9);
+}
+
 .dcc-wrapper {
   display: block;
   margin: 0 7%;
