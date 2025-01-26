@@ -47,6 +47,16 @@ a.dcc-button.button-outline {
   box-shadow: var(--box-shadow-dark);
 }
 
+a.dcc-buttoncard {
+  background-color: var(--brand-primary);
+  color: white;
+  font-weight: bold;
+  width: fit-content;
+  padding: 1rem;
+  display: inline-block;
+  margin-inline: 1rem;
+}
+
 a:active, a:focus, a:hover {
   outline: none;
   filter: brightness(0.9);
