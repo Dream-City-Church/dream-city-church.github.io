@@ -30,7 +30,7 @@ function renderTurnstileChallenge() {
         action: "prayer_request"
     });
 
-    turnstile.getResponse();
+    console.log(turnstile.getResponse());
 }
 
 function loadPrayerRequestForm() {
@@ -165,8 +165,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         submitButton.disabled = true;
         submitButton.textContent = "Submitting...";
 
-        renderTurnstileChallenge();
-
         var turnstile = document.querySelector('[name="cf-turnstile-response"]');
 
         if (!turnstile.value) {
@@ -288,6 +286,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }
                 });
         };
+        renderTurnstileChallenge();
     });
 });
                 
