@@ -467,11 +467,13 @@ div#prayerStatusDialog, div#prayer-wall-status-message {
   max-width: 600px;
   margin-right: auto;
   margin-left: auto;
+  text-align: center;
 }
 
 #prayer-request-form wa-radio-group.type-container {
   text-align: center;
   margin-bottom: 2rem;
+  display: inline-block;
 }
 
 .PrayerRequestButton {

@@ -268,7 +268,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }
                 });
         }
-        turnstile.reset('#turnstile-challenge');
+        turnstile.render('#turnstile-challenge', {
+            sitekey: '0x4AAAAAAA6ACv2bbg9fJSl8',
+            action: "prayer_request"
+        });
     });
 });
                 
