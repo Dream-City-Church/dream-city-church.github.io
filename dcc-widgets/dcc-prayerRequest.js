@@ -267,13 +267,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }, 5000);
                     }
                 });
-        }
-        turnstile.render('#turnstile-challenge', {
-            sitekey: '0x4AAAAAAA6ACv2bbg9fJSl8',
-            action: "prayer_request"
-        });
+        };
+        renderTurnstileChallenge();
     });
 });
+
+function renderTurnstileChallenge() {
+    turnstile.render('#turnstile-challenge', {
+        sitekey: '0x4AAAAAAA6ACv2bbg9fJSl8',
+        action: "prayer_request"
+    });
+}
                 
 
 // When the user types in the textarea, update the character count //

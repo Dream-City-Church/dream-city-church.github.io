@@ -542,6 +542,7 @@ wa-textarea.request-text-box {
 wa-radio-group.visibility-container {
   text-align: center;
   margin-bottom: 2rem;
+  display: inline-block;
 }
 
 .VisibilityPublic, .VisibilityPrivate  {
