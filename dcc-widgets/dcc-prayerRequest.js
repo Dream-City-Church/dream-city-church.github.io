@@ -18,6 +18,13 @@ if (page === '') {
     page = window.location.pathname.split("/").slice(-2)[0];
 }
 
+function renderTurnstileChallenge() {
+    turnstile.render('#turnstile-challenge', {
+        sitekey: '0x4AAAAAAA6ACv2bbg9fJSl8',
+        action: "prayer_request"
+    });
+}
+
 function loadPrayerRequestForm() {
     // get device screen width
     var screenWidth = window.innerWidth;
@@ -111,10 +118,7 @@ function loadPrayerRequestForm() {
     `;
     document.getElementsByTagName("dcc-PrayerRequestForm")[0].innerHTML = requestFormHTML;
 
-    turnstile.render('#turnstile-challenge', {
-        sitekey: '0x4AAAAAAA6ACv2bbg9fJSl8',
-        action: "prayer_request"
-    });
+    renderTurnstileChallenge();
 }
 
 //Function for phoneNumberField to not allow non-numbers, limit to 10 numbers, and format as xxx-xxx-xxxx.
@@ -148,12 +152,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const uid = document.querySelector("#prayer-form-uid");
     const cid = document.querySelector("#prayer-form-cid");
     const rid = document.querySelector("#prayer-form-rid");
-    const turnstile = document.querySelector('[name="cf-turnstile-response"]');
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         submitButton.disabled = true;
         submitButton.textContent = "Submitting...";
+
+        var turnstile = document.querySelector('[name="cf-turnstile-response"]');
 
         if (!turnstile.value) {
             submitButton.textContent = "Error!";
@@ -245,6 +250,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                     } else if (contactGuid && userGuid) {
                         window.history.pushState({}, document.title, `?uid=${userGuid}&cid=${contactGuid}`);
                     }
+                    // Fill the first name, last name, email, and phone fields with data from vars
+                    document.querySelector("#firstNameField").value = firstName.value;
+                    document.querySelector("#lastNameField").value = lastName.value;
+                    document.querySelector("#emailAddressField").value = email.value;
+                    document.querySelector("#phoneNumberField").value = phone.value;
+                    // Reset the submit button and re-enable it after 5 seconds
                     setTimeout(() => {
                         submitButton.textContent = "Submit";
                         submitButton.disabled = false;
@@ -271,13 +282,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         renderTurnstileChallenge();
     });
 });
-
-function renderTurnstileChallenge() {
-    turnstile.render('#turnstile-challenge', {
-        sitekey: '0x4AAAAAAA6ACv2bbg9fJSl8',
-        action: "prayer_request"
-    });
-}
                 
 
 // When the user types in the textarea, update the character count //
