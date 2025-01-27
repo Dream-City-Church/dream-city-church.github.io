@@ -117,8 +117,6 @@ function loadPrayerRequestForm() {
         </div>
     `;
     document.getElementsByTagName("dcc-PrayerRequestForm")[0].innerHTML = requestFormHTML;
-
-    renderTurnstileChallenge();
 }
 
 //Function for phoneNumberField to not allow non-numbers, limit to 10 numbers, and format as xxx-xxx-xxxx.
@@ -157,6 +155,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         e.preventDefault();
         submitButton.disabled = true;
         submitButton.textContent = "Submitting...";
+
+        renderTurnstileChallenge();
 
         var turnstile = document.querySelector('[name="cf-turnstile-response"]');
 
@@ -279,7 +279,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }
                 });
         };
-        renderTurnstileChallenge();
     });
 });
                 
