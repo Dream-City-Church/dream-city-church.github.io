@@ -117,6 +117,7 @@ function loadPrayerRequestForm() {
         </div>
     `;
     document.getElementsByTagName("dcc-PrayerRequestForm")[0].innerHTML = requestFormHTML;
+    renderTurnstileChallenge();
 }
 
 //Function for phoneNumberField to not allow non-numbers, limit to 10 numbers, and format as xxx-xxx-xxxx.
