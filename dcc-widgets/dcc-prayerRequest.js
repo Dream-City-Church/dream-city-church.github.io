@@ -255,6 +255,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     turnstile.reset('#turnstile-challenge');
                 })
                 .catch((error) => {
+                    console.log(error);
                     if (error.message !== "Invalid Email Address" || error.message !== "Turnstile Validation Failure") {
                         submitButton.textContent = "Error!";
                         document.getElementById("submit-status").innerHTML = '<i class="fa-solid fa-comment-xmark fa-shake fa-xl"></i><p>Sorry, something went wrong. Try again later.</p>';
