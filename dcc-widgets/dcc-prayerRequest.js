@@ -252,7 +252,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     setTimeout(() => {
                         document.getElementById("submit-status").innerHTML = '';
                     }, 10000);
-                    turnstile.reset();
                 })
                 .catch((error) => {
                     console.log(error);
@@ -269,6 +268,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }
                 });
         }
+        turnstile.reset('#turnstile-challenge');
     });
 });
                 
