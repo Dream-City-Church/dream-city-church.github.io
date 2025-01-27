@@ -19,6 +19,13 @@ if (page === '') {
 }
 
 function renderTurnstileChallenge() {
+    var turnstile = document.querySelector('[name="cf-turnstile-response"]');
+
+    if (turnstile.value) {
+        // If the turnstile value already exists, remove any existing elements in the turnstile var
+        turnstile.remove();
+    }
+
     turnstile.render('#turnstile-challenge', {
         sitekey: '0x4AAAAAAA6ACv2bbg9fJSl8',
         action: "prayer_request"
