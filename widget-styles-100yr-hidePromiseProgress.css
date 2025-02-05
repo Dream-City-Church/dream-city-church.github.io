@@ -16,6 +16,10 @@
     display: none;
 }
 
+.form--col:has(#frequency) {
+    display: none;
+}
+
 #TotalPledgeValue {
     font-weight: bold;
 }

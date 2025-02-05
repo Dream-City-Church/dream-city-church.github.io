@@ -168,12 +168,16 @@ h1, h2, h3 {
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.mpp-card--badge.Meets.Online::after {
+.mpp-card--badge.Meets.Online::after, .mpp-card--badge.Completed::after {
     display: none;
 }
 
 .mpp-card--badge.Completed {
     background: linear-gradient(160deg, #c7c9c8aa 33%, #c7c9c866 100%);
+    color: var(--brand-charcoal);
+    left: -70px;
+    top:67px;
+    border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .mpp-card--badge.full {
