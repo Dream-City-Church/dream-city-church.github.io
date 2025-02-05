@@ -16,7 +16,7 @@
     display: none;
 }
 
-.form--col:has(#frequency) {
+.form--col:has(#Frequency) {
     display: none;
 }
 
