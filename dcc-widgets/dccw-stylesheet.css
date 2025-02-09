@@ -569,13 +569,17 @@ wa-radio-group.visibility-container {
 #prayer-tou {
   position: absolute;
   z-index: 99999;
-  max-width: 600px;
-  left: calc(50% - 300px);
+  max-width: 1000px;
+  left: calc(50% - 500px);
   margin-left: auto;
   margin-right: auto;
   background-color: #efefef;
   padding: 1rem;
   text-align: left;
+}
+
+#prayer-tou ul {
+  margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 600px) {
