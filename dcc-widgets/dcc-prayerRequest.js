@@ -34,8 +34,9 @@ function renderTurnstileChallenge() {
 }
 
 var prayerDisclaimer = `
-<div id="prayer-tou" class="dcc-modal" style="display: none;">
-    <div id="prayer-disclaimer-dismiss" class="dcc-modal-close" onclick="document.getElementById('prayer-tou').style.display = 'none';" style="cursor:pointer;">Close &times;</div>
+<div id="prayer-tou" class="dcc-modal">
+    <div id="prayer-tou-content">
+    <div id="prayer-disclaimer-dismiss" class="dcc-modal-close" onclick="termsModalClose()" style="cursor:pointer;">Close &times;</div>
     <h3>Dream City Church Prayer Wall Terms of Use</h3>
     <p>Welcome to the Dream City Church Prayer Wall. We are grateful for your participation in this community of faith and prayer. To ensure a respectful and supportive environment, we ask that all users adhere to the following terms of use:</p>
     <ol><li><strong>Purpose of the Prayer Wall</strong>
@@ -70,7 +71,8 @@ var prayerDisclaimer = `
     <p>We are committed to protecting your privacy and the privacy of those you're praying for. Please refrain from including any personal or identifying information in your prayer requests.</p></li></ol>
 
     <p>By using the Prayer Wall, you agree to abide by these terms. Thank you for your understanding and cooperation in making this a welcoming space for all.</p>
-    <div id="prayer-disclaimer-dismiss" class="dcc-modal-close" onclick="document.getElementById('prayer-tou').style.display = 'none';" style="cursor:pointer;">Close &times;</div>
+    <div id="prayer-disclaimer-dismiss" class="dcc-modal-close" onclick="termsModalClose()" style="cursor:pointer;">Close &times;</div>
+    </div>
 </div>
 `;
 
@@ -117,7 +119,6 @@ function loadPrayerRequestForm() {
     }
 
     requestFormHTML = `
-        ${prayerDisclaimer}
         ${greetingHtml}
         <div id="prayer-request-form">
             <form id="request-form">
@@ -151,7 +152,7 @@ function loadPrayerRequestForm() {
 
                 <div id="prayer-disclaimer">
                     <p>If you are having an urgent emergency, please call 911. If you are having suicidal thoughts or thoughts of self-harm, please call the Suicide & Crisis Lifeline at 988.</p>
-                    <p>By submitting your prayer request, you agree to abide by the <a href="#" onclick="termsModalPopup()">Prayer Wall Terms of Use</a>.</p>
+                    <p>By submitting your prayer request, you agree to abide by the <a href="#" onclick="termsModalOpen()">Prayer Wall Terms of Use</a>.</p>
                 </div>
 
                 <input type="hidden" id="prayer-form-uid" name="uid" value="${userGuid}">
@@ -169,8 +170,14 @@ function loadPrayerRequestForm() {
     renderTurnstileChallenge();
 }
 
-function termsModalPopup() {
-    document.getElementById("prayer-tou").style.display = "block";
+function termsModalOpen() {
+    // add the prayer-tau modal at the root of the DOM
+    document.body.insertAdjacentHTML('beforeend', prayerDisclaimer);
+}
+
+function termsModalClose() {
+    // remove the prayer-tau modal from the DOM
+    document.getElementById('prayer-tou').remove();
 }
 
 //Function for phoneNumberField to not allow non-numbers, limit to 10 numbers, and format as xxx-xxx-xxxx.
