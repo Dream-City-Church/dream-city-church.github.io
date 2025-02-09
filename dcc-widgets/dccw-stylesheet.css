@@ -651,7 +651,7 @@ wa-radio-group.visibility-container {
   .submit-container wa-button {
     --label-color: white;
   }
-  #prayer-tou {
+  #prayer-tou-content {
     background-color: #333;
   }
 }

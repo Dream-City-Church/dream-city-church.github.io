@@ -1,5 +1,5 @@
 /* Web Component that will be used to display the prayer request form */
-const prayerRequestVersionNumber = '1.250122';
+const prayerRequestVersionNumber = '1.250209';
 console.log(`Prayer Request Form Version: ${prayerRequestVersionNumber}`);
 
 //// Analytics Tracking
@@ -36,7 +36,7 @@ function renderTurnstileChallenge() {
 var prayerDisclaimer = `
 <div id="prayer-tou" class="dcc-modal">
     <div id="prayer-tou-content">
-    <div id="prayer-disclaimer-dismiss" class="dcc-modal-close" onclick="termsModalClose()" style="cursor:pointer;">Close &times;</div>
+    <div id="prayer-disclaimer-dismiss" class="dcc-modal-close" onclick="termsModalClose()" style="cursor:pointer;margin-bottom:1rem;">Close &times;</div>
     <h3>Dream City Church Prayer Wall Terms of Use</h3>
     <p>Welcome to the Dream City Church Prayer Wall. We are grateful for your participation in this community of faith and prayer. To ensure a respectful and supportive environment, we ask that all users adhere to the following terms of use:</p>
     <ol><li><strong>Purpose of the Prayer Wall</strong>
