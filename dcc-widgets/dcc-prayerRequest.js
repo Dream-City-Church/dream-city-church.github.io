@@ -46,7 +46,7 @@ var prayerDisclaimer = `
     <li>Strength to overcome sin or temptation</li>
     <li>Wisdom in decision-making</li>
     <li>Salvation for family and friends</li></ul>
-    <p>It is not intended for personal prayer journaling (prayers between you and God), reciting scripture, or sharing preaching/teachings. While these are good things, they do not fall under the purpose of the public prayer wall.</p></li>
+    <p>It is not intended for personal prayer journaling (prayers between you and God), reciting scripture, or sharing preaching/teaching. While these are good things, they do not fall under the purpose of the public prayer wall.</p></li>
 
     <li><strong>Submission Guidelines</strong>
     <ul><li>Limit public prayer requests to one every three days.</li>
@@ -54,15 +54,15 @@ var prayerDisclaimer = `
     <li>Prayer requests should not contain full names, only first names, or any other identifying information such as addresses, phone numbers, or email addresses.</li></ul></li>
     
     <li><strong>Content Restrictions</strong>
-    <ul><li>Prayer requests must not call for violence or ask for God to "destroy" any person or people groups. Our belief is that the message of Jesus and salvation is for all, and that everyone can be redeemed.</li>
-    <li>Do not denigrate or insult any persons or ethnicities. We are all made in God's image and are deserving of respect.</li>
+    <ul><li>Prayer requests must not call for violence or ask for God to "destroy" any person or persons. Our belief is that the message of Jesus and salvation is for all, and that everyone can be redeemed.</li>
+    <li>Do not denigrate or insult any person or persons. We are all made in God's image and are deserving of respect.</li>
     <li>Avoid political divisiveness. Prayers regarding politicians should focus on wisdom, guidance, salvation, and the rise of Godly leaders.</li>
     <li>Do not use the Prayer Wall to promote personal agendas, political views, or other divisive content.</li>
     <li>If your prayer request involves sensitive or graphic content, please be mindful of how you share it.</li>
     <li>Do not promote music, websites, videos, books, articles, or any other material. The Prayer Wall is solely for prayer requests.</li></ul></li>
     
     <li><strong>Moderation and Rejection of Requests</strong>
-    <p>Dream City Church reserves the right to review and reject any prayer requests that do not comply with these terms. This is to maintain a respectful and focused environment for all users. Dream City Church also reserves the right to modify prayer requests in whole or part to remove content that does not align with the terms of use or to entirely hide prayer requests that do not align with the terms of use. Examples of content that may be modified or removed include inappropriate language, personal attacks, or promotional content.</p></li>
+    <p>Dream City Church reserves the right to review and reject any prayer requests that do not align with these terms of use, or for any other reason. This is to maintain a respectful and focused environment for all users. Dream City Church also reserves the right to modify prayer requests in whole or part to remove content that does not align with the terms of use or to entirely hide prayer requests that do not align with the terms of use. Examples of content that may be modified or removed include, but are not limited to, inappropriate language, personal attacks, or references to external content.</p></li>
 
     <li><strong>Community Conduct</strong>
     <p>Users are expected to engage with the Prayer Wall in a spirit of love, respect, and encouragement, reflecting the teachings of Jesus.</p></li>
