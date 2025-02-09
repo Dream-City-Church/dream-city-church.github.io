@@ -576,6 +576,8 @@ wa-radio-group.visibility-container {
   background-color: #efefef;
   padding: 1rem;
   text-align: left;
+  max-height: 65vh;
+  overflow: scroll;
 }
 
 #prayer-tou ul {
