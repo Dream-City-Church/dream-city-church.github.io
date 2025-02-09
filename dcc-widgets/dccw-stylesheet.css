@@ -566,6 +566,31 @@ wa-radio-group.visibility-container {
   margin-bottom: 2rem;
 }
 
+#prayer-tou {
+  position: absolute;
+  z-index: 99999;
+  max-width: 600px;
+  left: calc(50% - 300px);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #efefef;
+  padding: 1rem;
+  text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+  #prayer-tou {
+    left: auto;
+  }
+}
+
+#prayer-disclaimer-dismiss {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+  font-style: italic;
+}
+
 .submit-container {
   text-align: center;
 }
@@ -608,6 +633,9 @@ wa-radio-group.visibility-container {
   }
   .submit-container wa-button {
     --label-color: white;
+  }
+  #prayer-tou {
+    background-color: #333;
   }
 }
 
