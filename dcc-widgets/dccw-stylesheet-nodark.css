@@ -71,6 +71,12 @@ dcc-householdprf h3 {
 }
 
 /* Prayer Wall */
+wa-input [part~='hint'], wa-input [slot~='hint'] {
+  text-align: left;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
 #prayer-wall {
   width: 100%;
   display: flex;
