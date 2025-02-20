@@ -87,8 +87,8 @@ function loadPrayerRequestForm() {
     submitterInfo = `
         <wa-input id="firstNameField" name="first-name" class="input-field" placeholder="First Name" minlength=3 max-length=20 autocapitalize="words" autocomplete="given-name" inputmode="text" required></wa-input>
         <wa-input id="lastNameField" name="last-name" class="input-field" placeholder="Last Name" minlength=3 max-length=20 autocapitalize="words" autocomplete="family-name" inputmode="text" required></wa-input>
-        <wa-input id="emailAddressField" name="email" class="input-field" placeholder="Email Address" minlength=5 max-length=30 type="email" inputmode="email" autocomplete="email" help-text="A verification email will be sent to this address." required></wa-input>
-        <wa-input id="phoneNumberField" name="phone" class="input-field" placeholder="Mobile Phone" minlength=10 max-length=13 type="tel" inputmode="tel" autocomplete="mobile"><span slot="help-text">Optional. By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href='https://dreamcitychurch.us/sms-tos/' target='_blank'>Terms of Service</a> and <a href='https://dreamcitychurch.us/privacy-policy/' target='_blank'>Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</span></wa-input>
+        <wa-input id="emailAddressField" name="email" class="input-field" placeholder="Email Address" minlength=5 max-length=30 type="email" inputmode="email" autocomplete="email" hint="A verification email will be sent to this address." required></wa-input>
+        <wa-input id="phoneNumberField" name="phone" class="input-field" placeholder="Mobile Phone" minlength=10 max-length=13 type="tel" inputmode="tel" autocomplete="mobile"><span slot="hint">Optional. By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href='https://dreamcitychurch.us/sms-tos/' target='_blank'>Terms of Service</a> and <a href='https://dreamcitychurch.us/privacy-policy/' target='_blank'>Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</span></wa-input>
     `;
 
     userGuid = getUrlVars()["uid"];
