@@ -1,6 +1,6 @@
 @import url(/widget-styles-100yr.css);
 
-h1.mppw-form-wrapper {
+.mppw-form-wrapper h1 {
     display: none;
 }
 
