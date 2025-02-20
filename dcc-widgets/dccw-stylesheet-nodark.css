@@ -71,7 +71,7 @@ dcc-householdprf h3 {
 }
 
 /* Prayer Wall */
-wa-input [part~='hint'], wa-input [slot~='hint'] {
+wa-input [slot~='hint'], wa-input slot [name~='hint'] {
   text-align: left;
   font-style: italic;
   font-size: 0.8rem;
