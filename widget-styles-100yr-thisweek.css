@@ -1,5 +1,9 @@
 @import url(/widget-styles-100yr.css);
 
+h1.mppw-form-wrapper {
+    display: none;
+}
+
 #congregationId {
     display: none;
 }
