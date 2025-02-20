@@ -1,5 +1,5 @@
 /* Web Component that will be used to display the prayer request form */
-const prayerRequestVersionNumber = '1.250209';
+const prayerRequestVersionNumber = '1.250220';
 console.log(`Prayer Request Form Version: ${prayerRequestVersionNumber}`);
 
 //// Analytics Tracking
@@ -136,7 +136,7 @@ function loadPrayerRequestForm() {
                 ${submitterInfo}
 
                 <wa-textarea id="request-text-box" resize="auto" maxlength=1000 name="request-text" placeholder="Enter your prayer request or praise report here" rows=4 required autocapilatize="sentences" autocorrect class="request-text-box">
-                    <span slot="help-text" id="char-count">0/1000</span>
+                    <span slot="hint" id="char-count">0/1000</span>
                 </wa-textarea>
 
                 <wa-radio-group name="visibility" value="4" class="visibility-container" size="${buttonSize}" required>
