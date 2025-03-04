@@ -109,9 +109,7 @@
     transform: rotate(270deg);
 }
 
-.mpp-card--badge::after {
-    /* Need FontAwesome Integration */
-    display: none; 
+.mpp-card--badge::after { 
     content: "\f559";
     font-family: 'FontAwesome';
     top: 0px;
@@ -204,8 +202,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .event-date-range:before, .group-meeting-day:before, .opportunity-start-date:before {
-    /* Needs FontAwesome Integration */
-    display: none;
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f073";
@@ -213,8 +209,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .event-location:before, .group-location:before, .opportunity-location:before {
-    /* Needs FontAwesome Integration */
-    display: none;
     font-family: 'FontAwesome';
     padding-right: 7px;
     padding-left: 1px;
@@ -223,8 +217,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .group-capacity:before {
-    /* Needs FontAwesome Integration */
-    display: none;
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f0c0";
@@ -232,8 +224,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .group-start-date:before {
-    /* Needs FontAwesome Integration */
-    display: none;
     font-family: 'FontAwesome';
     padding-right: 7px;
     content: "\f017";
@@ -428,6 +418,10 @@ h4.mpp-card--subtitle:nth-child(1) {
     color: white;
 }
 
+.mpp-innerpage--contact mpp-innerpage--contact-has-email {
+    color: #333;
+}
+
 #loginButtonContainer {
     clear: both;
     display: inline-block;
@@ -552,8 +546,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mppw-icon-unlock:before {
-    /* Need FontAwesome Integration */
-    display: none;
     content: "\f007";
     font-family: 'FontAwesome';
     color: white;
