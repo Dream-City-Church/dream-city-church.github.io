@@ -14,14 +14,17 @@
 
 .header {
     font-weight: bold;
+    display: block;
 }
 
 .date {
     font-style: italic;
+    display: block;
 }
 
 .description {
     margin-top: 0.5rem;
+    display: block;
 }
 
 @media print {
