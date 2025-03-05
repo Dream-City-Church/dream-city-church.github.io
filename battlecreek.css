@@ -418,7 +418,13 @@ h4.mpp-card--subtitle:nth-child(1) {
     color: white;
 }
 
-.mpp-innerpage--contact mpp-innerpage--contact-has-email {
+.mpp-innerpage--datetime .event-date-range {
+    float: none;
+    width: 100%;
+    text-wrap-style: balance;
+}
+
+.mpp-innerpage--contact, .mpp-innerpage--contact-has-email {
     color: #333;
 }
 

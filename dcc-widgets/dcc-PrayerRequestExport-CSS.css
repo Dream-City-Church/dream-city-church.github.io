@@ -1,0 +1,31 @@
+#PrayerRequestExportWidget {
+    font-family: 'Open Sans',sans-serif;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.request {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.header {
+    font-weight: bold;
+}
+
+.date {
+    font-style: italic;
+}
+
+.description {
+    margin-top: 0.5rem;
+}
+
+@media print {
+    .request {
+        page-break-inside: avoid;
+    }
+}

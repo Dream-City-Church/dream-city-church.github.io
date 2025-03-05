@@ -1,0 +1,11 @@
+<style type="text/css">@import url("https://dream-city-church.github.io/dcc-widgets/dcc-MyWeek-CSS-DM.css");</style>
+{% for request in DataSet1 %}
+
+    <div class='request'>
+
+        <h2 class='heading'>{{request.Request_Type}} from {{request.Initials}}</h2>
+        <div class='date'>{{request.Request_Date}}</div>
+        <div class='description'>{{request.Description}}</div>
+    </div>
+
+{% endfor %}
