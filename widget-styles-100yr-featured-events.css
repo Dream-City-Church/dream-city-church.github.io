@@ -2,9 +2,7 @@
     display: none;
 }
 
-.mpp-card--subtitle event-location {
-    display: none;
-}
+
 
 /*********************/
 /* CSS Global Styles */
@@ -286,7 +284,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-left: 1px;
     content: "\f3c5";
     color: var(--primary);
-    display: inline-block;
+    display: none;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     font: var(--fa-font-solid) !important;
