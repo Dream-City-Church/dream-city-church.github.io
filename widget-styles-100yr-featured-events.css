@@ -1211,8 +1211,8 @@ div#mobileUnlistedCheck {
         width: initial;
     }
     .mpp-card--title {
-        line-height: 1.5rem;
-        font-size: 1.1rem;
+        line-height: 15px;
+        font-size: 10px;
     }
 
     /* Login Widget */
