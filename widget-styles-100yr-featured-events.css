@@ -156,7 +156,7 @@ h1, h2, h3 {
 .mpp-card--badge::after {
     content: "\f559";
     font-family: 'FontAwesome';
-    display: inline-block;
+    display: none;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     font: var(--fa-font-solid);
