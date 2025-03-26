@@ -97,7 +97,7 @@ h1, h2, h3 {
  
 .mppw-card--grid, #subscriptionsBody {
     display: flexbox;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 25% 25% 25% 25%;
     grid-gap: 1rem;
     margin-top: 1em;
 }
