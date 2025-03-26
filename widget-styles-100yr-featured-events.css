@@ -109,6 +109,7 @@ h1, h2, h3 {
     display: flexbox;
     position: static;
     overflow: visible;
+    height: 120px;
     border: 0px solid #d0d0d0;
     box-shadow: none !important;
     transition: border 250ms ease, box-shadow 250ms ease; 
