@@ -251,7 +251,7 @@ h1, h2, h3 {
 
 .mpp-card--subtitle {
     font-family: var(--innerPage-h2fontFamily);
-    font-size: 10px;
+    font-size: 15px;
     font-weight: 300;
     color: var(--root-text-color);
     text-align: left;
@@ -1211,8 +1211,8 @@ div#mobileUnlistedCheck {
         width: initial;
     }
     .mpp-card--title {
-        line-height: 15px;
-        font-size: 10px;
+        line-height: 20px;
+        font-size: 15px;
     }
 
     /* Login Widget */
