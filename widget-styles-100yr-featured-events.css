@@ -70,7 +70,7 @@ h1, h2, h3 {
 :host {
     --card-title-color: #333333;
     --card-textColor: #333333;
-    --card-borderRadius: 0.5rem;
+    --card-borderRadius: 0 !important;
     --card-boxshadow: none !important;
     --card-primaryColor: var(--primary);
     --card-badgeBgColor: var(--brand-sunshine);
