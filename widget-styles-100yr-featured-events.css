@@ -96,7 +96,7 @@ h1, h2, h3 {
 }
  
 .mppw-card--grid, #subscriptionsBody {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: 213px;
     grid-gap: 1rem;
     margin-top: 1em;
