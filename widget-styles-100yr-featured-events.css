@@ -6,6 +6,10 @@
     display: block;
 }
 
+.mpp-card--subtitle event-location {
+    display: none;
+}
+
 /*********************/
 /* CSS Global Styles */
 /*********************/
