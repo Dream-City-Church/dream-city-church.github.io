@@ -219,7 +219,7 @@ h1, h2, h3 {
     float: left;
     padding: 0.5rem 0.5rem;
     max-height: 170px;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
 }
 
