@@ -2,7 +2,9 @@
     display: none;
 }
 
-
+.featured-box {
+    display: block;
+}
 
 /*********************/
 /* CSS Global Styles */
