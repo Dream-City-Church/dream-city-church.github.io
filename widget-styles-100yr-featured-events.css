@@ -215,7 +215,7 @@ h1, h2, h3 {
 .mpp-card--body {
     width: 213px;
     float: left;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 0.5rem;
     max-height: 170px;
     overflow: hidden;
     text-overflow: ellipsis;
