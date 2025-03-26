@@ -135,6 +135,7 @@ h1, h2, h3 {
 }
 
 .mpp-card--badge {
+    display: none !important;
     border-radius: 0.5rem 0 0 0;
     font-size: 0.9rem;
     font-weight: 600;
