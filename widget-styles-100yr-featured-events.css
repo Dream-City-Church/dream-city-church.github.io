@@ -256,12 +256,13 @@ h1, h2, h3 {
 .mpp-card--subtitle {
     font-family: var(--innerPage-h2fontFamily);
     font-size: 15px;
+    line-height: 20px;
     font-weight: 300;
     color: var(--root-text-color);
     text-align: left;
     float: left;
     padding-top: 0.5rem;
-    margin-right: 4% !important;
+    margin-right: 0 !important;
 }
 
 h4.mpp-card--subtitle:nth-child(1) {
