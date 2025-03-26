@@ -256,8 +256,8 @@ h1, h2, h3 {
 .mpp-card--subtitle {
     font-family: var(--innerPage-h2fontFamily);
     font-size: 15px;
-    line-height: 20px;
-    font-weight: 300;
+    line-height: 17px;
+    font-weight: 400;
     color: var(--root-text-color);
     text-align: left;
     float: left;
