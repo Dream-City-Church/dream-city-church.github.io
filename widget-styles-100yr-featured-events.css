@@ -2,10 +2,6 @@
     display: none;
 }
 
-.mpp-card--description {
-    display: none;
-}
-
 /*********************/
 /* CSS Global Styles */
 /*********************/
@@ -248,7 +244,7 @@ h1, h2, h3 {
 }
 
 .mpp-card--description p {
-    display: inline;
+    display: none;
 }
 
 .mpp-card--subtitle {
