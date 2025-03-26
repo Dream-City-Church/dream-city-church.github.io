@@ -103,7 +103,7 @@ h1, h2, h3 {
 
 .mpp-card, #subscriptionsBody .mpp-card-multiselect {
     border-radius: 0px !important;
-    display: inline-block;
+    display: inline;
     position: relative;
     height: 120px;
     overflow: visible;
