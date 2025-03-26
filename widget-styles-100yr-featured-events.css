@@ -100,12 +100,11 @@ h1, h2, h3 {
     grid-template-columns: 213px;
     grid-gap: 1rem;
     margin-top: 1em;
-    float: left;
 }
 
 .mpp-card, #subscriptionsBody .mpp-card-multiselect {
     border-radius: 0px !important;
-    display: inline-block;
+    display: flexbox;
     position: static;
     height: 120px;
     overflow: visible;
