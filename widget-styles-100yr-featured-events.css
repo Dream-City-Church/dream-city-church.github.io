@@ -272,7 +272,7 @@ h4.mpp-card--subtitle:nth-child(1) {
     padding-right: 7px;
     content: "\f073";
     color: var(--primary);
-    display: inline-block;
+    display: none;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     font: var(--fa-font-solid);
