@@ -116,7 +116,7 @@ h1, h2, h3 {
 }
 
 #subscriptionsBody .mpp-card-multiselect {
-    display: inline-block;
+    display: flexbox;
 }
 
 .mpp-card:hover {
