@@ -98,6 +98,7 @@ h1, h2, h3 {
     grid-template-columns: 213px;
     grid-gap: 1rem;
     margin-top: 1em;
+    float: left;
 }
 
 .mpp-card, #subscriptionsBody .mpp-card-multiselect {
