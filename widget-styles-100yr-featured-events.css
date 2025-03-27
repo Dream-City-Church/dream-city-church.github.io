@@ -6,7 +6,7 @@
     display: block;
 }
 
-.event-location {
+.mpp-card--description event-location {
     display: none;
 }
 
