@@ -6,7 +6,7 @@
     display: block;
 }
 
-#event-location {
+.event-location {
     display: none;
 }
 
