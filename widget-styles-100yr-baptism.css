@@ -2,6 +2,10 @@
     display: none;
 }
 
+.mpp-card--title {
+    display: none;
+}
+
 
 /*********************/
 /* CSS Global Styles */
