@@ -234,6 +234,7 @@ h1, h2, h3 {
 }
 
 .mpp-card--description {
+    display: none;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     display: -webkit-box;
@@ -310,7 +311,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mpp-card--footer {
-    display:none;
+
 }
 
 /***********/
