@@ -129,7 +129,7 @@ h1, h2, h3 {
 
 .mpp-card--header {
     height: 100%;
-    width:auto;
+    width: 0 !important;
     aspect-ratio: 16 / 9;
     float: left;
     overflow: visible;
