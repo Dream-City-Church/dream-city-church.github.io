@@ -310,7 +310,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mpp-card--footer {
-
+    display:none;
 }
 
 /***********/
