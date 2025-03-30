@@ -1,3 +1,8 @@
+.mppw-form-wrapper {
+    display: none;
+}
+
+
 /*********************/
 /* CSS Global Styles */
 /*********************/
@@ -192,6 +197,7 @@ h1, h2, h3 {
 }
 
 .mpp-card--image {
+    display: none;
     height: 100% !important;
     width: auto !important;
     aspect-ratio: 16 / 9;
