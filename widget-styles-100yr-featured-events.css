@@ -6,7 +6,7 @@
     display: block;
 }
 
-.mpp-card--subtitle event-location {
+.mpp-card--subtitle {
     display: none;
 }
 
