@@ -107,7 +107,7 @@ h1, h2, h3 {
     position: relative;
     height: 100px;
     overflow: visible;
-    border: 0 0 2px 0 solid #d0d0d0;
+    border-bottom: 2px solid #f4f4f4;
     box-shadow: none !important;
     transition: border 250ms ease, box-shadow 250ms ease; 
 }
