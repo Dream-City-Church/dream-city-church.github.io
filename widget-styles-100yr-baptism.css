@@ -199,7 +199,7 @@ h1, h2, h3 {
 .mpp-card--image {
     display: none;
     height: 100% !important;
-    width: auto !important;
+    width: 0 !important;
     aspect-ratio: 16 / 9;
     margin: 0 !important;
     object-fit: cover;
@@ -214,7 +214,6 @@ h1, h2, h3 {
 }
 
 .mpp-card--body {
-    width: calc(100% - 305px);
     float: left;
     padding: 0.5rem 0.5rem;
     max-height: 170px;
