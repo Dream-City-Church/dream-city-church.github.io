@@ -82,7 +82,7 @@ h1, h2, h3 {
     --card-badgeStatusDiscontinuedColor: var(--brand-cloud);
     --card-badgeStatusCompleteColor: var(--brand-cloud);
     --card-fontSize: 1rem;
-    --card-lineHeight: 0.75rem;
+    --card-lineHeight: 1.25rem;
     --card-fontSizeHeader: 1.5rem;
     --card-lineHeightHeader: 1.5rem;
     --card-progressBarColor: var(--secondary);
@@ -102,12 +102,12 @@ h1, h2, h3 {
 }
 
 .mpp-card, #subscriptionsBody .mpp-card-multiselect {
-    border-radius: 10px !important;
+    border-radius: 0px !important;
     display: inline-block;
     position: relative;
     height: 170px;
     overflow: visible;
-    border: 1px solid #d0d0d0;
+    border: 0px solid #d0d0d0;
     box-shadow: none !important;
     transition: border 250ms ease, box-shadow 250ms ease; 
 }
