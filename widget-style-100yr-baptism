@@ -1,0 +1,1248 @@
+/*********************/
+/* CSS Global Styles */
+/*********************/
+:host {
+    --root-text-color: #333;
+    --root-font-size: 1.25rem;
+    --root-line-height: 1.25rem;
+    --primary: #bc204b;
+    --secondary: #e07e3c;
+    --tertiary: #bcbcbc;
+    --brand-gradient: linear-gradient(-170deg, var(--secondary) 0%, var(--primary) 100%);
+    --brand-gradient-rot: linear-gradient(-20deg, var(--secondary) 0%, var(--primary) 100%);
+    --brand-charcoal: #3f4444;
+    --brand-cloud: #bcbcbc;
+    --brand-sunshine: #ffaa4d;
+    --brand-fire: #e1523d;
+    --brand-dusk: #253746;
+    --form-field-color: var(--root-text-color);
+    --form-field-bgcolor: #f9f9f9;
+    --form-field-bgcolor--active: #fff;
+    --form-field-border: var(--brand-cloud);
+    --form-field-border--active: #e07e3c;
+    --form-field-borderradius: 0.5rem;
+    --form-field-boxshadow--active: 0 0 0.2rem 0.05rem var(--primary);
+    --form-valid: #42bc34;
+    --form-invalid: #dc3545;
+    --form-btn-primary-text: #fff;
+    --form-btn-primary-bgcolor: var(--primary);
+    --form-btn-primary-hover: var(--brand-fire);
+    --form-btn-primary-active: var(--brand-fire);
+    --form-btn-secondary-text: #fff;
+    --form-btn-secondary-bgcolor: var(--secondary);
+    --form-btn-secondary-hover: var(--brand-fire);
+    --form-btn-secondary-active: var(--brand-sunshine);
+    --form-btn-disabled: var(--brand-cloud);
+    --card-bgcolor: #fff;
+    --card-title-color: var(--brand-dusk);
+    --card-header-bgcolor: rgba(0, 0, 0, 0) !important;
+    --box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.35);
+    --progress-pledged: var(--secondary);
+    --progress-received: var(--primary);
+    --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
+    --header-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
+    --innerPage-h1fontFamily: var(--header-font-face);
+    --innerPage-primaryColor: var(--primary);
+    --innerPage-linkHoverColor: var(--secondary);
+    --innerPage-linkColor: var(--primary);
+    --innerPage-buttonHoverBgColor: var(--secondary);
+    --innerPage-fontSize: 1.1rem;
+    --innerPage-lineHeight: 1.6rem;
+    --alt-text-color: #777777;
+}
+
+* {
+    font-family: var(--root-font-face);
+}
+
+h1, h2, h3 {
+    font-family: var(--header-font-face);
+}
+
+/***************/
+/* Card Styles */
+/***************/
+
+:host {
+    --card-title-color: #333333;
+    --card-textColor: #333333;
+    --card-borderRadius: 0.5rem;
+    --card-boxshadow: none !important;
+    --card-primaryColor: var(--primary);
+    --card-badgeBgColor: var(--brand-sunshine);
+    --card-headerBgColor: rgba(0, 0, 0, 0) !important;
+    --card-badge-highlightColor: #fff;
+    --card-badgeStatusActiveColor: var(--card-primaryColor);
+    --card-badgeStatusPendingColor: var(--brand-dusk);
+    --card-badgeStatusDiscontinuedColor: var(--brand-cloud);
+    --card-badgeStatusCompleteColor: var(--brand-cloud);
+    --card-fontSize: 1rem;
+    --card-lineHeight: 0.75rem;
+    --card-fontSizeHeader: 1.5rem;
+    --card-lineHeightHeader: 1.5rem;
+    --card-progressBarColor: var(--secondary);
+    --card-progressBarActiveColor: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    --card-progressBarRemainingColor: white;
+    --card-progressBarCompleteColor: #77be43;
+    --card-imageBgColor: rgba(0, 0, 0, 0) !important;
+    --card-checkboxDefaultColor: #bcbcbc;
+    --card-labelBgColor: #fff;
+}
+ 
+.mppw-card--grid, #subscriptionsBody {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 1rem;
+    margin-top: 1em;
+}
+
+.mpp-card, #subscriptionsBody .mpp-card-multiselect {
+    border-radius: 10px !important;
+    display: inline-block;
+    position: relative;
+    height: 170px;
+    overflow: visible;
+    border: 1px solid #d0d0d0;
+    box-shadow: none !important;
+    transition: border 250ms ease, box-shadow 250ms ease; 
+}
+
+#subscriptionsBody .mpp-card-multiselect {
+    display: flex;
+}
+
+.mpp-card:hover {
+    cursor: pointer;
+    background-color: rgb(240 240 240 / 1);
+}
+
+.mpp-card--household {
+    cursor: initial;
+    border: inherit;
+    box-shadow: inherit;
+}
+
+.mpp-card--header {
+    height: 100%;
+    width:auto;
+    aspect-ratio: 16 / 9;
+    float: left;
+    overflow: visible;
+}
+
+.mpp-card--badge {
+    border-radius: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding-left: 0.75rem;
+    padding-bottom: 0.5rem;
+    z-index: -1;
+    background-color: var(--primary);
+    background-image: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    left: -60px;
+    top: 83px;
+    transform: rotate(270deg);
+}
+
+.mpp-card--badge::after {
+    content: "\f559";
+    font-family: 'FontAwesome';
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+    top: 0px;
+    border-radius: 0 0.5rem 0 0;
+    position: absolute;
+    background-color: var(--primary);
+    background-image: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+    padding: 0.5rem 0.75rem;
+    margin-left: 5px;
+}
+
+.mpp-card--badge.Meets.Online {
+    background-color: var(--primary);
+    left: -77px;
+    top:70px;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.mpp-card--badge.Meets.Online::after, .mpp-card--badge.Completed::after {
+    display: none;
+}
+
+.mpp-card--badge.Completed {
+    background: linear-gradient(160deg, #c7c9c8aa 33%, #c7c9c866 100%);
+    color: var(--brand-charcoal);
+    left: -70px;
+    top:67px;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.mpp-card--badge.full {
+    background-color: var(--card-badgeStatusDiscontinuedColor);
+    color: var(--alt-text-color);
+    border-radius: 0.5rem 0.5rem 0 0;
+    left: -43px;
+}
+
+.mpp-card--badge.full::after {
+    display: none;
+}
+
+.mpp-card--image {
+    height: 100% !important;
+    width: auto !important;
+    aspect-ratio: 16 / 9;
+    margin: 0 !important;
+    object-fit: cover;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.mpp-card--image[src="https://dreamcitychurch.us/wp-content/uploads/2024/07/D.png"] {
+    object-fit: contain;
+    background-color: transparent !important;
+    padding: 2rem;
+}
+
+.mpp-card--body {
+    width: calc(100% - 305px);
+    float: left;
+    padding: 0.5rem 1.5rem;
+    max-height: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mpp-card--title {
+    font-size: var(--card-fontSizeHeader);
+    line-height: var(--card-lineHeightHeader);
+    font-family: var(--innerPage-h1fontFamily);
+    font-weight: 800;
+    color: var(--card-title-color);
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.mpp-card--description {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    height: 5.1rem;
+    clear: both;
+    line-height: 1.6rem;
+    padding-top: 0.5rem;
+    color: var(--root-text-color);
+}
+
+.mpp-card--description p {
+    display: inline;
+}
+
+.mpp-card--subtitle {
+    font-family: var(--innerPage-h2fontFamily);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--root-text-color);
+    text-align: left;
+    float: left;
+    padding-top: 0.5rem;
+    margin-right: 4% !important;
+}
+
+h4.mpp-card--subtitle:nth-child(1) {
+    margin-top: 0.5em;
+}
+
+.event-date-range:before, .group-meeting-day:before, .opportunity-start-date:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f073";
+    color: var(--primary);
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+}
+
+.event-location:before, .group-location:before, .opportunity-location:before {
+    font-family: 'FontAwesome' !important;
+    padding-right: 7px;
+    padding-left: 1px;
+    content: "\f3c5";
+    color: var(--primary);
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid) !important;
+}
+
+.group-capacity:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f0c0";
+    color: var(--primary);
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+}
+
+.group-start-date:before {
+    font-family: 'FontAwesome';
+    padding-right: 7px;
+    content: "\f017";
+    color: var(--primary);
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+}
+
+.mpp-card--footer {
+    display: none;
+}
+
+/***********/
+/* Buttons */
+/***********/
+
+.mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton, #payInvoice {
+    font-family: 'Open Sans', sans-serif, "Font Awesome 6 Pro";
+    box-shadow: none;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    font-weight: bold;
+}
+
+.mpp-about-me--cancel-button {
+    font-family: 'Open Sans', sans-serif, "Font Awesome 6 Pro";
+    box-shadow: none;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    color: var(--brand-secondary);
+    border: 2px solid var(--brand-secondary);
+}
+
+#loginButton, #registerAndCheckoutButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton, #saveHouseholdMember, #payInvoice, #createPledge{
+    background-image: linear-gradient(-175deg, var(--primary), var(--secondary) 70%);
+    background-position: top left;
+    background-size: 100%;
+    transition: background-size 0.5s ease;
+    color: white;
+    line-height: 1.5rem;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+}
+
+#loginButton:hover, #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover, .mpp-about-me--submit-button:hover, #saveAsPDFButton:hover, #saveHouseholdMember:hover, #payInvoice:hover, #createPledge:hover{
+    background-size: 300%;
+    transition: background-size 0.3s ease;
+    text-decoration: underline;
+}
+
+.mpp-innerpage h3 {
+    clear: both;
+    padding-top: 1rem;
+}
+
+#promoCodeContainer #addPromoCodeButton {
+    max-width: 200px;
+    background-color: white;
+    color: var(--brand-primary);
+    border: 1px solid var(--brand-primary);
+}
+
+#promoCodeContainer #addPromoCodeButton:hover {
+    text-decoration: underline;
+}
+
+a.mppw-btn.mpp-innerpage--button.primary.mb-medium {
+    float: right;
+    clear: both;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+    #promoCodeContainer #addPromoCodeButton {
+        max-width: 100%;
+        width: 100%;
+        margin: 1rem auto;
+    }
+    
+}
+
+
+/*********************/
+/* Inner Page Styles */
+/*********************/
+
+.mpp-innerpage--back, .mpp-innerpage--back a {
+    color: var(--primary);
+}
+
+.mpp-innerpage--fixed-img, .mpp-innerpage--fixed-imgplaceholder {
+    float: left;
+    width: 33%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 1rem;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--card-borderRadius);
+    border: 1px solid #efefef;
+}
+
+.mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container {
+    width: 62%;
+    float: right;
+}
+
+#customFormDescription, #prayerFormDescription {
+    width: 100%;
+    float: none;
+    margin: 0;
+}
+
+div[data-id="mp_customform_2389"]{
+    /*Hides Praise Report related field */
+    display: none;
+}
+
+.mpp-innerpage ul.mpp-innerpage--labels {
+    margin-bottom: 0;
+}
+
+.event-date-range {
+    width: 100%;
+}
+
+.mpp-innerpage--special, .mpp-innerpage--capacity {
+    clear: left;
+    width: 33%;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    border-radius: var(--card-borderRadius);
+    background-color: #253746;
+}
+
+.mpp-innerpage--special-title, .mpp-innerpage--special-content, .mpp-innerpage--capacity-title, .mpp-innerpage--capacity-content {
+    color: white;
+    padding-left: 0;
+}
+
+.mpp-innerpage--contacts {
+    display: grid;
+    grid-template-columns: auto;
+    padding: 0 !important;
+}
+
+.mpp-innerpage--contact {
+    background: none;
+}
+
+.mpp-innerpage--name-has-email::after {
+    display: inline-block;
+    content: '\f0e0';
+    font: var(--fa-font-solid);
+    font-family: 'FontAwesome';
+    padding-left: 0.5rem;
+}
+
+.mpp-innerpage--name {
+    font-size: 1rem;
+}
+
+div#mapContainer {
+    float: left;
+    clear: left;
+    width: 33%;
+    padding-top: 1rem;
+    background-color: white;
+}
+
+.mpp-innerpage--map-info {
+    padding-left: 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height:1.5rem;
+}
+
+.mppw-component-container > div:has(.mpp-innerpage--button) {
+    width: 62%;
+    clear: right;
+    float: right;
+}
+
+#singlePriceContainer {
+    display: none;
+}
+
+div#registrationTotalContainer {
+    display: block !important;
+    font-size: 1.5rem;
+}
+
+#registrationFormContainer {
+    width: 62%;
+    float: right;
+    clear: right;
+}
+
+#registrationFormContainer .titleContainer {
+    display: none;
+}
+
+#inquiryContainer, #signupContainer {
+    padding: 0.5rem;
+}
+
+.mpp-innerpage--datetime-wrapper {
+    width: 100%;
+}
+
+.mpp-innerpage--datetime-wrapper .mpp-innerpage--datetime {
+    text-align: left;
+    width: 100%;
+    justify-content: normal;
+    text-wrap: balance;
+}
+
+.mpp-innerpage--mapinfo a, .mppw-ics-link, #detailsContainer > strong > a {
+    color: var(--secondary);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--secondary);
+    border-radius: 2rem;
+    position: relative;
+    display: inline-block;
+    top: 10px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin: 0.5rem 1rem 0.5rem 0;
+}
+
+@media only screen and (max-width: 800px) {
+    .mpp-innerpage p {
+        font-size: var(--innerPage-fontSize);
+    }
+
+    .mpp-innerpage--fixed-img, .mpp-innerpage--fixed-imgplaceholder {
+        float: none;
+        width: 100%;
+    }
+
+    h1.mpp-innerpage--subtitle, h2.mpp-innerpage--datetime.event-date-range {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container, div#mapContainer, #registrationFormContainer {
+        width: 100%;
+        float: none;
+    }
+
+    .mppw-component-container > div:has(.mpp-innerpage--button) {
+        width: 100%;
+        float: none;
+    }
+
+    .mppw-col {
+        flex: 100%;
+    }
+
+    .mpp-innerpage--special, .mpp-innerpage--capacity {
+        float: none;
+        clear: both;
+        width: 100%;
+    }
+}
+
+
+/***************/
+/* Form Styles */
+/***************/
+
+.mppw-form-field__control {
+    font-size: 1.1rem;
+    line-height: 1rem;
+    font-weight: bold;
+    padding: 28px 13px 12px 13px;
+}
+
+.mppw-form-field_alt-control {
+    margin-bottom: 0;
+    padding: 1rem !important;
+    padding-bottom: 0 !important;
+}
+
+.mppw-form-field__control > label {
+    padding-bottom: 1rem;
+    line-height: 1.3rem;
+}
+
+.mppw-form-field__control:focus-visible {
+    border: none;
+    border-color: transparent;
+    outline: none;
+    box-shadow: var(--form-field-boxshadow--active);
+}
+
+.mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
+    color: var(--root-text-color);
+    font-size: 0.9rem;
+}
+
+label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content {
+    color: var(--root-text-color);
+    font-size: 0.9rem;
+}
+
+select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-field__label, .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
+    background: transparent;
+
+}
+
+.mppw-form-field__control:focus + label {
+    background-color: transparent !important;
+}
+
+.mppw-form-field__alt-label {
+    margin: 0;
+}
+
+.mppw-form-field_alt-control {
+    background-color: #fafafa;
+}
+
+input[type="date"] {
+    flex-direction: row-reverse;
+    gap: 1rem;
+}
+
+.mpp-form--container {
+    clear: both;
+    padding-top: 2rem;
+}
+
+h2#responseFormTitle {
+    clear: both;
+    padding-top: 2rem;
+}
+
+.mppw-event-gray-out {
+    font-style: italic;
+}
+
+.mppw-radio-gray-out, .mppw-checkbox-gray-out {
+    background-color: transparent;
+    border: none;
+}
+
+.mppw-event-gray-out .product-selection-container::after {
+    content: " (Sold Out)";
+}
+
+.product-form h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.product-form p {
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+.product-form__control, .mppw-form-field--is-valid .product-form__control {
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+.product-form th {
+    color: var(--primary);
+    font-weight: normal;
+    font-style: italic;
+}
+
+#productOptionsTitle {
+    color: var(--primary);
+    margin-top: 4rem;
+    line-height: 0;
+    font-size: 1.5rem;
+}
+
+#productOptionsContainer .mppw-form-field-alt {
+    border: none;
+    margin: 0;
+    padding: 1.5rem 0;
+}
+
+#registrationForm {
+    clear: both;
+}
+
+#registrationTotalValue {
+    font-weight: bold;
+    font-family: var(--header-font-face);
+    margin-left: 1rem;
+}
+
+#promoCodeContainer {
+    border: none;
+    padding: 2px 0;
+}
+
+#promoCodeText {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5rem;
+    background-color: #FAFAFA;
+    border: 1px solid #CCC;
+    border-radius: var(--form-field-borderradius);
+    font-family: monospace;
+    letter-spacing: 0.2rem;
+    max-width: 150px;
+}
+
+#promoCodeContainer #promoCodeText {
+    max-width: none;
+}
+
+#promoCodeContainer h3 {
+    padding-top: 5px;
+}
+
+.promo-code-text {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
+.mppw-product-description {
+    font-weight: initial;
+}
+
+table.mppw-invoice td, th {
+    padding: 10px 0;
+}
+
+td.mppw-invoice-total {
+    border: none;
+}
+
+.mppw-invoice-summary-label {
+    font-weight: normal;
+}
+
+#balanceDueLabel {
+    font-weight: bold;
+}
+
+/*.mppw-form-field:has(#mobilePhone):after {
+    display: inline-block;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    margin: 0.5rem;
+    content: "By providing your phone number, you agree to receive text messages from Dream City Church. Reply STOP to cancel. Msg rates may apply.";
+}*/
+
+#messaging-disclaimer {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    line-height: 1rem;
+    width: 48%;
+    margin-left: auto;
+}
+
+.mppw-btn.primary {
+    margin-right: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+    #promoCodeContainer h3 {
+        width: 100%;
+    }
+
+    #promoCodeText {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    #messaging-disclaimer {
+        width: 100%;
+    }
+    
+}
+
+/*************************/
+/* Custom Form Overrides */
+/*************************/
+div[data-id="mp_customform_2700"] {
+    display: none;
+}
+
+
+/****************/
+/* Login Widget */
+/****************/
+
+.mppw-login {
+    float: right;
+}
+
+.mppw-login--dropdown {
+    position: absolute;
+    z-index: 100;
+    width: max-content;
+}
+
+.mppw-component-container.mppw-login {
+    border: none;
+    height: auto;
+    padding-bottom: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.mppw-component-container.mppw-login a {
+    color: var(--secondary);
+}
+
+.mppw-component-container.mppw-login li a {
+    color: var(--brand-dusk);
+}
+
+.mppw-login--list-item a:hover, .mppw-login--list-item a:focus {
+    color: var(--secondary);
+}
+
+.mppw-user-photo {
+    height: 40px;
+    width: 40px;
+}
+
+.mppw-icon-unlock {
+    background: none;
+}
+
+.mppw-icon-unlock:before {
+    content: "\f007";
+    font-family: 'FontAwesome';
+    color: white;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+}
+
+
+/***********************/
+/* My Household Widget */
+/***********************/
+
+.mpp-innerpage--address-container {
+    font-size: 1rem;
+}
+
+h2.mpp-household--header {
+    color: var(--brand-dusk);
+}
+
+.mpp-card--household-text-wrapper p {
+    font-size: 1.25em;
+}
+
+.mpp-household h1 {
+    display: none;
+}
+
+.mpp-innerpage h3 {
+    clear: left;
+}
+
+h2#householdName:after {
+    content: " Household";
+}
+
+.mpp-innerpage--label {
+    font-weight: bolder;
+    font-size: 1em;
+    height: auto;
+    border-radius: 4px;
+}
+
+#householdDetails li.mpp-innerpage--label:before {
+    content: "\f51d";
+    font-family: 'FontAwesome';
+    padding-right: 0.75em;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+}
+
+.mpp-household .mpp-household--header-wrapper {
+    color: var(--primary);
+}
+
+.mpp-household .mpp-household--header-wrapper:hover, .mpp-household .mpp-household--header-wrapper:focus {
+    color: var(--primary);
+}
+
+.mpp-household .mpp-card--household-footer .mppw-btn.primary {
+    width: max-content;
+}
+
+.mpp-household .mpp-household--header-wrapper {
+    color: var(--primary);
+}
+
+a#editHouseholdName:before {
+    font-family: 'FontAwesome';
+    content: "\f044";
+    padding-right: 0.75em;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+}
+
+img.mpp-icon--household {
+    display: none;
+}
+
+a#addNewMember:before {
+    font-family: 'FontAwesome';
+    content: "\f234";
+    padding-right: 1em;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+}
+
+img.mpp-icon--household {
+    display: none;
+}
+
+#householdDetails .mpp-innerpage--labels {
+    width: auto;
+}
+
+.mpp-household .mpp-innerpage--address-container {
+    width: initial;
+    font-size: 1.25rem;
+}
+
+#householdMemberList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 3rem 5%;
+    margin-top: 0;
+    margin-bottom: 6rem;
+}
+
+.mpp-card--household:hover {
+    cursor: initial;
+    border: none;
+    box-shadow: none;
+}
+
+.mpp-household .mpp-card--household-body {
+    display: grid;
+    align-items: start;
+    justify-content: center;
+    align-content: space-between;
+    justify-items: center;
+    text-align: center;
+}
+
+.mpp-household .mpp-card--household-image {
+    margin-right: 0;
+}
+
+.mpp-household .mpp-card--household-footer {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.mpp-household .mpp-card--household-text-wrapper {
+    overflow: visible;
+    line-height: 1.5rem;
+}
+
+div#removeFromDirectoryCheck {
+    display: none;
+}
+
+div#emailUnlistedCheck {
+    display: none;
+}
+
+div#mobileUnlistedCheck {
+    display: none;
+}
+
+/*********************/
+/* Attributes Widget */
+/*********************/
+
+.mpp-about-me--header-container {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.mpp-about-me--header {
+    grid-column-start: span 2;
+}
+
+.mpp-about-me--header-subtitle {
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+.mpp-about-me--edit-button{
+    height: max-content;
+    justify-self: end;
+    align-self: end;
+}
+
+.mpp-about-me--attributes-block {
+    border: 1px solid #efefef;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mpp-about-me--attributes-block-title {
+    font-size: var(--innerPage-h2fontSize);
+    line-height: var(--innerPage-h2lineHeight);
+    font-weight: bold;
+    margin-bottom: auto;
+}
+
+.mpp-about-me--atributes-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mpp-about-me--attribute {
+    margin: 0.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: var(--brand-primary);
+    border: none;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+}
+
+#userAttributesEditMode .mpp-about-me--attribute {
+    background-color: white;
+    color: black;
+    width: 32%;
+}
+
+#userAttributesEditMode {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.mpp-about-me--atributes-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mpp-about-me--checkbox-container input[type="checkbox"] {
+    border: 2px solid #efefef;
+}
+
+.mpp-about-me--checkbox-container input[type="checkbox"]::before {
+    box-shadow: inset 1em 1em var(--brand-primary);
+}
+
+@media only screen and (max-width: 999px) {
+    #userAttributesEditMode .mpp-about-me--attribute {
+        width: 48%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #userAttributesEditMode .mpp-about-me--attribute {
+        width: 100%;
+    }
+}
+
+/***************************/
+/* MY CONTRIBUTIONS WIDGET */
+/***************************/
+#myContributionFooter .mppw-row {
+    display: inline-block;
+}
+
+/********************************/
+/* YOUTUBE EMBED IN DESCRIPTION */
+/********************************/
+.youtube-video-container {
+    position: relative;
+    margin: auto auto;
+    overflow: hidden;
+    width: 100%;
+    max-width:600px;
+  }
+.youtube-video-container::after {
+    display: block;
+    content: "";
+    padding-top: 56.25%;
+  }
+.youtube-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /*****************/
+  /* MOBILE STYLES */
+  /*****************/
+
+  @media only screen and (max-width: 999px) {
+    /* TABLET SIZE */
+    .mpp-card {
+        max-height:none;
+        height: auto;
+    }
+    .mpp-card--header {
+        max-width: 214px;
+    }
+    .mpp-card--body {
+        width: calc(100% - 215px);
+    }
+    .mpp-card--description {
+        display:none;
+    }
+    .mpp-card--badge {
+        left: -25px;
+        top: 8px;
+        transform: none;
+        line-height: 1.5rem;
+        padding: 0;
+        font-size: 0;
+    }
+    .mpp-card--badge::after {
+        top: 0px;
+        border-radius: 0.5rem 0 0 0.5rem;
+        position: absolute;
+        background-color: var(--card-primaryColor);
+        padding: 2.5rem 0.25rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* PHONE SIZE */
+
+    /* Cards */
+    .mppw-card--grid, #householdMemberList {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 0;
+        margin-bottom: 2rem;
+    }
+    .mpp-card {
+        padding: 0.5rem 0;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        width: 100vw;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        border-bottom: 0.25px solid var(--brand-cloud);
+        border-radius: 0;
+    }
+    .mpp-card--body {
+        width: 75%;
+        padding: 0 0.5rem 0.5rem 1rem;
+    }
+    .mpp-card--header {
+        height: 100%;
+        width: 25%;
+        max-height: 70px;
+    }
+    .mpp-card--badge {
+        top: 0;
+        left: 94vw;
+        transform: none;
+        line-height: 1.5rem;
+        padding: 0;
+        font-size: 0;
+    }
+    .mpp-card--badge::after {
+        font-size: 1rem;
+        padding: 1.5rem 0.25rem;
+    }
+    .mpp-card--subtitle {
+        padding: 0;
+        font-size: 0.75rem;
+        line-height: 1.2rem;
+        float: none;
+    }
+    .mpp-card--description {
+        display: none;
+        width: initial;
+    }
+    .mpp-card--title {
+        line-height: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    /* Login Widget */
+    #userDisplayName {
+        display: none;
+    }
+    .mppw-login--container, .mppw-loggedout--username {
+        justify-content: flex-end;
+    }
+
+    /* My Household */
+    div#householdDetails {
+        text-align: center;
+        margin: 0.5rem 1rem;
+    }
+    .mpp-household .mpp-household--header {
+        text-align: center;
+        margin: 1rem 0.5rem;
+    }
+    .mpp-household .mpp-household--header-container {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+    .mpp-household .mpp-innerpage--address-container {
+        margin-top: 1rem;
+    }
+    .mpp-household .mpp-household--form-subheader {
+        line-height: inherit;
+    }
+
+    /* My Attributes */
+    .mpp-about-me--header-container {
+        grid-template-columns: 100%;
+    }
+    .mpp-about-me--header {
+        grid-column-start: 1;
+    }
+}
