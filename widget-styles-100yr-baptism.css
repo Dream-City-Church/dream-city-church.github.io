@@ -2,10 +2,6 @@
     display: none;
 }
 
-.mpp-card--title {
-    display: none;
-}
-
 
 /*********************/
 /* CSS Global Styles */
@@ -227,6 +223,7 @@ h1, h2, h3 {
 }
 
 .mpp-card--title {
+    display: none;
     font-size: var(--card-fontSizeHeader);
     line-height: var(--card-lineHeightHeader);
     font-family: var(--innerPage-h1fontFamily);
