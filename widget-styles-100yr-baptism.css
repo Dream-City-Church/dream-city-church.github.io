@@ -234,7 +234,7 @@ h1, h2, h3 {
 }
 
 .mpp-card--description {
-    display: none;
+    display: none !important;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     display: -webkit-box;
