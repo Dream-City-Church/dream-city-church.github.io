@@ -311,6 +311,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mpp-card--footer {
+    display: none;
     float: inline-end;
     margin-top: -55px;
 }
