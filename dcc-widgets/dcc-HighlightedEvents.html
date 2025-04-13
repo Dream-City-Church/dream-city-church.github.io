@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>My Week</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes, minimal-ui">
+    <style>
+        @media (prefers-color-scheme: dark) {
+            html, body {
+                background-color: #101010;
+                color: #efefef;
+            }
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="dcc-HighlightedEvents-CSS.css">
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.5/dist/themes/default.css" />
+    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-alpha.5/dist/webawesome.loader.js"></script>
+    <link rel="stylesheet" href="dccw-stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+    <script src="https://kit.fontawesome.com/a6a26322af.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://mpweb.azureedge.net/cdn/customWidgetV1.js"></script>
+</head>
+
+<body>
+    <div
+        id="HighlightedEventsWidget"
+        data-component="CustomWidget"
+        data-sp="api_custom_HighlightedEvents"
+        data-params="@CongregationId=6&@MinistryId=26&@ReturnUrl='/events/id='"
+        data-template="https://dream-city-church.github.io/dcc-widgets/dcc-HighlightedEvents-template.html"
+        data-requireUser="false"
+        data-cache="true"
+        data-debug="false"
+        data-host="dreamcitychurch"
+        >
+
+        <div style="text-align:center;margin-top:2rem;"><wa-spinner style="font-size: 5rem; --indicator-color: darkgray; --track-color: gray;"></wa-spinner></div>
+    
+    </div>
+
+</body>
+</html>
