@@ -28,11 +28,16 @@ img.event-image {
     object-fit: cover;
 }
 
-h3.event-title {
+p.event-title {
     margin: 0;
+    padding: 0.5rem 0;
+    line-height: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 p.event-date {
     margin: 0;
     font-size: 1rem;
+    font-weight: 600;
 }
