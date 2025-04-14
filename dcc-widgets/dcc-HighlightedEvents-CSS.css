@@ -19,8 +19,8 @@ a.highlighted-event {
 }
 
 .highlighted-event {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 250px;
+    max-width: 250px;
     display: inline-block;
     flex: 0;
 }
