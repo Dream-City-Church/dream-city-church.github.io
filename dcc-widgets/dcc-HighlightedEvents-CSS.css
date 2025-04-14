@@ -2,15 +2,19 @@
     font-family: 'Open Sans', sans-serif;
     margin-left: auto;
     margin-right: auto;
-    display: flex
-;
+    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: flex-start;
-    justify-content: flex-start;
     align-items: flex-start;
     column-gap: 2rem;
     width: max-content;
+    margin-bottom: 2rem;
+}
+
+a.highlighted-event {
+    color: #3f3f3f;
+    text-decoration: none;
 }
 
 .highlighted-event {
