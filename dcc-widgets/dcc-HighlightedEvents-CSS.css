@@ -44,6 +44,12 @@ p.event-title {
     font-weight: bold;
 }
 
+p.event-location {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 p.event-date {
     margin: 0;
     font-size: 1rem;

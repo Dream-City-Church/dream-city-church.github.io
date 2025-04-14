@@ -1,9 +1,12 @@
-<style type="text/css">@import url("https://dream-city-church.github.io/dcc-widgets/dcc-HighlightedEvents-CSS.css?rev=250415-6");</style>
+<style type="text/css">@import url("https://dream-city-church.github.io/dcc-widgets/dcc-HighlightedEvents-CSS.css?rev=250415-7");</style>
 {% for event in DataSet1 %}
 
     <a class="highlighted-event" href="{{ event.Event_URL }}">
         <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ event.Event_Image }}" alt="{{ event.Event_Title }}" class="event-image" />
-        <p class="event-title">{{ event.Event_Title }}</h3>
+        <p class="event-title">{{ event.Event_Title }}</p>
+        {% if event.ShowLocation == 1}
+            <p class="event-location"><i class="fa-solid fa-location-dot"></i> {{ event.Event_Location }}</p>
+        {% endif %}
         <p class="event-date">{{ event.Event_Start_Date }}</p>
     </div>
 
