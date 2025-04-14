@@ -12,7 +12,8 @@
     align-items: flex-start;
     justify-content: space-between;
     column-gap: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
 }
 
 a.highlighted-event {
@@ -33,7 +34,7 @@ img.event-image {
     width: 100%;
     background-size: cover;
     object-fit: cover;
-    margin: 0;
+    margin: 0 !important;
 }
 
 p.event-title {
