@@ -4,9 +4,9 @@
     <a class="highlighted-event" href="{{ event.Event_URL }}">
         <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ event.Event_Image }}" alt="{{ event.Event_Title }}" class="event-image" />
         <p class="event-title">{{ event.Event_Title }}</p>
-        <p class="event-date">{{ event.Event_Start_Date }}</p>
+        <p class="event-date"><i class="fa-solid fa-calendar-days fa-xs"></i> {{ event.Event_Start_Date }}</p>
         {% if event.Show_Location == 1 %}
-            <p class="event-location"><i class="fa-solid fa-location-dot"></i> {{ event.Event_Location }}</p>
+            <p class="event-location"><i class="fa-solid fa-location-dot fa-xs"></i> {{ event.Event_Location }}</p>
         {% endif %}
     </a>
 
