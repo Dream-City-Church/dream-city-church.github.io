@@ -23,8 +23,9 @@ a.highlighted-event {
 .highlighted-event {
     min-width: 225px;
     max-width: 250px;
-    display: inline-block;
-    flex: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 img.event-image {
@@ -45,18 +46,24 @@ p.event-title {
     text-wrap-style: pretty;
 }
 
-p.event-location {
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
 p.event-date {
     margin: 0;
     padding: 0;
+    margin-top: auto;
+    width: 100%;
     font-size: 1rem;
     font-weight: 600;
+    align-self: flex-end;
+}
+
+p.event-location {
+    margin: 0;
+    padding: 0;
+    margin-top: 0;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    align-self: flex-end;
 }
 
 #HighlightedEventsWidget i.fa-solid {
