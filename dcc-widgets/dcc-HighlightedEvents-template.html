@@ -5,9 +5,9 @@
         <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ event.Event_Image }}" alt="{{ event.Event_Title }}" class="event-image" />
         <p class="event-title">{{ event.Event_Title }}</p>
         <p class="event-date">{{ event.Event_Start_Date }}</p>
-        {% if event.Show_Location == '1' %}
+        {% if event.Show_Location == 1 %}
             <p class="event-location"><i class="fa-solid fa-location-dot"></i> {{ event.Event_Location }}</p>
         {% endif %}
-    </div>
+    </a>
 
 {% endfor %}
