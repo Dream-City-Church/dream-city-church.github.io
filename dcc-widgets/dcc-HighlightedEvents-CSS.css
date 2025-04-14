@@ -28,7 +28,7 @@ a.highlighted-event {
     flex-direction: column;
 }
 
-img.event-image {
+.event-image {
     display: inline-block;
     aspect-ratio: 16 / 9;
     width: 100%;
