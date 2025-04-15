@@ -80,10 +80,10 @@ p.event-location {
 
 .skel.event-title {
     height: 2rem;
-    margin-bottom: 10px !important;
+    margin-bottom: 20px !important;
 }
 
 .skel.event-date {
-    height: 1.25rem;
+    height: 1.1rem;
     margin-bottom: 10px !important;
 }
