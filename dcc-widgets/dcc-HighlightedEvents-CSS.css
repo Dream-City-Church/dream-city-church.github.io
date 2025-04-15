@@ -79,6 +79,11 @@ p.event-location {
 }
 
 .skel.event-title {
-    height: 1.5rem;
+    height: 1.75rem;
+    margin-bottom: 10px !important;
+}
+
+.skel.event-date {
+    height: 1.25rem;
     margin-bottom: 10px !important;
 }
