@@ -75,22 +75,10 @@ p.event-location {
     --border-radius: 0;
     width:100%;
     aspect-ratio:16/9;
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
 }
 
 .skel.event-title {
     height: 1.5rem;
-}
-
-#HighlightedEventsWidget .skel.event-title:nth-of-type(1) {
-    width: 87%;
-}
-#HighlightedEventsWidget .skel.event-title:nth-of-type(2) {
-    width: 75%;
-}
-#HighlightedEventsWidget .skel.event-title:nth-of-type(3) {
-    width: 93%;
-}
-#HighlightedEventsWidget .skel.event-title:nth-of-type(4) {
-    width: 83%;
+    margin-bottom: 10px !important;
 }
