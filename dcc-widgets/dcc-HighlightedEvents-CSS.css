@@ -35,6 +35,7 @@ a.highlighted-event {
     background-size: cover;
     object-fit: cover;
     margin: 0 !important;
+    radius: 10px;
 }
 
 p.event-title {
