@@ -24,7 +24,7 @@
         id="HighlightedEventsWidget"
         data-component="CustomWidget"
         data-sp="api_custom_HighlightedEvents"
-        data-params="@CongregationId=6&@MinistryId=26"
+        data-params="@CongregationId=6&"
         data-template="https://dream-city-church.github.io/dcc-widgets/dcc-HighlightedEvents-template.html?rev=1"
         data-requireUser="false"
         data-cache="false"
@@ -32,7 +32,29 @@
         data-host="dreamcitychurch"
         >
 
-        <wa-spinner style="font-size: 5rem; --indicator-color: darkgray; --track-color: gray;"></wa-spinner></div>
+        <div class="skel highlighted-event">
+        <wa-skeleton class="skel event-image" effect="sheen"></wa-skeleton>
+        <wa-skeleton class="skel event-title" effect="sheen" style="width:87%;"></wa-skeleton>
+        <wa-skeleton class="skel event-date" effect="sheen" style="width:74%;"></wa-skeleton>
+        </div>
+        
+        <div class="skel highlighted-event">
+        <wa-skeleton class="skel event-image" effect="sheen"></wa-skeleton>
+        <wa-skeleton class="skel event-title" effect="sheen" style="width:78%;"></wa-skeleton>
+        <wa-skeleton class="skel event-date" effect="sheen" style="width:63%;"></wa-skeleton>
+        </div>
+        
+        <div class="skel highlighted-event">
+        <wa-skeleton class="skel event-image" effect="sheen"></wa-skeleton>
+        <wa-skeleton class="skel event-title" effect="sheen" style="width:93%;"></wa-skeleton>
+        <wa-skeleton class="skel event-date" effect="sheen" style="width:87%;"></wa-skeleton>
+        </div>
+        
+        <div class="skel highlighted-event">
+        <wa-skeleton class="skel event-image" effect="sheen"></wa-skeleton>
+        <wa-skeleton class="skel event-title" effect="sheen" style="width:83%;"></wa-skeleton>
+        <wa-skeleton class="skel event-date" effect="sheen" style="width:77%;"></wa-skeleton>
+        </div>
     
     </div>
 
