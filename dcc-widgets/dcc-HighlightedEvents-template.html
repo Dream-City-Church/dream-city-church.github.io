@@ -8,6 +8,9 @@
         {% if event.Show_Location == 1 %}
             <p class="event-location"><i class="fa-solid fa-location-dot fa-xs"></i> {{ event.Event_Location }}</p>
         {% endif %}
+        {% if event.Registration_Active == 1 %}
+            <div class="event-registration event-tag">Register Here</div>
+        {% endif %}
     </a>
 
 {% endfor %}

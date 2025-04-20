@@ -78,6 +78,16 @@ p.event-location {
     text-align: left;
 }
 
+.event-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    background-color: #e07e3c;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+}
+
 .skel.event-image {
     --border-radius: 0;
     width:100%;
@@ -94,3 +104,4 @@ p.event-location {
     height: 1.1rem;
     margin-bottom: 10px !important;
 }
+
