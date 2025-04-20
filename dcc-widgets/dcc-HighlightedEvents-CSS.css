@@ -81,11 +81,13 @@ p.event-location {
 .event-tag {
     font-size: 0.8rem;
     font-weight: 600;
+    text-transform: uppercase;
     color: white;
     background-color: #e07e3c;
-    padding: 0.2rem 0.5rem;
-    border-radius: 10px;
-    margin: 0.5rem 0;
+    padding: 0rem 0.75rem;
+    border-radius: 7px;
+    margin: 0;
+    width: fit-content;
 }
 
 .skel.event-image {
