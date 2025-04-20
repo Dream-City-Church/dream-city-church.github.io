@@ -79,9 +79,10 @@ p.event-location {
 }
 
 .event-tag {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 1px;
     color: white;
     background-color: #e07e3c;
     padding: 0rem 0.75rem;
