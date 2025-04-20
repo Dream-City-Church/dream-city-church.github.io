@@ -15,9 +15,19 @@
     padding-bottom: 1rem;
 }
 
+#HighlightedEventsWidget.vertical {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
 @media screen and (min-width: 1000px) {
     #HighlightedEventsWidget::-webkit-scrollbar {
         display: none;
+    }
+    #HighlightedEventsWidget.vertical::-webkit-scrollbar {
+        display: block;
     }
 }
 
@@ -42,6 +52,10 @@ a.highlighted-event {
     object-fit: cover;
     margin: 0 !important;
     border-radius: 10px;
+}
+
+.event-image.hide-image {
+    display: none !important;
 }
 
 p.event-title {
