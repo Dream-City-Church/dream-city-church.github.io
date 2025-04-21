@@ -102,8 +102,8 @@ p.event-location {
     font-size: 0.6rem;
     font-weight: 600;
     position: absolute;
-    bottom: -2rem;
-    left: 0;
+    text-wrap: nowrap;
+    bottom: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: white;
