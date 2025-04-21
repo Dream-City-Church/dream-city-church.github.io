@@ -6,6 +6,7 @@
     --root-font-size: 1.25rem;
     --root-line-height: 1.25rem;
     --primary: #bc204b;
+    --brand-primary: var(--primary);
     --secondary: #e07e3c;
     --tertiary: #bcbcbc;
     --brand-gradient: linear-gradient(-170deg, var(--secondary) 0%, var(--primary) 100%);
