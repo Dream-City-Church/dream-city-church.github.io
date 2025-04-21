@@ -1,16 +1,16 @@
-<style type="text/css">@import url("https://dream-city-church.github.io/dcc-widgets/dcc-HighlightedEvents-CSS.css?rev=250420");</style>
+<style type="text/css">@import url("https://dream-city-church.github.io/dcc-widgets/dcc-HighlightedEvents-CSS.css?rev=250421");</style>
 {% for event in DataSet1 %}
 
     <a class="highlighted-event" href="{{ event.Event_URL }}">
         <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ event.Event_Image }}" alt="{{ event.Event_Title }}" class="event-image" />
         <p class="event-title">{{ event.Event_Title }}</p>
         
-        <div class="event-registration event-tag">{% if event.Registration_Active == 1 %}Register Now{% endif %}</div>
-        
         <p class="event-date"><i class="fa-solid fa-calendar-days fa-xs"></i> {{ event.Event_Start_Date }}</p>
         {% if event.Show_Location == 1 %}
             <p class="event-location"><i class="fa-solid fa-location-dot fa-xs"></i> {{ event.Event_Location }}</p>
         {% endif %}
+
+        {% if event.Registration_Active == 1 %}<div class="event-registration event-tag">Register Now</div>{% endif %}
     </a>
 
 {% endfor %}

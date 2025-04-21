@@ -4,6 +4,7 @@
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -12,7 +13,7 @@
     justify-content: space-between;
     column-gap: 1.5rem;
     margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    padding-bottom: 2.5rem;
 }
 
 #HighlightedEventsWidget.vertical {
@@ -44,6 +45,11 @@ a.highlighted-event {
     flex-direction: column;
 }
 
+.vertical .highlighted-event {
+    max-width: 100%;
+    margin-bottom: 2rem;
+}
+
 .event-image {
     display: inline-block;
     aspect-ratio: 16 / 9;
@@ -54,7 +60,7 @@ a.highlighted-event {
     border-radius: 10px;
 }
 
-.event-image.hide-image {
+#HighlightedEventsWidget.hide-image .event-image {
     display: none !important;
 }
 
@@ -70,6 +76,7 @@ p.event-title {
 p.event-date {
     margin: 0;
     padding: 0;
+    margin-top: auto;
     width: 100%;
     font-size: 1rem;
     font-weight: 600;
@@ -94,6 +101,9 @@ p.event-location {
 .event-tag {
     font-size: 0.6rem;
     font-weight: 600;
+    position: absolute;
+    bottom: -2rem;
+    left: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: white;
