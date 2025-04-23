@@ -1,0 +1,90 @@
+#pocketplatform-sermons {
+    font-family: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
+}
+
+.--pp-grid-container {
+    display: grid !important;
+    gap: 2rem !important;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) ) !important;
+}
+
+.--pp-sermon-series-list-container a {
+    height: 100% !important;
+    display: flex !important;
+    overflow: hidden;
+    flex-direction: column !important;
+    background-color: #fafafa !important;
+    padding: 1rem !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+    font-family: 'neue haas display',Helvetica,Arial,Lucida,sans-serif !important;
+}
+
+.--pp-sermon-series-list-container a h1 {
+    font-family: 'neue haas display',Helvetica,Arial,Lucida,sans-serif !important;
+    line-height: 2rem !important;
+    font-weight: bolder !important;
+    font-size: 1.75rem !important;
+    text-align: center !important;
+    text-wrap-style: pretty !important;
+    margin-bottom: 1rem !important;
+}
+
+.--pp-sermon-series-list-container a button {
+    height: auto !important;
+    background: #bc204b !important;
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    margin-top: auto !important;
+    padding: 0.5rem 0 !important;
+}
+
+.--pp-image-container {
+    padding: 0 !important;
+    width: 110% !important;
+    margin-left: -5% !important;
+    top: -1rem !important;
+    aspect-ratio: 16 / 9 !important;
+}
+
+.--pp-sermonseries > .--pp-image-container {
+    display: none !important;
+}
+
+.--pp-sermonseries h1 {
+    font-family: 'neue haas display',Helvetica,Arial,Lucida,sans-serif !important;
+    line-height: 2rem !important;
+    font-weight: bolder !important;
+    font-size: 1.75rem !important;
+    text-align: center !important;
+    text-wrap-style: pretty !important;
+    margin-bottom: 1rem !important;
+}
+
+.--pp-sermon {
+    border-bottom: 1px solid lightgray !important;
+    padding-bottom: 2rem !important;
+}
+
+.--pp-sermon .--pp-image-container, .--pp-sermon-container .--pp-image-container {
+    width: 100% !important;
+    top: 0 !important;
+    margin-left: 0 !important;
+}
+
+.--pp-sermon button, .--pp-sermonlink-container button {
+    background-color:#bc204b !important;
+}
+
+a.--pp-back-button {
+    color: #bc204b !important;
+    font-family: 'neue haas display',Helvetica,Arial,Lucida,sans-serif !important;
+    margin-bottom: 1rem !important;
+}
+
+@media screen and (max-width: 768px) {
+    .--pp-sermon-container > div {
+        border-bottom: 1px solid lightgray !important;
+        padding-bottom: 1rem !important;
+    }
+}

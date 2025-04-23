@@ -1253,3 +1253,61 @@ div#mobileUnlistedCheck {
         grid-column-start: 1;
     }
 }
+
+@container (max-width: 600px) {
+    /* Modify Cards in Small Containers */
+    .mppw-card--grid, #householdMemberList {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 0;
+        margin-bottom: 2rem;
+    }
+    .mpp-card {
+        padding: 0.5rem 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        border-bottom: 0.25px solid var(--brand-cloud);
+        border-radius: 0;
+    }
+    .mpp-card--body {
+        width: 100%;
+        padding: 0 0.5rem 0.5rem 1rem;
+    }
+    .mpp-card--header {
+        display: none;
+        /* height: 100%;
+        width: 25%;
+        max-height: 70px; */
+    }
+    .mpp-card--badge {
+        top: 0;
+        left: 94vw;
+        transform: none;
+        line-height: 1.5rem;
+        padding: 0;
+        font-size: 0;
+    }
+    .mpp-card--badge::after {
+        font-size: 1rem;
+        padding: 1.5rem 0.25rem;
+    }
+    .mpp-card--subtitle {
+        padding: 0;
+        font-size: 0.75rem;
+        line-height: 1.2rem;
+        float: none;
+    }
+    .mpp-card--description {
+        display: none;
+        width: initial;
+    }
+    .mpp-card--title {
+        line-height: 1.75rem;
+        font-size: 1.1rem;
+    }
+}
