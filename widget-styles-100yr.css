@@ -97,8 +97,8 @@ h1, h2, h3 {
 .mppw-card--grid, #subscriptionsBody {
     display: grid;
     grid-template-columns: 100%;
-    grid-gap: 1rem;
-    margin-top: 1em;
+    grid-gap: 1%;
+    margin-top: 1%;
 }
 
 .mpp-card, #subscriptionsBody .mpp-card-multiselect {
