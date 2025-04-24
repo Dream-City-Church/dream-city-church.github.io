@@ -93,6 +93,10 @@ h1, h2, h3 {
     --card-checkboxDefaultColor: #bcbcbc;
     --card-labelBgColor: #fff;
 }
+
+.mppw-component-container {
+    container-type: inline-size;
+}
  
 .mppw-card--grid, #subscriptionsBody {
     display: grid;
@@ -1268,6 +1272,7 @@ div#mobileUnlistedCheck {
         margin-right: auto;
         margin-bottom: 1.5rem;
         width: 100%;
+        height: auto;
         background-color: transparent;
         box-shadow: none;
         border: none;
