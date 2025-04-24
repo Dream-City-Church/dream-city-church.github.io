@@ -95,7 +95,7 @@ h1, h2, h3 {
 }
 
 .mppw-component-container {
-    container-type: inline-size;
+    /*container-type: inline-size;*/
 }
  
 .mppw-card--grid, #subscriptionsBody {
