@@ -1302,17 +1302,17 @@ div#mobileUnlistedCheck {
         padding: 1.5rem 0.25rem;
     }
     .mpp-card--subtitle {
-        padding: 0;
+        /*padding: 0;
         font-size: 0.75rem;
         line-height: 1.2rem;
-        float: none;
+        float: none;*/
     }
     .mpp-card--description {
         display: none;
         width: initial;
     }
     .mpp-card--title {
-        line-height: 1.75rem;
-        font-size: 1.1rem;
+        /*line-height: 1.75rem;
+        font-size: 1.1rem;*/
     }
 }
