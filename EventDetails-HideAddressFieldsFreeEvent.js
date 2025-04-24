@@ -20,7 +20,8 @@ function waitForRegistrationContainer(timeToWait,currentRun,maxRun) {
 }
 
 function updateAddressFields(){
-    document.querySelector('mpp-event-details').shadowRoot.querySelector('#addressFormWrapper').style.display = 'none';
+    const addressFormWrapper = document.querySelector('mpp-event-details').shadowRoot.querySelector('#addressFormWrapper');
+    addressFormWrapper.style.display = 'none';
     console.log('Hiding address fields');
 }
 
