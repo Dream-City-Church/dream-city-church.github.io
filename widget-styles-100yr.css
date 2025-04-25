@@ -514,6 +514,14 @@ div#registrationTotalContainer {
     padding: 0.5rem;
 }
 
+#registrationForm #addressFormWrapper {
+    display: none;
+}
+
+#registrationForm #addressFormWrapper:has(input[required]) {
+    display: inline-block;
+}
+
 .mpp-innerpage--datetime-wrapper {
     width: 100%;
 }
