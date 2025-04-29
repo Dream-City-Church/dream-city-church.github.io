@@ -69,7 +69,7 @@ p.event-title {
     padding: 0.5rem 0;
     line-height: 1.2rem;
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 700;
     text-wrap-style: pretty;
 }
 
@@ -79,7 +79,7 @@ p.event-date {
     margin-top: auto;
     width: 100%;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
     align-self: flex-end;
 }
 
@@ -89,7 +89,7 @@ p.event-location {
     margin-top: 0;
     width: 100%;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
     align-self: flex-end;
 }
 
