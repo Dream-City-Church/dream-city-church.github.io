@@ -8,8 +8,8 @@
         <p class="group-date"><i class="fa-solid fa-calendar-days fa-xs"></i> {{ group.Group_Meeting_Time }}</p>
         <p class="group-location"><i class="fa-solid fa-location-dot fa-xs"></i> {{ group.Group_Location }}</p>
 
-        {% if len(group.Lifestage) > 0 %}<div class="group-lifestage group-tag">{{ group.Lifestage }}</div>{% endif %}
-        {% if len(group.Focus) > 0 %}<div class="group-focus group-tag">{{ group.Focus }}</div>{% endif %}
+        {% if group.Lifestage.size > 0 %}<div class="group-lifestage group-tag">{{ group.Lifestage }}</div>{% endif %}
+        {% if group.Focus.size > 0 %}<div class="group-focus group-tag">{{ group.Focus }}</div>{% endif %}
     </a>
 
 {% endfor %}
