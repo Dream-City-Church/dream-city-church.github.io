@@ -16,7 +16,7 @@
     padding-bottom: 2.5rem;
 }
 
-#HighlightedEventsWidget.vertical {
+#HighlightedEventsWidget.vertical,#HighlightedGroupsWidget.vertical {
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
@@ -24,10 +24,10 @@
 }
 
 @media screen and (min-width: 1000px) {
-    #HighlightedEventsWidget::-webkit-scrollbar {
+    #HighlightedEventsWidget::-webkit-scrollbar,#HighlightedGroupsWidget::-webkit-scrollbar {
         display: none;
     }
-    #HighlightedEventsWidget.vertical::-webkit-scrollbar {
+    #HighlightedEventsWidget.vertical::-webkit-scrollbar,#HighlightedGroupsWidget.vertical::-webkit-scrollbar {
         display: block;
     }
 }
@@ -60,7 +60,7 @@ a.highlighted-event {
     border-radius: 10px;
 }
 
-#HighlightedEventsWidget.hide-image .event-image {
+#HighlightedEventsWidget.hide-image .event-image,#HighlightedGroupsWidget.hide-image .event-image {
     display: none !important;
 }
 
@@ -93,7 +93,7 @@ p.event-location {
     align-self: flex-end;
 }
 
-#HighlightedEventsWidget i.fa-solid {
+#HighlightedEventsWidget i.fa-solid,#HighlightedGroupsWidget i.fa-solid {
     width: 15px;
     text-align: left;
 }
