@@ -5,11 +5,11 @@
         <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ group.Group_Image }}" alt="{{ group.Group_Name }}" class="event-image" />
         <p class="event-title">{{ group.Group_Name }}</p>
         
-        <p class="event-date"><i class="fa-solid fa-calendar-days fa-xs"></i> {{ group.Group_Meeting_Time }}</p>
+        {% if group.Group_Meeting_Time.size > 5 %}<p class="event-date"><i class="fa-solid fa-calendar-days fa-xs"></i> {{ group.Group_Meeting_Time }}</p>{% endif %}
         <p class="event-location"><i class="fa-solid fa-location-dot fa-xs"></i> {{ group.Group_Location }}</p>
 
-        {% if group.Lifestage.size > 0 %}<div class="group-lifestage event-tag">{{ group.Lifestage }}</div>{% endif %}
-        {% if group.Focus.size > 0 %}<div class="group-focus event-tag">{{ group.Focus }}</div>{% endif %}
+        {% if group.Group_Lifestage.size > 0 %}<div class="group-lifestage event-tag">{{ group.Group_Lifestage }}</div>{% endif %}
+        {% if group.Group_Focus.size > 0 %}<div class="group-focus event-tag">{{ group.Group_Focus }}</div>{% endif %}
     </a>
 
 {% endfor %}
