@@ -1,15 +1,15 @@
 <style type="text/css">@import url("https://dream-city-church.github.io/dcc-widgets/dcc-HighlightedEvents-CSS.css?rev=250421");</style>
 {% for group in DataSet1 %}
 
-    <a class="highlighted-group" href="{{ group.Group_URL }}">
-        <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ group.Group_Image }}" alt="{{ group.Group_Name }}" class="group-image" />
-        <p class="group-title">{{ group.Group_Name }}</p>
+    <a class="highlighted-event" href="{{ group.Group_URL }}">
+        <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ group.Group_Image }}" alt="{{ group.Group_Name }}" class="event-image" />
+        <p class="event-title">{{ group.Group_Name }}</p>
         
-        <p class="group-date"><i class="fa-solid fa-calendar-days fa-xs"></i> {{ group.Group_Meeting_Time }}</p>
-        <p class="group-location"><i class="fa-solid fa-location-dot fa-xs"></i> {{ group.Group_Location }}</p>
+        <p class="event-date"><i class="fa-solid fa-calendar-days fa-xs"></i> {{ group.Group_Meeting_Time }}</p>
+        <p class="event-location"><i class="fa-solid fa-location-dot fa-xs"></i> {{ group.Group_Location }}</p>
 
-        {% if group.Lifestage.size > 0 %}<div class="group-lifestage group-tag">{{ group.Lifestage }}</div>{% endif %}
-        {% if group.Focus.size > 0 %}<div class="group-focus group-tag">{{ group.Focus }}</div>{% endif %}
+        {% if group.Lifestage.size > 0 %}<div class="group-lifestage event-tag">{{ group.Lifestage }}</div>{% endif %}
+        {% if group.Focus.size > 0 %}<div class="group-focus event-tag">{{ group.Focus }}</div>{% endif %}
     </a>
 
 {% endfor %}
