@@ -14,7 +14,6 @@ function enableHorizontalScroll(container) {
         container.classList.add('active');
         startX = e.pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
-        console.log('Mousedown Dragging: ', isDragging); // Log dragging state
     });
 
     container.addEventListener('mouseleave', () => {
@@ -28,10 +27,7 @@ function enableHorizontalScroll(container) {
         container.style.transition = 'transform 0.2s ease-out'; // Add transition for smooth effect
         container.style.transform = 'translateX(0)'; // Reset transform to 0 on mouse up
 
-        console.log('Mouseup Dragging: ', isDragging); // Log dragging state
-
         if (isDragging) {
-            console.log('Mouseup Dragging 2: ', isDragging); // Log dragging state
             e.preventDefault(); // Prevent link activation if dragging occurred
         }
     });
@@ -39,18 +35,13 @@ function enableHorizontalScroll(container) {
     container.addEventListener('click', (e) => {
         if (isDragging) {
             e.preventDefault(); // Prevent link activation if dragging occurred
-            console.log('Click Dragging: ', isDragging); // Log dragging state
-        } else {
-            console.log('Click Not Dragging: ', isDragging); // Log dragging state
         }
     });
-
 
     container.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
         isDragging = true;
-        console.log('Mousemove Dragging: ', isDragging); // Log dragging state
         const x = e.pageX - container.offsetLeft;
         const walk = (x - startX) * 1; // The multiplier controls the scroll speed
         container.scrollLeft = scrollLeft - walk;
@@ -59,10 +50,10 @@ function enableHorizontalScroll(container) {
 
         // Add rubber band effect
         if (container.scrollLeft <= 0) {
-            container.style.transform = `translateX(${Math.min(-container.scrollLeft, 50)}px)`;
+            container.style.transform = `translateX(${Math.min(-container.scrollLeft, 100)}px)`;
         } else if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
             const excess = container.scrollLeft + container.clientWidth - container.scrollWidth;
-            container.style.transform = `translateX(${-Math.min(excess, 50)}px)`;
+            container.style.transform = `translateX(${-Math.min(excess, 100)}px)`;
         } else {
             container.style.transform = 'translateX(0)';
         }
