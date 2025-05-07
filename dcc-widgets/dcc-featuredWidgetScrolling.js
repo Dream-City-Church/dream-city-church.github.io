@@ -36,6 +36,16 @@ function enableHorizontalScroll(container) {
         }
     });
 
+    container.addEventListener('click', (e) => {
+        if (isDragging) {
+            e.preventDefault(); // Prevent link activation if dragging occurred
+            console.log('Click Dragging: ', isDragging); // Log dragging state
+        } else {
+            console.log('Click Not Dragging: ', isDragging); // Log dragging state
+        }
+    });
+
+
     container.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
