@@ -68,9 +68,9 @@ function enableHorizontalScroll(container) {
     });
 }
 
-// Listen for when the widget has been loaded and call the horizontal scroll function and send event.detail.widgetId
+// Listen for when the widget has been loaded and call the horizontal scroll function and send event.detail
 window.addEventListener('widgetLoaded', function(event) {
-  console.log(event);
+  const widgetId = event.detail; // Get the widget ID from the event detail
   const container = document.querySelector(`#${widgetId}`); // Select the widget container using the widget ID
   // If container loaded and is of type #HighlightedGroupsWidget or #HighlightedEventsWidget
   if (container && (container.id === 'HighlightedGroupsWidget' || container.id === 'HighlightedEventsWidget')) {
