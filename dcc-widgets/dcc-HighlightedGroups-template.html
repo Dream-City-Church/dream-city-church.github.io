@@ -23,6 +23,7 @@
         
         // Scroll the widget horizontally based on the vertical scroll amount
         this.scrollLeft += event.deltaY;
+        console.log('scrolling '+event.deltaY);
     });
 
     // Add a rubber band effect to the horizontal scrolling
@@ -36,6 +37,7 @@
             // Add a rubber band effect by changing the opacity of the widget
             this.style.opacity = 0.5;
             setTimeout(() => { this.style.opacity = 1; }, 200);
+            console.log('rubber band effect triggered');
         }
     });
 

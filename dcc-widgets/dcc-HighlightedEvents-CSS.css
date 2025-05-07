@@ -25,12 +25,12 @@
 }
 
 @media screen and (min-width: 1000px) {
-    /*#HighlightedEventsWidget::-webkit-scrollbar,#HighlightedGroupsWidget::-webkit-scrollbar {
+    #HighlightedEventsWidget::-webkit-scrollbar,#HighlightedGroupsWidget::-webkit-scrollbar {
         display: none;
     }
     #HighlightedEventsWidget.vertical::-webkit-scrollbar,#HighlightedGroupsWidget.vertical::-webkit-scrollbar {
         display: block;
-    }*/
+    }
 }
 
 a.highlighted-event {
