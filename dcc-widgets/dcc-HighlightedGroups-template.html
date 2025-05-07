@@ -12,3 +12,31 @@
     </a>
 
 {% endfor %}
+
+<script type="text/javascript">
+    // This script is used to enable horizontal scrolling on the #HighlightedGroupsWidget div with a 'rubber band' effect
+    
+    // Create event listener for the highlighted groups widget
+    document.getElementById("HighlightedGroupsWidget").addEventListener("wheel", function(event) {
+        // Prevent the default scrolling behavior
+        event.preventDefault();
+        
+        // Scroll the widget horizontally based on the vertical scroll amount
+        this.scrollLeft += event.deltaY;
+    });
+
+    // Add a rubber band effect to the horizontal scrolling
+    document.getElementById("HighlightedGroupsWidget").addEventListener("scroll", function() {
+        // Get the current scroll position and the maximum scroll width
+        var scrollLeft = this.scrollLeft;
+        var maxScrollLeft = this.scrollWidth - this.clientWidth;
+        
+        // Check if the scroll position is at the beginning or end of the scrollable area
+        if (scrollLeft <= 0 || scrollLeft >= maxScrollLeft) {
+            // Add a rubber band effect by changing the opacity of the widget
+            this.style.opacity = 0.5;
+            setTimeout(() => { this.style.opacity = 1; }, 200);
+        }
+    });
+
+</script>
