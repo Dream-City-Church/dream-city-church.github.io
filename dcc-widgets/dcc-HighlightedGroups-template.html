@@ -2,7 +2,7 @@
 {% for group in DataSet1 %}
 
     <a class="highlighted-event" href="{{ group.Group_URL }}">
-        <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ group.Group_Image }}" alt="{{ group.Group_Name }}" class="event-image" />
+        <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ group.Group_Image }}" alt="{{ group.Group_Name }}" draggable="false" ondragstart="return false;" class="event-image" />
         <p class="event-title">{{ group.Group_Name }}</p>
         
         {% if group.Group_Meeting_Time.size > 5 %}<p class="event-date"><i class="fa-solid fa-calendar-days fa-xs"></i> {{ group.Group_Meeting_Time }}</p>{% endif %}
