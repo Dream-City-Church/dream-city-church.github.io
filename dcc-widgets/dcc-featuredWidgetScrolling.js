@@ -32,6 +32,7 @@ function enableHorizontalScroll(container) {
 
 // Listen for when the widget has been loaded and call the horizontal scroll function and send event.detail.widgetId
 window.addEventListener('widgetLoaded', function(event) {
+  console.log('|||===> widgetLoaded Event Fired for: ' + event.detail.widgetId);
   const widgetId = event.detail.widgetId; // Get the widget ID from the event detail
   console.log('Widget loaded:', widgetId); // Log the widget ID for debugging
   const container = document.querySelector(`#${widgetId}`); // Select the widget container using the widget ID
