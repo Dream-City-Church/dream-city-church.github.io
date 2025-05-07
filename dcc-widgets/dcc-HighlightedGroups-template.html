@@ -2,9 +2,6 @@
 {% for group in DataSet1 %}
 
     <a class="highlighted-event" href="{{ group.Group_URL }}" draggable="false" ondragstart="return false;">
-        {% if group.Group_Registration_Required == "Yes" %}<div class="event-tag">Registration Required</div>{% endif %}
-        {% if group.Group_Registration_Required == "No" %}<div class="event-tag">No Registration Required</div>{% endif %}
-        {% if group.Group_Registration_Required == "Yes" and group.Group_Registration_URL.size > 0 %}<div class="event-tag"><a href="{{ group.Group_Registration_URL }}" target="_blank" rel="noopener noreferrer">Register Here</a></div>{% endif %}
         <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ group.Group_Image }}" alt="{{ group.Group_Name }}" draggable="false" ondragstart="return false;" class="event-image" />
         <p class="event-title">{{ group.Group_Name }}</p>
         

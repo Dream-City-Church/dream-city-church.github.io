@@ -1,13 +1,16 @@
 // Function for enabling horizontal drag scrolling on the widget container
 // Add rubber band effect when reaching the end of the container
 // This function allows the user to click and drag to scroll horizontally within a container
+// Prevent default behavior of the link when dragging
 function enableHorizontalScroll(container) {
     let isDown = false;
     let startX;
     let scrollLeft;
+    let isDragging = false;
 
     container.addEventListener('mousedown', (e) => {
         isDown = true;
+        isDragging = false;
         container.classList.add('active');
         startX = e.pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
@@ -18,17 +21,26 @@ function enableHorizontalScroll(container) {
         container.classList.remove('active');
     });
 
-    container.addEventListener('mouseup', () => {
+    container.addEventListener('mouseup', (e) => {
         isDown = false;
         container.classList.remove('active');
+        container.style.transition = 'transform 0.2s ease-out'; // Add transition for smooth effect
+        container.style.transform = 'translateX(0)'; // Reset transform to 0 on mouse up
+
+        if (isDragging) {
+            e.preventDefault(); // Prevent link activation if dragging occurred
+        }
     });
 
     container.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
+        isDragging = true;
         const x = e.pageX - container.offsetLeft;
         const walk = (x - startX) * 1; // The multiplier controls the scroll speed
         container.scrollLeft = scrollLeft - walk;
+        container.style.transition = 'none'; // Disable transition while dragging
+        container.style.transform = 'translateX(0)'; // Reset transform to 0 while dragging
 
         // Add rubber band effect
         if (container.scrollLeft <= 0) {
@@ -43,11 +55,6 @@ function enableHorizontalScroll(container) {
 
     container.addEventListener('transitionend', () => {
         container.style.transition = '';
-    });
-
-    container.addEventListener('mouseup', () => {
-        container.style.transition = 'transform 0.2s ease-out';
-        container.style.transform = 'translateX(0)';
     });
 
     container.addEventListener('mouseleave', () => {

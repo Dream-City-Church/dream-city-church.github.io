@@ -1,8 +1,8 @@
 <style type="text/css">@import url("https://dream-city-church.github.io/dcc-widgets/dcc-HighlightedEvents-CSS.css?rev=250421");</style>
 {% for event in DataSet1 %}
 
-    <a class="highlighted-event" href="{{ event.Event_URL }}">
-        <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ event.Event_Image }}" alt="{{ event.Event_Title }}" class="event-image" />
+    <a class="highlighted-event" href="{{ event.Event_URL }}" draggable="false" ondragstart="return false;">
+        <img src="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ event.Event_Image }}" alt="{{ event.Event_Title }}" draggable="false" ondragstart="return false;" class="event-image" />
         <p class="event-title">{{ event.Event_Title }}</p>
         
         <p class="event-date"><i class="fa-solid fa-calendar-days fa-xs"></i> {{ event.Event_Start_Date }}</p>
