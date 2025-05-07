@@ -14,8 +14,7 @@
 {% endfor %}
 
 <script type="text/javascript">
-    // This script is used to enable a horizontal drag to scroll effect on the #HighlightedGroupsWidget container and elements inside it.
-    // It allows users to scroll through the highlighted groups by dragging their mouse or finger across the screen.
+    // Click and drag on the #HighlightedGroupsWidget container to horizontally scroll the items in the overflow.
     const container = document.querySelector("#HighlightedGroupsWidget");
     let isDown = false;
     let startX;
@@ -25,21 +24,25 @@
         container.classList.add("active");
         startX = e.pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
+        console.log("mousedown", startX, scrollLeft);
     });
     container.addEventListener("mouseleave", () => {
         isDown = false;
         container.classList.remove("active");
+        console.log("mouseleave", startX, scrollLeft);
     });
     container.addEventListener("mouseup", () => {
         isDown = false;
         container.classList.remove("active");
+        console.log("mouseup", startX, scrollLeft);
     });
     container.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
+        if (!isDown) return; // stop the fn from running
         e.preventDefault();
         const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 2; // The multiplier controls the scroll speed
+        const walk = (x - startX) * 2; //scroll-fast
         container.scrollLeft = scrollLeft - walk;
+        console.log("mousemove", x, walk, container.scrollLeft);
     });
     container.addEventListener("touchstart", (e) => {
         isDown = true;
@@ -47,17 +50,21 @@
         startX = e.touches[0].pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
     });
+    container.addEventListener("touchleave", () => {
+        isDown = false;
+        container.classList.remove("active");
+    });
     container.addEventListener("touchend", () => {
         isDown = false;
         container.classList.remove("active");
     });
     container.addEventListener("touchmove", (e) => {
-        if (!isDown) return;
+        if (!isDown) return; // stop the fn from running
         e.preventDefault();
         const x = e.touches[0].pageX - container.offsetLeft;
-        const walk = (x - startX) * 2; // The multiplier controls the scroll speed
+        const walk = (x - startX) * 2; //scroll-fast
         container.scrollLeft = scrollLeft - walk;
     });
-    
+
 
 </script>
