@@ -14,6 +14,7 @@ function enableHorizontalScroll(container) {
         container.classList.add('active');
         startX = e.pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
+        console.log('Mousedown Dragging: ', isDragging); // Log dragging state
     });
 
     container.addEventListener('mouseleave', () => {
@@ -27,7 +28,10 @@ function enableHorizontalScroll(container) {
         container.style.transition = 'transform 0.2s ease-out'; // Add transition for smooth effect
         container.style.transform = 'translateX(0)'; // Reset transform to 0 on mouse up
 
+        console.log('Mouseup Dragging: ', isDragging); // Log dragging state
+
         if (isDragging) {
+            console.log('Mouseup Dragging 2: ', isDragging); // Log dragging state
             e.preventDefault(); // Prevent link activation if dragging occurred
         }
     });
@@ -36,6 +40,7 @@ function enableHorizontalScroll(container) {
         if (!isDown) return;
         e.preventDefault();
         isDragging = true;
+        console.log('Mousemove Dragging: ', isDragging); // Log dragging state
         const x = e.pageX - container.offsetLeft;
         const walk = (x - startX) * 1; // The multiplier controls the scroll speed
         container.scrollLeft = scrollLeft - walk;
@@ -66,8 +71,6 @@ function enableHorizontalScroll(container) {
 // Listen for when the widget has been loaded and call the horizontal scroll function and send event.detail.widgetId
 window.addEventListener('widgetLoaded', function(event) {
   console.log(event);
-  const widgetId = event.detail; // Get the widget ID from the event detail
-  console.log('Widget loaded:', widgetId); // Log the widget ID for debugging
   const container = document.querySelector(`#${widgetId}`); // Select the widget container using the widget ID
   // If container loaded and is of type #HighlightedGroupsWidget or #HighlightedEventsWidget
   if (container && (container.id === 'HighlightedGroupsWidget' || container.id === 'HighlightedEventsWidget')) {
