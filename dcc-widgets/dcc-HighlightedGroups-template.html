@@ -14,31 +14,50 @@
 {% endfor %}
 
 <script type="text/javascript">
-    // This script is used to enable horizontal scrolling on the #HighlightedGroupsWidget div with a 'rubber band' effect
+    // This script is used to enable a horizontal drag to scroll effect on the #HighlightedGroupsWidget container and elements inside it.
+    // It allows users to scroll through the highlighted groups by dragging their mouse or finger across the screen.
+    const container = document.querySelector("#HighlightedGroupsWidget");
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    container.addEventListener("mousedown", (e) => {
+        isDown = true;
+        container.classList.add("active");
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    });
+    container.addEventListener("mouseleave", () => {
+        isDown = false;
+        container.classList.remove("active");
+    });
+    container.addEventListener("mouseup", () => {
+        isDown = false;
+        container.classList.remove("active");
+    });
+    container.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 2; // The multiplier controls the scroll speed
+        container.scrollLeft = scrollLeft - walk;
+    });
+    container.addEventListener("touchstart", (e) => {
+        isDown = true;
+        container.classList.add("active");
+        startX = e.touches[0].pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    });
+    container.addEventListener("touchend", () => {
+        isDown = false;
+        container.classList.remove("active");
+    });
+    container.addEventListener("touchmove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - container.offsetLeft;
+        const walk = (x - startX) * 2; // The multiplier controls the scroll speed
+        container.scrollLeft = scrollLeft - walk;
+    });
     
-    // Create event listener for the highlighted groups widget
-    document.getElementById("HighlightedGroupsWidget").addEventListener("wheel", function(event) {
-        // Prevent the default scrolling behavior
-        event.preventDefault();
-        
-        // Scroll the widget horizontally based on the vertical scroll amount
-        this.scrollLeft += event.deltaY;
-        console.log('scrolling '+event.deltaY);
-    });
-
-    // Add a rubber band effect to the horizontal scrolling
-    document.getElementById("HighlightedGroupsWidget").addEventListener("scroll", function() {
-        // Get the current scroll position and the maximum scroll width
-        var scrollLeft = this.scrollLeft;
-        var maxScrollLeft = this.scrollWidth - this.clientWidth;
-        
-        // Check if the scroll position is at the beginning or end of the scrollable area
-        if (scrollLeft <= 0 || scrollLeft >= maxScrollLeft) {
-            // Add a rubber band effect by changing the opacity of the widget
-            this.style.opacity = 0.5;
-            setTimeout(() => { this.style.opacity = 1; }, 200);
-            console.log('rubber band effect triggered');
-        }
-    });
 
 </script>
