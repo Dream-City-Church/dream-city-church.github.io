@@ -627,6 +627,10 @@ select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-fi
 
 }
 
+.mppw-form-field_instruction_font {
+    margin-top: 2rem;
+}
+
 .mppw-form-field__control:focus + label {
     background-color: transparent !important;
 }
