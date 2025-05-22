@@ -1,0 +1,17 @@
+@import url('https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/styles/themes/matter.css');
+@import url('https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/styles/color/elegant.css');
+@import url('https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/styles/brand/red.css');
+@import url('https://early.webawesome.com/webawesome@3.0.0-alpha.13/dist/styles/themes/default/typography.css');
+
+/* Note: To use Font Awesome Pro icons,
+   set  data-fa-kit-code="a6a26322af" on the <link> (or any other) element */
+
+:where(:root),
+:host,
+.wa-theme-my-theme {
+  --wa-icon-family: duotone;
+  --wa-icon-variant: solid;
+  --wa-border-radius-scale: 1;
+  --wa-space-scale: 1;
+  --wa-border-width-scale: 0.5;
+}
