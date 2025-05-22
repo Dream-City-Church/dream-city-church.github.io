@@ -23,7 +23,7 @@
                             <wa-option value="3">Divorced</wa-option>
                             <wa-option value="4">Widowed</wa-option>
                             <wa-option value="6">Seperated</wa-option>
-                            <wa-option value="6">Engaged</wa-option>
+                            <wa-option value="7">Engaged</wa-option>
                         </wa-select>
                         {% if DataSet1.first.Gender_ID == 2 and DataSet1.first.Marital_Status_ID == 2 %}
                             <wa-input name="Maiden_Name" type="text" label="Maiden Name" value="{{ DataSet1.first.Maiden_Name }}" data-table="Contacts"></wa-input>
@@ -40,6 +40,7 @@
                         We'll use your occupation and skills information to let you know about opportunities to serve in the church where you can use your skills and talents.<br /><br />
                         <wa-input name="Occupation_Name" type="text" label="Occupation" value="{{ DataSet1.first.Occupation_Name }}"></wa-input>
                         <wa-input name="Industry_Name" type="text" label="Industry" value="{{ DataSet1.first.Industry_Name }}"></wa-input>
+                        <wa-input name="Employer_Name" type="text" label="Employer" value="{{ DataSet1.first.Employer_Name }}"></wa-input>
                         <h3>Select Your Skills</h3>
                         <div id="skills_checkboxes" class="attributes_container">
                             <!-- List of skills as regular HTML form checkboxes. Checkbox will be hidden and label will appear as a button -->
