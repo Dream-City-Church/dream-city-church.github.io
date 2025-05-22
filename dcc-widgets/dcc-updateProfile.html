@@ -118,12 +118,17 @@
         data-host="dreamcitychurch"
         ></div>
 
+        <!-- Detect and apply Dark Theme -->
         <script typle="text/javascript">
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // dark mode
-                document.documentElement.classList.add('wa-theme-default-dark');
-            }
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+            const applyDark = function (event = systemDark) {
+            const isDark = colorScheme === 'auto' ? event.matches : colorScheme === 'dark';
+            document.documentElement.classList.toggle('wa-dark', isDark);
+            };
+            systemDark.addEventListener('change', applyDark);
+            applyDark();
         </script>
+        <!-- End Dark Theme detection -->
         <script type="text/template" id="UserProfile-Template">
             <dcc-updateProfile style="display:inline-block;width: 100%; max-width:600px;margin-right:auto;margin-left:auto;">
                 <wa-tab-group>
