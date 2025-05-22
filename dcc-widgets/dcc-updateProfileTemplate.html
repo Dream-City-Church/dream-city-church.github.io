@@ -1,0 +1,80 @@
+<dcc-updateProfile style="display:inline-block;width: 100%; max-width:600px;margin-right:auto;margin-left:auto;">
+                <wa-tab-group>
+                    <wa-tab slot="nav" panel="general">General</wa-tab>
+                    <wa-tab slot="nav" panel="skills">Skills</wa-tab>
+                    <wa-tab slot="nav" panel="interests">Interests</wa-tab>
+                    <wa-tab slot="nav" panel="gifts">Growth</wa-tab>
+                    <wa-tab-panel name="general">
+                        <wa-avatar initials="{{ DataSet1.first.Nickname | slice: 0 }}{{ DataSet1.first.Last_Name | slice: 0 }}" label="Profile Picture" image="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ DataSet1.first.Image_GUID }}"></wa-avatar>
+                        <wa-input name="First_Name" type="text" label="First Name" value="{{ DataSet1.first.Nickname }}" data-table="Contacts" required></wa-input>
+                        <wa-input name="Last_Name" type="text" label="Last Name" value="{{ DataSet1.first.Last_Name }}" data-table="Contacts" required></wa-input>
+                        <wa-input name="Email_Address" type="email" label="Email Address" data-table="Contacts" value="{{ DataSet1.first.Email_Address }}" {% if DataSet1.first.Household_Position_ID == 1 %}required{% endif %}></wa-input>
+                        <wa-checkbox {% if DataSet1.first.Bulk_Email_Opt_Out != 1 %}checked{% endif %}>Receive News & Announcement Emails</wa-checkbox>
+                        <wa-input name="Mobile_Phone" type="telephone" label="Phone" data-table="Contacts" value="{{ DataSet1.first.Mobile_Phone }}"></wa-input>
+                        <wa-checkbox {% if DataSet1.first.Do_Not_Text != 1 %}checked{% endif %}>Receive Text Messages</wa-checkbox>
+                        <wa-input name="Date_of_Birth" type="date" label="Birthday" data-table="Contacts" value="{{ DataSet1.first.Date_of_Birth }}" max="{{ 'now' | date: '%Y-%m-%d' }}"></wa-input>
+                        <wa-select name="Gender_ID" label="Gender" value="{{ DataSet1.first.Gender_ID }}">
+                            <wa-option value="1">Male</wa-option>
+                            <wa-option value="2">Female</wa-option>
+                          </wa-select>
+                        <wa-select name="Marital_Status_ID" label="Marital Status" data-table="Contacts" value="{{ DataSet1.first.Marital_Status_ID }}">
+                            <wa-option value="1">Single</wa-option>
+                            <wa-option value="2">Married</wa-option>
+                            <wa-option value="3">Divorced</wa-option>
+                            <wa-option value="4">Widowed</wa-option>
+                            <wa-option value="6">Seperated</wa-option>
+                            <wa-option value="6">Engaged</wa-option>
+                        </wa-select>
+                        {% if DataSet1.first.Gender_ID == 2 and DataSet1.first.Marital_Status_ID == 2 %}
+                            <wa-input name="Maiden_Name" type="text" label="Maiden Name" value="{{ DataSet1.first.Maiden_Name }}" data-table="Contacts"></wa-input>
+                        {% endif %}
+                        {% if DataSet1.first.Household_Position_ID != 1 %}<div id="address-message">Address information can only be updated by heads of household.</div>{% endif %}
+                        <wa-input name="Address_Line_1" type="text" label="Address" data-table="Addresses" value="{{ DataSet1.first.Address_Line_1 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="Address_Line_2" type="text" data-table="Addresses" value="{{ DataSet1.first.Address_Line_2 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="City" type="text" label="City" data-table="Addresses" value="{{ DataSet1.first.City }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="State" type="text" label="State" data-table="Addresses" maxlength=2 value="{{ DataSet1.first.State }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="Zip" type="text" label="Zip" data-table="Addresses" value="{{ DataSet1.first.Postal_Code }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                    </wa-tab-panel>
+
+                    <wa-tab-panel name="skills">
+                        We'll use your occupation and skills information to let you know about opportunities to serve in the church where you can use your skills and talents.<br /><br />
+                        <wa-input name="Occupation_Name" type="text" label="Occupation" value="{{ DataSet1.first.Occupation_Name }}"></wa-input>
+                        <wa-input name="Industry_Name" type="text" label="Industry" value="{{ DataSet1.first.Industry_Name }}"></wa-input>
+                        <h3>Select Your Skills</h3>
+                        <div id="skills_checkboxes" class="attributes_container">
+                            <!-- List of skills as regular HTML form checkboxes. Checkbox will be hidden and label will appear as a button -->
+                            {% for skill in DataSet2 %}
+                                <input type="checkbox" name="skill" id="skill-{{ skill.Attribute_ID }}" value="{{ skill.Attribute_ID }}" {{ skill.HasAttribute }} />
+                                <label for="skill-{{ skill.Attribute_ID }}">{{ skill.Attribute_Name }}</label>
+                            {% endfor %}
+                        </div>
+
+                    </wa-tab-panel>
+
+                    <wa-tab-panel name="interests">
+                        We'll use your interests and hobbies to let you know about events and groups that you might enjoy and to connect you with people who share your interests.
+                        <h3>Select Your Interests & Hobbies</h3>
+                        <div id="interests_checkboxes" class="attributes_container">
+                            {% for interest in DataSet3 %}
+                                <input type="checkbox" name="interest" id="interest-{{ interest.Attribute_ID }}" value="{{ interest.Attribute_ID }}" {{ interest.HasAttribute }} />
+                                <label for="interest-{{ interest.Attribute_ID }}">{{ interest.Attribute_Name }}</label>
+                            {% endfor %}
+                        </div>
+                    </wa-tab-panel>
+
+                    <wa-tab-panel name="gifts">
+                        Accepted Jesus on: {{ DataSet1.first.Salvation_Date }}<br />
+                        Baptized on: {{ DataSet1.first.Baptism_Date }}<br /><br />
+                        We'll use your spiritual gifts to help you find a place to serve in the church where you can use your gifts and talents.
+                        <br /><br />Not sure what spiritual gifts you have?<br />Take this <a target="_blank" href="https://gifts.churchgrowth.org/spiritual-gifts-survey/">Spiritual Gifts Survey</a> to find out!
+                        <h3>Select Your Spiritual Gifts</h3>
+                        <br /><br />
+                        <div id="gifts_checkboxes" class="attributes_container">
+                            {% for gift in DataSet4 %}
+                                <input type="checkbox" name="gift" id="gift-{{ gift.Attribute_ID }}" value="{{ gift.Attribute_ID }}" {{ gift.HasAttribute }} />
+                                <label for="gift-{{ gift.Attribute_ID }}">{{ gift.Attribute_Name }}</label>
+                            {% endfor %}
+                        </div> 
+                    </wa-tab-panel>
+                </wa-tab-group>
+            </dcc-updateProfile>
