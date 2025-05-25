@@ -35,13 +35,7 @@ const inputListeners = async () => {
     inputs.forEach(input => {
         input.addEventListener('change', function() {
             const name = this.name;
-            var value;
-            // If an input field, use select(), otherwise use value
-            if (this.tagName.toLowerCase() === 'wa-input' || this.tagName.toLowerCase() === 'wa-textarea') {
-                value = this.select();
-            } else {
-                value = this.getAttribute('value');
-            }
+            const value = this.select ? this.select() : this.value; // Use select() for wa-input and wa-textarea, otherwise use value
             const dataTable = this.getAttribute('data-table');
 
             console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
