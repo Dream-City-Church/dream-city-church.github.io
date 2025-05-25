@@ -4,14 +4,12 @@
 // Send the name, value, and data-table values from the field.
 
 console.log('dcc-updateProfile-JS loaded');
-
-await customElements.whenDefined('wa-input');
-
-console.log('Web Awesome components are ready!');
-
 // All Web Awesome components on the page are ready!
 
-document.addEventListener('DOMContentLoaded', function() {
+const inputListeners = async () => {
+    await customElements.whenDefined('wa-input');
+    console.log('Web Awesome components are ready!');
+
     const profileForm = document.getElementById('UserProfile');
     const inputs = profileForm.querySelectorAll('wa-input, wa-select, wa-textarea');
     const inputCount = inputs.length;
@@ -26,8 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
             // Send the updated data to the server
-
-            
         });
-    });
-});
+    }
+    );
+};
+
+inputListeners();
