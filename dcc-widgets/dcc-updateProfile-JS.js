@@ -15,7 +15,7 @@ const inputListeners = async () => {
     inputs.forEach(input => {
         input.addEventListener('change', function() {
             const name = this.name;
-            let value = this.select();
+            const value = this.select();
             const dataTable = this.getAttribute('data-table');
 
             console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
@@ -46,7 +46,7 @@ const selectListeners = async () => {
     inputs.forEach(input => {
         input.addEventListener('change', function() {
             const name = this.name;
-            let value = this.value;
+            const value = this.value;
             const dataTable = this.getAttribute('data-table');
 
             console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
