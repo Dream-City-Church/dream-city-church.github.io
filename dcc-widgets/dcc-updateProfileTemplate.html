@@ -34,7 +34,7 @@
                         <wa-input name="Address_Line_2" type="text" data-table="Addresses" value="{{ DataSet1.first.Address_Line_2 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
                         <wa-input name="City" type="text" label="City" data-table="Addresses" value="{{ DataSet1.first.City }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
                         <wa-input name="State" type="text" label="State" data-table="Addresses" maxlength=2 value="{{ DataSet1.first.State }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
-                        <wa-input name="Postal_Code\Region" type="text" label="Zip" data-table="Addresses" value="{{ DataSet1.first.Postal_Code }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="Postal_Code\Region" type="text" label="Zip" data-table="Addresses" maxlength=5 value="{{ DataSet1.first.Postal_Code }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
                     </wa-tab-panel>
 
                     <wa-tab-panel name="skills">

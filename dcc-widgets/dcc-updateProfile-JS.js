@@ -15,12 +15,25 @@ const inputListeners = async () => {
     inputs.forEach(input => {
         input.addEventListener('change', function() {
             const name = this.name;
-            const value = this.select();
+            const value = this.value;
             const dataTable = this.getAttribute('data-table');
 
             console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
             // Send the updated data to the server
         });
+
+        // for wa-input name=Mobile_Phone, format the phone number like 123-456-7890 as it is typed
+        if (input.name === 'Mobile_Phone') {
+            input.addEventListener('input', function() {
+                let value = this.value.replace(/\D/g, ''); // Remove non-digit characters
+                if (value.length > 3 && value.length <= 6) {
+                    value = `${value.slice(0, 3)}-${value.slice(3)}`;
+                } else if (value.length > 6) {
+                    value = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                }
+                this.value = value;
+            });
+        }
     }
     );
 };
