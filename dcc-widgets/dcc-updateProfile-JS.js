@@ -3,6 +3,8 @@
 // If there are changes, when focus leaves the input field send the updated data to the server.
 // Send the name, value, and data-table values from the field.
 
+console.log('dcc-updateProfile-JS loaded');
+
 import { allDefined } from '/dist/webawesome.js';
 
 // Waits for all Web Awesome components in the DOM to be registered
