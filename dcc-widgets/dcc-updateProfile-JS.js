@@ -35,11 +35,12 @@ const inputListeners = async () => {
     inputs.forEach(input => {
         input.addEventListener('change', function() {
             const name = this.name;
+            var value;
             // If an input field, use select(), otherwise use value
             if (this.tagName === 'WA-INPUT' || this.tagName === 'WA-TEXTAREA') {
-                const value = this.select();
+                value = this.select();
             } else if (this.tagName === 'WA-SELECT') {
-                const value = this.value;
+                value = this.getAttribute('value');
             }
             const dataTable = this.getAttribute('data-table');
 
