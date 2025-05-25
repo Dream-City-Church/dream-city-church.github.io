@@ -51,5 +51,30 @@ const inputListeners = async () => {
     );
 };
 
+const checkboxListeners = async () => {
+    const profileForm = document.getElementById('UserProfile');
+    const checkboxes = profileForm.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            var action;
+            const name = this.name;
+            const value = this.checked ? 'true' : 'false';
+            const dataTable = this.getAttribute('data-table');
+            const dataType = this.getAttribute('data-attribute-type');
+
+            if (this.checked) {
+                action = 'checked';
+            } else {
+                action = 'unchecked';
+            }
+
+            console.log(`Updating profile: ${action} ${name} = ${value}, data-table = ${dataTable}, data-type = ${dataType}`);
+            // Send the updated data to the server
+        });
+    });
+};
+
 updateSelectLists();
 inputListeners();
+checkboxListeners();
