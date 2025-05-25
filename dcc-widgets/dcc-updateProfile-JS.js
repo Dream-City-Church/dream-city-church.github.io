@@ -17,7 +17,7 @@ const updateSelectLists = async () => {
         if (value) {
             console.log(`Triggering change for wa-select with value: ${value}`);
             select.value = value; // Set the value to trigger the change
-            select.dispatchEvent(new Event('change')); // Dispatch change event
+            // select.dispatchEvent(new Event('change')); // Dispatch change event
         }
     });
 }
@@ -57,17 +57,11 @@ const checkboxListeners = async () => {
 
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
-            var action;
+            const action = this.checked;
             const name = this.name;
-            const value = this.checked ? 'true' : 'false';
+            const value = this.value;
             const dataTable = this.getAttribute('data-table');
             const dataType = this.getAttribute('data-attribute-type');
-
-            if (this.checked) {
-                action = 'checked';
-            } else {
-                action = 'unchecked';
-            }
 
             console.log(`Updating profile: ${action} ${name} = ${value}, data-table = ${dataTable}, data-type = ${dataType}`);
             // Send the updated data to the server
