@@ -6,36 +6,47 @@
 console.log('dcc-updateProfile-JS loaded');
 // All Web Awesome components on the page are ready!
 
-const updateSelectLists = async () => {
+const inputListeners = async () => {
+    await customElements.whenDefined('wa-input');
+
+    const profileForm = document.getElementById('UserProfile');
+    const inputs = profileForm.querySelectorAll('wa-input, wa-textarea');
+
+    inputs.forEach(input => {
+        input.addEventListener('change', function() {
+            const name = this.name;
+            let value = this.select();
+            const dataTable = this.getAttribute('data-table');
+
+            console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
+            // Send the updated data to the server
+        });
+    }
+    );
+};
+
+const selectListeners = async () => {
     await customElements.whenDefined('wa-select');
-    console.log('Web Awesome select components are ready!');
+
+    const profileForm = document.getElementById('UserProfile');
+    const inputs = profileForm.querySelectorAll('wa-select');
 
     // Find any wa-select elements that have a value attribute set and trigger a change event to force visual update
-    const selects = document.querySelectorAll('wa-select[value]');
+    const selects = profileForm.querySelectorAll('wa-select[value]');
     selects.forEach(select => {
         const value = select.getAttribute('value');
         if (value) {
             console.log(`Triggering change for wa-select with value: ${value}`);
             select.value = value; // Set the value to trigger the change
-            // select.dispatchEvent(new Event('change')); // Dispatch change event
+            select.dispatchEvent(new Event('change')); // Dispatch change event
         }
     });
-}
 
-const inputListeners = async () => {
-    await customElements.whenDefined('wa-input');
-    console.log('Web Awesome components are ready!');
-
-    const profileForm = document.getElementById('UserProfile');
-    const inputs = profileForm.querySelectorAll('wa-input, wa-select, wa-textarea');
-    const inputCount = inputs.length;
-
-    console.log('Profile form inputs:', inputCount);
-
+    // Add change event listeners to all wa-select elements
     inputs.forEach(input => {
         input.addEventListener('change', function() {
             const name = this.name;
-            const value = this.select ? this.select() : this.value; // Use select() for wa-input and wa-textarea, otherwise use value
+            let value = this.value;
             const dataTable = this.getAttribute('data-table');
 
             console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
@@ -63,8 +74,8 @@ const checkboxListeners = async () => {
     });
 };
 
-updateSelectLists();
 inputListeners();
+selectListeners();
 
 window.addEventListener('widgetLoaded', function(event) {
   checkboxListeners();
