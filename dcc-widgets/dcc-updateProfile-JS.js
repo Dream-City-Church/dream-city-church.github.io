@@ -8,11 +8,16 @@ import { allDefined } from '/dist/webawesome.js';
 // Waits for all Web Awesome components in the DOM to be registered
 await allDefined();
 
+console.log('Web Awesome components are ready!');
+
 // All Web Awesome components on the page are ready!
 
 document.addEventListener('DOMContentLoaded', function() {
     const profileForm = document.getElementById('UserProfile');
     const inputs = profileForm.querySelectorAll('wa-input, wa-select, wa-textarea');
+    const inputCount = inputs.length;
+
+    console.log('Profile form inputs:', inputCount);
 
     inputs.forEach(input => {
         input.addEventListener('change', function() {
