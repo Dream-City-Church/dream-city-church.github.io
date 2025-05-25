@@ -4,38 +4,18 @@
 // Send the name, value, and data-table values from the field.
 document.addEventListener('DOMContentLoaded', function() {
     const profileForm = document.getElementById('UserProfile');
-    const inputs = profileForm.querySelectorAll('input, select, textarea');
+    const inputs = profileForm.querySelectorAll('wa-input, wa-select, wa-textarea');
 
     inputs.forEach(input => {
-        input.addEventListener('blur', function() {
+        input.addEventListener('change', function() {
             const name = this.name;
-            const value = this.value;
+            const value = this.select().value;
             const dataTable = this.getAttribute('data-table');
 
-            if (name && dataTable) {
-                console.log(`Updating profile: ${name} = ${value} in table ${dataTable}`);
-                // Here you would typically send the data to the server.
-                /**
-                fetch('/update-profile', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        value: value,
-                        table: dataTable
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Profile updated:', data);
-                })
-                .catch(error => {
-                    console.error('Error updating profile:', error);
-                });
-                **/
-            }
+            console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
+            // Send the updated data to the server
+
+            
         });
     });
 });
