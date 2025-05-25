@@ -2,6 +2,14 @@
 // Listen for focus on input fields and track if there are any changes.
 // If there are changes, when focus leaves the input field send the updated data to the server.
 // Send the name, value, and data-table values from the field.
+
+import { allDefined } from '/dist/webawesome.js';
+
+// Waits for all Web Awesome components in the DOM to be registered
+await allDefined();
+
+// All Web Awesome components on the page are ready!
+
 document.addEventListener('DOMContentLoaded', function() {
     const profileForm = document.getElementById('UserProfile');
     const inputs = profileForm.querySelectorAll('wa-input, wa-select, wa-textarea');
