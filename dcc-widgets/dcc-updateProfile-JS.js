@@ -5,10 +5,7 @@
 
 console.log('dcc-updateProfile-JS loaded');
 
-import { allDefined } from '/dist/webawesome.js';
-
-// Waits for all Web Awesome components in the DOM to be registered
-await allDefined();
+await customElements.whenDefined('wa-input');
 
 console.log('Web Awesome components are ready!');
 
