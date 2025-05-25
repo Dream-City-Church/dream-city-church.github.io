@@ -6,6 +6,7 @@
                     <wa-tab slot="nav" panel="gifts">Growth</wa-tab>
                     <wa-tab-panel name="general">
                         <wa-avatar initials="{{ DataSet1.first.Nickname | slice: 0 }}{{ DataSet1.first.Last_Name | slice: 0 }}" label="Profile Picture" image="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ DataSet1.first.Image_GUID }}"></wa-avatar>
+                        <div class="avatar-edit" style="font-size:0.6rem;text-decoration:underline;text-align:center;width:100%;padding-bottom:1rem;">Edit</div>
                         <wa-input name="First_Name" type="text" label="First Name" value="{{ DataSet1.first.Nickname }}" data-table="Contacts" required></wa-input>
                         <wa-input name="Last_Name" type="text" label="Last Name" value="{{ DataSet1.first.Last_Name }}" data-table="Contacts" required></wa-input>
                         <wa-input name="Email_Address" type="email" label="Email Address" data-table="Contacts" value="{{ DataSet1.first.Email_Address }}" {% if DataSet1.first.Household_Position_ID == 1 %}required{% endif %}></wa-input>
@@ -33,19 +34,19 @@
                         <wa-input name="Address_Line_2" type="text" data-table="Addresses" value="{{ DataSet1.first.Address_Line_2 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
                         <wa-input name="City" type="text" label="City" data-table="Addresses" value="{{ DataSet1.first.City }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
                         <wa-input name="State" type="text" label="State" data-table="Addresses" maxlength=2 value="{{ DataSet1.first.State }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
-                        <wa-input name="Zip" type="text" label="Zip" data-table="Addresses" value="{{ DataSet1.first.Postal_Code }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="Postal_Code\Region" type="text" label="Zip" data-table="Addresses" value="{{ DataSet1.first.Postal_Code }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
                     </wa-tab-panel>
 
                     <wa-tab-panel name="skills">
                         We'll use your occupation and skills information to let you know about opportunities to serve in the church where you can use your skills and talents.<br /><br />
-                        <wa-input name="Occupation_Name" type="text" label="Occupation" value="{{ DataSet1.first.Occupation_Name }}"></wa-input>
-                        <wa-input name="Industry_Name" type="text" label="Industry" value="{{ DataSet1.first.Industry_Name }}"></wa-input>
-                        <wa-input name="Employer_Name" type="text" label="Employer" value="{{ DataSet1.first.Employer_Name }}"></wa-input>
+                        <wa-input name="Occupation_Name" type="text" label="Occupation" data-table="Contacts" value="{{ DataSet1.first.Occupation_Name }}"></wa-input>
+                        <wa-input name="Industry_Name" type="text" label="Industry" data-table="Contacts" value="{{ DataSet1.first.Industry_Name }}"></wa-input>
+                        <wa-input name="Employer_Name" type="text" label="Employer" data-table="Contacts" value="{{ DataSet1.first.Employer_Name }}"></wa-input>
                         <h3>Select Your Skills</h3>
                         <div id="skills_checkboxes" class="attributes_container">
                             <!-- List of skills as regular HTML form checkboxes. Checkbox will be hidden and label will appear as a button -->
                             {% for skill in DataSet2 %}
-                                <input type="checkbox" name="skill" id="skill-{{ skill.Attribute_ID }}" value="{{ skill.Attribute_ID }}" {{ skill.HasAttribute }} />
+                                <input type="checkbox" name="skill" id="skill-{{ skill.Attribute_ID }}" data-table="Contact_Attributes" data-attribute-type=12 value="{{ skill.Attribute_ID }}" {{ skill.HasAttribute }} />
                                 <label for="skill-{{ skill.Attribute_ID }}">{{ skill.Attribute_Name }}</label>
                             {% endfor %}
                         </div>
@@ -57,7 +58,7 @@
                         <h3>Select Your Interests & Hobbies</h3>
                         <div id="interests_checkboxes" class="attributes_container">
                             {% for interest in DataSet3 %}
-                                <input type="checkbox" name="interest" id="interest-{{ interest.Attribute_ID }}" value="{{ interest.Attribute_ID }}" {{ interest.HasAttribute }} />
+                                <input type="checkbox" name="interest" id="interest-{{ interest.Attribute_ID }}" data-table="Contact_Attributes" data-attribute-type=15 value="{{ interest.Attribute_ID }}" {{ interest.HasAttribute }} />
                                 <label for="interest-{{ interest.Attribute_ID }}">{{ interest.Attribute_Name }}</label>
                             {% endfor %}
                         </div>
@@ -72,7 +73,7 @@
                         <br /><br />
                         <div id="gifts_checkboxes" class="attributes_container">
                             {% for gift in DataSet4 %}
-                                <input type="checkbox" name="gift" id="gift-{{ gift.Attribute_ID }}" value="{{ gift.Attribute_ID }}" {{ gift.HasAttribute }} />
+                                <input type="checkbox" name="gift" id="gift-{{ gift.Attribute_ID }}" data-table="Contact_Attributes" data-attribute-type=3 value="{{ gift.Attribute_ID }}" {{ gift.HasAttribute }} />
                                 <label for="gift-{{ gift.Attribute_ID }}">{{ gift.Attribute_Name }}</label>
                             {% endfor %}
                         </div> 
