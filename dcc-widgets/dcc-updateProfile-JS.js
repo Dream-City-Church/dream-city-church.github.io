@@ -37,9 +37,9 @@ const inputListeners = async () => {
             const name = this.name;
             var value;
             // If an input field, use select(), otherwise use value
-            if (this.tagName === 'WA-INPUT' || this.tagName === 'WA-TEXTAREA') {
+            if (this.tagName.toLowerCase() === 'wa-input' || this.tagName.toLowerCase() === 'wa-textarea') {
                 value = this.select();
-            } else if (this.tagName === 'WA-SELECT') {
+            } else {
                 value = this.getAttribute('value');
             }
             const dataTable = this.getAttribute('data-table');
@@ -77,4 +77,7 @@ const checkboxListeners = async () => {
 
 updateSelectLists();
 inputListeners();
-checkboxListeners();
+
+window.addEventListener('widgetLoaded', function(event) {
+  checkboxListeners();
+});
