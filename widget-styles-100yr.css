@@ -739,7 +739,8 @@ h2#responseFormTitle {
 }
 
 #promoCodeContainer h3 {
-    padding-top: 5px;
+    padding-top: 20px;
+    margin: 0;
 }
 
 .promo-code-text {
