@@ -1,0 +1,5 @@
+@import url(/widget-styles-100yr.css);
+
+#addAnotherButton, #showAnotherPersonFormButton {
+    display: none !important;
+}
