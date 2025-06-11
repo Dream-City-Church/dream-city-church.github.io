@@ -44,7 +44,7 @@ function insertSmsDisclaimer(){
         if (urlId) {
             // If the ID value is in the blocked ID list, find divs with id "addAnotherButton" and set inline style to hide them
             if (blockedIds.includes(urlId)) {
-                const addAnotherButtons = document.querySelectorAll('mpp-event-details').shadowRoot.querySelectorAll("#addAnotherButton");
+                const addAnotherButtons = document.querySelectorAll('mpp-event-details').shadowRoot.querySelector("#addAnotherButton");
                 addAnotherButtons.forEach(button => {
                     button.style.display = 'none';
                 });
