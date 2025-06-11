@@ -35,7 +35,7 @@ function hideAddPersonButton(){
                 console.log('ID is in blocked list, hiding addAnotherButton');
                 const addAnotherButtons = document.querySelector('mpp-event-details').shadowRoot.querySelectorAll("#addAnotherButton");
                 addAnotherButtons.forEach(button => {
-                    button.style.display = 'none';
+                    button.style.display = 'none !important';
                     console.log('Hiding button:', button);
                 });
             }
