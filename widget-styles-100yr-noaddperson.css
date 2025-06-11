@@ -4,6 +4,10 @@
     display: none !important;
 }
 
+div#registrationTotalContainer {
+    display: none !important;
+}
+
 .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container {
     width: 100%;
     float: none;
