@@ -10,7 +10,7 @@ function waitForShadowHideAddPerson(timeToWait,currentRun,maxRun) {
 }
 
 function waitForAddPerson(timeToWait,currentRun,maxRun) {
-    if (document.querySelector('mpp-event-details').shadowRoot.querySelector('#contactInfoForm')) {
+    if (document.querySelector('mpp-event-details').shadowRoot.querySelector('#addAnotherButton')) {
         hideAddPersonButton();
     } else if (maxRun > currentRun-1) {
         currentRun = currentRun+1;
@@ -31,7 +31,7 @@ function hideAddPersonButton(){
         if (urlId) {
             // If the ID value is in the blocked ID list, find divs with id "addAnotherButton" and set inline style to hide them
             if (blockedIds.includes(urlId)) {
-                const addAnotherButtons = document.querySelectorAll('mpp-event-details').shadowRoot.querySelector("#addAnotherButton");
+                const addAnotherButtons = document.querySelector('mpp-event-details').shadowRoot.querySelectorAll("#addAnotherButton");
                 addAnotherButtons.forEach(button => {
                     button.style.display = 'none';
                 });
