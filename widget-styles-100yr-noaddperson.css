@@ -1,6 +1,6 @@
 @import url(/widget-styles-100yr.css);
 
-#addAnotherButton, #showAnotherPersonFormButton, .showAnotherPersonFormButton, .mpp-innerpage--contacts-wrapper, .mpp-innerpage--special, #mapContainer, .mpp-innerpage--back, .mpp-innerpage--datetime-wrapper, #registrationTotalContainer {
+#addAnotherButton, #showAnotherPersonFormButton, .showAnotherPersonFormButton, .mpp-innerpage--contacts-wrapper, .mpp-innerpage--special, #mapContainer, .mpp-innerpage--back, .mpp-innerpage--datetime-wrapper, #registrationTotalContainer, .mpp-innerpage--fixed-imgcontainer {
     display: none !important;
 }
 
