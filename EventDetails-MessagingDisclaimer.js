@@ -31,6 +31,26 @@ function insertSmsDisclaimer(){
     if(!ParentInfoForm.querySelector('#messaging-disclaimer')){
         ParentInfoForm.insertAdjacentHTML('beforeend',smsDisclaimer);
     }
+
+    // Get the value of "id" parameter from the URL
+        const urlIdParams = new URLSearchParams(window.location.search);
+        const urlId = urlIdParams.get('id');
+
+        const blockedIds = ['90893', '456', '789'];
+
+        console.log('ID from URL:', urlId);
+
+        // Check if the "id" parameter is present and not empty
+        if (urlId) {
+            // If the ID value is in the blocked ID list, find divs with id "addAnotherButton" and set inline style to hide them
+            if (blockedIds.includes(urlId)) {
+                const addAnotherButtons = document.querySelectorAll('mpp-event-details').shadowRoot.querySelectorAll("#addAnotherButton");
+                addAnotherButtons.forEach(button => {
+                    button.style.display = 'none';
+                });
+            }
+        }
+        // If the ID value is not in the blocked ID list, do nothing
 }
 
 window.onload=waitForShadow(100,1,40);
