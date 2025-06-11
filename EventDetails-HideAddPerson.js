@@ -29,11 +29,14 @@ function hideAddPersonButton(){
 
         // Check if the "id" parameter is present and not empty
         if (urlId) {
+            console.log('Checking if ID is in blocked list:', urlId);
             // If the ID value is in the blocked ID list, find divs with id "addAnotherButton" and set inline style to hide them
             if (blockedIds.includes(urlId)) {
+                console.log('ID is in blocked list, hiding addAnotherButton');
                 const addAnotherButtons = document.querySelector('mpp-event-details').shadowRoot.querySelectorAll("#addAnotherButton");
                 addAnotherButtons.forEach(button => {
                     button.style.display = 'none';
+                    console.log('Hiding button:', button);
                 });
             }
         }
