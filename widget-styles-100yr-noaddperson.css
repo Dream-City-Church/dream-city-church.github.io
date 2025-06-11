@@ -1,5 +1,16 @@
 @import url(/widget-styles-100yr.css);
 
-#addAnotherButton, #showAnotherPersonFormButton {
+#addAnotherButton, #showAnotherPersonFormButton, .showAnotherPersonFormButton, .mpp-innerpage--contacts-wrapper, .mpp-innerpage--special, #mapContainer, .mpp-innerpage--back, .mpp-innerpage--datetime-wrapper, #registrationTotalContainer {
     display: none !important;
+}
+
+.mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container {
+    width: 100%;
+    float: none;
+}
+
+#registrationFormContainer {
+    width: 100%;
+    float: none;
+    clear: both;
 }
