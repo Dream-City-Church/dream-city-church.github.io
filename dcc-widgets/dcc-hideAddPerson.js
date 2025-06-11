@@ -1,8 +1,10 @@
 // Get the value of "id" parameter from the URL
-const urlParams = new URLSearchParams(window.location.search);
-const id = urlParams.get('id');
+const urlIdParams = new URLSearchParams(window.location.search);
+const id = urlIdParams.get('id');
 
 const blockedIds = ['90893', '456', '789'];
+
+console.log('ID from URL:', id);
 
 // Check if the "id" parameter is present and not empty
 if (id) {
