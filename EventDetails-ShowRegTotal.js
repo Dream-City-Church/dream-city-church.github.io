@@ -36,15 +36,12 @@ function waitForRegTotalContainer(timeToWait,currentRun,maxRun) {
 
         // Check if the "id" parameter is present and not empty
         if (urlId) {
-            // If the ID value is in the blocked ID list, add a css style to the head of the page to hide the div with id "addAnotherButton"
+            // If the ID value is in the blocked ID list, find divs with id "addAnotherButton" and set inline style to hide them
             if (blockedIds.includes(urlId)) {
-                const style = document.createElement('style');
-                style.innerHTML = `
-                    #addAnotherButton {
-                        display: none !important;
-                    }
-                `;
-                document.head.appendChild(style);
+                const addAnotherButtons = document.querySelectorAll('mpp-event-details').shadowRoot.querySelectorAll("#addAnotherButton");
+                addAnotherButtons.forEach(button => {
+                    button.style.display = 'none';
+                });
             }
         }
         // If the ID value is not in the blocked ID list, do nothing
