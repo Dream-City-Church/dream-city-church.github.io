@@ -73,7 +73,8 @@ const waCheckboxListeners = async () => {
     await customElements.whenDefined('wa-checkbox');
 
     const profileForm = document.getElementById('UserProfile');
-    const inputs = profileForm.querySelectorAll('wa-checkbox');
+    const waCheckboxes = profileForm.querySelectorAll('wa-checkbox');
+    const inputs = waCheckboxes.querySelectorAll('input[type="checkbox"]');
 
     // Find any wa-checkbox elements that have a value attribute set and trigger a change event to force visual update
     const checkboxes = profileForm.querySelectorAll('wa-checkbox[value]');

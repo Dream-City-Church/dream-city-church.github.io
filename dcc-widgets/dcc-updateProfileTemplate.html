@@ -6,7 +6,13 @@
                     <wa-tab slot="nav" panel="gifts">Growth</wa-tab>
                     <wa-tab-panel name="general">
                         <wa-avatar initials="{{ DataSet1.first.Nickname | slice: 0 }}{{ DataSet1.first.Last_Name | slice: 0 }}" label="Profile Picture" image="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ DataSet1.first.Image_GUID }}"></wa-avatar>
-                        <div class="avatar-edit" style="font-size:0.8rem;text-decoration:underline;text-align:center;width:100%;margin-bottom:1rem;">Edit</div>
+                        <div id="avatar" class="avatar-edit" style="font-size:0.8rem;text-decoration:underline;text-align:center;width:100%;margin-bottom:1rem;">Edit</div>
+                        
+                            <div id="cropContainer" style="display:none;">
+                            <img id="imageToCrop" />
+                            <button id="cropButton">Crop & Upload</button>
+                            </div>
+
                         <wa-input name="First_Name" type="text" label="First Name" value="{{ DataSet1.first.Nickname }}" data-table="Contacts" required></wa-input>
                         <wa-input name="Last_Name" type="text" label="Last Name" value="{{ DataSet1.first.Last_Name }}" data-table="Contacts" required></wa-input>
                         <wa-input name="Email_Address" type="email" label="Email Address" data-table="Contacts" value="{{ DataSet1.first.Email_Address }}" {% if DataSet1.first.Household_Position_ID == 1 %}required{% endif %}></wa-input>

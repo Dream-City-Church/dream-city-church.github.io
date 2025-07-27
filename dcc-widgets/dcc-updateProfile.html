@@ -132,6 +132,63 @@
         </script>
         <!-- End Dark Theme detection -->
         <script type="text/template" id="UserProfile-Template">
+
+        <!-- Avatar Image selection and crop script-->
+<script src="https://unpkg.com/cropperjs"></script>
+<script>
+  const avatar = document.getElementById('avatar');
+  const fileInput = document.getElementById('fileInput');
+  const imageToCrop = document.getElementById('imageToCrop');
+  const cropContainer = document.getElementById('cropContainer');
+  let cropper;
+
+  avatar.addEventListener('click', () => fileInput.click());
+
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      imageToCrop.src = reader.result;
+      cropContainer.style.display = 'block';
+      if (cropper) cropper.destroy();
+      cropper = new Cropper(imageToCrop, {
+        aspectRatio: 1,
+        viewMode: 1,
+        autoCropArea: 1,
+      });
+    };
+    reader.readAsDataURL(file);
+  });
+
+  document.getElementById('cropButton').addEventListener('click', () => {
+    const canvas = cropper.getCroppedCanvas({
+      width: 300,
+      height: 300,
+    });
+
+    // canvas.toBlob((blob) => {
+    //  const formData = new FormData();
+    //  formData.append('avatar', blob, 'avatar.jpg');
+
+    //  fetch('https://your-api-endpoint.com/upload', {
+    //    method: 'POST',
+    //    body: formData,
+    //  })
+    //  .then(response => response.json())
+    //  .then(data => {
+    //    alert('Upload successful!');
+    //    avatar.src = canvas.toDataURL(); // Update avatar preview
+    //    cropContainer.style.display = 'none';
+    //  })
+    //  .catch(error => {
+    //    console.error('Upload failed:', error);
+    //  });
+    // }, 'image/jpeg');
+  });
+</script>
+
             
     </body>
 </html>
