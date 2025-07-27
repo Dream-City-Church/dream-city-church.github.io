@@ -18,18 +18,15 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
         <script src="https://kit.fontawesome.com/a6a26322af.js" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-beta.3/dist/styles/webawesome.css" />
-        <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-beta.3/dist/webawesome.loader.js"></script>
-
-        <!-- WebAwesome Loading
+        <!-- WebAwesome Loading -->
             <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-beta.3/dist/styles/themes/default.css" />
             <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-beta.3/dist/webawesome.loader.js"></script>
-         End WebAwesome Loading -->
+        <!-- End WebAwesome Loading -->
 
-        <!-- WebAwesome Style Loading
+        <!-- WebAwesome Style Loading -->
             <link rel="stylesheet" href="https://dream-city-church.github.io/dcc-widgets/dcc-webAwesomeStyles.css" data-fa-kit-code="a6a26322af">
             <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-beta.3/dist/styles/utilities.css" />
-        End WebAwesome Style Loading-->
+        <!-- End WebAwesome Style Loading -->
 
         <style>
             * {
@@ -124,11 +121,12 @@
         ></div>
 
         <!-- Detect and apply Dark Theme -->
-        <script typle="text/javascript">
+        <script type="text/javascript">
             const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
             const applyDark = function (event = systemDark) {
-            const isDark = colorScheme === 'auto' ? event.matches : colorScheme === 'dark';
-            document.documentElement.classList.toggle('wa-dark', isDark);
+                const colorScheme = 'auto';
+                const isDark = colorScheme === 'auto' ? event.matches : colorScheme === 'dark';
+                document.documentElement.classList.toggle('wa-dark', isDark);
             };
             systemDark.addEventListener('change', applyDark);
             applyDark();
