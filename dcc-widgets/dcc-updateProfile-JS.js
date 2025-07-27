@@ -77,6 +77,7 @@ const waCheckboxListeners = async () => {
 
     // Add change event listeners to all wa-checkbox elements
     inputs.forEach(input => {
+        console.log(`Adding change listener to wa-checkbox: ${input.name}`);
         input.addEventListener('change', function() {
             const name = this.name;
             const value = this.checked;
