@@ -10,9 +10,9 @@
                         <wa-input name="First_Name" type="text" label="First Name" value="{{ DataSet1.first.Nickname }}" data-table="Contacts" required></wa-input>
                         <wa-input name="Last_Name" type="text" label="Last Name" value="{{ DataSet1.first.Last_Name }}" data-table="Contacts" required></wa-input>
                         <wa-input name="Email_Address" type="email" label="Email Address" data-table="Contacts" value="{{ DataSet1.first.Email_Address }}" {% if DataSet1.first.Household_Position_ID == 1 %}required{% endif %}></wa-input>
-                        <wa-checkbox {% if DataSet1.first.Bulk_Email_Opt_Out != 1 %}checked{% endif %}>Receive News & Announcement Emails</wa-checkbox>
+                        <wa-checkbox {% if DataSet1.first.Bulk_Email_Opt_Out != 1 %}checked{% endif %} style="width:100%">Receive News & Announcement Emails</wa-checkbox>
                         <wa-input name="Mobile_Phone" type="telephone" label="Phone" data-table="Contacts" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" value="{{ DataSet1.first.Mobile_Phone }}"></wa-input>
-                        <wa-checkbox {% if DataSet1.first.Do_Not_Text != 1 %}checked{% endif %}>Receive Text Messages</wa-checkbox>
+                        <wa-checkbox {% if DataSet1.first.Do_Not_Text != 1 %}checked{% endif %} style="width:100%">Receive Text Messages</wa-checkbox>
                         <wa-input name="Date_of_Birth" type="date" label="Birthday" data-table="Contacts" value="{{ DataSet1.first.Date_of_Birth }}" max="{{ 'now' | date: '%Y-%m-%d' }}"></wa-input>
                         <wa-select name="Gender_ID" label="Gender" data-table="Contacts" value="{{ DataSet1.first.Gender_ID }}">
                             <wa-option value="1">Male</wa-option>

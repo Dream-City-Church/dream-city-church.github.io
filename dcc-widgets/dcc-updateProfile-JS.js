@@ -69,6 +69,36 @@ const selectListeners = async () => {
     );
 };
 
+const waCheckboxListeners = async () => {
+    await customElements.whenDefined('wa-checkbox');
+
+    const profileForm = document.getElementById('UserProfile');
+    const inputs = profileForm.querySelectorAll('wa-checkbox');
+
+    // Find any wa-checkbox elements that have a value attribute set and trigger a change event to force visual update
+    const checkboxes = profileForm.querySelectorAll('wa-checkbox[value]');
+    checkboxes.forEach(checkbox => {
+        const value = checkbox.getAttribute('value');
+        if (value) {
+            console.log(`Triggering change for wa-checkbox with value: ${value}`);
+            checkbox.checked = value === 'true'; // Set the checked state to trigger the change
+            checkbox.dispatchEvent(new Event('change')); // Dispatch change event
+        }
+    });
+
+    // Add change event listeners to all wa-checkbox elements
+    inputs.forEach(input => {
+        input.addEventListener('change', function() {
+            const name = this.name;
+            const value = this.checked;
+            const dataTable = this.getAttribute('data-table');
+
+            console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
+            // Send the updated data to the server
+        });
+    });
+};
+
 const checkboxListeners = async () => {
     const profileForm = document.getElementById('UserProfile');
     const checkboxes = profileForm.querySelectorAll('input[type="checkbox"]');
