@@ -16,11 +16,11 @@
                         <wa-input name="First_Name" type="text" label="First Name" value="{{ DataSet1.first.Nickname }}" data-table="Contacts" required></wa-input>
                         <wa-input name="Last_Name" type="text" label="Last Name" value="{{ DataSet1.first.Last_Name }}" data-table="Contacts" required></wa-input>
                         <wa-input name="Email_Address" type="email" label="Email Address" data-table="Contacts" value="{{ DataSet1.first.Email_Address }}" {% if DataSet1.first.Household_Position_ID == 1 %}required{% endif %}>
-                            <div slot="hint"><a href="https://www.dreamcitychurch.us/mydreamcity/subscriptions/">Manage Email Preferences</a></div>
+                            <div slot="hint" style="text-align: right;font-size: 0.75rem;"><a href="https://www.dreamcitychurch.us/mydreamcity/subscriptions/" target="_blank">Manage Email Preferences</a></div>
                         </wa-input>
                         
                         <wa-input name="Mobile_Phone" type="telephone" label="Phone" data-table="Contacts" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" value="{{ DataSet1.first.Mobile_Phone }}">
-                            <div slot="hint">By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href="https://www.dreamcitychurch.us/sms-tos/">Terms of Service</a> and <a href="https://www.dreamcitychurch.us/privacy-policy/">Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</div>
+                            <div slot="hint" style="text-align: right;font-size: 0.75rem;">By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href="https://www.dreamcitychurch.us/sms-tos/" target="_blank">Terms of Service</a> and <a href="https://www.dreamcitychurch.us/privacy-policy/" target="_blank">Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</div>
                         </wa-input>
                         
                         <wa-input name="Date_of_Birth" type="date" label="Birthday" data-table="Contacts" value="{{ DataSet1.first.Date_of_Birth }}" max="{{ 'now' | date: '%Y-%m-%d' }}"></wa-input>
