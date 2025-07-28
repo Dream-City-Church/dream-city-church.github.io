@@ -19,11 +19,6 @@ const inputListeners = async () => {
         input.addEventListener('focus', function() {
             originalValue = this.value;
         });
-        input.addEventListener('blur', function() {
-            if (this.value !== originalValue) {
-                this.dispatchEvent(new Event('change'));
-            }
-        });
     });
 
     // add change event listeners to all wa-input and wa-textarea elements
@@ -80,11 +75,6 @@ const selectListeners = async () => {
         let originalValue = input.value;
         input.addEventListener('focus', function() {
             originalValue = this.value;
-        });
-        input.addEventListener('blur', function() {
-            if (this.value !== originalValue) {
-                this.dispatchEvent(new Event('change'));
-            }
         });
     });
 
