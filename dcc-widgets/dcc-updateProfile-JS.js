@@ -24,18 +24,27 @@ const inputListeners = async () => {
             // This will allow the user to see that the data is being sent.
             const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
             this.appendChild(document.createRange().createContextualFragment(loadingIcon));
-            let result = sendDataToAPI(name, value, dataTable, null);
-            console.log(`Result from sendDataToAPI: ${result}`);
 
-            if (result === 'success') {
-                this.removeAttribute('error'); // Remove the error state
-                this.removeChild(this.querySelector('[slot="end"]'));
-                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-            } else {
+            // Create a promise to handle the asynchronous nature of the API call
+            // This will allow us to wait for the API response before proceeding
+            sendDataToAPI(name, value, dataTable, null).then(result => {
+                console.log(`Result from sendDataToAPI: ${result}`);
+                // Check the result from the API call
+                if (result === 'success') {
+                    this.removeAttribute('error'); // Remove the error state
+                    this.removeChild(this.querySelector('[slot="end"]'));
+                    this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+                } else {
+                    this.setAttribute('error', 'true'); // Set the error state
+                    this.removeChild(this.querySelector('[slot="end"]'));
+                    this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+                }
+            }).catch(error => {
+                console.error(`Error sending data to API: ${error}`);
                 this.setAttribute('error', 'true'); // Set the error state
                 this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-            }
+            });
             
         });
 
@@ -83,17 +92,27 @@ const selectListeners = async () => {
             // This will allow the user to see that the data is being sent.
             const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
             this.appendChild(document.createRange().createContextualFragment(loadingIcon));
-            let result = sendDataToAPI(name, value, dataTable, null);
-            console.log(`Result from sendDataToAPI: ${result}`);
-            if (result === 'success') {
-                this.removeAttribute('error'); // Remove the error state
-                this.removeChild(this.querySelector('[slot="end"]'));
-                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-            } else {
+            
+            // Create a promise to handle the asynchronous nature of the API call
+            // This will allow us to wait for the API response before proceeding
+            sendDataToAPI(name, value, dataTable, null).then(result => {
+                console.log(`Result from sendDataToAPI: ${result}`);
+                // Check the result from the API call
+                if (result === 'success') {
+                    this.removeAttribute('error'); // Remove the error state
+                    this.removeChild(this.querySelector('[slot="end"]'));
+                    this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+                } else {
+                    this.setAttribute('error', 'true'); // Set the error state
+                    this.removeChild(this.querySelector('[slot="end"]'));
+                    this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+                }
+            }).catch(error => {
+                console.error(`Error sending data to API: ${error}`);
                 this.setAttribute('error', 'true'); // Set the error state
                 this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-            }
+            });
         });
     });
 };
