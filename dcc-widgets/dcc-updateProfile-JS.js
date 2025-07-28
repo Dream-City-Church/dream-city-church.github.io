@@ -46,7 +46,7 @@ const inputListeners = async () => {
                 // Send the updated data to the server. Insert the loading icon into the element until the server responds.
                 // This will allow the user to see that the data is being sent.
                 const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
-                const endSlot = this.querySelector('[slot="end"]');
+                const endSlot = this.querySelector('[name="end"]');
                 if (endSlot) {
                     endSlot.appendChild(document.createRange().createContextualFragment(loadingIcon));
                 }
