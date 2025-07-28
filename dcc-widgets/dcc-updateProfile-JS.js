@@ -18,8 +18,8 @@ const inputListeners = async () => {
             const value = this.value;
             const dataTable = this.getAttribute('data-table');
 
-            console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
             // Send the updated data to the server
+            sendDataToAPI(name, value, dataTable, null);
         });
 
         // for wa-input name=Mobile_Phone, format the phone number like 123-456-7890 as it is typed
@@ -62,8 +62,8 @@ const selectListeners = async () => {
             const value = this.value;
             const dataTable = this.getAttribute('data-table');
 
-            console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
             // Send the updated data to the server
+            sendDataToAPI(name, value, dataTable, null);
         });
     }
     );
@@ -82,8 +82,8 @@ const waCheckboxListeners = async () => {
             const value = this.checked;
             const dataTable = this.getAttribute('data-table');
 
-            console.log(`Updating profile: ${name} = ${value}, data-table = ${dataTable}`);
             // Send the updated data to the server
+            sendDataToAPI(name, value, dataTable, null);
         });
     });
 };
@@ -98,12 +98,18 @@ const checkboxListeners = async () => {
             const name = this.name;
             const value = this.value;
             const dataTable = this.getAttribute('data-table');
-            const dataType = this.getAttribute('data-attribute-type');
+            const dataAttribute = this.getAttribute('data-attribute-type');
 
-            console.log(`Updating profile: ${action} ${name} = ${value}, data-table = ${dataTable}, data-type = ${dataType}`);
-            // Send the updated data to the server
+            sendDataToAPI(name, value, dataTable, dataAttribute);
         });
     });
+};
+
+// Function for sending data to the API service
+const sendDataToAPI = (name, value, dataTable, dataAttribute) => {
+    // Implement the logic to send data to the API service
+    console.log(`Sending data to API: ${name} = ${value}, data-table = ${dataTable}, data-attribute = ${dataAttribute}`);
+    // Example: Use fetch or XMLHttpRequest to send data
 };
 
 inputListeners();
