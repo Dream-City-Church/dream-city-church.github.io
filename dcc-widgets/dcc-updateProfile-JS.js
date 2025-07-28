@@ -18,8 +18,16 @@ const inputListeners = async () => {
             const value = this.value;
             const dataTable = this.getAttribute('data-table');
 
-            // Send the updated data to the server
+            // Send the updated data to the server. Add icon to the 'end' slot until the server responds.
+            // This will allow the user to see that the data is being sent.
+            const endSlot = this.querySelector('[slot="end"]');
+            const loadingIcon = '<i class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
+            endSlot.appendChild(loadingIcon);
             sendDataToAPI(name, value, dataTable, null);
+            // Remove the loading icon after a short delay to simulate server response
+            setTimeout(() => {
+                endSlot.innerHTML = ''; // Clear the loading icon
+            }, 1000); // Adjust the delay as needed
         });
 
         // for wa-input name=Mobile_Phone, format the phone number like 123-456-7890 as it is typed
@@ -62,11 +70,18 @@ const selectListeners = async () => {
             const value = this.value;
             const dataTable = this.getAttribute('data-table');
 
-            // Send the updated data to the server
+            // Send the updated data to the server. Add icon to the 'end' slot until the server responds.
+            // This will allow the user to see that the data is being sent.
+            const endSlot = this.querySelector('[slot="end"]');
+            const loadingIcon = '<i class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
+            endSlot.appendChild(loadingIcon);
             sendDataToAPI(name, value, dataTable, null);
+            // Remove the loading icon after a short delay to simulate server response
+            setTimeout(() => {
+                endSlot.innerHTML = ''; // Clear the loading icon
+            }, 1000); // Adjust the delay as needed
         });
-    }
-    );
+    });
 };
 
 const waCheckboxListeners = async () => {
@@ -82,8 +97,16 @@ const waCheckboxListeners = async () => {
             const value = this.checked;
             const dataTable = this.getAttribute('data-table');
 
-            // Send the updated data to the server
+            // Send the updated data to the server. Add icon to the 'end' slot until the server responds.
+            // This will allow the user to see that the data is being sent.
+            const endSlot = this.querySelector('[slot="end"]');
+            const loadingIcon = '<i class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
+            endSlot.appendChild(loadingIcon);
             sendDataToAPI(name, value, dataTable, null);
+            // Remove the loading icon after a short delay to simulate server response
+            setTimeout(() => {
+                endSlot.innerHTML = ''; // Clear the loading icon
+            }, 1000); // Adjust the delay as needed
         });
     });
 };
