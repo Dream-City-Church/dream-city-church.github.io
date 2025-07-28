@@ -7,19 +7,21 @@
 console.log('dcc-updateProfile-JS loaded');
 
 // Function for sending data to the API service
-sendDataToAPI = (name, value, dataTable, dataAttribute) => {
+async function sendDataToAPI(name, value, dataTable, dataAttribute) {
     // Implement the logic to send data to the API service
     console.log(`Sending data to API: ${name} = ${value}, data-table = ${dataTable}, data-attribute = ${dataAttribute}`);
     // Add a delay for testing purposes
-    setTimeout(() => {
-        // Simulate a successful response
-        console.log(`Data sent successfully: ${name} = ${value}`);
-        // Dispatch success event
-        const event = new Event('success');
-        document.dispatchEvent(event);
-        return 'success'; // Simulate a successful response
-    }, 2000); // Simulate network delay
-};
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            // Simulate a successful response
+            console.log(`Data sent successfully: ${name} = ${value}`);
+            // Dispatch success event
+            const event = new Event('success');
+            document.dispatchEvent(event);
+            resolve('success'); // Simulate a successful response
+        }, 2000); // Simulate network delay
+    });
+}
 
 // Function to handle input changes and send data to the API
 const inputListeners = async () => {
