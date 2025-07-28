@@ -13,14 +13,6 @@ const inputListeners = async () => {
     const profileForm = document.getElementById('UserProfile');
     const inputs = profileForm.querySelectorAll('wa-input, wa-textarea');
 
-    // add focus event listeners to all wa-input and wa-textarea elements to store the original value
-    inputs.forEach(input => {
-        let originalValue = input.value;
-        input.addEventListener('focus', function() {
-            originalValue = this.value;
-        });
-    });
-
     // add change event listeners to all wa-input and wa-textarea elements
     inputs.forEach(input => {
         input.addEventListener('change', function() {
@@ -33,6 +25,8 @@ const inputListeners = async () => {
             const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
             this.appendChild(document.createRange().createContextualFragment(loadingIcon));
             let result = sendDataToAPI(name, value, dataTable, null);
+            console.log(`Result from sendDataToAPI: ${result}`);
+
             if (result === 'success') {
                 this.removeAttribute('error'); // Remove the error state
                 this.removeChild(this.querySelector('[slot="end"]'));
@@ -68,14 +62,6 @@ const selectListeners = async () => {
     const profileForm = document.getElementById('UserProfile');
     const inputs = profileForm.querySelectorAll('wa-select');
 
-    // Add focus event listeners to all wa-select elements to store the original value
-    inputs.forEach(input => {
-        let originalValue = input.value;
-        input.addEventListener('focus', function() {
-            originalValue = this.value;
-        });
-    });
-
     // Find any wa-select elements that have a value attribute set and trigger a change event to force visual update
     const selects = profileForm.querySelectorAll('wa-select[value]');
     selects.forEach(select => {
@@ -99,6 +85,7 @@ const selectListeners = async () => {
             const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
             this.appendChild(document.createRange().createContextualFragment(loadingIcon));
             let result = sendDataToAPI(name, value, dataTable, null);
+            console.log(`Result from sendDataToAPI: ${result}`);
             if (result === 'success') {
                 this.removeAttribute('error'); // Remove the error state
                 this.removeChild(this.querySelector('[slot="end"]'));
