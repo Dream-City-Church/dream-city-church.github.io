@@ -2,6 +2,7 @@
 // Listen for focus on input fields and track if there are any changes.
 // If there are changes, when focus leaves the input field send the updated data to the server.
 // Send the name, value, and data-table values from the field.
+// If the field update fails, restore the original value and set the field to error state.
 
 console.log('dcc-updateProfile-JS loaded');
 // All Web Awesome components on the page are ready!
@@ -12,6 +13,20 @@ const inputListeners = async () => {
     const profileForm = document.getElementById('UserProfile');
     const inputs = profileForm.querySelectorAll('wa-input, wa-textarea');
 
+    // add focus event listeners to all wa-input and wa-textarea elements to store the original value
+    inputs.forEach(input => {
+        let originalValue = input.value;
+        input.addEventListener('focus', function() {
+            originalValue = this.value;
+        });
+        input.addEventListener('blur', function() {
+            if (this.value !== originalValue) {
+                this.dispatchEvent(new Event('change'));
+            }
+        });
+    });
+
+    // add change event listeners to all wa-input and wa-textarea elements
     inputs.forEach(input => {
         input.addEventListener('change', function() {
             const name = this.name;
@@ -23,10 +38,21 @@ const inputListeners = async () => {
             const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
             this.appendChild(document.createRange().createContextualFragment(loadingIcon));
             sendDataToAPI(name, value, dataTable, null);
+            // If the update fails, restore the original value and set the field to error state
+            this.addEventListener('error', () => {
+                this.value = originalValue; // Restore the original value
+                this.setAttribute('error', 'true'); // Set the error state
+                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+            });
+            // If the update is successful, remove the error state
+            this.addEventListener('success', () => {
+                this.removeAttribute('error'); // Remove the error state
+                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+            });
             // Remove the loading icon after a short delay to simulate server response
             setTimeout(() => {
                 this.removeChild(this.querySelector('[slot="end"]')); // Clear the loading icon
-            }, 1000); // Adjust the delay as needed
+            }, 2000); // Adjust the delay as needed
         });
 
         // for wa-input name=Mobile_Phone, format the phone number like 123-456-7890 as it is typed
@@ -51,6 +77,19 @@ const selectListeners = async () => {
     const profileForm = document.getElementById('UserProfile');
     const inputs = profileForm.querySelectorAll('wa-select');
 
+    // Add focus event listeners to all wa-select elements to store the original value
+    inputs.forEach(input => {
+        let originalValue = input.value;
+        input.addEventListener('focus', function() {
+            originalValue = this.value;
+        });
+        input.addEventListener('blur', function() {
+            if (this.value !== originalValue) {
+                this.dispatchEvent(new Event('change'));
+            }
+        });
+    });
+
     // Find any wa-select elements that have a value attribute set and trigger a change event to force visual update
     const selects = profileForm.querySelectorAll('wa-select[value]');
     selects.forEach(select => {
@@ -74,10 +113,21 @@ const selectListeners = async () => {
             const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
             this.appendChild(document.createRange().createContextualFragment(loadingIcon));
             sendDataToAPI(name, value, dataTable, null);
+            // If the update fails, restore the original value and set the field to error state
+            this.addEventListener('error', () => {
+                this.value = originalValue; // Restore the original value
+                this.setAttribute('error', 'true'); // Set the error state
+                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+            });
+            // If the update is successful, remove the error state
+            this.addEventListener('success', () => {
+                this.removeAttribute('error'); // Remove the error state
+                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+            });
             // Remove the loading icon after a short delay to simulate server response
             setTimeout(() => {
                 this.removeChild(this.querySelector('[slot="end"]')); // Clear the loading icon
-            }, 1000); // Adjust the delay as needed
+            }, 2000); // Adjust the delay as needed
         });
     });
 };
@@ -130,6 +180,7 @@ const sendDataToAPI = (name, value, dataTable, dataAttribute) => {
     // Implement the logic to send data to the API service
     console.log(`Sending data to API: ${name} = ${value}, data-table = ${dataTable}, data-attribute = ${dataAttribute}`);
     // Example: Use fetch or XMLHttpRequest to send data
+    return 'success'; // Simulate a successful response
 };
 
 inputListeners();
