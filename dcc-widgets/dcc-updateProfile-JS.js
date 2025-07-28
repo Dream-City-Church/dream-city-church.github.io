@@ -27,11 +27,11 @@ const inputListeners = async () => {
 
             // Create a promise to handle the asynchronous nature of the API call
             // This will allow us to wait for the API response before proceeding
-            sendDataToAPI(name, value, dataTable, null).then(result => {
-                console.log(`Result from sendDataToAPI: ${result}`);
-                // Check the result from the API call
-                if (result === 'success') {
-                    this.removeAttribute('error'); // Remove the error state
+            await sendDataToAPI(name, value, dataTable, null);
+            console.log(`Result from sendDataToAPI: ${result}`);
+            // Check the result from the API call
+            if (result === 'success') {
+                this.removeAttribute('error'); // Remove the error state
                     this.removeChild(this.querySelector('[slot="end"]'));
                     this.dispatchEvent(new Event('input')); // Trigger input event to update UI
                 } else {
@@ -161,7 +161,7 @@ const checkboxListeners = async () => {
 };
 
 // Function for sending data to the API service
-const sendDataToAPI = (name, value, dataTable, dataAttribute) => {
+sendDataToAPI = (name, value, dataTable, dataAttribute) => {
     // Implement the logic to send data to the API service
     console.log(`Sending data to API: ${name} = ${value}, data-table = ${dataTable}, data-attribute = ${dataAttribute}`);
     // Add a delay for testing purposes
