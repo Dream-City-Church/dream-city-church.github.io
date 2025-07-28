@@ -49,10 +49,7 @@ const inputListeners = async () => {
                 this.appendChild(document.createRange().createContextualFragment(loadingIcon));
                 // Create a promise to handle the asynchronous nature of the API call
                 // This will allow us to wait for the API response before proceeding
-                const apiCall = sendDataToAPI(name, value, dataTable, null);
-                // Wait for the API call to complete
-                try {
-                    const result = await apiCall;
+                sendDataToAPI(name, value, dataTable, null).then((result) => {
                     console.log(`Result from sendDataToAPI: ${result}`);
                     // Check the result from the API call
                     if (result === 'success') {
@@ -64,21 +61,16 @@ const inputListeners = async () => {
                         this.removeChild(this.querySelector('[slot="end"]'));
                         this.dispatchEvent(new Event('input')); // Trigger input event to update UI
                     }
-                } catch (error) {
+                }).catch((error) => {
                     console.error(`Error sending data to API: ${error}`);
                     this.setAttribute('error', 'true'); // Set the error state
                     this.removeChild(this.querySelector('[slot="end"]'));
                     this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-                }
-            } else {
-                // If the value has not changed, remove the loading icon if it exists
-                const loadingIcon = this.querySelector('[slot="end"]');
-                if (loadingIcon) {
-                    this.removeChild(loadingIcon);
-                }
+                });
             }
         });
-    });
+    } );
+
 
     // for wa-input name=Mobile_Phone, format the phone number like 123-456-7890 as it is typed
     if (inputs.name === 'Mobile_Phone') {
