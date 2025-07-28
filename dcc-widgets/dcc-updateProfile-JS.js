@@ -46,7 +46,10 @@ const inputListeners = async () => {
                 // Send the updated data to the server. Insert the loading icon into the element until the server responds.
                 // This will allow the user to see that the data is being sent.
                 const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
-                this.appendChild(document.createRange().createContextualFragment(loadingIcon));
+                const endSlot = this.querySelector('[slot="end"]');
+                if (endSlot) {
+                    endSlot.appendChild(document.createRange().createContextualFragment(loadingIcon));
+                }
                 // Create a promise to handle the asynchronous nature of the API call
                 // This will allow us to wait for the API response before proceeding
                 try {
@@ -155,14 +158,6 @@ const checkboxListeners = async () => {
     checkboxes.forEach(checkbox => {
         // Store the current checked state in a data attribute for later comparison
         checkbox.setAttribute('data-original-checked', checkbox.checked);
-        // On change, if a change is detected, send the updated data to the server.
-        // This will allow the user to see that the data is being sent.
-        // Create a promise to handle the asynchronous nature of the API call
-        // This will allow us to wait for the API response before proceeding
-        checkbox.addEventListener('focus', function() {
-            // Store the current checked state in a data attribute for later comparison
-            this.setAttribute('data-original-checked', this.checked);
-        });
 
         checkbox.addEventListener('change', async function() {
             const originalValue = this.getAttribute('data-original-checked');
@@ -171,34 +166,31 @@ const checkboxListeners = async () => {
                 const name = this.name;
                 const value = this.checked ? '1' : '0'; // Convert checked state to string
                 const dataTable = this.getAttribute('data-table');
+                const dataAttribute = this.getAttribute('data-attribute') || null;
+                const checkboxLabel = profileForm.querySelector(`label[for="${this.id}"]`);
                 // Send the updated data to the server. Insert the loading icon into the element until the server responds.
                 // This will allow the user to see that the data is being sent.
                 const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
-                this.parentElement.appendChild(document.createRange().createContextualFragment(loadingIcon));
+                checkboxLabel.appendChild(document.createRange().createContextualFragment(loadingIcon));
                 try {
-                    const result = await sendDataToAPI(name, value, dataTable, null);
+                    const result = await sendDataToAPI(name, value, dataTable, dataAttribute);
                     console.log(`Result from sendDataToAPI: ${result}`);
                     // Check the result from the API call
                     if (result === 'success') {
                         this.removeAttribute('error'); // Remove the error state
-                        this.parentElement.removeChild(this.querySelector('[slot="end"]'));
+                        checkboxLabel.removeChild(this.querySelector('[slot="end"]'));
+                         checkbox.setAttribute('data-original-checked', this.value); // Update the original checked state
                         this.dispatchEvent(new Event('input')); // Trigger input event to update UI
                     } else {
                         this.setAttribute('error', 'true'); // Set the error state
-                        this.parentElement.removeChild(this.querySelector('[slot="end"]'));
+                        checkboxLabel.removeChild(this.querySelector('[slot="end"]'));
                         this.dispatchEvent(new Event('input')); // Trigger input event to update UI
                     }
                 } catch (error) {
                     console.error(`Error sending data to API: ${error}`);
                     this.setAttribute('error', 'true'); // Set the error state
-                    this.parentElement.removeChild(this.querySelector('[slot="end"]'));
+                    checkboxLabel.removeChild(this.querySelector('[slot="end"]'));
                     this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-                }
-            } else {
-                // If the value has not changed, remove the loading icon if it exists
-                const loadingIcon = this.parentElement.querySelector('[slot="end"]');
-                if (loadingIcon) {
-                    this.parentElement.removeChild(loadingIcon);
                 }
             }
         });
@@ -206,7 +198,6 @@ const checkboxListeners = async () => {
 };
 
 inputListeners();
-selectListeners();
 waCheckboxListeners();
 
 window.addEventListener('widgetLoaded', function(event) {
