@@ -32,20 +32,18 @@ const inputListeners = async () => {
             // This will allow the user to see that the data is being sent.
             const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
             this.appendChild(document.createRange().createContextualFragment(loadingIcon));
-            sendDataToAPI(name, value, dataTable, null);
-            // If the update fails, restore the original value and set the field to error state
-            this.addEventListener('error', () => {
+            let result = sendDataToAPI(name, value, dataTable, null);
+            if (result === 'success') {
+                this.removeAttribute('error'); // Remove the error state
+                this.removeChild(this.querySelector('[slot="end"]'));
+                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+            } else {
                 this.value = originalValue; // Restore the original value
                 this.setAttribute('error', 'true'); // Set the error state
                 this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-            });
-            // If the update is successful, remove the error state
-            this.addEventListener('success', () => {
-                this.removeAttribute('error'); // Remove the error state
-                this.removeChild(this.querySelector('[slot="end"]'));
-                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-            });
+            }
+            
         });
 
         // for wa-input name=Mobile_Phone, format the phone number like 123-456-7890 as it is typed
@@ -100,20 +98,17 @@ const selectListeners = async () => {
             // This will allow the user to see that the data is being sent.
             const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
             this.appendChild(document.createRange().createContextualFragment(loadingIcon));
-            sendDataToAPI(name, value, dataTable, null);
-            // If the update fails, restore the original value and set the field to error state
-            this.addEventListener('error', () => {
+            let result = sendDataToAPI(name, value, dataTable, null);
+            if (result === 'success') {
+                this.removeAttribute('error'); // Remove the error state
+                this.removeChild(this.querySelector('[slot="end"]'));
+                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
+            } else {
                 this.value = originalValue; // Restore the original value
                 this.setAttribute('error', 'true'); // Set the error state
                 this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-            });
-            // If the update is successful, remove the error state
-            this.addEventListener('success', () => {
-                this.removeAttribute('error'); // Remove the error state
-                this.removeChild(this.querySelector('[slot="end"]'));
-                this.dispatchEvent(new Event('input')); // Trigger input event to update UI
-            });
+            }
         });
     });
 };
