@@ -42,17 +42,15 @@ const inputListeners = async () => {
             this.addEventListener('error', () => {
                 this.value = originalValue; // Restore the original value
                 this.setAttribute('error', 'true'); // Set the error state
+                this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
             });
             // If the update is successful, remove the error state
             this.addEventListener('success', () => {
                 this.removeAttribute('error'); // Remove the error state
+                this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
             });
-            // Remove the loading icon after a short delay to simulate server response
-            setTimeout(() => {
-                this.removeChild(this.querySelector('[slot="end"]')); // Clear the loading icon
-            }, 2000); // Adjust the delay as needed
         });
 
         // for wa-input name=Mobile_Phone, format the phone number like 123-456-7890 as it is typed
@@ -117,17 +115,15 @@ const selectListeners = async () => {
             this.addEventListener('error', () => {
                 this.value = originalValue; // Restore the original value
                 this.setAttribute('error', 'true'); // Set the error state
+                this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
             });
             // If the update is successful, remove the error state
             this.addEventListener('success', () => {
                 this.removeAttribute('error'); // Remove the error state
+                this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
             });
-            // Remove the loading icon after a short delay to simulate server response
-            setTimeout(() => {
-                this.removeChild(this.querySelector('[slot="end"]')); // Clear the loading icon
-            }, 2000); // Adjust the delay as needed
         });
     });
 };
@@ -179,8 +175,15 @@ const checkboxListeners = async () => {
 const sendDataToAPI = (name, value, dataTable, dataAttribute) => {
     // Implement the logic to send data to the API service
     console.log(`Sending data to API: ${name} = ${value}, data-table = ${dataTable}, data-attribute = ${dataAttribute}`);
-    // Example: Use fetch or XMLHttpRequest to send data
-    return 'success'; // Simulate a successful response
+    // Add a delay for testing purposes
+    setTimeout(() => {
+        // Simulate a successful response
+        console.log(`Data sent successfully: ${name} = ${value}`);
+        // Dispatch success event
+        const event = new Event('success');
+        document.dispatchEvent(event);
+        return 'success'; // Simulate a successful response
+    }, 2000); // Simulate network delay
 };
 
 inputListeners();
