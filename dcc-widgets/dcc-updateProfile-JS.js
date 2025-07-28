@@ -32,7 +32,6 @@ const inputListeners = async () => {
                 this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
             } else {
-                this.value = originalValue; // Restore the original value
                 this.setAttribute('error', 'true'); // Set the error state
                 this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
@@ -91,7 +90,6 @@ const selectListeners = async () => {
                 this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
             } else {
-                this.value = originalValue; // Restore the original value
                 this.setAttribute('error', 'true'); // Set the error state
                 this.removeChild(this.querySelector('[slot="end"]'));
                 this.dispatchEvent(new Event('input')); // Trigger input event to update UI
