@@ -166,7 +166,7 @@ const checkboxListeners = async () => {
                 const name = this.name;
                 const value = this.checked ? '1' : '0'; // Convert checked state to string
                 const dataTable = this.getAttribute('data-table');
-                const dataAttribute = this.getAttribute('data-attribute') || null;
+                const dataAttribute = this.getAttribute('data-attribute-type') || null;
                 const checkboxLabel = profileForm.querySelector(`label[for="${this.id}"]`);
                 // Send the updated data to the server. Insert the loading icon into the element until the server responds.
                 // This will allow the user to see that the data is being sent.
@@ -178,7 +178,7 @@ const checkboxListeners = async () => {
                     // Check the result from the API call
                     if (result === 'success') {
                         this.removeAttribute('error'); // Remove the error state
-                        checkboxLabel.removeChild(this.querySelector('[slot="end"]'));
+                        checkboxLabel.removeChild(checkboxLabel.querySelector('[slot="end"]'));
                          checkbox.setAttribute('data-original-checked', this.value); // Update the original checked state
                         this.dispatchEvent(new Event('input')); // Trigger input event to update UI
                     } else {
@@ -189,7 +189,7 @@ const checkboxListeners = async () => {
                 } catch (error) {
                     console.error(`Error sending data to API: ${error}`);
                     this.setAttribute('error', 'true'); // Set the error state
-                    checkboxLabel.removeChild(this.querySelector('[slot="end"]'));
+                    checkboxLabel.removeChild(checkboxLabel.querySelector('[slot="end"]'));
                     this.dispatchEvent(new Event('input')); // Trigger input event to update UI
                 }
             }
