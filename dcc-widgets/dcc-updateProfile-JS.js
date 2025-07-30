@@ -134,8 +134,66 @@ const checkboxListeners = async () => {
     });
 };
 
+const avatarEditing = async () => {
+    await customElements.whenDefined('wa-avatar');
+
+    const avatar = document.getElementById('avatar');
+    const fileInput = document.getElementById('fileInput');
+    const cropContainer = document.getElementById('cropContainer');
+    const cropImage = document.getElementById('cropImage');
+    const cropButton = document.getElementById('cropButton');
+    let cropper;
+
+    avatar.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = () => {
+        cropImage.src = reader.result;
+        cropContainer.style.display = 'block';
+        if (cropper) cropper.destroy();
+        cropper = new Cropper(cropImage, {
+            aspectRatio: 1,
+            viewMode: 1,
+            autoCropArea: 1,
+        });
+        };
+        reader.readAsDataURL(file);
+    });
+
+    cropButton.addEventListener('click', () => {
+        const canvas = cropper.getCroppedCanvas({
+        width: 300,
+        height: 300,
+        });
+
+        canvas.toBlob((blob) => {
+        const formData = new FormData();
+        formData.append('avatar', blob, 'avatar.jpg');
+
+        fetch('https://your-api.com/upload', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            avatar.src = canvas.toDataURL(); // Update avatar preview
+            cropContainer.style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Upload failed:', error);
+        });
+        }, 'image/jpeg');
+    });
+}
+
 inputListeners();
-waCheckboxListeners();
+avatarEditing();
 
 window.addEventListener('widgetLoaded', function(event) {
   checkboxListeners();
