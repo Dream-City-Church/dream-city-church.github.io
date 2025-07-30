@@ -8,8 +8,8 @@
                         <wa-avatar id="avatar" initials="{{ DataSet1.first.Nickname | slice: 0 }}{{ DataSet1.first.Last_Name | slice: 0 }}" label="Profile Picture" image="https://my.dreamcitychurch.us/ministryplatformapi/files/{{ DataSet1.first.Image_GUID }}"></wa-avatar>
                             
                         <input type="file" id="fileInput" accept="image/*" capture="environment" style="display: none;" />
-                        <div id="cropContainer" style="display:none;">
-                            <img id="imageToCrop" />
+                        <div id="cropContainer" style="display: none;">
+                            <img id="cropImage" />
                             <button id="cropButton">Crop & Upload</button>
                         </div>
 
