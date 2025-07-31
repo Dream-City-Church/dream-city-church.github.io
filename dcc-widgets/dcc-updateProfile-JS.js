@@ -177,9 +177,14 @@ const avatarEditing = async () => {
     });
 
     cropButton.addEventListener('click', () => {
+        // Get current screen width and height
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
         const canvas = cropper.getCroppedCanvas({
-        width: 300,
-        height: 300,
+            width: 300,
+            height: 300,
+            maxWidth: screenWidth,
+            maxHeight: screenHeight
         });
 
         canvas.toBlob((blob) => {
