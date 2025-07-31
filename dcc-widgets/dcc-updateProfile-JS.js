@@ -46,6 +46,7 @@ const inputListeners = async () => {
             // Compare the current value with the original value
             const originalValue = this.getAttribute('data-original-value');
             if (this.value !== originalValue) {
+                console.log(`Value changed for input: ${this.name}, sending to API`);
                 const name = this.name;
                 const value = this.value;
                 const dataTable = this.getAttribute('data-table');
