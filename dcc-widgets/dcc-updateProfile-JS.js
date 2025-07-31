@@ -6,6 +6,8 @@
 
 console.log('dcc-updateProfile-JS loaded');
 
+const apiUrl = 'https://prod-28.westus2.logic.azure.com:443/workflows/104eb6b9372442c9b6de29498cd641be/triggers/HTTP_Request/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FHTTP_Request%2Frun&sv=1.0&sig=Jz83RBbRqRiwQgw7FtXYt4MUXfSoV9fCFWvAy66O6Wo';
+
 // Function for sending data to the API service
 async function sendDataToAPI(name, value, dataTable, dataAttribute) {
     // Implement the logic to send data to the API service
@@ -187,7 +189,7 @@ const avatarEditing = async () => {
         // Send the cropped image to the server
         // In testing; don't actually send to a real server
         console.log('Uploading cropped image...');
-        fetch('https://example.com/upload-avatar', {
+        fetch(apiUrl, {
             method: 'POST',
             body: formData,
         })
