@@ -122,7 +122,7 @@ const checkboxListeners = async () => {
                 const checkboxLabel = profileForm.querySelector(`[for="${this.id}"]`);
                 // Send the updated data to the server. Insert the loading icon into the element until the server responds.
                 // This will allow the user to see that the data is being sent.
-                const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #ffffff;"></i>';
+                const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #ffffff;margin-left: 10px; margin-right: -10px;"></i>';
                 checkboxLabel.appendChild(document.createRange().createContextualFragment(loadingIcon));
                 try {
                     const result = await sendDataToAPI(name, value, dataTable, dataAttribute);

@@ -1,4 +1,4 @@
-<dcc-updateProfile style="display:inline-block;width: 100%; max-width:600px;margin-right:auto;margin-left:auto;">
+<dcc-updateProfile style="display:inline-block;width: 100%; max-width:600px;margin-right:auto;margin-left:auto;" class="wa-cloak">
                 <wa-tab-group>
                     <wa-tab slot="nav" panel="general">General</wa-tab>
                     <wa-tab slot="nav" panel="skills">Skills</wa-tab>
@@ -13,13 +13,13 @@
                             <button id="cropButton" style="position: absolute; bottom: 2rem; z-index: 9999;width: 100%; text-align: center;">Crop & Upload</button>
                         </div>
 
-                        <wa-input name="First_Name" type="text" label="First Name" value="{{ DataSet1.first.Nickname }}" data-table="Contacts" required></wa-input>
-                        <wa-input name="Last_Name" type="text" label="Last Name" value="{{ DataSet1.first.Last_Name }}" data-table="Contacts" required></wa-input>
-                        <wa-input name="Email_Address" type="email" label="Email Address" data-table="Contacts" value="{{ DataSet1.first.Email_Address }}" {% if DataSet1.first.Household_Position_ID == 1 %}required{% endif %}>
+                        <wa-input name="First_Name" type="text" autocapitalize="on" label="First Name" value="{{ DataSet1.first.Nickname }}" data-table="Contacts" required></wa-input>
+                        <wa-input name="Last_Name" type="text"  autocapitalize="on" label="Last Name" value="{{ DataSet1.first.Last_Name }}" data-table="Contacts" required></wa-input>
+                        <wa-input name="Email_Address" type="email" autocapitalize="off" inputmode="email" label="Email Address" data-table="Contacts" value="{{ DataSet1.first.Email_Address }}" {% if DataSet1.first.Household_Position_ID == 1 %}required{% endif %}>
                             <div slot="hint" style="text-align: right;font-size: 0.75rem;"><a href="https://www.dreamcitychurch.us/mydreamcity/subscriptions/" target="_blank">Manage Email Preferences</a></div>
                         </wa-input>
                         
-                        <wa-input name="Mobile_Phone" type="telephone" label="Phone" data-table="Contacts" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" value="{{ DataSet1.first.Mobile_Phone }}">
+                        <wa-input name="Mobile_Phone" type="telephone" inputmode="tel" label="Phone" data-table="Contacts" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" value="{{ DataSet1.first.Mobile_Phone }}">
                             <div slot="hint" style="text-align: right;font-size: 0.75rem;">By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href="https://www.dreamcitychurch.us/sms-tos/" target="_blank">Terms of Service</a> and <a href="https://www.dreamcitychurch.us/privacy-policy/" target="_blank">Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</div>
                         </wa-input>
                         
@@ -37,14 +37,14 @@
                             <wa-option value="7">Engaged</wa-option>
                         </wa-select>
                         {% if DataSet1.first.Gender_ID == 2 and DataSet1.first.Marital_Status_ID == 2 %}
-                            <wa-input name="Maiden_Name" type="text" label="Maiden Name" value="{{ DataSet1.first.Maiden_Name }}" data-table="Contacts"></wa-input>
+                            <wa-input name="Maiden_Name" type="text" autocapitalize="on" label="Maiden Name" value="{{ DataSet1.first.Maiden_Name }}" data-table="Contacts"></wa-input>
                         {% endif %}
                         {% if DataSet1.first.Household_Position_ID != 1 %}<div id="address-message">Address information can only be updated by heads of household.</div>{% endif %}
-                        <wa-input name="Address_Line_1" type="text" label="Address" data-table="Addresses" value="{{ DataSet1.first.Address_Line_1 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
-                        <wa-input name="Address_Line_2" type="text" data-table="Addresses" value="{{ DataSet1.first.Address_Line_2 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
-                        <wa-input name="City" type="text" label="City" data-table="Addresses" value="{{ DataSet1.first.City }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
-                        <wa-input name="State" type="text" label="State" data-table="Addresses" maxlength=2 value="{{ DataSet1.first.State }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
-                        <wa-input name="Postal_Code\Region" type="text" label="Zip" data-table="Addresses" maxlength=5 value="{{ DataSet1.first.Postal_Code }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="Address_Line_1" type="text" autocapitalize="words" label="Address" data-table="Addresses" value="{{ DataSet1.first.Address_Line_1 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="Address_Line_2" type="text" autocapitalize="words" data-table="Addresses" value="{{ DataSet1.first.Address_Line_2 }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="City" type="text" label="City" autocapitalize="words" data-table="Addresses" value="{{ DataSet1.first.City }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="State" type="text" label="State" autocapitalize="characters" data-table="Addresses" maxlength=2 value="{{ DataSet1.first.State }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
+                        <wa-input name="Postal_Code\Region" type="text" inputmode="numeric" label="Zip" data-table="Addresses" pattern="[0-9]{5}-[0-9]{4}" maxlength=10 value="{{ DataSet1.first.Postal_Code }}" {% if DataSet1.first.Household_Position_ID != 1 %}disabled{% endif %}></wa-input>
                     </wa-tab-panel>
 
                     <wa-tab-panel name="skills">
