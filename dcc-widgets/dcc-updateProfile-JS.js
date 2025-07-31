@@ -184,7 +184,10 @@ const avatarEditing = async () => {
         const formData = new FormData();
         formData.append('avatar', blob, 'avatar.jpg');
 
-        fetch('https://your-api.com/upload', {
+        // Send the cropped image to the server
+        // In testing; don't actually send to a real server
+        console.log('Uploading cropped image...');
+        fetch('https://example.com/upload-avatar', {
             method: 'POST',
             body: formData,
         })
@@ -195,6 +198,8 @@ const avatarEditing = async () => {
         })
         .catch(error => {
             console.error('Upload failed:', error);
+            avatar.src = canvas.toDataURL(); // Update avatar preview
+            cropContainer.style.display = 'none';
         });
         }, 'image/jpeg');
     });
