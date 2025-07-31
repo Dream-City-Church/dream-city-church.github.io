@@ -163,6 +163,12 @@ const avatarEditing = async () => {
             aspectRatio: 1,
             viewMode: 1,
             autoCropArea: 1,
+            responsive: true,
+            background: false,
+            movable: true,
+            zoomable: true,
+            scalable: true,
+            rotatable: true
         });
         };
         reader.readAsDataURL(file);
