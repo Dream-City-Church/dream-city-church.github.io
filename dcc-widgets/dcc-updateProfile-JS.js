@@ -6,8 +6,6 @@
 
 console.log('dcc-updateProfile-JS loaded');
 
-import 'cropperjs';
-
 // Function for sending data to the API service
 async function sendDataToAPI(name, value, dataTable, dataAttribute) {
     // Implement the logic to send data to the API service
