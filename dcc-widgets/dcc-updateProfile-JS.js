@@ -192,9 +192,8 @@ const avatarEditing = async () => {
     });
 }
 
-inputListeners();
-avatarEditing();
-
 window.addEventListener('widgetLoaded', function(event) {
   checkboxListeners();
+  inputListeners();
+  avatarEditing();
 });
