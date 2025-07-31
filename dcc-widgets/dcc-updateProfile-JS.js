@@ -39,8 +39,10 @@ const inputListeners = async () => {
         input.addEventListener('focus', function() {
             // Store the current value in a data attribute for later comparison
             this.setAttribute('data-original-value', this.value);
+            console.log(`Focused on input: ${this.name}, original value: ${this.value}`);
         });
         input.addEventListener('change', async function() {
+            console.log(`Change detected in input: ${this.name}, new value: ${this.value}`);
             // Compare the current value with the original value
             const originalValue = this.getAttribute('data-original-value');
             if (this.value !== originalValue) {
