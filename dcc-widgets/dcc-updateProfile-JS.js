@@ -45,7 +45,7 @@ const inputListeners = async () => {
             console.log(`Change detected in input: ${this.name}, new value: ${this.value}`);
             // Compare the current value with the original value
             const originalValue = this.getAttribute('data-original-value');
-            if (this.value !== originalValue || this.node.type === 'wa-select') {
+            if (this.value !== originalValue || this.nodeName === 'wa-select') {
                 console.log(`Value changed for input: ${this.name}, sending to API`);
                 const name = this.name;
                 const value = this.value;
