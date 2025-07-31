@@ -47,6 +47,16 @@ const inputListeners = async () => {
             const originalValue = this.getAttribute('data-original-value');
             if (this.value !== originalValue || this.nodeName.toLowerCase() === 'wa-select') {
                 console.log(`Value changed for input: ${this.name}, sending to API`);
+                // Verify if the wa-input is email that the value is a valid email address
+                if (this.nodeName.toLowerCase() === 'wa-input' && this.type === 'email') {
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(this.value)) {
+                        console.error(`Invalid email format for input: ${this.name}`);
+                        this.setAttribute('error', 'true'); // Set the error state
+                        this.dispatchEvent(new Event('input'));
+                        return; // Exit if the email format is invalid
+                    }
+                }              
                 const name = this.name;
                 const value = this.value;
                 const dataTable = this.getAttribute('data-table');
@@ -112,7 +122,7 @@ const checkboxListeners = async () => {
                 const checkboxLabel = profileForm.querySelector(`[for="${this.id}"]`);
                 // Send the updated data to the server. Insert the loading icon into the element until the server responds.
                 // This will allow the user to see that the data is being sent.
-                const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #bc204b;"></i>';
+                const loadingIcon = '<i slot="end" class="fa-solid fa-floppy-disk fa-fade" style="color: #ffffff;"></i>';
                 checkboxLabel.appendChild(document.createRange().createContextualFragment(loadingIcon));
                 try {
                     const result = await sendDataToAPI(name, value, dataTable, dataAttribute);
