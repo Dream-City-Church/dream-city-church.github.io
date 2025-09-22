@@ -4,6 +4,14 @@
 /* Make Faith Promise No Progress Indicator */
 /********************/
 
+#pledgeForm > h2, #pledgeForm > h3 {
+    display: none;
+}
+
+.form--row:has(#TotalPledgeValue) {
+    display: none;
+}
+
 .mpp-innerpage {
     display: none;
 }
