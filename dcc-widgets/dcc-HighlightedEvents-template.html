@@ -1,5 +1,5 @@
 <style type="text/css">@import url("https://dream-city-church.github.io/dcc-widgets/dcc-HighlightedEvents-CSS.css?rev=250421");</style>
-<div class="highlighted-events-container">
+
 {% for event in DataSet1 %}
 
     <a class="highlighted-event" href="{{ event.Event_URL }}" draggable="false" ondragstart="return false;">
@@ -15,61 +15,3 @@
     </a>
 
 {% endfor %}
-</div>
-
-<script type="text/javascript">
-    // Description: This script will check if the events container is smaller than the number of events and if so, it will add a class to make it scrollable.
-    // The container should also be drag-able and have indicator arrows on the sides to show that it is scrollable.
-    // The arrows should be clickable to scroll the container left or right.
-    // There should be a slight fade on the edges of the container to indicate that there is more content to scroll to.
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const container = document.querySelector('.highlighted-events-container');
-        const events = document.querySelectorAll('.highlighted-event');
-
-        function updateContainer() {
-            if (container.scrollWidth > container.clientWidth) {
-                container.classList.add('scrollable');
-            } else {
-                container.classList.remove('scrollable');
-            }
-        }
-
-        // Initial check
-        updateContainer();
-
-        // Recheck on window resize
-        window.addEventListener('resize', updateContainer);
-
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        container.addEventListener('mousedown', (e) => {
-            isDown = true;
-            container.classList.add('active');
-            startX = e.pageX - container.offsetLeft;
-            scrollLeft = container.scrollLeft;
-        });
-
-        container.addEventListener('mouseleave', () => {
-            isDown = false;
-            container.classList.remove('active');
-        });
-
-        container.addEventListener('mouseup', () => {
-            isDown = false;
-            container.classList.remove('active');
-        });
-
-        container.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - container.offsetLeft;
-            const walk = (x - startX) * 2; //scroll-fast
-            container.scrollLeft = scrollLeft - walk;
-        });
-    });
-
-    
-</script>
