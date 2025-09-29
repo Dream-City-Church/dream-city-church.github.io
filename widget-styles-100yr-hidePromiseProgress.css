@@ -45,3 +45,23 @@
     background: var(--form-btn-primary-bgcolor);
     border: none;
 }
+
+
+#InstallmentAmount::before {
+    content: "\f155";
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    #pledgeForm .form--row {
+        flex-direction: column;
+    }
+
+    #pledgeForm .form--col {
+        padding-right: 0;
+    }
+
+    #pledgeForm .toggle--btn {
+        margin: 0.75rem 1rem !important;
+    }
+}
