@@ -124,12 +124,12 @@ function loadPrayerRequestForm() {
             <form id="request-form">
                 <wa-radio-group name="type" value="1" class="type-container" orientation="horizontal" size="${buttonSize}" required>
                     <wa-radio appearance="button" value="1" class="PrayerRequestButton" size="${buttonSize}">
-                        <wa-icon slot="start" name="hands-praying" variant="solid"></wa-icon>
+                        <i class="fa-solid fa-hands-praying" style="color: #bc204b;"></i>
                         Prayer Request
                     </wa-radio>
                     <wa-radio appearance="button" value="2" class="PraiseReportButton" size="${buttonSize}">
                         Praise Report
-                        <wa-icon slot="end" name="hands-clapping" variant="solid"></wa-icon>
+                        <i class="fa-solid fa-party-horn" style="color: #bc204b;"></i>
                     </wa-radio>
                 </wa-radio-group>
 
@@ -141,12 +141,12 @@ function loadPrayerRequestForm() {
 
                 <wa-radio-group name="visibility" value="4" class="visibility-container" orientation="horizontal" size="${buttonSize}" required>
                     <wa-radio appearance="button" value="4" class="VisibilityPublic" size="${buttonSize}">
-                        <wa-icon slot="start" name="eye" variant="solid"></wa-icon>
+                        <i class="fa-solid fa-eye"></i>
                         Public
                     </wa-radio>
                     <wa-radio appearance="button" value="2" class="VisibilityPrivate" size="${buttonSize}">
-                        <wa-icon slot="end" name="eye-slash" variant="solid"></wa-icon>
                         Private
+                        <i class="fa-solid fa-eye-slash"></i>
                     </wa-radio>
                 </wa-radio-group>
 
