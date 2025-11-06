@@ -85,9 +85,9 @@ function loadPrayerRequestForm() {
     }
 
     submitterInfo = `
-        <wa-input id="firstNameField" name="first-name" class="input-field" placeholder="First Name" minlength=3 max-length=20 autocapitalize="words" autocomplete="given-name" inputmode="text" required></wa-input>
-        <wa-input id="lastNameField" name="last-name" class="input-field" placeholder="Last Name" minlength=3 max-length=20 autocapitalize="words" autocomplete="family-name" inputmode="text" required></wa-input>
-        <wa-input id="emailAddressField" name="email" class="input-field" placeholder="Email Address" minlength=5 max-length=30 type="email" inputmode="email" autocomplete="email" hint="A verification email will be sent to this address." required></wa-input>
+        <wa-input id="firstNameField" name="first-name" class="input-field" placeholder="First Name*" minlength=3 max-length=20 autocapitalize="words" autocomplete="given-name" inputmode="text" required></wa-input>
+        <wa-input id="lastNameField" name="last-name" class="input-field" placeholder="Last Name*" minlength=3 max-length=20 autocapitalize="words" autocomplete="family-name" inputmode="text" required></wa-input>
+        <wa-input id="emailAddressField" name="email" class="input-field" placeholder="Email Address*" minlength=5 max-length=30 type="email" inputmode="email" autocomplete="email" hint="A verification email will be sent to this address." required></wa-input>
         <wa-input id="phoneNumberField" name="phone" class="input-field" placeholder="Mobile Phone" minlength=10 max-length=13 type="tel" inputmode="tel" autocomplete="mobile"><span slot="hint">Optional. By providing your phone number, you agree to receive text messages from Dream City Church in accordance with our <a href='https://dreamcitychurch.us/sms-tos/' target='_blank'>Terms of Service</a> and <a href='https://dreamcitychurch.us/privacy-policy/' target='_blank'>Privacy Policy</a>. Reply STOP to cancel. Msg rates may apply.</span></wa-input>
     `;
 
@@ -124,12 +124,12 @@ function loadPrayerRequestForm() {
             <form id="request-form">
                 <wa-radio-group name="type" value="1" class="type-container" orientation="horizontal" size="${buttonSize}" required>
                     <wa-radio appearance="button" value="1" class="PrayerRequestButton" size="${buttonSize}">
-                        <i class="fa-solid fa-hands-praying" style="color: #bc204b;"></i>
+                        <i class="fa-solid fa-hands-praying fa-xs" style="color: #bc204b;"></i>
                         Prayer Request
                     </wa-radio>
                     <wa-radio appearance="button" value="2" class="PraiseReportButton" size="${buttonSize}">
                         Praise Report
-                        <i class="fa-solid fa-party-horn" style="color: #bc204b;"></i>
+                        <i class="fa-solid fa-party-horn fa-xs" style="color: #bc204b;"></i>
                     </wa-radio>
                 </wa-radio-group>
 
@@ -141,12 +141,12 @@ function loadPrayerRequestForm() {
 
                 <wa-radio-group name="visibility" value="4" class="visibility-container" orientation="horizontal" size="${buttonSize}" required>
                     <wa-radio appearance="button" value="4" class="VisibilityPublic" size="${buttonSize}">
-                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-eye fa-xs"></i>
                         Public
                     </wa-radio>
                     <wa-radio appearance="button" value="2" class="VisibilityPrivate" size="${buttonSize}">
                         Private
-                        <i class="fa-solid fa-eye-slash"></i>
+                        <i class="fa-solid fa-eye-slash fa-xs"></i>
                     </wa-radio>
                 </wa-radio-group>
 
