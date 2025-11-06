@@ -122,7 +122,7 @@ function loadPrayerRequestForm() {
         ${greetingHtml}
         <div id="prayer-request-form">
             <form id="request-form">
-                <wa-radio-group name="type" value="1" class="type-container" size="${buttonSize}" required>
+                <wa-radio-group name="type" value="1" class="type-container" orientation="horizontal" size="${buttonSize}" required>
                     <wa-radio appearance="button" value="1" class="PrayerRequestButton" size="${buttonSize}">
                         <wa-icon slot="start" name="hands-praying" variant="solid"></wa-icon>
                         Prayer Request
@@ -139,7 +139,7 @@ function loadPrayerRequestForm() {
                     <span slot="hint" id="char-count">0/1000</span>
                 </wa-textarea>
 
-                <wa-radio-group name="visibility" value="4" class="visibility-container" size="${buttonSize}" required>
+                <wa-radio-group name="visibility" value="4" class="visibility-container" orientation="horizontal" size="${buttonSize}" required>
                     <wa-radio appearance="button" value="4" class="VisibilityPublic" size="${buttonSize}">
                         <wa-icon slot="start" name="eye" variant="solid"></wa-icon>
                         Public
