@@ -4,6 +4,14 @@
 /* Make Faith Promise No Progress Indicator */
 /********************/
 
+#pledgeForm > h2, #pledgeForm > h3 {
+    display: none;
+}
+
+.form--row:has(#TotalPledgeValue) {
+    /*display: none;*/
+}
+
 .mpp-innerpage {
     display: none;
 }
@@ -13,11 +21,11 @@
 }
 
 #Frequency, #Frequency+.mppw-form-field__label, .custom-date-input {
-    display: none;
+    /*display: none;*/
 }
 
 .form--col:has(#Frequency) {
-    display: none;
+    /*display: none;*/
 }
 
 #TotalPledgeValue {
@@ -36,4 +44,24 @@
 .secondary:not(:disabled):not(.disabled).active {
     background: var(--form-btn-primary-bgcolor);
     border: none;
+}
+
+
+#InstallmentAmount::before {
+    content: "\f155";
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    #pledgeForm .form--row {
+        flex-direction: column;
+    }
+
+    #pledgeForm .form--col {
+        padding-right: 0;
+    }
+
+    #pledgeForm .toggle--btn {
+        margin: 0.75rem 1rem !important;
+    }
 }
