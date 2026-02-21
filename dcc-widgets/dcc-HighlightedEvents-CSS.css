@@ -33,6 +33,10 @@
     }
 }
 
+.highlighted-events-container {
+    width: 100%;
+}
+
 a.highlighted-event {
     color: #3f3f3f;
     text-decoration: none;
