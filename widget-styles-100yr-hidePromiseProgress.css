@@ -51,7 +51,7 @@
     content: "\f155";
 }
 
-.form--row:nth-child(3) {
+.form--row:has(#TotalPledgeValue) {
     font-size: 1.25rem;
     text-align: center !important;
     justify-content: center;
