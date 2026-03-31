@@ -322,6 +322,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 
 .mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton, #payInvoice {
     font-family: 'Open Sans', sans-serif, "Font Awesome 7 Pro";
+    font-weight: 400 !important;
     box-shadow: none;
     padding: 0.5rem 2rem;
     border-radius: 2rem;
@@ -632,8 +633,6 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 
 select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-field__label, .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
     background: transparent;
-    padding: 0.75rem 1rem !important;
-    background-color: #fafafa !important;
 }
 
 .mppw-form-field_instruction_font {
@@ -642,6 +641,10 @@ select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-fi
 
 .mppw-form-field__control:focus + label {
     background-color: transparent !important;
+}
+
+input[type="date"].mppw-form-field__control {
+    padding: 28px 13px 12px 13px;
 }
 
 .mppw-form-field__alt-label {
