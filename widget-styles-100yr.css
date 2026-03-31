@@ -321,7 +321,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 /***********/
 
 .mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton, #payInvoice {
-    font-family: 'Open Sans', sans-serif, "Font Awesome 6 Pro";
+    font-family: 'Open Sans', sans-serif, "Font Awesome 7 Pro";
     box-shadow: none;
     padding: 0.5rem 2rem;
     border-radius: 2rem;
@@ -329,7 +329,7 @@ h4.mpp-card--subtitle:nth-child(1) {
 }
 
 .mpp-about-me--cancel-button {
-    font-family: 'Open Sans', sans-serif, "Font Awesome 6 Pro";
+    font-family: 'Open Sans', sans-serif, "Font Awesome 7 Pro";
     box-shadow: none;
     padding: 0.5rem 2rem;
     border-radius: 2rem;
@@ -458,6 +458,9 @@ div[data-id="mp_customform_2389"]{
     background: none;
 }
 
+ul.mpp-innerpage--contacts.mpp-innerpage--special-content, li.mpp-innerpage--contact {
+    margin: 0;
+}
 .mpp-innerpage--name-has-email::after {
     display: inline-block;
     content: '\f0e0';
@@ -580,6 +583,11 @@ div#registrationTotalContainer {
         clear: both;
         width: 100%;
     }
+
+    #registrationTotalContainer {
+        text-align: center;
+        font-size: 1.15rem;
+    }
 }
 
 
@@ -624,7 +632,8 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 
 select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-field__label, .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
     background: transparent;
-
+    padding: 0.75rem 1rem !important;
+    background-color: #fafafa !important;
 }
 
 .mppw-form-field_instruction_font {
@@ -801,6 +810,10 @@ td.mppw-invoice-total {
 
     #messaging-disclaimer {
         width: 100%;
+    }
+
+    a.mppw-btn.mpp-innerpage--button {
+        float: none;
     }
     
 }
