@@ -1,46 +1,21 @@
-﻿/***************************/
-/* CSS Custom Properties   */
-/***************************/
-
+/*********************/
+/* CSS Global Styles */
+/*********************/
 :host {
-    /* --- Brand Colors --- */
+    --root-text-color: #333;
+    --root-font-size: 1.25rem;
+    --root-line-height: 1.25rem;
     --primary: #bc204b;
     --brand-primary: var(--primary);
     --secondary: #e07e3c;
     --tertiary: #bcbcbc;
+    --brand-gradient: linear-gradient(-170deg, var(--secondary) 0%, var(--primary) 100%);
+    --brand-gradient-rot: linear-gradient(-20deg, var(--secondary) 0%, var(--primary) 100%);
     --brand-charcoal: #3f4444;
     --brand-cloud: #bcbcbc;
     --brand-sunshine: #ffaa4d;
     --brand-fire: #e1523d;
     --brand-dusk: #253746;
-
-    /* --- Brand Gradients --- */
-    --brand-gradient: linear-gradient(-170deg, var(--secondary) 0%, var(--primary) 100%);
-    --brand-gradient-rot: linear-gradient(-20deg, var(--secondary) 0%, var(--primary) 100%);
-
-    /* --- Typography --- */
-    --root-font-face: 'neue haas display', Helvetica, Arial, Lucida, sans-serif;
-    --header-font-face: 'neue haas display', Helvetica, Arial, Lucida, sans-serif;
-    --root-text-color: #333;
-    --root-font-size: 1.25rem;
-    --root-line-height: 1.25rem;
-    --alt-text-color: #777777;
-    --innerPage-h1fontFamily: var(--header-font-face);
-    --innerPage-primaryColor: var(--primary);
-    --innerPage-linkHoverColor: var(--secondary);
-    --innerPage-linkColor: var(--primary);
-    --innerPage-buttonHoverBgColor: var(--secondary);
-    --innerPage-fontSize: 1.1rem;
-    --innerPage-lineHeight: 1.6rem;
-
-    /* --- Layout --- */
-    --sidebar-width: 33%;
-    --content-width: 62%;
-    --box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.35);
-    --border-subtle: #efefef;
-    --btn-border-radius: 2rem;
-
-    /* --- Form Fields --- */
     --form-field-color: var(--root-text-color);
     --form-field-bgcolor: #f9f9f9;
     --form-field-bgcolor--active: #fff;
@@ -50,8 +25,6 @@
     --form-field-boxshadow--active: 0 0 0.2rem 0.05rem var(--primary);
     --form-valid: #42bc34;
     --form-invalid: #dc3545;
-
-    /* --- Buttons --- */
     --form-btn-primary-text: #fff;
     --form-btn-primary-bgcolor: var(--primary);
     --form-btn-primary-hover: var(--brand-fire);
@@ -61,12 +34,43 @@
     --form-btn-secondary-hover: var(--brand-fire);
     --form-btn-secondary-active: var(--brand-sunshine);
     --form-btn-disabled: var(--brand-cloud);
-
-    /* --- Cards --- */
     --card-bgcolor: #fff;
+    --card-title-color: var(--brand-dusk);
+    --card-header-bgcolor: rgba(0, 0, 0, 0) !important;
+    --box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.35);
+    --progress-pledged: var(--secondary);
+    --progress-received: var(--primary);
+    --root-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
+    --header-font-face: 'neue haas display',Helvetica,Arial,Lucida,sans-serif;
+    --innerPage-h1fontFamily: var(--header-font-face);
+    --innerPage-primaryColor: var(--primary);
+    --innerPage-linkHoverColor: var(--secondary);
+    --innerPage-linkColor: var(--primary);
+    --innerPage-buttonHoverBgColor: var(--secondary);
+    --innerPage-fontSize: 1.1rem;
+    --innerPage-lineHeight: 1.6rem;
+    --alt-text-color: #777777;
+}
+
+* {
+    font-family: var(--root-font-face);
+}
+
+h1, h2, h3 {
+    font-family: var(--header-font-face);
+}
+
+.mppw-form-wrapper h1 {
+    display: none;
+}
+
+/***************/
+/* Card Styles */
+/***************/
+
+:host {
     --card-title-color: #333333;
     --card-textColor: #333333;
-    --card-header-bgcolor: rgba(0, 0, 0, 0) !important;
     --card-borderRadius: 0.5rem;
     --card-boxshadow: none !important;
     --card-primaryColor: var(--primary);
@@ -88,48 +92,20 @@
     --card-imageBgColor: rgba(0, 0, 0, 0) !important;
     --card-checkboxDefaultColor: #bcbcbc;
     --card-labelBgColor: #fff;
-
-    /* --- Progress --- */
-    --progress-pledged: var(--secondary);
-    --progress-received: var(--primary);
 }
-
-
-/***********************/
-/* Base / Reset        */
-/***********************/
-
-* {
-    font-family: var(--root-font-face);
-}
-
-h1, h2, h3 {
-    font-family: var(--header-font-face);
-}
-
-.mppw-form-wrapper h1 {
-    display: none;
-}
-
-
-/***************/
-/* Card Styles */
-/***************/
 
 .resultsContainer {
     container-type: inline-size;
 }
-
-.mppw-card--grid,
-#subscriptionsBody {
+ 
+.mppw-card--grid, #subscriptionsBody {
     display: grid;
     grid-template-columns: 100%;
     grid-gap: 1em;
     margin-top: 0;
 }
 
-.mpp-card,
-#subscriptionsBody .mpp-card-multiselect {
+.mpp-card, #subscriptionsBody .mpp-card-multiselect {
     border-radius: 10px !important;
     display: inline-block;
     position: relative;
@@ -137,7 +113,7 @@ h1, h2, h3 {
     overflow: visible;
     border: 1px solid #d0d0d0;
     box-shadow: none !important;
-    transition: border 250ms ease, box-shadow 250ms ease;
+    transition: border 250ms ease, box-shadow 250ms ease; 
 }
 
 #subscriptionsBody .mpp-card-multiselect {
@@ -157,13 +133,11 @@ h1, h2, h3 {
 
 .mpp-card--header {
     height: 100%;
-    width: auto;
+    width:auto;
     aspect-ratio: 16 / 9;
     float: left;
     overflow: visible;
 }
-
-/* Card Badge */
 
 .mpp-card--badge {
     border-radius: 0.5rem 0 0 0;
@@ -182,11 +156,11 @@ h1, h2, h3 {
 
 .mpp-card--badge::after {
     content: "\f559";
-    font: var(--fa-font-solid);
     font-family: 'FontAwesome';
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
     top: 0px;
     border-radius: 0 0.5rem 0 0;
     position: absolute;
@@ -199,13 +173,11 @@ h1, h2, h3 {
 .mpp-card--badge.Meets.Online {
     background-color: var(--primary);
     left: -77px;
-    top: 70px;
+    top:70px;
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.mpp-card--badge.Meets.Online::after,
-.mpp-card--badge.Completed::after,
-.mpp-card--badge.full::after {
+.mpp-card--badge.Meets.Online::after, .mpp-card--badge.Completed::after {
     display: none;
 }
 
@@ -213,7 +185,7 @@ h1, h2, h3 {
     background: linear-gradient(160deg, #c7c9c8aa 33%, #c7c9c866 100%);
     color: var(--brand-charcoal);
     left: -70px;
-    top: 67px;
+    top:67px;
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
@@ -224,7 +196,9 @@ h1, h2, h3 {
     left: -43px;
 }
 
-/* Card Image */
+.mpp-card--badge.full::after {
+    display: none;
+}
 
 .mpp-card--image {
     height: 100% !important;
@@ -241,8 +215,6 @@ h1, h2, h3 {
     background-color: transparent !important;
     padding: 2rem;
 }
-
-/* Card Body */
 
 .mpp-card--body {
     width: calc(100% - 305px);
@@ -295,81 +267,65 @@ h4.mpp-card--subtitle:nth-child(1) {
     margin-top: 0.5em;
 }
 
-.mpp-card--footer {
-    display: none;
-}
-
-/* Card Icon Subtitles */
-
-.event-date-range:before,
-.group-meeting-day:before,
-.opportunity-start-date:before {
-    content: "\f073";
-    font: var(--fa-font-solid);
+.event-date-range:before, .group-meeting-day:before, .opportunity-start-date:before {
     font-family: 'FontAwesome';
     padding-right: 7px;
+    content: "\f073";
     color: var(--primary);
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
-.event-location:before,
-.group-location:before,
-.opportunity-location:before {
-    content: "\f3c5";
-    font: var(--fa-font-solid) !important;
+.event-location:before, .group-location:before, .opportunity-location:before {
     font-family: 'FontAwesome' !important;
     padding-right: 7px;
     padding-left: 1px;
+    content: "\f3c5";
     color: var(--primary);
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid) !important;
 }
 
 .group-capacity:before {
-    content: "\f0c0";
-    font: var(--fa-font-solid);
     font-family: 'FontAwesome';
     padding-right: 7px;
+    content: "\f0c0";
     color: var(--primary);
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 .group-start-date:before {
-    content: "\f017";
-    font: var(--fa-font-solid);
     font-family: 'FontAwesome';
     padding-right: 7px;
+    content: "\f017";
     color: var(--primary);
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
+.mpp-card--footer {
+    display: none;
+}
 
 /***********/
 /* Buttons */
 /***********/
 
-.mppw-btn,
-.mppw-btn:hover,
-#loginButton,
-#addAnotherButton,
-#registerAndCheckoutButton,
-#saveAndAddButton,
-#saveAndCheckoutButton,
-.mpp-about-me--submit-button,
-#saveAsPDFButton,
-#payInvoice {
+.mppw-btn, .mppw-btn:hover, #loginButton, #addAnotherButton, #registerAndCheckoutButton, #saveAndAddButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton, #payInvoice {
     font-family: 'Open Sans', sans-serif, "Font Awesome 7 Pro";
     font-weight: 400 !important;
     box-shadow: none;
     padding: 0.5rem 2rem;
-    border-radius: var(--btn-border-radius);
+    border-radius: 2rem;
     font-weight: bold;
 }
 
@@ -377,20 +333,13 @@ h4.mpp-card--subtitle:nth-child(1) {
     font-family: 'Open Sans', sans-serif, "Font Awesome 7 Pro";
     box-shadow: none;
     padding: 0.5rem 2rem;
-    border-radius: var(--btn-border-radius);
+    border-radius: 2rem;
     font-weight: bold;
     color: var(--brand-secondary);
     border: 2px solid var(--brand-secondary);
 }
 
-#loginButton,
-#registerAndCheckoutButton,
-#saveAndCheckoutButton,
-.mpp-about-me--submit-button,
-#saveAsPDFButton,
-#saveHouseholdMember,
-#payInvoice,
-#createPledge {
+#loginButton, #registerAndCheckoutButton, #saveAndCheckoutButton, .mpp-about-me--submit-button, #saveAsPDFButton, #saveHouseholdMember, #payInvoice, #createPledge{
     background-image: linear-gradient(-175deg, var(--primary), var(--secondary) 70%);
     background-position: top left;
     background-size: 100%;
@@ -402,21 +351,15 @@ h4.mpp-card--subtitle:nth-child(1) {
     font-weight: bold;
 }
 
-#loginButton:hover,
-#registerAndCheckoutButton:hover,
-#saveAndCheckoutButton:hover,
-.mpp-about-me--submit-button:hover,
-#saveAsPDFButton:hover,
-#saveHouseholdMember:hover,
-#payInvoice:hover,
-#createPledge:hover {
+#loginButton:hover, #registerAndCheckoutButton:hover, #saveAndCheckoutButton:hover, .mpp-about-me--submit-button:hover, #saveAsPDFButton:hover, #saveHouseholdMember:hover, #payInvoice:hover, #createPledge:hover{
     background-size: 300%;
     transition: background-size 0.3s ease;
     text-decoration: underline;
 }
 
-.mppw-btn.primary {
-    margin-right: 1rem;
+.mpp-innerpage h3 {
+    clear: both;
+    padding-top: 1rem;
 }
 
 #promoCodeContainer #addPromoCodeButton {
@@ -437,19 +380,13 @@ a.mppw-btn.mpp-innerpage--button.primary.mb-medium {
     margin-bottom: 1rem;
 }
 
-.mpp-innerpage--mapinfo a,
-.mppw-ics-link,
-#detailsContainer > strong > a {
-    color: var(--secondary);
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--secondary);
-    border-radius: var(--btn-border-radius);
-    position: relative;
-    display: inline-block;
-    top: 10px;
-    text-decoration: none;
-    font-size: 0.8rem;
-    margin: 0.5rem 1rem 0.5rem 0;
+@media screen and (max-width: 800px) {
+    #promoCodeContainer #addPromoCodeButton {
+        max-width: 100%;
+        width: 100%;
+        margin: 1rem auto;
+    }
+    
 }
 
 
@@ -457,48 +394,35 @@ a.mppw-btn.mpp-innerpage--button.primary.mb-medium {
 /* Inner Page Styles */
 /*********************/
 
-.mpp-innerpage h3 {
-    clear: both;
-    padding-top: 1rem;
-}
-
-.mpp-innerpage--back,
-.mpp-innerpage--back a {
+.mpp-innerpage--back, .mpp-innerpage--back a {
     color: var(--primary);
 }
 
-.mpp-innerpage--fixed-img,
-.mpp-innerpage--fixed-imgplaceholder {
+.mpp-innerpage--fixed-img, .mpp-innerpage--fixed-imgplaceholder {
     float: left;
-    width: var(--sidebar-width);
+    width: 33%;
     height: auto;
     aspect-ratio: 16 / 9;
     margin-bottom: 1rem;
     background-size: cover;
     background-position: center;
     border-radius: var(--card-borderRadius);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid #efefef;
 }
 
-.mpp-innerpage--subtitle,
-.mpp-innerpage--labels,
-.mpp-innerpage--datetime,
-.mpp-innerpage--description,
-.mpp-innerpage p,
-.youtube-video-container {
-    width: var(--content-width);
+.mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container {
+    width: 62%;
     float: right;
 }
 
-#customFormDescription,
-#prayerFormDescription {
+#customFormDescription, #prayerFormDescription {
     width: 100%;
     float: none;
     margin: 0;
 }
 
-/* Hides Praise Report related field */
-div[data-id="mp_customform_2389"] {
+div[data-id="mp_customform_2389"]{
+    /*Hides Praise Report related field */
     display: none;
 }
 
@@ -510,21 +434,17 @@ div[data-id="mp_customform_2389"] {
     width: 100%;
 }
 
-.mpp-innerpage--special,
-.mpp-innerpage--capacity {
+.mpp-innerpage--special, .mpp-innerpage--capacity {
     clear: left;
-    width: var(--sidebar-width);
+    width: 33%;
     padding: 1rem;
     margin-top: 1rem;
     margin-bottom: 0;
     border-radius: var(--card-borderRadius);
-    background-color: var(--brand-dusk);
+    background-color: #253746;
 }
 
-.mpp-innerpage--special-title,
-.mpp-innerpage--special-content,
-.mpp-innerpage--capacity-title,
-.mpp-innerpage--capacity-content {
+.mpp-innerpage--special-title, .mpp-innerpage--special-content, .mpp-innerpage--capacity-title, .mpp-innerpage--capacity-content {
     color: white;
     padding-left: 0;
 }
@@ -539,16 +459,14 @@ div[data-id="mp_customform_2389"] {
     background: none;
 }
 
-ul.mpp-innerpage--contacts.mpp-innerpage--special-content,
-li.mpp-innerpage--contact {
+ul.mpp-innerpage--contacts.mpp-innerpage--special-content, li.mpp-innerpage--contact {
     margin: 0;
 }
-
 .mpp-innerpage--name-has-email::after {
+    display: inline-block;
     content: '\f0e0';
     font: var(--fa-font-solid);
     font-family: 'FontAwesome';
-    display: inline-block;
     padding-left: 0.5rem;
 }
 
@@ -559,7 +477,7 @@ li.mpp-innerpage--contact {
 div#mapContainer {
     float: left;
     clear: left;
-    width: var(--sidebar-width);
+    width: 33%;
     padding-top: 1rem;
     background-color: white;
 }
@@ -568,11 +486,11 @@ div#mapContainer {
     padding-left: 0;
     font-size: 0.9rem;
     font-style: italic;
-    line-height: 1.5rem;
+    line-height:1.5rem;
 }
 
 .mppw-component-container > div:has(.mpp-innerpage--button) {
-    width: var(--content-width);
+    width: 62%;
     clear: right;
     float: right;
 }
@@ -587,7 +505,7 @@ div#registrationTotalContainer {
 }
 
 #registrationFormContainer {
-    width: var(--content-width);
+    width: 62%;
     float: right;
     clear: right;
 }
@@ -596,13 +514,8 @@ div#registrationTotalContainer {
     display: none;
 }
 
-#inquiryContainer,
-#signupContainer {
+#inquiryContainer, #signupContainer {
     padding: 0.5rem;
-}
-
-#registrationForm {
-    clear: both;
 }
 
 #registrationForm #addressFormWrapper {
@@ -624,31 +537,35 @@ div#registrationTotalContainer {
     text-wrap: balance;
 }
 
+.mpp-innerpage--mapinfo a, .mppw-ics-link, #detailsContainer > strong > a {
+    color: var(--secondary);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--secondary);
+    border-radius: 2rem;
+    position: relative;
+    display: inline-block;
+    top: 10px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin: 0.5rem 1rem 0.5rem 0;
+}
+
 @media only screen and (max-width: 800px) {
     .mpp-innerpage p {
         font-size: var(--innerPage-fontSize);
     }
 
-    .mpp-innerpage--fixed-img,
-    .mpp-innerpage--fixed-imgplaceholder {
+    .mpp-innerpage--fixed-img, .mpp-innerpage--fixed-imgplaceholder {
         float: none;
         width: 100%;
     }
 
-    h1.mpp-innerpage--subtitle,
-    h2.mpp-innerpage--datetime.event-date-range {
+    h1.mpp-innerpage--subtitle, h2.mpp-innerpage--datetime.event-date-range {
         text-align: center;
         margin-top: 1rem;
     }
 
-    .mpp-innerpage--subtitle,
-    .mpp-innerpage--labels,
-    .mpp-innerpage--datetime,
-    .mpp-innerpage--description,
-    .mpp-innerpage p,
-    .youtube-video-container,
-    div#mapContainer,
-    #registrationFormContainer {
+    .mpp-innerpage--subtitle, .mpp-innerpage--labels, .mpp-innerpage--datetime, .mpp-innerpage--description, .mpp-innerpage p, .youtube-video-container, div#mapContainer, #registrationFormContainer {
         width: 100%;
         float: none;
     }
@@ -662,8 +579,7 @@ div#registrationTotalContainer {
         flex: 100%;
     }
 
-    .mpp-innerpage--special,
-    .mpp-innerpage--capacity {
+    .mpp-innerpage--special, .mpp-innerpage--capacity {
         float: none;
         clear: both;
         width: 100%;
@@ -672,16 +588,6 @@ div#registrationTotalContainer {
     #registrationTotalContainer {
         text-align: center;
         font-size: 1.15rem;
-    }
-
-    #promoCodeContainer #addPromoCodeButton {
-        max-width: 100%;
-        width: 100%;
-        margin: 1rem auto;
-    }
-
-    a.mppw-btn.mpp-innerpage--button {
-        float: none;
     }
 }
 
@@ -701,7 +607,6 @@ div#registrationTotalContainer {
     margin-bottom: 0;
     padding: 1rem !important;
     padding-bottom: 0 !important;
-    background-color: var(--form-field-bgcolor);
 }
 
 .mppw-form-field__control > label {
@@ -716,8 +621,7 @@ div#registrationTotalContainer {
     box-shadow: var(--form-field-boxshadow--active);
 }
 
-.mppw-form-field__control:not([value=""]) + .mppw-form-field__label,
-.mppw-form-field__control:focus + .mppw-form-field__label {
+.mppw-form-field__control:not([value=""]) + .mppw-form-field__label, .mppw-form-field__control:focus + .mppw-form-field__label {
     color: var(--root-text-color);
     font-size: 0.9rem;
 }
@@ -727,12 +631,8 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
     font-size: 0.9rem;
 }
 
-select.mppw-form-field__control,
-.mppw-form-field__control:focus + .mppw-form-field__label,
-.mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
+select.mppw-form-field__control, .mppw-form-field__control:focus + .mppw-form-field__label, .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
     background: transparent;
-    padding: 0.75rem 1rem !important;
-    background-color: var(--form-field-bgcolor) !important;
 }
 
 .mppw-form-field_instruction_font {
@@ -743,8 +643,16 @@ select.mppw-form-field__control,
     background-color: transparent !important;
 }
 
+input[type="date"].mppw-form-field__control {
+    padding: 28px 13px 12px 13px;
+}
+
 .mppw-form-field__alt-label {
     margin: 0;
+}
+
+.mppw-form-field_alt-control {
+    background-color: #fafafa;
 }
 
 input[type="date"] {
@@ -766,8 +674,7 @@ h2#responseFormTitle {
     font-style: italic;
 }
 
-.mppw-radio-gray-out,
-.mppw-checkbox-gray-out {
+.mppw-radio-gray-out, .mppw-checkbox-gray-out {
     background-color: transparent;
     border: none;
 }
@@ -775,8 +682,6 @@ h2#responseFormTitle {
 .mppw-event-gray-out .product-selection-container::after {
     content: " (Sold Out)";
 }
-
-/* Product Form */
 
 .product-form h3 {
     margin: 0;
@@ -788,8 +693,7 @@ h2#responseFormTitle {
     padding: 0.5rem 0;
 }
 
-.product-form__control,
-.mppw-form-field--is-valid .product-form__control {
+.product-form__control, .mppw-form-field--is-valid .product-form__control {
     padding: 0;
     margin-bottom: 3rem;
 }
@@ -813,7 +717,9 @@ h2#responseFormTitle {
     padding: 1.5rem 0;
 }
 
-/* Registration / Invoice */
+#registrationForm {
+    clear: both;
+}
 
 #registrationTotalValue {
     font-weight: bold;
@@ -826,18 +732,13 @@ h2#responseFormTitle {
     padding: 2px 0;
 }
 
-#promoCodeContainer h3 {
-    padding-top: 20px;
-    margin: 0;
-}
-
 #promoCodeText {
     padding: 0.25rem 0.5rem;
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
     line-height: 1.5rem;
-    background-color: var(--form-field-bgcolor);
+    background-color: #FAFAFA;
     border: 1px solid #CCC;
     border-radius: var(--form-field-borderradius);
     font-family: monospace;
@@ -849,6 +750,11 @@ h2#responseFormTitle {
     max-width: none;
 }
 
+#promoCodeContainer h3 {
+    padding-top: 20px;
+    margin: 0;
+}
+
 .promo-code-text {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
@@ -858,8 +764,7 @@ h2#responseFormTitle {
     font-weight: initial;
 }
 
-table.mppw-invoice td,
-th {
+table.mppw-invoice td, th {
     padding: 10px 0;
 }
 
@@ -875,12 +780,24 @@ td.mppw-invoice-total {
     font-weight: bold;
 }
 
+/*.mppw-form-field:has(#mobilePhone):after {
+    display: inline-block;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    margin: 0.5rem;
+    content: "By providing your phone number, you agree to receive text messages from Dream City Church. Reply STOP to cancel. Msg rates may apply.";
+}*/
+
 #messaging-disclaimer {
     font-size: 0.75rem;
     margin-top: 0.5rem;
     line-height: 1rem;
     width: 47%;
     margin-left: auto;
+}
+
+.mppw-btn.primary {
+    margin-right: 1rem;
 }
 
 @media screen and (max-width: 800px) {
@@ -897,13 +814,16 @@ td.mppw-invoice-total {
     #messaging-disclaimer {
         width: 100%;
     }
-}
 
+    a.mppw-btn.mpp-innerpage--button {
+        float: none;
+    }
+    
+}
 
 /*************************/
 /* Custom Form Overrides */
 /*************************/
-
 div[data-id="mp_customform_2700"] {
     display: none;
 }
@@ -940,8 +860,7 @@ div[data-id="mp_customform_2700"] {
     color: var(--brand-dusk);
 }
 
-.mppw-login--list-item a:hover,
-.mppw-login--list-item a:focus {
+.mppw-login--list-item a:hover, .mppw-login--list-item a:focus {
     color: var(--secondary);
 }
 
@@ -956,12 +875,12 @@ div[data-id="mp_customform_2700"] {
 
 .mppw-icon-unlock:before {
     content: "\f007";
-    font: var(--fa-font-solid);
     font-family: 'FontAwesome';
     color: white;
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 
@@ -1002,20 +921,19 @@ h2#householdName:after {
 
 #householdDetails li.mpp-innerpage--label:before {
     content: "\f51d";
-    font: var(--fa-font-solid);
     font-family: 'FontAwesome';
     padding-right: 0.75em;
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 .mpp-household .mpp-household--header-wrapper {
     color: var(--primary);
 }
 
-.mpp-household .mpp-household--header-wrapper:hover,
-.mpp-household .mpp-household--header-wrapper:focus {
+.mpp-household .mpp-household--header-wrapper:hover, .mpp-household .mpp-household--header-wrapper:focus {
     color: var(--primary);
 }
 
@@ -1023,14 +941,18 @@ h2#householdName:after {
     width: max-content;
 }
 
+.mpp-household .mpp-household--header-wrapper {
+    color: var(--primary);
+}
+
 a#editHouseholdName:before {
-    content: "\f044";
-    font: var(--fa-font-solid);
     font-family: 'FontAwesome';
+    content: "\f044";
     padding-right: 0.75em;
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
 }
 
 img.mpp-icon--household {
@@ -1038,13 +960,17 @@ img.mpp-icon--household {
 }
 
 a#addNewMember:before {
-    content: "\f234";
-    font: var(--fa-font-solid);
     font-family: 'FontAwesome';
+    content: "\f234";
     padding-right: 1em;
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+}
+
+img.mpp-icon--household {
+    display: none;
 }
 
 #householdDetails .mpp-innerpage--labels {
@@ -1073,8 +999,8 @@ a#addNewMember:before {
 .mpp-household .mpp-card--household-body {
     display: grid;
     align-items: start;
-    align-content: space-between;
     justify-content: center;
+    align-content: space-between;
     justify-items: center;
     text-align: center;
 }
@@ -1093,12 +1019,17 @@ a#addNewMember:before {
     line-height: 1.5rem;
 }
 
-div#removeFromDirectoryCheck,
-div#emailUnlistedCheck,
-div#mobileUnlistedCheck {
+div#removeFromDirectoryCheck {
     display: none;
 }
 
+div#emailUnlistedCheck {
+    display: none;
+}
+
+div#mobileUnlistedCheck {
+    display: none;
+}
 
 /*********************/
 /* Attributes Widget */
@@ -1121,14 +1052,14 @@ div#mobileUnlistedCheck {
     margin-bottom: 1rem;
 }
 
-.mpp-about-me--edit-button {
+.mpp-about-me--edit-button{
     height: max-content;
     justify-self: end;
     align-self: end;
 }
 
 .mpp-about-me--attributes-block {
-    border: 1px solid var(--border-subtle);
+    border: 1px solid #efefef;
     padding: 1rem;
     margin-bottom: 1rem;
 }
@@ -1167,8 +1098,13 @@ div#mobileUnlistedCheck {
     grid-template-columns: 100%;
 }
 
+.mpp-about-me--atributes-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .mpp-about-me--checkbox-container input[type="checkbox"] {
-    border: 2px solid var(--border-subtle);
+    border: 2px solid #efefef;
 }
 
 .mpp-about-me--checkbox-container input[type="checkbox"]::before {
@@ -1187,66 +1123,55 @@ div#mobileUnlistedCheck {
     }
 }
 
-
 /***************************/
-/* My Contributions Widget */
+/* MY CONTRIBUTIONS WIDGET */
 /***************************/
-
 #myContributionFooter .mppw-row {
     display: inline-block;
 }
 
-
 /********************************/
-/* YouTube Embed in Description */
+/* YOUTUBE EMBED IN DESCRIPTION */
 /********************************/
-
 .youtube-video-container {
     position: relative;
-    margin: auto;
+    margin: auto auto;
     overflow: hidden;
     width: 100%;
-    max-width: 600px;
-}
-
+    max-width:600px;
+  }
 .youtube-video-container::after {
     display: block;
     content: "";
     padding-top: 56.25%;
-}
-
+  }
 .youtube-video-container iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
+  }
 
+  /*****************/
+  /* MOBILE STYLES */
+  /*****************/
 
-/*****************/
-/* Mobile Styles */
-/*****************/
-
-@media only screen and (max-width: 999px) {
-    /* Tablet */
+  @media only screen and (max-width: 999px) {
+    /* TABLET SIZE */
     .mpp-card {
-        max-height: none;
+        max-height:none;
         height: auto;
     }
-
     .mpp-card--header {
         max-width: 214px;
     }
-
     .mpp-card--body {
         width: calc(100% - 215px);
     }
-
     .mpp-card--description {
-        display: none;
+        display:none;
     }
-
     .mpp-card--badge {
         left: -25px;
         top: 8px;
@@ -1255,7 +1180,6 @@ div#mobileUnlistedCheck {
         padding: 0;
         font-size: 0;
     }
-
     .mpp-card--badge::after {
         top: 0px;
         border-radius: 0.5rem 0 0 0.5rem;
@@ -1267,17 +1191,15 @@ div#mobileUnlistedCheck {
 }
 
 @media only screen and (max-width: 768px) {
-    /* Phone */
+    /* PHONE SIZE */
 
     /* Cards */
-    .mppw-card--grid,
-    #householdMemberList {
+    .mppw-card--grid, #householdMemberList {
         display: grid;
         grid-template-columns: 100%;
         grid-gap: 0;
         margin-bottom: 2rem;
     }
-
     .mpp-card {
         padding: 0.5rem 0;
         margin-left: auto;
@@ -1290,19 +1212,16 @@ div#mobileUnlistedCheck {
         border-bottom: 0.25px solid var(--brand-cloud);
         border-radius: 0;
     }
-
     .mpp-card--body {
         width: 100%;
         padding: 0 0.5rem 0.5rem 1rem;
     }
-
     .mpp-card--header {
         display: none;
         /* height: 100%;
         width: 25%;
         max-height: 70px; */
     }
-
     .mpp-card--badge {
         top: 0;
         left: 94vw;
@@ -1311,24 +1230,20 @@ div#mobileUnlistedCheck {
         padding: 0;
         font-size: 0;
     }
-
     .mpp-card--badge::after {
         font-size: 1rem;
         padding: 1.5rem 0.25rem;
     }
-
     .mpp-card--subtitle {
         padding: 0;
         font-size: 0.75rem;
         line-height: 1.2rem;
         float: none;
     }
-
     .mpp-card--description {
         display: none;
         width: initial;
     }
-
     .mpp-card--title {
         line-height: 1.75rem;
         font-size: 1.1rem;
@@ -1338,9 +1253,7 @@ div#mobileUnlistedCheck {
     #userDisplayName {
         display: none;
     }
-
-    .mppw-login--container,
-    .mppw-loggedout--username {
+    .mppw-login--container, .mppw-loggedout--username {
         justify-content: flex-end;
     }
 
@@ -1349,22 +1262,18 @@ div#mobileUnlistedCheck {
         text-align: center;
         margin: 0.5rem 1rem;
     }
-
     .mpp-household .mpp-household--header {
         text-align: center;
         margin: 1rem 0.5rem;
     }
-
     .mpp-household .mpp-household--header-container {
         display: inline-block;
         text-align: center;
         width: 100%;
     }
-
     .mpp-household .mpp-innerpage--address-container {
         margin-top: 1rem;
     }
-
     .mpp-household .mpp-household--form-subheader {
         line-height: inherit;
     }
@@ -1373,22 +1282,19 @@ div#mobileUnlistedCheck {
     .mpp-about-me--header-container {
         grid-template-columns: 100%;
     }
-
     .mpp-about-me--header {
         grid-column-start: 1;
     }
 }
 
 @container (max-width: 600px) {
-    /* Cards in Small Containers */
-    .mppw-card--grid,
-    #householdMemberList {
+    /* Modify Cards in Small Containers */
+    .mppw-card--grid, #householdMemberList {
         display: grid;
         grid-template-columns: 100%;
         grid-gap: 0;
         margin-bottom: 2rem;
     }
-
     .mpp-card {
         padding: 0.5rem 0;
         margin-left: auto;
@@ -1402,19 +1308,16 @@ div#mobileUnlistedCheck {
         border-bottom: 0.25px solid var(--brand-cloud);
         border-radius: 0;
     }
-
     .mpp-card--body {
         width: 100%;
         padding: 0 0.5rem 0.5rem 1rem;
     }
-
     .mpp-card--header {
         display: none;
         /* height: 100%;
         width: 25%;
         max-height: 70px; */
     }
-
     .mpp-card--badge {
         top: 0;
         left: 94vw;
@@ -1423,24 +1326,20 @@ div#mobileUnlistedCheck {
         padding: 0;
         font-size: 0;
     }
-
     .mpp-card--badge::after {
         font-size: 1rem;
         padding: 1.5rem 0.25rem;
     }
-
     .mpp-card--subtitle {
         /*padding: 0;
         font-size: 0.75rem;
         line-height: 1.2rem;
         float: none;*/
     }
-
     .mpp-card--description {
         display: none;
         width: initial;
     }
-
     .mpp-card--title {
         /*line-height: 1.75rem;
         font-size: 1.1rem;*/
