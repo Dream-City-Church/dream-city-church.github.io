@@ -183,7 +183,6 @@ h1, h2, h3 {
 .mpp-card--badge::after {
     content: "\f559";
     font: var(--fa-font-solid);
-    font-family: 'FontAwesome';
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -306,7 +305,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 .opportunity-start-date:before {
     content: "\f073";
     font: var(--fa-font-solid);
-    font-family: 'FontAwesome';
     padding-right: 7px;
     color: var(--primary);
     display: inline-block;
@@ -319,7 +317,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 .opportunity-location:before {
     content: "\f3c5";
     font: var(--fa-font-solid) !important;
-    font-family: 'FontAwesome' !important;
     padding-right: 7px;
     padding-left: 1px;
     color: var(--primary);
@@ -331,7 +328,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 .group-capacity:before {
     content: "\f0c0";
     font: var(--fa-font-solid);
-    font-family: 'FontAwesome';
     padding-right: 7px;
     color: var(--primary);
     display: inline-block;
@@ -342,7 +338,6 @@ h4.mpp-card--subtitle:nth-child(1) {
 .group-start-date:before {
     content: "\f017";
     font: var(--fa-font-solid);
-    font-family: 'FontAwesome';
     padding-right: 7px;
     color: var(--primary);
     display: inline-block;
@@ -547,7 +542,6 @@ li.mpp-innerpage--contact {
 .mpp-innerpage--name-has-email::after {
     content: '\f0e0';
     font: var(--fa-font-solid);
-    font-family: 'FontAwesome';
     display: inline-block;
     padding-left: 0.5rem;
 }
@@ -731,7 +725,7 @@ select.mppw-form-field__control,
 .mppw-form-field__control:focus + .mppw-form-field__label,
 .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
     background: transparent;
-    padding: 0.75rem 1rem !important;
+    padding: 1.5rem 1rem 0.75rem 1rem !important;
     background-color: var(--form-field-bgcolor) !important;
 }
 
@@ -957,7 +951,6 @@ div[data-id="mp_customform_2700"] {
 .mppw-icon-unlock:before {
     content: "\f007";
     font: var(--fa-font-solid);
-    font-family: 'FontAwesome';
     color: white;
     display: inline-block;
     text-rendering: auto;
@@ -1003,7 +996,6 @@ h2#householdName:after {
 #householdDetails li.mpp-innerpage--label:before {
     content: "\f51d";
     font: var(--fa-font-solid);
-    font-family: 'FontAwesome';
     padding-right: 0.75em;
     display: inline-block;
     text-rendering: auto;
@@ -1026,7 +1018,6 @@ h2#householdName:after {
 a#editHouseholdName:before {
     content: "\f044";
     font: var(--fa-font-solid);
-    font-family: 'FontAwesome';
     padding-right: 0.75em;
     display: inline-block;
     text-rendering: auto;
@@ -1040,7 +1031,6 @@ img.mpp-icon--household {
 a#addNewMember:before {
     content: "\f234";
     font: var(--fa-font-solid);
-    font-family: 'FontAwesome';
     padding-right: 1em;
     display: inline-block;
     text-rendering: auto;
