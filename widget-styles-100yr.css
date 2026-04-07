@@ -722,12 +722,12 @@ label .mppw-form-field__alt-label-container .mppw-form-field__alt-label-content 
 }
 
 select.mppw-form-field__control,
-.mppw-form-field__control:focus + .mppw-form-field__label,
 .mppw-form-field__control__textarea:not([value=""]) + .mppw-form-field__label {
     background: transparent;
     padding: 1.5rem 1rem 0.75rem 1rem !important;
     background-color: var(--form-field-bgcolor) !important;
 }
+/* Temp removed from above: .mppw-form-field__control:focus + .mppw-form-field__label, */
 
 .mppw-form-field_instruction_font {
     margin-top: 2rem;
