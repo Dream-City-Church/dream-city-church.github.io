@@ -27,7 +27,7 @@ table#plan .footer { text-align: center; font-family: Arial; font-size: 12pt; ve
 table#header { width: 100%; border: none; padding: 4px; border-collapse: collapse; border: solid 1px black;}
 table#header td { padding: 2px; vertical-align: top; }
 
-H1 { text-align: center; padding: 0; padding-top: 0px; margin-bottom: 5px; font-size: 20pt; line-height: 20pt; font-family: termina, sans-serif; font-weight: bold; color:#bc204b; }
+H1 { text-align: center; padding: 0; padding-top: 0px; margin-bottom: 5px; font-size: 1.2em; line-height: 20pt; font-family: termina, sans-serif; font-weight: bold; color:#bc204b; }
 H2 { text-align: center; padding: 0; margin: 0; font-size: 18pt; font-family: termina, sans-serif; font-weight: bold; font-style: italic; font-family: Arial; font-weight: normal; }
 H3 { text-align: center; padding: 0; margin: 0; font-size: 8pt; font-family: neue-haas-grotesk-display, sans-serif; font-weight: bold; line-height:10pt; }
 H4 { text-align: center; padding: 10px 0 0 0; margin: 0; font-size: 10pt; font-family: termina, sans-serif; font-weight: normal; }
