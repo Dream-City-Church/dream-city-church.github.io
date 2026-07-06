@@ -70,30 +70,27 @@
     <h1><span>Phoenix Cafe</span> Menu Boards</h1>
     <p class="sub">Digital menu board platform</p>
     <a class="big" href="admin.html">Open the Admin</a>
-    <h2>Screens (scheduled)</h2>
-    <ul id="locations"><li class="empty">Loading&hellip;</li></ul>
-    <h2>Menus</h2>
-    <ul id="menus"><li class="empty">Loading&hellip;</li></ul>
+    <h2>Menu board displays</h2>
+    <ul id="menus"><li class="empty" id="empty">Loading menus&hellip;</li></ul>
   </div>
   <script src="shared.js"></script>
   <script>
     (function () {
-      function fill(listId, entries, param, syncId, emptyText) {
-        var list = document.getElementById(listId);
+      var list = document.getElementById('menus');
+      function show(state) {
         list.innerHTML = '';
-        if (!entries.length) {
+        var menus = (state && state.menus) || [];
+        if (!menus.length) {
           var li = document.createElement('li');
           li.className = 'empty';
-          li.textContent = emptyText;
+          li.textContent = 'No menus yet — create one in the admin.';
           list.appendChild(li);
           return;
         }
-        entries.forEach(function (m) {
+        menus.forEach(function (m) {
           var li = document.createElement('li');
           var a = document.createElement('a');
-          var url = 'display.html?' + param + '=' + encodeURIComponent(m.slug || m.id);
-          if (syncId) url += '&sync=' + encodeURIComponent(syncId);
-          a.href = url;
+          a.href = 'display.html?menu=' + encodeURIComponent(m.slug || m.id);
           a.appendChild(document.createTextNode(m.name));
           var go = document.createElement('span');
           go.className = 'go';
@@ -103,19 +100,12 @@
           list.appendChild(li);
         });
       }
-      function show(state) {
-        var syncId = (state && state.syncId) || '';
-        fill('locations', (state && state.locations) || [], 'location', syncId,
-          'No screens yet — add a location in the admin.');
-        fill('menus', (state && state.menus) || [], 'menu', syncId,
-          'No menus yet — create one in the admin.');
-      }
       var local = PC.load();
       if (local) show(local);
       PC.fetchPublished().then(function (published) {
         show(PC.newerOf(local, published));
       }).catch(function () {
-        show(local || null);
+        show(local);
       });
     })();
   </script>

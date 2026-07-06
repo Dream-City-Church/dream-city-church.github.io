@@ -36,30 +36,23 @@ var PC = (function () {
   }
 
   //// ---------- Fonts ----------
-  // Fonts available in the Design tab. "href" is the stylesheet that loads
-  // the family (null = system font, nothing to load).
+  // Fonts available in the Design tab. "g" is the Google Fonts family query
+  // (null = system font, nothing to load).
 
-  var GF = 'https://fonts.googleapis.com/css2?family=';
   var FONTS = [
-    { name: 'Bebas Neue',       css: "'Bebas Neue', sans-serif",       href: GF + 'Bebas+Neue&display=swap' },
-    { name: 'Oswald',           css: "'Oswald', sans-serif",           href: GF + 'Oswald:wght@400;500;600&display=swap' },
-    { name: 'Anton',            css: "'Anton', sans-serif",            href: GF + 'Anton&display=swap' },
-    { name: 'Montserrat',       css: "'Montserrat', sans-serif",       href: GF + 'Montserrat:wght@400;600;700&display=swap' },
-    { name: 'Lato',             css: "'Lato', sans-serif",             href: GF + 'Lato:wght@400;700&display=swap' },
-    { name: 'Poppins',          css: "'Poppins', sans-serif",          href: GF + 'Poppins:wght@400;600;700&display=swap' },
-    // Google Sans is not formally in the Google Fonts catalog; this older
-    // endpoint serves it where available, with Product Sans/Roboto standing
-    // in on devices that can't fetch it.
-    { name: 'Google Sans',      css: "'Google Sans', 'Product Sans', Roboto, sans-serif",
-      href: 'https://fonts.googleapis.com/css?family=Google+Sans:400,500,700&display=swap' },
-    { name: 'Roboto',           css: "'Roboto', sans-serif",           href: GF + 'Roboto:wght@400;500;700&display=swap' },
-    { name: 'Playfair Display', css: "'Playfair Display', serif",      href: GF + 'Playfair+Display:wght@400;600;700&display=swap' },
-    { name: 'Cormorant Garamond', css: "'Cormorant Garamond', serif",  href: GF + 'Cormorant+Garamond:wght@400;600;700&display=swap' },
-    { name: 'Lobster',          css: "'Lobster', cursive",             href: GF + 'Lobster&display=swap' },
-    { name: 'Pacifico',         css: "'Pacifico', cursive",            href: GF + 'Pacifico&display=swap' },
-    { name: 'Courier Prime',    css: "'Courier Prime', monospace",     href: GF + 'Courier+Prime:wght@400;700&display=swap' },
-    { name: 'System Sans',      css: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", href: null },
-    { name: 'Georgia (Serif)',  css: "Georgia, 'Times New Roman', serif", href: null }
+    { name: 'Bebas Neue',       css: "'Bebas Neue', sans-serif",       g: 'Bebas+Neue' },
+    { name: 'Oswald',           css: "'Oswald', sans-serif",           g: 'Oswald:wght@400;500;600' },
+    { name: 'Anton',            css: "'Anton', sans-serif",            g: 'Anton' },
+    { name: 'Montserrat',       css: "'Montserrat', sans-serif",       g: 'Montserrat:wght@400;600;700' },
+    { name: 'Lato',             css: "'Lato', sans-serif",             g: 'Lato:wght@400;700' },
+    { name: 'Poppins',          css: "'Poppins', sans-serif",          g: 'Poppins:wght@400;600;700' },
+    { name: 'Playfair Display', css: "'Playfair Display', serif",      g: 'Playfair+Display:wght@400;600;700' },
+    { name: 'Cormorant Garamond', css: "'Cormorant Garamond', serif",  g: 'Cormorant+Garamond:wght@400;600;700' },
+    { name: 'Lobster',          css: "'Lobster', cursive",             g: 'Lobster' },
+    { name: 'Pacifico',         css: "'Pacifico', cursive",            g: 'Pacifico' },
+    { name: 'Courier Prime',    css: "'Courier Prime', monospace",     g: 'Courier+Prime:wght@400;700' },
+    { name: 'System Sans',      css: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", g: null },
+    { name: 'Georgia (Serif)',  css: "Georgia, 'Times New Roman', serif", g: null }
   ];
 
   function fontByName(name) {
@@ -69,19 +62,26 @@ var PC = (function () {
     return FONTS[0];
   }
 
-  // One <link> per family so a family the fonts API doesn't know about can
-  // never break the loading of the others.
-  var loadedFontHrefs = {};
+  var loadedFontKey = '';
   function ensureFonts(names) {
+    var families = [];
     names.forEach(function (n) {
       var f = fontByName(n);
-      if (!f.href || loadedFontHrefs[f.href]) return;
-      loadedFontHrefs[f.href] = true;
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = f.href;
-      document.head.appendChild(link);
+      if (f.g && families.indexOf(f.g) === -1) families.push(f.g);
     });
+    if (!families.length) return;
+    var key = families.join('|');
+    if (key === loadedFontKey) return;
+    loadedFontKey = key;
+    var href = 'https://fonts.googleapis.com/css2?family=' + families.join('&family=') + '&display=swap';
+    var link = document.getElementById('pc-fonts');
+    if (!link) {
+      link = document.createElement('link');
+      link.id = 'pc-fonts';
+      link.rel = 'stylesheet';
+      document.head.appendChild(link);
+    }
+    link.href = href;
   }
 
   //// ---------- Default theme (every visual knob lives here) ----------
@@ -129,7 +129,6 @@ var PC = (function () {
     uppercaseSections: true,
     sectionDivider: true,        // accent underline below section titles
     dotLeaders: true,            // dotted line between item name and price
-    priceLayout: 'inline',       // inline (side by side) | stacked (one per line)
     soldOutStyle: 'badge',       // badge | strike | hide
     soldOutText: 'SOLD OUT',
     currency: '$'
@@ -165,32 +164,6 @@ var PC = (function () {
     };
   }
 
-  // A "location" is a physical screen (Cafe Counter TV, Drive-Thru, ...).
-  // Each location has a default menu plus scheduled menu assignments, so
-  // many menu boards can run from this one instance.
-  function newLocation(name) {
-    return {
-      id: uid('loc'),
-      name: name || 'New Location',
-      slug: slugify(name || 'new-location'),
-      defaultMenuId: '',
-      schedule: []   // list of schedule events, see newScheduleEvent()
-    };
-  }
-
-  // Weekly recurring (days = [0..6], 0=Sunday) or a single date
-  // (date = 'YYYY-MM-DD', which overrides weekly events that day).
-  function newScheduleEvent(menuId) {
-    return {
-      id: uid('evt'),
-      menuId: menuId || '',
-      days: [1, 2, 3, 4, 5],
-      date: '',
-      start: '06:00',
-      end: '11:00'
-    };
-  }
-
   function normalizeState(state) {
     // Fill in anything missing so old/hand-edited data never breaks the app.
     if (!state || typeof state !== 'object') return null;
@@ -213,22 +186,6 @@ var PC = (function () {
           it.soldOut = !!it.soldOut;
           if (!Array.isArray(it.prices) || !it.prices.length) it.prices = [{ size: '', price: '' }];
         });
-      });
-    });
-    if (!Array.isArray(state.locations)) state.locations = [];
-    state.locations.forEach(function (loc) {
-      loc.id = loc.id || uid('loc');
-      loc.name = loc.name || 'Location';
-      loc.slug = loc.slug || slugify(loc.name);
-      loc.defaultMenuId = loc.defaultMenuId || '';
-      if (!Array.isArray(loc.schedule)) loc.schedule = [];
-      loc.schedule.forEach(function (ev) {
-        ev.id = ev.id || uid('evt');
-        ev.menuId = ev.menuId || '';
-        if (!Array.isArray(ev.days)) ev.days = [];
-        ev.date = ev.date || '';
-        ev.start = ev.start || '00:00';
-        ev.end = ev.end || '23:59';
       });
     });
     return state;
@@ -294,37 +251,10 @@ var PC = (function () {
 
     menu.sections = [espresso, brewed, smoothies, pastries];
 
-    // A small second menu so the scheduling calendar has something to show.
-    var breakfast = newMenu('Breakfast');
-    breakfast.slug = 'breakfast';
-    var bfast = newSection('Breakfast');
-    var burrito = newItem('Breakfast Burrito');
-    burrito.description = 'Eggs, sausage, potatoes, and cheese in a flour tortilla';
-    burrito.prices = [{ size: '', price: '6.50' }];
-    var oatmeal = newItem('Steel-Cut Oatmeal');
-    oatmeal.description = 'Brown sugar, dried fruit, and toasted almonds';
-    oatmeal.prices = [{ size: '', price: '4.50' }];
-    var parfait = newItem('Yogurt Parfait');
-    parfait.description = 'Greek yogurt, granola, and fresh berries';
-    parfait.prices = [{ size: '', price: '5.00' }];
-    bfast.items = [burrito, oatmeal, parfait];
-    breakfast.sections = [bfast];
-
-    // One sample physical location running the boards.
-    var location = newLocation('Cafe Main Screen');
-    location.slug = 'cafe-main-screen';
-    location.defaultMenuId = menu.id;
-    var morning = newScheduleEvent(breakfast.id);
-    morning.days = [1, 2, 3, 4, 5];
-    morning.start = '06:00';
-    morning.end = '11:00';
-    location.schedule = [morning];
-
     return {
       version: 1,
       updatedAt: new Date().toISOString(),
-      menus: [menu, breakfast],
-      locations: [location]
+      menus: [menu]
     };
   }
 
@@ -386,55 +316,6 @@ var PC = (function () {
     return String(a.updatedAt || '') >= String(b.updatedAt || '') ? a : b;
   }
 
-  //// ---------- Cloud sync (zero setup) ----------
-  // Anonymous JSON storage on jsonblob.com — free, no account, no token.
-  // The admin creates a sync "channel" automatically and pushes the menu
-  // data into it after every change; displays poll it. The channel id
-  // travels in the display/admin URLs (?sync=...), so nothing needs to be
-  // configured on any device.
-
-  var SYNC_BASE = 'https://jsonblob.com/api/jsonBlob';
-  try {
-    // Test/override hook (e.g. point at a self-hosted store)
-    SYNC_BASE = localStorage.getItem('phoenixCafe.syncBase') || SYNC_BASE;
-  } catch (e) {}
-
-  function syncCreate(state) {
-    return fetch(SYNC_BASE, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(state)
-    }).then(function (res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      var loc = res.headers.get('Location') || '';
-      var id = loc.split('/').filter(Boolean).pop();
-      if (!id) throw new Error('No channel id returned');
-      return id;
-    });
-  }
-
-  function syncGet(id) {
-    return fetch(SYNC_BASE + '/' + encodeURIComponent(id), {
-      headers: { 'Accept': 'application/json' },
-      cache: 'no-store'
-    }).then(function (res) {
-      if (!res.ok) { var e = new Error('HTTP ' + res.status); e.status = res.status; throw e; }
-      return res.json();
-    }).then(normalizeState);
-  }
-
-  function syncPut(id, state, opts) {
-    return fetch(SYNC_BASE + '/' + encodeURIComponent(id), {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(state),
-      keepalive: !!(opts && opts.keepalive)
-    }).then(function (res) {
-      if (!res.ok) { var e = new Error('HTTP ' + res.status); e.status = res.status; throw e; }
-      return true;
-    });
-  }
-
   function findMenu(state, key) {
     if (!state || !state.menus || !state.menus.length) return null;
     if (!key) return null;
@@ -444,58 +325,6 @@ var PC = (function () {
       if (m.id.toLowerCase() === k || (m.slug || '').toLowerCase() === k || slugify(m.name) === k) return m;
     }
     return null;
-  }
-
-  function menuById(state, id) {
-    if (!state || !id) return null;
-    for (var i = 0; i < state.menus.length; i++) {
-      if (state.menus[i].id === id) return state.menus[i];
-    }
-    return null;
-  }
-
-  function findLocation(state, key) {
-    if (!state || !state.locations || !state.locations.length) return null;
-    if (!key) return null;
-    var k = String(key).toLowerCase();
-    for (var i = 0; i < state.locations.length; i++) {
-      var l = state.locations[i];
-      if (l.id.toLowerCase() === k || (l.slug || '').toLowerCase() === k || slugify(l.name) === k) return l;
-    }
-    return null;
-  }
-
-  //// ---------- Schedule resolution ----------
-
-  function pad2(n) { return (n < 10 ? '0' : '') + n; }
-
-  function localDateStr(d) {
-    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
-  }
-
-  // Which menu should this location's screen show right now?
-  // Single-date events beat weekly events; among overlapping matches the
-  // one that started latest wins; otherwise the location's default menu.
-  function activeMenuForLocation(state, loc, now) {
-    now = now || new Date();
-    var day = now.getDay();
-    var hm = pad2(now.getHours()) + ':' + pad2(now.getMinutes());
-    var today = localDateStr(now);
-    var bestDate = null, bestWeekly = null;
-
-    (loc.schedule || []).forEach(function (ev) {
-      if (!ev.menuId) return;
-      if (!(ev.start <= hm && hm < ev.end)) return;
-      if (ev.date) {
-        if (ev.date === today && (!bestDate || ev.start > bestDate.start)) bestDate = ev;
-      } else if (ev.days && ev.days.indexOf(day) !== -1) {
-        if (!bestWeekly || ev.start > bestWeekly.start) bestWeekly = ev;
-      }
-    });
-
-    var ev = bestDate || bestWeekly;
-    return menuById(state, ev ? ev.menuId : loc.defaultMenuId) ||
-      (ev ? menuById(state, loc.defaultMenuId) : null);
   }
 
   //// ---------- Render engine ----------
@@ -547,7 +376,6 @@ var PC = (function () {
     board.classList.toggle('pc-uppercase-sections', !!t.uppercaseSections);
     board.classList.toggle('pc-section-divider', !!t.sectionDivider);
     board.classList.toggle('pc-has-bg-image', !!t.backgroundImage);
-    board.classList.toggle('pc-stacked-prices', t.priceLayout === 'stacked');
     board.style.fontSize = t.baseSize + 'px';
 
     board.innerHTML = '';
@@ -653,21 +481,14 @@ var PC = (function () {
     newItem: newItem,
     newSection: newSection,
     newMenu: newMenu,
-    newLocation: newLocation,
-    newScheduleEvent: newScheduleEvent,
     normalizeState: normalizeState,
     seedState: seedState,
     load: load,
     save: save,
     subscribe: subscribe,
     fetchPublished: fetchPublished,
-    sync: { create: syncCreate, get: syncGet, put: syncPut },
     newerOf: newerOf,
     findMenu: findMenu,
-    menuById: menuById,
-    findLocation: findLocation,
-    activeMenuForLocation: activeMenuForLocation,
-    localDateStr: localDateStr,
     renderMenu: renderMenu
   };
 })();

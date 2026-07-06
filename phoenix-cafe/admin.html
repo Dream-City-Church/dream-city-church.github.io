@@ -16,8 +16,8 @@
     <button id="btn-export" title="Download all menu data as a JSON file">Export</button>
     <button id="btn-import" title="Restore menu data from a JSON file">Import</button>
     <input type="file" id="import-file" accept="application/json" hidden>
-    <button id="btn-sync-info">Sync Info</button>
-    <button id="btn-sync-now" class="primary">Sync Now</button>
+    <button id="btn-settings">Publish Settings</button>
+    <button id="btn-publish" class="primary">Publish Now</button>
   </header>
 
   <div class="layout">
@@ -26,13 +26,10 @@
       <h2>Menus</h2>
       <div id="menu-list"></div>
       <button id="btn-add-menu">+ New Menu</button>
-      <h2>Locations</h2>
-      <div id="location-list"></div>
-      <button id="btn-add-location" title="A physical screen that menus are assigned or scheduled to">+ New Location</button>
     </nav>
 
     <main class="editor">
-      <div class="tabs" id="menu-tabs">
+      <div class="tabs">
         <button id="tab-content" class="active">Content</button>
         <button id="tab-design">Design</button>
       </div>
@@ -41,11 +38,7 @@
 
     <aside class="preview-pane">
       <div class="preview-head">
-        <span>Live Preview</span>
-        <span class="aspect-toggle">
-          <button id="btn-aspect-landscape" class="icon active" title="Landscape TV (16:9)">16:9</button>
-          <button id="btn-aspect-portrait" class="icon" title="Portrait TV (9:16)">9:16</button>
-        </span>
+        <span>Live Preview (16:9)</span>
         <button class="icon" id="btn-open-display" title="Open the real display page in a new tab">Open display &nearr;</button>
       </div>
       <div class="preview-frame-wrap">
@@ -57,75 +50,47 @@
 
   </div>
 
-  <!-- Sync info modal -->
-  <div class="modal-backdrop" id="sync-modal">
+  <!-- Publish settings modal -->
+  <div class="modal-backdrop" id="settings-modal">
     <div class="modal">
-      <h2>Board Sync</h2>
+      <h2>Publish Settings</h2>
       <p class="hint">
-        Sync is automatic — nothing to set up. Changes save on this computer
-        instantly and are pushed to a free cloud sync channel a few seconds
-        later; every menu board display checks that channel and updates itself
-        within about half a minute. The channel id is part of each display URL,
-        so just copy the URLs from this admin onto your TVs.
+        Changes save on this computer instantly. To push them to the menu board TVs,
+        the admin publishes <code>phoenix-cafe/data/menus.json</code> to this GitHub
+        repository, and every display picks the change up automatically within about a minute.
+        Create a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">fine-grained personal access token</a>
+        limited to this repository with <strong>Contents: Read and write</strong> permission.
+        The token is stored only in this browser.
       </p>
-      <div class="field"><span>Status</span>
-        <div id="sync-state" class="sync-fact"></div>
-      </div>
-      <div class="field"><span>Last synced</span>
-        <div id="sync-last" class="sync-fact"></div>
-      </div>
-      <div class="field"><span>Admin link for another computer (bookmark this to edit the same boards elsewhere)</span>
-        <div class="display-link"><code id="sync-admin-link"></code>
-          <button class="icon" id="btn-copy-admin-link">Copy</button>
-        </div>
-      </div>
-      <div class="modal-actions">
-        <button id="btn-new-channel" class="danger-ghost" title="Only if the channel is broken — every TV needs new URLs afterward">Start new channel</button>
-        <span class="spacer" style="flex:1"></span>
-        <button id="btn-sync-close" class="primary">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Schedule event modal -->
-  <div class="modal-backdrop" id="event-modal">
-    <div class="modal">
-      <h2 id="event-modal-title">Schedule a menu</h2>
-      <label class="field"><span>Menu to show</span>
-        <select id="evt-menu"></select>
-      </label>
-      <div class="field"><span>Repeats on</span>
-        <div class="day-picker" id="evt-days">
-          <label class="day-chip"><input type="checkbox" value="0"><span>Sun</span></label>
-          <label class="day-chip"><input type="checkbox" value="1"><span>Mon</span></label>
-          <label class="day-chip"><input type="checkbox" value="2"><span>Tue</span></label>
-          <label class="day-chip"><input type="checkbox" value="3"><span>Wed</span></label>
-          <label class="day-chip"><input type="checkbox" value="4"><span>Thu</span></label>
-          <label class="day-chip"><input type="checkbox" value="5"><span>Fri</span></label>
-          <label class="day-chip"><input type="checkbox" value="6"><span>Sat</span></label>
-        </div>
-      </div>
-      <label class="check">
-        <input type="checkbox" id="evt-single-date">
-        <span>One specific date only (overrides weekly menus that day)</span>
-      </label>
-      <label class="field" id="evt-date-field" hidden><span>Date</span>
-        <input type="date" id="evt-date">
+      <label class="field"><span>GitHub token</span>
+        <input type="password" id="cfg-token" placeholder="github_pat_...">
       </label>
       <div class="field-row">
-        <label class="field"><span>From</span>
-          <input type="time" id="evt-start" step="300">
+        <label class="field"><span>Owner</span>
+          <input type="text" id="cfg-owner" placeholder="Dream-City-Church">
         </label>
-        <label class="field"><span>Until</span>
-          <input type="time" id="evt-end" step="300">
+        <label class="field"><span>Repository</span>
+          <input type="text" id="cfg-repo" placeholder="dream-city-church.github.io">
         </label>
       </div>
-      <div id="evt-error" class="form-error"></div>
+      <div class="field-row">
+        <label class="field"><span>Branch</span>
+          <input type="text" id="cfg-branch" placeholder="master">
+        </label>
+        <label class="field"><span>File path</span>
+          <input type="text" id="cfg-path" placeholder="phoenix-cafe/data/menus.json">
+        </label>
+      </div>
+      <label class="check">
+        <input type="checkbox" id="cfg-autopublish">
+        <span>Auto-publish a few seconds after every change</span>
+      </label>
+      <div id="publish-test-result"></div>
       <div class="modal-actions">
-        <button id="btn-evt-delete" class="danger-ghost">Delete</button>
+        <button id="btn-test-publish">Test connection</button>
         <span class="spacer" style="flex:1"></span>
-        <button id="btn-evt-cancel">Cancel</button>
-        <button id="btn-evt-save" class="primary">Save</button>
+        <button id="btn-settings-cancel">Cancel</button>
+        <button id="btn-settings-save" class="primary">Save Settings</button>
       </div>
     </div>
   </div>
