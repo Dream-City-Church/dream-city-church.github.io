@@ -111,6 +111,9 @@
   }
 
   function doSave() {
+    // A user edit turns starter data into real data — real data always wins
+    // over any freshly-deployed data/menus.json starter copy.
+    state.seed = false;
     PC.save(state);
     refreshStatus();
     scheduleSync();
@@ -218,7 +221,10 @@
     return PC.sync.get(id).then(function (remote) {
       if (!remote || !remote.menus) return false;
       remote.syncId = id;
-      if (String(remote.updatedAt || '') > String(state.updatedAt || '')) {
+      // Adopt the channel copy when it's newer — or whenever what we have is
+      // only starter data (the channel always holds real, user-edited data).
+      if ((state.seed && remote.menus.length) ||
+          String(remote.updatedAt || '') > String(state.updatedAt || '')) {
         state = remote;
         ensureValidSelection();
         PC.save(state);
@@ -454,6 +460,7 @@
     var sum = pricesSummary(item);
     if (sum) label.appendChild(h('span', 'prices-summary', sum));
     head.appendChild(label);
+    if (item.featured) head.appendChild(h('span', 'featured-chip', '★ FEATURED'));
     if (item.soldOut) head.appendChild(h('span', 'soldout-chip', 'SOLD OUT'));
 
     head.appendChild(button('icon', '▲', 'Move item up', function () {
@@ -558,15 +565,40 @@
     soldOut.appendChild(h('span', null, 'Sold out'));
     body.appendChild(soldOut);
 
+    var featured = h('label', 'check');
+    var featuredInput = h('input');
+    featuredInput.type = 'checkbox';
+    featuredInput.checked = !!item.featured;
+    featuredInput.addEventListener('change', function () {
+      item.featured = featuredInput.checked;
+      scheduleSave();
+      renderEditor();
+    });
+    featured.appendChild(featuredInput);
+    featured.appendChild(h('span', null, 'Featured (highlighted on the board)'));
+    body.appendChild(featured);
+
     card.appendChild(body);
     return card;
   }
 
   //// ---------- Design tab ----------
 
+  // Design sections are collapsible so the page stays tidy; which ones are
+  // open is remembered per browser.
+  var DESIGN_OPEN_KEY = 'phoenixCafe.designOpen.v1';
+  var designOpen = null;
+  try { designOpen = JSON.parse(localStorage.getItem(DESIGN_OPEN_KEY)); } catch (e) {}
+  if (!designOpen || typeof designOpen !== 'object') designOpen = { Layout: true };
+
   function designGroup(title) {
-    var g = h('div', 'design-group');
-    g.appendChild(h('h3', null, title));
+    var g = h('details', 'design-group');
+    g.appendChild(h('summary', null, title));
+    g.open = !!designOpen[title];
+    g.addEventListener('toggle', function () {
+      designOpen[title] = g.open;
+      try { localStorage.setItem(DESIGN_OPEN_KEY, JSON.stringify(designOpen)); } catch (e) {}
+    });
     return g;
   }
 
@@ -652,10 +684,9 @@
     return field;
   }
 
-  function renderDesign(root, menu) {
-    var t = menu.theme;
-    var grid = h('div', 'design-grid');
-
+  // All design controls for one theme object. Shared by the per-menu Design
+  // tab and a location's custom design, so the two can never drift apart.
+  function appendDesignControls(grid, t, onReset) {
     // Layout
     var layout = designGroup('Layout');
     layout.appendChild(selectField(t, 'columns', 'Columns', [
@@ -677,7 +708,7 @@
     layout.appendChild(rangeField(t, 'sectionGap', 'Space between sections', 0.4, 4, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
     layout.appendChild(rangeField(t, 'itemGap', 'Space between items', 0.2, 2.5, 0.05, function (v) { return v.toFixed(2) + 'em'; }));
     layout.appendChild(rangeField(t, 'columnGap', 'Space between columns', 1, 6, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
-    layout.appendChild(checkField(t, 'autoFit', 'Auto-shrink to fit the screen (no scrolling)'));
+    layout.appendChild(checkField(t, 'autoFit', 'Auto-fit text to fill the screen (no scrolling)'));
     grid.appendChild(layout);
 
     // Background
@@ -687,16 +718,28 @@
     bg.appendChild(rangeField(t, 'overlay', 'Image darkness overlay', 0, 0.9, 0.05, function (v) { return Math.round(v * 100) + '%'; }));
     grid.appendChild(bg);
 
-    // Typography
+    // Typography: per element — size, weight, line height — under one roof
     var type = designGroup('Typography');
     var fontOptions = PC.FONTS.map(function (f) { return { value: f.name, label: f.name }; });
+    var sizeFmt = function (v) { return v.toFixed(2) + 'x'; };
+    var wFmt = function (v) { return String(v); };
+    var lFmt = function (v) { return v.toFixed(2); };
     type.appendChild(selectField(t, 'headingFont', 'Heading font (titles & sections)', fontOptions));
     type.appendChild(selectField(t, 'bodyFont', 'Body font (items & prices)', fontOptions));
-    type.appendChild(rangeField(t, 'menuTitleSize', 'Menu title size', 1, 6, 0.1, function (v) { return v.toFixed(1) + 'x'; }));
-    type.appendChild(rangeField(t, 'sectionTitleSize', 'Section title size', 0.8, 3.5, 0.05, function (v) { return v.toFixed(2) + 'x'; }));
-    type.appendChild(rangeField(t, 'itemTitleSize', 'Item title size', 0.6, 2.5, 0.05, function (v) { return v.toFixed(2) + 'x'; }));
-    type.appendChild(rangeField(t, 'descSize', 'Description size', 0.4, 1.5, 0.02, function (v) { return v.toFixed(2) + 'x'; }));
-    type.appendChild(rangeField(t, 'priceSize', 'Price size', 0.5, 2.5, 0.05, function (v) { return v.toFixed(2) + 'x'; }));
+    [
+      { label: 'Menu title', size: ['menuTitleSize', 1, 6, 0.1], weight: 'menuTitleWeight', line: 'menuTitleLine' },
+      { label: 'Section titles', size: ['sectionTitleSize', 0.8, 3.5, 0.05], weight: 'sectionTitleWeight', line: 'sectionTitleLine' },
+      { label: 'Item titles', size: ['itemTitleSize', 0.6, 2.5, 0.05], weight: 'itemTitleWeight', line: 'itemTitleLine' },
+      { label: 'Descriptions', size: ['descSize', 0.4, 1.5, 0.02], weight: 'descWeight', line: 'descLine' },
+      { label: 'Prices', size: ['priceSize', 0.5, 2.5, 0.05], weight: 'priceWeight', line: 'priceLine' }
+    ].forEach(function (row) {
+      type.appendChild(h('h4', null, row.label));
+      type.appendChild(rangeField(t, row.size[0], 'Size', row.size[1], row.size[2], row.size[3], sizeFmt));
+      // Variable fonts render every weight step; single-weight fonts like
+      // Bebas Neue synthesize bolder/lighter as best the browser can.
+      type.appendChild(rangeField(t, row.weight, 'Weight', 100, 900, 10, wFmt));
+      type.appendChild(rangeField(t, row.line, 'Line height', 0.8, 2.2, 0.05, lFmt));
+    });
     grid.appendChild(type);
 
     // Colors
@@ -712,29 +755,86 @@
     colors.appendChild(colorField(t, 'badgeTextColor', 'Sold out badge text'));
     grid.appendChild(colors);
 
-    // Options
-    var opts = designGroup('Options');
-    opts.appendChild(checkField(t, 'showMenuTitle', 'Show the menu title'));
-    opts.appendChild(checkField(t, 'showDescriptions', 'Show item descriptions'));
-    opts.appendChild(checkField(t, 'uppercaseSections', 'Uppercase section titles'));
-    opts.appendChild(checkField(t, 'sectionDivider', 'Show section divider lines'));
-    opts.appendChild(checkField(t, 'dotLeaders', 'Dotted line between item and price'));
-    opts.appendChild(selectField(t, 'soldOutStyle', 'Sold out items', [
+    // Items — boxes, featured highlight, descriptions, leaders, sold out
+    var items = designGroup('Items');
+    items.appendChild(checkField(t, 'itemBox', 'Show each item in a rounded box'));
+    items.appendChild(colorField(t, 'itemBoxColor', 'Item box color'));
+    items.appendChild(rangeField(t, 'itemBoxRadius', 'Box corner radius', 0, 1.5, 0.05, function (v) { return v.toFixed(2) + 'em'; }));
+    items.appendChild(colorField(t, 'featuredColor', 'Featured item highlight'));
+    items.appendChild(checkField(t, 'showDescriptions', 'Show item descriptions'));
+    items.appendChild(checkField(t, 'dotLeaders', 'Dotted line between item and price'));
+    items.appendChild(selectField(t, 'soldOutStyle', 'Sold out items', [
       { value: 'badge', label: 'Show a SOLD OUT badge' },
       { value: 'strike', label: 'Strike through' },
       { value: 'hide', label: 'Hide from the board' }
     ]));
-    opts.appendChild(textField(t, 'soldOutText', 'Sold out badge text', 'SOLD OUT'));
+    items.appendChild(textField(t, 'soldOutText', 'Sold out badge text', 'SOLD OUT'));
+    grid.appendChild(items);
+
+    // Options
+    var opts = designGroup('Options');
+    opts.appendChild(checkField(t, 'showMenuTitle', 'Show the menu title'));
+    opts.appendChild(checkField(t, 'uppercaseSections', 'Uppercase section titles'));
+    opts.appendChild(checkField(t, 'sectionDivider', 'Show section divider lines'));
     opts.appendChild(textField(t, 'currency', 'Currency symbol', '$'));
-    var reset = button('danger-ghost', 'Reset design to defaults', null, function () {
+    opts.appendChild(button('danger-ghost', 'Reset design to defaults', null, onReset));
+    grid.appendChild(opts);
+  }
+
+  function renderDesign(root, menu) {
+    var grid = h('div', 'design-grid');
+
+    // Global (stored on the whole state, not this menu's theme)
+    var globalGroup = designGroup('Global — applies to every menu');
+    globalGroup.appendChild(textField(state.settings, 'menuTitle', 'Board title on all menus', "Leave blank to use each menu's name"));
+    grid.appendChild(globalGroup);
+
+    appendDesignControls(grid, menu.theme, function () {
       if (!confirm('Reset all design settings for this menu to the defaults?')) return;
       menu.theme = PC.clone(PC.DEFAULT_THEME);
       scheduleSave();
       renderEditor();
     });
-    opts.appendChild(reset);
-    grid.appendChild(opts);
+    root.appendChild(grid);
+  }
 
+  // A location's Design tab: optionally style this physical screen once and
+  // have every menu it shows use that design (handy for portrait TVs or a
+  // screen that needs bigger text).
+  function renderLocationDesign(root, loc) {
+    var toggleWrap = h('div', 'menu-meta');
+    var toggle = h('label', 'check');
+    var input = h('input');
+    input.type = 'checkbox';
+    input.checked = !!loc.customDesign;
+    input.addEventListener('change', function () {
+      loc.customDesign = input.checked;
+      if (loc.customDesign && !loc.theme) {
+        // Start from the design of the menu this screen usually shows.
+        var src = PC.menuById(state, loc.defaultMenuId);
+        loc.theme = PC.clone(src ? src.theme : PC.DEFAULT_THEME);
+      }
+      scheduleSave();
+      renderEditor();
+    });
+    toggle.appendChild(input);
+    toggle.appendChild(h('span', null, 'Use a custom design for this screen (overrides the design of every menu it shows)'));
+    toggleWrap.appendChild(toggle);
+    root.appendChild(toggleWrap);
+
+    if (!loc.customDesign) {
+      root.appendChild(h('p', 'loc-help',
+        'This screen currently uses each menu’s own design. Turn on the custom design to style this screen once — every menu it shows will use these settings.'));
+      return;
+    }
+
+    var grid = h('div', 'design-grid');
+    appendDesignControls(grid, loc.theme, function () {
+      if (!confirm('Reset this screen’s design to the defaults?')) return;
+      loc.theme = PC.clone(PC.DEFAULT_THEME);
+      scheduleSave();
+      renderEditor();
+    });
     root.appendChild(grid);
   }
 
@@ -1031,13 +1131,17 @@
     root.innerHTML = '';
 
     if (sel.kind === 'location') {
-      $('#menu-tabs').style.display = 'none';
+      $('#menu-tabs').style.display = '';
+      $('#tab-content').textContent = 'Screen & Schedule';
       var loc = currentLocation();
-      if (loc) renderLocationEditor(root, loc);
+      if (!loc) return;
+      if (sel.tab === 'content') renderLocationEditor(root, loc);
+      else renderLocationDesign(root, loc);
       return;
     }
 
     $('#menu-tabs').style.display = '';
+    $('#tab-content').textContent = 'Content';
     var menu = currentMenu();
     if (!menu) {
       root.appendChild(h('div', 'empty-note', 'No menus yet. Click "+ New Menu" to create your first menu.'));
@@ -1280,7 +1384,7 @@
       // Opened from a shared admin link: adopt that sync channel.
       PC.sync.get(urlSync).then(function (remote) {
         if (remote && remote.menus && remote.menus.length &&
-            (seededFresh || String(remote.updatedAt || '') > String(state.updatedAt || ''))) {
+            (seededFresh || state.seed || String(remote.updatedAt || '') > String(state.updatedAt || ''))) {
           state = remote;
         }
         state.syncId = urlSync;
@@ -1304,16 +1408,25 @@
 
     if (seededFresh) {
       // Brand-new browser with no sync link: prefer the repo's published
-      // data over the built-in sample, then start a sync channel.
+      // data over the built-in sample, then start a sync channel. If the
+      // published file names a sync channel, pull it BEFORE saving anything
+      // locally — saving re-stamps updatedAt, which would make a stale file
+      // beat the live channel and push old data over everyone's boards.
       PC.fetchPublished().then(function (published) {
         if (published && published.menus.length) {
           state = published;
           ensureValidSelection();
           sel.id = state.menus[0].id;
         }
-        PC.save(state);
         renderAll();
-        if (published && published.syncId) { pullFromChannel(); } else { ensureChannel(); }
+        if (state.syncId) {
+          pullFromChannel().then(function (adopted) {
+            if (!adopted) PC.save(state);
+          });
+        } else {
+          PC.save(state);
+          ensureChannel();
+        }
       }).catch(function () {
         PC.save(state);
         renderAll();

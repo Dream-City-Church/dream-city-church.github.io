@@ -19,8 +19,12 @@ no tokens — sync between the admin and the TVs is automatic.
 - **Scheduling (Outlook-style week calendar)** — click an empty slot to schedule a menu (e.g. *Breakfast, Mon–Fri 6:00–11:00*); click a block to edit or delete. Weekly repeating events and single-date events (which override weekly ones that day) are both supported. Outside scheduled times the location's default menu shows.
 - **Sections & items** — items have a title, description, any number of size/price pairs (blank size = single price; `Market Price` style text works too).
 - **Sold out** — one checkbox per item; boards show a badge, strike through, or hide it (per-menu choice).
-- **Full visual control (Design tab)** — columns (1–4), left/centered alignment, inline or **stacked prices**, base size, spacing, background color/image + overlay, heading & body fonts (Bebas Neue, Google Sans, Montserrat, Playfair…), per-element sizes and colors, dividers, dot leaders, currency, sold-out treatment.
-- **Auto-fit** — boards shrink text automatically so nothing ever scrolls.
+- **Featured items** — one checkbox per item; the board draws it in a rounded box with an accent border and a ★ (highlight color in Design → Items).
+- **Rounded item boxes** — Design → Items can put every item in a rounded box (color + corner radius).
+- **Per-screen design** — a location's Design tab can override the design of every menu that screen shows (portrait TVs, screens that need bigger text…). Off by default: each menu's own design is used.
+- **Full visual control (Design tab)** — columns (1–4), left/centered alignment, inline or **stacked prices**, base size, spacing, background color/image + overlay, heading & body fonts (Bebas Neue, Google Sans, Montserrat, Playfair…), per-element sizes, **font weights (100–900)**, **line heights**, and colors, dividers, dot leaders, currency, sold-out treatment. Controls are grouped into collapsible sections (Global, Layout, Background, Typography, Colors, Items, Options).
+- **Global board title** — Design tab → *Global*: one title shown on every menu's board (leave blank to use each menu's own name).
+- **Auto-fit** — boards size text automatically: shrinking so nothing ever scrolls, and growing (up to 3× the base size) so the content fills the full screen instead of breaking columns early.
 - **Live preview** — rendered by the same engine as the TVs; toggle between **16:9 and 9:16** to match landscape or portrait screens.
 - **Automatic updates everywhere** — no publish button needed (a Sync Now button exists for impatience).
 - **Import/Export** — back up or move everything as a JSON file.
@@ -82,3 +86,15 @@ phoenix-cafe/
 
 All data is plain JSON — the Export button gives you the full picture, and
 the app fills in any missing fields on import.
+
+### Updating the app files never resets your menus or settings
+
+`data/menus.json` is marked `"seed": true`, and seed data can **never**
+override real (user-edited) data, regardless of timestamps. Redeploying the
+app files — even with a freshly regenerated starter file — leaves every
+admin's and every board's data alone.
+
+Optional but recommended: after your menus are set up, use **Export** and
+commit the file as `data/menus.json` (replacing the starter). A real export
+carries your sync channel id, so any brand-new browser or TV that opens the
+app immediately joins the live channel instead of starting from sample data.

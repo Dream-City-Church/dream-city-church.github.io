@@ -405,6 +405,16 @@ label { display: block; }
   padding: 2px 6px;
 }
 
+.featured-chip {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #1a1611;
+  background: var(--accent);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
 .item-body {
   padding: 10px 12px 4px;
   border-top: 1px solid var(--border);
@@ -448,12 +458,48 @@ label { display: block; }
   padding: 14px;
 }
 
-.design-group h3 {
-  margin: 0 0 12px;
+/* Collapsible group header (details/summary) */
+.design-group summary {
+  cursor: pointer;
+  user-select: none;
   font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent);
+  list-style: none;
+}
+
+.design-group summary::-webkit-details-marker { display: none; }
+
+.design-group summary::before {
+  content: '▸';
+  display: inline-block;
+  width: 14px;
+  color: var(--muted);
+}
+
+.design-group[open] summary {
+  margin-bottom: 12px;
+}
+
+.design-group[open] summary::before {
+  content: '▾';
+}
+
+/* Sub-headings inside a group (e.g. per-element typography) */
+.design-group h4 {
+  margin: 14px 0 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.design-group h4:first-of-type {
+  margin-top: 10px;
 }
 
 .color-field {

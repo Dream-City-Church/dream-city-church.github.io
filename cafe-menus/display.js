@@ -50,12 +50,16 @@
       renderSetup();
       return;
     }
-    var key = JSON.stringify(menu) + '|' + window.innerWidth + 'x' + window.innerHeight;
+    var settings = (state && state.settings) || {};
+    // A location with its own design styles every menu it shows.
+    var loc = locationKey ? PC.findLocation(state, locationKey) : null;
+    var themeOverride = (loc && loc.customDesign && loc.theme) ? loc.theme : null;
+    var key = JSON.stringify(menu) + '|' + JSON.stringify(settings) + '|' + JSON.stringify(themeOverride) + '|' + window.innerWidth + 'x' + window.innerHeight;
     if (key === lastRenderKey) return;
     lastRenderKey = key;
     document.title = menu.name + ' - Menu';
     board.style.cursor = '';
-    PC.renderMenu(board, menu);
+    PC.renderMenu(board, menu, { settings: settings, theme: themeOverride });
   }
 
   // Shown only when the URL has no valid ?location= / ?menu= - lists what's

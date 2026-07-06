@@ -37,24 +37,26 @@ var PC = (function () {
 
   //// ---------- Fonts ----------
   // Fonts available in the Design tab. "href" is the stylesheet that loads
-  // the family (null = system font, nothing to load).
+  // the family (null = system font, nothing to load). Families are requested
+  // with their full weight range so the font weight sliders work; families
+  // with a single weight (Bebas Neue, Anton...) let the browser synthesize.
 
   var GF = 'https://fonts.googleapis.com/css2?family=';
   var FONTS = [
     { name: 'Bebas Neue',       css: "'Bebas Neue', sans-serif",       href: GF + 'Bebas+Neue&display=swap' },
-    { name: 'Oswald',           css: "'Oswald', sans-serif",           href: GF + 'Oswald:wght@400;500;600&display=swap' },
+    { name: 'Oswald',           css: "'Oswald', sans-serif",           href: GF + 'Oswald:wght@200..700&display=swap' },
     { name: 'Anton',            css: "'Anton', sans-serif",            href: GF + 'Anton&display=swap' },
-    { name: 'Montserrat',       css: "'Montserrat', sans-serif",       href: GF + 'Montserrat:wght@400;600;700&display=swap' },
-    { name: 'Lato',             css: "'Lato', sans-serif",             href: GF + 'Lato:wght@400;700&display=swap' },
-    { name: 'Poppins',          css: "'Poppins', sans-serif",          href: GF + 'Poppins:wght@400;600;700&display=swap' },
+    { name: 'Montserrat',       css: "'Montserrat', sans-serif",       href: GF + 'Montserrat:wght@100..900&display=swap' },
+    { name: 'Lato',             css: "'Lato', sans-serif",             href: GF + 'Lato:wght@100;300;400;700;900&display=swap' },
+    { name: 'Poppins',          css: "'Poppins', sans-serif",          href: GF + 'Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap' },
     // Google Sans is not formally in the Google Fonts catalog; this older
     // endpoint serves it where available, with Product Sans/Roboto standing
     // in on devices that can't fetch it.
     { name: 'Google Sans',      css: "'Google Sans', 'Product Sans', Roboto, sans-serif",
       href: 'https://fonts.googleapis.com/css?family=Google+Sans:400,500,700&display=swap' },
-    { name: 'Roboto',           css: "'Roboto', sans-serif",           href: GF + 'Roboto:wght@400;500;700&display=swap' },
-    { name: 'Playfair Display', css: "'Playfair Display', serif",      href: GF + 'Playfair+Display:wght@400;600;700&display=swap' },
-    { name: 'Cormorant Garamond', css: "'Cormorant Garamond', serif",  href: GF + 'Cormorant+Garamond:wght@400;600;700&display=swap' },
+    { name: 'Roboto',           css: "'Roboto', sans-serif",           href: GF + 'Roboto:wght@100..900&display=swap' },
+    { name: 'Playfair Display', css: "'Playfair Display', serif",      href: GF + 'Playfair+Display:wght@400..900&display=swap' },
+    { name: 'Cormorant Garamond', css: "'Cormorant Garamond', serif",  href: GF + 'Cormorant+Garamond:wght@300..700&display=swap' },
     { name: 'Lobster',          css: "'Lobster', cursive",             href: GF + 'Lobster&display=swap' },
     { name: 'Pacifico',         css: "'Pacifico', cursive",            href: GF + 'Pacifico&display=swap' },
     { name: 'Courier Prime',    css: "'Courier Prime', monospace",     href: GF + 'Courier+Prime:wght@400;700&display=swap' },
@@ -111,6 +113,16 @@ var PC = (function () {
     itemTitleSize: 1.0,
     descSize: 0.7,
     priceSize: 1.0,
+    menuTitleWeight: 400,    // font weights, 100-900
+    sectionTitleWeight: 400,
+    itemTitleWeight: 600,
+    descWeight: 400,
+    priceWeight: 600,
+    menuTitleLine: 1.0,      // line heights (multiplier)
+    sectionTitleLine: 1.1,
+    itemTitleLine: 1.25,
+    descLine: 1.35,
+    priceLine: 1.2,
 
     // Colors
     menuTitleColor: '#f6ecd9',
@@ -122,6 +134,12 @@ var PC = (function () {
     sizeLabelColor: '#93876f',   // size labels (12oz, 16oz) next to prices
     badgeColor: '#c0392b',       // sold out badge background
     badgeTextColor: '#ffffff',
+
+    // Item boxes & featured items
+    itemBox: false,              // draw every item in a rounded box
+    itemBoxColor: '#221c17',
+    itemBoxRadius: 0.5,          // corner radius, em
+    featuredColor: '#e8b95c',    // border/star for items marked "featured"
 
     // Options
     showMenuTitle: true,
@@ -135,6 +153,12 @@ var PC = (function () {
     currency: '$'
   };
 
+  //// ---------- Global settings (apply to every menu) ----------
+
+  var DEFAULT_SETTINGS = {
+    menuTitle: ''   // board title shown on ALL menus; '' = each menu's own name
+  };
+
   //// ---------- Factories ----------
 
   function newItem(title) {
@@ -143,7 +167,8 @@ var PC = (function () {
       title: title || 'New Item',
       description: '',
       prices: [{ size: '', price: '' }],
-      soldOut: false
+      soldOut: false,
+      featured: false
     };
   }
 
@@ -174,6 +199,8 @@ var PC = (function () {
       name: name || 'New Location',
       slug: slugify(name || 'new-location'),
       defaultMenuId: '',
+      customDesign: false, // true = this screen styles every menu it shows
+      theme: null,         // the screen's own design (when customDesign is on)
       schedule: []   // list of schedule events, see newScheduleEvent()
     };
   }
@@ -196,6 +223,8 @@ var PC = (function () {
     if (!state || typeof state !== 'object') return null;
     if (!Array.isArray(state.menus)) state.menus = [];
     state.version = state.version || 1;
+    state.seed = !!state.seed; // true = shipped starter data, never beats real data
+    state.settings = Object.assign(clone(DEFAULT_SETTINGS), state.settings || {});
     state.menus.forEach(function (m) {
       m.id = m.id || uid('menu');
       m.name = m.name || 'Menu';
@@ -211,6 +240,7 @@ var PC = (function () {
           it.title = it.title || '';
           it.description = it.description || '';
           it.soldOut = !!it.soldOut;
+          it.featured = !!it.featured;
           if (!Array.isArray(it.prices) || !it.prices.length) it.prices = [{ size: '', price: '' }];
         });
       });
@@ -221,6 +251,10 @@ var PC = (function () {
       loc.name = loc.name || 'Location';
       loc.slug = loc.slug || slugify(loc.name);
       loc.defaultMenuId = loc.defaultMenuId || '';
+      loc.customDesign = !!loc.customDesign;
+      loc.theme = (loc.customDesign || loc.theme)
+        ? Object.assign(clone(DEFAULT_THEME), loc.theme || {})
+        : null;
       if (!Array.isArray(loc.schedule)) loc.schedule = [];
       loc.schedule.forEach(function (ev) {
         ev.id = ev.id || uid('evt');
@@ -322,7 +356,9 @@ var PC = (function () {
 
     return {
       version: 1,
+      seed: true, // starter data: loses to any real (user-edited) data
       updatedAt: new Date().toISOString(),
+      settings: clone(DEFAULT_SETTINGS),
       menus: [menu, breakfast],
       locations: [location]
     };
@@ -383,6 +419,11 @@ var PC = (function () {
   function newerOf(a, b) {
     if (!a) return b;
     if (!b) return a;
+    // Real (user-edited) data always beats shipped starter data, no matter
+    // what the timestamps say — a redeploy of the app files (which replaces
+    // data/menus.json with a freshly-stamped starter copy) must never reset
+    // anyone's menus or settings.
+    if (!a.seed !== !b.seed) return a.seed ? b : a;
     return String(a.updatedAt || '') >= String(b.updatedAt || '') ? a : b;
   }
 
@@ -513,7 +554,8 @@ var PC = (function () {
 
   function renderMenu(board, menu, opts) {
     opts = opts || {};
-    var t = Object.assign(clone(DEFAULT_THEME), (menu && menu.theme) || {});
+    // opts.theme (a location's custom design) overrides the menu's own theme.
+    var t = Object.assign(clone(DEFAULT_THEME), opts.theme || (menu && menu.theme) || {});
     ensureFonts([t.headingFont, t.bodyFont]);
 
     board.classList.add('pc-board');
@@ -541,6 +583,19 @@ var PC = (function () {
     board.style.setProperty('--pc-item-title-size', t.itemTitleSize + 'em');
     board.style.setProperty('--pc-desc-size', t.descSize + 'em');
     board.style.setProperty('--pc-price-size', t.priceSize + 'em');
+    board.style.setProperty('--pc-menu-title-weight', String(t.menuTitleWeight));
+    board.style.setProperty('--pc-section-title-weight', String(t.sectionTitleWeight));
+    board.style.setProperty('--pc-item-title-weight', String(t.itemTitleWeight));
+    board.style.setProperty('--pc-desc-weight', String(t.descWeight));
+    board.style.setProperty('--pc-price-weight', String(t.priceWeight));
+    board.style.setProperty('--pc-menu-title-lh', String(t.menuTitleLine));
+    board.style.setProperty('--pc-section-title-lh', String(t.sectionTitleLine));
+    board.style.setProperty('--pc-item-title-lh', String(t.itemTitleLine));
+    board.style.setProperty('--pc-desc-lh', String(t.descLine));
+    board.style.setProperty('--pc-price-lh', String(t.priceLine));
+    board.style.setProperty('--pc-item-box-color', t.itemBoxColor);
+    board.style.setProperty('--pc-item-box-radius', t.itemBoxRadius + 'em');
+    board.style.setProperty('--pc-featured-color', t.featuredColor);
     board.style.setProperty('--pc-align', t.align === 'center' ? 'center' : 'left');
     board.style.backgroundImage = t.backgroundImage ? 'url("' + encodeURI(t.backgroundImage) + '")' : 'none';
     board.classList.toggle('pc-center', t.align === 'center');
@@ -548,6 +603,7 @@ var PC = (function () {
     board.classList.toggle('pc-section-divider', !!t.sectionDivider);
     board.classList.toggle('pc-has-bg-image', !!t.backgroundImage);
     board.classList.toggle('pc-stacked-prices', t.priceLayout === 'stacked');
+    board.classList.toggle('pc-item-boxes', !!t.itemBox);
     board.style.fontSize = t.baseSize + 'px';
 
     board.innerHTML = '';
@@ -564,7 +620,10 @@ var PC = (function () {
     }
 
     if (t.showMenuTitle) {
-      inner.appendChild(el('h1', 'pc-menu-title', menu.name));
+      // The global board title (Design tab → Global) overrides every menu's
+      // own name; blank falls back to the menu name.
+      var settings = opts.settings || {};
+      inner.appendChild(el('h1', 'pc-menu-title', settings.menuTitle || menu.name));
     }
 
     var cols = el('div', 'pc-columns');
@@ -581,6 +640,7 @@ var PC = (function () {
       var itemsEl = el('div', 'pc-items');
       visibleItems.forEach(function (item) {
         var itemEl = el('div', 'pc-item');
+        if (item.featured) itemEl.classList.add('pc-featured');
         if (item.soldOut) {
           itemEl.classList.add('pc-soldout');
           itemEl.classList.add(t.soldOutStyle === 'strike' ? 'pc-soldout-strike' : 'pc-soldout-badge');
@@ -625,17 +685,35 @@ var PC = (function () {
     }
   }
 
-  // Shrink the base font size until the content fits the board with no
-  // scrolling. Never grows beyond the configured base size.
+  // Fit the base font size to the board: shrink until nothing scrolls, or
+  // grow until the content fills the screen (so columns break at the bottom
+  // edge instead of leaving empty space). Growth is capped at 3x the
+  // configured base size so a near-empty menu doesn't become comically huge.
   function fitBoard(board, inner, baseSize) {
     var size = baseSize;
     var minSize = 8;
-    var guard = 40;
-    while (guard-- > 0 && size > minSize) {
-      var overflows = inner.scrollHeight > board.clientHeight + 1 || inner.scrollWidth > board.clientWidth + 1;
-      if (!overflows) break;
-      size = size * 0.94;
-      board.style.fontSize = size + 'px';
+    var maxSize = baseSize * 3;
+    var guard = 60;
+
+    function overflows() {
+      return inner.scrollHeight > board.clientHeight + 1 || inner.scrollWidth > board.clientWidth + 1;
+    }
+
+    if (overflows()) {
+      while (guard-- > 0 && size > minSize && overflows()) {
+        size = size * 0.94;
+        board.style.fontSize = size + 'px';
+      }
+    } else {
+      while (guard-- > 0 && size < maxSize) {
+        var next = Math.min(maxSize, size * 1.03);
+        board.style.fontSize = next + 'px';
+        if (overflows()) {
+          board.style.fontSize = size + 'px';
+          break;
+        }
+        size = next;
+      }
     }
   }
 
@@ -646,6 +724,7 @@ var PC = (function () {
     DATA_URL: DATA_URL,
     FONTS: FONTS,
     DEFAULT_THEME: DEFAULT_THEME,
+    DEFAULT_SETTINGS: DEFAULT_SETTINGS,
     uid: uid,
     slugify: slugify,
     clone: clone,

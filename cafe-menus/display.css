@@ -58,8 +58,8 @@ html, body {
   margin: 0 0 0.5em 0;
   font-family: var(--pc-heading-font, sans-serif);
   font-size: var(--pc-menu-title-size, 2.8em);
-  font-weight: 400;
-  line-height: 1;
+  font-weight: var(--pc-menu-title-weight, 400);
+  line-height: var(--pc-menu-title-lh, 1);
   letter-spacing: 0.04em;
   color: var(--pc-menu-title-color, #f6ecd9);
 }
@@ -78,8 +78,8 @@ html, body {
   margin: 0 0 0.55em 0;
   font-family: var(--pc-heading-font, sans-serif);
   font-size: var(--pc-section-title-size, 1.55em);
-  font-weight: 400;
-  line-height: 1.1;
+  font-weight: var(--pc-section-title-weight, 400);
+  line-height: var(--pc-section-title-lh, 1.1);
   letter-spacing: 0.05em;
   color: var(--pc-section-title-color, #e8b95c);
 }
@@ -119,6 +119,24 @@ html, body {
   margin: 0 0 var(--pc-item-gap, 0.85em) 0;
 }
 
+/* Rounded item boxes (Design tab → Items). Featured items always get a box
+   so the accent border has a shape to sit on. */
+.pc-item-boxes .pc-item,
+.pc-item.pc-featured {
+  background: var(--pc-item-box-color, #221c17);
+  border-radius: var(--pc-item-box-radius, 0.5em);
+  padding: 0.45em 0.65em;
+}
+
+.pc-item.pc-featured {
+  border: 0.09em solid var(--pc-featured-color, #e8b95c);
+}
+
+.pc-featured .pc-item-title::before {
+  content: '★ ';
+  color: var(--pc-featured-color, #e8b95c);
+}
+
 .pc-item-line {
   display: flex;
   align-items: baseline;
@@ -138,9 +156,9 @@ html, body {
 
 .pc-item-title {
   font-size: var(--pc-item-title-size, 1em);
-  font-weight: 600;
+  font-weight: var(--pc-item-title-weight, 600);
   color: var(--pc-item-title-color, #f6ecd9);
-  line-height: 1.25;
+  line-height: var(--pc-item-title-lh, 1.25);
 }
 
 .pc-leader {
@@ -169,6 +187,7 @@ html, body {
   display: inline-flex;
   align-items: baseline;
   gap: 0.3em;
+  line-height: var(--pc-price-lh, 1.2);
 }
 
 /* Stacked price layout: one size/price pair per line */
@@ -180,6 +199,27 @@ html, body {
 
 .pc-stacked-prices .pc-price {
   justify-content: flex-end;
+}
+
+/* Left-aligned boards: float the price stack right so the title and
+   description stay together and wrap beside it */
+.pc-stacked-prices:not(.pc-center) .pc-item {
+  display: flow-root;
+}
+
+.pc-stacked-prices:not(.pc-center) .pc-item-line {
+  display: block;
+}
+
+.pc-stacked-prices:not(.pc-center) .pc-prices {
+  display: flex;
+  float: right;
+  margin-left: 0.9em;
+}
+
+/* Dot leaders can't stretch to a floated multi-line stack */
+.pc-stacked-prices:not(.pc-center) .pc-leader {
+  display: none;
 }
 
 .pc-board.pc-center.pc-stacked-prices .pc-prices {
@@ -195,14 +235,15 @@ html, body {
 
 .pc-amount {
   font-size: var(--pc-price-size, 1em);
-  font-weight: 600;
+  font-weight: var(--pc-price-weight, 600);
   color: var(--pc-price-color, #f6ecd9);
 }
 
 .pc-item-desc {
   margin-top: 0.18em;
   font-size: var(--pc-desc-size, 0.7em);
-  line-height: 1.35;
+  font-weight: var(--pc-desc-weight, 400);
+  line-height: var(--pc-desc-lh, 1.35);
   color: var(--pc-desc-color, #b3a68f);
   max-width: 60em;
 }
