@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-06T14:17:44.358Z",
+  "updatedAt": "2026-07-06T14:45:53.541Z",
   "menus": [
     {
-      "id": "menu_u7yrnpi1a5h",
+      "id": "menu_wr8a6p11hj8",
       "name": "Phoenix Cafe",
       "slug": "phoenix-cafe",
       "theme": {
@@ -40,17 +40,18 @@
         "uppercaseSections": true,
         "sectionDivider": true,
         "dotLeaders": true,
+        "priceLayout": "inline",
         "soldOutStyle": "badge",
         "soldOutText": "SOLD OUT",
         "currency": "$"
       },
       "sections": [
         {
-          "id": "sec_h06ec6w1a5i",
+          "id": "sec_kszq8eh1hj9",
           "name": "Espresso Drinks",
           "items": [
             {
-              "id": "item_atleuxc1a5i",
+              "id": "item_e8i25to1hj9",
               "title": "Latte",
               "description": "Double shot of espresso with velvety steamed milk",
               "prices": [
@@ -70,7 +71,7 @@
               "soldOut": false
             },
             {
-              "id": "item_qthbkv41a5i",
+              "id": "item_zy43umg1hj9",
               "title": "Mocha",
               "description": "Espresso, house chocolate, and steamed milk topped with whip",
               "prices": [
@@ -90,7 +91,7 @@
               "soldOut": false
             },
             {
-              "id": "item_u0lcd3m1a5i",
+              "id": "item_sc1hot01hj9",
               "title": "Caramel Macchiato",
               "description": "Vanilla, steamed milk, espresso, and caramel drizzle",
               "prices": [
@@ -110,7 +111,7 @@
               "soldOut": false
             },
             {
-              "id": "item_lfrwwzo1a5i",
+              "id": "item_0zc438l1hj9",
               "title": "Americano",
               "description": "Espresso over hot water",
               "prices": [
@@ -128,11 +129,11 @@
           ]
         },
         {
-          "id": "sec_oakbr2z1a5i",
+          "id": "sec_j4zus431hj9",
           "name": "Coffee & Tea",
           "items": [
             {
-              "id": "item_bwpn4wa1a5i",
+              "id": "item_jowtu7a1hj9",
               "title": "Drip Coffee",
               "description": "Locally roasted, brewed fresh all morning",
               "prices": [
@@ -148,7 +149,7 @@
               "soldOut": false
             },
             {
-              "id": "item_4y1g7uc1a5i",
+              "id": "item_dtht2ya1hj9",
               "title": "Cold Brew",
               "description": "Steeped 18 hours, smooth and bold",
               "prices": [
@@ -164,7 +165,7 @@
               "soldOut": false
             },
             {
-              "id": "item_da5ecw61a5i",
+              "id": "item_8uhipcd1hj9",
               "title": "Chai Latte",
               "description": "Spiced black tea with steamed milk",
               "prices": [
@@ -180,7 +181,7 @@
               "soldOut": false
             },
             {
-              "id": "item_l8eh4rj1a5i",
+              "id": "item_fq79vgi1hj9",
               "title": "Hot Tea",
               "description": "Ask about our rotating selection",
               "prices": [
@@ -194,11 +195,11 @@
           ]
         },
         {
-          "id": "sec_my53ofz1a5i",
+          "id": "sec_glqdjx91hj9",
           "name": "Smoothies",
           "items": [
             {
-              "id": "item_z7apen51a5i",
+              "id": "item_s30i01x1hj9",
               "title": "Berry Blast",
               "description": "Strawberry, blueberry, banana, and apple juice",
               "prices": [
@@ -214,7 +215,7 @@
               "soldOut": false
             },
             {
-              "id": "item_iw7vgwd1a5i",
+              "id": "item_knv75ph1hj9",
               "title": "Mango Sunrise",
               "description": "Mango, pineapple, and orange juice",
               "prices": [
@@ -232,11 +233,11 @@
           ]
         },
         {
-          "id": "sec_br3lw7o1a5i",
+          "id": "sec_zi09fjg1hj9",
           "name": "Pastries",
           "items": [
             {
-              "id": "item_qi6p1k61a5i",
+              "id": "item_2txl3e11hj9",
               "title": "Blueberry Muffin",
               "description": "",
               "prices": [
@@ -248,7 +249,7 @@
               "soldOut": false
             },
             {
-              "id": "item_jubltm41a5i",
+              "id": "item_p97yi7q1hj9",
               "title": "Butter Croissant",
               "description": "Baked fresh daily",
               "prices": [
@@ -260,7 +261,7 @@
               "soldOut": false
             },
             {
-              "id": "item_942og021a5i",
+              "id": "item_q20hcf31hj9",
               "title": "Cinnamon Roll",
               "description": "House favorite with cream cheese icing",
               "prices": [
@@ -272,6 +273,118 @@
               "soldOut": true
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "menu_thdu0yz1hj9",
+      "name": "Breakfast",
+      "slug": "breakfast",
+      "theme": {
+        "columns": 2,
+        "baseSize": 26,
+        "autoFit": true,
+        "align": "left",
+        "padding": 2.2,
+        "maxWidth": 0,
+        "sectionGap": 1.5,
+        "itemGap": 0.85,
+        "columnGap": 2.4,
+        "background": "#161311",
+        "backgroundImage": "",
+        "overlay": 0.55,
+        "headingFont": "Bebas Neue",
+        "bodyFont": "Montserrat",
+        "menuTitleSize": 2.8,
+        "sectionTitleSize": 1.55,
+        "itemTitleSize": 1,
+        "descSize": 0.7,
+        "priceSize": 1,
+        "menuTitleColor": "#f6ecd9",
+        "sectionTitleColor": "#e8b95c",
+        "accentColor": "#e8b95c",
+        "itemTitleColor": "#f6ecd9",
+        "descColor": "#b3a68f",
+        "priceColor": "#f6ecd9",
+        "sizeLabelColor": "#93876f",
+        "badgeColor": "#c0392b",
+        "badgeTextColor": "#ffffff",
+        "showMenuTitle": true,
+        "showDescriptions": true,
+        "uppercaseSections": true,
+        "sectionDivider": true,
+        "dotLeaders": true,
+        "priceLayout": "inline",
+        "soldOutStyle": "badge",
+        "soldOutText": "SOLD OUT",
+        "currency": "$"
+      },
+      "sections": [
+        {
+          "id": "sec_wpxhwxd1hj9",
+          "name": "Breakfast",
+          "items": [
+            {
+              "id": "item_tyss3gp1hj9",
+              "title": "Breakfast Burrito",
+              "description": "Eggs, sausage, potatoes, and cheese in a flour tortilla",
+              "prices": [
+                {
+                  "size": "",
+                  "price": "6.50"
+                }
+              ],
+              "soldOut": false
+            },
+            {
+              "id": "item_pclzhvt1hj9",
+              "title": "Steel-Cut Oatmeal",
+              "description": "Brown sugar, dried fruit, and toasted almonds",
+              "prices": [
+                {
+                  "size": "",
+                  "price": "4.50"
+                }
+              ],
+              "soldOut": false
+            },
+            {
+              "id": "item_tjl50kc1hj9",
+              "title": "Yogurt Parfait",
+              "description": "Greek yogurt, granola, and fresh berries",
+              "prices": [
+                {
+                  "size": "",
+                  "price": "5.00"
+                }
+              ],
+              "soldOut": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "locations": [
+    {
+      "id": "loc_598wvpv1hj9",
+      "name": "Cafe Main Screen",
+      "slug": "cafe-main-screen",
+      "defaultMenuId": "menu_wr8a6p11hj8",
+      "schedule": [
+        {
+          "id": "evt_at2so7k1hj9",
+          "menuId": "menu_thdu0yz1hj9",
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "date": "",
+          "start": "06:00",
+          "end": "11:00"
         }
       ]
     }
