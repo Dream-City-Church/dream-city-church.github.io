@@ -1026,13 +1026,53 @@
     var defSelect = h('select');
     menuSelectOptions(defSelect, true);
     defSelect.value = loc.defaultMenuId || '';
+    var defWarn = h('span', 'field-warn', '');
+    function refreshDefWarn() {
+      defWarn.textContent = loc.defaultMenuId ? '' :
+        'Without a default menu, this screen shows a setup page whenever nothing is scheduled.';
+    }
+    refreshDefWarn();
     defSelect.addEventListener('change', function () {
       loc.defaultMenuId = defSelect.value;
+      refreshDefWarn();
       scheduleSave();
       updatePreview(true);
     });
     defField.appendChild(defSelect);
+    defField.appendChild(defWarn);
     meta.appendChild(defField);
+
+    // Schedules are wall-clock times; signage players often run UTC, so let
+    // the cafe pin the zone once for every screen.
+    var tzField = h('label', 'field');
+    tzField.appendChild(h('span', null, 'Schedule time zone — all screens (blank = each player’s own clock)'));
+    var tzInput = h('input');
+    tzInput.type = 'text';
+    tzInput.placeholder = 'e.g. America/Chicago';
+    tzInput.value = state.settings.timezone || '';
+    var tzNote = h('span', 'field-note', '');
+    function refreshTzNote() {
+      var v = state.settings.timezone;
+      if (!v) { tzNote.textContent = ''; return; }
+      try {
+        tzNote.textContent = 'Time there now: ' + new Intl.DateTimeFormat([], {
+          timeZone: v, weekday: 'short', hour: 'numeric', minute: '2-digit'
+        }).format(new Date());
+        tzNote.className = 'field-note';
+      } catch (e) {
+        tzNote.textContent = 'Unknown time zone — players will use their own clocks.';
+        tzNote.className = 'field-warn';
+      }
+    }
+    refreshTzNote();
+    tzInput.addEventListener('input', function () {
+      state.settings.timezone = tzInput.value.trim();
+      refreshTzNote();
+      scheduleSave();
+    });
+    tzField.appendChild(tzInput);
+    tzField.appendChild(tzNote);
+    meta.appendChild(tzField);
 
     meta.appendChild(button('danger-ghost', 'Delete location', null, function () {
       if (!confirm('Delete the location "' + loc.name + '"? Any TV pointed at it will show the setup page.')) return;

@@ -34,6 +34,7 @@
 
   var state = null;        // best data we've seen so far
   var lastRenderKey = '';  // avoid pointless repaints
+  var dataStatus = 'Loading…'; // shown on the setup page for troubleshooting
 
   function currentMenu() {
     if (locationKey) {
@@ -69,7 +70,10 @@
   // Shown only when the URL has no valid ?location= / ?menu= - lists what's
   // available so whoever is setting up the TV can grab the right link.
   function renderSetup() {
-    var key = 'setup|' + JSON.stringify(state ? { m: state.menus.length, l: (state.locations || []).length, u: state.updatedAt } : null);
+    var tz = (state && state.settings && state.settings.timezone) || '';
+    var zp = PC.zoneParts(new Date(), tz);
+    var key = 'setup|' + zp.hm + '|' + dataStatus + '|' +
+      JSON.stringify(state ? { m: state.menus.length, l: (state.locations || []).length, u: state.updatedAt } : null);
     if (key === lastRenderKey) return;
     lastRenderKey = key;
 
@@ -81,14 +85,33 @@
     h1.textContent = 'Phoenix Cafe Menu Board';
     wrap.appendChild(h1);
     var p = document.createElement('p');
-    if (locationKey) {
-      p.textContent = 'No location named "' + locationKey + '" was found (or it has no menu to show right now). Pick a screen below:';
+    var loc = locationKey ? PC.findLocation(state, locationKey) : null;
+    if (loc) {
+      // The URL is fine - the schedule just resolves to nothing right now.
+      p.textContent = 'The screen "' + loc.name + '" has no menu to show right now: none of its ' +
+        (loc.schedule || []).length + ' scheduled menu(s) match the current time' +
+        (loc.defaultMenuId ? ' and its default menu no longer exists.' :
+          ' and it has no default menu. Set a default menu in the admin so this screen always shows something.');
+    } else if (locationKey) {
+      p.textContent = 'No location named "' + locationKey + '" was found. If it was renamed, its URL changed — copy the fresh display URL from the admin onto this player. Pick a screen below:';
     } else if (menuKey) {
-      p.textContent = 'No menu named "' + menuKey + '" was found. Pick one below:';
+      p.textContent = 'No menu named "' + menuKey + '" was found. If it was renamed, its URL changed — copy the fresh display URL from the admin onto this player. Pick one below:';
     } else {
       p.textContent = 'Point this screen at a location (scheduled) or a single menu:';
     }
     wrap.appendChild(p);
+
+    // Troubleshooting facts: schedules depend on the clock and the data the
+    // player can reach, so show both.
+    var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var diag = document.createElement('p');
+    diag.style.color = '#9aa0a8';
+    diag.style.fontSize = '14px';
+    diag.textContent = 'Player clock: ' + new Date().toString().slice(0, 21) +
+      (tz && zp.tz ? ' · schedules run in ' + tz + ', where it is now ' + DAYS[zp.day] + ' ' + zp.hm
+                   : ' — schedules run on this clock; if it is wrong (signage players often run UTC), set a schedule time zone in the admin') +
+      ' · Data: ' + dataStatus;
+    wrap.appendChild(diag);
 
     function addList(title, entries, param) {
       if (!entries.length) return;
@@ -142,12 +165,29 @@
     var id = syncId();
     var fetching = id ? PC.sync.get(id) : PC.fetchPublished();
     fetching.then(function (published) {
+      dataStatus = id ? 'Sync channel connected' : 'Using the published data file';
       if (published) {
         state = PC.newerOf(state, published);
-        render();
       }
-    }).catch(function () {
-      // Channel unreachable or nothing published yet - keep what we have.
+      render();
+    }).catch(function (err) {
+      dataStatus = (id ? 'Sync channel unreachable' : 'Published data file unreachable') +
+        (err && err.status ? ' (HTTP ' + err.status + ')' : '') + ' — check the player’s internet access';
+      if (id) {
+        // Channel down (blocked network, expired channel…): fall back to the
+        // published file bundled with the app so the board can still show
+        // something sensible. newerOf/seed rules keep it from clobbering
+        // better data we already have.
+        PC.fetchPublished().then(function (published) {
+          if (published) {
+            dataStatus += ' · showing the published data file instead';
+            state = PC.newerOf(state, published);
+          }
+          render();
+        }).catch(function () { render(); });
+        return;
+      }
+      render(); // repaint the setup page's diagnostics
     });
   }
 

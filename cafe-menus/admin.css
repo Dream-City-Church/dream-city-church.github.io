@@ -405,6 +405,16 @@ label { display: block; }
   padding: 2px 6px;
 }
 
+.field-note,
+.field-warn {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.field-warn { color: #e0a83c; }
+
 .featured-chip {
   font-size: 10px;
   font-weight: 700;

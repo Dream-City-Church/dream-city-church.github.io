@@ -154,7 +154,10 @@ var PC = (function () {
   //// ---------- Global settings (apply to every menu) ----------
 
   var DEFAULT_SETTINGS = {
-    menuTitle: ''   // board title shown on ALL menus; '' = each menu's own name
+    menuTitle: '',  // board title shown on ALL menus; '' = each menu's own name
+    timezone: ''    // IANA zone for schedules (e.g. America/Chicago);
+                    // '' = each player's own clock. Signage players often run
+                    // UTC, which silently breaks wall-clock schedules.
   };
 
   //// ---------- Factories ----------
@@ -548,14 +551,45 @@ var PC = (function () {
     return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
   }
 
+  var DAY_INDEX = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+
+  // Wall-clock parts (weekday, HH:MM, date) for schedule matching, in an
+  // optional IANA time zone. Without a zone, the device's own clock is used.
+  function zoneParts(now, tz) {
+    if (tz) {
+      try {
+        var parts = {};
+        new Intl.DateTimeFormat('en-US', {
+          timeZone: tz, weekday: 'short', year: 'numeric', month: '2-digit',
+          day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+        }).formatToParts(now).forEach(function (p) { parts[p.type] = p.value; });
+        return {
+          tz: tz,
+          day: DAY_INDEX[parts.weekday],
+          hm: parts.hour + ':' + parts.minute,
+          date: parts.year + '-' + parts.month + '-' + parts.day
+        };
+      } catch (e) { /* unknown zone - fall back to the device clock */ }
+    }
+    return {
+      tz: '',
+      day: now.getDay(),
+      hm: pad2(now.getHours()) + ':' + pad2(now.getMinutes()),
+      date: localDateStr(now)
+    };
+  }
+
   // Which menu should this location's screen show right now?
   // Single-date events beat weekly events; among overlapping matches the
   // one that started latest wins; otherwise the location's default menu.
+  // Times are evaluated in the global schedule time zone when one is set, so
+  // a player whose clock runs UTC still switches menus at cafe time.
   function activeMenuForLocation(state, loc, now) {
     now = now || new Date();
-    var day = now.getDay();
-    var hm = pad2(now.getHours()) + ':' + pad2(now.getMinutes());
-    var today = localDateStr(now);
+    var p = zoneParts(now, state && state.settings ? state.settings.timezone : '');
+    var day = p.day;
+    var hm = p.hm;
+    var today = p.date;
     var bestDate = null, bestWeekly = null;
 
     (loc.schedule || []).forEach(function (ev) {
@@ -784,6 +818,7 @@ var PC = (function () {
     resolveTheme: resolveTheme,
     findLocation: findLocation,
     activeMenuForLocation: activeMenuForLocation,
+    zoneParts: zoneParts,
     localDateStr: localDateStr,
     renderMenu: renderMenu
   };

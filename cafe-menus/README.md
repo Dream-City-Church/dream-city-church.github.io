@@ -72,6 +72,25 @@ Renaming a menu or location changes its slug (and so its URL) — displays
 keep working via id-based URLs, but re-copy the link after renaming if the
 TV used the slug URL.
 
+## Troubleshooting a screen (shows the setup page / "no menu to show")
+
+The setup page now prints the diagnosis: the player's clock, the schedule
+time zone, and whether it could reach the menu data. Check in this order:
+
+1. **Player clock / time zone** — schedules are wall-clock times. Signage
+   players (Yodeck, BrightSign…) often run **UTC**, so "6:00–11:00" never
+   matches. Set **Schedule time zone** (on any location's editor, applies to
+   every screen, e.g. `America/Chicago`) so schedules ignore player clocks.
+2. **No default menu** — outside scheduled times a location falls back to
+   its default menu; without one the screen shows the setup page. The admin
+   warns about this on the location editor.
+3. **Stale URL** — renaming a menu/location changes its slug URL. Re-copy
+   the display URL from the admin onto the player.
+4. **Missing `&sync=` id / unreachable channel** — without it the player can
+   only see `data/menus.json`. If the sync channel is unreachable, displays
+   now automatically fall back to the published data file and say so on the
+   setup page.
+
 ## Data & files
 
 ```
