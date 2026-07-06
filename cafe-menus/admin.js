@@ -584,22 +584,19 @@
 
   //// ---------- Design tab ----------
 
-  // Design sections are collapsible so the page stays tidy; which ones are
-  // open is remembered per browser.
-  var DESIGN_OPEN_KEY = 'phoenixCafe.designOpen.v1';
-  var designOpen = null;
-  try { designOpen = JSON.parse(localStorage.getItem(DESIGN_OPEN_KEY)); } catch (e) {}
-  if (!designOpen || typeof designOpen !== 'object') designOpen = { Layout: true };
+  // One flat panel at a time, switched with pills — no nested boxes, no
+  // long scroll. The selected section is remembered per browser.
+  var DESIGN_SECTION_KEY = 'phoenixCafe.designSection.v1';
+  var designSection = 'Layout';
+  try { designSection = localStorage.getItem(DESIGN_SECTION_KEY) || 'Layout'; } catch (e) {}
 
-  function designGroup(title) {
-    var g = h('details', 'design-group');
-    g.appendChild(h('summary', null, title));
-    g.open = !!designOpen[title];
-    g.addEventListener('toggle', function () {
-      designOpen[title] = g.open;
-      try { localStorage.setItem(DESIGN_OPEN_KEY, JSON.stringify(designOpen)); } catch (e) {}
-    });
-    return g;
+  // Every design control writes through here. When the edited object carries
+  // an __apply hook (a menu/screen following a shared theme), the change is
+  // also recorded as a per-menu override instead of touching the theme.
+  function setDesignValue(target, key, value) {
+    target[key] = value;
+    if (typeof target.__apply === 'function') target.__apply(key, value);
+    scheduleSave();
   }
 
   function colorField(theme, key, label) {
@@ -609,8 +606,7 @@
     input.type = 'color';
     input.value = /^#[0-9a-fA-F]{6}$/.test(theme[key]) ? theme[key] : '#000000';
     input.addEventListener('input', function () {
-      theme[key] = input.value;
-      scheduleSave();
+      setDesignValue(theme, key, input.value);
     });
     row.appendChild(input);
     return row;
@@ -628,9 +624,8 @@
     input.min = min; input.max = max; input.step = step;
     input.value = theme[key];
     input.addEventListener('input', function () {
-      theme[key] = parseFloat(input.value);
+      setDesignValue(theme, key, parseFloat(input.value));
       out.textContent = format ? format(theme[key]) : String(theme[key]);
-      scheduleSave();
     });
     wrap.appendChild(input);
     return wrap;
@@ -648,8 +643,7 @@
     select.value = String(theme[key]);
     select.addEventListener('change', function () {
       var v = select.value;
-      theme[key] = (typeof theme[key] === 'number') ? parseFloat(v) : v;
-      scheduleSave();
+      setDesignValue(theme, key, (typeof theme[key] === 'number') ? parseFloat(v) : v);
     });
     field.appendChild(select);
     return field;
@@ -661,8 +655,7 @@
     input.type = 'checkbox';
     input.checked = !!theme[key];
     input.addEventListener('change', function () {
-      theme[key] = input.checked;
-      scheduleSave();
+      setDesignValue(theme, key, input.checked);
     });
     row.appendChild(input);
     row.appendChild(h('span', null, label));
@@ -677,125 +670,280 @@
     input.placeholder = placeholder || '';
     input.value = theme[key] || '';
     input.addEventListener('input', function () {
-      theme[key] = input.value;
-      scheduleSave();
+      setDesignValue(theme, key, input.value);
     });
     field.appendChild(input);
     return field;
   }
 
-  // All design controls for one theme object. Shared by the per-menu Design
-  // tab and a location's custom design, so the two can never drift apart.
-  function appendDesignControls(grid, t, onReset) {
-    // Layout
-    var layout = designGroup('Layout');
-    layout.appendChild(selectField(t, 'columns', 'Columns', [
-      { value: '1', label: '1 column' },
-      { value: '2', label: '2 columns' },
-      { value: '3', label: '3 columns' },
-      { value: '4', label: '4 columns' }
-    ]));
-    layout.appendChild(selectField(t, 'align', 'Text alignment', [
-      { value: 'left', label: 'Left (prices on the right)' },
-      { value: 'center', label: 'Centered' }
-    ]));
-    layout.appendChild(selectField(t, 'priceLayout', 'Price layout', [
-      { value: 'inline', label: 'Sizes side by side' },
-      { value: 'stacked', label: 'Sizes stacked (one per line)' }
-    ]));
-    layout.appendChild(rangeField(t, 'baseSize', 'Base text size', 12, 48, 1, function (v) { return v + 'px'; }));
-    layout.appendChild(rangeField(t, 'padding', 'Screen padding', 0.5, 5, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
-    layout.appendChild(rangeField(t, 'sectionGap', 'Space between sections', 0.4, 4, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
-    layout.appendChild(rangeField(t, 'itemGap', 'Space between items', 0.2, 2.5, 0.05, function (v) { return v.toFixed(2) + 'em'; }));
-    layout.appendChild(rangeField(t, 'columnGap', 'Space between columns', 1, 6, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
-    layout.appendChild(checkField(t, 'autoFit', 'Auto-fit text to fill the screen (no scrolling)'));
-    grid.appendChild(layout);
+  // The design controls, split into a few flat sections. One section shows
+  // at a time (switched with the pills above the panel). Shared by the
+  // per-menu Design tab and a location's custom design.
+  var DESIGN_SECTIONS = [
+    { name: 'Layout', build: function (panel, t) {
+      panel.appendChild(selectField(t, 'columns', 'Columns', [
+        { value: '1', label: '1 column' },
+        { value: '2', label: '2 columns' },
+        { value: '3', label: '3 columns' },
+        { value: '4', label: '4 columns' }
+      ]));
+      panel.appendChild(selectField(t, 'align', 'Text alignment', [
+        { value: 'left', label: 'Left (prices on the right)' },
+        { value: 'center', label: 'Centered' }
+      ]));
+      panel.appendChild(rangeField(t, 'baseSize', 'Base text size', 12, 48, 1, function (v) { return v + 'px'; }));
+      panel.appendChild(rangeField(t, 'padding', 'Screen padding', 0.5, 5, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
+      panel.appendChild(rangeField(t, 'sectionGap', 'Space between sections', 0.4, 4, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
+      panel.appendChild(rangeField(t, 'itemGap', 'Space between items', 0.2, 2.5, 0.05, function (v) { return v.toFixed(2) + 'em'; }));
+      panel.appendChild(rangeField(t, 'columnGap', 'Space between columns', 1, 6, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
+      panel.appendChild(checkField(t, 'autoFit', 'Auto-fit text to fill the screen (no scrolling)'));
+      panel.appendChild(checkField(t, 'showMenuTitle', 'Show the menu title'));
+    } },
+    { name: 'Background', build: function (panel, t) {
+      panel.appendChild(colorField(t, 'background', 'Background color'));
+      panel.appendChild(rangeField(t, 'overlay', 'Image darkness overlay', 0, 0.9, 0.05, function (v) { return Math.round(v * 100) + '%'; }));
+      panel.appendChild(textField(t, 'backgroundImage', 'Background image URL (optional)', 'https://...'));
+    } },
+    { name: 'Text', build: function (panel, t) {
+      var fontOptions = PC.FONTS.map(function (f) { return { value: f.name, label: f.name }; });
+      var sizeFmt = function (v) { return v.toFixed(2) + 'x'; };
+      var wFmt = function (v) { return String(v); };
+      var lFmt = function (v) { return v.toFixed(2); };
+      panel.appendChild(selectField(t, 'headingFont', 'Heading font (titles & sections)', fontOptions));
+      panel.appendChild(selectField(t, 'bodyFont', 'Body font (items & prices)', fontOptions));
+      panel.appendChild(checkField(t, 'uppercaseSections', 'Uppercase section titles'));
+      panel.appendChild(checkField(t, 'sectionDivider', 'Show section divider lines'));
+      [
+        { label: 'Menu title', size: ['menuTitleSize', 1, 6, 0.1], weight: 'menuTitleWeight', line: 'menuTitleLine' },
+        { label: 'Section titles', size: ['sectionTitleSize', 0.8, 3.5, 0.05], weight: 'sectionTitleWeight', line: 'sectionTitleLine' },
+        { label: 'Item titles', size: ['itemTitleSize', 0.6, 2.5, 0.05], weight: 'itemTitleWeight', line: 'itemTitleLine' },
+        { label: 'Descriptions', size: ['descSize', 0.4, 1.5, 0.02], weight: 'descWeight', line: 'descLine' },
+        { label: 'Prices', size: ['priceSize', 0.5, 2.5, 0.05], weight: 'priceWeight', line: 'priceLine' }
+      ].forEach(function (row) {
+        panel.appendChild(h('h4', null, row.label));
+        panel.appendChild(rangeField(t, row.size[0], 'Size', row.size[1], row.size[2], row.size[3], sizeFmt));
+        // Variable fonts render every weight step; single-weight fonts like
+        // Bebas Neue synthesize bolder/lighter as best the browser can.
+        panel.appendChild(rangeField(t, row.weight, 'Weight', 100, 900, 10, wFmt));
+        panel.appendChild(rangeField(t, row.line, 'Line height', 0.8, 2.2, 0.05, lFmt));
+      });
+    } },
+    { name: 'Colors', build: function (panel, t) {
+      panel.appendChild(colorField(t, 'menuTitleColor', 'Menu title'));
+      panel.appendChild(colorField(t, 'sectionTitleColor', 'Section titles'));
+      panel.appendChild(colorField(t, 'accentColor', 'Accent / dividers'));
+      panel.appendChild(colorField(t, 'itemTitleColor', 'Item titles'));
+      panel.appendChild(colorField(t, 'descColor', 'Descriptions'));
+      panel.appendChild(colorField(t, 'priceColor', 'Prices'));
+      panel.appendChild(colorField(t, 'sizeLabelColor', 'Size labels (12oz, 16oz…)'));
+      panel.appendChild(colorField(t, 'badgeColor', 'Sold out badge'));
+      panel.appendChild(colorField(t, 'badgeTextColor', 'Sold out badge text'));
+    } },
+    { name: 'Items', build: function (panel, t) {
+      panel.appendChild(checkField(t, 'itemBox', 'Show each item in a rounded box'));
+      panel.appendChild(colorField(t, 'itemBoxColor', 'Item box color'));
+      panel.appendChild(rangeField(t, 'itemBoxRadius', 'Box corner radius', 0, 1.5, 0.05, function (v) { return v.toFixed(2) + 'em'; }));
+      panel.appendChild(colorField(t, 'featuredColor', 'Featured item highlight'));
+      panel.appendChild(checkField(t, 'showDescriptions', 'Show item descriptions'));
+      panel.appendChild(selectField(t, 'soldOutStyle', 'Sold out items', [
+        { value: 'badge', label: 'Show a SOLD OUT badge' },
+        { value: 'strike', label: 'Strike through' },
+        { value: 'hide', label: 'Hide from the board' }
+      ]));
+      panel.appendChild(textField(t, 'soldOutText', 'Sold out badge text', 'SOLD OUT'));
+      panel.appendChild(textField(t, 'currency', 'Currency symbol', '$'));
+    } }
+  ];
 
-    // Background
-    var bg = designGroup('Background');
-    bg.appendChild(colorField(t, 'background', 'Background color'));
-    bg.appendChild(textField(t, 'backgroundImage', 'Background image URL (optional)', 'https://...'));
-    bg.appendChild(rangeField(t, 'overlay', 'Image darkness overlay', 0, 0.9, 0.05, function (v) { return Math.round(v * 100) + '%'; }));
-    grid.appendChild(bg);
-
-    // Typography: per element — size, weight, line height — under one roof
-    var type = designGroup('Typography');
-    var fontOptions = PC.FONTS.map(function (f) { return { value: f.name, label: f.name }; });
-    var sizeFmt = function (v) { return v.toFixed(2) + 'x'; };
-    var wFmt = function (v) { return String(v); };
-    var lFmt = function (v) { return v.toFixed(2); };
-    type.appendChild(selectField(t, 'headingFont', 'Heading font (titles & sections)', fontOptions));
-    type.appendChild(selectField(t, 'bodyFont', 'Body font (items & prices)', fontOptions));
-    [
-      { label: 'Menu title', size: ['menuTitleSize', 1, 6, 0.1], weight: 'menuTitleWeight', line: 'menuTitleLine' },
-      { label: 'Section titles', size: ['sectionTitleSize', 0.8, 3.5, 0.05], weight: 'sectionTitleWeight', line: 'sectionTitleLine' },
-      { label: 'Item titles', size: ['itemTitleSize', 0.6, 2.5, 0.05], weight: 'itemTitleWeight', line: 'itemTitleLine' },
-      { label: 'Descriptions', size: ['descSize', 0.4, 1.5, 0.02], weight: 'descWeight', line: 'descLine' },
-      { label: 'Prices', size: ['priceSize', 0.5, 2.5, 0.05], weight: 'priceWeight', line: 'priceLine' }
-    ].forEach(function (row) {
-      type.appendChild(h('h4', null, row.label));
-      type.appendChild(rangeField(t, row.size[0], 'Size', row.size[1], row.size[2], row.size[3], sizeFmt));
-      // Variable fonts render every weight step; single-weight fonts like
-      // Bebas Neue synthesize bolder/lighter as best the browser can.
-      type.appendChild(rangeField(t, row.weight, 'Weight', 100, 900, 10, wFmt));
-      type.appendChild(rangeField(t, row.line, 'Line height', 0.8, 2.2, 0.05, lFmt));
+  function appendDesignControls(root, t, onReset, resetLabel) {
+    var nav = h('div', 'design-nav');
+    var active = null;
+    DESIGN_SECTIONS.forEach(function (sec) {
+      if (sec.name === designSection) active = sec;
+      var b = h('button', 'design-nav-btn' + (sec.name === designSection ? ' active' : ''), sec.name);
+      b.addEventListener('click', function () {
+        designSection = sec.name;
+        try { localStorage.setItem(DESIGN_SECTION_KEY, designSection); } catch (e) {}
+        renderEditor();
+      });
+      nav.appendChild(b);
     });
-    grid.appendChild(type);
+    active = active || DESIGN_SECTIONS[0];
+    nav.appendChild(h('span', 'design-nav-spacer'));
+    nav.appendChild(button('danger-ghost', resetLabel || 'Reset design to defaults', null, onReset));
+    root.appendChild(nav);
 
-    // Colors
-    var colors = designGroup('Colors');
-    colors.appendChild(colorField(t, 'menuTitleColor', 'Menu title'));
-    colors.appendChild(colorField(t, 'sectionTitleColor', 'Section titles'));
-    colors.appendChild(colorField(t, 'accentColor', 'Accent / dividers'));
-    colors.appendChild(colorField(t, 'itemTitleColor', 'Item titles'));
-    colors.appendChild(colorField(t, 'descColor', 'Descriptions'));
-    colors.appendChild(colorField(t, 'priceColor', 'Prices'));
-    colors.appendChild(colorField(t, 'sizeLabelColor', 'Size labels (12oz, 16oz…)'));
-    colors.appendChild(colorField(t, 'badgeColor', 'Sold out badge'));
-    colors.appendChild(colorField(t, 'badgeTextColor', 'Sold out badge text'));
-    grid.appendChild(colors);
-
-    // Items — boxes, featured highlight, descriptions, leaders, sold out
-    var items = designGroup('Items');
-    items.appendChild(checkField(t, 'itemBox', 'Show each item in a rounded box'));
-    items.appendChild(colorField(t, 'itemBoxColor', 'Item box color'));
-    items.appendChild(rangeField(t, 'itemBoxRadius', 'Box corner radius', 0, 1.5, 0.05, function (v) { return v.toFixed(2) + 'em'; }));
-    items.appendChild(colorField(t, 'featuredColor', 'Featured item highlight'));
-    items.appendChild(checkField(t, 'showDescriptions', 'Show item descriptions'));
-    items.appendChild(checkField(t, 'dotLeaders', 'Dotted line between item and price'));
-    items.appendChild(selectField(t, 'soldOutStyle', 'Sold out items', [
-      { value: 'badge', label: 'Show a SOLD OUT badge' },
-      { value: 'strike', label: 'Strike through' },
-      { value: 'hide', label: 'Hide from the board' }
-    ]));
-    items.appendChild(textField(t, 'soldOutText', 'Sold out badge text', 'SOLD OUT'));
-    grid.appendChild(items);
-
-    // Options
-    var opts = designGroup('Options');
-    opts.appendChild(checkField(t, 'showMenuTitle', 'Show the menu title'));
-    opts.appendChild(checkField(t, 'uppercaseSections', 'Uppercase section titles'));
-    opts.appendChild(checkField(t, 'sectionDivider', 'Show section divider lines'));
-    opts.appendChild(textField(t, 'currency', 'Currency symbol', '$'));
-    opts.appendChild(button('danger-ghost', 'Reset design to defaults', null, onReset));
-    grid.appendChild(opts);
+    var panel = h('div', 'design-panel');
+    active.build(panel, t);
+    root.appendChild(panel);
   }
 
-  function renderDesign(root, menu) {
-    var grid = h('div', 'design-grid');
+  //// ---------- Shared themes ----------
+  // A theme is a named, reusable design. A menu (or a screen with a custom
+  // design) can follow a theme; edits then become per-menu overrides that can
+  // be pushed into the theme ("Apply to theme") or discarded.
 
-    // Global (stored on the whole state, not this menu's theme)
-    var globalGroup = designGroup('Global — applies to every menu');
-    globalGroup.appendChild(textField(state.settings, 'menuTitle', 'Board title on all menus', "Leave blank to use each menu's name"));
-    grid.appendChild(globalGroup);
+  function detachAllFromTheme(id) {
+    state.menus.concat(state.locations).forEach(function (o) {
+      if (o.themeId === id) {
+        o.theme = PC.resolveTheme(state, o); // snapshot the current look first
+        o.themeId = '';
+        o.themeOverrides = {};
+      }
+    });
+  }
 
-    appendDesignControls(grid, menu.theme, function () {
-      if (!confirm('Reset all design settings for this menu to the defaults?')) return;
-      menu.theme = PC.clone(PC.DEFAULT_THEME);
+  function renderThemeBar(root, owner, noun) {
+    var bar = h('div', 'theme-bar');
+
+    var field = h('label', 'field');
+    field.appendChild(h('span', null, 'Theme'));
+    var select = h('select');
+    var custom = h('option', null, '— Custom (only this ' + noun + ') —');
+    custom.value = '';
+    select.appendChild(custom);
+    state.themes.forEach(function (th) {
+      var o = h('option', null, th.name);
+      o.value = th.id;
+      select.appendChild(o);
+    });
+    select.value = owner.themeId || '';
+    select.addEventListener('change', function () {
+      if (select.value) {
+        owner.themeId = select.value;
+        owner.themeOverrides = {};
+      } else {
+        // Detach, keeping the current look as this owner's own design.
+        owner.theme = PC.resolveTheme(state, owner);
+        owner.themeId = '';
+        owner.themeOverrides = {};
+      }
       scheduleSave();
       renderEditor();
     });
-    root.appendChild(grid);
+    field.appendChild(select);
+    bar.appendChild(field);
+
+    if (noun === 'menu') {
+      // Global board title lives here so it isn't buried in the sections.
+      var titleField = h('label', 'field grow');
+      titleField.appendChild(h('span', null, 'Board title on all menus (blank = each menu’s name)'));
+      var titleInput = h('input');
+      titleInput.type = 'text';
+      titleInput.value = state.settings.menuTitle || '';
+      titleInput.addEventListener('input', function () {
+        state.settings.menuTitle = titleInput.value;
+        scheduleSave();
+      });
+      titleField.appendChild(titleInput);
+      bar.appendChild(titleField);
+    }
+
+    var actions = h('div', 'theme-actions');
+    actions.appendChild(button('', 'Save as new theme…', 'Save the current design as a reusable theme', function () {
+      var name = prompt('Name for the new theme:', 'My Theme');
+      if (name === null) return;
+      var th = { id: PC.uid('theme'), name: name || 'My Theme', theme: PC.resolveTheme(state, owner) };
+      state.themes.push(th);
+      owner.themeId = th.id;
+      owner.themeOverrides = {};
+      scheduleSave();
+      renderEditor();
+      toast('Theme "' + th.name + '" created');
+    }));
+
+    var linked = owner.themeId ? PC.themeById(state, owner.themeId) : null;
+    var applyBtn = null, undoBtn = null;
+    if (linked) {
+      applyBtn = button('', 'Apply to theme', 'Fold these changes into the theme — everything using it updates', function () {
+        Object.assign(linked.theme, owner.themeOverrides);
+        owner.themeOverrides = {};
+        scheduleSave();
+        renderEditor();
+        toast('Theme "' + linked.name + '" updated everywhere it’s used');
+      });
+      undoBtn = button('', 'Undo changes', 'Drop the overrides and follow the theme exactly', function () {
+        owner.themeOverrides = {};
+        scheduleSave();
+        renderEditor();
+      });
+      actions.appendChild(applyBtn);
+      actions.appendChild(undoBtn);
+      actions.appendChild(button('icon', 'Rename…', 'Rename this theme', function () {
+        var name = prompt('New name for this theme:', linked.name);
+        if (!name) return;
+        linked.name = name;
+        scheduleSave();
+        renderEditor();
+      }));
+      actions.appendChild(button('danger-ghost', 'Delete theme…', null, function () {
+        if (!confirm('Delete the theme "' + linked.name + '"? Menus and screens using it keep their current look as custom designs.')) return;
+        detachAllFromTheme(linked.id);
+        state.themes = state.themes.filter(function (t2) { return t2.id !== linked.id; });
+        scheduleSave();
+        renderEditor();
+      }));
+    }
+    bar.appendChild(actions);
+
+    var note = h('p', 'theme-note');
+    bar.appendChild(note);
+    root.appendChild(bar);
+
+    function refresh() {
+      if (!linked) {
+        note.textContent = state.themes.length
+          ? 'Custom design — pick a theme above to share settings, or save this design as a new theme.'
+          : 'Save this design as a theme to reuse it on every menu and screen.';
+        return;
+      }
+      var n = Object.keys(owner.themeOverrides || {}).length;
+      if (applyBtn) applyBtn.disabled = !n;
+      if (undoBtn) undoBtn.disabled = !n;
+      note.textContent = n
+        ? n + ' setting' + (n === 1 ? '' : 's') + ' overridden on this ' + noun + ' — the theme itself is unchanged. "Apply to theme" shares the changes; "Undo changes" drops them.'
+        : 'Following "' + linked.name + '". Changing a setting overrides it for this ' + noun + ' only.';
+    }
+    refresh();
+    return { refresh: refresh };
+  }
+
+  // Theme bar + design controls for anything with {themeId, themeOverrides,
+  // theme}: menus and screens with a custom design.
+  function buildDesignEditor(root, owner, noun) {
+    var bar = renderThemeBar(root, owner, noun);
+
+    var target, resetLabel, onReset;
+    if (owner.themeId && PC.themeById(state, owner.themeId)) {
+      // Edit a working copy of the resolved design; writes are recorded as
+      // overrides so the shared theme itself stays untouched.
+      target = PC.resolveTheme(state, owner);
+      target.__apply = function (key, value) {
+        owner.themeOverrides[key] = value;
+        bar.refresh();
+      };
+      resetLabel = 'Remove overrides (follow theme exactly)';
+      onReset = function () {
+        if (!confirm('Remove the overrides on this ' + noun + ' and follow the theme exactly?')) return;
+        owner.themeOverrides = {};
+        scheduleSave();
+        renderEditor();
+      };
+    } else {
+      target = owner.theme;
+      resetLabel = 'Reset design to defaults';
+      onReset = function () {
+        if (!confirm('Reset all design settings for this ' + noun + ' to the defaults?')) return;
+        owner.theme = PC.clone(PC.DEFAULT_THEME);
+        scheduleSave();
+        renderEditor();
+      };
+    }
+    appendDesignControls(root, target, onReset, resetLabel);
+  }
+
+  function renderDesign(root, menu) {
+    buildDesignEditor(root, menu, 'menu');
   }
 
   // A location's Design tab: optionally style this physical screen once and
@@ -809,10 +957,10 @@
     input.checked = !!loc.customDesign;
     input.addEventListener('change', function () {
       loc.customDesign = input.checked;
-      if (loc.customDesign && !loc.theme) {
+      if (loc.customDesign && !loc.theme && !loc.themeId) {
         // Start from the design of the menu this screen usually shows.
         var src = PC.menuById(state, loc.defaultMenuId);
-        loc.theme = PC.clone(src ? src.theme : PC.DEFAULT_THEME);
+        loc.theme = src ? PC.resolveTheme(state, src) : PC.clone(PC.DEFAULT_THEME);
       }
       scheduleSave();
       renderEditor();
@@ -828,14 +976,7 @@
       return;
     }
 
-    var grid = h('div', 'design-grid');
-    appendDesignControls(grid, loc.theme, function () {
-      if (!confirm('Reset this screen’s design to the defaults?')) return;
-      loc.theme = PC.clone(PC.DEFAULT_THEME);
-      scheduleSave();
-      renderEditor();
-    });
-    root.appendChild(grid);
+    buildDesignEditor(root, loc, 'screen');
   }
 
   //// ---------- Location editor + schedule calendar ----------

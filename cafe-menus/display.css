@@ -144,8 +144,16 @@ html, body {
 }
 
 .pc-board.pc-center .pc-item-line {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
+
+/* Prices are first in the markup (see shared.js) so the stacked-price float
+   always starts at the top of the item; order restores the visual sequence. */
+.pc-item-title-wrap { order: 1; }
+.pc-prices { order: 2; }
 
 .pc-item-title-wrap {
   display: inline-flex;
@@ -159,14 +167,6 @@ html, body {
   font-weight: var(--pc-item-title-weight, 600);
   color: var(--pc-item-title-color, #f6ecd9);
   line-height: var(--pc-item-title-lh, 1.25);
-}
-
-.pc-leader {
-  flex: 1 1 auto;
-  min-width: 1em;
-  border-bottom: 0.13em dotted var(--pc-desc-color, #b3a68f);
-  opacity: 0.45;
-  transform: translateY(-0.28em);
 }
 
 .pc-prices {
@@ -211,15 +211,17 @@ html, body {
   display: block;
 }
 
+/* The title must be a plain inline here: an atomic inline-flex box that
+   doesn't fit beside the floated price stack would drop below it whole,
+   instead of wrapping its text around the float. */
+.pc-stacked-prices:not(.pc-center) .pc-item-title-wrap {
+  display: inline;
+}
+
 .pc-stacked-prices:not(.pc-center) .pc-prices {
   display: flex;
   float: right;
   margin-left: 0.9em;
-}
-
-/* Dot leaders can't stretch to a floated multi-line stack */
-.pc-stacked-prices:not(.pc-center) .pc-leader {
-  display: none;
 }
 
 .pc-board.pc-center.pc-stacked-prices .pc-prices {

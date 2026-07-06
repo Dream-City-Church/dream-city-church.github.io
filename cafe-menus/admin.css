@@ -444,62 +444,92 @@ label { display: block; }
 
 /* ---------- Design tab ---------- */
 
-.design-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 14px;
-  align-items: start;
-}
-
-.design-group {
+.theme-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 14px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
 }
 
-/* Collapsible group header (details/summary) */
-.design-group summary {
-  cursor: pointer;
-  user-select: none;
+.theme-bar .field {
+  margin: 0;
+  min-width: 220px;
+}
+
+.theme-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.theme-actions button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.theme-note {
+  width: 100%;
+  margin: 0;
   font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  list-style: none;
-}
-
-.design-group summary::-webkit-details-marker { display: none; }
-
-.design-group summary::before {
-  content: '▸';
-  display: inline-block;
-  width: 14px;
   color: var(--muted);
 }
 
-.design-group[open] summary {
+/* Section pills — one flat panel shows at a time, no scrolling stacks */
+.design-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
   margin-bottom: 12px;
 }
 
-.design-group[open] summary::before {
-  content: '▾';
+.design-nav-btn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--muted);
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
 }
 
-/* Sub-headings inside a group (e.g. per-element typography) */
-.design-group h4 {
-  margin: 14px 0 6px;
+.design-nav-btn:hover { color: var(--text); }
+
+.design-nav-btn.active {
+  background: var(--panel);
+  border-color: var(--border);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.design-nav-spacer { flex: 1; }
+
+.design-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px 24px;
+  align-items: start;
+}
+
+/* Sub-headings inside a panel (per-element typography) span the full row */
+.design-panel h4 {
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
   padding-top: 10px;
   border-top: 1px solid var(--border);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
-}
-
-.design-group h4:first-of-type {
-  margin-top: 10px;
 }
 
 .color-field {

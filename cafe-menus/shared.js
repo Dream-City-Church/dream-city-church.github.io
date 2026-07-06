@@ -146,8 +146,6 @@ var PC = (function () {
     showDescriptions: true,
     uppercaseSections: true,
     sectionDivider: true,        // accent underline below section titles
-    dotLeaders: true,            // dotted line between item name and price
-    priceLayout: 'inline',       // inline (side by side) | stacked (one per line)
     soldOutStyle: 'badge',       // badge | strike | hide
     soldOutText: 'SOLD OUT',
     currency: '$'
@@ -185,6 +183,8 @@ var PC = (function () {
       id: uid('menu'),
       name: name || 'New Menu',
       slug: slugify(name || 'new-menu'),
+      themeId: '',         // shared theme this menu follows ('' = custom design)
+      themeOverrides: {},  // per-menu tweaks layered over the shared theme
       theme: clone(DEFAULT_THEME),
       sections: []
     };
@@ -200,6 +200,8 @@ var PC = (function () {
       slug: slugify(name || 'new-location'),
       defaultMenuId: '',
       customDesign: false, // true = this screen styles every menu it shows
+      themeId: '',         // shared theme this screen follows (when customDesign)
+      themeOverrides: {},
       theme: null,         // the screen's own design (when customDesign is on)
       schedule: []   // list of schedule events, see newScheduleEvent()
     };
@@ -225,10 +227,18 @@ var PC = (function () {
     state.version = state.version || 1;
     state.seed = !!state.seed; // true = shipped starter data, never beats real data
     state.settings = Object.assign(clone(DEFAULT_SETTINGS), state.settings || {});
+    if (!Array.isArray(state.themes)) state.themes = [];
+    state.themes.forEach(function (th) {
+      th.id = th.id || uid('theme');
+      th.name = th.name || 'Theme';
+      th.theme = Object.assign(clone(DEFAULT_THEME), th.theme || {});
+    });
     state.menus.forEach(function (m) {
       m.id = m.id || uid('menu');
       m.name = m.name || 'Menu';
       m.slug = m.slug || slugify(m.name);
+      m.themeId = (m.themeId && themeById(state, m.themeId)) ? m.themeId : '';
+      m.themeOverrides = (m.themeOverrides && typeof m.themeOverrides === 'object') ? m.themeOverrides : {};
       m.theme = Object.assign(clone(DEFAULT_THEME), m.theme || {});
       if (!Array.isArray(m.sections)) m.sections = [];
       m.sections.forEach(function (s) {
@@ -252,6 +262,8 @@ var PC = (function () {
       loc.slug = loc.slug || slugify(loc.name);
       loc.defaultMenuId = loc.defaultMenuId || '';
       loc.customDesign = !!loc.customDesign;
+      loc.themeId = (loc.themeId && themeById(state, loc.themeId)) ? loc.themeId : '';
+      loc.themeOverrides = (loc.themeOverrides && typeof loc.themeOverrides === 'object') ? loc.themeOverrides : {};
       loc.theme = (loc.customDesign || loc.theme)
         ? Object.assign(clone(DEFAULT_THEME), loc.theme || {})
         : null;
@@ -495,6 +507,28 @@ var PC = (function () {
     return null;
   }
 
+  function themeById(state, id) {
+    if (!state || !id || !Array.isArray(state.themes)) return null;
+    for (var i = 0; i < state.themes.length; i++) {
+      if (state.themes[i].id === id) return state.themes[i];
+    }
+    return null;
+  }
+
+  // The design a menu or screen actually renders with: the shared theme it
+  // follows (plus its own overrides), or its standalone custom theme.
+  function resolveTheme(state, owner) {
+    var t = clone(DEFAULT_THEME);
+    var shared = owner && owner.themeId ? themeById(state, owner.themeId) : null;
+    if (shared) {
+      Object.assign(t, shared.theme || {});
+      Object.assign(t, owner.themeOverrides || {});
+    } else {
+      Object.assign(t, (owner && owner.theme) || {});
+    }
+    return t;
+  }
+
   function findLocation(state, key) {
     if (!state || !state.locations || !state.locations.length) return null;
     if (!key) return null;
@@ -602,7 +636,7 @@ var PC = (function () {
     board.classList.toggle('pc-uppercase-sections', !!t.uppercaseSections);
     board.classList.toggle('pc-section-divider', !!t.sectionDivider);
     board.classList.toggle('pc-has-bg-image', !!t.backgroundImage);
-    board.classList.toggle('pc-stacked-prices', t.priceLayout === 'stacked');
+    board.classList.add('pc-stacked-prices'); // prices always stack on the right
     board.classList.toggle('pc-item-boxes', !!t.itemBox);
     board.style.fontSize = t.baseSize + 'px';
 
@@ -647,17 +681,12 @@ var PC = (function () {
         }
 
         var line = el('div', 'pc-item-line');
-        var titleWrap = el('div', 'pc-item-title-wrap');
-        titleWrap.appendChild(el('span', 'pc-item-title', item.title));
-        if (item.soldOut && t.soldOutStyle === 'badge') {
-          titleWrap.appendChild(el('span', 'pc-badge', t.soldOutText || 'SOLD OUT'));
-        }
-        line.appendChild(titleWrap);
 
-        if (t.dotLeaders && t.align !== 'center') {
-          line.appendChild(el('span', 'pc-leader'));
-        }
-
+        // The prices come FIRST in the markup so that, in the stacked-price
+        // float layout, the stack always sits at the very top of the item —
+        // a float placed after a long (wrapping) title gets pushed below it.
+        // CSS `order` restores the visual title → leader → prices order in
+        // the flex layouts.
         var prices = el('div', 'pc-prices');
         (item.prices || []).forEach(function (pr) {
           var txt = priceText(t, pr.price);
@@ -668,6 +697,13 @@ var PC = (function () {
           prices.appendChild(priceEl);
         });
         line.appendChild(prices);
+
+        var titleWrap = el('div', 'pc-item-title-wrap');
+        titleWrap.appendChild(el('span', 'pc-item-title', item.title));
+        if (item.soldOut && t.soldOutStyle === 'badge') {
+          titleWrap.appendChild(el('span', 'pc-badge', t.soldOutText || 'SOLD OUT'));
+        }
+        line.appendChild(titleWrap);
         itemEl.appendChild(line);
 
         if (t.showDescriptions && item.description) {
@@ -744,6 +780,8 @@ var PC = (function () {
     newerOf: newerOf,
     findMenu: findMenu,
     menuById: menuById,
+    themeById: themeById,
+    resolveTheme: resolveTheme,
     findLocation: findLocation,
     activeMenuForLocation: activeMenuForLocation,
     localDateStr: localDateStr,

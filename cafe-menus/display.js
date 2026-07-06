@@ -51,15 +51,19 @@
       return;
     }
     var settings = (state && state.settings) || {};
-    // A location with its own design styles every menu it shows.
+    // Resolve the design: a location with its own design styles every menu it
+    // shows; otherwise the menu's design (either following a shared theme or
+    // its standalone custom one).
     var loc = locationKey ? PC.findLocation(state, locationKey) : null;
-    var themeOverride = (loc && loc.customDesign && loc.theme) ? loc.theme : null;
-    var key = JSON.stringify(menu) + '|' + JSON.stringify(settings) + '|' + JSON.stringify(themeOverride) + '|' + window.innerWidth + 'x' + window.innerHeight;
+    var theme = (loc && loc.customDesign)
+      ? PC.resolveTheme(state, loc)
+      : PC.resolveTheme(state, menu);
+    var key = JSON.stringify(menu) + '|' + JSON.stringify(settings) + '|' + JSON.stringify(theme) + '|' + window.innerWidth + 'x' + window.innerHeight;
     if (key === lastRenderKey) return;
     lastRenderKey = key;
     document.title = menu.name + ' - Menu';
     board.style.cursor = '';
-    PC.renderMenu(board, menu, { settings: settings, theme: themeOverride });
+    PC.renderMenu(board, menu, { settings: settings, theme: theme });
   }
 
   // Shown only when the URL has no valid ?location= / ?menu= - lists what's
