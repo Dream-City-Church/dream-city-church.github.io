@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Phoenix Cafe Menu Boards</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: #14161a;
+      color: #e8eaed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #1d2026;
+      border: 1px solid #32363f;
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 560px;
+      width: 100%;
+    }
+    h1 { margin: 0 0 4px; font-size: 24px; }
+    h1 span { color: #e8b95c; }
+    p.sub { color: #9aa0a8; margin: 0 0 24px; }
+    h2 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #9aa0a8;
+      margin: 24px 0 10px;
+    }
+    a.big {
+      display: block;
+      background: #e8b95c;
+      color: #201a0d;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 8px;
+      padding: 13px;
+    }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      color: #e8eaed;
+      text-decoration: none;
+      background: #23272f;
+      border: 1px solid #32363f;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+    }
+    li a:hover { border-color: #e8b95c; }
+    li a span.go { color: #9aa0a8; font-size: 12px; }
+    .empty { color: #9aa0a8; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1><span>Phoenix Cafe</span> Menu Boards</h1>
+    <p class="sub">Digital menu board platform</p>
+    <a class="big" href="admin.html">Open the Admin</a>
+    <h2>Menu board displays</h2>
+    <ul id="menus"><li class="empty" id="empty">Loading menus&hellip;</li></ul>
+  </div>
+  <script src="shared.js"></script>
+  <script>
+    (function () {
+      var list = document.getElementById('menus');
+      function show(state) {
+        list.innerHTML = '';
+        var menus = (state && state.menus) || [];
+        if (!menus.length) {
+          var li = document.createElement('li');
+          li.className = 'empty';
+          li.textContent = 'No menus yet — create one in the admin.';
+          list.appendChild(li);
+          return;
+        }
+        menus.forEach(function (m) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = 'display.html?menu=' + encodeURIComponent(m.slug || m.id);
+          a.appendChild(document.createTextNode(m.name));
+          var go = document.createElement('span');
+          go.className = 'go';
+          go.textContent = 'open display →';
+          a.appendChild(go);
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      }
+      var local = PC.load();
+      if (local) show(local);
+      PC.fetchPublished().then(function (published) {
+        show(PC.newerOf(local, published));
+      }).catch(function () {
+        show(local);
+      });
+    })();
+  </script>
+</body>
+</html>
