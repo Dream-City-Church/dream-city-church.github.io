@@ -1,0 +1,253 @@
+/*
+ * Phoenix Cafe Menu Board - Display styles
+ * All colors/sizes come from CSS variables set by the render engine
+ * (shared.js), which reads them from the menu's theme in the admin.
+ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.pc-board {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--pc-bg, #161311);
+  background-size: cover;
+  background-position: center;
+  font-family: var(--pc-body-font, sans-serif);
+  cursor: none;
+}
+
+.pc-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: var(--pc-overlay, 0.55);
+  pointer-events: none;
+}
+
+.pc-board.pc-has-bg-image .pc-overlay {
+  display: block;
+}
+
+.pc-inner {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--pc-padding, 2.2em);
+  max-width: var(--pc-max-width, none);
+  margin: 0 auto;
+  text-align: var(--pc-align, left);
+}
+
+.pc-empty {
+  color: #888;
+  font-size: 1.2em;
+  padding: 2em;
+  text-align: center;
+}
+
+.pc-menu-title {
+  margin: 0 0 0.5em 0;
+  font-family: var(--pc-heading-font, sans-serif);
+  font-size: var(--pc-menu-title-size, 2.8em);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--pc-menu-title-color, #f6ecd9);
+}
+
+.pc-columns {
+  column-count: var(--pc-columns, 2);
+  column-gap: var(--pc-column-gap, 2.4em);
+}
+
+.pc-section {
+  margin: 0 0 var(--pc-section-gap, 1.5em) 0;
+}
+
+.pc-section-title {
+  break-after: avoid-column;
+  margin: 0 0 0.55em 0;
+  font-family: var(--pc-heading-font, sans-serif);
+  font-size: var(--pc-section-title-size, 1.55em);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  color: var(--pc-section-title-color, #e8b95c);
+}
+
+.pc-uppercase-sections .pc-section-title {
+  text-transform: uppercase;
+}
+
+.pc-section-divider .pc-section-title {
+  padding-bottom: 0.22em;
+  border-bottom: 0.09em solid var(--pc-accent, #e8b95c);
+}
+
+/* Centered layout: swap the full-width underline for a short centered rule */
+.pc-board.pc-center .pc-section-title {
+  border-bottom: none;
+  position: relative;
+  padding-bottom: 0.3em;
+}
+
+.pc-board.pc-center.pc-section-divider .pc-section-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 2.2em;
+  border-bottom: 0.09em solid var(--pc-accent, #e8b95c);
+}
+
+.pc-items {
+  display: block;
+}
+
+.pc-item {
+  break-inside: avoid-column;
+  margin: 0 0 var(--pc-item-gap, 0.85em) 0;
+}
+
+.pc-item-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55em;
+}
+
+.pc-board.pc-center .pc-item-line {
+  display: block;
+}
+
+.pc-item-title-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5em;
+  min-width: 0;
+}
+
+.pc-item-title {
+  font-size: var(--pc-item-title-size, 1em);
+  font-weight: 600;
+  color: var(--pc-item-title-color, #f6ecd9);
+  line-height: 1.25;
+}
+
+.pc-leader {
+  flex: 1 1 auto;
+  min-width: 1em;
+  border-bottom: 0.13em dotted var(--pc-desc-color, #b3a68f);
+  opacity: 0.45;
+  transform: translateY(-0.28em);
+}
+
+.pc-prices {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.9em;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.pc-board.pc-center .pc-prices {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.1em;
+}
+
+.pc-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
+}
+
+.pc-size {
+  font-size: 0.62em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pc-size-label-color, #93876f);
+}
+
+.pc-amount {
+  font-size: var(--pc-price-size, 1em);
+  font-weight: 600;
+  color: var(--pc-price-color, #f6ecd9);
+}
+
+.pc-item-desc {
+  margin-top: 0.18em;
+  font-size: var(--pc-desc-size, 0.7em);
+  line-height: 1.35;
+  color: var(--pc-desc-color, #b3a68f);
+  max-width: 60em;
+}
+
+.pc-board.pc-center .pc-item-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Sold out treatments */
+.pc-soldout {
+  opacity: 0.55;
+}
+
+.pc-badge {
+  display: inline-block;
+  font-family: var(--pc-body-font, sans-serif);
+  font-size: 0.55em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pc-badge-text-color, #fff);
+  background: var(--pc-badge-color, #c0392b);
+  border-radius: 0.3em;
+  padding: 0.22em 0.55em;
+  transform: translateY(-0.15em);
+  white-space: nowrap;
+}
+
+.pc-soldout-strike .pc-item-title,
+.pc-soldout-strike .pc-amount,
+.pc-soldout-strike .pc-size {
+  text-decoration: line-through;
+}
+
+/* Setup helper screen (only shown when no ?menu= is given) */
+.pc-setup {
+  color: #ddd;
+  font-family: system-ui, sans-serif;
+  padding: 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.pc-setup h1 {
+  font-size: 28px;
+  color: #e8b95c;
+}
+
+.pc-setup code {
+  background: #222;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.pc-setup a {
+  color: #7fb4e8;
+}
+
+.pc-setup ul {
+  line-height: 2.2;
+}
