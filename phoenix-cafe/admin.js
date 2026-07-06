@@ -1,20 +1,25 @@
 ////
 // Phoenix Cafe Menu Board - Admin
-// Edit menus/sections/items, control all styling, and publish to GitHub
-// so every display updates automatically.
+// Edit menus/sections/items, control all styling, define physical screen
+// locations, and schedule which menu each location shows (Outlook-style
+// week calendar). Changes save locally right away and sync to a zero-setup
+// cloud channel automatically so every board updates on its own.
 ////
 
 (function () {
   'use strict';
 
-  var PUBLISH_CFG_KEY = 'phoenixCafe.publish.v1';
-  var PUBLISH_META_KEY = 'phoenixCafe.publishMeta.v1';
+  var SYNC_META_KEY = 'phoenixCafe.syncMeta.v1';
+  var ASPECT_KEY = 'phoenixCafe.previewAspect';
   var SAVE_DEBOUNCE_MS = 500;
-  var AUTOPUBLISH_DEBOUNCE_MS = 4000;
+  var SYNC_DEBOUNCE_MS = 2500;
+  var PULL_INTERVAL_MS = 60000;
+  var HOUR_H = 40; // calendar pixels per hour
 
   //// ---------- Tiny DOM helpers ----------
 
   function $(sel, root) { return (root || document).querySelector(sel); }
+  function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
 
   function h(tag, className, text) {
     var node = document.createElement(tag);
@@ -38,7 +43,7 @@
     t.textContent = msg;
     t.classList.add('show');
     clearTimeout(toast._timer);
-    toast._timer = setTimeout(function () { t.classList.remove('show'); }, 2200);
+    toast._timer = setTimeout(function () { t.classList.remove('show'); }, 2600);
   }
 
   function moveInArray(arr, index, delta) {
@@ -50,33 +55,54 @@
     return true;
   }
 
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
   //// ---------- App state ----------
 
   var state = PC.load();
   var seededFresh = false;
   if (!state || !state.menus.length) {
-    // First run on this device: try the published data before seeding samples.
     state = state || PC.seedState();
     seededFresh = true;
   }
 
   var sel = {
-    menuId: state.menus.length ? state.menus[0].id : null,
+    kind: 'menu',                 // 'menu' | 'location'
+    id: state.menus.length ? state.menus[0].id : null,
     tab: 'content'
   };
-  var openItems = {};      // itemId -> true (expanded editor cards)
+  var openItems = {};             // itemId -> true (expanded editor cards)
   var saveTimer = null;
-  var publishTimer = null;
-  var publishing = false;
+  var syncTimer = null;
+  var syncing = false;
+  var creatingChannel = false;
+  var syncError = '';
+  var previewAspect = '16:9';
+  try { previewAspect = localStorage.getItem(ASPECT_KEY) || '16:9'; } catch (e) {}
+
+  // Start of the week currently shown in the schedule calendar (Sunday)
+  var calWeekStart = startOfWeek(new Date());
+
+  function startOfWeek(d) {
+    var s = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    s.setDate(s.getDate() - s.getDay());
+    return s;
+  }
 
   function currentMenu() {
-    for (var i = 0; i < state.menus.length; i++) {
-      if (state.menus[i].id === sel.menuId) return state.menus[i];
+    if (sel.kind !== 'menu') return null;
+    return PC.menuById(state, sel.id);
+  }
+
+  function currentLocation() {
+    if (sel.kind !== 'location') return null;
+    for (var i = 0; i < state.locations.length; i++) {
+      if (state.locations[i].id === sel.id) return state.locations[i];
     }
     return null;
   }
 
-  //// ---------- Saving ----------
+  //// ---------- Saving (local) ----------
 
   function scheduleSave() {
     setStatus('Saving…', 'dirty');
@@ -87,11 +113,7 @@
   function doSave() {
     PC.save(state);
     refreshStatus();
-    var cfg = loadPublishCfg();
-    if (cfg.autoPublish && cfg.token) {
-      clearTimeout(publishTimer);
-      publishTimer = setTimeout(function () { publish(true); }, AUTOPUBLISH_DEBOUNCE_MS);
-    }
+    scheduleSync();
   }
 
   function setStatus(text, cls) {
@@ -100,217 +122,201 @@
     s.className = cls || '';
   }
 
-  function refreshStatus() {
-    if (publishing) { setStatus('Publishing…', 'dirty'); return; }
-    var cfg = loadPublishCfg();
-    var meta = loadPublishMeta();
-    if (!cfg.token) {
-      setStatus('Saved on this device · publishing not set up', '');
-    } else if (meta.publishedUpdatedAt !== state.updatedAt) {
-      setStatus('Saved · unpublished changes', 'dirty');
-    } else {
-      var when = meta.lastPublishedAt ? new Date(meta.lastPublishedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : '';
-      setStatus('Published' + (when ? ' · ' + when : ''), 'ok');
-    }
-  }
-
-  //// ---------- Publish config ----------
-
-  function defaultPublishCfg() {
-    var owner = '';
-    var repo = '';
-    var host = window.location.hostname;
-    if (/\.github\.io$/.test(host)) {
-      owner = host.replace(/\.github\.io$/, '');
-      repo = host;
-    }
-    return {
-      token: '',
-      owner: owner,
-      repo: repo,
-      branch: 'master',
-      path: 'phoenix-cafe/data/menus.json',
-      autoPublish: true
-    };
-  }
-
-  function loadPublishCfg() {
+  function loadSyncMeta() {
     try {
-      var raw = localStorage.getItem(PUBLISH_CFG_KEY);
-      if (raw) return Object.assign(defaultPublishCfg(), JSON.parse(raw));
-    } catch (e) {}
-    return defaultPublishCfg();
-  }
-
-  function savePublishCfg(cfg) {
-    localStorage.setItem(PUBLISH_CFG_KEY, JSON.stringify(cfg));
-  }
-
-  function loadPublishMeta() {
-    try {
-      var raw = localStorage.getItem(PUBLISH_META_KEY);
+      var raw = localStorage.getItem(SYNC_META_KEY);
       if (raw) return JSON.parse(raw);
     } catch (e) {}
     return {};
   }
 
-  function savePublishMeta(meta) {
-    localStorage.setItem(PUBLISH_META_KEY, JSON.stringify(meta));
+  function saveSyncMeta(meta) {
+    localStorage.setItem(SYNC_META_KEY, JSON.stringify(meta));
   }
 
-  //// ---------- GitHub publishing ----------
-
-  function ghHeaders(cfg) {
-    return {
-      'Authorization': 'Bearer ' + cfg.token,
-      'Accept': 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28'
-    };
-  }
-
-  function ghContentsUrl(cfg) {
-    return 'https://api.github.com/repos/' + encodeURIComponent(cfg.owner) + '/' +
-      encodeURIComponent(cfg.repo) + '/contents/' +
-      cfg.path.split('/').map(encodeURIComponent).join('/');
-  }
-
-  function b64EncodeUtf8(str) {
-    return btoa(unescape(encodeURIComponent(str)));
-  }
-
-  function publish(silent) {
-    var cfg = loadPublishCfg();
-    if (!cfg.token || !cfg.owner || !cfg.repo || !cfg.path) {
-      openSettings();
-      if (!silent) toast('Set up publishing first');
-      return Promise.resolve(false);
+  function refreshStatus() {
+    if (syncing || creatingChannel) { setStatus('Syncing to boards…', 'dirty'); return; }
+    if (syncError) { setStatus('Sync problem — boards may be behind (' + syncError + ')', 'error'); return; }
+    if (!state.syncId) { setStatus('Saved here · board sync starting…', 'dirty'); return; }
+    var meta = loadSyncMeta();
+    if (meta.syncedUpdatedAt !== state.updatedAt) {
+      setStatus('Saved · syncing shortly…', 'dirty');
+    } else {
+      var when = meta.at ? new Date(meta.at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : '';
+      setStatus('Synced to boards' + (when ? ' · ' + when : ''), 'ok');
     }
-    if (publishing) return Promise.resolve(false);
-    publishing = true;
+  }
+
+  //// ---------- Cloud sync (automatic, zero setup) ----------
+
+  function ensureChannel() {
+    if (state.syncId) return Promise.resolve(state.syncId);
+    if (creatingChannel) return Promise.resolve(null);
+    creatingChannel = true;
     refreshStatus();
-
-    var url = ghContentsUrl(cfg);
-    var publishedUpdatedAt = state.updatedAt;
-    var body = JSON.stringify(state, null, 2);
-
-    // Get the current file SHA (required to update an existing file)
-    return fetch(url + '?ref=' + encodeURIComponent(cfg.branch), { headers: ghHeaders(cfg) })
-      .then(function (res) {
-        if (res.status === 200) return res.json().then(function (j) { return j.sha; });
-        if (res.status === 404) return null;
-        throw new Error('GitHub read failed (HTTP ' + res.status + ')');
-      })
-      .then(function (sha) {
-        var payload = {
-          message: 'Update Phoenix Cafe menus',
-          content: b64EncodeUtf8(body),
-          branch: cfg.branch
-        };
-        if (sha) payload.sha = sha;
-        return fetch(url, {
-          method: 'PUT',
-          headers: Object.assign({ 'Content-Type': 'application/json' }, ghHeaders(cfg)),
-          body: JSON.stringify(payload)
-        });
-      })
-      .then(function (res) {
-        if (!res.ok) {
-          return res.json().catch(function () { return {}; }).then(function (j) {
-            throw new Error('GitHub publish failed (HTTP ' + res.status + ')' + (j.message ? ': ' + j.message : ''));
-          });
-        }
-        savePublishMeta({ lastPublishedAt: new Date().toISOString(), publishedUpdatedAt: publishedUpdatedAt });
-        publishing = false;
-        refreshStatus();
-        if (!silent) toast('Published! Boards update within a minute or two.');
-        return true;
-      })
-      .catch(function (err) {
-        publishing = false;
-        setStatus('Publish error: ' + err.message, 'error');
-        if (!silent) toast('Publish failed — see status bar');
-        return false;
-      });
+    return PC.sync.create(state).then(function (id) {
+      creatingChannel = false;
+      syncError = '';
+      state.syncId = id;
+      PC.save(state);
+      saveSyncMeta({ syncedUpdatedAt: state.updatedAt, at: new Date().toISOString() });
+      refreshStatus();
+      renderEditor(); // display URLs now include the sync id
+      return id;
+    }).catch(function (err) {
+      creatingChannel = false;
+      syncError = err.message || 'offline';
+      refreshStatus();
+      return null;
+    });
   }
 
-  function testPublishConnection() {
-    var cfg = readSettingsForm();
-    var out = $('#publish-test-result');
-    out.className = '';
-    out.textContent = 'Testing…';
-    if (!cfg.token || !cfg.owner || !cfg.repo) {
-      out.className = 'error';
-      out.textContent = 'Token, owner, and repository are required.';
-      return;
+  function scheduleSync() {
+    clearTimeout(syncTimer);
+    syncTimer = setTimeout(doSync, SYNC_DEBOUNCE_MS);
+  }
+
+  function doSync(opts) {
+    if (!state.syncId) {
+      return ensureChannel().then(function (id) { return !!id; });
     }
-    fetch('https://api.github.com/repos/' + encodeURIComponent(cfg.owner) + '/' + encodeURIComponent(cfg.repo) +
-      '/branches/' + encodeURIComponent(cfg.branch), { headers: ghHeaders(cfg) })
-      .then(function (res) {
-        if (res.ok) {
-          out.className = 'ok';
-          out.textContent = 'Connected! Repository and branch found.';
-        } else if (res.status === 401) {
-          throw new Error('Token was rejected (401). Check the token value.');
-        } else if (res.status === 404) {
-          throw new Error('Repo or branch not found (404). Check owner/repo/branch and token repository access.');
-        } else {
-          throw new Error('HTTP ' + res.status);
-        }
-      })
-      .catch(function (err) {
-        out.className = 'error';
-        out.textContent = err.message;
-      });
+    if (syncing) { scheduleSync(); return Promise.resolve(false); }
+    syncing = true;
+    refreshStatus();
+    var syncedUpdatedAt = state.updatedAt;
+    return PC.sync.put(state.syncId, state, opts).then(function () {
+      syncing = false;
+      syncError = '';
+      saveSyncMeta({ syncedUpdatedAt: syncedUpdatedAt, at: new Date().toISOString() });
+      refreshStatus();
+      return true;
+    }).catch(function (err) {
+      syncing = false;
+      if (err.status === 404) {
+        // Channel expired/vanished - make a new one and warn loudly,
+        // because TVs pointed at the old sync id need their URL updated.
+        state.syncId = '';
+        return ensureChannel().then(function (id) {
+          if (id) {
+            toast('Sync channel was recreated — re-copy the display URLs onto your TVs.');
+            openSyncInfo();
+          }
+          return !!id;
+        });
+      }
+      syncError = err.message || 'offline';
+      refreshStatus();
+      return false;
+    });
   }
 
-  //// ---------- Settings modal ----------
-
-  function openSettings() {
-    var cfg = loadPublishCfg();
-    $('#cfg-token').value = cfg.token;
-    $('#cfg-owner').value = cfg.owner;
-    $('#cfg-repo').value = cfg.repo;
-    $('#cfg-branch').value = cfg.branch;
-    $('#cfg-path').value = cfg.path;
-    $('#cfg-autopublish').checked = !!cfg.autoPublish;
-    $('#publish-test-result').textContent = '';
-    $('#publish-test-result').className = '';
-    $('#settings-modal').classList.add('open');
+  // Adopt whatever is newer between what we have and the channel's copy
+  // (e.g. edits made from another computer).
+  function pullFromChannel() {
+    if (!state.syncId) return Promise.resolve(false);
+    var id = state.syncId;
+    return PC.sync.get(id).then(function (remote) {
+      if (!remote || !remote.menus) return false;
+      remote.syncId = id;
+      if (String(remote.updatedAt || '') > String(state.updatedAt || '')) {
+        state = remote;
+        ensureValidSelection();
+        PC.save(state);
+        saveSyncMeta({ syncedUpdatedAt: state.updatedAt, at: new Date().toISOString() });
+        renderAll();
+        return true;
+      }
+      return false;
+    }).catch(function () { return false; });
   }
 
-  function readSettingsForm() {
-    return {
-      token: $('#cfg-token').value.trim(),
-      owner: $('#cfg-owner').value.trim(),
-      repo: $('#cfg-repo').value.trim(),
-      branch: $('#cfg-branch').value.trim() || 'master',
-      path: $('#cfg-path').value.trim() || 'phoenix-cafe/data/menus.json',
-      autoPublish: $('#cfg-autopublish').checked
-    };
+  function ensureValidSelection() {
+    if (sel.kind === 'menu' && !currentMenu()) {
+      sel.id = state.menus.length ? state.menus[0].id : null;
+    }
+    if (sel.kind === 'location' && !currentLocation()) {
+      sel.kind = 'menu';
+      sel.id = state.menus.length ? state.menus[0].id : null;
+    }
   }
 
-  //// ---------- Menu list (sidebar) ----------
+  //// ---------- Sync info modal ----------
+
+  function adminSyncUrl() {
+    var base = window.location.href.split('?')[0];
+    return base + (state.syncId ? '?sync=' + encodeURIComponent(state.syncId) : '');
+  }
+
+  function openSyncInfo() {
+    var meta = loadSyncMeta();
+    $('#sync-state').textContent = state.syncId
+      ? (syncError ? 'Sync problem: ' + syncError : 'Connected — boards update automatically.')
+      : 'Setting up… (needs internet)';
+    $('#sync-admin-link').textContent = adminSyncUrl();
+    $('#sync-last').textContent = meta.at ? new Date(meta.at).toLocaleString() : 'never';
+    $('#sync-modal').classList.add('open');
+  }
+
+  //// ---------- Sidebar ----------
 
   function renderMenuList() {
     var list = $('#menu-list');
     list.innerHTML = '';
     state.menus.forEach(function (menu) {
-      var row = h('button', 'menu-item' + (menu.id === sel.menuId ? ' active' : ''));
+      var active = sel.kind === 'menu' && menu.id === sel.id;
+      var row = h('button', 'menu-item' + (active ? ' active' : ''));
       row.appendChild(h('span', 'name', menu.name));
       row.addEventListener('click', function () {
-        sel.menuId = menu.id;
+        sel.kind = 'menu';
+        sel.id = menu.id;
         renderAll();
       });
       list.appendChild(row);
     });
+
+    var locList = $('#location-list');
+    locList.innerHTML = '';
+    state.locations.forEach(function (loc) {
+      var active = sel.kind === 'location' && loc.id === sel.id;
+      var row = h('button', 'menu-item' + (active ? ' active' : ''));
+      row.appendChild(h('span', 'name', '📺 ' + loc.name));
+      row.addEventListener('click', function () {
+        sel.kind = 'location';
+        sel.id = loc.id;
+        renderAll();
+      });
+      locList.appendChild(row);
+    });
   }
 
-  //// ---------- Content tab ----------
+  //// ---------- URLs ----------
+
+  function baseUrl() {
+    return window.location.href.replace(/admin\.html.*$/, '');
+  }
+
+  function withSync(url) {
+    if (state.syncId) url += '&sync=' + encodeURIComponent(state.syncId);
+    return url;
+  }
 
   function displayUrlFor(menu) {
-    var base = window.location.href.replace(/admin\.html.*$/, '');
-    return base + 'display.html?menu=' + encodeURIComponent(menu.slug || menu.id);
+    return withSync(baseUrl() + 'display.html?menu=' + encodeURIComponent(menu.slug || menu.id));
   }
+
+  function displayUrlForLocation(loc) {
+    return withSync(baseUrl() + 'display.html?location=' + encodeURIComponent(loc.slug || loc.id));
+  }
+
+  function copyText(text, doneMsg) {
+    navigator.clipboard.writeText(text).then(function () {
+      toast(doneMsg || 'Copied');
+    }, function () {
+      prompt('Copy this URL:', text);
+    });
+  }
+
+  //// ---------- Content tab (menus) ----------
 
   function renderContent(root, menu) {
     // --- menu meta bar ---
@@ -341,7 +347,7 @@
         s.items.forEach(function (it) { it.id = PC.uid('item'); });
       });
       state.menus.push(copy);
-      sel.menuId = copy.id;
+      sel.id = copy.id;
       scheduleSave();
       renderAll();
     }));
@@ -349,7 +355,12 @@
     meta.appendChild(button('danger-ghost', 'Delete menu', null, function () {
       if (!confirm('Delete the menu "' + menu.name + '"? This cannot be undone.')) return;
       state.menus = state.menus.filter(function (m) { return m.id !== menu.id; });
-      sel.menuId = state.menus.length ? state.menus[0].id : null;
+      // Clean up any location references to this menu.
+      state.locations.forEach(function (loc) {
+        if (loc.defaultMenuId === menu.id) loc.defaultMenuId = '';
+        loc.schedule = loc.schedule.filter(function (ev) { return ev.menuId !== menu.id; });
+      });
+      ensureValidSelection();
       scheduleSave();
       renderAll();
     }));
@@ -359,11 +370,7 @@
     var linkCode = h('code', null, displayUrlFor(menu));
     link.appendChild(linkCode);
     link.appendChild(button('icon', 'Copy', 'Copy the display URL for this menu', function () {
-      navigator.clipboard.writeText(displayUrlFor(menu)).then(function () {
-        toast('Display URL copied');
-      }, function () {
-        prompt('Copy this URL:', displayUrlFor(menu));
-      });
+      copyText(displayUrlFor(menu), 'Display URL copied');
     }));
     meta.appendChild(link);
     root.appendChild(meta);
@@ -661,6 +668,10 @@
       { value: 'left', label: 'Left (prices on the right)' },
       { value: 'center', label: 'Centered' }
     ]));
+    layout.appendChild(selectField(t, 'priceLayout', 'Price layout', [
+      { value: 'inline', label: 'Sizes side by side' },
+      { value: 'stacked', label: 'Sizes stacked (one per line)' }
+    ]));
     layout.appendChild(rangeField(t, 'baseSize', 'Base text size', 12, 48, 1, function (v) { return v + 'px'; }));
     layout.appendChild(rangeField(t, 'padding', 'Screen padding', 0.5, 5, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
     layout.appendChild(rangeField(t, 'sectionGap', 'Space between sections', 0.4, 4, 0.1, function (v) { return v.toFixed(1) + 'em'; }));
@@ -727,11 +738,306 @@
     root.appendChild(grid);
   }
 
+  //// ---------- Location editor + schedule calendar ----------
+
+  function menuColor(menuId) {
+    var idx = 0;
+    for (var i = 0; i < state.menus.length; i++) {
+      if (state.menus[i].id === menuId) { idx = i; break; }
+    }
+    return 'hsl(' + Math.round(idx * 137.5 % 360) + ', 48%, 42%)';
+  }
+
+  function menuSelectOptions(select, includeNone, noneLabel) {
+    select.innerHTML = '';
+    if (includeNone) {
+      var none = h('option', null, noneLabel || '— none (screen goes to setup page) —');
+      none.value = '';
+      select.appendChild(none);
+    }
+    state.menus.forEach(function (m) {
+      var o = h('option', null, m.name);
+      o.value = m.id;
+      select.appendChild(o);
+    });
+  }
+
+  function renderLocationEditor(root, loc) {
+    var meta = h('div', 'menu-meta');
+
+    var nameField = h('label', 'field grow');
+    nameField.appendChild(h('span', null, 'Location name (a physical screen)'));
+    var nameInput = h('input');
+    nameInput.type = 'text';
+    nameInput.value = loc.name;
+    nameInput.addEventListener('input', function () {
+      loc.name = nameInput.value;
+      loc.slug = PC.slugify(nameInput.value);
+      scheduleSave();
+      renderMenuList();
+      linkCode.textContent = displayUrlForLocation(loc);
+    });
+    nameField.appendChild(nameInput);
+    meta.appendChild(nameField);
+
+    var defField = h('label', 'field');
+    defField.appendChild(h('span', null, 'Default menu (when nothing is scheduled)'));
+    var defSelect = h('select');
+    menuSelectOptions(defSelect, true);
+    defSelect.value = loc.defaultMenuId || '';
+    defSelect.addEventListener('change', function () {
+      loc.defaultMenuId = defSelect.value;
+      scheduleSave();
+      updatePreview(true);
+    });
+    defField.appendChild(defSelect);
+    meta.appendChild(defField);
+
+    meta.appendChild(button('danger-ghost', 'Delete location', null, function () {
+      if (!confirm('Delete the location "' + loc.name + '"? Any TV pointed at it will show the setup page.')) return;
+      state.locations = state.locations.filter(function (l) { return l.id !== loc.id; });
+      ensureValidSelection();
+      scheduleSave();
+      renderAll();
+    }));
+
+    var link = h('div', 'display-link');
+    link.appendChild(h('span', null, 'Display URL for this screen:'));
+    var linkCode = h('code', null, displayUrlForLocation(loc));
+    link.appendChild(linkCode);
+    link.appendChild(button('icon', 'Copy', 'Copy the display URL for this screen', function () {
+      copyText(displayUrlForLocation(loc), 'Display URL copied');
+    }));
+    meta.appendChild(link);
+    root.appendChild(meta);
+
+    var help = h('p', 'loc-help',
+      'Schedule which menu this screen shows and when. Click an empty time slot to add a scheduled menu, or click an existing block to edit it. ' +
+      'Weekly menus repeat every week; single-date menus (dashed outline) override weekly ones on that day. Outside all scheduled times the default menu shows.');
+    root.appendChild(help);
+
+    root.appendChild(renderCalendar(loc));
+  }
+
+  function renderCalendar(loc) {
+    var cal = h('div', 'calendar');
+
+    // --- toolbar ---
+    var bar = h('div', 'cal-toolbar');
+    var weekEnd = new Date(calWeekStart);
+    weekEnd.setDate(weekEnd.getDate() + 6);
+    var fmt = function (d) { return d.toLocaleDateString([], { month: 'short', day: 'numeric' }); };
+    bar.appendChild(button('icon', '‹', 'Previous week', function () {
+      calWeekStart.setDate(calWeekStart.getDate() - 7);
+      renderEditor();
+    }));
+    bar.appendChild(button('icon', '›', 'Next week', function () {
+      calWeekStart.setDate(calWeekStart.getDate() + 7);
+      renderEditor();
+    }));
+    bar.appendChild(button('icon', 'Today', null, function () {
+      calWeekStart = startOfWeek(new Date());
+      renderEditor();
+    }));
+    bar.appendChild(h('h3', null, fmt(calWeekStart) + ' – ' + fmt(weekEnd)));
+    bar.appendChild(button('primary', '+ Schedule menu', null, function () {
+      openEventModal(loc, null, { days: [new Date().getDay()], start: '06:00', end: '11:00' });
+    }));
+    cal.appendChild(bar);
+
+    // --- day-name header ---
+    var head = h('div', 'cal-head');
+    head.appendChild(h('div'));
+    var todayStr = PC.localDateStr(new Date());
+    var colDates = [];
+    for (var d = 0; d < 7; d++) {
+      var date = new Date(calWeekStart);
+      date.setDate(date.getDate() + d);
+      colDates.push(PC.localDateStr(date));
+      var name = h('div', 'cal-day-name',
+        date.toLocaleDateString([], { weekday: 'short' }) + ' ' + date.getDate());
+      if (colDates[d] === todayStr) name.style.color = 'var(--accent)';
+      head.appendChild(name);
+    }
+    cal.appendChild(head);
+
+    // --- scrollable week grid ---
+    var scroll = h('div', 'cal-scroll');
+    var grid = h('div', 'cal-grid');
+    var totalH = 24 * HOUR_H;
+
+    var gutter = h('div', 'cal-gutter');
+    gutter.style.height = totalH + 'px';
+    for (var hr = 1; hr < 24; hr++) {
+      var lbl = h('span', 'cal-hour-label',
+        (hr % 12 === 0 ? 12 : hr % 12) + (hr < 12 ? 'am' : 'pm'));
+      lbl.style.top = (hr * HOUR_H) + 'px';
+      gutter.appendChild(lbl);
+    }
+    grid.appendChild(gutter);
+
+    for (var day = 0; day < 7; day++) {
+      grid.appendChild(renderCalDay(loc, day, colDates[day], totalH));
+    }
+
+    scroll.appendChild(grid);
+    cal.appendChild(scroll);
+
+    // --- legend ---
+    var legend = h('div', 'cal-legend');
+    legend.appendChild(h('span', null, 'Menus:'));
+    state.menus.forEach(function (m) {
+      var chip = h('span', 'chip');
+      var sw = h('span', 'swatch');
+      sw.style.background = menuColor(m.id);
+      chip.appendChild(sw);
+      chip.appendChild(h('span', null, m.name));
+      legend.appendChild(chip);
+    });
+    cal.appendChild(legend);
+
+    // Scroll to early morning once the calendar is in the document.
+    requestAnimationFrame(function () { scroll.scrollTop = 5.5 * HOUR_H; });
+    return cal;
+  }
+
+  function minutesOf(hm) {
+    var parts = String(hm || '0:0').split(':');
+    return (parseInt(parts[0], 10) || 0) * 60 + (parseInt(parts[1], 10) || 0);
+  }
+
+  function renderCalDay(loc, day, dateStr, totalH) {
+    var col = h('div', 'cal-col');
+    col.style.height = totalH + 'px';
+    col.style.background =
+      'repeating-linear-gradient(to bottom, transparent 0, transparent ' + (HOUR_H - 1) + 'px, rgba(255,255,255,0.05) ' + (HOUR_H - 1) + 'px, rgba(255,255,255,0.05) ' + HOUR_H + 'px)';
+
+    // Click an empty slot to schedule a menu at that time/day.
+    col.addEventListener('click', function (ev) {
+      if (ev.target !== col) return; // clicks on event blocks handled below
+      var hour = Math.max(0, Math.min(23, Math.floor(ev.offsetY / HOUR_H)));
+      openEventModal(loc, null, {
+        days: [day],
+        date: dateStr,
+        start: pad2(hour) + ':00',
+        end: hour >= 23 ? '23:59' : pad2(hour + 1) + ':00'
+      });
+    });
+
+    (loc.schedule || []).forEach(function (evt) {
+      var applies = evt.date ? evt.date === dateStr : (evt.days || []).indexOf(day) !== -1;
+      if (!applies) return;
+      var startMin = minutesOf(evt.start);
+      var endMin = Math.max(startMin + 15, minutesOf(evt.end));
+      var block = h('div', 'cal-event' + (evt.date ? ' cal-event-date' : ''));
+      block.style.top = (startMin / 60 * HOUR_H) + 'px';
+      block.style.height = Math.max(18, (endMin - startMin) / 60 * HOUR_H - 2) + 'px';
+      block.style.background = menuColor(evt.menuId);
+      var m = PC.menuById(state, evt.menuId);
+      block.appendChild(h('div', null, (m ? m.name : '(deleted menu)') + (evt.date ? ' · ' + evt.date : '')));
+      block.appendChild(h('div', 'cal-event-time', evt.start + ' – ' + evt.end));
+      block.title = 'Click to edit';
+      block.addEventListener('click', function (e) {
+        e.stopPropagation();
+        openEventModal(loc, evt, null);
+      });
+      col.appendChild(block);
+    });
+
+    return col;
+  }
+
+  //// ---------- Schedule event modal ----------
+
+  var eventCtx = null; // { loc, evt (null = creating), defaultDate }
+
+  function openEventModal(loc, evt, defaults) {
+    eventCtx = { loc: loc, evt: evt, defaultDate: (defaults && defaults.date) || PC.localDateStr(new Date()) };
+    var isNew = !evt;
+    $('#event-modal-title').textContent = isNew ? 'Schedule a menu' : 'Edit scheduled menu';
+    $('#btn-evt-delete').style.visibility = isNew ? 'hidden' : 'visible';
+
+    menuSelectOptions($('#evt-menu'), false);
+    var src = evt || {
+      menuId: state.menus.length ? state.menus[0].id : '',
+      days: (defaults && defaults.days) || [1, 2, 3, 4, 5],
+      date: '',
+      start: (defaults && defaults.start) || '06:00',
+      end: (defaults && defaults.end) || '11:00'
+    };
+    $('#evt-menu').value = src.menuId || (state.menus.length ? state.menus[0].id : '');
+    $all('#evt-days input').forEach(function (cb) {
+      cb.checked = (src.days || []).indexOf(parseInt(cb.value, 10)) !== -1;
+    });
+    $('#evt-single-date').checked = !!src.date;
+    $('#evt-date').value = src.date || eventCtx.defaultDate;
+    $('#evt-start').value = src.start;
+    $('#evt-end').value = src.end;
+    $('#evt-error').textContent = '';
+    syncEventModalMode();
+    $('#event-modal').classList.add('open');
+  }
+
+  function syncEventModalMode() {
+    var single = $('#evt-single-date').checked;
+    $('#evt-date-field').hidden = !single;
+    $('#evt-days').parentElement.hidden = single;
+  }
+
+  function saveEventFromModal() {
+    if (!eventCtx) return;
+    var loc = eventCtx.loc;
+    var single = $('#evt-single-date').checked;
+    var days = $all('#evt-days input')
+      .filter(function (cb) { return cb.checked; })
+      .map(function (cb) { return parseInt(cb.value, 10); });
+    var date = single ? $('#evt-date').value : '';
+    var start = $('#evt-start').value;
+    var end = $('#evt-end').value;
+    var menuId = $('#evt-menu').value;
+
+    var err = '';
+    if (!menuId) err = 'Pick a menu to show.';
+    else if (single && !date) err = 'Pick the date.';
+    else if (!single && !days.length) err = 'Pick at least one day of the week.';
+    else if (!start || !end || end <= start) err = 'The end time must be after the start time.';
+    if (err) {
+      $('#evt-error').textContent = err;
+      return;
+    }
+
+    var evt = eventCtx.evt;
+    if (!evt) {
+      evt = PC.newScheduleEvent(menuId);
+      loc.schedule.push(evt);
+    }
+    evt.menuId = menuId;
+    evt.days = single ? [] : days;
+    evt.date = date;
+    evt.start = start;
+    evt.end = end;
+
+    $('#event-modal').classList.remove('open');
+    eventCtx = null;
+    scheduleSave();
+    renderEditor();
+    updatePreview(true);
+  }
+
   //// ---------- Editor + preview ----------
 
   function renderEditor() {
     var root = $('#editor-body');
     root.innerHTML = '';
+
+    if (sel.kind === 'location') {
+      $('#menu-tabs').style.display = 'none';
+      var loc = currentLocation();
+      if (loc) renderLocationEditor(root, loc);
+      return;
+    }
+
+    $('#menu-tabs').style.display = '';
     var menu = currentMenu();
     if (!menu) {
       root.appendChild(h('div', 'empty-note', 'No menus yet. Click "+ New Menu" to create your first menu.'));
@@ -741,31 +1047,50 @@
     else renderDesign(root, menu);
   }
 
-  var lastPreviewMenuId = null;
-  function updatePreview() {
-    var menu = currentMenu();
+  var lastPreviewSrcKey = null;
+  function updatePreview(force) {
     var frame = $('#preview-frame');
-    if (!menu) {
-      lastPreviewMenuId = null;
-      frame.removeAttribute('src');
-      return;
+    var srcKey = sel.kind + ':' + sel.id;
+    if (!force && srcKey === lastPreviewSrcKey) return;
+    lastPreviewSrcKey = srcKey;
+    if (sel.kind === 'location') {
+      var loc = currentLocation();
+      if (loc) { frame.src = 'display.html?preview=1&location=' + encodeURIComponent(loc.id) + '&r=' + Date.now(); return; }
+    } else {
+      var menu = currentMenu();
+      if (menu) { frame.src = 'display.html?preview=1&menu=' + encodeURIComponent(menu.id) + '&r=' + Date.now(); return; }
     }
-    if (menu.id !== lastPreviewMenuId) {
-      lastPreviewMenuId = menu.id;
-      frame.src = 'display.html?preview=1&menu=' + encodeURIComponent(menu.id);
-    }
-    // Content/design changes reach the iframe automatically through
+    lastPreviewSrcKey = null;
+    frame.removeAttribute('src');
+    // Content/design edits reach the iframe automatically through
     // PC.save() -> BroadcastChannel -> display.js re-render.
   }
 
   function sizePreview() {
+    var wrap = $('.preview-frame-wrap');
     var stage = $('#preview-stage');
     var frame = $('#preview-frame');
-    var w = stage.clientWidth;
-    if (!w) return;
-    var hpx = Math.round(w * 9 / 16);
-    stage.style.height = hpx + 'px';
-    frame.style.transform = 'scale(' + (w / 1920) + ')';
+    var maxW = wrap.clientWidth - 24;
+    var maxH = wrap.clientHeight - 24;
+    if (maxW <= 0 || maxH <= 0) return;
+    var land = previewAspect !== '9:16';
+    var nativeW = land ? 1920 : 1080;
+    var nativeH = land ? 1080 : 1920;
+    var aspect = nativeW / nativeH;
+    var w = Math.min(maxW, maxH * aspect);
+    stage.style.width = w + 'px';
+    stage.style.height = (w / aspect) + 'px';
+    frame.style.width = nativeW + 'px';
+    frame.style.height = nativeH + 'px';
+    frame.style.transform = 'scale(' + (w / nativeW) + ')';
+  }
+
+  function setAspect(aspect) {
+    previewAspect = aspect;
+    try { localStorage.setItem(ASPECT_KEY, aspect); } catch (e) {}
+    $('#btn-aspect-landscape').classList.toggle('active', aspect === '16:9');
+    $('#btn-aspect-portrait').classList.toggle('active', aspect === '9:16');
+    sizePreview();
   }
 
   function renderAll() {
@@ -796,35 +1121,96 @@
     if (name === null) return;
     var menu = PC.newMenu(name || 'New Menu');
     state.menus.push(menu);
-    sel.menuId = menu.id;
+    sel.kind = 'menu';
+    sel.id = menu.id;
     sel.tab = 'content';
     scheduleSave();
     renderAll();
   });
 
-  $('#btn-publish').addEventListener('click', function () {
-    // Flush any pending save first so we publish the latest state.
+  $('#btn-add-location').addEventListener('click', function () {
+    var name = prompt('Name for the new location (a physical screen):', 'Cafe Screen');
+    if (name === null) return;
+    var loc = PC.newLocation(name || 'New Location');
+    loc.defaultMenuId = state.menus.length ? state.menus[0].id : '';
+    state.locations.push(loc);
+    sel.kind = 'location';
+    sel.id = loc.id;
+    scheduleSave();
+    renderAll();
+  });
+
+  $('#btn-sync-now').addEventListener('click', function () {
     clearTimeout(saveTimer);
     PC.save(state);
-    publish(false);
+    clearTimeout(syncTimer);
+    doSync().then(function (ok) {
+      if (ok) toast('Synced — boards update within ~30 seconds.');
+    });
   });
 
-  $('#btn-settings').addEventListener('click', openSettings);
-  $('#btn-settings-cancel').addEventListener('click', function () {
-    $('#settings-modal').classList.remove('open');
+  $('#btn-sync-info').addEventListener('click', openSyncInfo);
+  $('#btn-sync-close').addEventListener('click', function () {
+    $('#sync-modal').classList.remove('open');
   });
-  $('#btn-settings-save').addEventListener('click', function () {
-    savePublishCfg(readSettingsForm());
-    $('#settings-modal').classList.remove('open');
-    refreshStatus();
-    toast('Publish settings saved');
+  $('#sync-modal').addEventListener('click', function (ev) {
+    if (ev.target === $('#sync-modal')) $('#sync-modal').classList.remove('open');
   });
-  $('#btn-test-publish').addEventListener('click', testPublishConnection);
-  $('#settings-modal').addEventListener('click', function (ev) {
-    if (ev.target === $('#settings-modal')) $('#settings-modal').classList.remove('open');
+  $('#btn-copy-admin-link').addEventListener('click', function () {
+    copyText(adminSyncUrl(), 'Admin link copied');
   });
+  $('#btn-new-channel').addEventListener('click', function () {
+    if (!confirm('Start a NEW sync channel? Every TV will need its display URL re-copied. Only do this if the current channel is broken or was tampered with.')) return;
+    state.syncId = '';
+    saveSyncMeta({});
+    ensureChannel().then(function (id) {
+      if (id) {
+        toast('New sync channel created — re-copy the display URLs.');
+        openSyncInfo();
+        renderEditor();
+      }
+    });
+  });
+
+  // Schedule event modal
+  $('#evt-single-date').addEventListener('change', function () {
+    if (this.checked && !$('#evt-date').value && eventCtx) {
+      $('#evt-date').value = eventCtx.defaultDate;
+    }
+    syncEventModalMode();
+  });
+  $('#btn-evt-save').addEventListener('click', saveEventFromModal);
+  $('#btn-evt-cancel').addEventListener('click', function () {
+    $('#event-modal').classList.remove('open');
+    eventCtx = null;
+  });
+  $('#btn-evt-delete').addEventListener('click', function () {
+    if (!eventCtx || !eventCtx.evt) return;
+    var loc = eventCtx.loc;
+    loc.schedule = loc.schedule.filter(function (e) { return e.id !== eventCtx.evt.id; });
+    $('#event-modal').classList.remove('open');
+    eventCtx = null;
+    scheduleSave();
+    renderEditor();
+    updatePreview(true);
+  });
+  $('#event-modal').addEventListener('click', function (ev) {
+    if (ev.target === $('#event-modal')) {
+      $('#event-modal').classList.remove('open');
+      eventCtx = null;
+    }
+  });
+
+  // Preview aspect toggle
+  $('#btn-aspect-landscape').addEventListener('click', function () { setAspect('16:9'); });
+  $('#btn-aspect-portrait').addEventListener('click', function () { setAspect('9:16'); });
 
   $('#btn-open-display').addEventListener('click', function () {
+    if (sel.kind === 'location') {
+      var loc = currentLocation();
+      if (loc) window.open(displayUrlForLocation(loc), '_blank');
+      return;
+    }
     var menu = currentMenu();
     if (menu) window.open(displayUrlFor(menu), '_blank');
   });
@@ -851,8 +1237,12 @@
         var imported = PC.normalizeState(JSON.parse(reader.result));
         if (!imported || !imported.menus) throw new Error('bad format');
         if (!confirm('Replace ALL current menus with the ' + imported.menus.length + ' menu(s) from this file?')) return;
+        // Keep our existing sync channel so TVs don't need new URLs,
+        // unless we don't have one and the file does.
+        imported.syncId = state.syncId || imported.syncId || '';
         state = imported;
-        sel.menuId = state.menus.length ? state.menus[0].id : null;
+        sel.kind = 'menu';
+        sel.id = state.menus.length ? state.menus[0].id : null;
         scheduleSave();
         renderAll();
         toast('Menus imported');
@@ -865,13 +1255,16 @@
 
   window.addEventListener('resize', sizePreview);
 
-  // Warn before leaving if a publish is still pending
+  // Pull remote edits (from another admin computer) periodically and on focus.
+  setInterval(pullFromChannel, PULL_INTERVAL_MS);
+  window.addEventListener('focus', function () { pullFromChannel(); });
+
+  // Last-ditch flush if the tab closes with unsynced changes.
   window.addEventListener('beforeunload', function (ev) {
-    var cfg = loadPublishCfg();
-    var meta = loadPublishMeta();
-    if (cfg.token && cfg.autoPublish && meta.publishedUpdatedAt !== state.updatedAt) {
-      // Try to flush the publish; the browser may or may not wait, so also warn.
-      publish(true);
+    var meta = loadSyncMeta();
+    if (state.syncId && meta.syncedUpdatedAt !== state.updatedAt) {
+      clearTimeout(syncTimer);
+      doSync({ keepalive: true });
       ev.preventDefault();
       ev.returnValue = '';
     }
@@ -880,24 +1273,55 @@
   //// ---------- Boot ----------
 
   function boot() {
+    setAspect(previewAspect);
+    var urlSync = new URLSearchParams(window.location.search).get('sync');
+
+    if (urlSync) {
+      // Opened from a shared admin link: adopt that sync channel.
+      PC.sync.get(urlSync).then(function (remote) {
+        if (remote && remote.menus && remote.menus.length &&
+            (seededFresh || String(remote.updatedAt || '') > String(state.updatedAt || ''))) {
+          state = remote;
+        }
+        state.syncId = urlSync;
+        ensureValidSelection();
+        sel.id = sel.id || (state.menus.length ? state.menus[0].id : null);
+        PC.save(state);
+        saveSyncMeta({ syncedUpdatedAt: state.updatedAt, at: new Date().toISOString() });
+        renderAll();
+      }).catch(function () {
+        renderAll();
+        toast('Could not reach the sync channel from this link.');
+      });
+      return;
+    }
+
+    if (state.syncId) {
+      renderAll();
+      pullFromChannel();
+      return;
+    }
+
     if (seededFresh) {
-      // A brand-new browser: prefer the published data over the sample seed
-      // so a second admin computer sees the real menus.
+      // Brand-new browser with no sync link: prefer the repo's published
+      // data over the built-in sample, then start a sync channel.
       PC.fetchPublished().then(function (published) {
         if (published && published.menus.length) {
           state = published;
-          sel.menuId = state.menus[0].id;
-          PC.save(state);
-        } else {
-          PC.save(state);
+          ensureValidSelection();
+          sel.id = state.menus[0].id;
         }
+        PC.save(state);
         renderAll();
+        if (published && published.syncId) { pullFromChannel(); } else { ensureChannel(); }
       }).catch(function () {
         PC.save(state);
         renderAll();
+        ensureChannel();
       });
     } else {
       renderAll();
+      ensureChannel();
     }
   }
 

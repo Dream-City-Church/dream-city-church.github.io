@@ -171,6 +171,42 @@ html, body {
   gap: 0.3em;
 }
 
+/* Stacked price layout: one size/price pair per line */
+.pc-stacked-prices .pc-prices {
+  flex-direction: column;
+  gap: 0.1em;
+  align-items: flex-end;
+}
+
+.pc-stacked-prices .pc-price {
+  justify-content: flex-end;
+}
+
+/* Left-aligned boards: float the price stack right so the title and
+   description stay together and wrap beside it */
+.pc-stacked-prices:not(.pc-center) .pc-item {
+  display: flow-root;
+}
+
+.pc-stacked-prices:not(.pc-center) .pc-item-line {
+  display: block;
+}
+
+.pc-stacked-prices:not(.pc-center) .pc-prices {
+  display: flex;
+  float: right;
+  margin-left: 0.9em;
+}
+
+/* Dot leaders can't stretch to a floated multi-line stack */
+.pc-stacked-prices:not(.pc-center) .pc-leader {
+  display: none;
+}
+
+.pc-board.pc-center.pc-stacked-prices .pc-prices {
+  align-items: center;
+}
+
 .pc-size {
   font-size: 0.62em;
   text-transform: uppercase;
