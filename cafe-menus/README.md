@@ -90,6 +90,13 @@ time zone, and whether it could reach the menu data. Check in this order:
    only see `data/menus.json`. If the sync channel is unreachable, displays
    now automatically fall back to the published data file and say so on the
    setup page.
+5. **Player shows different menus than the admin** — the player is reading
+   different data. The setup page warns loudly when it's showing the built-in
+   SAMPLE data, and prints when its data was last updated (compare with the
+   admin's "Synced" time). Fix: re-copy the display URL (with `&sync=…`) onto
+   the player — or skip the cloud entirely with **Sync Info → Download
+   menus.json** and commit it as `data/menus.json`, which every player can
+   always read.
 
 ## Data & files
 

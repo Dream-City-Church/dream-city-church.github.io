@@ -101,6 +101,17 @@
     }
     wrap.appendChild(p);
 
+    // The #1 cause of "my menus aren't on the TV": the player never received
+    // the real data and is showing the built-in sample. Say so, loudly.
+    if (state && state.seed) {
+      var seedWarn = document.createElement('p');
+      seedWarn.style.color = '#e0a83c';
+      seedWarn.textContent = '⚠ This player is showing the built-in SAMPLE data — it has not received your real menus. ' +
+        'Its URL is probably missing the sync id: copy the display URL from the admin (it ends with &sync=…) onto this player. ' +
+        'Or use Sync Info → “Download menus.json” in the admin and publish it as data/menus.json with the site.';
+      wrap.appendChild(seedWarn);
+    }
+
     // Troubleshooting facts: schedules depend on the clock and the data the
     // player can reach, so show both.
     var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -110,7 +121,9 @@
     diag.textContent = 'Player clock: ' + new Date().toString().slice(0, 21) +
       (tz && zp.tz ? ' · schedules run in ' + tz + ', where it is now ' + DAYS[zp.day] + ' ' + zp.hm
                    : ' — schedules run on this clock; if it is wrong (signage players often run UTC), set a schedule time zone in the admin') +
-      ' · Data: ' + dataStatus;
+      ' · Data: ' + dataStatus +
+      (state && state.updatedAt ? ' · menu data last updated ' + new Date(state.updatedAt).toLocaleString() +
+        ' — if your admin shows a newer time, this player is reading different data' : '');
     wrap.appendChild(diag);
 
     function addList(title, entries, param) {
@@ -158,36 +171,43 @@
   }
 
   function syncId() {
-    return syncParam || (state && state.syncId) || '';
+    // The newest data we've adopted knows the CURRENT channel; the URL param
+    // is only the bootstrap. If the admin ever recreated the channel, a TV
+    // with the old URL self-heals onto the new channel as soon as any data
+    // source hands it the new id.
+    return (state && state.syncId) || syncParam || '';
   }
 
+  // Poll BOTH data sources every cycle: the sync channel (live edits) and the
+  // published file shipped with the site (same-origin, always reachable, and
+  // the rescue path for players whose URL has a stale or missing sync id).
+  // newerOf + the seed rule decide which copy wins, so polling both is safe.
   function pollPublished() {
     var id = syncId();
-    var fetching = id ? PC.sync.get(id) : PC.fetchPublished();
-    fetching.then(function (published) {
-      dataStatus = id ? 'Sync channel connected' : 'Using the published data file';
-      if (published) {
-        state = PC.newerOf(state, published);
-      }
-      render();
+    var channelStatus = null;
+    var fileStatus = null;
+
+    var file = PC.fetchPublished().then(function (published) {
+      fileStatus = published && published.seed
+        ? 'published file has only sample data'
+        : 'published file OK';
+      if (published) state = PC.newerOf(state, published);
+    }).catch(function () {
+      fileStatus = 'published file unreachable';
+    });
+
+    var channel = id ? PC.sync.get(id).then(function (published) {
+      channelStatus = 'sync channel connected';
+      if (published) state = PC.newerOf(state, published);
     }).catch(function (err) {
-      dataStatus = (id ? 'Sync channel unreachable' : 'Published data file unreachable') +
-        (err && err.status ? ' (HTTP ' + err.status + ')' : '') + ' — check the player’s internet access';
-      if (id) {
-        // Channel down (blocked network, expired channel…): fall back to the
-        // published file bundled with the app so the board can still show
-        // something sensible. newerOf/seed rules keep it from clobbering
-        // better data we already have.
-        PC.fetchPublished().then(function (published) {
-          if (published) {
-            dataStatus += ' · showing the published data file instead';
-            state = PC.newerOf(state, published);
-          }
-          render();
-        }).catch(function () { render(); });
-        return;
-      }
-      render(); // repaint the setup page's diagnostics
+      channelStatus = 'sync channel unreachable' +
+        (err && err.status ? ' (HTTP ' + err.status + ')' : '') +
+        ' — re-copy the display URL from the admin or check the player’s internet access';
+    }) : Promise.resolve();
+
+    Promise.all([file, channel]).then(function () {
+      dataStatus = [channelStatus, fileStatus].filter(Boolean).join(' · ');
+      render();
     });
   }
 

@@ -1509,6 +1509,21 @@
     URL.revokeObjectURL(a.href);
   });
 
+  // Publish file: the current data, ready to commit as data/menus.json so
+  // boards work even without the cloud sync channel. Not marked as seed —
+  // this is real data and should win over the built-in sample.
+  $('#btn-download-publish').addEventListener('click', function () {
+    var copy = PC.clone(state);
+    copy.seed = false;
+    var blob = new Blob([JSON.stringify(copy, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'menus.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    toast('Save this as data/menus.json in the site folder and redeploy.');
+  });
+
   $('#btn-import').addEventListener('click', function () {
     $('#import-file').click();
   });

@@ -79,6 +79,14 @@
           <button class="icon" id="btn-copy-admin-link">Copy</button>
         </div>
       </div>
+      <div class="field"><span>No-cloud fallback — bundle the data with the site</span>
+        <div class="sync-fact">
+          If a player can't reach the sync channel (or its URL has no sync id), it falls back to
+          the site's <code>data/menus.json</code>. Download your current data and commit it there
+          so every board works even without the cloud channel.
+          <button id="btn-download-publish" style="margin-left:8px">Download menus.json</button>
+        </div>
+      </div>
       <div class="modal-actions">
         <button id="btn-new-channel" class="danger-ghost" title="Only if the channel is broken — every TV needs new URLs afterward">Start new channel</button>
         <span class="spacer" style="flex:1"></span>
